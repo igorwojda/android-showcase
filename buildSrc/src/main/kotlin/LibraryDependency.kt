@@ -4,6 +4,8 @@ private object LibraryVersion {
     //jvm
     const val retrofit = "2.4.0"
     const val gson = "2.8.3"
+    const val timber = "4.7.1"
+
     //android
     const val supportLibraries = "28.0.0"
     const val constraintLayout = "1.1.3"
@@ -26,6 +28,7 @@ object LibraryDependency {
     //jvm
     const val retrofit = "com.squareup.retrofit2:retrofit:${LibraryVersion.retrofit}"
     const val gson = "com.google.code.gson:gson:${LibraryVersion.gson}"
+    const val timber = "com.jakewharton.timber:timber:${LibraryVersion.timber}"
 
     //android
     const val supportConstraintLayout = "com.android.support.constraint:constraint-layout:${LibraryVersion.constraintLayout}"

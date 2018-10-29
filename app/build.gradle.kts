@@ -43,10 +43,11 @@ android {
 
 dependencies {
     //module
-//    implementation(project(ModuleDependency.featureArtist))
+    implementation(project(ModuleDependency.featureBase))
 
     //core
     implementation(LibraryDependency.kotlin)
+    implementation(LibraryDependency.timber)
 
     //android
     implementation(LibraryDependency.supportAppCompact)

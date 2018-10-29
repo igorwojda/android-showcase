@@ -9,7 +9,7 @@ import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 plugins {
-    id(GradlePluginId.androidApplication)
+    id(GradlePluginId.androidFeature)
     id(GradlePluginId.kotlinAndroid)
     id(GradlePluginId.kotlinAndroidExtensions)
     id(GradlePluginId.ktlintGradle)
@@ -44,6 +44,9 @@ android {
 dependencies {
     //core
     implementation(LibraryDependency.kotlin)
+
+    //jvm
+    implementation(LibraryDependency.timber)
 
     //android
     implementation(LibraryDependency.supportAppCompact)
