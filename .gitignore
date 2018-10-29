@@ -1,0 +1,10 @@
+.gradle
+local.properties
+.idea/
+build
+*.iml
+captures
+.DS_Store
+app/src/debug/gen
+app/src/main/gen
+/config-repo/
