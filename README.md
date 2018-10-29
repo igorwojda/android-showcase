@@ -1,15 +1,15 @@
 # Project description
-This project is simple Android application showcase.
+This project is simple Android application showcase. Some architectural
+decisions may look like overkill for such small project, however they will
+scale well for a project with long live cycle maintained by larger team.
 
 # Project characteristics
 * 100% Kotlin
-* Utilise most popular [Android Libraries](buildSrc\src\main\kotlin\LibraryDependency.kt)
+* Feature modules
+* Utilise most popular [libraries](buildSrc\src\main\kotlin\LibraryDependency.kt)
 * Configured multiple static code analysis tools
 * Gradle Script Kotlin
 * Gradle dependency autocompletion
-
-# Clean architecture
-Clean architecture is a concept that can be implemented in multiple ways.
 
 # Static analysis
 Project includes all modern [static code analisys](https://en.wikipedia.org/wiki/Static_program_analysis) tools for Kotlin language ([ktlint](https://github.com/shyiko/ktlint), [detekt](https://github.com/arturbosch/detekt)) and Android platform ([Android lint](https://developer.android.com/studio/write/lint)). Each of those tools is focusing on different area of static analysis. `ktlint` checks code formatting, `detekt` deals with code smells, complexity, performance checks and finally `lint` verifies behaviours specific to android platform.
