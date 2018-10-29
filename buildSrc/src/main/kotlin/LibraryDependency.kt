@@ -4,7 +4,6 @@ private object LibraryVersion {
     //jvm
     const val retrofit = "2.4.0"
     const val gson = "2.8.3"
-
     //android
     const val supportLibraries = "28.0.0"
     const val constraintLayout = "1.1.3"
