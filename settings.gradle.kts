@@ -1,4 +1,5 @@
 include(
     ModuleDependency.app,
-    ModuleDependency.featureBase
-    )
+    ModuleDependency.featureBase,
+    ModuleDependency.featureArtist
+)

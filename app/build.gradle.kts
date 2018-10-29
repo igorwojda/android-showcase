@@ -44,6 +44,7 @@ android {
 dependencies {
     //module
     implementation(project(ModuleDependency.featureBase))
+    implementation(project(ModuleDependency.featureArtist))
 
     //core
     implementation(LibraryDependency.kotlin)
