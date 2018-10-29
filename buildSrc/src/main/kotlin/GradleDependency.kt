@@ -3,7 +3,7 @@ import org.gradle.plugin.use.PluginDependenciesSpec
 object GradlePluginVersion {
     const val androidGradle = "3.2.1"
 
-    const val ktlintGradle = "6.1.0"
+    const val ktlintGradle = "6.2.0"
     const val detekt = "1.0.0.RC9.2"
 }
 
