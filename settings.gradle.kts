@@ -1,1 +1,4 @@
-include(ModuleDependency.app)
+include(
+    ModuleDependency.app,
+    ModuleDependency.featureBase
+    )
