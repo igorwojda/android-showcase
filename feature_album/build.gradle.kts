@@ -1,14 +1,15 @@
+import ApplicationConfig.testInstrumentationRunner
 import ApplicationConfig.versionCode
 import ApplicationConfig.versionName
-import GradlePluginId.androidApplication
+import GradlePluginId.androidFeature
 import GradlePluginId.kotlinAndroid
 import GradlePluginId.kotlinAndroidExtensions
-import com.android.build.gradle.AndroidConfig
 import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.include
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 plugins {
-    id(GradlePluginId.androidApplication)
+    id(GradlePluginId.androidFeature)
     id(GradlePluginId.kotlinAndroid)
     id(GradlePluginId.kotlinAndroidExtensions)
     id(GradlePluginId.ktlintGradle)
@@ -18,7 +19,6 @@ android {
     compileSdkVersion(ApplicationConfig.compileSdk)
 
     defaultConfig {
-        applicationId = ApplicationConfig.id
         minSdkVersion(ApplicationConfig.minSdk)
         targetSdkVersion(ApplicationConfig.targetSdk)
         buildToolsVersion(ApplicationConfig.buildTools)
@@ -44,11 +44,11 @@ android {
 dependencies {
     //module
     implementation(project(ModuleDependency.featureBase))
-    implementation(project(ModuleDependency.featureAlbum))
-    implementation(project(ModuleDependency.featureArtist))
 
     //core
     implementation(LibraryDependency.kotlin)
+
+    //jvm
     implementation(LibraryDependency.timber)
 
     //android
