@@ -1,5 +1,5 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
-class AlbumListPresenter {
+import com.igorwojda.lastfm.feature.base.presentation.BasePresenter
 
-}
+class AlbumListPresenter : BasePresenter<AlbumListView>()
