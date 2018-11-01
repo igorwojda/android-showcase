@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import timber.log.Timber
 
 abstract class BaseFragment : Fragment() {
-
     @get:LayoutRes
     protected abstract val layoutResourceId: Int
 

@@ -13,9 +13,7 @@ open class BasePresenter<V> {
         onDropView()
     }
 
-    protected open fun onTakeView() {
-    }
+    protected open fun onTakeView() {}
 
-    protected open fun onDropView() {
-    }
+    protected open fun onDropView() {}
 }

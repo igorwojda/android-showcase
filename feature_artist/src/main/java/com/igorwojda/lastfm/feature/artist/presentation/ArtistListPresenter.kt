@@ -2,7 +2,4 @@ package com.igorwojda.lastfm.feature.artist.presentation
 
 import com.igorwojda.lastfm.feature.base.presentation.BasePresenter
 
-class ArtistListPresenter : BasePresenter<ArtistListView>() {
-    override fun onTakeView() {
-    }
-}
+class ArtistListPresenter : BasePresenter<ArtistListView>()
