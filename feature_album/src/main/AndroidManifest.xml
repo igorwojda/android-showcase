@@ -13,7 +13,7 @@
                 android:name="aia-compat-api-min-version"
                 android:value="1"/>
 
-        <activity android:name=".AlbumListActivity">
+        <activity android:name=".presentation.AlbumListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

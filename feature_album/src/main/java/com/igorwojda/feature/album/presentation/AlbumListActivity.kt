@@ -1,6 +1,7 @@
-package com.igorwojda.feature.album
+package com.igorwojda.feature.album.presentation
 
 import android.os.Bundle
+import com.igorwojda.feature.album.R
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
 
 class AlbumListActivity : BaseActivity() {
