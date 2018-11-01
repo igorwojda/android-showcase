@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.igorwojda.feature.album">
+          package="com.igorwojda.lastfm.feature.album">
 
     <application
             android:allowBackup="true"
@@ -13,7 +13,7 @@
                 android:name="aia-compat-api-min-version"
                 android:value="1"/>
 
-        <activity android:name=".presentation.AlbumListActivity">
+        <activity android:name="com.igorwojda.lastfm.feature.album.presentation.AlbumListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
