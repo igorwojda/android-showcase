@@ -12,6 +12,13 @@
         <meta-data
                 android:name="aia-compat-api-min-version"
                 android:value="1"/>
+        <activity android:name=".presentation.ArtistListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

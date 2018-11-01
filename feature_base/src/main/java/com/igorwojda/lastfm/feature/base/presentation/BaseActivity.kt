@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import timber.log.Timber
 
 abstract class BaseActivity : AppCompatActivity() {
+
     @get:LayoutRes
     protected abstract val layoutResourceId: Int
 

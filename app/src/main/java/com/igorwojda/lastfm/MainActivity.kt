@@ -1,7 +1,10 @@
 package com.igorwojda.lastfm
 
+import android.content.Intent
 import android.os.Bundle
+import com.igorwojda.feature.artist.presentation.ArtistListActivity
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
@@ -10,8 +13,10 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        Intent(this, ArtistListActivity::class.java).also {
-//            startActivity(it)
-//        }
+        launchFeatureArtistButton.setOnClickListener {
+            Intent(this, ArtistListActivity::class.java).also { intent ->
+                startActivity(intent)
+            }
+        }
     }
 }
