@@ -56,6 +56,7 @@ dependencies {
     implementation(LibraryDependency.supportConstraintLayout)
     implementation(LibraryDependency.supportRecyclerView)
     implementation(LibraryDependency.supportDesign)
+    implementation(LibraryDependency.coroutinesAndroid)
 
     //jvm test
     testImplementation(LibraryDependency.junit)

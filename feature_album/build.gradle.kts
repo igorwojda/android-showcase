@@ -59,7 +59,7 @@ dependencies {
     implementation(LibraryDependency.supportConstraintLayout)
     implementation(LibraryDependency.supportRecyclerView)
     implementation(LibraryDependency.supportDesign)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0")
+    implementation(LibraryDependency.coroutinesAndroid)
 
     //jvm test
     testImplementation(LibraryDependency.junit)

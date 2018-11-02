@@ -10,6 +10,7 @@ private object LibraryVersion {
     //android
     const val supportLibraries = "28.0.0"
     const val constraintLayout = "1.1.3"
+    const val coroutinesAndroid = "1.0.0"
 
     //jvmTest
     const val junit = "4.12"
@@ -39,6 +40,7 @@ object LibraryDependency {
     const val supportAppCompact = "com.android.support:appcompat-v7:${LibraryVersion.supportLibraries}"
     const val supportDesign = "com.android.support:design:${LibraryVersion.supportLibraries}"
     const val supportRecyclerView = "com.android.support:recyclerview-v7:${LibraryVersion.supportLibraries}"
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibraryVersion.coroutinesAndroid}"
 
     //jvm test
     const val junit = "junit:junit:${LibraryVersion.junit}"
