@@ -7,8 +7,5 @@ import com.igorwojda.lastfm.feature.base.domain.BaseUseCase
 class GetAlbumListUseCase : BaseUseCase<List<AlbumDomainModel>>() {
     private val albumRepository = AlbumNetworkRepository()
 
-    override suspend fun execute(): List<AlbumDomainModel> {
-        val albumList = albumRepository.getAlbumList()
-        return albumList
-    }
+    override suspend fun execute(): List<AlbumDomainModel> = albumRepository.getAlbumList().take(25)
 }
