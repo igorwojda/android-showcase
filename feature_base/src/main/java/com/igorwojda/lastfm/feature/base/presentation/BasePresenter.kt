@@ -1,9 +1,9 @@
 package com.igorwojda.lastfm.feature.base.presentation
 
-open class BasePresenter<V> {
-    var view: V? = null
+open class BasePresenter<VIEW> {
+    var view: VIEW? = null
 
-    fun takeView(view: V) {
+    fun takeView(view: VIEW) {
         this.view = view
         onTakeView()
     }

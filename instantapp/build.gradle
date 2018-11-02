@@ -1,6 +1,0 @@
-apply plugin: 'com.android.instantapp'
-
-dependencies {
-    implementation project(':feature_artist')
-    implementation project(':feature_artist')
-}

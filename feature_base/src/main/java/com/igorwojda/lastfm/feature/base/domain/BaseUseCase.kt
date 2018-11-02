@@ -1,5 +1,5 @@
 package com.igorwojda.lastfm.feature.base.domain
 
-abstract class BaseUseCase() {
-    abstract fun execute()
+abstract class BaseUseCase<RESULT> {
+    abstract suspend fun execute(): RESULT
 }

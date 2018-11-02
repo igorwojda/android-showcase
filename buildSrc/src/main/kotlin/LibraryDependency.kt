@@ -1,5 +1,7 @@
 private object LibraryVersion {
+    //core
     const val kodein = "5.2.0"
+    const val fuel = "1.16.0"
 
     //jvm
     const val retrofit = "2.4.0"
@@ -9,6 +11,7 @@ private object LibraryVersion {
     //android
     const val supportLibraries = "28.0.0"
     const val constraintLayout = "1.1.3"
+    const val stetho = "1.5.0"
 
     //jvmTest
     const val junit = "4.12"
@@ -24,6 +27,9 @@ object LibraryDependency {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${CoreVersion.kotlin}"
     const val kodein = "org.kodein.di:kodein-di-generic-jvm:${LibraryVersion.kodein}"
     const val kodeinAndroid = "org.kodein.di:kodein-di-framework-android-support:${LibraryVersion.kodein}"
+    const val fuelAndroid = "com.github.kittinunf.fuel:fuel-android:${LibraryVersion.fuel}"
+    const val fuelGson = "com.github.kittinunf.fuel:fuel-gson:${LibraryVersion.fuel}"
+    const val fuelCoroutines = "com.github.kittinunf.fuel:fuel-coroutines:${LibraryVersion.fuel}"
 
     //jvm
     const val retrofit = "com.squareup.retrofit2:retrofit:${LibraryVersion.retrofit}"
@@ -31,10 +37,14 @@ object LibraryDependency {
     const val timber = "com.jakewharton.timber:timber:${LibraryVersion.timber}"
 
     //android
-    const val supportConstraintLayout = "com.android.support.constraint:constraint-layout:${LibraryVersion.constraintLayout}"
+    const val supportConstraintLayout =
+        "com.android.support.constraint:constraint-layout:${LibraryVersion.constraintLayout}"
     const val supportAppCompact = "com.android.support:appcompat-v7:${LibraryVersion.supportLibraries}"
     const val supportDesign = "com.android.support:design:${LibraryVersion.supportLibraries}"
     const val supportRecyclerView = "com.android.support:recyclerview-v7:${LibraryVersion.supportLibraries}"
+    const val stetho = "com.facebook.stetho:stetho:${LibraryVersion.stetho}"
+    const val stethoUrlConnection =
+        "com.facebook.stetho:stetho-urlconnection:${LibraryVersion.stetho}" //needed for Fuel FuelStethoClient.kt
 
     //jvm test
     const val junit = "junit:junit:${LibraryVersion.junit}"

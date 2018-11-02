@@ -50,12 +50,17 @@ dependencies {
     //core
     implementation(LibraryDependency.kotlin)
     implementation(LibraryDependency.timber)
+    implementation(LibraryDependency.fuelAndroid)
+    implementation(LibraryDependency.fuelCoroutines)
+    implementation(LibraryDependency.fuelGson)
 
     //android
     implementation(LibraryDependency.supportAppCompact)
     implementation(LibraryDependency.supportConstraintLayout)
     implementation(LibraryDependency.supportRecyclerView)
     implementation(LibraryDependency.supportDesign)
+    implementation(LibraryDependency.stetho)
+    implementation(LibraryDependency.stethoUrlConnection)
 
     //jvm test
     testImplementation(LibraryDependency.junit)
@@ -63,4 +68,6 @@ dependencies {
     //android test
     androidTestImplementation(LibraryDependency.testRunner)
     androidTestImplementation(LibraryDependency.espressoCore)
+    androidTestImplementation(LibraryDependency.kluent)
+    androidTestImplementation(LibraryDependency.kluentAndroid)
 }

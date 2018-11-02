@@ -1,7 +1,7 @@
 package com.igorwojda.lastfm.feature.album.data.repository
 
-import com.igorwojda.lastfm.feature.album.domain.model.ArtistDomainModel
+import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 
 interface AlbumRepository {
-    fun getAlbumList(): List<ArtistDomainModel>
+    suspend fun getAlbumList(): List<AlbumDomainModel>
 }

@@ -1,3 +1,7 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
-interface AlbumListView
+import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
+
+interface AlbumListView {
+    fun setAlbums(list: List<AlbumDomainModel>)
+}

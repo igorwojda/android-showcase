@@ -47,6 +47,9 @@ dependencies {
 
     //core
     implementation(LibraryDependency.kotlin)
+    implementation(LibraryDependency.fuelAndroid)
+    implementation(LibraryDependency.fuelCoroutines)
+    implementation(LibraryDependency.fuelGson)
 
     //jvm
     implementation(LibraryDependency.timber)
@@ -63,4 +66,6 @@ dependencies {
     //android test
     androidTestImplementation(LibraryDependency.testRunner)
     androidTestImplementation(LibraryDependency.espressoCore)
+    androidTestImplementation(LibraryDependency.kluent)
+    androidTestImplementation(LibraryDependency.kluentAndroid)
 }
