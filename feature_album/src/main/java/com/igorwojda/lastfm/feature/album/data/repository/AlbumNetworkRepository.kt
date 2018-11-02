@@ -14,14 +14,7 @@ class AlbumNetworkRepository : AlbumRepository {
         )
 
         var albums: List<AlbumNetworkModel>? = null
-
-        result.fold(
-            success = {
-                albums = it
-            },
-            failure = {
-                albums = listOf()
-            })
+        result.fold(success = { albums = it }, failure = { albums = listOf() })
 
         return albums?.map { it.toDomainModel() } ?: listOf()
     }
@@ -32,14 +25,7 @@ class AlbumNetworkRepository : AlbumRepository {
         )
 
         var album: AlbumNetworkModel? = null
-
-        result.fold(
-            success = {
-                album = it
-            },
-            failure = {
-                val a = 1
-            })
+        result.fold(success = { album = it }, failure = {})
 
         return album?.toDomainModel()
     }
