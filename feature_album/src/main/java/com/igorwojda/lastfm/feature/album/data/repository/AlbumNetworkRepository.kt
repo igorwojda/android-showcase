@@ -3,7 +3,7 @@ package com.igorwojda.lastfm.feature.album.data.repository
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.gson.responseObject
 import com.igorwojda.lastfm.feature.album.data.model.AlbumNetworkModel
-import com.igorwojda.lastfm.feature.album.data.model.toDomain
+import com.igorwojda.lastfm.feature.album.data.model.toDomainModel
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 
 class AlbumNetworkRepository : AlbumRepository {
@@ -20,6 +20,21 @@ class AlbumNetworkRepository : AlbumRepository {
                 })
         }
 
-        return albums?.map { it.toDomain() } ?: listOf()
+        return albums?.map { it.toDomainModel() } ?: listOf()
+    }
+
+    override suspend fun getAlbum(id: Int): AlbumDomainModel? {
+        var album: AlbumNetworkModel? = null
+
+        Fuel.get("/albums/$id").responseObject<AlbumNetworkModel> { _, _, result ->
+            result.fold(
+                success = {
+                    album = it
+                },
+                failure = {
+                })
+        }
+
+        return album?.toDomainModel()
     }
 }

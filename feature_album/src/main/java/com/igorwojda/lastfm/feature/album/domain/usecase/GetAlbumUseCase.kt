@@ -2,8 +2,8 @@ package com.igorwojda.lastfm.feature.album.domain.usecase
 
 import com.igorwojda.lastfm.feature.album.data.repository.AlbumNetworkRepository
 
-class GetAlbumListUseCase {
+class GetAlbumUseCase {
     private val albumRepository = AlbumNetworkRepository()
 
-    suspend fun execute() = albumRepository.getAlbumList().take(25)
+    suspend fun execute(id: Int) = albumRepository.getAlbum(id)
 }

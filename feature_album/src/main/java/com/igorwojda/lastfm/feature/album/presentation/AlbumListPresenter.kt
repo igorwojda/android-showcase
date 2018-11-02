@@ -7,7 +7,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class AlbumListPresenter : BasePresenter<AlbumListView>() {
-    private val getAlbumsUseCase: GetAlbumListUseCase = GetAlbumListUseCase()
+    private val getAlbumsUseCase = GetAlbumListUseCase()
 
     override fun onTakeView() {
         super.onTakeView()

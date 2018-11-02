@@ -1,14 +1,12 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
 import android.os.Bundle
-import android.os.Looper
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
 import kotlinx.android.synthetic.main.activity_album_list.*
-import timber.log.Timber
 
 class AlbumListActivity : BaseActivity(), AlbumListView {
     override val layoutResourceId = R.layout.activity_album_list
@@ -43,11 +41,6 @@ class AlbumListActivity : BaseActivity(), AlbumListView {
     }
 
     override fun setAlbums(list: List<AlbumDomainModel>) {
-        albumAdapter.albumList = listOf(
-            AlbumDomainModel(1, 1, "AAA"),
-            AlbumDomainModel(2, 2, "BBB")
-        )//list
-        Timber.d("111 ${Looper.myLooper().toString()}")
         albumAdapter.notifyDataSetChanged()
     }
 }
