@@ -4,7 +4,6 @@ private object LibraryVersion {
     const val fuel = "1.16.0"
 
     //jvm
-    const val retrofit = "2.4.0"
     const val gson = "2.8.3"
     const val timber = "4.7.1"
 
@@ -32,7 +31,6 @@ object LibraryDependency {
     const val fuelCoroutines = "com.github.kittinunf.fuel:fuel-coroutines:${LibraryVersion.fuel}"
 
     //jvm
-    const val retrofit = "com.squareup.retrofit2:retrofit:${LibraryVersion.retrofit}"
     const val gson = "com.google.code.gson:gson:${LibraryVersion.gson}"
     const val timber = "com.jakewharton.timber:timber:${LibraryVersion.timber}"
 
