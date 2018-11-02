@@ -11,13 +11,15 @@ import kotlinx.android.synthetic.main.activity_album_list.*
 class AlbumListActivity : BaseActivity(), AlbumListView {
     override val layoutResourceId = R.layout.activity_album_list
 
-    //Todo: should be injected
+    // Todo: should be injected
     private val presenter = AlbumListPresenter()
     private var albumAdapter = AlbumAdapter()
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        title = resources.getString(R.string.feature_album)
 
         linearLayoutManager = LinearLayoutManager(this)
 
@@ -28,13 +30,13 @@ class AlbumListActivity : BaseActivity(), AlbumListView {
         }
     }
 
-    //Todo: should be done in BaseActivity
+    // Todo: should be done in BaseActivity
     override fun onResume() {
         super.onResume()
         presenter.takeView(this)
     }
 
-    //Todo: should be done in BaseActivity
+    // Todo: should be done in BaseActivity
     override fun onPause() {
         super.onPause()
         presenter.dropView()
