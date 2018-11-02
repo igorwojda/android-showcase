@@ -10,7 +10,6 @@ private object LibraryVersion {
     //android
     const val supportLibraries = "28.0.0"
     const val constraintLayout = "1.1.3"
-    const val stetho = "1.5.0"
 
     //jvmTest
     const val junit = "4.12"
@@ -40,9 +39,6 @@ object LibraryDependency {
     const val supportAppCompact = "com.android.support:appcompat-v7:${LibraryVersion.supportLibraries}"
     const val supportDesign = "com.android.support:design:${LibraryVersion.supportLibraries}"
     const val supportRecyclerView = "com.android.support:recyclerview-v7:${LibraryVersion.supportLibraries}"
-    const val stetho = "com.facebook.stetho:stetho:${LibraryVersion.stetho}"
-    const val stethoUrlConnection =
-        "com.facebook.stetho:stetho-urlconnection:${LibraryVersion.stetho}" //needed for Fuel FuelStethoClient.kt
 
     //jvm test
     const val junit = "junit:junit:${LibraryVersion.junit}"

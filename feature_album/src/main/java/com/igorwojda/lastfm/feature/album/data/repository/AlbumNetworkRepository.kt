@@ -1,39 +1,45 @@
 package com.igorwojda.lastfm.feature.album.data.repository
 
+import awaitObjectResponse
 import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.gson.responseObject
+import com.github.kittinunf.fuel.gson.gsonDeserializerOf
 import com.igorwojda.lastfm.feature.album.data.model.AlbumNetworkModel
 import com.igorwojda.lastfm.feature.album.data.model.toDomainModel
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 
 class AlbumNetworkRepository : AlbumRepository {
     override suspend fun getAlbumList(): List<AlbumDomainModel> {
+        val (_, _, result) = Fuel.get("/albums").awaitObjectResponse<List<AlbumNetworkModel>>(
+            gsonDeserializerOf()
+        )
+
         var albums: List<AlbumNetworkModel>? = null
 
-        Fuel.get("/albums").responseObject<List<AlbumNetworkModel>> { _, _, result ->
-            result.fold(
-                success = {
-                    albums = it
-                },
-                failure = {
-                    albums = listOf()
-                })
-        }
+        result.fold(
+            success = {
+                albums = it
+            },
+            failure = {
+                albums = listOf()
+            })
 
         return albums?.map { it.toDomainModel() } ?: listOf()
     }
 
     override suspend fun getAlbum(id: Int): AlbumDomainModel? {
+        val (_, _, result) = Fuel.get("/albums/$id").awaitObjectResponse<AlbumNetworkModel>(
+            gsonDeserializerOf()
+        )
+
         var album: AlbumNetworkModel? = null
 
-        Fuel.get("/albums/$id").responseObject<AlbumNetworkModel> { _, _, result ->
-            result.fold(
-                success = {
-                    album = it
-                },
-                failure = {
-                })
-        }
+        result.fold(
+            success = {
+                album = it
+            },
+            failure = {
+                val a = 1
+            })
 
         return album?.toDomainModel()
     }

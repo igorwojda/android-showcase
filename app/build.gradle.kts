@@ -59,8 +59,6 @@ dependencies {
     implementation(LibraryDependency.supportConstraintLayout)
     implementation(LibraryDependency.supportRecyclerView)
     implementation(LibraryDependency.supportDesign)
-    implementation(LibraryDependency.stetho)
-    implementation(LibraryDependency.stethoUrlConnection)
 
     //jvm test
     testImplementation(LibraryDependency.junit)

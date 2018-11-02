@@ -1,7 +1,6 @@
 package com.igorwojda.lastfm.core
 
 import android.app.Application
-import com.facebook.stetho.Stetho
 import com.github.kittinunf.fuel.core.FuelManager
 import com.igorwojda.lastfm.BuildConfig
 import timber.log.Timber
@@ -13,11 +12,6 @@ class LastFmApplication : Application() {
 
         initTimber()
         initFuel()
-        initStetho()
-    }
-
-    private fun initStetho() {
-        Stetho.initializeWithDefaults(this)
     }
 
     private fun initFuel() {

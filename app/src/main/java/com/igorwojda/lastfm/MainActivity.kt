@@ -1,6 +1,5 @@
 package com.igorwojda.lastfm
 
-import android.content.Intent
 import android.os.Bundle
 import com.igorwojda.lastfm.feature.album.presentation.AlbumListActivity
 import com.igorwojda.lastfm.feature.artist.presentation.ArtistListActivity
@@ -15,14 +14,10 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         launchFeatureAlbumButton.setOnClickListener {
-            Intent(this, AlbumListActivity::class.java).also { intent ->
-                startActivity(intent)
-            }
+            startActivity(AlbumListActivity.getStartIntent(this))
         }
         launchFeatureArtistButton.setOnClickListener {
-            Intent(this, ArtistListActivity::class.java).also { intent ->
-                startActivity(intent)
-            }
+            startActivity(ArtistListActivity.getStartIntent(this))
         }
     }
 }

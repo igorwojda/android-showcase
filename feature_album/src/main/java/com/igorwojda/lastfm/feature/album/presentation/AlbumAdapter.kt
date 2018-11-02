@@ -8,29 +8,30 @@ import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.AlbumAdapter.MyViewHolder
 import kotlinx.android.synthetic.main.item_album.view.*
-import timber.log.Timber
 
 class AlbumAdapter : RecyclerView.Adapter<MyViewHolder>() {
-    var albumList = listOf<AlbumDomainModel>()
+    var albums = listOf<AlbumDomainModel>()
+    private var onClickListener: ((album: AlbumDomainModel) -> Unit)? = null
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun setAlbum(album: AlbumDomainModel) {
+        fun bind(album: AlbumDomainModel) {
             itemView.title.text = album.title
-
-            Timber.d("AAA ${album.title}")
+            itemView.setOnClickListener { onClickListener?.invoke(album) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_album, parent, false)
-
-        return MyViewHolder(itemView)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_album, parent, false)
+        return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.setAlbum(albumList[position])
+        holder.bind(albums[position])
     }
 
-    override fun getItemCount(): Int = albumList.size
+    override fun getItemCount(): Int = albums.size
+
+    fun setOnClickListener(listener: (album: AlbumDomainModel) -> Unit) {
+        this.onClickListener = listener
+    }
 }
