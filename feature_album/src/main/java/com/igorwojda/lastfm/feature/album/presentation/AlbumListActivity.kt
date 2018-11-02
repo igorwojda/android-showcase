@@ -1,18 +1,21 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
 import android.os.Bundle
+import android.os.Looper
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
 import kotlinx.android.synthetic.main.activity_album_list.*
+import timber.log.Timber
 
 class AlbumListActivity : BaseActivity(), AlbumListView {
     override val layoutResourceId = R.layout.activity_album_list
 
     //Todo: should be injected
     private val presenter = AlbumListPresenter()
+    private var albumAdapter = AlbumAdapter()
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,7 @@ class AlbumListActivity : BaseActivity(), AlbumListView {
         recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = linearLayoutManager
+            adapter = albumAdapter
         }
     }
 
@@ -39,6 +43,11 @@ class AlbumListActivity : BaseActivity(), AlbumListView {
     }
 
     override fun setAlbums(list: List<AlbumDomainModel>) {
-        val a = 1
+        albumAdapter.albumList = listOf(
+            AlbumDomainModel(1, 1, "AAA"),
+            AlbumDomainModel(2, 2, "BBB")
+        )//list
+        Timber.d("111 ${Looper.myLooper().toString()}")
+        albumAdapter.notifyDataSetChanged()
     }
 }
