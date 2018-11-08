@@ -3,6 +3,7 @@ package com.igorwojda.lastfm.feature.album.data.repository
 import awaitObjectResponse
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.gson.gsonDeserializerOf
+import com.github.kittinunf.result.getOrElse
 import com.igorwojda.lastfm.feature.album.data.model.AlbumNetworkModel
 import com.igorwojda.lastfm.feature.album.data.model.toDomainModel
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
@@ -13,10 +14,8 @@ class AlbumNetworkRepository : AlbumRepository {
             gsonDeserializerOf()
         )
 
-        var albums: List<AlbumNetworkModel>? = null
-        result.fold(success = { albums = it }, failure = { albums = listOf() })
-
-        return albums?.map { it.toDomainModel() } ?: listOf()
+        var albums = result.getOrElse(listOf())
+        return albums.map { it.toDomainModel() }
     }
 
     override suspend fun getAlbum(id: Int): AlbumDomainModel? {
