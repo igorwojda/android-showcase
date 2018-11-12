@@ -2,24 +2,41 @@
 This project is simple Android application showcase.
 
 # Project characteristics
-* App code is 100% Kotlin
+* Heavy usage of Kotlin
 * Gradle Script Kotlin
-* Coroutines (as alternative for RxJava & LiveData)
+* Kotlin Coroutines (as alternative for RxJava & LiveData)
 * Feature modules
 * Clean architecture
-* Utilise most popular [libraries](buildSrc\src\main\kotlin\LibraryDependency.kt)
+* Utilise many popular [libraries](buildSrc\src\main\kotlin\LibraryDependency.kt)
 * Takes advantage of multiple static code analysis tools
 * Gradle dependency autocompletion
+
+# Kotlin
+Project takes full advantage of Kotlin language by unifying languages used across project:
+* Android code application is written in Kotlin (100%  code is Kotlin)
+* Gradle build scripts ([top level](build.gradle.kts) and [module level](app/build.gradle.kts)) are written in Kotlin utilising [Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl)
+* CI server ([Teamcity](https://www.jetbrains.com/teamcity/)) [configuration script](.teamcity\settings.kts) is
+ written in [Kotlin DSL](https://confluence.jetbrains.com/display/TCD18/Kotlin+DSL)
+
+ Heavy usage of Kotlin allows to o speed up development process, decrease learning curve and improves project maintainability.
+
+# CI configuration
+CI configuration is stored in the repository. This approach allows to easily update CI build configuration and validate it's correctness together
+with each PR.
 
 # Architecture
 Some architectural decisions may look like overkill for such small project, however they will scale well for a project with long live
 cycle maintained by larger team.
 
 Each feature is contained in separate module. This gives ability to easily maintain particular feature, move feature to different
-project, or just delete existing feature. Project utilizes domain centric
+project, or just delete it. Project utilizes domain centric
 [clean architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) at feature level. This means that each
 feature follows [dependency rule](https://proandroiddev.com/clean-architecture-data-flow-dependency-rule-615ffdd79e29) having its own
-layers (presentation/domain/data).
+set of layers (`presentation`/`domain`/`data`). Downside of this approach is the fact that all layers (for a given feature) exists in a single
+module, so layer dependencies can't be enforced simply by defining module dependencies (defining 3 multiple modules for each feature
+would be an overkill). Fortunately we can preserve proper layer dependencies by using custom lints checks to keep dependency rule in place -
+create lint check that verifies if no dependencies from `data`/`presentation` layer are used in `domain` layer. Depending on the application
+scale we can `data` layer can be spited into `network` and `cache`.
 
 # Static analysis
 Project includes all modern [static code analisys](https://en.wikipedia.org/wiki/Static_program_analysis) tools for Kotlin
