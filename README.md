@@ -2,23 +2,23 @@
 This project is simple Android application showcase.
 
 # Project characteristics
-* Heavy usage of Kotlin
+* Heavy usage of [Kotlin programming language](https://kotlinlang.org/)
 * Gradle Script Kotlin
-* Kotlin Coroutines (as alternative for RxJava & LiveData)
+* Kotlin Coroutines (as alternative for RxJava)
 * Feature modules
-* Clean architecture
+* Clean architecture + MVVM
 * Utilise many popular [libraries](buildSrc\src\main\kotlin\LibraryDependency.kt)
 * Takes advantage of multiple static code analysis tools
 * Gradle dependency autocompletion
 
 # Kotlin
-Project takes full advantage of Kotlin language by unifying languages used across project:
+Project takes full advantage of Kotlin language by maximizing it's usage across project:
 * Android code application is written in Kotlin (100%  code is Kotlin)
-* Gradle build scripts ([top level](build.gradle.kts) and [module level](app/build.gradle.kts)) are written in Kotlin utilising [Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl)
+* Gradle build scripts (eg. [top level](build.gradle.kts), [module level](app/build.gradle.kts) etc.) are written in Kotlin utilising [Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl)
 * CI server ([Teamcity](https://www.jetbrains.com/teamcity/)) [configuration script](.teamcity\settings.kts) is
  written in [Kotlin DSL](https://confluence.jetbrains.com/display/TCD18/Kotlin+DSL)
 
- Heavy usage of Kotlin allows to o speed up development process, decrease learning curve and improves project maintainability.
+Heavy usage of Kotlin allows to o speed up development process, decrease learning curve and improves project maintainability.
 
 # CI configuration
 CI configuration is stored in the repository. This approach allows to easily update CI build configuration and validate it's correctness together
@@ -37,6 +37,18 @@ module, so layer dependencies can't be enforced simply by defining module depend
 would be an overkill). Fortunately we can preserve proper layer dependencies by using custom lints checks to keep dependency rule in place -
 create lint check that verifies if no dependencies from `data`/`presentation` layer are used in `domain` layer. Depending on the application
 scale we can `data` layer can be spited into `network` and `cache`.
+
+# Gradle
+## Gradle Kotlin DLS
+[Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl) aims to provide Gradle users with a rich, flexible and statically-typed approach
+that allows to develop build logic in conjunction with the best IDE and tooling experience possible.
+
+##  Dependencies
+For projects that include multiple modules, it is useful to define [properties](app/src/main/kotlin) at the project level and share them across all modules.
+Centralized dependency approach allows to easily add new dependencies and update existing ones eg. change library version.
+
+[module level]
+This allows to unify libraries versions across project and easily share them across all the modules.
 
 # Static analysis
 Project includes all modern [static code analisys](https://en.wikipedia.org/wiki/Static_program_analysis) tools for Kotlin
