@@ -3,13 +3,15 @@ This project is simple Android application showcase.
 
 # Project characteristics
 * Heavy usage of Kotlin
-* Gradle Script Kotlin
-* Kotlin Coroutines (as alternative for RxJava)
-* Feature modules
 * Clean architecture + MVVM
+* Feature modules
+* Unit Tests
+* Kotlin Coroutines (as alternative for RxJava)
 * Utilise many popular libraries from Android ecosystem
-* Takes advantage of multiple static code analysis tools
+* Takes advantage of most popular analysis tools
+* Gradle Script Kotlin
 * Gradle dependency autocompletion
+* AndroidX support libraries
 
 # Kotlin
 Project takes full advantage of Kotlin language by maximizing it's usage across project:
