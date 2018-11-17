@@ -2,12 +2,12 @@
 This project is simple Android application showcase.
 
 # Project characteristics
-* Heavy usage of [Kotlin programming language](https://kotlinlang.org/)
+* Heavy usage of Kotlin
 * Gradle Script Kotlin
 * Kotlin Coroutines (as alternative for RxJava)
 * Feature modules
 * Clean architecture + MVVM
-* Utilise many popular [libraries](buildSrc\src\main\kotlin\LibraryDependency.kt)
+* Utilise many popular libraries from Android ecosystem
 * Takes advantage of multiple static code analysis tools
 * Gradle dependency autocompletion
 
@@ -32,20 +32,43 @@ Each feature is contained in separate module. This gives ability to easily maint
 project, or just delete it. Project utilizes domain centric
 [clean architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) at feature level. This means that each
 feature follows [dependency rule](https://proandroiddev.com/clean-architecture-data-flow-dependency-rule-615ffdd79e29) having its own
-set of layers (`presentation`/`domain`/`data`). Downside of this approach is the fact that all layers (for a given feature) exists in a single
-module, so layer dependencies can't be enforced simply by defining module dependencies (defining 3 multiple modules for each feature
+set of layers (`presentation`/`domain`/`data`). Downside of this approach is the fact that all layers (for a given feature) exists in a
+single module, so layer dependencies can't be enforced simply by defining module dependencies (defining 3 multiple modules for each feature
 would be an overkill). Fortunately we can preserve proper layer dependencies by using custom lints checks to keep dependency rule in place -
 create lint check that verifies if no dependencies from `data`/`presentation` layer are used in `domain` layer. Depending on the application
 scale we can `data` layer can be spited into `network` and `cache`.
 
 # Gradle
 ## Gradle Kotlin DLS
-[Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl) aims to provide Gradle users with a rich, flexible and statically-typed approach
-that allows to develop build logic in conjunction with the best IDE and tooling experience possible.
+[Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl) provides statically-typed approach that allows many real-time code checks and
+better IDE support.
 
-##  Dependencies
-For projects that include multiple modules, it is useful to define [properties](app/src/main/kotlin) at the project level and share them across all modules.
-Centralized dependency approach allows to easily add new dependencies and update existing ones eg. change library version.
+##  Centralized dependencies
+Gradle does pretty good job regarding to [dependency management](https://docs.gradle.org/current/userguide/introduction_dependency_management.html).
+For projects that include multiple modules, we also need to structure our project in proper way so simple tasks like upgrading library
+version in 20 modules are easy to accomplish (single place code change). To achieve this project utilizes [project-level properties](app/src/main/kotlin)
+that are shared across all modules.
+
+## Dependency code completion
+All dependencies in the project are defined in Gradle [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources)
+directory. Upon discovery of the directory, Gradle automatically compiles code in `buildSrc` and puts it in the classpath of our build
+script. We can easily access various kinds of dependencies in our build scripts, have a full code completion and do not worry about
+misspelled, hardcoded dependency strings:
+
+- [LibraryDependency](buildSrc\src\main\kotlin\LibraryDependency.kt) - class contains all dependencies of the libraries used in project
+- [ModuleDependency](buildSrc\src\main\kotlin\LibraryDependency.kt) - class contains all dependencies of project modules
+- [GradleDependency](buildSrc\src\main\kotlin\LibraryDependency.kt) - class contains all dependencies of Gradle plugins.
+
+Here is a code snippet from build script:
+
+```kotlin
+//Module depends on base feature module
+implementation(project(ModuleDependency.featureBase))
+
+//We want to use these libraries in this module
+implementation(LibraryDependency.supportAppCompact)
+implementation(LibraryDependency.timber)
+```
 
 [module level]
 This allows to unify libraries versions across project and easily share them across all the modules.

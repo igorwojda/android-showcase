@@ -4,9 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.igorwojda.lastfm.feature.album.R
+import com.igorwojda.lastfm.feature.album.R.id.albumIdTextView
+import com.igorwojda.lastfm.feature.album.R.id.albumTitleTextView
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
-import kotlinx.android.synthetic.main.activity_album_details.*
 
 class AlbumDetailsActivity : BaseActivity(), AlbumDetailsView {
     companion object {
