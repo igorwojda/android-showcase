@@ -1,9 +1,9 @@
 # Project description
-This project is simple Android application showcase.
+This project is simple Android application showcase for an app with long [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
 # Project characteristics
 * Heavy usage of Kotlin
-* Clean architecture + MVVM
+* Clean Architecture + Model-View-ViewModel
 * Feature modules
 * Unit Tests
 * Kotlin Coroutines (as alternative for RxJava)
@@ -27,10 +27,11 @@ CI configuration is stored in the repository. This approach allows to easily upd
 with each PR.
 
 # Architecture
-Some architectural decisions may look like overkill for such small project, however they will scale well for a project with long live
-cycle maintained by larger team.
+Some architectural decisions may look like overkill for such small project, however they will scale very well for a project with long live
+cycle that is maintained by larger team.
 
-Each feature is contained in separate module. This gives ability to easily maintain particular feature, move feature to different
+## Feature modules
+Each feature is contained in separate module. This allows to easily maintain particular feature, move feature to different
 project, or just delete it. Project utilizes domain centric
 [clean architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) at feature level. This means that each
 feature follows [dependency rule](https://proandroiddev.com/clean-architecture-data-flow-dependency-rule-615ffdd79e29) having its own
@@ -39,6 +40,12 @@ single module, so layer dependencies can't be enforced simply by defining module
 would be an overkill). Fortunately we can preserve proper layer dependencies by using custom lints checks to keep dependency rule in place -
 create lint check that verifies if no dependencies from `data`/`presentation` layer are used in `domain` layer. Depending on the application
 scale we can `data` layer can be spited into `network` and `cache`.
+
+## MVVM
+MVVM (presentation layer) utilises Android Architecture components (`ViewModel` + `LiveData`). ViewModel uses Kotlin coroutines to retrieve data
+using background thread, while `LiveData` is responsible for delivering data to a View (`Fragment`) in Lifecycle aware manner.
+
+
 
 # Gradle
 ## Gradle Kotlin DLS
