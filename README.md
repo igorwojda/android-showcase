@@ -45,8 +45,6 @@ scale we can `data` layer can be spited into `network` and `cache`.
 MVVM (presentation layer) utilises Android Architecture components (`ViewModel` + `LiveData`). ViewModel uses Kotlin coroutines to retrieve data
 using background thread, while `LiveData` is responsible for delivering data to a View (`Fragment`) in Lifecycle aware manner.
 
-
-
 # Gradle
 ## Gradle Kotlin DLS
 [Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl) provides statically-typed approach that allows many real-time code checks and
@@ -81,6 +79,17 @@ implementation(LibraryDependency.timber)
 
 [module level]
 This allows to unify libraries versions across project and easily share them across all the modules.
+
+# Color management
+When the project gets bigger and requires more colors, it is getting really confusing and less traceable how to use the same colors in
+different contexts for different views. Solution for this problem is spiting collars into application color and color palette:
+* palette colors are named by color name (using [name the color tool](http://chir.ag/projects/name-that-color/#BF473B)) eg. `blue`,
+`magenta`. They can only be used to define application colors.
+* application colors are named by their function, from general function to more specific e.g. `buttonPrimaryEnabled`, `buttonPrimaryText`.
+They must always use color from the palette instead of defining new color and they can be widely used across all application.
+
+More info about
+https://blog.novatec-gmbh.de/name-android-colors-palettes/
 
 # Static analysis
 Project includes all modern [static code analisys](https://en.wikipedia.org/wiki/Static_program_analysis) tools for Kotlin
