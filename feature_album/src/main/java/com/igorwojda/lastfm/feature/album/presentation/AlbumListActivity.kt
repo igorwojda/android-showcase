@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_album_list.*
 
 class AlbumListActivity : BaseActivity(), AlbumListView {
     companion object {
-        fun getStartIntent(context: Context) = Intent(context, AlbumListActivity::class.java)
+        fun newIntent(context: Context) = Intent(context, AlbumListActivity::class.java)
     }
 
     override val layoutResourceId = R.layout.activity_album_list
