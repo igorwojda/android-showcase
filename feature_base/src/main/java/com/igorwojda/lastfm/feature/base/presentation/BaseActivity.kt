@@ -9,8 +9,7 @@ abstract class BaseActivity : AppCompatActivity() {
     @get:LayoutRes
     protected abstract val layoutResourceId: Int
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState).also {
         setContentView(layoutResourceId)
         Timber.v("onCreate ${javaClass.simpleName}")
     }
