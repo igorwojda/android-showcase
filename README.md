@@ -1,6 +1,13 @@
 # Project description
 This project is simple Android application showcase for an app with long [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
+# About the demo design
+Demo design has few things that are contradicting with current android UI standards/guidelines. First of all usage of application icon in Toolbar
+is not recommended since Android Lolipop. Also top-tabbed navigation (Men/All/Woman) was recently replaced with BottomBar navigation as
+preferred way of top level navigation in the app. Most of the apps would have some kind of spacing from the screen edge to floating
+buttons (sell), because may lead to usability issues (phones like Samsung galaxy S8 Edge have bended screens so app may look wired and
+many phones have software navigation bar that may be accidentally clicked)
+
 # Project characteristics
 * Heavy usage of Kotlin
 * Clean Architecture + Model-View-ViewModel
@@ -36,14 +43,28 @@ project, or just delete it. Project utilizes domain centric
 [clean architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) at feature level. This means that each
 feature follows [dependency rule](https://proandroiddev.com/clean-architecture-data-flow-dependency-rule-615ffdd79e29) having its own
 set of layers (`presentation`/`domain`/`data`). Downside of this approach is the fact that all layers (for a given feature) exists in a
-single module, so layer dependencies can't be enforced simply by defining module dependencies (defining 3 multiple modules for each feature
-would be an overkill). Fortunately we can preserve proper layer dependencies by using custom lints checks to keep dependency rule in place -
-create lint check that verifies if no dependencies from `data`/`presentation` layer are used in `domain` layer. Depending on the application
-scale we can `data` layer can be spited into `network` and `cache`.
+single module.
 
 ## MVVM
 MVVM (presentation layer) utilises Android Architecture components (`ViewModel` + `LiveData`). ViewModel uses Kotlin coroutines to retrieve data
 using background thread, while `LiveData` is responsible for delivering data to a View (`Fragment`) in Lifecycle aware manner.
+
+## Architecture extension
+Architecture of this project can be scalded further up depending on he project needs. If we want to delay UseCase execution we could
+introduce additional `Request` and `Response` objects for each `UseCase`. To deal with data caching we could introduce more layers eg.
+split `data` layer into `network`, `memory` and `disk` layers containing own data models (`ProductNetworkModel` / `ProductMemoryModel` /
+`ProductDiskModel`). To introduce multiple types of items in RecyclerViews and easily share them across app we could take advantage of
+[AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates) library etc.
+
+As a result of using CA we gain clean layer separation for feature contains multiple files, however this lead to large amount of files.
+To safe precious developer time we can create a feature template using AS or some template language (after entering feature name all files
+and packages will be quickly generated for new feature)
+
+Also since all layers of CA are inside single module layer dependencies can't be enforced simply by defining module dependencies. We
+need to define additional lint check to make sure that dependency rule is protected.
+
+Finally due to proper layer separation we can easily swap libraries by modifying only small part fo the application eg. Retrofit can
+be used instead of Fuel - only data layer will be affected, no additional code change is required in other layers (presentation/domain)
 
 # Gradle
 ## Gradle Kotlin DLS
@@ -131,3 +152,8 @@ of these tasks that will update code formatting settings:
 
 ## detekt
 `./gradlew detekt` - run detekt check
+
+# Missing puzzles
+Fuel networking library turned out to be quite tricky to test as opposed to Retrofit, so tests for `data` layer are missing
+Also DI is missing to Dagger+Jetifier bug in combination with AndroidX dependencies (
+[Dagger-An exception occurred: java.util.NoSuchElementException](https://github.com/google/dagger/issues/1245))
