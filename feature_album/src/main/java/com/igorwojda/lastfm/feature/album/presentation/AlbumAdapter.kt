@@ -10,7 +10,7 @@ import com.igorwojda.lastfm.feature.album.presentation.AlbumAdapter.MyViewHolder
 import kotlinx.android.synthetic.main.item_album.view.*
 
 class AlbumAdapter : RecyclerView.Adapter<MyViewHolder>() {
-    var albums = listOf<AlbumDomainModel>()
+    private var albums = listOf<AlbumDomainModel>()
     private var onClickListener: ((album: AlbumDomainModel) -> Unit)? = null
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
