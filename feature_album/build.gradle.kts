@@ -74,7 +74,7 @@ dependencies {
     testImplementation(LibraryDependency.junit)
     androidTestImplementation(LibraryDependency.testRunner)
     androidTestImplementation(LibraryDependency.espressoCore)
-    androidTestImplementation(LibraryDependency.kluent)
+    testImplementation(LibraryDependency.kluent)
     androidTestImplementation(LibraryDependency.kluentAndroid)
     testImplementation(LibraryDependency.mockitoInline)
     androidTestImplementation(LibraryDependency.mockitoAndroid)
