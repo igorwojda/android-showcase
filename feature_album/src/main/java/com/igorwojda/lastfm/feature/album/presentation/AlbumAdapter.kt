@@ -8,9 +8,13 @@ import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.AlbumAdapter.MyViewHolder
 import kotlinx.android.synthetic.main.item_album.view.*
+import kotlin.properties.Delegates
 
 class AlbumAdapter : RecyclerView.Adapter<MyViewHolder>() {
-    private var albums = listOf<AlbumDomainModel>()
+    var albums by Delegates.observable(listOf<AlbumDomainModel>()) { _, _, _ ->
+        notifyDataSetChanged()
+    }
+
     private var onClickListener: ((album: AlbumDomainModel) -> Unit)? = null
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {

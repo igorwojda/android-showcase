@@ -17,7 +17,7 @@ class AlbumListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (savedInstanceState != null) {
+        if (savedInstanceState == null) {
             supportFragmentManager.transaction {
                 replace(R.id.container, AlbumListFragment.newInstance())
             }
