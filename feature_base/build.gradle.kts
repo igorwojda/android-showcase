@@ -47,23 +47,25 @@ dependencies {
     implementation(LibraryDependency.fuelAndroid)
     implementation(LibraryDependency.fuelCoroutines)
     implementation(LibraryDependency.fuelGson)
-
-    //jvm
     implementation(LibraryDependency.timber)
-
-    //android
     implementation(LibraryDependency.supportAppCompact)
     implementation(LibraryDependency.supportConstraintLayout)
     implementation(LibraryDependency.supportRecyclerView)
-    implementation(LibraryDependency.supportDesign)
+    implementation(LibraryDependency.supportMaterial)
     implementation(LibraryDependency.coroutinesAndroid)
+    implementation(LibraryDependency.lifecycleExtensions)
+    kapt(LibraryDependency.lifecycleCompiler)
+    implementation(LibraryDependency.coreKtx)
+    implementation(LibraryDependency.fragmentKtx)
+    implementation(LibraryDependency.lifecycleViewModelKtx)
 
-    //jvm test
+    //test
     testImplementation(LibraryDependency.junit)
-
-    //android test
     androidTestImplementation(LibraryDependency.testRunner)
     androidTestImplementation(LibraryDependency.espressoCore)
     androidTestImplementation(LibraryDependency.kluent)
     androidTestImplementation(LibraryDependency.kluentAndroid)
+    testImplementation(LibraryDependency.mockitoInline)
+    androidTestImplementation(LibraryDependency.mockitoAndroid)
+    testImplementation(LibraryDependency.mockitoKotlin)
 }

@@ -38,34 +38,39 @@ android {
         getByName("debug") {
             isMinifyEnabled = false
         }
+
+        testOptions {
+            unitTests.isReturnDefaultValues = true
+        }
     }
-}
 
-dependencies {
-    //module
-    implementation(project(ModuleDependency.featureBase))
-    implementation(project(ModuleDependency.featureAlbum))
-    implementation(project(ModuleDependency.featureArtist))
+    dependencies {
+        //module
+        implementation(project(ModuleDependency.featureBase))
+        implementation(project(ModuleDependency.featureAlbum))
 
-    //core
-    implementation(LibraryDependency.kotlin)
-    implementation(LibraryDependency.timber)
-    implementation(LibraryDependency.fuelAndroid)
-    implementation(LibraryDependency.fuelCoroutines)
-    implementation(LibraryDependency.fuelGson)
+        //core
+        implementation(LibraryDependency.kotlin)
+        implementation(LibraryDependency.timber)
+        implementation(LibraryDependency.fuelAndroid)
+        implementation(LibraryDependency.fuelCoroutines)
+        implementation(LibraryDependency.fuelGson)
+        implementation(LibraryDependency.supportAppCompact)
+        implementation(LibraryDependency.supportConstraintLayout)
+        implementation(LibraryDependency.supportRecyclerView)
+        implementation(LibraryDependency.supportMaterial)
+        implementation(LibraryDependency.coreKtx)
+        implementation(LibraryDependency.fragmentKtx)
+        implementation(LibraryDependency.lifecycleViewModelKtx)
 
-    //android
-    implementation(LibraryDependency.supportAppCompact)
-    implementation(LibraryDependency.supportConstraintLayout)
-    implementation(LibraryDependency.supportRecyclerView)
-    implementation(LibraryDependency.supportDesign)
-
-    //jvm test
-    testImplementation(LibraryDependency.junit)
-
-    //android test
-    androidTestImplementation(LibraryDependency.testRunner)
-    androidTestImplementation(LibraryDependency.espressoCore)
-    androidTestImplementation(LibraryDependency.kluent)
-    androidTestImplementation(LibraryDependency.kluentAndroid)
+        //test
+        testImplementation(LibraryDependency.junit)
+        androidTestImplementation(LibraryDependency.testRunner)
+        androidTestImplementation(LibraryDependency.espressoCore)
+        androidTestImplementation(LibraryDependency.kluent)
+        androidTestImplementation(LibraryDependency.kluentAndroid)
+        testImplementation(LibraryDependency.mockitoInline)
+        androidTestImplementation(LibraryDependency.mockitoAndroid)
+        testImplementation(LibraryDependency.mockitoKotlin)
+    }
 }
