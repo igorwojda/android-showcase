@@ -6,6 +6,7 @@ import GradlePluginId.kotlinAndroid
 import GradlePluginId.kotlinAndroidExtensions
 import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
 import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.include
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 plugins {
@@ -16,12 +17,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
+    compileSdkVersion(ApplicationConfig.compileSdkVersion)
 
     defaultConfig {
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
-        buildToolsVersion(ApplicationConfig.buildTools)
+        minSdkVersion(ApplicationConfig.minSdkVersion)
+        targetSdkVersion(ApplicationConfig.targetSdkVersion)
+        buildToolsVersion(ApplicationConfig.buildToolsVersion)
 
         versionCode = ApplicationConfig.versionCode
         versionName = ApplicationConfig.versionName
@@ -30,18 +31,18 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             proguardFiles("proguard-android.txt", "proguard-rules.pro")
 
         }
 
         getByName("debug") {
-            isMinifyEnabled = false
+            isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
         }
     }
 
     testOptions {
-        unitTests.isReturnDefaultValues = true
+        unitTests.isReturnDefaultValues = TestOptions.isReturnDefaultValues
     }
 }
 

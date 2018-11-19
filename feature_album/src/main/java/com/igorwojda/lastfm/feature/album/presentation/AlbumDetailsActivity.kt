@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.igorwojda.lastfm.feature.album.R
-import com.igorwojda.lastfm.feature.album.R.id.albumIdTextView
-import com.igorwojda.lastfm.feature.album.R.id.albumTitleTextView
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
 
@@ -47,7 +45,7 @@ class AlbumDetailsActivity : BaseActivity(), AlbumDetailsView {
     }
 
     override fun setAlbum(album: AlbumDomainModel) {
-        albumIdTextView.text = album.id.toString()
-        albumTitleTextView.text = album.title
+//        albumIdTextView.text = album.id.toString()
+//        albumTitleTextView.text = album.title
     }
 }

@@ -15,13 +15,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
+    compileSdkVersion(ApplicationConfig.compileSdkVersion)
 
     defaultConfig {
         applicationId = ApplicationConfig.id
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
-        buildToolsVersion(ApplicationConfig.buildTools)
+        minSdkVersion(ApplicationConfig.minSdkVersion)
+        targetSdkVersion(ApplicationConfig.targetSdkVersion)
+        buildToolsVersion(ApplicationConfig.buildToolsVersion)
 
         versionCode = ApplicationConfig.versionCode
         versionName = ApplicationConfig.versionName
@@ -30,17 +30,21 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             proguardFiles("proguard-android.txt", "proguard-rules.pro")
 
         }
 
         getByName("debug") {
-            isMinifyEnabled = false
+            isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
         }
 
         testOptions {
             unitTests.isReturnDefaultValues = true
+        }
+
+        testOptions {
+            unitTests.isReturnDefaultValues = TestOptions.isReturnDefaultValues
         }
     }
 

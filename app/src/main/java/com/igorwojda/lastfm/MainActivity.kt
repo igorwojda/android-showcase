@@ -2,7 +2,6 @@ package com.igorwojda.lastfm
 
 import android.os.Bundle
 import com.igorwojda.lastfm.feature.album.presentation.AlbumListActivity
-import com.igorwojda.lastfm.feature.artist.presentation.ArtistListActivity
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,9 +14,6 @@ class MainActivity : BaseActivity() {
 
         launchFeatureAlbumButton.setOnClickListener {
             startActivity(AlbumListActivity.getStartIntent(this))
-        }
-        launchFeatureArtistButton.setOnClickListener {
-            startActivity(ArtistListActivity.getStartIntent(this))
         }
     }
 }
