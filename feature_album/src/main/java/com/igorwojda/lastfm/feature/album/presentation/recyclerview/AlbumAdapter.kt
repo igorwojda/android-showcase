@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation
+package com.igorwojda.lastfm.feature.album.presentation.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
-import com.igorwojda.lastfm.feature.album.presentation.AlbumAdapter.MyViewHolder
+import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter.MyViewHolder
 import kotlinx.android.synthetic.main.item_album.view.*
 import kotlin.properties.Delegates
 

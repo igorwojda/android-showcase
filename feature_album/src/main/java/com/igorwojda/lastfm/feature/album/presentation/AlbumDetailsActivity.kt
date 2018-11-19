@@ -23,8 +23,9 @@ class AlbumDetailsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         title = resources.getString(R.string.feature_album)
 
-        if (savedInstanceState != null) {
-            val albumId = intent.getIntExtra(EXTRA_ALBUM_ID, 0)
+        if (savedInstanceState == null) {
+            val albumId = intent?.extras?.getInt(EXTRA_ALBUM_ID)
+            requireNotNull(albumId) { "albumId is null" }
             supportFragmentManager.transaction {
                 replace(R.id.container, AlbumDetailFragment.newInstance(albumId))
             }

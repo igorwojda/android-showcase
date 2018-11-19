@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -13,12 +13,12 @@
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:id="@+id/albumIdTextView"
-                  android:textSize="28dp"/>
+                  android:textSize="28sp"/>
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:id="@+id/albumTitleTextView"
-                  android:textSize="28dp"/>
+                  android:textSize="28sp"/>
     </LinearLayout>
 
-</androidx.constraintlayout.ConstraintLayout>
+</RelativeLayout>

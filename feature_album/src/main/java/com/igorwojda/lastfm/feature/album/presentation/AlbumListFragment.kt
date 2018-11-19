@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
 import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
 import com.igorwojda.minimercari.feature.base.presentation.BaseFragment
@@ -35,12 +36,10 @@ class AlbumListFragment : BaseFragment() {
             adapter = albumAdapter
         }
 
-        val v = ViewModelProviders.of(this).get(AlbumListViewModel::class.java).also {
+        ViewModelProviders.of(this).get(AlbumListViewModel::class.java).also {
             it.albumListViewModel.observeNotNull(this, ::onAlbumListLiveData)
-
+            it.init()
         }
-
-        v.init()
     }
 
     private fun onAlbumListLiveData(list: List<AlbumDomainModel>) {
