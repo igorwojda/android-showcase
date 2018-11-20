@@ -1,5 +1,5 @@
 # Project description
-This project is simple Android application showcase for an app with long [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
+This is a showcase for Kotlin Android application. Application architecture is suitable for projects with long [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
 # Project characteristics
 * Heavy usage of Kotlin
