@@ -1,13 +1,6 @@
 # Project description
 This project is simple Android application showcase for an app with long [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
-# About the demo design
-Demo design has few things that are contradicting with current android UI standards/guidelines. First of all usage of application icon in Toolbar
-is not recommended since Android Lolipop. Also top-tabbed navigation (Men/All/Woman) was recently replaced with BottomBar navigation as
-preferred way of top level navigation in the app. Most of the apps would have some kind of spacing from the screen edge to floating
-buttons (sell), because may lead to usability issues (phones like Samsung galaxy S8 Edge have bended screens so app may look wired and
-many phones have software navigation bar that may be accidentally clicked)
-
 # Project characteristics
 * Heavy usage of Kotlin
 * Clean Architecture + Model-View-ViewModel
