@@ -136,7 +136,7 @@ ktlint is integrated via [Ktlint Gradle](https://github.com/jlleitschuh/ktlint-g
 `./gradlew ktlintFormat` - runs the ktlint formatter on all kotlin sources in this project.
 
 Ktlint follows `Android Kotlin Style Guide`. For `Android Studio` to be compliant with `Android Kotlin Style Guide` we need to run one
-of these tasks that will update code formatting settings:
+of below gradle tasks that will update code formatting settings in Android Studio:
 
 `./gradlew ktlintApplyToIdea` - The task generates IntelliJ IDEA (or Android Studio) Kotlin style files in the project .idea/ folder.
 
