@@ -13,19 +13,20 @@ class AlbumDetailsViewModel(
     private val albumId: Int,
     private val getAlbumUseCase: GetAlbumUseCase = GetAlbumUseCase()
 ) : ViewModel() {
-    private val _albumDetailLiveData = MutableLiveData<AlbumDomainModel>()
-    val albumDetailLiveData = _albumDetailLiveData.toLiveData()
+    private val albumDetailMutableLiveData = MutableLiveData<AlbumDomainModel>()
+    val albumDetailLiveData = albumDetailMutableLiveData.toLiveData()
 
     fun init() {
         runBlocking {
             launch {
-                getAlbumUseCase.execute(albumId).also { _albumDetailLiveData.postValue(it) }
+                getAlbumUseCase.execute(albumId).also { albumDetailMutableLiveData.postValue(it) }
             }
         }
     }
 }
 
 class AlbumDetailsViewModelFactory(private val albumId: Int) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>) = AlbumDetailsViewModel(
         albumId
     ) as T

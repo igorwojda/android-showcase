@@ -2,13 +2,13 @@ package com.igorwojda.lastfm.feature.album.presentation
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
 import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
+import com.igorwojda.lastfm.feature.base.presentation.extension.withViewModel
 import com.igorwojda.minimercari.feature.base.presentation.BaseFragment
 import kotlinx.android.synthetic.main.fragment_album_list.*
 
@@ -36,9 +36,9 @@ class AlbumListFragment : BaseFragment() {
             adapter = albumAdapter
         }
 
-        ViewModelProviders.of(this).get(AlbumListViewModel::class.java).also {
-            it.albumListViewModel.observeNotNull(this, ::onAlbumListLiveData)
-            it.init()
+        withViewModel<AlbumListViewModel> {
+            observeNotNull(albumListLiveData, ::onAlbumListLiveData)
+            init()
         }
     }
 

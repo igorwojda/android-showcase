@@ -4,10 +4,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 
-fun <T> LiveData<T>.observeNullable(owner: LifecycleOwner, f: (T?) -> Unit) {
-    this.observe(owner, Observer<T> { t -> f(t) })
+fun <T : Any?, L : LiveData<T>> LifecycleOwner.observeNullable(liveData: L, body: (T?) -> Unit) {
+    liveData.observe(this, Observer<T> { t -> t?.let(body) })
 }
 
-fun <T> LiveData<T>.observeNotNull(owner: LifecycleOwner, f: (T) -> Unit) {
-    this.observe(owner, Observer<T> { t -> t?.let(f) })
+fun <T : Any, L : LiveData<T>> LifecycleOwner.observeNotNull(liveData: L, body: (T) -> Unit) {
+    liveData.observe(this, Observer<T> { t -> t?.let(body) })
 }

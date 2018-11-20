@@ -11,13 +11,13 @@ import kotlinx.coroutines.runBlocking
 class AlbumListViewModel(
     private val getAlbumListUseCase: GetAlbumListUseCase = GetAlbumListUseCase()
 ) : ViewModel() {
-    private val _albumListViewModel = MutableLiveData<List<AlbumDomainModel>>()
-    val albumListViewModel = _albumListViewModel.toLiveData()
+    private val albumListMutableLiveData = MutableLiveData<List<AlbumDomainModel>>()
+    val albumListLiveData = albumListMutableLiveData.toLiveData()
 
     fun init() {
         runBlocking {
             launch {
-                getAlbumListUseCase.execute().also { _albumListViewModel.postValue(it) }
+                getAlbumListUseCase.execute().also { albumListMutableLiveData.postValue(it) }
             }
         }
     }
