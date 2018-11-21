@@ -2,41 +2,41 @@
 This is a showcase for Kotlin Android application. Application architecture is suitable for projects with long [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
 # Project characteristics
-* Heavy usage of Kotlin
-* Clean Architecture + Model-View-ViewModel
+* 100% Kotlin
+* CA + MVVM (Clean Architecture + Model-View-ViewModel)
 * Feature modules
 * Unit Tests
-* Kotlin Coroutines (as alternative for RxJava)
+* Kotlin Coroutines
 * Utilise many popular libraries from Android ecosystem
-* Takes advantage of most popular analysis tools
+* Takes advantage of most popular static analysis tools
 * Gradle Script Kotlin
 * Gradle dependency autocompletion
 * AndroidX support libraries
 
 # Kotlin
 Project takes full advantage of Kotlin language by maximizing it's usage across project:
-* Android code application is written in Kotlin (100%  code is Kotlin)
+* Application code is written in Kotlin
 * Gradle build scripts (eg. [top level](build.gradle.kts), [module level](app/build.gradle.kts) etc.) are written in Kotlin utilising [Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl)
-* CI server ([Teamcity](https://www.jetbrains.com/teamcity/)) [configuration script](.teamcity\settings.kts) is
- written in [Kotlin DSL](https://confluence.jetbrains.com/display/TCD18/Kotlin+DSL)
+* [Teamcity](https://www.jetbrains.com/teamcity/) [configuration scripts](.teamcity\settings.kts) are written in
+[Kotlin DSL](https://confluence.jetbrains.com/display/TCD18/Kotlin+DSL)
 
 Heavy usage of Kotlin allows to o speed up development process, decrease learning curve and improves project maintainability.
 
 # CI configuration
-CI configuration is stored in the repository. This approach allows to easily update CI build configuration and validate it's correctness together
-with each PR.
+CI configuration is stored in the repository. This approach allows to easily update CI build configuration and validate it's correctness
+together with each PR before merging the code.
 
 # Architecture
 Some architectural decisions may look like overkill for such small project, however they will scale very well for a project with long live
-cycle that is maintained by larger team.
+cycle, maintained by larger team.
 
 ## Feature modules
 Each feature is contained in separate module. This allows to easily maintain particular feature, move feature to different
 project, or just delete it. Project utilizes domain centric
 [clean architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) at feature level. This means that each
 feature follows [dependency rule](https://proandroiddev.com/clean-architecture-data-flow-dependency-rule-615ffdd79e29) having its own
-set of layers (`presentation`/`domain`/`data`). Downside of this approach is the fact that all layers (for a given feature) exists in a
-single module.
+set of layers (`presentation`/`domain`/`data`). All layers (for a given feature) exists in a single module, so dependency rule have to be
+manually enforced by custom lint check (instead of module dependency).
 
 ## MVVM
 MVVM (presentation layer) utilises Android Architecture components (`ViewModel` + `LiveData`). ViewModel uses Kotlin coroutines to retrieve data
@@ -45,8 +45,8 @@ using background thread, while `LiveData` is responsible for delivering data to 
 ## Architecture extension
 Architecture of this project can be scalded further up depending on he project needs. If we want to delay UseCase execution we could
 introduce additional `Request` and `Response` objects for each `UseCase`. To deal with data caching we could introduce more layers eg.
-split `data` layer into `network`, `memory` and `disk` layers containing own data models (`ProductNetworkModel` / `ProductMemoryModel` /
-`ProductDiskModel`). To introduce multiple types of items in RecyclerViews and easily share them across app we could take advantage of
+split `data` layer into `network`, `memory` and `disk` layers containing own data models (`AlbumNetworkModel` / `AlbumMemoryModel` /
+`AlbumDiskModel`). To introduce multiple types of items in RecyclerViews and easily share them across app we could take advantage of
 [AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates) library etc.
 
 As a result of using CA we gain clean layer separation for feature contains multiple files, however this lead to large amount of files.
