@@ -22,7 +22,7 @@ class AlbumListViewModelTest {
     }
 
     @Test
-    fun `when execute then getProducts`() {
+    fun `when init then getAlbumListUseCase execute`() {
         runBlocking {
             // when
             cut.init()
