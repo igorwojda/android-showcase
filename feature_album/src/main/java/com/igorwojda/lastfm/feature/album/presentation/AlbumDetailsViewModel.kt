@@ -12,13 +12,13 @@ class AlbumDetailsViewModel(
     private val albumId: Int,
     private val getAlbumUseCase: GetAlbumUseCase = GetAlbumUseCase()
 ) : ViewModel() {
-    private val albumDetailMutableLiveData = MutableLiveData<AlbumDomainModel>()
-    val albumDetailLiveData = albumDetailMutableLiveData.toLiveData()
+    private val albumMutableLiveData = MutableLiveData<AlbumDomainModel>()
+    val albumLiveData = albumMutableLiveData.toLiveData()
 
     fun init() {
         runBlocking {
             launch {
-                getAlbumUseCase.execute(albumId).also { albumDetailMutableLiveData.postValue(it) }
+                getAlbumUseCase.execute(albumId).also { albumMutableLiveData.postValue(it) }
             }
         }
     }

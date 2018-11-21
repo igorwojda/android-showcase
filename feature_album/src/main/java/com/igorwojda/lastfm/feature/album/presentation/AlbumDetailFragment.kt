@@ -28,7 +28,7 @@ class AlbumDetailFragment : BaseFragment() {
         requireNotNull(albumId) { "albumId is null" }
 
         withViewModel({ AlbumDetailsViewModel(albumId) }) {
-            observeNotNull(albumDetailLiveData, ::onAlbumDetailsLiveData)
+            observeNotNull(albumLiveData, ::onAlbumDetailsLiveData)
             init()
         }
     }
