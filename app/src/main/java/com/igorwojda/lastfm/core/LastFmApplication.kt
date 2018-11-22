@@ -6,6 +6,10 @@ import com.igorwojda.lastfm.BuildConfig
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
+/*
+False positive "Unused symbol" for a custom Android application class used in AndroidManifest.xml file:
+https://youtrack.jetbrains.net/issue/KT-27971
+*/
 class LastFmApplication : Application() {
     override fun onCreate() {
         super.onCreate()
