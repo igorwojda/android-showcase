@@ -1,6 +1,6 @@
 private object LibraryVersion {
     //core
-    const val kodein = "5.2.0"
+    const val kodein = "6.0.0"
     const val fuel = "1.16.0"
     const val gson = "2.8.3"
     const val timber = "4.7.1"
@@ -27,7 +27,7 @@ object LibraryDependency {
     //core
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${CoreVersion.kotlin}"
     const val kodein = "org.kodein.di:kodein-di-generic-jvm:${LibraryVersion.kodein}"
-    const val kodeinAndroid = "org.kodein.di:kodein-di-framework-android-support:${LibraryVersion.kodein}"
+    const val kodeinAndroidX = "org.kodein.di:kodein-di-framework-android-x:${LibraryVersion.kodein}"
     const val fuelAndroid = "com.github.kittinunf.fuel:fuel-android:${LibraryVersion.fuel}"
     const val fuelGson = "com.github.kittinunf.fuel:fuel-gson:${LibraryVersion.fuel}"
     const val fuelCoroutines = "com.github.kittinunf.fuel:fuel-coroutines:${LibraryVersion.fuel}"

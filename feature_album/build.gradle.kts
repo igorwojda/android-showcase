@@ -52,6 +52,8 @@ dependencies {
 
     //core
     implementation(LibraryDependency.kotlin)
+    implementation(LibraryDependency.kodein)
+    implementation(LibraryDependency.kodeinAndroidX)
     implementation(LibraryDependency.fuelAndroid)
     implementation(LibraryDependency.fuelCoroutines)
     implementation(LibraryDependency.fuelGson)
