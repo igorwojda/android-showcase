@@ -56,6 +56,7 @@ android {
         //core
         implementation(LibraryDependency.kotlin)
         implementation(LibraryDependency.kodein)
+        implementation(LibraryDependency.kodeinCore)
         implementation(LibraryDependency.kodeinAndroidX)
         implementation(LibraryDependency.timber)
         implementation(LibraryDependency.fuelAndroid)
