@@ -6,9 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
 import timber.log.Timber
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment(), KodeinAware {
+    override val kodein by closestKodein()
+
     @get:LayoutRes
     protected abstract val layoutResourceId: Int
 

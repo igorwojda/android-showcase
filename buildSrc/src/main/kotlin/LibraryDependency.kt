@@ -53,9 +53,6 @@ object LibraryDependency {
     const val picasso = "com.squareup.picasso:picasso:${LibraryVersion.picasso}"
     const val customFloatingActionButton =
         "com.robertlevonyan.view:CustomFloatingActionButton:${LibraryVersion.customFloatingActionButton}"
-    const val mockitoInline = "org.mockito:mockito-inline:${LibraryVersion.mockito}"
-    const val mockitoAndroid = "org.mockito:mockito-android:${LibraryVersion.mockito}"
-    const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${LibraryVersion.mockitoKotlin}"
 
     //test
     const val junit = "junit:junit:${LibraryVersion.junit}"
@@ -63,4 +60,7 @@ object LibraryDependency {
     const val testRunner = "com.android.support.test:runner:${LibraryVersion.testRunner}"
     const val espressoCore = "com.android.support.test.espresso:espresso-core:${LibraryVersion.espressoCore}"
     const val kluentAndroid = "org.amshove.kluent:kluent-android:${LibraryVersion.kluent}"
+    const val mockitoInline = "org.mockito:mockito-inline:${LibraryVersion.mockito}"
+    const val mockitoAndroid = "org.mockito:mockito-android:${LibraryVersion.mockito}"
+    const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${LibraryVersion.mockitoKotlin}"
 }
