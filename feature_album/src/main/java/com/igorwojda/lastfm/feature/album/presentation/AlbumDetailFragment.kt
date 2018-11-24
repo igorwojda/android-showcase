@@ -5,8 +5,6 @@ import android.view.View
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
-import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
-import com.igorwojda.lastfm.feature.base.presentation.extension.withViewModel
 import com.igorwojda.minimercari.feature.base.presentation.BaseFragment
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 
@@ -27,10 +25,10 @@ class AlbumDetailFragment : BaseFragment() {
         val albumId = arguments?.getInt(EXTRA_ALBUM_ID)
         requireNotNull(albumId) { "albumId is null" }
 
-        withViewModel({ AlbumDetailsViewModel(albumId) }) {
-            observeNotNull(albumLiveData, ::onAlbumDetailsLiveData)
-            init()
-        }
+//        withViewModel({ AlbumDetailsViewModel(albumId) }) {
+//        withViewModel({ AlbumDetailsViewModel() }) {
+//            observeNotNull(albumLiveData, ::onAlbumDetailsLiveData)
+//        }
     }
 
     private fun onAlbumDetailsLiveData(albumDomainModel: AlbumDomainModel) {

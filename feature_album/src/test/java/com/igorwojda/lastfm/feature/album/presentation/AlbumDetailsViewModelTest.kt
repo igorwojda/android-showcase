@@ -1,6 +1,6 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
-import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
+import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCaseImpl
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -16,7 +16,7 @@ class AlbumDetailsViewModelTest {
     }
 
     @Mock
-    lateinit var mockGetAlbumUseCase: GetAlbumUseCase
+    lateinit var mockGetAlbumUseCase: GetAlbumUseCaseImpl
 
     private lateinit var cut: AlbumDetailsViewModel
 

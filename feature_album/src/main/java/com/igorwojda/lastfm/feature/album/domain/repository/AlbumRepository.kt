@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.data.repository
+package com.igorwojda.lastfm.feature.album.domain.repository
 
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 

@@ -2,15 +2,16 @@ package com.igorwojda.lastfm.feature.album.presentation
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
 import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
-import com.igorwojda.lastfm.feature.base.presentation.extension.withViewModel
 import com.igorwojda.minimercari.feature.base.presentation.BaseFragment
 import kotlinx.android.synthetic.main.fragment_album_list.*
+import org.kodein.di.generic.instance
 
 class AlbumListFragment : BaseFragment() {
     companion object {
@@ -19,6 +20,7 @@ class AlbumListFragment : BaseFragment() {
 
     override val layoutResourceId = R.layout.fragment_album_list
 
+    private val viewModelFactory: AlbumListViewModelFactory by instance()
     private var albumAdapter = AlbumAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,14 +38,15 @@ class AlbumListFragment : BaseFragment() {
             adapter = albumAdapter
         }
 
-        withViewModel<AlbumListViewModel> {
-            observeNotNull(albumListLiveData, ::onAlbumListLiveData)
-            init()
-        }
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(AlbumListViewModel::class.java)
+        observeNotNull(viewModel.albumListLiveData, ::onAlbumListLiveData)
+//        withViewModel<AlbumListViewModel> {
+//            observeNotNull(albumListLiveData, ::onAlbumListLiveData)
+//            init()
+//        }
     }
 
     private fun onAlbumListLiveData(list: List<AlbumDomainModel>) {
         albumAdapter.albums = list
-        albumAdapter.notifyDataSetChanged()
     }
 }

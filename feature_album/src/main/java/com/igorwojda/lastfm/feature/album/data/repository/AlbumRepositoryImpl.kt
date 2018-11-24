@@ -7,8 +7,9 @@ import com.github.kittinunf.result.getOrElse
 import com.igorwojda.lastfm.feature.album.data.model.AlbumNetworkModel
 import com.igorwojda.lastfm.feature.album.data.model.toDomainModel
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.lastfm.feature.album.domain.repository.AlbumRepository
 
-class AlbumNetworkRepository : AlbumRepository {
+class AlbumRepositoryImpl : AlbumRepository {
     override suspend fun getAlbumList(): List<AlbumDomainModel> {
         val (_, _, result) = Fuel.get("/albums").awaitObjectResponse<List<AlbumNetworkModel>>(gsonDeserializerOf())
 

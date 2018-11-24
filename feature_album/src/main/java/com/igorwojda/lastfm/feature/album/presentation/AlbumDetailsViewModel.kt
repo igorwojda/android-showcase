@@ -9,12 +9,17 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class AlbumDetailsViewModel(
-    private val albumId: Int,
-    private val getAlbumUseCase: GetAlbumUseCase = GetAlbumUseCase(),
-    private val albumMutableLiveData: MutableLiveData<AlbumDomainModel> = MutableLiveData()
+    private val getAlbumUseCase: GetAlbumUseCase
 ) : ViewModel() {
 
+    private val albumMutableLiveData: MutableLiveData<AlbumDomainModel> = MutableLiveData()
+    private val albumId: Int = 1
+
     val albumLiveData = albumMutableLiveData.toLiveData()
+
+    init {
+        init()
+    }
 
     fun init() {
         runBlocking {

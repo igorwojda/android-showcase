@@ -8,10 +8,8 @@ data class AlbumNetworkModel(
     val title: String?
 )
 
-fun AlbumNetworkModel.toDomainModel(): AlbumDomainModel {
-    return AlbumDomainModel(
-        id = this.id,
-        userId = this.userId,
-        title = this.title ?: ""
-    )
-}
+fun AlbumNetworkModel.toDomainModel() = AlbumDomainModel(
+    id = this.id,
+    userId = this.userId,
+    title = this.title ?: ""
+)

@@ -16,16 +16,12 @@ inline fun <reified T : ViewModel> Fragment.withViewModel(body: T.() -> Unit) = 
 inline fun <reified T : ViewModel> Fragment.withViewModel(
     crossinline factory: () -> T,
     body: T.() -> Unit
-): T {
-    val vm = getViewModel(factory)
-    vm.body()
-    return vm
-}
+): T = getViewModel(factory).also { it.body() }
 
 inline fun <reified T : ViewModel> Fragment.getViewModel(crossinline factory: () -> T): T {
 
-    @Suppress("UNCHECKED_CAST")
     val vmFactory = object : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
         override fun <U : ViewModel> create(modelClass: Class<U>): U = factory() as U
     }
 

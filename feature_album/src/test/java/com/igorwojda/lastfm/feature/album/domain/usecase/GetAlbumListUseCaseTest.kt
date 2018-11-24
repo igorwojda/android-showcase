@@ -1,6 +1,6 @@
 package com.igorwojda.lastfm.feature.album.domain.usecase
 
-import com.igorwojda.lastfm.feature.album.data.repository.AlbumNetworkRepository
+import com.igorwojda.lastfm.feature.album.data.repository.AlbumRepositoryImpl
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -12,13 +12,13 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class GetAlbumListUseCaseTest {
     @Mock
-    lateinit var mockAlbumNetworkRepository: AlbumNetworkRepository
+    lateinit var mockAlbumNetworkRepository: AlbumRepositoryImpl
 
-    private lateinit var cut: GetAlbumListUseCase
+    private lateinit var cut: GetAlbumListUseCaseImpl
 
     @Before
     fun setUp() {
-        cut = GetAlbumListUseCase(mockAlbumNetworkRepository)
+        cut = GetAlbumListUseCaseImpl(mockAlbumNetworkRepository)
     }
 
     @Test
