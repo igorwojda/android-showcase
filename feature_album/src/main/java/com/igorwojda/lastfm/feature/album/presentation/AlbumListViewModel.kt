@@ -30,7 +30,5 @@ class AlbumListViewModel(
 
 class AlbumListViewModelFactory(private val getAlbumListUseCase: GetAlbumListUseCase) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return AlbumListViewModel(getAlbumListUseCase) as T
-    }
+    override fun <T : ViewModel> create(modelClass: Class<T>) = AlbumListViewModel(getAlbumListUseCase) as T
 }

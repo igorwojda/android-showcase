@@ -2,6 +2,7 @@ package com.igorwojda.lastfm.feature.album.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
@@ -13,9 +14,9 @@ class AlbumDetailsViewModel(
 ) : ViewModel() {
 
     private val albumMutableLiveData: MutableLiveData<AlbumDomainModel> = MutableLiveData()
-    private val albumId: Int = 1
-
     val albumLiveData = albumMutableLiveData.toLiveData()
+
+    private val albumId: Int = 1
 
     init {
         init()
@@ -28,4 +29,9 @@ class AlbumDetailsViewModel(
             }
         }
     }
+}
+
+class AlbumDetailsViewModelFactory(private val albumListUseCase: GetAlbumUseCase) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>) = AlbumDetailsViewModel(albumListUseCase) as T
 }

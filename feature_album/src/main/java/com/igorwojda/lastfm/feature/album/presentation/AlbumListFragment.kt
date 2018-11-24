@@ -19,8 +19,8 @@ class AlbumListFragment : BaseFragment() {
     }
 
     override val layoutResourceId = R.layout.fragment_album_list
-
     private val viewModelFactory: AlbumListViewModelFactory by instance()
+
     private var albumAdapter = AlbumAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,12 +38,9 @@ class AlbumListFragment : BaseFragment() {
             adapter = albumAdapter
         }
 
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(AlbumListViewModel::class.java)
-        observeNotNull(viewModel.albumListLiveData, ::onAlbumListLiveData)
-//        withViewModel<AlbumListViewModel> {
-//            observeNotNull(albumListLiveData, ::onAlbumListLiveData)
-//            init()
-//        }
+        ViewModelProviders.of(this, viewModelFactory).get(AlbumListViewModel::class.java).apply {
+            observeNotNull(albumListLiveData, ::onAlbumListLiveData)
+        }
     }
 
     private fun onAlbumListLiveData(list: List<AlbumDomainModel>) {

@@ -10,6 +10,7 @@ import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumListUseCaseImpl
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCaseImpl
+import com.igorwojda.lastfm.feature.album.presentation.AlbumDetailsViewModelFactory
 import com.igorwojda.lastfm.feature.album.presentation.AlbumListViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.Kodein.Builder.TypeBinder
@@ -60,6 +61,7 @@ val albumModule = Kodein.Module("albumModule") {
 
 val albumPresentationModule = Kodein.Module("albumPresentationModule") {
     bind() from provider { AlbumListViewModelFactory(instance()) }
+    bind() from provider { AlbumDetailsViewModelFactory(instance()) }
 }
 
 val albumDomainModule = Kodein.Module("albumDomainModule") {
