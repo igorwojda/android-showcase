@@ -5,6 +5,7 @@ object GradlePluginVersion {
 
     const val ktlintGradle = "6.2.0"
     const val detekt = "1.0.0.RC9.2"
+    const val gradleVersionPlugin = "0.20.0"
 }
 
 object GradlePluginId {
@@ -15,6 +16,7 @@ object GradlePluginId {
     const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "org.jetbrains.kotlin.android"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
+    const val gradleVersionPlugin = "com.github.ben-manes.versions"
 }
 
 object GradleDependency {

@@ -27,6 +27,7 @@ allprojects {
 plugins {
     id(GradlePluginId.detekt) version GradlePluginVersion.detekt
     id(GradlePluginId.ktlintGradle) version GradlePluginVersion.ktlintGradle
+    id(GradlePluginId.gradleVersionPlugin) version GradlePluginVersion.gradleVersionPlugin
 }
 
 //All kotlin modules
