@@ -1,3 +1,4 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
@@ -39,5 +40,23 @@ task("staticCheck") {
     afterEvaluate {
         val lintDependencies = subprojects.mapNotNull { "${it.name}:lint" }
         dependsOn(lintDependencies + listOf("ktlintCheck", "detekt"))
+    }
+}
+
+/*Do not show pre-release version of library in generated dependency report*/
+tasks {
+    "dependencyUpdates"(DependencyUpdatesTask::class) {
+        resolutionStrategy {
+            componentSelection {
+                all {
+                    val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview")
+                        .map { qualifier -> Regex("(?i).*[.-]$qualifier[.\\d-]*") }
+                        .any { it.matches(candidate.version) }
+                    if (rejected) {
+                        reject("Release candidate")
+                    }
+                }
+            }
+        }
     }
 }
