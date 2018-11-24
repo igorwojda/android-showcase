@@ -17,7 +17,7 @@ class AlbumRepositoryImpl : AlbumRepository {
             .map { it.toDomainModel() }
     }
 
-    override suspend fun getAlbum(id: Int): AlbumDomainModel? {
+    override suspend fun getAlbum(id: String): AlbumDomainModel? {
         val (_, _, result) = Fuel.get("/albums/$id").awaitObjectResponse<AlbumNetworkModel>(gsonDeserializerOf())
 
         var album: AlbumNetworkModel? = null

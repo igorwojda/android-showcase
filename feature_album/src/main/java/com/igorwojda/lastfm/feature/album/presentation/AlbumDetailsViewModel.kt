@@ -10,13 +10,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class AlbumDetailsViewModel(
+    private val albumId: String,
     private val getAlbumUseCase: GetAlbumUseCase
 ) : ViewModel() {
 
     private val albumMutableLiveData: MutableLiveData<AlbumDomainModel> = MutableLiveData()
     val albumLiveData = albumMutableLiveData.toLiveData()
-
-    private val albumId: Int = 1
 
     init {
         init()
@@ -31,7 +30,13 @@ class AlbumDetailsViewModel(
     }
 }
 
-class AlbumDetailsViewModelFactory(private val albumListUseCase: GetAlbumUseCase) : ViewModelProvider.Factory {
+class AlbumDetailsViewModelFactory(
+    private val albumId: String,
+    private val albumListUseCase: GetAlbumUseCase
+) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>) = AlbumDetailsViewModel(albumListUseCase) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>) = AlbumDetailsViewModel(
+        albumId,
+        albumListUseCase
+    ) as T
 }

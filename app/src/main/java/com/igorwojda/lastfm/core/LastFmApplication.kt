@@ -1,7 +1,6 @@
 package com.igorwojda.lastfm.core
 
 import android.app.Application
-import androidx.lifecycle.ViewModel
 import com.github.kittinunf.fuel.core.FuelManager
 import com.igorwojda.lastfm.BuildConfig
 import com.igorwojda.lastfm.feature.album.data.repository.AlbumRepositoryImpl
@@ -13,9 +12,9 @@ import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCaseImpl
 import com.igorwojda.lastfm.feature.album.presentation.AlbumDetailsViewModelFactory
 import com.igorwojda.lastfm.feature.album.presentation.AlbumListViewModelFactory
 import org.kodein.di.Kodein
-import org.kodein.di.Kodein.Builder.TypeBinder
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.bind
+import org.kodein.di.generic.factory
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
@@ -61,7 +60,13 @@ val albumModule = Kodein.Module("albumModule") {
 
 val albumPresentationModule = Kodein.Module("albumPresentationModule") {
     bind() from provider { AlbumListViewModelFactory(instance()) }
-    bind() from provider { AlbumDetailsViewModelFactory(instance()) }
+//    bind() from provider { AlbumDetailsViewModelFactory(instance()) }
+    bind<AlbumDetailsViewModelFactory>() with factory { albumId: String ->
+        AlbumDetailsViewModelFactory(
+            albumId,
+            instance()
+        )
+    }
 }
 
 val albumDomainModule = Kodein.Module("albumDomainModule") {
@@ -71,8 +76,4 @@ val albumDomainModule = Kodein.Module("albumDomainModule") {
 
 val albumDataModule = Kodein.Module("albumDataModule") {
     bind<AlbumRepository>() with singleton { AlbumRepositoryImpl() }
-}
-
-inline fun <reified T : ViewModel> Kodein.Builder.bindViewModel(overrides: Boolean? = null): TypeBinder<T> {
-    return bind<T>(T::class.java.simpleName, overrides)
 }

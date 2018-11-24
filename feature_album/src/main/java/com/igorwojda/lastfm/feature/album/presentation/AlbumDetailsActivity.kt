@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.transaction
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
+import timber.log.Timber
 
 class AlbumDetailsActivity : BaseActivity() {
     companion object {
@@ -25,9 +26,10 @@ class AlbumDetailsActivity : BaseActivity() {
 
         if (savedInstanceState == null) {
             val albumId = intent?.extras?.getInt(EXTRA_ALBUM_ID)
-            requireNotNull(albumId) { "albumId is null" }
+            requireNotNull(albumId.toString()) { "albumId is null" }
             supportFragmentManager.transaction {
-                replace(R.id.container, AlbumDetailFragment.newInstance(albumId))
+                Timber.e("AAA AlbumDetailsActivity albumId $albumId")
+                replace(R.id.container, AlbumDetailFragment.newInstance(albumId.toString()))
             }
         }
     }
