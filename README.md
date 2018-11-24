@@ -105,7 +105,13 @@ They must always use color from the palette instead of defining new color and th
 More info about
 https://blog.novatec-gmbh.de/name-android-colors-palettes/
 
-# Static analysis
+# Tools
+
+## Keep dependencies up to date
+[Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) checks all the dependencies in the project and determines witch dependencies
+are outdated and witch are up to date. To generate dependency report run `./gradlew dependencyUpdates` task.
+
+## Static analysis
 Project includes all modern [static code analisys](https://en.wikipedia.org/wiki/Static_program_analysis) tools for Kotlin
  ([ktlint](https://github.com/shyiko/ktlint), [detekt](https://github.com/arturbosch/detekt)) and Android platform
  ([Android lint](https://developer.android.com/studio/write/lint)). Each of those tools is focusing on different area of static analysis.
@@ -125,10 +131,10 @@ Project contains custom gradle task that can run all of the checks at once - `./
 BTW: [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [FindBugs](http://findbugs.sourceforge.net/)
 don't work with Kotlin (only Java), so they are not included in this project.
 
-## Android lint
+### Android lint
 `./gradlew lint` - run lint check
 
-## ktlint
+### ktlint
 ktlint is integrated via [Ktlint Gradle](https://github.com/jlleitschuh/ktlint-gradle) witch is gradle plugin over the `ktlint` project.
 
 `./gradlew ktlintCheck` - run ktlint check
@@ -143,7 +149,7 @@ of below gradle tasks that will update code formatting settings in Android Studi
 `./gradlew ktlintApplyToIdeaGlobally` - The task generates IntelliJ IDEA (or Android Studio) Kotlin style files in the user home IDEA
 (or Android Studio) settings folder.
 
-## detekt
+### detekt
 `./gradlew detekt` - run detekt check
 
 # Missing puzzles

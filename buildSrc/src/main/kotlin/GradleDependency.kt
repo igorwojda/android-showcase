@@ -3,8 +3,9 @@ import org.gradle.plugin.use.PluginDependenciesSpec
 object GradlePluginVersion {
     const val androidGradle = "3.2.1"
 
-    const val ktlintGradle = "6.2.0"
-    const val detekt = "1.0.0.RC9.2"
+    const val ktlintGradle = "6.3.0"
+    const val detekt = "1.0.0-RC11"
+    const val gradleVersionPlugin = "0.20.0"
 }
 
 object GradlePluginId {
@@ -15,10 +16,11 @@ object GradlePluginId {
     const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "org.jetbrains.kotlin.android"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
+    const val gradleVersionPlugin = "com.github.ben-manes.versions"
 }
 
 object GradleDependency {
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${CoreVersion.kotlin}"
     const val androidGradle = "com.android.tools.build:gradle:${GradlePluginVersion.androidGradle}"
-    const val ktlintGradle = "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:${GradlePluginVersion.ktlintGradle}"
+    const val ktlintGradle = "org.jlleitschuh.gradle:ktlint-gradle:${GradlePluginVersion.ktlintGradle}"
 }
