@@ -1,5 +1,6 @@
 # Project description
-This is a showcase for Kotlin Android application. Application architecture is suitable for projects with long [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
+This is a showcase for Kotlin Android application. Project utilizes most popular libraries, unit testing and architecture which is suitable
+for long [development live cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
 # Project characteristics
 * 100% Kotlin
@@ -16,7 +17,8 @@ This is a showcase for Kotlin Android application. Application architecture is s
 # Kotlin
 Project takes full advantage of Kotlin language by maximizing it's usage across project:
 * Application code is written in Kotlin
-* Gradle build scripts (eg. [top level](build.gradle.kts), [module level](app/build.gradle.kts) etc.) are written in Kotlin utilising [Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl)
+* Gradle build scripts (eg. [top level](build.gradle.kts), [module level](app/build.gradle.kts) etc.) are written in Kotlin utilising
+[Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl)
 * [Teamcity](https://www.jetbrains.com/teamcity/) [configuration scripts](.teamcity\settings.kts) are written in
 [Kotlin DSL](https://confluence.jetbrains.com/display/TCD18/Kotlin+DSL)
 
