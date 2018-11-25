@@ -12,8 +12,7 @@
                 android:name="aia-compat-api-min-version"
                 android:value="1"/>
 
-        <activity android:name="com.igorwojda.lastfm.feature.album.presentation.AlbumListActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name="com.igorwojda.lastfm.feature.album.presentation.AlbumListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
@@ -21,8 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.igorwojda.lastfm.feature.album.presentation.AlbumDetailsActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name="com.igorwojda.lastfm.feature.album.presentation.AlbumDetailsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
