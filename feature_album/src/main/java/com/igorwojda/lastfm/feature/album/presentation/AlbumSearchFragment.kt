@@ -51,5 +51,6 @@ class AlbumSearchFragment : BaseFragment() {
 
     private fun onAlbumListLiveData(list: List<AlbumDomainModel>) {
         albumAdapter.albums = list
+        loadingSpinner.visibility = View.GONE
     }
 }
