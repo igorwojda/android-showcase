@@ -1,6 +1,6 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
-import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumListUseCaseImpl
+import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCaseImpl
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -10,25 +10,28 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class AlbumListViewModelTest {
+class AlbumSearchViewModelTest {
     @Mock
-    lateinit var mockGetAlbumListUseCase: GetAlbumListUseCaseImpl
+    lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCaseImpl
 
-    private lateinit var cut: AlbumListViewModel
+    private lateinit var cut: AlbumSearchViewModel
 
     @Before
     fun setUp() {
-        cut = AlbumListViewModel(mockGetAlbumListUseCase)
+        cut = AlbumSearchViewModel(mockGetAlbumSearchUseCase)
     }
 
     @Test
-    fun `when init then getAlbumListUseCase execute`() {
+    fun `when init then getAlbumSearchUseCase execute`() {
         runBlocking {
+            // given
+            val phrase = "abc"
+
             // when
             cut.init()
 
             // then
-            verify(mockGetAlbumListUseCase).execute()
+            verify(mockGetAlbumSearchUseCase).execute(phrase)
         }
     }
 }

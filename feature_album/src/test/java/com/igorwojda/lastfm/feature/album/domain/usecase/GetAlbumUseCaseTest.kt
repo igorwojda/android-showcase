@@ -12,26 +12,26 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class GetAlbumUseCaseTest {
     @Mock
-    lateinit var mockAlbumNetworkRepository: AlbumRepositoryImpl
+    lateinit var mockAlbumRepository: AlbumRepositoryImpl
 
     private lateinit var cut: GetAlbumUseCaseImpl
 
     @Before
     fun setUp() {
-        cut = GetAlbumUseCaseImpl(mockAlbumNetworkRepository)
+        cut = GetAlbumUseCaseImpl(mockAlbumRepository)
     }
 
     @Test
     fun `when execute then getAlbum`() {
         runBlocking {
             // given
-            val albumId = 1
+            val albumId = "1"
 
             // when
             cut.execute(albumId)
 
             // then
-            verify(mockAlbumNetworkRepository).getAlbum(albumId)
+            verify(mockAlbumRepository).getAlbum(albumId)
         }
     }
 }

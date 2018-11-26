@@ -12,11 +12,11 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class AlbumDetailsViewModelTest {
     companion object {
-        const val ALBUM_ID = 1
+        const val ALBUM_ID = "1"
     }
 
     @Mock
-    lateinit var mockGetAlbumUseCase: GetAlbumUseCaseImpl
+    lateinit var mockSearchAlbumUseCase: GetAlbumUseCaseImpl
 
     private lateinit var cut: AlbumDetailsViewModel
 
@@ -24,7 +24,7 @@ class AlbumDetailsViewModelTest {
     fun setUp() {
         cut = AlbumDetailsViewModel(
             ALBUM_ID,
-            mockGetAlbumUseCase
+            mockSearchAlbumUseCase
         )
     }
 
@@ -35,7 +35,7 @@ class AlbumDetailsViewModelTest {
             cut.init()
 
             // then
-            verify(mockGetAlbumUseCase).execute(ALBUM_ID)
+            verify(mockSearchAlbumUseCase).execute(ALBUM_ID)
         }
     }
 }

@@ -5,20 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.igorwojda.lastfm.feature.album.R
-import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.lastfm.feature.album.domain.model.OldAlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter.MyViewHolder
 import kotlinx.android.synthetic.main.item_album.view.*
 import kotlin.properties.Delegates
 
 class AlbumAdapter : RecyclerView.Adapter<MyViewHolder>() {
-    var albums by Delegates.observable(listOf<AlbumDomainModel>()) { _, _, _ ->
+    var albums by Delegates.observable(listOf<OldAlbumDomainModel>()) { _, _, _ ->
         notifyDataSetChanged()
     }
 
-    private var onClickListener: ((album: AlbumDomainModel) -> Unit)? = null
+    private var onClickListener: ((album: OldAlbumDomainModel) -> Unit)? = null
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(album: AlbumDomainModel) {
+        fun bind(album: OldAlbumDomainModel) {
             itemView.title.text = album.title
             itemView.setOnClickListener { onClickListener?.invoke(album) }
         }
@@ -35,7 +35,7 @@ class AlbumAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
     override fun getItemCount(): Int = albums.size
 
-    fun setOnClickListener(listener: (album: AlbumDomainModel) -> Unit) {
+    fun setOnClickListener(listener: (album: OldAlbumDomainModel) -> Unit) {
         this.onClickListener = listener
     }
 }

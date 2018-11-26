@@ -3,12 +3,12 @@ package com.igorwojda.lastfm.feature.album.domain.usecase
 import com.igorwojda.lastfm.feature.album.domain.model.OldAlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.repository.AlbumRepository
 
-interface GetAlbumUseCase {
-    suspend fun execute(id: String): OldAlbumDomainModel?
+interface SearchAlbumUseCase {
+    suspend fun execute(phrase: String): List<OldAlbumDomainModel>
 }
 
-class GetAlbumUseCaseImpl(
+class SearchAlbumUseCaseImpl(
     private val albumRepository: AlbumRepository
-) : GetAlbumUseCase {
-    override suspend fun execute(id: String): OldAlbumDomainModel? = albumRepository.getAlbum(id)
+) : SearchAlbumUseCase {
+    override suspend fun execute(phrase: String) = albumRepository.searchAlbum(phrase)
 }

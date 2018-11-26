@@ -3,7 +3,7 @@ package com.igorwojda.lastfm.feature.album.presentation
 import android.os.Bundle
 import android.view.View
 import com.igorwojda.lastfm.feature.album.R
-import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.lastfm.feature.album.domain.model.OldAlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
@@ -37,7 +37,7 @@ class AlbumDetailFragment : BaseFragment() {
         }
     }
 
-    private fun onAlbumLiveData(albumDomainModel: AlbumDomainModel) {
+    private fun onAlbumLiveData(albumDomainModel: OldAlbumDomainModel) {
         albumIdTextView.text = albumDomainModel.id.toString()
         albumTitleTextView.text = albumDomainModel.title
     }

@@ -10,25 +10,28 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class GetAlbumListUseCaseTest {
+class SearchAlbumUseCaseTest {
     @Mock
-    lateinit var mockAlbumNetworkRepository: AlbumRepositoryImpl
+    lateinit var mockAlbumRepository: AlbumRepositoryImpl
 
-    private lateinit var cut: GetAlbumListUseCaseImpl
+    private lateinit var cut: SearchAlbumUseCaseImpl
 
     @Before
     fun setUp() {
-        cut = GetAlbumListUseCaseImpl(mockAlbumNetworkRepository)
+        cut = SearchAlbumUseCaseImpl(mockAlbumRepository)
     }
 
     @Test
-    fun `when execute then getAlbumList`() {
+    fun `when execute then getAlbum`() {
         runBlocking {
+            // given
+            val phrase = "abc"
+
             // when
-            cut.execute()
+            cut.execute(phrase)
 
             // then
-            verify(mockAlbumNetworkRepository).getAlbumList()
+            verify(mockAlbumRepository).searchAlbum(phrase)
         }
     }
 }

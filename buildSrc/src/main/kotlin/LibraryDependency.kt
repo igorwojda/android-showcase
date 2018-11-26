@@ -4,7 +4,8 @@ private object LibraryVersion {
     //Kodein 6.0.0 lack kodein-di-core-jvm dependency due to new build system, so it have to be added manually.
     //This dependency should be redundant in next version of the library https://github.com/Kodein-Framework/Kodein-DI/issues/165#issuecomment-441181384
     const val kodein = "6.0.0"
-    const val fuel = "1.16.0"
+    const val retrofit = "2.5.0"
+    const val kotlinCoroutineAdapter = "0.9.2"
     const val gson = "2.8.3"
     const val timber = "4.7.1"
     const val appCompact = "1.0.2"
@@ -36,9 +37,10 @@ object LibraryDependency {
     //This dependency may be redundant in Kodein versions above 6.0.0
     const val kodeinCore = "org.kodein.di:kodein-di-core-jvm:${LibraryVersion.kodein}"
     const val kodeinAndroidX = "org.kodein.di:kodein-di-framework-android-x:${LibraryVersion.kodein}"
-    const val fuelAndroid = "com.github.kittinunf.fuel:fuel-android:${LibraryVersion.fuel}"
-    const val fuelGson = "com.github.kittinunf.fuel:fuel-gson:${LibraryVersion.fuel}"
-    const val fuelCoroutines = "com.github.kittinunf.fuel:fuel-coroutines:${LibraryVersion.fuel}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${LibraryVersion.retrofit}"
+    const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${LibraryVersion.retrofit}"
+    const val kotlinCoroutineAdapter =
+        "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${LibraryVersion.kotlinCoroutineAdapter}"
     const val gson = "com.google.code.gson:gson:${LibraryVersion.gson}"
     const val timber = "com.jakewharton.timber:timber:${LibraryVersion.timber}"
     const val supportConstraintLayout = "androidx.constraintlayout:constraintlayout:${LibraryVersion.constraintLayout}"
