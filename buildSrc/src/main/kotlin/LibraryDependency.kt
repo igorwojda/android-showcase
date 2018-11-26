@@ -38,8 +38,8 @@ object LibraryDependency {
     const val kodeinCore = "org.kodein.di:kodein-di-core-jvm:${LibraryVersion.kodein}"
     const val kodeinAndroidX = "org.kodein.di:kodein-di-framework-android-x:${LibraryVersion.kodein}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${LibraryVersion.retrofit}"
-    const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${LibraryVersion.retrofit}"
-    const val kotlinCoroutineAdapter =
+    const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${LibraryVersion.retrofit}"
+    const val retrofitCoroutineAdapter =
         "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${LibraryVersion.kotlinCoroutineAdapter}"
     const val stetho = "com.facebook.stetho:stetho:${LibraryVersion.stetho}"
     const val stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:${LibraryVersion.stetho}"

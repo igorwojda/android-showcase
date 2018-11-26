@@ -31,7 +31,7 @@ class GetAlbumUseCaseTest {
             cut.execute(artistName, albumId)
 
             // then
-            verify(mockAlbumRepository).getAlbumInfo(artistName, albumId)
+            verify(mockAlbumRepository).getAlbumInfo(artistName, albumId, mbId)
         }
     }
 }
