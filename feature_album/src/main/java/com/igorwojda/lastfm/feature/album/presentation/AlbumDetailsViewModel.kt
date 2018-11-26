@@ -8,7 +8,7 @@ import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class AlbumDetailsViewModel(
+internal class AlbumDetailsViewModel(
     private val getAlbumUseCase: GetAlbumUseCase
 ) : ViewModel() {
 

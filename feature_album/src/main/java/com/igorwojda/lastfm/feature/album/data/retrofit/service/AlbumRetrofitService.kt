@@ -7,7 +7,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 // Api docs: https://www.last.fm/api/intro
-interface AlbumRetrofitService {
+internal interface AlbumRetrofitService {
     @POST("./?method=album.search")
     fun searchAlbum(
         @Query("album") phrase: String

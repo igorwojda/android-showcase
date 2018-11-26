@@ -1,6 +1,6 @@
 package com.igorwojda.lastfm.feature.album.domain.model
 
-data class AlbumDomainModel(
+internal data class AlbumDomainModel(
     val name: String,
     val artist: String,
     val images: List<AlbumImageDomainModel>,

@@ -1,6 +1,6 @@
 package com.igorwojda.lastfm.feature.album.domain.enum
 
-enum class AlbumDomainImageSize {
+internal enum class AlbumDomainImageSize {
     SMALL,
     MEDIUM,
     LARGE,

@@ -13,7 +13,7 @@ import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
-class AlbumSearchFragment : BaseFragment() {
+internal class AlbumSearchFragment : BaseFragment() {
     companion object {
         fun newInstance() = instanceOf<AlbumSearchFragment>()
     }

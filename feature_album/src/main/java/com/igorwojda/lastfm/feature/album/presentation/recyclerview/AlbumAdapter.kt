@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 import kotlin.properties.Delegates
 
-class AlbumAdapter(
+internal class AlbumAdapter(
     private val picasso: Picasso
 ) : RecyclerView.Adapter<MyViewHolder>() {
     var albums by Delegates.observable(listOf<AlbumDomainModel>()) { _, _, _ ->

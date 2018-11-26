@@ -9,7 +9,7 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-val albumDomainModule = Kodein.Module("albumDomainModule") {
+internal val albumDomainModule = Kodein.Module("albumDomainModule") {
     bind<SearchAlbumUseCase>() with provider { SearchAlbumUseCaseImpl(instance()) }
     bind<GetAlbumUseCase>() with provider { GetAlbumUseCaseImpl(instance()) }
 }

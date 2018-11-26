@@ -6,7 +6,7 @@ import com.igorwojda.lastfm.feature.album.data.model.albuminfo.toDomainModel
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.squareup.moshi.Json
 
-data class AlbumDataModel(
+internal data class AlbumDataModel(
     @field:Json(name = "mbid") val mbId: String?,
     val name: String,
     val artist: String,
@@ -14,7 +14,7 @@ data class AlbumDataModel(
     @field:Json(name = "image") val images: List<AlbumImageDataModel> = listOf()
 )
 
-fun AlbumDataModel.toDomainModel() = AlbumDomainModel(
+internal fun AlbumDataModel.toDomainModel() = AlbumDomainModel(
     mbId = this.mbId,
     name = this.name,
     artist = this.artist,
@@ -22,7 +22,7 @@ fun AlbumDataModel.toDomainModel() = AlbumDomainModel(
     wiki = this.wiki?.toDomainModel()
 )
 
-fun List<AlbumImageDataModel>.toDomainModel() =
+internal fun List<AlbumImageDataModel>.toDomainModel() =
     filter { it.size != AlbumDataImageSize.UNKNOWN }
         .filterNot { it.url.isBlank() }
         .map { it.toDomainModel() }

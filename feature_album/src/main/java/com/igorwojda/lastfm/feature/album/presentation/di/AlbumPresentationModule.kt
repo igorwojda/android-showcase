@@ -8,7 +8,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
-val albumPresentationModule = Kodein.Module("albumPresentationModule") {
+internal val albumPresentationModule = Kodein.Module("albumPresentationModule") {
     bind() from provider { AlbumListViewModelFactory(instance()) }
     bind() from singleton { AlbumAdapter(instance()) }
 }

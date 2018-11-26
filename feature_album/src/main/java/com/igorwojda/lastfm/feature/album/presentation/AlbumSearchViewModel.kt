@@ -9,7 +9,7 @@ import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class AlbumSearchViewModel(
+internal class AlbumSearchViewModel(
     private val searchAlbumUseCase: SearchAlbumUseCase
 ) : ViewModel() {
     private val albumSearchMutableLiveData = MutableLiveData<List<AlbumDomainModel>>()
@@ -24,7 +24,7 @@ class AlbumSearchViewModel(
     }
 }
 
-class AlbumListViewModelFactory(private val searchAlbumUseCase: SearchAlbumUseCase) :
+internal class AlbumListViewModelFactory(private val searchAlbumUseCase: SearchAlbumUseCase) :
     ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>) = AlbumSearchViewModel(searchAlbumUseCase) as T
