@@ -1,6 +1,6 @@
 package com.igorwojda.lastfm.feature.album.data.retrofit
 
-import com.igorwojda.lastfm.feature.album.data.repository.AlbumSearchResponse
+import com.igorwojda.lastfm.feature.album.data.model.searchalbum.SearchAlbumResponseDataModel
 import kotlinx.coroutines.Deferred
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -13,5 +13,5 @@ interface AlbumRetrofitService {
         @Query("format") format: String = "json",
         @Query("method") method: String = "album.search",
         @Query("api_key") apiKey: String = "70696db59158cb100370ad30a7a705c1"
-    ): Deferred<AlbumSearchResponse>
+    ): Deferred<SearchAlbumResponseDataModel>
 }

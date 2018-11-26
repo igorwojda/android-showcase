@@ -1,10 +1,10 @@
 package com.igorwojda.lastfm.feature.album.domain.usecase
 
-import com.igorwojda.lastfm.feature.album.domain.model.OldAlbumDomainModel
+import com.igorwojda.lastfm.feature.album.domain.model.searchalbum.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.repository.AlbumRepository
 
 interface SearchAlbumUseCase {
-    suspend fun execute(phrase: String): List<OldAlbumDomainModel>
+    suspend fun execute(phrase: String): List<AlbumDomainModel>
 }
 
 class SearchAlbumUseCaseImpl(

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.igorwojda.lastfm.feature.album.R
-import com.igorwojda.lastfm.feature.album.domain.model.OldAlbumDomainModel
+import com.igorwojda.lastfm.feature.album.domain.model.searchalbum.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
@@ -28,7 +28,7 @@ class AlbumSearchFragment : BaseFragment() {
 
         albumAdapter.setOnClickListener { albumDomainModel ->
             context?.let {
-                startActivity(AlbumDetailsActivity.getStartIntent(it, albumDomainModel.id))
+                startActivity(AlbumDetailsActivity.getStartIntent(it, albumDomainModel.artist, albumDomainModel.name))
             }
         }
 
@@ -43,7 +43,7 @@ class AlbumSearchFragment : BaseFragment() {
         }
     }
 
-    private fun onAlbumListLiveData(list: List<OldAlbumDomainModel>) {
+    private fun onAlbumListLiveData(list: List<AlbumDomainModel>) {
         albumAdapter.albums = list
     }
 }

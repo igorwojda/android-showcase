@@ -2,7 +2,7 @@ package com.igorwojda.lastfm.feature.album.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.igorwojda.lastfm.feature.album.domain.model.OldAlbumDomainModel
+import com.igorwojda.lastfm.feature.album.domain.model.searchalbum.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
 import kotlinx.coroutines.launch
@@ -12,13 +12,13 @@ class AlbumDetailsViewModel(
     private val getAlbumUseCase: GetAlbumUseCase
 ) : ViewModel() {
 
-    private val albumMutableLiveData = MutableLiveData<OldAlbumDomainModel>()
+    private val albumMutableLiveData = MutableLiveData<AlbumDomainModel>()
     val albumLiveData = albumMutableLiveData.toLiveData()
 
-    fun init(albumId: String) {
+    fun init(albumName: String, artistName: String) {
         runBlocking {
             launch {
-                getAlbumUseCase.execute(albumId).also { albumMutableLiveData.postValue(it) }
+                getAlbumUseCase.execute(albumName, artistName).also { albumMutableLiveData.postValue(it) }
             }
         }
     }

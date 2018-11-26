@@ -3,7 +3,7 @@ package com.igorwojda.lastfm.feature.album.presentation
 import android.os.Bundle
 import android.view.View
 import com.igorwojda.lastfm.feature.album.R
-import com.igorwojda.lastfm.feature.album.domain.model.OldAlbumDomainModel
+import com.igorwojda.lastfm.feature.album.domain.model.searchalbum.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
@@ -14,10 +14,12 @@ import org.kodein.di.generic.instance
 
 class AlbumDetailFragment : BaseFragment() {
     companion object {
-        private const val EXTRA_ALBUM_ID = "EXTRA_ALBUM_ID"
+        private const val EXTRA_ALBUM_NAME = "EXTRA_ALBUM_NAME"
+        private const val EXTRA_ARTIST_NAME = "EXTRA_ARTIST_NAME"
 
-        fun newInstance(albumId: String) = instanceOf<AlbumDetailFragment>(
-            EXTRA_ALBUM_ID to albumId
+        fun newInstance(albumName: String, artistName: String) = instanceOf<AlbumDetailFragment>(
+            EXTRA_ALBUM_NAME to albumName,
+            EXTRA_ARTIST_NAME to artistName
         )
     }
 
@@ -28,17 +30,20 @@ class AlbumDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val albumId = arguments?.getString(EXTRA_ALBUM_ID)
-        requireNotNull(albumId) { "albumId is null" }
+        val albumName = arguments?.getString(EXTRA_ALBUM_NAME)
+        require(!albumName.isNullOrEmpty()) { "$EXTRA_ALBUM_NAME is null" }
+
+        val artistName = arguments?.getString(EXTRA_ARTIST_NAME)
+        require(!artistName.isNullOrEmpty()) { "$EXTRA_ARTIST_NAME is null" }
 
         withViewModel({ AlbumDetailsViewModel(getAlbumUseCase) }) {
             observeNotNull(albumLiveData, ::onAlbumLiveData)
-            init(albumId)
+            init(albumName, artistName)
         }
     }
 
-    private fun onAlbumLiveData(albumDomainModel: OldAlbumDomainModel) {
-        albumIdTextView.text = albumDomainModel.id.toString()
-        albumTitleTextView.text = albumDomainModel.title
+    private fun onAlbumLiveData(albumDomainModel: AlbumDomainModel) {
+        albumNameTextView.text = albumDomainModel.name
+        albumArtistTextView.text = albumDomainModel.artist
     }
 }

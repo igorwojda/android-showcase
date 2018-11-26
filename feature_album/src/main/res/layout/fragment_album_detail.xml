@@ -12,12 +12,12 @@
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:id="@+id/albumIdTextView"
+                  android:id="@+id/albumNameTextView"
                   android:textSize="28sp"/>
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:id="@+id/albumTitleTextView"
+                  android:id="@+id/albumArtistTextView"
                   android:textSize="28sp"/>
     </LinearLayout>
 
