@@ -72,7 +72,7 @@ val albumDomainModule = Kodein.Module("albumDomainModule") {
 val albumDataModule = Kodein.Module("albumDataModule") {
     bind<AlbumRepository>() with singleton { AlbumRepositoryImpl(instance()) }
 
-    bind() from singleton { instance<Retrofit>().let { it.create(AlbumRetrofitService::class.java) } }
+    bind() from singleton { instance<Retrofit>().create(AlbumRetrofitService::class.java) }
 }
 
 val baseModule = Kodein.Module("baseModule") {
