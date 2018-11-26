@@ -54,6 +54,8 @@ dependencies {
     implementation(LibraryDependency.retrofit)
     implementation(LibraryDependency.moshiConverter)
     implementation(LibraryDependency.kotlinCoroutineAdapter)
+    implementation(LibraryDependency.stetho)
+    implementation(LibraryDependency.stethoOkHttp)
     implementation(LibraryDependency.timber)
     implementation(LibraryDependency.appCompact)
     implementation(LibraryDependency.supportConstraintLayout)

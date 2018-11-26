@@ -6,6 +6,7 @@ private object LibraryVersion {
     const val kodein = "6.0.0"
     const val retrofit = "2.5.0"
     const val kotlinCoroutineAdapter = "0.9.2"
+    const val stetho = "1.5.0"
     const val gson = "2.8.3"
     const val timber = "4.7.1"
     const val appCompact = "1.0.2"
@@ -41,6 +42,8 @@ object LibraryDependency {
     const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${LibraryVersion.retrofit}"
     const val kotlinCoroutineAdapter =
         "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${LibraryVersion.kotlinCoroutineAdapter}"
+    const val stetho = "com.facebook.stetho:stetho:${LibraryVersion.stetho}"
+    const val stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:${LibraryVersion.stetho}"
     const val gson = "com.google.code.gson:gson:${LibraryVersion.gson}"
     const val timber = "com.jakewharton.timber:timber:${LibraryVersion.timber}"
     const val supportConstraintLayout = "androidx.constraintlayout:constraintlayout:${LibraryVersion.constraintLayout}"

@@ -1,6 +1,8 @@
 package com.igorwojda.lastfm.core
 
 import android.app.Application
+import com.facebook.stetho.Stetho
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.igorwojda.lastfm.BuildConfig
 import com.igorwojda.lastfm.feature.album.data.repository.AlbumRepositoryImpl
 import com.igorwojda.lastfm.feature.album.data.retrofit.AlbumRetrofitService
@@ -36,6 +38,13 @@ class LastFmApplication : Application(), KodeinAware {
         super.onCreate()
 
         initTimber()
+        initStetho()
+    }
+
+    private fun initStetho() {
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this)
+        }
     }
 
     private fun initTimber() {
@@ -87,5 +96,9 @@ val baseDataModule = Kodein.Module("baseDataModule") {
             .build()
     }
 
-    bind<OkHttpClient>() with singleton { OkHttpClient() }
+    bind<OkHttpClient>() with singleton {
+        OkHttpClient.Builder()
+            .addNetworkInterceptor(StethoInterceptor())
+            .build()
+    }
 }
