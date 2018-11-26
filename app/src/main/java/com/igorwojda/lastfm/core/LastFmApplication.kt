@@ -107,5 +107,4 @@ val baseDataModule = Kodein.Module("baseDataModule") {
             .client(okHttpClient)
             .build()
     }
-
 }

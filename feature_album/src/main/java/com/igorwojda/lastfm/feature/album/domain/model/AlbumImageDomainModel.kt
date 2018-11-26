@@ -6,4 +6,3 @@ data class AlbumImageDomainModel(
     val url: String,
     val size: AlbumDomainImageSize
 )
-

@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">LastFm</string>
-    <string name="features">Features</string>
-    <string name="launch_feature_artist">Launch feature artist</string>
-    <string name="launch_feature_album">Launch feature album</string>
 </resources>
