@@ -23,7 +23,6 @@ class AlbumDetailsViewModelTest {
     @Before
     fun setUp() {
         cut = AlbumDetailsViewModel(
-            ALBUM_ID,
             mockSearchAlbumUseCase
         )
     }
@@ -31,11 +30,16 @@ class AlbumDetailsViewModelTest {
     @Test
     fun `when init then getAlbumUseCase execute`() {
         runBlocking {
+            // given
+            val albumName = "album"
+            val artistName = "artist"
+            val mbId = "123"
+
             // when
-            cut.init()
+            cut.init(artistName, albumName, mbId)
 
             // then
-            verify(mockSearchAlbumUseCase).execute(artistName, ALBUM_ID)
+            verify(mockSearchAlbumUseCase).execute(artistName, albumName, mbId)
         }
     }
 }

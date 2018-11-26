@@ -25,13 +25,15 @@ class GetAlbumUseCaseTest {
     fun `when execute then getAlbum`() {
         runBlocking {
             // given
-            val albumId = "1"
+            val albumName = "album"
+            val artistName = "artist"
+            val mbId = "123"
 
             // when
-            cut.execute(artistName, albumId)
+            cut.execute(artistName, albumName, mbId)
 
             // then
-            verify(mockAlbumRepository).getAlbumInfo(artistName, albumId, mbId)
+            verify(mockAlbumRepository).getAlbumInfo(artistName, albumName, mbId)
         }
     }
 }

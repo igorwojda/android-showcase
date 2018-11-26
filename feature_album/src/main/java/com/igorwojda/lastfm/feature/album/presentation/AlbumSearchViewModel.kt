@@ -15,10 +15,6 @@ class AlbumSearchViewModel(
     private val albumSearchMutableLiveData = MutableLiveData<List<AlbumDomainModel>>()
     val albumSearchLiveData = albumSearchMutableLiveData.toLiveData()
 
-    init {
-        init()
-    }
-
     fun init() {
         runBlocking {
             launch {

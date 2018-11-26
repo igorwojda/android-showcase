@@ -47,6 +47,7 @@ class AlbumSearchFragment : BaseFragment() {
 
         ViewModelProviders.of(this, viewModelFactory).get(AlbumSearchViewModel::class.java).apply {
             observeNotNull(albumSearchLiveData, ::onAlbumListLiveData)
+            init()
         }
     }
 
