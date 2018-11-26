@@ -72,9 +72,7 @@ val albumDomainModule = Kodein.Module("albumDomainModule") {
 val albumDataModule = Kodein.Module("albumDataModule") {
     bind<AlbumRepository>() with singleton { AlbumRepositoryImpl(instance()) }
 
-    bind<AlbumRetrofitService>() with singleton {
-        instance<Retrofit>().let { it.create(AlbumRetrofitService::class.java) }
-    }
+    bind() from singleton { instance<Retrofit>().let { it.create(AlbumRetrofitService::class.java) } }
 }
 
 val baseModule = Kodein.Module("baseModule") {
@@ -87,7 +85,6 @@ const val LAST_FM_API_BASE_URL = "http://ws.audioscrobbler.com/2.0/"
 val baseDataModule = Kodein.Module("baseDataModule") {
     bind<Retrofit>() with singleton {
         val okHttpClient: OkHttpClient = instance()
-
         Retrofit.Builder()
             .baseUrl(LAST_FM_API_BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
