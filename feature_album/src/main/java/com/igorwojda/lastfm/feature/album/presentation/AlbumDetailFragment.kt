@@ -29,6 +29,7 @@ class AlbumDetailFragment : BaseFragment() {
 
     override val layoutResourceId = R.layout.fragment_album_detail
 
+    //This is injected here only because ViewModel injection is not implemented
     private val getAlbumUseCase: GetAlbumUseCase by instance()
     private val picasso: Picasso by instance()
 
@@ -43,6 +44,7 @@ class AlbumDetailFragment : BaseFragment() {
 
         val mbId = arguments?.getString(EXTRA_MB_ID) ?: ""
 
+        //ViewModel injection is not implemented
         withViewModel({ AlbumDetailsViewModel(getAlbumUseCase) }) {
             observeNotNull(albumLiveData, ::onAlbumLiveData)
             init(artistName, albumName, mbId)
