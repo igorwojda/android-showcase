@@ -10,16 +10,12 @@ import retrofit2.http.Query
 interface AlbumRetrofitService {
     @POST("./?method=album.search")
     fun searchAlbum(
-        @Query("album") phrase: String,
-        @Query("format") format: String = "json",
-        @Query("api_key") apiKey: String = "70696db59158cb100370ad30a7a705c1"
+        @Query("album") phrase: String
     ): Deferred<SearchAlbumResponse>
 
     @POST("./?method=album.getInfo")
     fun getAlbumInfo(
         @Query("artist") artistName: String,
-        @Query("album") albumName: String,
-        @Query("format") format: String = "json",
-        @Query("api_key") apiKey: String = "70696db59158cb100370ad30a7a705c1"
-    ): Deferred<GetAlbumInfoResponse>
+        @Query("album") albumName: String
+    ): Deferred<GetAlbumInfoResponse?>
 }

@@ -10,8 +10,8 @@ class AlbumRepositoryImpl(
     override suspend fun getAlbumInfo(artistName: String, albumName: String) =
         albumRetrofitService.getAlbumInfo(artistName, albumName)
             .await()
-            .album
-            .toDomainModel()
+            ?.album
+            ?.toDomainModel()
 
     override suspend fun searchAlbum(phrase: String) =
         albumRetrofitService.searchAlbum(phrase)
