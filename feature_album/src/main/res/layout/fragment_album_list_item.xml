@@ -12,7 +12,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
-            android:background="@android:color/darker_gray"
-    />
+            android:background="@android:color/darker_gray"/>
 
 </RelativeLayout>
