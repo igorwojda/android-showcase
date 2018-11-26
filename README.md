@@ -111,9 +111,9 @@ https://blog.novatec-gmbh.de/name-android-colors-palettes/
 
 # Tools
 
-## Keep dependencies up to date
-[Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) checks all the dependencies in the project and determines witch dependencies
-are outdated and witch are up to date. To generate dependency report run `./gradlew dependencyUpdates` task.
+## Up to date dependencies
+By running `./gradlew dependencyUpdates` task (from [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin)) we can
+easily list all outdated dependencies in the project.
 
 ## Static analysis
 Project includes all modern [static code analisys](https://en.wikipedia.org/wiki/Static_program_analysis) tools for Kotlin
@@ -130,7 +130,7 @@ To have better understanding, the difference between those tools let's look at s
 
 `Android lint` - guards Android platform specific rules eg. unused android resource / activity not declared in manifest
 
-Project contains custom gradle task that can run all of the checks at once - `./gradlew staticCheck`.
+Project contains custom gradle task that can run all of the static analysis checks at once - `./gradlew staticCheck`.
 
 BTW: [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [FindBugs](http://findbugs.sourceforge.net/)
 don't work with Kotlin (only Java), so they are not included in this project.
@@ -155,8 +155,3 @@ of below gradle tasks that will update code formatting settings in Android Studi
 
 ### detekt
 `./gradlew detekt` - run detekt check
-
-# Missing puzzles
-Fuel networking library turned out to be quite tricky to test as opposed to Retrofit, so tests for `data` layer are missing
-Also DI is missing to Dagger+Jetifier bug in combination with AndroidX dependencies (
-[Dagger-An exception occurred: java.util.NoSuchElementException](https://github.com/google/dagger/issues/1245))
