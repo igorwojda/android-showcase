@@ -7,7 +7,7 @@ import com.igorwojda.lastfm.feature.album.domain.repository.AlbumRepository
 class AlbumRepositoryImpl(
     private val albumRetrofitService: AlbumRetrofitService
 ) : AlbumRepository {
-    override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String) =
+    override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?) =
         albumRetrofitService.getAlbumInfo(artistName, albumName, mbId)
             .await()
             ?.album

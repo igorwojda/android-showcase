@@ -19,9 +19,9 @@ class AlbumSearchFragment : BaseFragment() {
     }
 
     override val layoutResourceId = R.layout.fragment_album_list
-    private val viewModelFactory: AlbumListViewModelFactory by instance()
 
-    private var albumAdapter = AlbumAdapter()
+    private val viewModelFactory: AlbumListViewModelFactory by instance()
+    private val albumAdapter: AlbumAdapter by instance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

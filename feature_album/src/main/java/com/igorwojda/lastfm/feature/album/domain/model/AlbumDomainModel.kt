@@ -5,5 +5,5 @@ data class AlbumDomainModel(
     val artist: String,
     val images: List<AlbumImageDomainModel>,
     val wiki: AlbumWikiDomainModel?,
-    val mbId: String
+    val mbId: String?
 )

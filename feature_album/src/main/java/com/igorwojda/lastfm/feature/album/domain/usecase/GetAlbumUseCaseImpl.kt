@@ -7,7 +7,7 @@ interface GetAlbumUseCase {
     suspend fun execute(
         artistName: String,
         albumName: String,
-        mbId: String
+        mbId: String?
     ): AlbumDomainModel?
 }
 
@@ -17,7 +17,7 @@ class GetAlbumUseCaseImpl(
     override suspend fun execute(
         artistName: String,
         albumName: String,
-        mbId: String
+        mbId: String?
     ): AlbumDomainModel? =
         albumRepository.getAlbumInfo(artistName, albumName, mbId)
 }

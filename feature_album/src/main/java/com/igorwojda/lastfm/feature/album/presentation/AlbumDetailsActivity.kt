@@ -17,7 +17,7 @@ class AlbumDetailsActivity : BaseActivity() {
             context: Context,
             artistName: String,
             albumName: String,
-            mbId: String
+            mbId: String?
         ) =
             Intent(context, AlbumDetailsActivity::class.java).apply {
                 putExtra(EXTRA_ARTIST_NAME, artistName)
@@ -38,8 +38,7 @@ class AlbumDetailsActivity : BaseActivity() {
             val artistName = intent?.extras?.getString(EXTRA_ARTIST_NAME)
             require(!artistName.isNullOrEmpty()) { "$EXTRA_ARTIST_NAME is null" }
 
-            val mbId = intent?.extras?.getString(EXTRA_MB_ID)
-            require(!mbId.isNullOrEmpty()) { "$EXTRA_MB_ID is null" }
+            val mbId = intent?.extras?.getString(EXTRA_MB_ID) ?: ""
 
             supportFragmentManager.transaction {
                 replace(R.id.container, AlbumDetailFragment.newInstance(albumName, artistName, mbId))

@@ -13,8 +13,8 @@ import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCaseImpl
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCase
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCaseImpl
 import com.igorwojda.lastfm.feature.album.presentation.AlbumListViewModelFactory
+import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import org.kodein.di.Kodein
@@ -71,6 +71,7 @@ val albumModule = Kodein.Module("albumModule") {
 
 val albumPresentationModule = Kodein.Module("albumPresentationModule") {
     bind() from provider { AlbumListViewModelFactory(instance()) }
+    bind() from singleton { AlbumAdapter(instance()) }
 }
 
 val albumDomainModule = Kodein.Module("albumDomainModule") {
@@ -80,7 +81,6 @@ val albumDomainModule = Kodein.Module("albumDomainModule") {
 
 val albumDataModule = Kodein.Module("albumDataModule") {
     bind<AlbumRepository>() with singleton { AlbumRepositoryImpl(instance()) }
-
     bind() from singleton { instance<Retrofit>().create(AlbumRetrofitService::class.java) }
 }
 
@@ -93,17 +93,9 @@ val baseModule = Kodein.Module("baseModule") {
 const val LAST_FM_API_BASE_URL = "http://ws.audioscrobbler.com/2.0/"
 
 val basePresentationModule = Kodein.Module("basePresentationModule") {
-
-    //modue ????
-//    bind<Context>() with instance()
-
-    ///
-
     bind() from singleton {
-        Picasso.Builder(instance()).downloader(instance<OkHttp3Downloader>()).build()
+        Picasso.get()
     }
-
-    bind() from singleton { OkHttp3Downloader(instance<OkHttpClient>()) }
 }
 
 val baseDataModule = Kodein.Module("baseDataModule") {

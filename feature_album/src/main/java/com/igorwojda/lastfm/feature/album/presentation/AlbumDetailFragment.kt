@@ -20,7 +20,7 @@ class AlbumDetailFragment : BaseFragment() {
         private const val EXTRA_ARTIST_NAME = "EXTRA_ARTIST_NAME"
         private const val EXTRA_MB_ID = "EXTRA_MB_ID"
 
-        fun newInstance(artistName: String, albumName: String, mbId: String) = instanceOf<AlbumDetailFragment>(
+        fun newInstance(artistName: String, albumName: String, mbId: String?) = instanceOf<AlbumDetailFragment>(
             EXTRA_ALBUM_NAME to albumName,
             EXTRA_ARTIST_NAME to artistName,
             EXTRA_MB_ID to mbId
@@ -41,8 +41,7 @@ class AlbumDetailFragment : BaseFragment() {
         val artistName = arguments?.getString(EXTRA_ARTIST_NAME)
         require(!artistName.isNullOrEmpty()) { "$EXTRA_ARTIST_NAME is null" }
 
-        val mbId = arguments?.getString(EXTRA_MB_ID)
-        require(!mbId.isNullOrEmpty()) { "$EXTRA_MB_ID is null" }
+        val mbId = arguments?.getString(EXTRA_MB_ID) ?: ""
 
         withViewModel({ AlbumDetailsViewModel(getAlbumUseCase) }) {
             observeNotNull(albumLiveData, ::onAlbumLiveData)
@@ -64,8 +63,7 @@ class AlbumDetailFragment : BaseFragment() {
     }
 
     private fun loadImage(it: String) {
-        picasso
-            .load(it)
+        picasso.load(it)
             .resize(800, 800)
             .centerCrop()
             .placeholder(R.drawable.progress_animation)

@@ -7,7 +7,7 @@ import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.squareup.moshi.Json
 
 data class AlbumDataModel(
-    @field:Json(name = "mbid") val mbId: String,
+    @field:Json(name = "mbid") val mbId: String?,
     val name: String,
     val artist: String,
     val wiki: AlbumWikiDataModel?,

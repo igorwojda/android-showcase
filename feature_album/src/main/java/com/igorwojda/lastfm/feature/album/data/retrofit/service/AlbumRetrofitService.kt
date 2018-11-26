@@ -17,6 +17,6 @@ interface AlbumRetrofitService {
     fun getAlbumInfo(
         @Query("artist") artistName: String,
         @Query("album") albumName: String,
-        @Query("mbid") mbId: String
+        @Query("mbid") mbId: String?
     ): Deferred<GetAlbumInfoResponse?>
 }

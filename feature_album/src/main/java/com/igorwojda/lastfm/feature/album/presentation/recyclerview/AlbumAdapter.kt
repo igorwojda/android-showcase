@@ -12,7 +12,9 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 import kotlin.properties.Delegates
 
-class AlbumAdapter : RecyclerView.Adapter<MyViewHolder>() {
+class AlbumAdapter(
+    private val picasso: Picasso
+) : RecyclerView.Adapter<MyViewHolder>() {
     var albums by Delegates.observable(listOf<AlbumDomainModel>()) { _, _, _ ->
         notifyDataSetChanged()
     }
@@ -32,8 +34,7 @@ class AlbumAdapter : RecyclerView.Adapter<MyViewHolder>() {
         }
 
         private fun loadImage(it: String) {
-            Picasso.get()
-                .load(it)
+            picasso.load(it)
                 .resize(400, 400)
                 .centerCrop()
                 .into(itemView.imageView)
