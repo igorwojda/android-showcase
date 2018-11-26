@@ -18,4 +18,5 @@ enum class AlbumDataImageSize {
     UNKNOWN
 }
 
-fun AlbumDataImageSize.toDomain() = AlbumDomainImageSize.valueOf(this.name)
+fun AlbumDataImageSize.toDomainEnum() = AlbumDomainImageSize.valueOf(this.name)
+

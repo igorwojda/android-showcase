@@ -1,7 +1,7 @@
 package com.igorwojda.lastfm.feature.album.data.model
 
 import com.igorwojda.lastfm.feature.album.data.enum.AlbumDataImageSize
-import com.igorwojda.lastfm.feature.album.data.enum.toDomain
+import com.igorwojda.lastfm.feature.album.data.enum.toDomainEnum
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumImageDomainModel
 import com.squareup.moshi.Json
 
@@ -12,5 +12,5 @@ data class AlbumImageDataModel(
 
 fun AlbumImageDataModel.toDomainModel() = AlbumImageDomainModel(
     url = this.url,
-    size = this.size.toDomain()
+    size = this.size.toDomainEnum()
 )
