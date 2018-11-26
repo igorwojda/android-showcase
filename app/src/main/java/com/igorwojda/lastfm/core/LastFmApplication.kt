@@ -46,5 +46,3 @@ class LastFmApplication : Application(), KodeinAware {
         }
     }
 }
-
-

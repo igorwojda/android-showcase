@@ -21,7 +21,6 @@ val appModule = Kodein.Module("baseDataModule") {
     // checkouts the project must generate own api key and change app configuration before running it).
     bind() from singleton { LastFmRequestInterceptor("70696db59158cb100370ad30a7a705c1") }
 
-
     bind<OkHttpClient>() with singleton {
         val lastFmRequestInterceptor = instance<LastFmRequestInterceptor>()
 

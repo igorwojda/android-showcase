@@ -43,7 +43,7 @@ internal class AlbumSearchFragment : BaseFragment() {
             adapter = albumAdapter
         }
 
-        //ViewModel injection is not implemented
+        // ViewModel injection is not implemented
         ViewModelProviders.of(this, viewModelFactory).get(AlbumSearchViewModel::class.java).apply {
             observeNotNull(albumSearchLiveData, ::onAlbumListLiveData)
             init()
