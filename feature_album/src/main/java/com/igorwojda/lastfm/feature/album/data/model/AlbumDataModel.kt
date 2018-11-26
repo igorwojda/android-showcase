@@ -1,8 +1,6 @@
 package com.igorwojda.lastfm.feature.album.data.model
 
 import com.igorwojda.lastfm.feature.album.data.enum.AlbumDataImageSize
-import com.igorwojda.lastfm.feature.album.data.model.albuminfo.AlbumWikiDataModel
-import com.igorwojda.lastfm.feature.album.data.model.albuminfo.toDomainModel
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.squareup.moshi.Json
 

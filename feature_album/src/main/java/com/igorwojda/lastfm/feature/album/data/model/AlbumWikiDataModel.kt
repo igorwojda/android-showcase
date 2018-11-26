@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.data.model.albuminfo
+package com.igorwojda.lastfm.feature.album.data.model
 
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumWikiDomainModel
 

@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.data.model.searchalbum
+package com.igorwojda.lastfm.feature.album.data.model
 
 import com.squareup.moshi.Json
 
