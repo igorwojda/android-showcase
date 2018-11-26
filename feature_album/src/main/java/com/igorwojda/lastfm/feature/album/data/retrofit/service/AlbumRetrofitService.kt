@@ -16,6 +16,7 @@ interface AlbumRetrofitService {
     @POST("./?method=album.getInfo")
     fun getAlbumInfo(
         @Query("artist") artistName: String,
-        @Query("album") albumName: String
+        @Query("album") albumName: String,
+        @Query("mbid") mbId: String
     ): Deferred<GetAlbumInfoResponse?>
 }

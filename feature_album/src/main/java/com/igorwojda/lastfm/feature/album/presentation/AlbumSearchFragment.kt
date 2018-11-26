@@ -28,7 +28,14 @@ class AlbumSearchFragment : BaseFragment() {
 
         albumAdapter.setOnClickListener { albumDomainModel ->
             context?.let {
-                startActivity(AlbumDetailsActivity.getStartIntent(it, albumDomainModel.artist, albumDomainModel.name))
+                startActivity(
+                    AlbumDetailsActivity.getStartIntent(
+                        it,
+                        albumDomainModel.artist,
+                        albumDomainModel.name,
+                        albumDomainModel.mbId
+                    )
+                )
             }
         }
 

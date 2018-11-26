@@ -15,10 +15,10 @@ class AlbumDetailsViewModel(
     private val albumMutableLiveData = MutableLiveData<AlbumDomainModel>()
     val albumLiveData = albumMutableLiveData.toLiveData()
 
-    fun init(artistName: String, albumName: String) {
+    fun init(artistName: String, albumName: String, mbId: String) {
         runBlocking {
             launch {
-                getAlbumUseCase.execute(artistName, albumName).also { albumMutableLiveData.postValue(it) }
+                getAlbumUseCase.execute(artistName, albumName, mbId).also { albumMutableLiveData.postValue(it) }
             }
         }
     }

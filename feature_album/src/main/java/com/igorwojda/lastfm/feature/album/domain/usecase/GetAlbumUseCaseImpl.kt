@@ -4,12 +4,20 @@ import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.repository.AlbumRepository
 
 interface GetAlbumUseCase {
-    suspend fun execute(artistName: String, albumName: String): AlbumDomainModel?
+    suspend fun execute(
+        artistName: String,
+        albumName: String,
+        mbId: String
+    ): AlbumDomainModel?
 }
 
 class GetAlbumUseCaseImpl(
     private val albumRepository: AlbumRepository
 ) : GetAlbumUseCase {
-    override suspend fun execute(artistName: String, albumName: String): AlbumDomainModel? =
-        albumRepository.getAlbumInfo(artistName, albumName)
+    override suspend fun execute(
+        artistName: String,
+        albumName: String,
+        mbId: String
+    ): AlbumDomainModel? =
+        albumRepository.getAlbumInfo(artistName, albumName, mbId)
 }
