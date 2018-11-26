@@ -83,6 +83,18 @@ val baseModule = Kodein.Module("baseModule") {
 const val LAST_FM_API_BASE_URL = "http://ws.audioscrobbler.com/2.0/"
 
 val baseDataModule = Kodein.Module("baseDataModule") {
+    // In production app this key would be provided by CI
+    bind() from singleton { LastFmRequestInterceptor("70696db59158cb100370ad30a7a705c1") }
+
+    bind<OkHttpClient>() with singleton {
+        val lastFmRequestInterceptor = instance<LastFmRequestInterceptor>()
+
+        OkHttpClient.Builder()
+            .addNetworkInterceptor(StethoInterceptor())
+            .addInterceptor(lastFmRequestInterceptor)
+            .build()
+    }
+
     bind<Retrofit>() with singleton {
         val okHttpClient: OkHttpClient = instance()
         Retrofit.Builder()
@@ -93,9 +105,4 @@ val baseDataModule = Kodein.Module("baseDataModule") {
             .build()
     }
 
-    bind<OkHttpClient>() with singleton {
-        OkHttpClient.Builder()
-            .addNetworkInterceptor(StethoInterceptor())
-            .build()
-    }
 }
