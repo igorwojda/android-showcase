@@ -83,7 +83,10 @@ val baseModule = Kodein.Module("baseModule") {
 const val LAST_FM_API_BASE_URL = "http://ws.audioscrobbler.com/2.0/"
 
 val baseDataModule = Kodein.Module("baseDataModule") {
-    // In production app this key would be provided by CI
+    // In production apiKey would be provided by CI
+    // Typically we don't want to store such key in public repository, however this is just a sample project, so
+    // we can favour convenience (app can be compiled and launched after checkout) over security (each person who
+    // checkouts the project must generate own api key and change app configuration before running it).
     bind() from singleton { LastFmRequestInterceptor("70696db59158cb100370ad30a7a705c1") }
 
     bind<OkHttpClient>() with singleton {
