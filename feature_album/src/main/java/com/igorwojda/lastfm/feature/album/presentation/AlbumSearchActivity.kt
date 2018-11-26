@@ -23,6 +23,6 @@ class AlbumSearchActivity : BaseActivity() {
             }
         }
 
-        title = resources.getString(R.string.feature_album)
+        title = resources.getString(R.string.search_album)
     }
 }

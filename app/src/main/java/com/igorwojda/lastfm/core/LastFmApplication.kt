@@ -1,6 +1,7 @@
 package com.igorwojda.lastfm.core
 
 import android.app.Application
+import android.content.Context
 import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.igorwojda.lastfm.BuildConfig
@@ -13,6 +14,8 @@ import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCase
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCaseImpl
 import com.igorwojda.lastfm.feature.album.presentation.AlbumListViewModelFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.squareup.picasso.OkHttp3Downloader
+import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -32,10 +35,16 @@ class LastFmApplication : Application(), KodeinAware {
     override val kodein = Kodein.lazy {
         import(albumModule)
         import(baseModule)
+
+        bind<Context>() with instance(this@LastFmApplication)
     }
+
+    private lateinit var context: Context
 
     override fun onCreate() {
         super.onCreate()
+
+        context = this
 
         initTimber()
         initStetho()
@@ -77,10 +86,25 @@ val albumDataModule = Kodein.Module("albumDataModule") {
 
 val baseModule = Kodein.Module("baseModule") {
     import(baseDataModule)
+    import(basePresentationModule)
 }
 
 // w base module?
 const val LAST_FM_API_BASE_URL = "http://ws.audioscrobbler.com/2.0/"
+
+val basePresentationModule = Kodein.Module("basePresentationModule") {
+
+    //modue ????
+//    bind<Context>() with instance()
+
+    ///
+
+    bind() from singleton {
+        Picasso.Builder(instance()).downloader(instance<OkHttp3Downloader>()).build()
+    }
+
+    bind() from singleton { OkHttp3Downloader(instance<OkHttpClient>()) }
+}
 
 val baseDataModule = Kodein.Module("baseDataModule") {
     // In production apiKey would be provided by CI
@@ -88,6 +112,7 @@ val baseDataModule = Kodein.Module("baseDataModule") {
     // we can favour convenience (app can be compiled and launched after checkout) over security (each person who
     // checkouts the project must generate own api key and change app configuration before running it).
     bind() from singleton { LastFmRequestInterceptor("70696db59158cb100370ad30a7a705c1") }
+
 
     bind<OkHttpClient>() with singleton {
         val lastFmRequestInterceptor = instance<LastFmRequestInterceptor>()

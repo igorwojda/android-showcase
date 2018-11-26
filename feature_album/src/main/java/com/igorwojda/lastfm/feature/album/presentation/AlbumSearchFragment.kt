@@ -3,7 +3,7 @@ package com.igorwojda.lastfm.feature.album.presentation
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
@@ -30,10 +30,8 @@ class AlbumSearchFragment : BaseFragment() {
             context?.let {
                 startActivity(
                     AlbumDetailsActivity.getStartIntent(
-                        it,
-                        albumDomainModel.artist,
-                        albumDomainModel.name,
-                        albumDomainModel.mbId
+                        it, albumDomainModel.artist,
+                        albumDomainModel.name, albumDomainModel.mbId
                     )
                 )
             }
@@ -41,7 +39,7 @@ class AlbumSearchFragment : BaseFragment() {
 
         recyclerView.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = albumAdapter
         }
 

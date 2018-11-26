@@ -10,14 +10,26 @@
                   android:layout_height="match_parent"
                   android:orientation="vertical">
 
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:background="@android:color/darker_gray"
+        />
+
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:id="@+id/albumNameTextView"
+                  android:id="@+id/nameTextView"
                   android:textSize="28sp"/>
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:id="@+id/albumArtistTextView"
+                  android:id="@+id/artistTextView"
+                  android:textSize="28sp"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/publishedTextView"
                   android:textSize="28sp"/>
     </LinearLayout>
 

@@ -1,3 +1,4 @@
 <resources>
-    <string name="feature_album">Feature album</string>
+    <string name="album_details">Album details</string>
+    <string name="search_album">Search album</string>
 </resources>

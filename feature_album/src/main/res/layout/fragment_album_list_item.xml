@@ -8,11 +8,11 @@
                 android:paddingBottom="15dp"
                 android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/nameTextView"
+    <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:textSize="20sp"/>
+            android:id="@+id/imageView"
+            android:background="@android:color/darker_gray"
+    />
 
 </RelativeLayout>

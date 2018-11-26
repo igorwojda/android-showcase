@@ -3,12 +3,14 @@ package com.igorwojda.lastfm.feature.album.presentation
 import android.os.Bundle
 import android.view.View
 import com.igorwojda.lastfm.feature.album.R
+import com.igorwojda.lastfm.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
 import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
 import com.igorwojda.lastfm.feature.base.presentation.extension.withViewModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
@@ -28,6 +30,7 @@ class AlbumDetailFragment : BaseFragment() {
     override val layoutResourceId = R.layout.fragment_album_detail
 
     private val getAlbumUseCase: GetAlbumUseCase by instance()
+    private val picasso: Picasso by instance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,10 +48,27 @@ class AlbumDetailFragment : BaseFragment() {
             observeNotNull(albumLiveData, ::onAlbumLiveData)
             init(artistName, albumName, mbId)
         }
+
+        activity?.title = resources.getString(R.string.album_details)
     }
 
     private fun onAlbumLiveData(albumDomainModel: AlbumDomainModel) {
-        albumNameTextView.text = albumDomainModel.name
-        albumArtistTextView.text = albumDomainModel.artist
+        nameTextView.text = albumDomainModel.name
+        artistTextView.text = albumDomainModel.artist
+        publishedTextView.text = albumDomainModel.wiki?.published
+
+        val url = albumDomainModel.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
+        if (!albumDomainModel.images.isEmpty() && !url.isNullOrEmpty()) {
+            loadImage(url)
+        }
+    }
+
+    private fun loadImage(it: String) {
+        picasso
+            .load(it)
+            .resize(800, 800)
+            .centerCrop()
+            .placeholder(R.drawable.progress_animation)
+            .into(imageView)
     }
 }

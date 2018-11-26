@@ -30,7 +30,6 @@ class AlbumDetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title = resources.getString(R.string.feature_album)
 
         if (savedInstanceState == null) {
             val albumName = intent?.extras?.getString(EXTRA_ALBUM_NAME)

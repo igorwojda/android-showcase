@@ -18,6 +18,11 @@ fun AlbumDataModel.toDomainModel() = AlbumDomainModel(
     mbId = this.mbId,
     name = this.name,
     artist = this.artist,
-    images = this.images.filter { it.size != AlbumDataImageSize.UNKNOWN }.map { it.toDomainModel() },
+    images = this.images.toDomainModel(),
     wiki = this.wiki?.toDomainModel()
 )
+
+fun List<AlbumImageDataModel>.toDomainModel() =
+    filter { it.size != AlbumDataImageSize.UNKNOWN }
+        .filterNot { it.url.isNullOrBlank() }
+        .map { it.toDomainModel() }
