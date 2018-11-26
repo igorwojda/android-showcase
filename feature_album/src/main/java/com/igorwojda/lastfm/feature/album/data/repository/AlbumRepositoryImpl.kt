@@ -3,6 +3,7 @@ package com.igorwojda.lastfm.feature.album.data.repository
 import com.igorwojda.lastfm.feature.album.data.retrofit.AlbumRetrofitService
 import com.igorwojda.lastfm.feature.album.domain.model.OldAlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.repository.AlbumRepository
+import com.squareup.moshi.Json
 
 class AlbumRepositoryImpl(
     private val albumRetrofitService: AlbumRetrofitService
@@ -30,13 +31,27 @@ class AlbumRepositoryImpl(
     }
 }
 
+data class AlbumSearchResponse(
+    val results: AlbumSearchResult
+)
+
 data class AlbumSearchResult(
-    val albummatches: List<Album>
+    @field:Json(name = "albummatches") val albumMatches: AlbumList?
+)
+
+data class AlbumList(
+    val album: List<Album>
 )
 
 data class Album(
     val name: String,
     val artist: String,
-    val id: String,
-    val url: String
+    val mbid: String,
+    val url: String,
+    @field:Json(name = "image") val images: List<LastFmImage> = listOf()
+)
+
+data class LastFmImage(
+    @field:Json(name = "#text") val url: String,
+    val size: String
 )
