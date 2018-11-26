@@ -8,20 +8,18 @@ import retrofit2.http.Query
 
 // Api docs: https://www.last.fm/api/intro
 interface AlbumRetrofitService {
-    @POST("./")
+    @POST("./?method=album.search")
     fun searchAlbum(
         @Query("album") phrase: String,
         @Query("format") format: String = "json",
-        @Query("method") method: String = "album.search",
         @Query("api_key") apiKey: String = "70696db59158cb100370ad30a7a705c1"
     ): Deferred<SearchAlbumResponse>
 
-    @POST("./")
+    @POST("./?method=album.getInfo")
     fun getAlbumInfo(
         @Query("artist") artistName: String,
         @Query("album") albumName: String,
         @Query("format") format: String = "json",
-        @Query("method") method: String = "album.getInfo",
         @Query("api_key") apiKey: String = "70696db59158cb100370ad30a7a705c1"
     ): Deferred<GetAlbumInfoResponse>
 }
