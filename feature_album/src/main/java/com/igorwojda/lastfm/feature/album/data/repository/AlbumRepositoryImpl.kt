@@ -46,12 +46,23 @@ data class AlbumList(
 data class Album(
     val name: String,
     val artist: String,
-    val mbid: String,
     val url: String,
+    @field:Json(name = "mdId") val mbid: String,
     @field:Json(name = "image") val images: List<LastFmImage> = listOf()
 )
 
 data class LastFmImage(
     @field:Json(name = "#text") val url: String,
-    val size: String
+    val size: LastFmImageSize
 )
+
+enum class LastFmImageSize {
+    @field:Json(name = "medium")
+    MEDIUM,
+    @field:Json(name = "small")
+    SMALL,
+    @field:Json(name = "large")
+    LARGE,
+    @field:Json(name = "extralarge")
+    EXTRA_LARGE
+}
