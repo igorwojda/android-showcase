@@ -5,8 +5,9 @@ for long [development live cycle](https://en.wikipedia.org/wiki/Systems_developm
 # Project characteristics
 * 100% Kotlin
 * CA + MVVM (Clean Architecture + Model-View-ViewModel)
-* Feature modules
 * Unit Tests
+* Feature modules
+* Dependency Injection
 * Kotlin Coroutines
 * Utilise many popular libraries from Android ecosystem
 * Takes advantage of most popular static analysis tools
@@ -21,6 +22,7 @@ Project takes full advantage of Kotlin language by maximizing it's usage across 
 [Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl)
 * [Teamcity](https://www.jetbrains.com/teamcity/) [configuration scripts](.teamcity\settings.kts) are written in
 [Kotlin DSL](https://confluence.jetbrains.com/display/TCD18/Kotlin+DSL)
+* Dependency injection is implemented using [KodeinDI](https://kodein.org/di/)
 
 Heavy usage of Kotlin allows to o speed up development process, decrease learning curve and improves project maintainability.
 
