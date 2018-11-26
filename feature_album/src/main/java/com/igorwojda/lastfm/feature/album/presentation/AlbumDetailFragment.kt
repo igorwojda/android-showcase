@@ -3,7 +3,7 @@ package com.igorwojda.lastfm.feature.album.presentation
 import android.os.Bundle
 import android.view.View
 import com.igorwojda.lastfm.feature.album.R
-import com.igorwojda.lastfm.feature.album.domain.model.searchalbum.AlbumDomainModel
+import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
@@ -17,7 +17,7 @@ class AlbumDetailFragment : BaseFragment() {
         private const val EXTRA_ALBUM_NAME = "EXTRA_ALBUM_NAME"
         private const val EXTRA_ARTIST_NAME = "EXTRA_ARTIST_NAME"
 
-        fun newInstance(albumName: String, artistName: String) = instanceOf<AlbumDetailFragment>(
+        fun newInstance(artistName: String, albumName: String) = instanceOf<AlbumDetailFragment>(
             EXTRA_ALBUM_NAME to albumName,
             EXTRA_ARTIST_NAME to artistName
         )
@@ -38,7 +38,7 @@ class AlbumDetailFragment : BaseFragment() {
 
         withViewModel({ AlbumDetailsViewModel(getAlbumUseCase) }) {
             observeNotNull(albumLiveData, ::onAlbumLiveData)
-            init(albumName, artistName)
+            init(artistName, albumName)
         }
     }
 

@@ -14,8 +14,8 @@ class AlbumDetailsActivity : BaseActivity() {
 
         fun getStartIntent(context: Context, artistName: String, albumName: String) =
             Intent(context, AlbumDetailsActivity::class.java).apply {
-                putExtra(EXTRA_ALBUM_NAME, albumName)
                 putExtra(EXTRA_ARTIST_NAME, artistName)
+                putExtra(EXTRA_ALBUM_NAME, albumName)
             }
     }
 
@@ -33,7 +33,7 @@ class AlbumDetailsActivity : BaseActivity() {
             require(!artistName.isNullOrEmpty()) { "artistName is null" }
 
             supportFragmentManager.transaction {
-                replace(R.id.container, AlbumDetailFragment.newInstance(albumName, albumName))
+                replace(R.id.container, AlbumDetailFragment.newInstance(albumName, artistName))
             }
         }
     }

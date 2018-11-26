@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.domain.model.searchalbum
+package com.igorwojda.lastfm.feature.album.domain.model
 
 import com.igorwojda.lastfm.feature.album.domain.enum.AlbumDomainImageSize
 

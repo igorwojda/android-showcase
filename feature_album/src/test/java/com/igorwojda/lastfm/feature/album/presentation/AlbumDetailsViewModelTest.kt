@@ -35,7 +35,7 @@ class AlbumDetailsViewModelTest {
             cut.init()
 
             // then
-            verify(mockSearchAlbumUseCase).execute(ALBUM_ID, artistName)
+            verify(mockSearchAlbumUseCase).execute(artistName, ALBUM_ID)
         }
     }
 }

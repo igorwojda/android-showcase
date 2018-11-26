@@ -5,7 +5,7 @@ import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.igorwojda.lastfm.BuildConfig
 import com.igorwojda.lastfm.feature.album.data.repository.AlbumRepositoryImpl
-import com.igorwojda.lastfm.feature.album.data.retrofit.AlbumRetrofitService
+import com.igorwojda.lastfm.feature.album.data.retrofit.service.AlbumRetrofitService
 import com.igorwojda.lastfm.feature.album.domain.repository.AlbumRepository
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCaseImpl

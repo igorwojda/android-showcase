@@ -28,10 +28,10 @@ class GetAlbumUseCaseTest {
             val albumId = "1"
 
             // when
-            cut.execute(albumId, artistName)
+            cut.execute(artistName, albumId)
 
             // then
-            verify(mockAlbumRepository).getAlbum(albumId, artistName)
+            verify(mockAlbumRepository).getAlbumInfo(artistName, albumId)
         }
     }
 }
