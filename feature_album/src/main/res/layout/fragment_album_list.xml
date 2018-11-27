@@ -6,7 +6,8 @@
 
     <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
                                                              android:layout_height="wrap_content"
-                                                             android:id="@+id/searchTextInput"/>
+                                                             android:id="@+id/searchTextInput"
+                                                             android:hint="@string/search_hint"/>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
