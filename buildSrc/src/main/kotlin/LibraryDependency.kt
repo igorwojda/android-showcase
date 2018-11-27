@@ -20,6 +20,7 @@ private object LibraryVersion {
     const val lifecycleViewModelKtx = "2.0.0"
     const val picasso = "2.71828"
     const val customFloatingActionButton = "2.1.1"
+    const val kAndroid = "0.8.8@aar"
 
     //test
     const val junit = "4.12"
@@ -59,6 +60,7 @@ object LibraryDependency {
     const val picasso = "com.squareup.picasso:picasso:${LibraryVersion.picasso}"
     const val customFloatingActionButton =
         "com.robertlevonyan.view:CustomFloatingActionButton:${LibraryVersion.customFloatingActionButton}"
+    const val kAndroid = "com.pawegio.kandroid:kandroid:${LibraryVersion.kAndroid}"
 
     //test
     const val junit = "junit:junit:${LibraryVersion.junit}"

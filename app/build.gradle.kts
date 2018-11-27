@@ -77,6 +77,7 @@ android {
         implementation(LibraryDependency.lifecycleViewModelKtx)
         implementation(LibraryDependency.picasso)
         implementation(LibraryDependency.customFloatingActionButton)
+        implementation(LibraryDependency.kAndroid)
 
         //test
         testImplementation(LibraryDependency.junit)
