@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.transaction
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
+import com.igorwojda.lastfm.feature.base.presentation.extension.getStringOrThrow
 
 internal class AlbumDetailsActivity : BaseActivity() {
     companion object {
@@ -32,13 +33,9 @@ internal class AlbumDetailsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) {
-            val albumName = intent?.extras?.getString(EXTRA_ALBUM_NAME)
-            require(!albumName.isNullOrEmpty()) { "$EXTRA_ALBUM_NAME is null" }
-
-            val artistName = intent?.extras?.getString(EXTRA_ARTIST_NAME)
-            require(!artistName.isNullOrEmpty()) { "$EXTRA_ARTIST_NAME is null" }
-
-            val mbId = intent?.extras?.getString(EXTRA_MB_ID) ?: ""
+            val albumName = intent.extras.getStringOrThrow(EXTRA_ALBUM_NAME)
+            val artistName = intent.extras.getStringOrThrow(EXTRA_ARTIST_NAME)
+            val mbId = intent.extras?.getString(EXTRA_MB_ID)
 
             supportFragmentManager.transaction {
                 replace(R.id.container, AlbumDetailFragment.newInstance(albumName, artistName, mbId))

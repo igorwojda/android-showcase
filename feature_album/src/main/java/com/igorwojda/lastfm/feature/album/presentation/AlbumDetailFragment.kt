@@ -7,6 +7,7 @@ import com.igorwojda.lastfm.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
+import com.igorwojda.lastfm.feature.base.presentation.extension.getStringOrThrow
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
 import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
 import com.igorwojda.lastfm.feature.base.presentation.extension.withViewModel
@@ -36,13 +37,9 @@ internal class AlbumDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val albumName = arguments?.getString(EXTRA_ALBUM_NAME)
-        require(!albumName.isNullOrEmpty()) { "$EXTRA_ALBUM_NAME is null" }
-
-        val artistName = arguments?.getString(EXTRA_ARTIST_NAME)
-        require(!artistName.isNullOrEmpty()) { "$EXTRA_ARTIST_NAME is null" }
-
-        val mbId = arguments?.getString(EXTRA_MB_ID) ?: ""
+        val albumName = arguments.getStringOrThrow(EXTRA_ALBUM_NAME)
+        val artistName = arguments.getStringOrThrow(EXTRA_ARTIST_NAME)
+        val mbId = arguments?.getString(EXTRA_MB_ID)
 
         // ViewModel injection is not implemented
         withViewModel({ AlbumDetailsViewModel(getAlbumUseCase) }) {
@@ -72,3 +69,4 @@ internal class AlbumDetailFragment : BaseFragment() {
             .into(imageView)
     }
 }
+
