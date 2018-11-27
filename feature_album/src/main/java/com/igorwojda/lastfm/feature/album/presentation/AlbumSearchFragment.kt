@@ -15,7 +15,6 @@ import com.pawegio.kandroid.textWatcher
 import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
-import timber.log.Timber
 
 internal class AlbumSearchFragment : BaseFragment() {
     companion object {
@@ -65,7 +64,6 @@ internal class AlbumSearchFragment : BaseFragment() {
     }
 
     private fun onAlbumListLiveData(list: List<AlbumDomainModel>) {
-        Timber.d("AAA onAlbumListLiveData")
         albumAdapter.albums = list
         loadingSpinner.visible = false
     }

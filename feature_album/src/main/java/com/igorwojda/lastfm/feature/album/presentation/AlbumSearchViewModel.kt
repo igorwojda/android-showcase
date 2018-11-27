@@ -12,7 +12,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import timber.log.Timber
 
 internal class AlbumSearchViewModel(
     private val searchAlbumUseCase: SearchAlbumUseCase
@@ -22,16 +21,12 @@ internal class AlbumSearchViewModel(
     private var searchAlbumJob: Job? = null
 
     fun searchAlbum(phrase: String) {
-        Timber.d("AAA searchAlbum $phrase")
         searchAlbumJob?.cancel()
 
         searchAlbumJob = runBlocking {
             GlobalScope.launch {
                 delay(debounceDelay)
-                Timber.d("AAA ${Thread.currentThread()}")
-                Timber.d("AAA isActive: ${searchAlbumJob?.isActive} isCOmpleted ${searchAlbumJob?.isCompleted} isCancelled ${searchAlbumJob?.isCancelled}")
                 searchAlbumUseCase.execute(phrase).also { albumSearchMutableLiveData.postValue(it) }
-                Timber.d("AAA -------")
             }
         }
     }
