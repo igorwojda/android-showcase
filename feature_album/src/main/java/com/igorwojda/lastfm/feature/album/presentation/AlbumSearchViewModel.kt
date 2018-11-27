@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCase
+import com.igorwojda.lastfm.feature.base.presentation.BaseViewModel
 import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
@@ -15,12 +16,10 @@ import timber.log.Timber
 
 internal class AlbumSearchViewModel(
     private val searchAlbumUseCase: SearchAlbumUseCase
-) : ViewModel() {
+) : BaseViewModel() {
     private val albumSearchMutableLiveData = MutableLiveData<List<AlbumDomainModel>>()
     val albumSearchLiveData = albumSearchMutableLiveData.toLiveData()
     private var searchAlbumJob: Job? = null
-
-    private val DEBOUNCE_DELAY = 300L
 
     fun searchAlbum(phrase: String) {
         Timber.d("AAA searchAlbum $phrase")
@@ -28,7 +27,7 @@ internal class AlbumSearchViewModel(
 
         searchAlbumJob = runBlocking {
             GlobalScope.launch {
-                delay(DEBOUNCE_DELAY)
+                delay(debounceDelay)
                 Timber.d("AAA ${Thread.currentThread()}")
                 Timber.d("AAA isActive: ${searchAlbumJob?.isActive} isCOmpleted ${searchAlbumJob?.isCompleted} isCancelled ${searchAlbumJob?.isCancelled}")
                 searchAlbumUseCase.execute(phrase).also { albumSearchMutableLiveData.postValue(it) }

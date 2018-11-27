@@ -11,10 +11,6 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class AlbumDetailsViewModelTest {
-    companion object {
-        const val ALBUM_ID = "1"
-    }
-
     @Mock
     internal lateinit var mockSearchAlbumUseCase: GetAlbumUseCaseImpl
 
