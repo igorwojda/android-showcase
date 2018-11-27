@@ -12,7 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class AlbumSearchViewModelTest {
     @Mock
-    lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCaseImpl
+    internal lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCaseImpl
 
     private lateinit var cut: AlbumSearchViewModel
 
@@ -28,10 +28,11 @@ class AlbumSearchViewModelTest {
             val phrase = "abc"
 
             // when
-            cut.init()
+            cut.searchAlbum(phrase)
 
             // then
             verify(mockGetAlbumSearchUseCase).execute(phrase)
         }
     }
 }
+

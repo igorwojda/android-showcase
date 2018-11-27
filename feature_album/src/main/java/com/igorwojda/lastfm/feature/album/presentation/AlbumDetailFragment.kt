@@ -47,7 +47,7 @@ internal class AlbumDetailFragment : BaseFragment() {
         // ViewModel injection is not implemented
         withViewModel({ AlbumDetailsViewModel(getAlbumUseCase) }) {
             observeNotNull(albumLiveData, ::onAlbumLiveData)
-            init(artistName, albumName, mbId)
+            getAlbum(artistName, albumName, mbId)
         }
 
         activity?.title = resources.getString(R.string.album_details)

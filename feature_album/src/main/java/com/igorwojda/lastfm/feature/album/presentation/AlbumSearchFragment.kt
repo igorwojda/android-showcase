@@ -1,6 +1,7 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -10,8 +11,11 @@ import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
 import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
+import com.pawegio.kandroid.textWatcher
+import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
+import timber.log.Timber
 
 internal class AlbumSearchFragment : BaseFragment() {
     companion object {
@@ -22,6 +26,7 @@ internal class AlbumSearchFragment : BaseFragment() {
 
     private val viewModelFactory: AlbumListViewModelFactory by instance()
     private val albumAdapter: AlbumAdapter by instance()
+    private lateinit var albumSearchViewModel: AlbumSearchViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,15 +48,25 @@ internal class AlbumSearchFragment : BaseFragment() {
             adapter = albumAdapter
         }
 
-        // ViewModel injection is not implemented
-        ViewModelProviders.of(this, viewModelFactory).get(AlbumSearchViewModel::class.java).apply {
-            observeNotNull(albumSearchLiveData, ::onAlbumListLiveData)
-            init()
+        searchTextInput.textWatcher {
+            afterTextChanged { editable: Editable? ->
+                editable?.let { albumSearchViewModel.searchAlbum(it.toString()) }
+                loadingSpinner.visible = true
+            }
         }
+
+        // ViewModel injection is not implemented
+        albumSearchViewModel = ViewModelProviders.of(this, viewModelFactory).get(AlbumSearchViewModel::class.java)
+        albumSearchViewModel.apply {
+            observeNotNull(albumSearchLiveData, ::onAlbumListLiveData)
+        }
+
+        loadingSpinner.visible = false
     }
 
     private fun onAlbumListLiveData(list: List<AlbumDomainModel>) {
+        Timber.d("AAA onAlbumListLiveData")
         albumAdapter.albums = list
-        loadingSpinner.visibility = View.GONE
+        loadingSpinner.visible = false
     }
 }

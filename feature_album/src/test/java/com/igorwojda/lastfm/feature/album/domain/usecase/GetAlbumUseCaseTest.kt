@@ -12,7 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class GetAlbumUseCaseTest {
     @Mock
-    lateinit var mockAlbumRepository: AlbumRepositoryImpl
+    internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
 
     private lateinit var cut: GetAlbumUseCaseImpl
 

@@ -16,7 +16,7 @@ class AlbumDetailsViewModelTest {
     }
 
     @Mock
-    lateinit var mockSearchAlbumUseCase: GetAlbumUseCaseImpl
+    internal lateinit var mockSearchAlbumUseCase: GetAlbumUseCaseImpl
 
     private lateinit var cut: AlbumDetailsViewModel
 
@@ -36,7 +36,7 @@ class AlbumDetailsViewModelTest {
             val mbId = "123"
 
             // when
-            cut.init(artistName, albumName, mbId)
+            cut.getAlbum(artistName, albumName, mbId)
 
             // then
             verify(mockSearchAlbumUseCase).execute(artistName, albumName, mbId)
