@@ -69,4 +69,3 @@ internal class AlbumDetailFragment : BaseFragment() {
             .into(imageView)
     }
 }
-
