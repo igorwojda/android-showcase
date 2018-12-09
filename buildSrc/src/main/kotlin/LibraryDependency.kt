@@ -1,9 +1,7 @@
 private object LibraryVersion {
     //core
 
-    //Kodein 6.0.0 lack kodein-di-core-jvm dependency due to new build system, so it have to be added manually.
-    //This dependency should be redundant in next version of the library https://github.com/Kodein-Framework/Kodein-DI/issues/165#issuecomment-441181384
-    const val kodein = "6.0.0"
+    const val kodein = "6.0.1"
     const val retrofit = "2.5.0"
     const val kotlinCoroutineAdapter = "0.9.2"
     const val stetho = "1.5.0"
@@ -36,7 +34,6 @@ object LibraryDependency {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${CoreVersion.kotlin}"
     const val kodein = "org.kodein.di:kodein-di-generic-jvm:${LibraryVersion.kodein}"
     //This dependency may be redundant in Kodein versions above 6.0.0
-    const val kodeinCore = "org.kodein.di:kodein-di-core-jvm:${LibraryVersion.kodein}"
     const val kodeinAndroidX = "org.kodein.di:kodein-di-framework-android-x:${LibraryVersion.kodein}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${LibraryVersion.retrofit}"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${LibraryVersion.retrofit}"

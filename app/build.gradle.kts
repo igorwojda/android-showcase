@@ -56,7 +56,6 @@ android {
         //core
         implementation(LibraryDependency.kotlin)
         implementation(LibraryDependency.kodein)
-        implementation(LibraryDependency.kodeinCore)
         implementation(LibraryDependency.kodeinAndroidX)
         implementation(LibraryDependency.retrofit)
         implementation(LibraryDependency.retrofitMoshiConverter)
