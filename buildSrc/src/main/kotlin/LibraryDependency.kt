@@ -22,7 +22,7 @@ private object LibraryVersion {
 
     //test
     const val junit = "4.12"
-    const val kluent = "1.43"
+    const val kluent = "1.44"
     const val testRunner = "1.0.2"
     const val espressoCore = "3.0.2"
     const val mockito = "2.23.4"
