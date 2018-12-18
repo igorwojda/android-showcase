@@ -1,3 +1,8 @@
+import ApplicationConfig.buildToolsVersion
+import ApplicationConfig.compileSdkVersion
+import ApplicationConfig.minSdkVersion
+import ApplicationConfig.targetSdkVersion
+import ApplicationConfig.testInstrumentationRunner
 import ApplicationConfig.versionCode
 import ApplicationConfig.versionName
 import GradlePluginId.androidApplication
@@ -5,6 +10,7 @@ import GradlePluginId.kotlinAndroid
 import GradlePluginId.kotlinAndroidExtensions
 import com.android.build.gradle.AndroidConfig
 import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 plugins {
@@ -49,10 +55,6 @@ android {
     }
 
     dependencies {
-        //module
-        implementation(project(ModuleDependency.featureBase))
-        implementation(project(ModuleDependency.featureAlbum))
-
         //core
         implementation(LibraryDependency.kotlin)
         implementation(LibraryDependency.kodein)

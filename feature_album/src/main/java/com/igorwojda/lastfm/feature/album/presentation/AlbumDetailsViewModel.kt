@@ -1,8 +1,10 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
+import androidx.lifecycle.MutableLiveData
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseViewModel
+import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
