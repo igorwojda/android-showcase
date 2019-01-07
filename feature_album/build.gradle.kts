@@ -1,14 +1,3 @@
-import ApplicationConfig.testInstrumentationRunner
-import ApplicationConfig.versionCode
-import ApplicationConfig.versionName
-import GradlePluginId.androidFeature
-import GradlePluginId.kotlinAndroid
-import GradlePluginId.kotlinAndroidExtensions
-import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.include
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
-
 plugins {
     id(GradlePluginId.androidFeature)
     id(GradlePluginId.kotlinAndroid)

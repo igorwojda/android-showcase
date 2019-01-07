@@ -1,12 +1,3 @@
-import ApplicationConfig.versionCode
-import ApplicationConfig.versionName
-import GradlePluginId.androidApplication
-import GradlePluginId.kotlinAndroid
-import GradlePluginId.kotlinAndroidExtensions
-import com.android.build.gradle.AndroidConfig
-import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
-
 plugins {
     id(GradlePluginId.androidApplication)
     id(GradlePluginId.kotlinAndroid)
