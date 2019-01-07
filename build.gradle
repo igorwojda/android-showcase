@@ -1,0 +1,2 @@
+//Projects uses build.gradle.kts, however empty build.gradle file is required by gradle to function correctly.
+
