@@ -1,3 +1,12 @@
+import ApplicationConfig.buildToolsVersion
+import ApplicationConfig.compileSdkVersion
+import ApplicationConfig.minSdkVersion
+import ApplicationConfig.targetSdkVersion
+import ApplicationConfig.testInstrumentationRunner
+import ApplicationConfig.versionCode
+import ApplicationConfig.versionName
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id(GradlePluginId.androidApplication)
     id(GradlePluginId.kotlinAndroid)
@@ -47,7 +56,6 @@ android {
         //core
         implementation(LibraryDependency.kotlin)
         implementation(LibraryDependency.kodein)
-        implementation(LibraryDependency.kodeinCore)
         implementation(LibraryDependency.kodeinAndroidX)
         implementation(LibraryDependency.retrofit)
         implementation(LibraryDependency.retrofitMoshiConverter)
