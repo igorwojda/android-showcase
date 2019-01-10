@@ -71,7 +71,7 @@ better IDE support.
 ##  Centralized dependencies
 Gradle does pretty good job regarding to [dependency management](https://docs.gradle.org/current/userguide/introduction_dependency_management.html).
 For projects that include multiple modules, we also need to structure our project in proper way so simple tasks like upgrading library
-version in 20 modules are easy to accomplish (single place code change). To achieve this project utilizes [project-level properties](app/src/main/kotlin)
+version in 20 modules are easy to accomplish (single place code change). To achieve this project utilizes [project-level properties](buildSrc/src/main/kotlin)
 that are shared across all modules.
 
 ## Dependency code completion
@@ -155,8 +155,6 @@ once (no matter in which project). Usually this is best way to go, unless you ha
 
 `./gradlew ktlintApplyToIdea` - The task generates IntelliJ IDEA (or Android Studio) Kotlin style files in the project `.idea/` folder.
 This allows to keep consistent formatting in a single project and have to be runned separately for each project.
-
-
 
 ### detekt
 `./gradlew detekt` - run detekt check
