@@ -158,3 +158,11 @@ This allows to keep consistent formatting in a single project and have to be run
 
 ### detekt
 `./gradlew detekt` - run detekt check
+
+# Contribute
+If you think something is incorrect or you have found a new puzzle, have a better solution please create PR or open new issue.
+
+# Follow me
+![avatar.png](misc/image/avatar.png)
+
+[Twitter](https://twitter.com/igorwojda) | [Medium](https://medium.com/@igorwojda) | [Linkedin](https://www.linkedin.com/in/igorwojda/)
