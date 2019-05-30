@@ -1,6 +1,5 @@
 private object LibraryVersion {
     //core
-
     const val kodein = "6.0.1"
     const val retrofit = "2.5.0"
     const val kotlinCoroutineAdapter = "0.9.2"

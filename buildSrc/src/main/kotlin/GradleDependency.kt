@@ -1,5 +1,5 @@
 object GradlePluginVersion {
-    const val androidGradle = "3.2.1"
+    const val androidGradle = "3.4.1"
 
     const val ktlintGradle = "6.3.1"
     const val detekt = "1.0.0-RC11"

@@ -1,10 +1,3 @@
-import ApplicationConfig.buildToolsVersion
-import ApplicationConfig.compileSdkVersion
-import ApplicationConfig.minSdkVersion
-import ApplicationConfig.targetSdkVersion
-import ApplicationConfig.testInstrumentationRunner
-import ApplicationConfig.versionCode
-import ApplicationConfig.versionName
 import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 
 plugins {
@@ -47,45 +40,45 @@ android {
             unitTests.isReturnDefaultValues = TestOptions.isReturnDefaultValues
         }
     }
+}
 
-    dependencies {
-        //module
-        implementation(project(ModuleDependency.featureBase))
-        implementation(project(ModuleDependency.featureAlbum))
+dependencies {
+    //module
+    implementation(project(ModuleDependency.featureBase))
+    implementation(project(ModuleDependency.featureAlbum))
 
-        //core
-        implementation(LibraryDependency.kotlin)
-        implementation(LibraryDependency.kodein)
-        implementation(LibraryDependency.kodeinAndroidX)
-        implementation(LibraryDependency.retrofit)
-        implementation(LibraryDependency.retrofitMoshiConverter)
-        implementation(LibraryDependency.retrofitCoroutineAdapter)
-        implementation(LibraryDependency.stetho)
-        implementation(LibraryDependency.stethoOkHttp)
-        implementation(LibraryDependency.timber)
-        implementation(LibraryDependency.appCompact)
-        implementation(LibraryDependency.supportConstraintLayout)
-        implementation(LibraryDependency.recyclerView)
-        implementation(LibraryDependency.supportMaterial)
-        implementation(LibraryDependency.coroutinesAndroid)
-        implementation(LibraryDependency.lifecycleExtensions)
-        kapt(LibraryDependency.lifecycleCompiler)
-        implementation(LibraryDependency.coordinatorLayout)
-        implementation(LibraryDependency.coreKtx)
-        implementation(LibraryDependency.fragmentKtx)
-        implementation(LibraryDependency.lifecycleViewModelKtx)
-        implementation(LibraryDependency.picasso)
-        implementation(LibraryDependency.customFloatingActionButton)
-        implementation(LibraryDependency.kAndroid)
+    //core
+    implementation(LibraryDependency.kotlin)
+    implementation(LibraryDependency.kodein)
+    implementation(LibraryDependency.kodeinAndroidX)
+    implementation(LibraryDependency.retrofit)
+    implementation(LibraryDependency.retrofitMoshiConverter)
+    implementation(LibraryDependency.retrofitCoroutineAdapter)
+    implementation(LibraryDependency.stetho)
+    implementation(LibraryDependency.stethoOkHttp)
+    implementation(LibraryDependency.timber)
+    implementation(LibraryDependency.appCompact)
+    implementation(LibraryDependency.supportConstraintLayout)
+    implementation(LibraryDependency.recyclerView)
+    implementation(LibraryDependency.supportMaterial)
+    implementation(LibraryDependency.coroutinesAndroid)
+    implementation(LibraryDependency.lifecycleExtensions)
+//    kapt(LibraryDependency.lifecycleCompiler)
+    implementation(LibraryDependency.coordinatorLayout)
+    implementation(LibraryDependency.coreKtx)
+    implementation(LibraryDependency.fragmentKtx)
+    implementation(LibraryDependency.lifecycleViewModelKtx)
+    implementation(LibraryDependency.picasso)
+    implementation(LibraryDependency.customFloatingActionButton)
+    implementation(LibraryDependency.kAndroid)
 
-        //test
-        testImplementation(LibraryDependency.junit)
-        androidTestImplementation(LibraryDependency.testRunner)
-        androidTestImplementation(LibraryDependency.espressoCore)
-        testImplementation(LibraryDependency.kluent)
-        androidTestImplementation(LibraryDependency.kluentAndroid)
-        testImplementation(LibraryDependency.mockitoInline)
-        androidTestImplementation(LibraryDependency.mockitoAndroid)
-        testImplementation(LibraryDependency.mockitoKotlin)
-    }
+    //test
+    testImplementation(LibraryDependency.junit)
+    androidTestImplementation(LibraryDependency.testRunner)
+    androidTestImplementation(LibraryDependency.espressoCore)
+    testImplementation(LibraryDependency.kluent)
+    androidTestImplementation(LibraryDependency.kluentAndroid)
+    testImplementation(LibraryDependency.mockitoInline)
+    androidTestImplementation(LibraryDependency.mockitoAndroid)
+    testImplementation(LibraryDependency.mockitoKotlin)
 }

@@ -1,3 +1,12 @@
+import ApplicationConfig.buildToolsVersion
+import ApplicationConfig.compileSdkVersion
+import ApplicationConfig.minSdkVersion
+import ApplicationConfig.targetSdkVersion
+import ApplicationConfig.testInstrumentationRunner
+import ApplicationConfig.versionCode
+import ApplicationConfig.versionName
+import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
+
 plugins {
     id(GradlePluginId.androidFeature)
     id(GradlePluginId.kotlinAndroid)
@@ -52,7 +61,7 @@ dependencies {
     implementation(LibraryDependency.supportMaterial)
     implementation(LibraryDependency.coroutinesAndroid)
     implementation(LibraryDependency.lifecycleExtensions)
-    kapt(LibraryDependency.lifecycleCompiler)
+//    kapt(LibraryDependency.lifecycleCompiler)
     implementation(LibraryDependency.coordinatorLayout)
     implementation(LibraryDependency.coreKtx)
     implementation(LibraryDependency.fragmentKtx)
