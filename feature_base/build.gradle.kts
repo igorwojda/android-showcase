@@ -44,6 +44,8 @@ android {
     }
 }
 
+androidExtensions { isExperimental = true }
+
 dependencies {
     //core
     implementation(LibraryDependency.kotlin)

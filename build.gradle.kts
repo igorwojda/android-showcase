@@ -33,7 +33,7 @@ plugins {
 
 //All kotlin modules
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
 task("staticCheck") {
