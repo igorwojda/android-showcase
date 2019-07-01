@@ -8,6 +8,7 @@ import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter.MyViewHolder
+import com.igorwojda.lastfm.feature.base.presentation.extension.setOnDebouncedClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 import kotlin.properties.Delegates
@@ -19,11 +20,11 @@ internal class AlbumAdapter(
         notifyDataSetChanged()
     }
 
-    private var onClickListener: ((album: AlbumDomainModel) -> Unit)? = null
+    private var onDebouncedClickListener: ((album: AlbumDomainModel) -> Unit)? = null
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(albumDomainModel: AlbumDomainModel) {
-            itemView.setOnClickListener { onClickListener?.invoke(albumDomainModel) }
+            itemView.setOnDebouncedClickListener { onDebouncedClickListener?.invoke(albumDomainModel) }
 
             val url = albumDomainModel.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
             if (!albumDomainModel.images.isEmpty() && !url.isNullOrEmpty()) {
@@ -54,7 +55,7 @@ internal class AlbumAdapter(
 
     override fun getItemCount(): Int = albums.size
 
-    fun setOnClickListener(listener: (album: AlbumDomainModel) -> Unit) {
-        this.onClickListener = listener
+    fun setOnDebouncedClickListener(listener: (album: AlbumDomainModel) -> Unit) {
+        this.onDebouncedClickListener = listener
     }
 }

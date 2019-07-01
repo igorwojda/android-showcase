@@ -30,7 +30,7 @@ internal class AlbumSearchFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        albumAdapter.setOnClickListener { albumDomainModel ->
+        albumAdapter.setOnDebouncedClickListener { albumDomainModel ->
             context?.let {
                 startActivity(
                     AlbumDetailsActivity.getStartIntent(
