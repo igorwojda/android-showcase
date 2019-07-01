@@ -66,17 +66,25 @@ task("staticCheck") {
     }
 }
 
-/*Do not show pre-release version of library in generated dependency report*/
+
 tasks {
+    // Gradle versions plugin configuration
     "dependencyUpdates"(DependencyUpdatesTask::class) {
         resolutionStrategy {
             componentSelection {
                 all {
+                    // Do not show pre-release version of library in generated dependency report
                     val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview")
                         .map { qualifier -> Regex("(?i).*[.-]$qualifier[.\\d-]*") }
                         .any { it.matches(candidate.version) }
                     if (rejected) {
                         reject("Release candidate")
+                    }
+
+                    // kAndroid newest version is 0.8.8 (jcenter), however maven repository contains version 0.8.7 and
+                    // plugin fails to recognize it correctly
+                    if (candidate.group == "com.pawegio.kandroid") {
+                        reject("version ${candidate.version} is broken for ${candidate.group}'")
                     }
                 }
             }
