@@ -111,7 +111,7 @@ https://blog.novatec-gmbh.de/name-android-colors-palettes/
 
 # Tools
 
-## Up to date dependencies
+## Dependency version checker
 By running `./gradlew dependencyUpdates` task (from [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin)) we can
 easily list all outdated dependencies in the project.
 
