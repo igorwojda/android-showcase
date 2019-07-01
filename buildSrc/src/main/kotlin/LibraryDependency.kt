@@ -17,7 +17,7 @@ private object LibraryVersion {
     const val lifecycleViewModelKtx = "2.0.0"
     const val picasso = "2.71828"
     const val customFloatingActionButton = "2.1.1"
-    const val kAndroid = "0.8.8"
+    const val kAndroid = "0.8.8@aar"
 
     //test
     const val junit = "4.12"
