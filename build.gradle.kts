@@ -3,10 +3,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
+        // Android plugin & support libraries
         google()
+
+        // Main open-source repository
         jcenter()
 
-        //Ktlint Gradle
+        // Ktlint Gradle
         maven("https://plugins.gradle.org/m2/")
     }
 
@@ -14,7 +17,6 @@ buildscript {
         classpath(GradleDependency.androidGradle)
         classpath(GradleDependency.kotlin)
         classpath(GradleDependency.ktlintGradle)
-
     }
 }
 
@@ -31,7 +33,28 @@ plugins {
     id(GradlePluginId.gradleVersionPlugin) version GradlePluginVersion.gradleVersionPlugin
 }
 
-//All kotlin modules
+subprojects {
+    tasks.withType<Test> {
+        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+    }
+
+    plugins.apply(GradlePluginId.ktlintGradle)
+
+    ktlint {
+        version.set(CoreVersion.ktlint)
+        verbose.set(true)
+        android.set(true)
+    }
+
+    plugins.apply(GradlePluginId.detekt)
+
+    detekt {
+        config = files("${project.rootDir}/config/detekt.yml")
+        parallel = true
+    }
+}
+
+// All kotlin modules
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }

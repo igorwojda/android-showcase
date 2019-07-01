@@ -1,7 +1,7 @@
 private object LibraryVersion {
     //core
     const val kodein = "6.0.1"
-    const val retrofit = "2.5.0"
+    const val retrofit = "2.6.0"
     const val kotlinCoroutineAdapter = "0.9.2"
     const val stetho = "1.5.0"
     const val timber = "4.7.1"
@@ -10,9 +10,9 @@ private object LibraryVersion {
     const val coordinatorLayout = "1.0.0"
     const val material = "1.0.0"
     const val constraintLayout = "1.1.3"
-    const val coroutinesAndroid = "1.0.1"
+    const val coroutinesAndroid = "1.2.2"
     const val lifecycle = "1.1.1"
-    const val coreKtx = "1.0.1"
+    const val coreKtx = "1.0.2"
     const val fragmentKtx = "1.0.0"
     const val lifecycleViewModelKtx = "2.0.0"
     const val picasso = "2.71828"
@@ -21,11 +21,11 @@ private object LibraryVersion {
 
     //test
     const val junit = "4.12"
-    const val kluent = "1.44"
+    const val kluent = "1.51"
     const val testRunner = "1.0.2"
     const val espressoCore = "3.0.2"
-    const val mockito = "2.23.4"
-    const val mockitoKotlin = "2.0.0"
+    const val mockito = "2.28.2"
+    const val mockitoKotlin = "2.1.0"
 }
 
 object LibraryDependency {

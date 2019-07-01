@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id(GradlePluginId.androidApplication)
     id(GradlePluginId.kotlinAndroid)
@@ -25,7 +23,6 @@ android {
         getByName("release") {
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             proguardFiles("proguard-android.txt", "proguard-rules.pro")
-
         }
 
         getByName("debug") {
@@ -50,11 +47,11 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    //module
+    // module
     implementation(project(ModuleDependency.featureBase))
     implementation(project(ModuleDependency.featureAlbum))
 
-    //core
+    // core
     implementation(LibraryDependency.kotlin)
     implementation(LibraryDependency.kodein)
     implementation(LibraryDependency.kodeinAndroidX)
@@ -79,7 +76,7 @@ dependencies {
     implementation(LibraryDependency.customFloatingActionButton)
     implementation(LibraryDependency.kAndroid)
 
-    //test
+    // test
     testImplementation(LibraryDependency.junit)
     androidTestImplementation(LibraryDependency.testRunner)
     androidTestImplementation(LibraryDependency.espressoCore)

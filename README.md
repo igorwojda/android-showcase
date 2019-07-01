@@ -5,6 +5,8 @@ for long [development live cycle](https://en.wikipedia.org/wiki/Systems_developm
 # Project characteristics
 * 100% Kotlin
 * CA + MVVM (Clean Architecture + Model-View-ViewModel)
+* AndroidX support libraries
+* Android Architecture components
 * Unit Tests
 * Feature modules
 * Dependency Injection
@@ -13,7 +15,6 @@ for long [development live cycle](https://en.wikipedia.org/wiki/Systems_developm
 * Takes advantage of most popular static analysis tools
 * Gradle Script Kotlin
 * Gradle dependency autocompletion
-* AndroidX support libraries
 
 # Kotlin
 Project takes full advantage of Kotlin language by maximizing it's usage across project:
@@ -25,10 +26,6 @@ Project takes full advantage of Kotlin language by maximizing it's usage across 
 * Dependency injection is implemented using [KodeinDI](https://kodein.org/di/)
 
 Heavy usage of Kotlin allows to o speed up development process, decrease learning curve and improves project maintainability.
-
-# CI configuration
-CI configuration is stored in the repository. This approach allows to easily update CI build configuration and validate it's correctness
-together with each PR before merging the code.
 
 # Architecture
 Some architectural decisions may look like overkill for such small project, however they will scale very well for a project with long live
@@ -63,6 +60,10 @@ need to define additional lint check to make sure that dependency rule is protec
 Finally due to proper layer separation we can easily swap libraries by modifying only small part fo the application eg. Retrofit can
 be used instead of Fuel - only data layer will be affected, no additional code change is required in other layers (presentation/domain)
 
+# CI configuration
+CI configuration is stored in the repository. This approach allows to easily update CI build configuration and validate it's correctness
+together with each PR before merging the code.
+
 # Gradle
 ## Gradle Kotlin DLS
 [Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl) provides statically-typed approach that allows many real-time code checks and
@@ -95,7 +96,6 @@ implementation(LibraryDependency.supportAppCompact)
 implementation(LibraryDependency.timber)
 ```
 
-[module level]
 This allows to unify libraries versions across project and easily share them across all the modules.
 
 # Color management
@@ -160,7 +160,7 @@ This allows to keep consistent formatting in a single project and have to be run
 `./gradlew detekt` - run detekt check
 
 # Contribute
-If you think something is incorrect or you have found a new puzzle, have a better solution please create PR or open new issue.
+If you think something is incorrect or you have found a better solution please create PR or open a new issue.
 
 # Follow me
 ![avatar.png](misc/image/avatar.png)

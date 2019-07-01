@@ -34,8 +34,10 @@ internal class AlbumAdapter(
         }
 
         private fun loadImage(it: String) {
+            val imageSize = 400
+
             picasso.load(it)
-                .resize(400, 400)
+                .resize(imageSize, imageSize)
                 .centerCrop()
                 .into(itemView.imageView)
         }

@@ -56,14 +56,16 @@ internal class AlbumDetailFragment : BaseFragment() {
         publishedTextView.text = albumDomainModel.wiki?.published
 
         val url = albumDomainModel.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
-        if (!albumDomainModel.images.isEmpty() && !url.isNullOrEmpty()) {
+        if (albumDomainModel.images.isNotEmpty() && !url.isNullOrEmpty()) {
             loadImage(url)
         }
     }
 
     private fun loadImage(it: String) {
+        val imageSize = 800
+
         picasso.load(it)
-            .resize(800, 800)
+            .resize(imageSize, imageSize)
             .centerCrop()
             .placeholder(R.drawable.progress_animation)
             .into(imageView)

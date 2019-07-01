@@ -1,12 +1,3 @@
-import ApplicationConfig.buildToolsVersion
-import ApplicationConfig.compileSdkVersion
-import ApplicationConfig.minSdkVersion
-import ApplicationConfig.targetSdkVersion
-import ApplicationConfig.testInstrumentationRunner
-import ApplicationConfig.versionCode
-import ApplicationConfig.versionName
-import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
-
 plugins {
     id(GradlePluginId.androidFeature)
     id(GradlePluginId.kotlinAndroid)
@@ -31,7 +22,6 @@ android {
         getByName("release") {
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             proguardFiles("proguard-android.txt", "proguard-rules.pro")
-
         }
 
         getByName("debug") {
@@ -47,7 +37,7 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    //core
+    // core
     implementation(LibraryDependency.kotlin)
     implementation(LibraryDependency.kodein)
     implementation(LibraryDependency.kodeinAndroidX)
@@ -72,7 +62,7 @@ dependencies {
     implementation(LibraryDependency.customFloatingActionButton)
     implementation(LibraryDependency.kAndroid)
 
-    //test
+    // test
     testImplementation(LibraryDependency.junit)
     androidTestImplementation(LibraryDependency.testRunner)
     androidTestImplementation(LibraryDependency.espressoCore)
