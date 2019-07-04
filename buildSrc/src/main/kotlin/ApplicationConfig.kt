@@ -9,6 +9,7 @@ object ApplicationConfig {
 
     const val id = "com.igorwojda.lastfm"
     const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    const val supportLibraryVectorDrawables = true
 }
 
 interface BuildType {
@@ -24,5 +25,5 @@ object BuildTypeRelease : BuildType {
 }
 
 object TestOptions {
-    val isReturnDefaultValues = true
+    const val isReturnDefaultValues = true
 }

@@ -17,6 +17,7 @@ android {
         versionCode = ApplicationConfig.versionCode
         versionName = ApplicationConfig.versionName
         testInstrumentationRunner = ApplicationConfig.testInstrumentationRunner
+        vectorDrawables.useSupportLibrary = ApplicationConfig.supportLibraryVectorDrawables
     }
 
     buildTypes {
