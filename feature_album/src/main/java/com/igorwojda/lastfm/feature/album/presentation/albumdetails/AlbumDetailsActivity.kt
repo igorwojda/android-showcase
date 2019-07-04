@@ -9,6 +9,7 @@ import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
 import com.igorwojda.lastfm.feature.base.presentation.extension.getStringOrThrow
 
 internal class AlbumDetailsActivity : BaseActivity() {
+
     companion object {
         private const val EXTRA_ALBUM_NAME = "EXTRA_ALBUM_NAME"
         private const val EXTRA_ARTIST_NAME = "EXTRA_ARTIST_NAME"

@@ -8,6 +8,7 @@ import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
 
 class AlbumSearchActivity : BaseActivity() {
+
     companion object {
         fun newIntent(context: Context) = Intent(context, AlbumSearchActivity::class.java)
     }

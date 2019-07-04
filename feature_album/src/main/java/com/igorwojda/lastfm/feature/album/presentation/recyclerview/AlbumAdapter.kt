@@ -16,6 +16,7 @@ import kotlin.properties.Delegates
 internal class AlbumAdapter(
     private val picasso: Picasso
 ) : RecyclerView.Adapter<MyViewHolder>() {
+
     var albums by Delegates.observable(listOf<AlbumDomainModel>()) { _, _, _ ->
         notifyDataSetChanged()
     }

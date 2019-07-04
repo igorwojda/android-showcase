@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
 internal class AlbumSearchFragment : BaseFragment() {
+
     companion object {
         fun newInstance() = instanceOf<AlbumSearchFragment>()
     }

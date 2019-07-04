@@ -16,6 +16,7 @@ import kotlinx.coroutines.runBlocking
 internal class AlbumSearchViewModel(
     private val searchAlbumUseCase: SearchAlbumUseCase
 ) : BaseViewModel() {
+
     private val albumSearchMutableLiveData = MutableLiveData<List<AlbumDomainModel>>()
     val albumSearchLiveData = albumSearchMutableLiveData.toLiveData()
     private var searchAlbumJob: Job? = null

@@ -4,6 +4,7 @@ import com.igorwojda.lastfm.feature.album.domain.enum.AlbumDomainImageSize
 import com.squareup.moshi.Json
 
 internal enum class AlbumDataImageSize {
+
     @field:Json(name = "medium")
     MEDIUM,
     @field:Json(name = "small")

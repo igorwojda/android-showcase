@@ -4,6 +4,7 @@ import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.repository.AlbumRepository
 
 internal interface GetAlbumUseCase {
+
     suspend fun execute(
         artistName: String,
         albumName: String,

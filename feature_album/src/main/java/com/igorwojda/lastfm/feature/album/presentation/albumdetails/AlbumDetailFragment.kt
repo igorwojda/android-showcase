@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
 internal class AlbumDetailFragment : BaseFragment() {
+
     companion object {
         private const val EXTRA_ALBUM_NAME = "EXTRA_ALBUM_NAME"
         private const val EXTRA_ARTIST_NAME = "EXTRA_ARTIST_NAME"

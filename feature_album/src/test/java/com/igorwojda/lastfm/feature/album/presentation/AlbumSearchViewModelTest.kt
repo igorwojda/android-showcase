@@ -12,6 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class AlbumSearchViewModelTest {
+
     @Mock
     internal lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCaseImpl
 

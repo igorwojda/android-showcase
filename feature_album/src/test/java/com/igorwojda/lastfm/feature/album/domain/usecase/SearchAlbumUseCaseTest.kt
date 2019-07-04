@@ -11,6 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class SearchAlbumUseCaseTest {
+
     @Mock
     internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
 

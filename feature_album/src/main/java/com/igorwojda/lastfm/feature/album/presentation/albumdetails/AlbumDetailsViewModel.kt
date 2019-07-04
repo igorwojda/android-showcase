@@ -12,6 +12,7 @@ import kotlinx.coroutines.runBlocking
 internal class AlbumDetailsViewModel(
     private val getAlbumUseCase: GetAlbumUseCase
 ) : BaseViewModel() {
+
     private val albumMutableLiveData = MutableLiveData<AlbumDomainModel>()
     val albumLiveData = albumMutableLiveData.toLiveData()
 

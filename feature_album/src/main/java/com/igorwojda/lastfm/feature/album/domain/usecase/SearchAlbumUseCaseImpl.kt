@@ -10,5 +10,6 @@ internal interface SearchAlbumUseCase {
 internal class SearchAlbumUseCaseImpl(
     private val albumRepository: AlbumRepository
 ) : SearchAlbumUseCase {
+
     override suspend fun execute(phrase: String) = albumRepository.searchAlbum(phrase)
 }
