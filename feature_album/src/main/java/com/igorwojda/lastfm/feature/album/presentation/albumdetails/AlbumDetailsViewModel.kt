@@ -7,7 +7,6 @@ import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseViewModel
 import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 internal class AlbumDetailsViewModel(
     private val getAlbumUseCase: GetAlbumUseCase
@@ -17,10 +16,8 @@ internal class AlbumDetailsViewModel(
     val state = _state.toLiveData()
 
     fun getAlbum(artistName: String, albumName: String, mbId: String?) {
-        runBlocking {
             viewModelScope.launch {
                 getAlbumUseCase.execute(artistName, albumName, mbId).also { _state.postValue(it) }
             }
-        }
     }
 }

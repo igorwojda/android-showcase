@@ -11,7 +11,6 @@ import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 internal class AlbumSearchViewModel(
     private val searchAlbumUseCase: SearchAlbumUseCase
@@ -24,11 +23,9 @@ internal class AlbumSearchViewModel(
     fun searchAlbum(phrase: String) {
         searchAlbumJob?.cancel()
 
-        searchAlbumJob = runBlocking {
-            viewModelScope.launch {
-                delay(debounceDelay)
-                searchAlbumUseCase.execute(phrase).also { _state.postValue(it) }
-            }
+        viewModelScope.launch {
+            delay(debounceDelay)
+            searchAlbumUseCase.execute(phrase).also { _state.postValue(it) }
         }
     }
 }
