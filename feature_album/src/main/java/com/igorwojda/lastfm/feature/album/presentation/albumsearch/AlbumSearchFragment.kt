@@ -59,13 +59,13 @@ internal class AlbumSearchFragment : BaseFragment() {
         // ViewModel injection is not implemented
         albumSearchViewModel = ViewModelProviders.of(this, viewModelFactory).get(AlbumSearchViewModel::class.java)
         albumSearchViewModel.apply {
-            observeNotNull(albumSearchLiveData, ::onAlbumListLiveData)
+            observeNotNull(state, ::onStateChange)
         }
 
         loadingSpinner.visible = false
     }
 
-    private fun onAlbumListLiveData(list: List<AlbumDomainModel>) {
+    private fun onStateChange(list: List<AlbumDomainModel>) {
         albumAdapter.albums = list
         loadingSpinner.visible = false
     }

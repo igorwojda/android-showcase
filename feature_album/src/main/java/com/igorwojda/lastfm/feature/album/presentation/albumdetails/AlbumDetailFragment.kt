@@ -48,14 +48,14 @@ internal class AlbumDetailFragment : BaseFragment() {
                 getAlbumUseCase
             )
         }) {
-            observeNotNull(albumLiveData, ::onAlbumLiveData)
+            observeNotNull(state, ::onStateChange)
             getAlbum(artistName, albumName, mbId)
         }
 
         activity?.title = resources.getString(R.string.album_details)
     }
 
-    private fun onAlbumLiveData(albumDomainModel: AlbumDomainModel) {
+    private fun onStateChange(albumDomainModel: AlbumDomainModel) {
         nameTextView.text = albumDomainModel.name
         artistTextView.text = albumDomainModel.artist
         publishedTextView.text = albumDomainModel.wiki?.published

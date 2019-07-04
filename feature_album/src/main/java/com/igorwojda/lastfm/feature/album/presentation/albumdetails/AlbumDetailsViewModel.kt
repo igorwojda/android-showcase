@@ -13,13 +13,13 @@ internal class AlbumDetailsViewModel(
     private val getAlbumUseCase: GetAlbumUseCase
 ) : BaseViewModel() {
 
-    private val albumMutableLiveData = MutableLiveData<AlbumDomainModel>()
-    val albumLiveData = albumMutableLiveData.toLiveData()
+    private val _state = MutableLiveData<AlbumDomainModel>()
+    val state = _state.toLiveData()
 
     fun getAlbum(artistName: String, albumName: String, mbId: String?) {
         runBlocking {
             GlobalScope.launch {
-                getAlbumUseCase.execute(artistName, albumName, mbId).also { albumMutableLiveData.postValue(it) }
+                getAlbumUseCase.execute(artistName, albumName, mbId).also { _state.postValue(it) }
             }
         }
     }

@@ -7,18 +7,14 @@ import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseViewModel
 import com.igorwojda.lastfm.feature.base.presentation.extension.toLiveData
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 internal class AlbumSearchViewModel(
     private val searchAlbumUseCase: SearchAlbumUseCase
 ) : BaseViewModel() {
 
-    private val albumSearchMutableLiveData = MutableLiveData<List<AlbumDomainModel>>()
-    val albumSearchLiveData = albumSearchMutableLiveData.toLiveData()
+    private val _state = MutableLiveData<List<AlbumDomainModel>>()
+    val state = _state.toLiveData()
     private var searchAlbumJob: Job? = null
 
     fun searchAlbum(phrase: String) {
@@ -27,7 +23,7 @@ internal class AlbumSearchViewModel(
         searchAlbumJob = runBlocking {
             GlobalScope.launch {
                 delay(debounceDelay)
-                searchAlbumUseCase.execute(phrase).also { albumSearchMutableLiveData.postValue(it) }
+                searchAlbumUseCase.execute(phrase).also { _state.postValue(it) }
             }
         }
     }
