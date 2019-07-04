@@ -27,8 +27,7 @@ class AlbumSearchViewModelTest {
 
     @Before
     fun setUp() {
-        cut =
-            AlbumSearchViewModel(mockGetAlbumSearchUseCase)
+        cut = AlbumSearchViewModel(mockGetAlbumSearchUseCase)
     }
 
     @Test
