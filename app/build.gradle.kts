@@ -85,4 +85,5 @@ dependencies {
     testImplementation(LibraryDependency.mockitoInline)
     androidTestImplementation(LibraryDependency.mockitoAndroid)
     testImplementation(LibraryDependency.mockitoKotlin)
+    testImplementation(LibraryDependency.coroutinesTest)
 }

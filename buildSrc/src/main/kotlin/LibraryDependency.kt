@@ -10,7 +10,7 @@ private object LibraryVersion {
     const val coordinatorLayout = "1.0.0"
     const val material = "1.0.0"
     const val constraintLayout = "1.1.3"
-    const val coroutinesAndroid = "1.2.2"
+    const val coroutinesAndroid = "1.3.0-M2"
     const val lifecycle = "1.1.1"
     const val coreKtx = "1.0.2"
     const val fragmentKtx = "1.0.0"
@@ -67,4 +67,5 @@ object LibraryDependency {
     const val mockitoInline = "org.mockito:mockito-inline:${LibraryVersion.mockito}"
     const val mockitoAndroid = "org.mockito:mockito-android:${LibraryVersion.mockito}"
     const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${LibraryVersion.mockitoKotlin}"
+    const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${LibraryVersion.coroutinesAndroid}"
 }
