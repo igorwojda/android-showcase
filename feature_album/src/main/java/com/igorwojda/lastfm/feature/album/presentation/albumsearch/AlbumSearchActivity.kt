@@ -3,7 +3,6 @@ package com.igorwojda.lastfm.feature.album.presentation.albumsearch
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.transaction
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
 
@@ -18,13 +17,7 @@ class AlbumSearchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.transaction {
-                replace(R.id.container,
-                    AlbumSearchFragment.newInstance()
-                )
-            }
-        }
+        displayFragment { AlbumSearchFragment.newInstance() }
 
         title = resources.getString(R.string.search_album)
     }
