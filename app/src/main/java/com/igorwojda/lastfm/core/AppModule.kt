@@ -34,12 +34,11 @@ val appModule = Kodein.Module("baseDataModule") {
     }
 
     bind<Retrofit>() with singleton {
-        val okHttpClient: OkHttpClient = instance()
         instance<Retrofit.Builder>()
             .baseUrl(LAST_FM_API_BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .client(okHttpClient)
+            .client(instance())
             .build()
     }
 
