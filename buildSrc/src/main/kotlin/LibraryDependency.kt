@@ -14,7 +14,7 @@ private object LibraryVersion {
     const val lifecycle = "1.1.1"
     const val coreKtx = "1.0.2"
     const val fragmentKtx = "1.0.0"
-    const val lifecycleViewModelKtx = "2.0.0"
+    const val lifecycleViewModelKtx = "2.1.0-rc01"
     const val picasso = "2.71828"
     const val customFloatingActionButton = "2.1.1"
     const val kAndroid = "0.8.8@aar"
