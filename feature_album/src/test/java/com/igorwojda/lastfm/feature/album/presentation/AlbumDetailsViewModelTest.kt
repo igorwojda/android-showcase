@@ -4,6 +4,7 @@ import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCaseImpl
 import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetailsViewModel
 import com.igorwojda.lastfm.feature.album.presentation.util.CoroutinesTestRule
 import com.nhaarman.mockitokotlin2.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -15,6 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class AlbumDetailsViewModelTest {
 
+    @ExperimentalCoroutinesApi
     @get:Rule
     var coroutinesTestRule = CoroutinesTestRule()
 
