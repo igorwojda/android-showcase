@@ -37,7 +37,6 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    // module
     implementation(project(ModuleDependency.featureBase))
 
     addCommonDependencies()
