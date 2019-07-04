@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation
+package com.igorwojda.lastfm.feature.album.presentation.albumdetails
 
 import androidx.lifecycle.MutableLiveData
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel

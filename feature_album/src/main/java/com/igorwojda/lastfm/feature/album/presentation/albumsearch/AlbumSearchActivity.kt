@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation
+package com.igorwojda.lastfm.feature.album.presentation.albumsearch
 
 import android.content.Context
 import android.content.Intent
@@ -19,7 +19,9 @@ class AlbumSearchActivity : BaseActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.transaction {
-                replace(R.id.container, AlbumSearchFragment.newInstance())
+                replace(R.id.container,
+                    AlbumSearchFragment.newInstance()
+                )
             }
         }
 

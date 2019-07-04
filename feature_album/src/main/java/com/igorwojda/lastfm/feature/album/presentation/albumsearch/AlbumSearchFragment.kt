@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation
+package com.igorwojda.lastfm.feature.album.presentation.albumsearch
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetailsActivity
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf

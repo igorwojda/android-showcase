@@ -1,6 +1,7 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCaseImpl
+import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetailsViewModel
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before

@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation
+package com.igorwojda.lastfm.feature.album.presentation.albumsearch
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,5 +35,7 @@ internal class AlbumSearchViewModel(
 internal class AlbumListViewModelFactory(private val searchAlbumUseCase: SearchAlbumUseCase) :
     ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>) = AlbumSearchViewModel(searchAlbumUseCase) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>) = AlbumSearchViewModel(
+        searchAlbumUseCase
+    ) as T
 }

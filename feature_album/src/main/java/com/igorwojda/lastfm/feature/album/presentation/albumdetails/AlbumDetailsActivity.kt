@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation
+package com.igorwojda.lastfm.feature.album.presentation.albumdetails
 
 import android.content.Context
 import android.content.Intent
@@ -38,7 +38,13 @@ internal class AlbumDetailsActivity : BaseActivity() {
             val mbId = intent.extras?.getString(EXTRA_MB_ID)
 
             supportFragmentManager.transaction {
-                replace(R.id.container, AlbumDetailFragment.newInstance(albumName, artistName, mbId))
+                replace(R.id.container,
+                    AlbumDetailFragment.newInstance(
+                        albumName,
+                        artistName,
+                        mbId
+                    )
+                )
             }
         }
     }

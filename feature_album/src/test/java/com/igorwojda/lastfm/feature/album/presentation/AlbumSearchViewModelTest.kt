@@ -1,6 +1,7 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCaseImpl
+import com.igorwojda.lastfm.feature.album.presentation.albumsearch.AlbumSearchViewModel
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -18,7 +19,8 @@ class AlbumSearchViewModelTest {
 
     @Before
     fun setUp() {
-        cut = AlbumSearchViewModel(mockGetAlbumSearchUseCase)
+        cut =
+            AlbumSearchViewModel(mockGetAlbumSearchUseCase)
     }
 
     @Test

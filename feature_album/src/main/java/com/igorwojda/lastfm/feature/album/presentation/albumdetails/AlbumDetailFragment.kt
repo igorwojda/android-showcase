@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation
+package com.igorwojda.lastfm.feature.album.presentation.albumdetails
 
 import android.os.Bundle
 import android.view.View
@@ -42,7 +42,11 @@ internal class AlbumDetailFragment : BaseFragment() {
         val mbId = arguments?.getString(EXTRA_MB_ID)
 
         // ViewModel injection is not implemented
-        withViewModel({ AlbumDetailsViewModel(getAlbumUseCase) }) {
+        withViewModel({
+            AlbumDetailsViewModel(
+                getAlbumUseCase
+            )
+        }) {
             observeNotNull(albumLiveData, ::onAlbumLiveData)
             getAlbum(artistName, albumName, mbId)
         }

@@ -10,6 +10,8 @@ import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 
 internal val albumDataModule = Kodein.Module("albumDataModule") {
+
     bind<AlbumRepository>() with singleton { AlbumRepositoryImpl(instance()) }
+
     bind() from singleton { instance<Retrofit>().create(AlbumRetrofitService::class.java) }
 }
