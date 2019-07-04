@@ -6,18 +6,18 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdkVersion)
+    compileSdkVersion(ApplicationConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
-        applicationId = ApplicationConfig.id
-        minSdkVersion(ApplicationConfig.minSdkVersion)
-        targetSdkVersion(ApplicationConfig.targetSdkVersion)
-        buildToolsVersion(ApplicationConfig.buildToolsVersion)
+        applicationId = ApplicationConfig.ID
+        minSdkVersion(ApplicationConfig.MIN_SDK_VERSION)
+        targetSdkVersion(ApplicationConfig.TARGET_SDK_VERSION)
+        buildToolsVersion(ApplicationConfig.BUILD_TOOLS_VERSION)
 
-        versionCode = ApplicationConfig.versionCode
-        versionName = ApplicationConfig.versionName
-        testInstrumentationRunner = ApplicationConfig.testInstrumentationRunner
-        vectorDrawables.useSupportLibrary = ApplicationConfig.supportLibraryVectorDrawables
+        versionCode = ApplicationConfig.VERSION_CODE
+        versionName = ApplicationConfig.VERSION_NAME
+        testInstrumentationRunner = ApplicationConfig.TEST_INSTRUMENTATION_RUNNER
+        vectorDrawables.useSupportLibrary = ApplicationConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
     }
 
     buildTypes {
@@ -31,11 +31,7 @@ android {
         }
 
         testOptions {
-            unitTests.isReturnDefaultValues = true
-        }
-
-        testOptions {
-            unitTests.isReturnDefaultValues = TestOptions.isReturnDefaultValues
+            unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
         }
 
         compileOptions {
