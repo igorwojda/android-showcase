@@ -11,8 +11,7 @@ import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-// w base module?
-const val LAST_FM_API_BASE_URL = "http://ws.audioscrobbler.com/2.0/"
+private const val LAST_FM_API_BASE_URL = "http://ws.audioscrobbler.com/2.0/"
 
 val appModule = Kodein.Module("baseDataModule") {
     // In production apiKey would be provided by CI
@@ -21,10 +20,14 @@ val appModule = Kodein.Module("baseDataModule") {
     // checkouts the project must generate own api key and change app configuration before running it).
     bind() from singleton { LastFmRequestInterceptor("70696db59158cb100370ad30a7a705c1") }
 
+    bind<Retrofit.Builder>() with singleton { Retrofit.Builder() }
+
+    bind<OkHttpClient.Builder>() with singleton { OkHttpClient.Builder() }
+
     bind<OkHttpClient>() with singleton {
         val lastFmRequestInterceptor = instance<LastFmRequestInterceptor>()
 
-        OkHttpClient.Builder()
+        instance<OkHttpClient.Builder>()
             .addNetworkInterceptor(StethoInterceptor())
             .addInterceptor(lastFmRequestInterceptor)
             .build()
@@ -32,7 +35,7 @@ val appModule = Kodein.Module("baseDataModule") {
 
     bind<Retrofit>() with singleton {
         val okHttpClient: OkHttpClient = instance()
-        Retrofit.Builder()
+        instance<Retrofit.Builder>()
             .baseUrl(LAST_FM_API_BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
