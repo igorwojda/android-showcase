@@ -3,6 +3,8 @@ package com.igorwojda.lastfm.core
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.igorwojda.lastfm.R
+import com.igorwojda.lastfm.core.retrofit.AuthenticationInterceptor
+import com.igorwojda.lastfm.core.retrofit.UserAgentInterceptor
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import org.kodein.di.Kodein
@@ -28,24 +30,21 @@ val appModule = Kodein.Module("baseDataModule") {
         context.getString(R.string.api_token)
     }
 
-    // In production apiKey would be provided by CI
-    // Typically we don't want to store such key in public repository, however this is just a sample project, so
-    // we can favour convenience (app can be compiled and launched after checkout) over security (each person who
-    // checkouts the project must generate own api key and change app configuration before running it).
     bind() from singleton {
         AuthenticationInterceptor(instance(TAG_API_TOKEN))
     }
+
+    bind() from singleton { UserAgentInterceptor() }
 
     bind<Retrofit.Builder>() with singleton { Retrofit.Builder() }
 
     bind<OkHttpClient.Builder>() with singleton { OkHttpClient.Builder() }
 
     bind<OkHttpClient>() with singleton {
-        val lastFmRequestInterceptor = instance<AuthenticationInterceptor>()
-
         instance<OkHttpClient.Builder>()
             .addNetworkInterceptor(StethoInterceptor())
-            .addInterceptor(lastFmRequestInterceptor)
+            .addInterceptor(instance<AuthenticationInterceptor>())
+            .addInterceptor(instance<UserAgentInterceptor>())
             .build()
     }
 
