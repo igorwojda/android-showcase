@@ -38,8 +38,7 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(LibraryDependency.junit)
     implementation(LibraryDependency.kotlin)
-    implementation(LibraryDependency.lifecycleExtensions)
-    implementation(LibraryDependency.coroutinesTest)
+    implementation(TestLibraryDependency.junit)
+    implementation(TestLibraryDependency.coroutinesTest)
 }

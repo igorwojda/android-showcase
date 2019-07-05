@@ -31,15 +31,15 @@ fun DependencyHandler.addCommonDependencies() {
 fun DependencyHandler.addTestDependencies() {
     testImplementation(project(ModuleDependency.libraryTestUtils))
 
-    testImplementation(LibraryDependency.junit)
-    androidTestImplementation(LibraryDependency.testRunner)
-    androidTestImplementation(LibraryDependency.espressoCore)
-    testImplementation(LibraryDependency.kluent)
-    androidTestImplementation(LibraryDependency.kluentAndroid)
-    testImplementation(LibraryDependency.mockitoInline)
-    androidTestImplementation(LibraryDependency.mockitoAndroid)
-    testImplementation(LibraryDependency.mockitoKotlin)
-    testImplementation(LibraryDependency.coroutinesTest)
+    testImplementation(TestLibraryDependency.junit)
+    androidTestImplementation(TestLibraryDependency.testRunner)
+    androidTestImplementation(TestLibraryDependency.espressoCore)
+    testImplementation(TestLibraryDependency.kluent)
+    androidTestImplementation(TestLibraryDependency.kluentAndroid)
+    testImplementation(TestLibraryDependency.mockitoInline)
+    androidTestImplementation(TestLibraryDependency.mockitoAndroid)
+    testImplementation(TestLibraryDependency.mockitoKotlin)
+    testImplementation(TestLibraryDependency.coroutinesTest)
 }
 
 /*

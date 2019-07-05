@@ -1,5 +1,4 @@
 private object LibraryVersion {
-    //core
     const val kodein = "6.3.2"
     const val retrofit = "2.6.0"
     const val loggingInterceptor = "4.0.0"
@@ -10,7 +9,6 @@ private object LibraryVersion {
     const val coordinatorLayout = "1.0.0"
     const val material = "1.0.0"
     const val constraintLayout = "1.1.3"
-    const val coroutinesAndroid = "1.3.0-M2"
     const val lifecycle = "1.1.1"
     const val coreKtx = "1.0.2"
     const val fragmentKtx = "1.0.0"
@@ -18,18 +16,9 @@ private object LibraryVersion {
     const val picasso = "2.71828"
     const val customFloatingActionButton = "2.1.1"
     const val kAndroid = "0.8.8@aar"
-
-    //test
-    const val junit = "4.12"
-    const val kluent = "1.51"
-    const val testRunner = "1.0.2"
-    const val espressoCore = "3.0.2"
-    const val mockito = "2.28.2"
-    const val mockitoKotlin = "2.1.0"
 }
 
 object LibraryDependency {
-    //core
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${CoreVersion.kotlin}"
     const val kodein = "org.kodein.di:kodein-di-generic-jvm:${LibraryVersion.kodein}"
     const val kodeinAndroidX = "org.kodein.di:kodein-di-framework-android-x:${LibraryVersion.kodein}"
@@ -44,7 +33,7 @@ object LibraryDependency {
     const val recyclerView = "androidx.recyclerview:recyclerview:${LibraryVersion.recyclerView}"
     const val coordinatorLayout = "androidx.coordinatorlayout:coordinatorlayout:${LibraryVersion.coordinatorLayout}"
     const val supportMaterial = "com.google.android.material:material:${LibraryVersion.material}"
-    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibraryVersion.coroutinesAndroid}"
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${CoreVersion.coroutinesAndroid}"
     const val lifecycleExtensions = "android.arch.lifecycle:extensions:${LibraryVersion.lifecycle}"
     const val coreKtx = "androidx.core:core-ktx:${LibraryVersion.coreKtx}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${LibraryVersion.fragmentKtx}"
@@ -54,15 +43,4 @@ object LibraryDependency {
     const val customFloatingActionButton =
         "com.robertlevonyan.view:CustomFloatingActionButton:${LibraryVersion.customFloatingActionButton}"
     const val kAndroid = "com.pawegio.kandroid:kandroid:${LibraryVersion.kAndroid}"
-
-    //test
-    const val junit = "junit:junit:${LibraryVersion.junit}"
-    const val kluent = "org.amshove.kluent:kluent:${LibraryVersion.kluent}"
-    const val testRunner = "com.android.support.test:runner:${LibraryVersion.testRunner}"
-    const val espressoCore = "com.android.support.test.espresso:espresso-core:${LibraryVersion.espressoCore}"
-    const val kluentAndroid = "org.amshove.kluent:kluent-android:${LibraryVersion.kluent}"
-    const val mockitoInline = "org.mockito:mockito-inline:${LibraryVersion.mockito}"
-    const val mockitoAndroid = "org.mockito:mockito-android:${LibraryVersion.mockito}"
-    const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${LibraryVersion.mockitoKotlin}"
-    const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${LibraryVersion.coroutinesAndroid}"
 }
