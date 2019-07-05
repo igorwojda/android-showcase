@@ -52,6 +52,8 @@ dependencies {
     implementation(project(ModuleDependency.featureBase))
     implementation(project(ModuleDependency.featureAlbum))
 
+    implementation(LibraryDependency.loggingInterceptor)
+
     addCommonDependencies()
     addTestDependencies()
 }

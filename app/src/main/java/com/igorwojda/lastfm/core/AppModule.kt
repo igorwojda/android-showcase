@@ -7,6 +7,7 @@ import com.igorwojda.lastfm.core.retrofit.AuthenticationInterceptor
 import com.igorwojda.lastfm.core.retrofit.UserAgentInterceptor
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein
 import org.kodein.di.bindings.Provider
 import org.kodein.di.erased
@@ -36,6 +37,12 @@ val appModule = Kodein.Module("baseDataModule") {
 
     bind() from singleton { UserAgentInterceptor() }
 
+    bind<HttpLoggingInterceptor>() with singleton {
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+    }
+
     bind<Retrofit.Builder>() with singleton { Retrofit.Builder() }
 
     bind<OkHttpClient.Builder>() with singleton { OkHttpClient.Builder() }
@@ -45,6 +52,7 @@ val appModule = Kodein.Module("baseDataModule") {
             .addNetworkInterceptor(StethoInterceptor())
             .addInterceptor(instance<AuthenticationInterceptor>())
             .addInterceptor(instance<UserAgentInterceptor>())
+            .addInterceptor(instance<HttpLoggingInterceptor>())
             .build()
     }
 
