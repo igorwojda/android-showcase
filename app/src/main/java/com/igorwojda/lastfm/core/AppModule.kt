@@ -16,6 +16,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 private const val TAG_API_BASE_URL = "TAG_API_BASE_URL"
+private const val TAG_API_TOKEN = "TAG_API_TOKEN"
 
 val appModule = Kodein.Module("baseDataModule") {
 
@@ -24,11 +25,17 @@ val appModule = Kodein.Module("baseDataModule") {
         context.getString(R.string.api_base_url)
     }
 
+    bind(TAG_API_TOKEN) from Provider(erased<Context>(), erased()) {
+        context.getString(R.string.api_token)
+    }
+
     // In production apiKey would be provided by CI
     // Typically we don't want to store such key in public repository, however this is just a sample project, so
     // we can favour convenience (app can be compiled and launched after checkout) over security (each person who
     // checkouts the project must generate own api key and change app configuration before running it).
-    bind() from singleton { LastFmRequestInterceptor("70696db59158cb100370ad30a7a705c1") }
+    bind() from singleton {
+        LastFmRequestInterceptor(instance(TAG_API_TOKEN))
+    }
 
     bind<Retrofit.Builder>() with singleton { Retrofit.Builder() }
 

@@ -21,6 +21,9 @@ android {
 
         val apiBaseUrl: String by project
         resValue("string", "api_base_url", apiBaseUrl)
+
+        val apiToken: String by project
+        resValue("string", "api_token", apiToken)
     }
 
     buildTypes {
