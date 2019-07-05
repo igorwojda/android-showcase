@@ -2,7 +2,7 @@ package com.igorwojda.lastfm.feature.album.presentation
 
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCaseImpl
 import com.igorwojda.lastfm.feature.album.presentation.albumsearch.AlbumSearchViewModel
-import com.igorwojda.lastfm.feature.album.presentation.util.CoroutinesTestRule
+import com.igorwojda.lastfm.library.testutils.CoroutinesTestRule
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking

@@ -30,6 +30,8 @@ fun DependencyHandler.addCommonDependencies() {
 }
 
 fun DependencyHandler.addTestDependencies() {
+    testImplementation(project(ModuleDependency.libraryTestUtils))
+
     testImplementation(LibraryDependency.junit)
     androidTestImplementation(LibraryDependency.testRunner)
     androidTestImplementation(LibraryDependency.espressoCore)

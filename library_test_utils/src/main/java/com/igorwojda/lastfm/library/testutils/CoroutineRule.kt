@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation.util
+package com.igorwojda.lastfm.library.testutils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -10,7 +10,7 @@ import org.junit.runner.Description
 
 @ExperimentalCoroutinesApi
 class CoroutinesTestRule(
-    val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
+    private val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
 ) : TestWatcher() {
 
     override fun starting(description: Description?) {
