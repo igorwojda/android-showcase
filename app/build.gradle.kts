@@ -8,18 +8,18 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ApplicationConfig.COMPILE_SDK_VERSION)
+    compileSdkVersion(AndroidConfig.compileSdkVersion)
 
     defaultConfig {
-        applicationId = ApplicationConfig.ID
-        minSdkVersion(ApplicationConfig.MIN_SDK_VERSION)
-        targetSdkVersion(ApplicationConfig.TARGET_SDK_VERSION)
-        buildToolsVersion(ApplicationConfig.BUILD_TOOLS_VERSION)
+        applicationId = AndroidConfig.id
+        minSdkVersion(AndroidConfig.minSdkVersion)
+        targetSdkVersion(AndroidConfig.targetSdkVersion)
+        buildToolsVersion(AndroidConfig.buildToolsVersion)
 
-        versionCode = ApplicationConfig.VERSION_CODE
-        versionName = ApplicationConfig.VERSION_NAME
-        testInstrumentationRunner = ApplicationConfig.TEST_INSTRUMENTATION_RUNNER
-        vectorDrawables.useSupportLibrary = ApplicationConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
+        versionCode = AndroidConfig.versionCode
+        versionName = AndroidConfig.versionName
+        testInstrumentationRunner = AndroidConfig.testInstrumentationRunner
+        vectorDrawables.useSupportLibrary = AndroidConfig.supportLibraryVectorDrawables
 
         stringResValue("apiBaseUrl")
         stringResValue("apiToken")
