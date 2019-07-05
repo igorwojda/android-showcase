@@ -20,7 +20,6 @@ fun DependencyHandler.addCommonDependencies() {
     implementation(LibraryDependency.supportMaterial)
     implementation(LibraryDependency.coroutinesAndroid)
     implementation(LibraryDependency.lifecycleExtensions)
-//    kapt(LibraryDependency.lifecycleCompiler)
     implementation(LibraryDependency.coordinatorLayout)
     implementation(LibraryDependency.coreKtx)
     implementation(LibraryDependency.fragmentKtx)

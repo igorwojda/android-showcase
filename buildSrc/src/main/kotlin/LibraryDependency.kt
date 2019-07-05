@@ -48,7 +48,6 @@ object LibraryDependency {
     const val supportMaterial = "com.google.android.material:material:${LibraryVersion.material}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibraryVersion.coroutinesAndroid}"
     const val lifecycleExtensions = "android.arch.lifecycle:extensions:${LibraryVersion.lifecycle}"
-    const val lifecycleCompiler = "android.arch.lifecycle:compiler:${LibraryVersion.lifecycle}"
     const val coreKtx = "androidx.core:core-ktx:${LibraryVersion.coreKtx}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${LibraryVersion.fragmentKtx}"
     const val lifecycleViewModelKtx =
