@@ -59,10 +59,29 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
+/**
+ * This tasks run all static checks that run or CI.
+ * Note that his task itself should not be used for PR checks, because here we want to run tasks sequentially,
+ * while in the CI we should run tasks in parallel (for speed and separate check statuses on github)
+ */
 task("staticCheck") {
     afterEvaluate {
-        val lintDependencies = subprojects.mapNotNull { "${it.name}:lint" }
-        dependsOn(lintDependencies + listOf("ktlintCheck", "detekt"))
+        // Get modules with "lint" task (non-android modules do not have lint task)
+        val lintTasks = subprojects.mapNotNull { "${it.name}:lint" }
+
+        // Get modules with "testDebugUnitTest" task (app module does not have it)
+        val testTasks = subprojects.mapNotNull { "${it.name}:testDebugUnitTest" }
+            .filter { it != "app:testDebugUnitTest" }
+
+        // All task dependencies
+        val taskDependencies =
+            mutableListOf("app:assembleAndroidTest", "ktlintCheck", "detekt").also {
+                it.addAll(lintTasks)
+                it.addAll(testTasks)
+            }
+
+        // By defining Gradle dependency all dependent tasks will run before this "empty prCheck task"
+        dependsOn(taskDependencies)
     }
 }
 
