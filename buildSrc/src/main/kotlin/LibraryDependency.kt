@@ -1,6 +1,6 @@
 private object LibraryVersion {
     //core
-    const val kodein = "6.0.1"
+    const val kodein = "6.3.2"
     const val retrofit = "2.6.0"
     const val stetho = "1.5.0"
     const val timber = "4.7.1"
@@ -31,7 +31,6 @@ object LibraryDependency {
     //core
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${CoreVersion.kotlin}"
     const val kodein = "org.kodein.di:kodein-di-generic-jvm:${LibraryVersion.kodein}"
-    //This dependency may be redundant in Kodein versions above 6.0.0
     const val kodeinAndroidX = "org.kodein.di:kodein-di-framework-android-x:${LibraryVersion.kodein}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${LibraryVersion.retrofit}"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${LibraryVersion.retrofit}"
