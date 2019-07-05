@@ -16,8 +16,8 @@ internal class AlbumDetailsViewModel(
     val state = _state.toLiveData()
 
     fun getAlbum(artistName: String, albumName: String, mbId: String?) {
-            viewModelScope.launch {
-                getAlbumUseCase.execute(artistName, albumName, mbId).also { _state.postValue(it) }
-            }
+        viewModelScope.launch {
+            getAlbumUseCase.execute(artistName, albumName, mbId).also { _state.postValue(it) }
+        }
     }
 }

@@ -3,7 +3,6 @@ package com.igorwojda.lastfm.feature.album.presentation.albumsearch
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
@@ -25,9 +24,8 @@ internal class AlbumSearchFragment : BaseFragment() {
 
     override val layoutResourceId = R.layout.fragment_album_list
 
-    private val viewModelFactory: AlbumListViewModelFactory by instance()
     private val albumAdapter: AlbumAdapter by instance()
-    private lateinit var albumSearchViewModel: AlbumSearchViewModel
+    private val albumSearchViewModel: AlbumSearchViewModel by instance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +54,6 @@ internal class AlbumSearchFragment : BaseFragment() {
             }
         }
 
-        // ViewModel injection is not implemented
-        albumSearchViewModel = ViewModelProviders.of(this, viewModelFactory).get(AlbumSearchViewModel::class.java)
         albumSearchViewModel.apply {
             observeNotNull(state, ::onStateChange)
         }

@@ -1,8 +1,6 @@
 package com.igorwojda.lastfm.feature.album.presentation.albumsearch
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCase
@@ -28,12 +26,4 @@ internal class AlbumSearchViewModel(
             searchAlbumUseCase.execute(phrase).also { _state.postValue(it) }
         }
     }
-}
-
-internal class AlbumListViewModelFactory(private val searchAlbumUseCase: SearchAlbumUseCase) :
-    ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>) = AlbumSearchViewModel(
-        searchAlbumUseCase
-    ) as T
 }
