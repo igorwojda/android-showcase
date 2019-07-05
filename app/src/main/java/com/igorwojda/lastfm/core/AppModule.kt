@@ -33,7 +33,7 @@ val appModule = Kodein.Module("baseDataModule") {
     // we can favour convenience (app can be compiled and launched after checkout) over security (each person who
     // checkouts the project must generate own api key and change app configuration before running it).
     bind() from singleton {
-        LastFmRequestInterceptor(instance(TAG_API_TOKEN))
+        AuthenticationInterceptor(instance(TAG_API_TOKEN))
     }
 
     bind<Retrofit.Builder>() with singleton { Retrofit.Builder() }
@@ -41,7 +41,7 @@ val appModule = Kodein.Module("baseDataModule") {
     bind<OkHttpClient.Builder>() with singleton { OkHttpClient.Builder() }
 
     bind<OkHttpClient>() with singleton {
-        val lastFmRequestInterceptor = instance<LastFmRequestInterceptor>()
+        val lastFmRequestInterceptor = instance<AuthenticationInterceptor>()
 
         instance<OkHttpClient.Builder>()
             .addNetworkInterceptor(StethoInterceptor())
