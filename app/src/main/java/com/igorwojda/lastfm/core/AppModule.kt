@@ -1,19 +1,29 @@
 package com.igorwojda.lastfm.core
 
+import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.igorwojda.lastfm.R
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import org.kodein.di.Kodein
+import org.kodein.di.bindings.Provider
+import org.kodein.di.erased
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-private const val LAST_FM_API_BASE_URL = "http://ws.audioscrobbler.com/2.0/"
+private const val TAG_API_BASE_URL = "TAG_API_BASE_URL"
 
 val appModule = Kodein.Module("baseDataModule") {
+
+    // build parameters
+    bind(TAG_API_BASE_URL) from Provider(erased<Context>(), erased()) {
+        context.getString(R.string.api_base_url)
+    }
+
     // In production apiKey would be provided by CI
     // Typically we don't want to store such key in public repository, however this is just a sample project, so
     // we can favour convenience (app can be compiled and launched after checkout) over security (each person who
@@ -35,7 +45,7 @@ val appModule = Kodein.Module("baseDataModule") {
 
     bind<Retrofit>() with singleton {
         instance<Retrofit.Builder>()
-            .baseUrl(LAST_FM_API_BASE_URL)
+            .baseUrl(instance<String>(TAG_API_BASE_URL))
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(instance())

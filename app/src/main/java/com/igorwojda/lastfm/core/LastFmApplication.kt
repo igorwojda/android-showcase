@@ -7,8 +7,7 @@ import com.igorwojda.lastfm.BuildConfig
 import com.igorwojda.lastfm.feature.album.albumModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
+import org.kodein.di.android.x.androidXModule
 import timber.log.Timber
 
 /*
@@ -17,10 +16,10 @@ https://youtrack.jetbrains.net/issue/KT-27971
 */
 class LastFmApplication : Application(), KodeinAware {
     override val kodein = Kodein.lazy {
-        import(albumModule)
-        import(appModule)
+        import(androidXModule(this@LastFmApplication))
 
-        bind<Context>() with instance(this@LastFmApplication)
+        import(appModule)
+        import(albumModule)
     }
 
     private lateinit var context: Context

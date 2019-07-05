@@ -18,6 +18,9 @@ android {
         versionName = ApplicationConfig.VERSION_NAME
         testInstrumentationRunner = ApplicationConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables.useSupportLibrary = ApplicationConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
+
+        val apiBaseUrl: String by project
+        resValue("string", "api_base_url", apiBaseUrl)
     }
 
     buildTypes {
