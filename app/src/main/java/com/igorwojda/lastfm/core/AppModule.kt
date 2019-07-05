@@ -3,7 +3,6 @@ package com.igorwojda.lastfm.core
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.igorwojda.lastfm.R
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import org.kodein.di.Kodein
@@ -54,7 +53,6 @@ val appModule = Kodein.Module("baseDataModule") {
         instance<Retrofit.Builder>()
             .baseUrl(instance<String>(TAG_API_BASE_URL))
             .addConverterFactory(MoshiConverterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(instance())
             .build()
     }

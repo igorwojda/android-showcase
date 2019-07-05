@@ -9,14 +9,12 @@ internal class AlbumRepositoryImpl(
 ) : AlbumRepository {
 
     override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?) =
-        albumRetrofitService.getAlbumInfo(artistName, albumName, mbId)
-            .await()
+        albumRetrofitService.getAlbumInfoAsync(artistName, albumName, mbId)
             ?.album
             ?.toDomainModel()
 
     override suspend fun searchAlbum(phrase: String) =
-        albumRetrofitService.searchAlbum(phrase)
-            .await()
+        albumRetrofitService.searchAlbumAsync(phrase)
             .results
             .albumMatches
             .album

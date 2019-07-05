@@ -10,7 +10,6 @@ fun DependencyHandler.addCommonDependencies() {
     implementation(LibraryDependency.kodeinAndroidX)
     implementation(LibraryDependency.retrofit)
     implementation(LibraryDependency.retrofitMoshiConverter)
-    implementation(LibraryDependency.retrofitCoroutineAdapter)
     implementation(LibraryDependency.stetho)
     implementation(LibraryDependency.stethoOkHttp)
     implementation(LibraryDependency.timber)
