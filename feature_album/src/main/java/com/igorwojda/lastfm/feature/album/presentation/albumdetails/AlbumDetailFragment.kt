@@ -5,12 +5,10 @@ import android.view.View
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
-import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.getStringOrThrow
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
-import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
-import com.igorwojda.lastfm.feature.base.presentation.extension.withViewModel
+import com.igorwojda.lastfm.feature.base.presentation.extension.observe
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
@@ -32,7 +30,7 @@ internal class AlbumDetailFragment : BaseFragment() {
     override val layoutResourceId = R.layout.fragment_album_detail
 
     // This is injected here only because ViewModel injection is not implemented
-    private val getAlbumUseCase: GetAlbumUseCase by instance()
+    private val viewModel: AlbumDetailsViewModel by instance()
     private val picasso: Picasso by instance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,17 +40,10 @@ internal class AlbumDetailFragment : BaseFragment() {
         val artistName = arguments.getStringOrThrow(EXTRA_ARTIST_NAME)
         val mbId = arguments?.getString(EXTRA_MB_ID)
 
-        // ViewModel injection is not implemented
-        withViewModel({
-            AlbumDetailsViewModel(
-                getAlbumUseCase
-            )
-        }) {
-            observeNotNull(state, ::onStateChange)
-            getAlbum(artistName, albumName, mbId)
-        }
-
         activity?.title = resources.getString(R.string.album_details)
+
+        observe(viewModel.state, ::onStateChange)
+        viewModel.getAlbum(artistName, albumName, mbId)
     }
 
     private fun onStateChange(albumDomainModel: AlbumDomainModel) {

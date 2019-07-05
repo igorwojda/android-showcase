@@ -10,7 +10,7 @@ import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetails
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
-import com.igorwojda.lastfm.feature.base.presentation.extension.observeNotNull
+import com.igorwojda.lastfm.feature.base.presentation.extension.observe
 import com.pawegio.kandroid.textWatcher
 import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_list.*
@@ -24,8 +24,8 @@ internal class AlbumSearchFragment : BaseFragment() {
 
     override val layoutResourceId = R.layout.fragment_album_list
 
+    private val viewModel: AlbumSearchViewModel by instance()
     private val albumAdapter: AlbumAdapter by instance()
-    private val albumSearchViewModel: AlbumSearchViewModel by instance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,14 +49,12 @@ internal class AlbumSearchFragment : BaseFragment() {
 
         searchTextInput.textWatcher {
             afterTextChanged { editable: Editable? ->
-                editable?.let { albumSearchViewModel.searchAlbum(it.toString()) }
+                editable?.let { viewModel.searchAlbum(it.toString()) }
                 loadingSpinner.visible = true
             }
         }
 
-        albumSearchViewModel.apply {
-            observeNotNull(state, ::onStateChange)
-        }
+        observe(viewModel.state, ::onStateChange)
 
         loadingSpinner.visible = false
     }
