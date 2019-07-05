@@ -21,8 +21,8 @@ android {
         testInstrumentationRunner = ApplicationConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables.useSupportLibrary = ApplicationConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
 
-        stringResValue("apiBaseUrl", "api_base_url")
-        stringResValue("apiToken", "api_token")
+        stringResValue("apiBaseUrl")
+        stringResValue("apiToken")
     }
 
     buildTypes {
@@ -49,7 +49,6 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    // module
     implementation(project(ModuleDependency.featureBase))
     implementation(project(ModuleDependency.featureAlbum))
 
@@ -57,8 +56,12 @@ dependencies {
     addTestDependencies()
 }
 
-fun BaseFlavor.stringResValue(gradlePropertyName: String, androidResourceName: String) {
+fun BaseFlavor.stringResValue(gradlePropertyName: String) {
     val propertyValue = project.properties[gradlePropertyName] as? String
     checkNotNull(propertyValue) { "$gradlePropertyName is null"}
+
+    val androidResourceName = gradlePropertyName.toSnakeCase()
     resValue("string", androidResourceName, propertyValue)
 }
+
+fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }
