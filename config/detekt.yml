@@ -1,5 +1,5 @@
 build:
-    maxIssues: 10
+    maxIssues: 0
     weights:
     # complexity: 2
     # LongParameterList: 1
@@ -449,7 +449,7 @@ style:
         excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
         ignoreNumbers: ''
         ignoreHashCodeFunction: true
-        ignorePropertyDeclaration: false
+        ignorePropertyDeclaration: true
         ignoreConstantDeclaration: true
         ignoreCompanionObjectPropertyDeclaration: true
         ignoreAnnotation: false

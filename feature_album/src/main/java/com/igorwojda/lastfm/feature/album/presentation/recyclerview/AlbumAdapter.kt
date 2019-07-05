@@ -23,7 +23,7 @@ internal class AlbumAdapter(
 
     private var onDebouncedClickListener: ((album: AlbumDomainModel) -> Unit)? = null
 
-    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    internal inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(albumDomainModel: AlbumDomainModel) {
             itemView.setOnDebouncedClickListener { onDebouncedClickListener?.invoke(albumDomainModel) }
 

@@ -43,7 +43,8 @@ internal class AlbumSearchFragment : BaseFragment() {
 
         recyclerView.apply {
             setHasFixedSize(true)
-            layoutManager = GridLayoutManager(context, 2)
+            val numColumns = 2
+            layoutManager = GridLayoutManager(context, numColumns)
             adapter = albumAdapter
         }
 

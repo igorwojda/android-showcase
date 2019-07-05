@@ -2,7 +2,7 @@ package com.igorwojda.lastfm.feature.album.presentation
 
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCaseImpl
 import com.igorwojda.lastfm.feature.album.presentation.albumsearch.AlbumSearchViewModel
-import com.igorwojda.lastfm.library.testutils.CoroutinesTestRule
+import com.igorwojda.lastfm.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -18,7 +18,7 @@ class AlbumSearchViewModelTest {
 
     @ExperimentalCoroutinesApi
     @get:Rule
-    var coroutinesTestRule = CoroutinesTestRule()
+    var coroutinesTestRule = CoroutineRule()
 
     @Mock
     internal lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCaseImpl

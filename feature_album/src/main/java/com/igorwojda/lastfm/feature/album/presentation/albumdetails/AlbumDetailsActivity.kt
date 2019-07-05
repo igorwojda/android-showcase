@@ -41,4 +41,3 @@ internal class AlbumDetailsActivity : BaseActivity() {
         }
     }
 }
-

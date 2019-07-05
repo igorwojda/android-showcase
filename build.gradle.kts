@@ -66,7 +66,6 @@ task("staticCheck") {
     }
 }
 
-
 tasks {
     // Gradle versions plugin configuration
     "dependencyUpdates"(DependencyUpdatesTask::class) {
