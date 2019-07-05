@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.dsl.BaseFlavor
+
 plugins {
     id(GradlePluginId.androidApplication)
     id(GradlePluginId.kotlinAndroid)
@@ -19,11 +21,8 @@ android {
         testInstrumentationRunner = ApplicationConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables.useSupportLibrary = ApplicationConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
 
-        val apiBaseUrl: String by project
-        resValue("string", "api_base_url", apiBaseUrl)
-
-        val apiToken: String by project
-        resValue("string", "api_token", apiToken)
+        stringResValue("apiBaseUrl", "api_base_url")
+        stringResValue("apiToken", "api_token")
     }
 
     buildTypes {
@@ -56,4 +55,10 @@ dependencies {
 
     addCommonDependencies()
     addTestDependencies()
+}
+
+fun BaseFlavor.stringResValue(gradlePropertyName: String, androidResourceName: String) {
+    val propertyValue = project.properties[gradlePropertyName] as? String
+    checkNotNull(propertyValue) { "$gradlePropertyName is null"}
+    resValue("string", androidResourceName, propertyValue)
 }
