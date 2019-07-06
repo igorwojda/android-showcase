@@ -17,7 +17,7 @@ class AlbumSearchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        displayFragment { AlbumSearchFragment.newInstance() }
+        displayFragment { AlbumSearchFragment() }
 
         title = resources.getString(R.string.search_album)
     }

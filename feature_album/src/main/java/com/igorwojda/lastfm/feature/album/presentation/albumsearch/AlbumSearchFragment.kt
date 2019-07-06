@@ -9,7 +9,6 @@ import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetailsActivity
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
-import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
 import com.igorwojda.lastfm.feature.base.presentation.extension.observe
 import com.pawegio.kandroid.textWatcher
 import com.pawegio.kandroid.visible
@@ -17,10 +16,6 @@ import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
 internal class AlbumSearchFragment : BaseFragment() {
-
-    companion object {
-        fun newInstance() = instanceOf<AlbumSearchFragment>()
-    }
 
     override val layoutResourceId = R.layout.fragment_album_list
 

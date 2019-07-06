@@ -11,24 +11,22 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
-internal class AlbumDetailFragment : BaseFragment() {
+internal class AlbumDetailFragment() : BaseFragment() {
 
-    companion object {
-        fun newInstance(artistName: String, albumName: String, mbId: String?) = AlbumDetailFragment().apply {
-            this.artistName = artistName
-            this.albumName = albumName
-            this.mbId = mbId
-        }
-    }
-
-    override val layoutResourceId = R.layout.fragment_album_detail
-
-    var artistName by argument<String>()
-    var albumName by argument<String>()
-    var mbId by argument<String?>()
+    private var artistName by argument<String>()
+    private var albumName by argument<String>()
+    private var mbId by argument<String?>()
 
     private val viewModel: AlbumDetailsViewModel by instance()
     private val picasso: Picasso by instance()
+
+    override val layoutResourceId = R.layout.fragment_album_detail
+
+    constructor(artistName: String, albumName: String, mbId: String?) : this() {
+        this.artistName = artistName
+        this.albumName = albumName
+        this.mbId = mbId
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
