@@ -23,5 +23,5 @@ abstract class BaseFragment : Fragment(), LifecycleOwner, KodeinAware {
             Timber.v("onCreateView ${javaClass.simpleName}")
         }
 
-    protected inline fun <reified T : Any?> Fragment.argument() = FragmentArgumentDelegate<T>()
+    protected inline fun <reified T : Any?> argument() = FragmentArgumentDelegate<T>()
 }

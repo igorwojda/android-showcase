@@ -27,11 +27,9 @@ internal class AlbumSearchFragment : BaseFragment() {
 
         albumAdapter.setOnDebouncedClickListener { albumDomainModel ->
             context?.let {
-                startActivity(
-                    AlbumDetailsActivity.getStartIntent(
-                        it, albumDomainModel.artist,
-                        albumDomainModel.name, albumDomainModel.mbId
-                    )
+                AlbumDetailsActivity.start(
+                    it, albumDomainModel.artist,
+                    albumDomainModel.name, albumDomainModel.mbId
                 )
             }
         }

@@ -1,8 +1,8 @@
 package com.igorwojda.lastfm.feature.base.presentation.delegate
 
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.igorwojda.lastfm.feature.base.presentation.extension.putAny
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -33,8 +33,4 @@ class FragmentArgumentDelegate<T : Any?> : ReadWriteProperty<Fragment, T> {
             .apply { putAny(property.name, value) }
             .also { thisRef.arguments = it }
     }
-}
-
-private fun Bundle.putAny(key: String, value: Any?) {
-    putAll(bundleOf(key to value))
 }
