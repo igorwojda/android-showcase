@@ -5,13 +5,13 @@ import android.view.View
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
-import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.observe
+import com.igorwojda.lastfm.feature.base.presentation.fragment.BaseContainerFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
-internal class AlbumDetailFragment() : BaseFragment() {
+internal class AlbumDetailContainerFragment() : BaseContainerFragment() {
 
     private var artistName by argument<String>()
     private var albumName by argument<String>()

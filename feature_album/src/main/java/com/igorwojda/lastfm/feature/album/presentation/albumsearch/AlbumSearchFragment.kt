@@ -8,15 +8,15 @@ import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetailsActivity
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
-import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.observe
+import com.igorwojda.lastfm.feature.base.presentation.fragment.BaseContainerFragment
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
 import com.pawegio.kandroid.textWatcher
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
-internal class AlbumSearchFragment : BaseFragment() {
+internal class AlbumSearchFragment : BaseContainerFragment() {
 
     override val layoutResourceId = R.layout.fragment_album_list
 
