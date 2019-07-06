@@ -17,6 +17,7 @@ abstract class InjectionActivity : AppCompatActivity(), KodeinAware {
     private val parentKodein by kodein()
 
     final override val kodeinContext = kcontext<AppCompatActivity>(this)
+
     final override val kodein: Kodein by retainedKodein {
         extend(parentKodein, copy = Copy.All)
     }
@@ -31,7 +32,10 @@ abstract class InjectionActivity : AppCompatActivity(), KodeinAware {
     By not using kodeinTrigger all dependencies will be resolved lazily. This allow to save some resources and speed up
     the application by retrieving dependencies only when they are needed/used.
 
-    More: http://kodein.org/Kodein-DI/?latest/android#_using_a_trigger
+    More:
+    https://github.com/Kodein-Framework/Kodein-DI/blob/master/doc/android.adoc#using-a-trigger
+    http://kodein.org/Kodein-DI/?latest/android#_using_a_trigger
+
      */
     final override val kodeinTrigger: KodeinTrigger?
         get() = if (BuildConfig.DEBUG) KodeinTrigger() else super.kodeinTrigger
