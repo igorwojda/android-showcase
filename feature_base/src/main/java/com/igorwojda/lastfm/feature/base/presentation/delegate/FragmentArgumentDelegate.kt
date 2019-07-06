@@ -17,7 +17,7 @@ class FragmentArgumentDelegate<T : Any?> : ReadWriteProperty<Fragment, T> {
     override operator fun getValue(thisRef: Fragment, property: KProperty<*>): T {
         if (value == null) {
             val arguments = requireNotNull(thisRef.arguments) {
-                "Cannot read property ${property.name}. No arguments have been set"
+                "Cannot read argument ${property.name}. No arguments have been set"
             }
 
             @Suppress("UNCHECKED_CAST")

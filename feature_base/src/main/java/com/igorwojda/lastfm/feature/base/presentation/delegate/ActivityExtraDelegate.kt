@@ -11,7 +11,7 @@ class ActivityExtraDelegate<T : Any?> : ReadOnlyProperty<AppCompatActivity, T> {
     override operator fun getValue(thisRef: AppCompatActivity, property: KProperty<*>): T {
         if (value == null) {
             val extras = requireNotNull(thisRef.intent.extras) {
-                "Cannot read property ${property.name}. No intent extra have been set"
+                "Cannot read extra ${property.name}. No intent extra have been set"
             }
 
             @Suppress("UNCHECKED_CAST")

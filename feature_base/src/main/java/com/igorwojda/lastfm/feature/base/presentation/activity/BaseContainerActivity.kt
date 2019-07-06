@@ -1,19 +1,15 @@
-package com.igorwojda.lastfm.feature.base.presentation
+package com.igorwojda.lastfm.feature.base.presentation.activity
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
 import com.igorwojda.lastfm.feature.base.R
+import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.delegate.ActivityExtraDelegate
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
 import timber.log.Timber
 
-abstract class BaseActivity : AppCompatActivity(), KodeinAware {
-    override val kodein by closestKodein()
-
+abstract class BaseContainerActivity : InjectionActivity() {
     @get:LayoutRes
     protected abstract val layoutResourceId: Int
 

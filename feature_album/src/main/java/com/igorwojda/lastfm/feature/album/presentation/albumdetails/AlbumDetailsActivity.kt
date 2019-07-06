@@ -3,10 +3,10 @@ package com.igorwojda.lastfm.feature.album.presentation.albumdetails
 import android.content.Context
 import android.os.Bundle
 import com.igorwojda.lastfm.feature.album.R
-import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
+import com.igorwojda.lastfm.feature.base.presentation.activity.BaseContainerActivity
 import com.igorwojda.lastfm.feature.base.presentation.extension.startActivity
 
-internal class AlbumDetailsActivity : BaseActivity() {
+internal class AlbumDetailsActivity : BaseContainerActivity() {
 
     private val albumName by extra<String>()
     private val artistName by extra<String>()

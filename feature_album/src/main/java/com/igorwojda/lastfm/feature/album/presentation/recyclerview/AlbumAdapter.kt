@@ -28,7 +28,7 @@ internal class AlbumAdapter(
             itemView.setOnDebouncedClickListener { onDebouncedClickListener?.invoke(albumDomainModel) }
 
             val url = albumDomainModel.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
-            if (!albumDomainModel.images.isEmpty() && !url.isNullOrEmpty()) {
+            if (albumDomainModel.images.isNotEmpty() && !url.isNullOrEmpty()) {
                 loadImage(url)
             } else {
                 itemView.imageView.setImageBitmap(null)

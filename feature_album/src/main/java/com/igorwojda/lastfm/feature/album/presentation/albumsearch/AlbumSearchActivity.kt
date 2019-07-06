@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.igorwojda.lastfm.feature.album.R
-import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
+import com.igorwojda.lastfm.feature.base.presentation.activity.BaseContainerActivity
 
-class AlbumSearchActivity : BaseActivity() {
+class AlbumSearchActivity : BaseContainerActivity() {
 
     companion object {
         fun newIntent(context: Context) = Intent(context, AlbumSearchActivity::class.java)
