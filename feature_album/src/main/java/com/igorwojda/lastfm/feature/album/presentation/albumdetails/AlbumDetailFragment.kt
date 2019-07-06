@@ -34,7 +34,7 @@ internal class AlbumDetailFragment() : BaseFragment() {
         activity?.title = resources.getString(R.string.album_details)
 
         observe(viewModel.state, ::onStateChange)
-        
+
         viewModel.getAlbum(artistName, albumName, mbId)
     }
 

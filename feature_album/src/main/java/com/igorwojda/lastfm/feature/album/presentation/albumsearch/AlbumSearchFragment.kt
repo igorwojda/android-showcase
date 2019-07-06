@@ -10,8 +10,9 @@ import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetails
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
 import com.igorwojda.lastfm.feature.base.presentation.extension.observe
+import com.pawegio.kandroid.hide
+import com.pawegio.kandroid.show
 import com.pawegio.kandroid.textWatcher
-import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
@@ -25,13 +26,10 @@ internal class AlbumSearchFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        albumAdapter.setOnDebouncedClickListener { albumDomainModel ->
-            context?.let {
-                AlbumDetailsActivity.start(
-                    it, albumDomainModel.artist,
-                    albumDomainModel.name, albumDomainModel.mbId
-                )
-            }
+        val context = requireNotNull(context)
+
+        albumAdapter.setOnDebouncedClickListener {
+            AlbumDetailsActivity.start(context, it.artist, it.name, it.mbId)
         }
 
         recyclerView.apply {
@@ -44,17 +42,17 @@ internal class AlbumSearchFragment : BaseFragment() {
         searchTextInput.textWatcher {
             afterTextChanged { editable: Editable? ->
                 editable?.let { viewModel.searchAlbum(it.toString()) }
-                loadingSpinner.visible = true
+                loadingSpinner.show()
             }
         }
 
         observe(viewModel.state, ::onStateChange)
 
-        loadingSpinner.visible = false
+        loadingSpinner.hide()
     }
 
     private fun onStateChange(list: List<AlbumDomainModel>) {
         albumAdapter.albums = list
-        loadingSpinner.visible = false
+        loadingSpinner.hide()
     }
 }
