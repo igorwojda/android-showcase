@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.base.presentation.BaseActivity
-import com.igorwojda.lastfm.feature.base.presentation.extension.getStringOrThrow
+import com.igorwojda.lastfm.feature.base.presentation.extension.extra
 
 internal class AlbumDetailsActivity : BaseActivity() {
 
@@ -29,15 +29,13 @@ internal class AlbumDetailsActivity : BaseActivity() {
 
     override val layoutResourceId = R.layout.activity_album_details
 
+    private val albumName by extra<String>(EXTRA_ALBUM_NAME)
+    private val artistName by extra<String>(EXTRA_ARTIST_NAME)
+    private val mbId by extra<String>(EXTRA_MB_ID)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (savedInstanceState == null) {
-            val albumName = intent.extras.getStringOrThrow(EXTRA_ALBUM_NAME)
-            val artistName = intent.extras.getStringOrThrow(EXTRA_ARTIST_NAME)
-            val mbId = intent.extras?.getString(EXTRA_MB_ID)
-
-            displayFragment { AlbumDetailFragment.newInstance(albumName, artistName, mbId) }
-        }
+        displayFragment { AlbumDetailFragment.newInstance(albumName, artistName, mbId) }
     }
 }

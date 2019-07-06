@@ -1,0 +1,13 @@
+package com.igorwojda.lastfm.feature.base.presentation.extension
+
+import androidx.appcompat.app.AppCompatActivity
+
+inline fun <reified T> AppCompatActivity.extra(key: String): Lazy<T> = lazy {
+    val value = intent.extras?.get(key)
+    if (value is T) {
+        value
+    } else {
+        throw IllegalArgumentException("Couldn't find extra with key \"$key\" from type " +
+            T::class.java.canonicalName)
+    }
+}
