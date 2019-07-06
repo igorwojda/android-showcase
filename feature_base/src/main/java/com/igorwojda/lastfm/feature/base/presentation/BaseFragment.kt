@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
+import com.igorwojda.lastfm.feature.base.presentation.delegate.FragmentArgumentDelegate
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import timber.log.Timber
@@ -21,4 +22,6 @@ abstract class BaseFragment : Fragment(), LifecycleOwner, KodeinAware {
         inflater.inflate(layoutResourceId, null).also {
             Timber.v("onCreateView ${javaClass.simpleName}")
         }
+
+    protected inline fun <reified T : Any?> Fragment.argument() = FragmentArgumentDelegate<T>()
 }

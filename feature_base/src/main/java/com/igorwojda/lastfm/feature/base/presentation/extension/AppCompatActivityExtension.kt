@@ -7,7 +7,6 @@ inline fun <reified T> AppCompatActivity.extra(key: String): Lazy<T> = lazy {
     if (value is T) {
         value
     } else {
-        throw IllegalArgumentException("Couldn't find extra with key \"$key\" from type " +
-            T::class.java.canonicalName)
+        throw IllegalArgumentException("Extra \"$key\" not found")
     }
 }

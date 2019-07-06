@@ -6,8 +6,6 @@ import com.igorwojda.lastfm.feature.album.R
 import com.igorwojda.lastfm.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.lastfm.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.lastfm.feature.base.presentation.BaseFragment
-import com.igorwojda.lastfm.feature.base.presentation.extension.getStringOrThrow
-import com.igorwojda.lastfm.feature.base.presentation.extension.instanceOf
 import com.igorwojda.lastfm.feature.base.presentation.extension.observe
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
@@ -16,29 +14,24 @@ import org.kodein.di.generic.instance
 internal class AlbumDetailFragment : BaseFragment() {
 
     companion object {
-        private const val EXTRA_ALBUM_NAME = "EXTRA_ALBUM_NAME"
-        private const val EXTRA_ARTIST_NAME = "EXTRA_ARTIST_NAME"
-        private const val EXTRA_MB_ID = "EXTRA_MB_ID"
-
-        fun newInstance(artistName: String, albumName: String, mbId: String?) = instanceOf<AlbumDetailFragment>(
-            EXTRA_ALBUM_NAME to albumName,
-            EXTRA_ARTIST_NAME to artistName,
-            EXTRA_MB_ID to mbId
-        )
+        fun newInstance(artistName: String, albumName: String, mbId: String?) = AlbumDetailFragment().apply {
+            this.artistName = artistName
+            this.albumName = albumName
+            this.mbId = mbId
+        }
     }
 
     override val layoutResourceId = R.layout.fragment_album_detail
 
-    // This is injected here only because ViewModel injection is not implemented
+    var artistName by argument<String>()
+    var albumName by argument<String>()
+    var mbId by argument<String?>()
+
     private val viewModel: AlbumDetailsViewModel by instance()
     private val picasso: Picasso by instance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val albumName = arguments.getStringOrThrow(EXTRA_ALBUM_NAME)
-        val artistName = arguments.getStringOrThrow(EXTRA_ARTIST_NAME)
-        val mbId = arguments?.getString(EXTRA_MB_ID)
 
         activity?.title = resources.getString(R.string.album_details)
 
