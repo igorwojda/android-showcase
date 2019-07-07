@@ -2,6 +2,7 @@
 This is a showcase for Kotlin Android application. Project utilizes most popular libraries, unit testing and architecture which is suitable
 for long [development live cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
+[![CircleCI](https://circleci.com/gh/igorwojda/lastfm/tree/master.svg?style=svg)](https://circleci.com/gh/igorwojda/lastfm/tree/master)
 [![codebeat badge](https://codebeat.co/badges/4e47bc97-16fa-4dda-ae36-c24da47ea4c4)](https://codebeat.co/projects/github-com-igorwojda-lastfm-master)
 
 # Project characteristics
@@ -103,13 +104,13 @@ This allows to unify libraries versions across project and easily share them acr
 # Color management
 When the project gets bigger and requires more colors, it is getting really confusing and less traceable how to use the same colors in
 different contexts for different views. Solution for this problem is spiting collars into application color and color palette:
-* palette colors are named by color name (using [name the color tool](http://chir.ag/projects/name-that-color/#BF473B)) eg. `blue`,
+* palette colors are named by color name (using [name the color tool](http://chir.ag/projects/name-that-color/)) eg. `blue`,
 `magenta`. They can only be used to define application colors.
 * application colors are named by their function, from general function to more specific e.g. `buttonPrimaryEnabled`, `buttonPrimaryText`.
 They must always use color from the palette instead of defining new color and they can be widely used across all application.
 
 More info about
-https://blog.novatec-gmbh.de/name-android-colors-palettes/
+<https://blog.novatec-gmbh.de/name-android-colors-palettes/>
 
 # Tools
 
@@ -134,7 +135,7 @@ To have better understanding, the difference between those tools let's look at s
 
 Project contains custom gradle task that can run all of the static analysis checks at once - `./gradlew staticCheck`.
 
-BTW: [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [FindBugs](http://findbugs.sourceforge.net/)
+BTW: [Checkstyle](https://checkstyle.sourceforge.io), [PMD](https://pmd.github.io/) and [FindBugs](http://findbugs.sourceforge.net/)
 don't work with Kotlin (only Java), so they are not included in this project.
 
 ### Android lint
@@ -156,7 +157,7 @@ once (no matter in which project). Usually this is best way to go, unless you ha
 `./gradlew ktlintApplyToIdea` would be better option.
 
 `./gradlew ktlintApplyToIdea` - The task generates IntelliJ IDEA (or Android Studio) Kotlin style files in the project `.idea/` folder.
-This allows to keep consistent formatting in a single project and have to be runned separately for each project.
+This allows to keep consistent formatting in a single project and have to be run separately for each project.
 
 ### detekt
 `./gradlew detekt` - run detekt check
