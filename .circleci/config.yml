@@ -19,9 +19,6 @@ jobs:
                       - ~/.gradle
                   key: gradle-{{ checksum "build.gradle.kts" }}-{{ checksum  "buildSrc/src/main/kotlin/AndroidConfig.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/CoreVersion.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/LibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/TestLibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/GradleDependency.kt" }}-{{ checksum  "gradle/wrapper/gradle-wrapper.properties" }}
             - run:
-                  name: Run Tests
-                  command: ./gradlew test
-            - run:
                   name: Run Ktlint
                   command: ./gradlew ktlintCheck
             - run:
@@ -30,6 +27,9 @@ jobs:
             - run:
                   name: Run Lint
                   command: ./gradlew lint
+            - run:
+                  name: Run Tests
+                  command: ./gradlew testDebugUnitTest
             - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
                   path: app/build/reports
                   destination: reports
