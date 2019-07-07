@@ -9,6 +9,6 @@ class MainContainerActivity : BaseContainerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startActivity(AlbumSearchActivity.newIntent(this))
+        AlbumSearchActivity.start(this)
     }
 }
