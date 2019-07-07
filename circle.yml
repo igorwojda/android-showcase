@@ -1,0 +1,38 @@
+version: 2.1
+
+jobs:
+    build:
+        working_directory: ~/code
+        docker:
+            - image: circleci/android
+        environment:
+            JVM_OPTS: -Xmx4g
+        steps:
+            - checkout
+            - restore_cache:
+                  key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+            - run:
+                  name: Download Dependencies
+                  command: ./gradlew androidDependencies
+            - save_cache:
+                  paths:
+                      - ~/.gradle
+                  key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+            - run:
+                  name: Run Tests
+                  command: ./gradlew test
+            - run:
+                  name: Run Lint
+                  command: ./gradlew lint
+            - run:
+                  name: Run Detekt
+                  command: ./gradlew detekt
+            - run:
+                  name: Run ktlint
+                  command: ./gradlew ktlintCheck
+            - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+                  path: app/build/reports
+                  destination: reports
+            - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+                  path: app/build/test-results
+            # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
