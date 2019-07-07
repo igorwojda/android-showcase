@@ -12,6 +12,9 @@ internal class SearchAlbumUseCaseImpl(
 ) : SearchAlbumUseCase {
 
     override suspend fun execute(phrase: String): List<AlbumDomainModel> =
-        if (phrase.isBlank()) listOf()
-        else albumRepository.searchAlbum(phrase)
+        if (phrase.isBlank()) {
+            listOf()
+        } else {
+            albumRepository.searchAlbum(phrase)
+        }
 }
