@@ -10,19 +10,19 @@ jobs:
         steps:
             - checkout
             - restore_cache:
-                  key: jars-{{ checksum "build.gradle.kts" }}-{{ checksum  "app/build.gradle.kts" }}
+                  key: gradle-{{ checksum "build.gradle.kts" }}-{{ checksum  "buildSrc/src/main/kotlin/AndroidConfig.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/CoreVersion.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/LibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/TestLibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/GradleDependency.kt" }}-{{ checksum  "gradle/wrapper/gradle-wrapper.properties" }}
             - run:
                   name: Download Dependencies
                   command: ./gradlew androidDependencies
             - save_cache:
                   paths:
                       - ~/.gradle
-                  key: jars-{{ checksum "build.gradle.kts" }}-{{ checksum  "app/build.gradle.kts" }}
+                  key: gradle-{{ checksum "build.gradle.kts" }}-{{ checksum  "buildSrc/src/main/kotlin/AndroidConfig.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/CoreVersion.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/LibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/TestLibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/GradleDependency.kt" }}-{{ checksum  "gradle/wrapper/gradle-wrapper.properties" }}
             - run:
                   name: Run Tests
                   command: ./gradlew test
             - run:
-                  name: Run ktlint
+                  name: Run Ktlint
                   command: ./gradlew ktlintCheck
             - run:
                   name: Run Detekt
