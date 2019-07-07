@@ -43,8 +43,8 @@ internal class AlbumSearchFragment : BaseContainerFragment() {
             afterTextChanged { editable: Editable? ->
                 editable?.let {
                     val phrase = it.toString()
-                    loadingSpinner.show()
                     viewModel.searchAlbum(phrase)
+                    loadingSpinner.show()
                 }
             }
         }
