@@ -2,7 +2,7 @@
 This is a showcase for Kotlin Android application. Project utilizes most popular libraries, unit testing and architecture which is suitable
 for long [development live cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
-[![CircleCI](https://circleci.com/gh/igorwojda/lastfm/tree/master.svg?style=svg)](https://circleci.com/gh/igorwojda/lastfm/tree/master)
+[![CircleCI](https://circleci.com/gh/igorwojda/lastfm.svg?style=svg)](https://circleci.com/gh/igorwojda/lastfm)
 [![codebeat badge](https://codebeat.co/badges/4e47bc97-16fa-4dda-ae36-c24da47ea4c4)](https://codebeat.co/projects/github-com-igorwojda-lastfm-master)
 
 # Project characteristics
