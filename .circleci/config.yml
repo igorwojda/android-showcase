@@ -38,16 +38,15 @@ jobs:
             - image: circleci/android:api-28
         environment:
             JVM_OPTS: -Xmx4g
-            - checkout
-            - restore_cache: *restore_gradle_cache
-            - run: *download_dependencies
-            - save_cache: *save_gradle_cache
+                - checkout
+                - restore_cache: *restore_gradle_cache
+                - run: *download_dependencies
+                - save_cache: *save_gradle_cache
 
     ktlint:
         docker:
             - image: circleci/android:api-28
         steps:
-            - checkout
             - run: ./gradlew ktlintCheck
     detekt:
         docker:
