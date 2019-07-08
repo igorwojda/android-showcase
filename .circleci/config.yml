@@ -7,15 +7,18 @@ jobs:
 
         environment:
             JVM_OPTS: -Xmx4g
-                -
+
+        steps:
             - checkout
             - restore_cache:
                   key: gradle-{{ .Branch }}
-            - run: ./gradlew androidDependencies
-                       - save_cache:
-                       key: gradle-{{ .Branch }}
-                       paths:
-                           - ~/.gradle
+            - run:
+                  name: Download Dependencies
+                  command: ./gradlew androidDependencies
+            - save_cache:
+                  paths:
+                      - ~/.gradle
+                  key: gradle-{{ .Branch }}
 
     ktlint:
         docker:
