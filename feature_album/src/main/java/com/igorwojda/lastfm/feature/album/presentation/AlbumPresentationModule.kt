@@ -1,6 +1,7 @@
 package com.igorwojda.lastfm.feature.album.presentation
 
 import androidx.fragment.app.Fragment
+import com.igorwojda.lastfm.feature.album.FEATURE_NAME
 import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetailsViewModel
 import com.igorwojda.lastfm.feature.album.presentation.albumsearch.AlbumSearchViewModel
 import com.igorwojda.lastfm.feature.album.presentation.recyclerview.AlbumAdapter
@@ -12,7 +13,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.scoped
 import org.kodein.di.generic.singleton
 
-internal val albumPresentationModule = Kodein.Module("albumPresentationModule") {
+internal val presentationModule = Kodein.Module("${FEATURE_NAME}PresentationModule") {
 
     // AlbumSearch
     bind<AlbumSearchViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
