@@ -9,15 +9,19 @@ jobs:
             JVM_OPTS: -Xmx4g
         steps:
             - checkout
+            - run:
+                  name: "Setup custom environment variables"
+                  command: |
+                      echo 'set GRADLE_CACHE_KEY="FOO"' >> $BASH_ENV
             - restore_cache:
-                  key: gradle-{{ checksum "build.gradle.kts" }}-{{ checksum  "buildSrc/src/main/kotlin/AndroidConfig.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/CoreVersion.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/LibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/TestLibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/GradleDependency.kt" }}-{{ checksum  "gradle/wrapper/gradle-wrapper.properties" }}
+                  key: gradle-{{ .Branch }}
             - run:
                   name: Download Dependencies
                   command: ./gradlew androidDependencies
             - save_cache:
                   paths:
                       - ~/.gradle
-                  key: gradle-{{ checksum "build.gradle.kts" }}-{{ checksum  "buildSrc/src/main/kotlin/AndroidConfig.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/CoreVersion.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/LibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/TestLibraryDependency.kt" }}-{{ checksum  "buildSrc/src/main/kotlin/GradleDependency.kt" }}-{{ checksum  "gradle/wrapper/gradle-wrapper.properties" }}
+                  key: gradle-{{ .Branch }}
             - run:
                   name: Run Ktlint
                   command: ./gradlew ktlintCheck
@@ -28,7 +32,7 @@ jobs:
                   name: Run Lint
                   command: ./gradlew lint
             - run:
-                  name: Run Tests
+                  name: Run Unit Tests
                   command: ./gradlew testDebugUnitTest
             - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
                   path: app/build/reports
