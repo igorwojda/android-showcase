@@ -13,18 +13,7 @@ aliases:
         name: Download Dependencies
         command: ./gradlew androidDependencies
 
-    - &setup_environment
-        working_directory: ~/data
-        docker:
-            - image: circleci/android:api-28
-        environment:
-            JVM_OPTS: -Xmx4g
 
-    - &checkout
-        - checkout
-        - restore_cache: *restore_gradle_cache
-        - run: *download_dependencies
-        - save_cache: *save_gradle_cache
 
     - &ktlint
         name: Run Ktlint
@@ -43,6 +32,17 @@ aliases:
         command: ./gradlew testDebugUnitTest
 
 jobs:
+    setup_environment:
+        working_directory: ~/data
+        docker:
+            - image: circleci/android:api-28
+        environment:
+            JVM_OPTS: -Xmx4g
+            - checkout
+            - restore_cache: *restore_gradle_cache
+            - run: *download_dependencies
+            - save_cache: *save_gradle_cache
+
     ktlint:
         docker:
             - image: circleci/android:api-28
@@ -53,7 +53,6 @@ jobs:
         docker:
             - image: circleci/android:api-28
         steps:
-            - checkout
             - run: ./gradlew detekt
 
 workflows:
@@ -61,5 +60,9 @@ workflows:
     build_and_check:
         jobs:
             - ktlint
+                requires:
+                    - setup_environment
             - detekt
+                requires:
+                    - setup_environment
 
