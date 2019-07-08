@@ -42,30 +42,24 @@ aliases:
         name: Run Unit Tests
         command: ./gradlew testDebugUnitTest
 
-version: 2.1
+jobs:
+    ktlint:
+        docker:
+            - image: circleci/android:api-28
+        steps:
+            - checkout
+            - run: ./gradlew ktlintCheck
+    detekt:
+        docker:
+            - image: circleci/android:api-28
+        steps:
+            - checkout
+            - run: ./gradlew detekt
+
 workflows:
     version: 2
-    master:
+    build_and_check:
         jobs:
-            - "Run Ktlint"
-            - "Run Detekt"
-            - "Run Lint"
-            - "Run Unit Tests":
-                  requires: *checkout
+            - ktlint
+            - detekt
 
-jobs:
-    "Run Ktlint":
-        <<: *setup_environment
-        steps: *ktlint
-
-    "Run Detekt":
-        <<: *setup_environment
-        steps: *detekt
-
-    "Run Lint":
-        <<: *setup_environment
-        steps: *lint
-
-    "Run Unit Tests":
-        <<: *setup_environment
-        steps: *unit_tests
