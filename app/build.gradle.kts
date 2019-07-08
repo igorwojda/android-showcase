@@ -36,7 +36,7 @@ android {
         }
 
         testOptions {
-            unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
+            unitTests.isReturnDefaultValues = TestOptions.isReturnDefaultValues
         }
 
         compileOptions {
