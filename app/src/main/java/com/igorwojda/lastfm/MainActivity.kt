@@ -4,7 +4,8 @@ import android.os.Bundle
 import com.igorwojda.lastfm.feature.album.presentation.albumsearch.AlbumSearchActivity
 import com.igorwojda.lastfm.feature.base.presentation.activity.BaseContainerActivity
 
-class MainContainerActivity : BaseContainerActivity() {
+class MainActivity : BaseContainerActivity() {
+
     override val layoutResourceId = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
