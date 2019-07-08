@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.presentation.di
+package com.igorwojda.lastfm.feature.album.presentation
 
 import androidx.fragment.app.Fragment
 import com.igorwojda.lastfm.feature.album.presentation.albumdetails.AlbumDetailsViewModel

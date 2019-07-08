@@ -1,4 +1,4 @@
-package com.igorwojda.lastfm.feature.album.data.di
+package com.igorwojda.lastfm.feature.album.data
 
 import com.igorwojda.lastfm.feature.album.data.repository.AlbumRepositoryImpl
 import com.igorwojda.lastfm.feature.album.data.retrofit.service.AlbumRetrofitService
