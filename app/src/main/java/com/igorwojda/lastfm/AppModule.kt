@@ -1,8 +1,7 @@
-package com.igorwojda.lastfm.core
+package com.igorwojda.lastfm
 
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.igorwojda.lastfm.R
 import com.igorwojda.lastfm.core.retrofit.AuthenticationInterceptor
 import com.igorwojda.lastfm.core.retrofit.UserAgentInterceptor
 import com.squareup.picasso.Picasso
@@ -23,17 +22,11 @@ private const val TAG_API_TOKEN = "TAG_API_TOKEN"
 val appModule = Kodein.Module("baseDataModule") {
 
     // build parameters
-    bind(TAG_API_BASE_URL) from Provider(erased<Context>(), erased()) {
-        context.getString(R.string.api_base_url)
-    }
+    bind(TAG_API_BASE_URL) from Provider(erased<Context>(), erased()) { context.getString(R.string.api_base_url) }
 
-    bind(TAG_API_TOKEN) from Provider(erased<Context>(), erased()) {
-        context.getString(R.string.api_token)
-    }
+    bind(TAG_API_TOKEN) from Provider(erased<Context>(), erased()) { context.getString(R.string.api_token) }
 
-    bind() from singleton {
-        AuthenticationInterceptor(instance(TAG_API_TOKEN))
-    }
+    bind() from singleton { AuthenticationInterceptor(instance(TAG_API_TOKEN)) }
 
     bind() from singleton { UserAgentInterceptor() }
 
@@ -64,7 +57,5 @@ val appModule = Kodein.Module("baseDataModule") {
             .build()
     }
 
-    bind() from singleton {
-        Picasso.get()
-    }
+    bind() from singleton { Picasso.get() }
 }

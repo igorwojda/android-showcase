@@ -1,6 +1,7 @@
-package com.igorwojda.lastfm
+package com.igorwojda.lastfm.presentation
 
 import android.os.Bundle
+import com.igorwojda.lastfm.R
 import com.igorwojda.lastfm.feature.album.presentation.albumsearch.AlbumSearchActivity
 import com.igorwojda.lastfm.feature.base.presentation.activity.BaseContainerActivity
 
