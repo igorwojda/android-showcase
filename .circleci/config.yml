@@ -1,42 +1,71 @@
-version: 2.1
+aliases:
+    - &restore_gradle_cache
+        name: Restore Gradle cache
+        key: gradle-{{ .Branch }}
 
-jobs:
-    build:
-        working_directory: ~/code
+    - &save_gradle_cache
+        name: Save Gradle cache
+        key: gradle-{{ .Branch }}
+        paths:
+            - ~/.gradle
+
+    - &download_dependencies
+        name: Download Dependencies
+        command: ./gradlew androidDependencies
+
+    - &setup_environment
+        working_directory: ~/data
         docker:
             - image: circleci/android:api-28
         environment:
             JVM_OPTS: -Xmx4g
-        steps:
-            - checkout
-            - run:
-                  name: "Setup custom environment variables"
-                  command: |
-                      echo 'set GRADLE_CACHE_KEY="FOO"' >> $BASH_ENV
-            - restore_cache:
-                  key: gradle-{{ .Branch }}
-            - run:
-                  name: Download Dependencies
-                  command: ./gradlew androidDependencies
-            - save_cache:
-                  paths:
-                      - ~/.gradle
-                  key: gradle-{{ .Branch }}
-            - run:
-                  name: Run Ktlint
-                  command: ./gradlew ktlintCheck
-            - run:
-                  name: Run Detekt
-                  command: ./gradlew detekt
-            - run:
-                  name: Run Lint
-                  command: ./gradlew lint
-            - run:
-                  name: Run Unit Tests
-                  command: ./gradlew testDebugUnitTest
-            - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-                  path: app/build/reports
-                  destination: reports
-            - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-                  path: app/build/test-results
-            # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+
+    - &checkout
+        - checkout
+        - restore_cache: *restore_gradle_cache
+        - run: *download_dependencies
+        - save_cache: *save_gradle_cache
+
+    - &ktlint
+        name: Run Ktlint
+        command: ./gradlew ktlintCheck
+
+    - &detekt
+        name: Run Detekt
+        command: ./gradlew detekt
+
+    - &lint
+        name: Run Lint
+        command: ./gradlew lint
+
+    - &unit_tests
+        name: Run Unit Tests
+        command: ./gradlew testDebugUnitTest
+
+version: 2.1
+workflows:
+    version: 2
+    master:
+        jobs:
+            - "Run Ktlint"
+            - "Run Detekt"
+            - "Run Lint"
+            - "Run Unit Tests"
+                requires: *checkout
+
+jobs:
+    "Run Ktlint":
+        <<: *setup_environment
+        steps: *ktlint
+
+    "Run Detekt":
+        <<: *setup_environment
+        steps: *detekt
+
+    "Run Lint":
+        <<: *setup_environment
+        steps: *lint
+
+    "Run Unit Tests":
+        <<: *setup_environment
+        steps: *unit_tests
