@@ -1,5 +1,6 @@
-package com.igorwojda.lastfm.feature.album.domain.di
+package com.igorwojda.lastfm.feature.album.domain
 
+import com.igorwojda.lastfm.feature.album.FEATURE_NAME
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.lastfm.feature.album.domain.usecase.GetAlbumUseCaseImpl
 import com.igorwojda.lastfm.feature.album.domain.usecase.SearchAlbumUseCase
@@ -9,7 +10,7 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-internal val albumDomainModule = Kodein.Module("albumDomainModule") {
+internal val domainModule = Kodein.Module("${FEATURE_NAME}DomainModule") {
 
     bind<SearchAlbumUseCase>() with provider { SearchAlbumUseCaseImpl(instance()) }
 

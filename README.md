@@ -2,29 +2,28 @@
 This is a showcase for Kotlin Android application. Project utilizes most popular libraries, unit testing and architecture which is suitable
 for long [development live cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
-[![CircleCI](https://circleci.com/gh/igorwojda/lastfm.svg?style=svg)](https://circleci.com/gh/igorwojda/lastfm)
-[![codebeat badge](https://codebeat.co/badges/4e47bc97-16fa-4dda-ae36-c24da47ea4c4)](https://codebeat.co/projects/github-com-igorwojda-lastfm-master)
+[![CircleCI](https://circleci.com/gh/igorwojda/Android-Showcase.svg?style=svg)](https://circleci.com/gh/igorwojda/Android-Showcase)
+[![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 
 # Project characteristics
 * 100% Kotlin
+* Kotlin Coroutines
 * CA + MVVM (Clean Architecture + Model-View-ViewModel)
+* Gradle Kotlin DSL
+* Feature modules
+* Dependency Injection (Kodein)
 * AndroidX support libraries
 * Android Architecture components
 * Unit Tests
-* Feature modules
-* Dependency Injection
-* Kotlin Coroutines
-* Utilise many popular libraries from Android ecosystem
+* Utilise [many popular libraries](buildSrc\src\main\kotlin\LibraryDependency.kt) from Android ecosystem
 * Takes advantage of most popular static analysis tools
-* Gradle Script Kotlin
 * Gradle dependency autocompletion
 
 # Kotlin
 Project takes full advantage of Kotlin language by maximizing it's usage across project:
 * Application code is written in Kotlin
 * Gradle build scripts (eg. [top level](build.gradle.kts), [module level](app/build.gradle.kts) etc.) are written in Kotlin utilising
-[Kotlin Gradle DSL](https://github.com/gradle/kotlin-dsl)
-* [Teamcity](https://www.jetbrains.com/teamcity/) [configuration scripts](.teamcity\settings.kts) are written in
+[Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl)
 [Kotlin DSL](https://confluence.jetbrains.com/display/TCD18/Kotlin+DSL)
 * Dependency injection is implemented using [KodeinDI](https://kodein.org/di/)
 
@@ -139,7 +138,7 @@ BTW: [Checkstyle](https://checkstyle.sourceforge.io), [PMD](https://pmd.github.i
 don't work with Kotlin (only Java), so they are not included in this project.
 
 ### Android lint
-`./gradlew lint` - run lint check
+`./gradlew lint` - run lint checkGradle Kotlin DSL
 
 ### ktlint
 ktlint is integrated via [Ktlint Gradle](https://github.com/jlleitschuh/ktlint-gradle) witch is gradle plugin over the `ktlint` project.

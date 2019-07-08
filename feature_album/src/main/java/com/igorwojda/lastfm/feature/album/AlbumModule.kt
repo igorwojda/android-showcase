@@ -1,12 +1,14 @@
 package com.igorwojda.lastfm.feature.album
 
-import com.igorwojda.lastfm.feature.album.data.di.albumDataModule
-import com.igorwojda.lastfm.feature.album.domain.di.albumDomainModule
-import com.igorwojda.lastfm.feature.album.presentation.di.albumPresentationModule
+import com.igorwojda.lastfm.feature.album.data.dataModule
+import com.igorwojda.lastfm.feature.album.domain.domainModule
+import com.igorwojda.lastfm.feature.album.presentation.presentationModule
 import org.kodein.di.Kodein
 
-val albumModule = Kodein.Module("albumModule") {
-    import(albumPresentationModule)
-    import(albumDomainModule)
-    import(albumDataModule)
+internal const val FEATURE_NAME = "Album"
+
+val albumModule = Kodein.Module("${FEATURE_NAME}Module") {
+    import(presentationModule)
+    import(domainModule)
+    import(dataModule)
 }
