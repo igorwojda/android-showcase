@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.facebook.stetho.Stetho
 import com.igorwojda.lastfm.BuildConfig
+import com.igorwojda.lastfm.appModule
 import com.igorwojda.lastfm.feature.album.albumModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
