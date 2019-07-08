@@ -5,7 +5,7 @@ import com.igorwojda.lastfm.feature.album.domain.domainModule
 import com.igorwojda.lastfm.feature.album.presentation.presentationModule
 import org.kodein.di.Kodein
 
-internal const val FEATURE_NAME = "featureAlbum"
+internal const val FEATURE_NAME = "Album"
 
 val albumModule = Kodein.Module("${FEATURE_NAME}Module") {
     import(presentationModule)
