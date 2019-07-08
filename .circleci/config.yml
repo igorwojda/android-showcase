@@ -50,8 +50,8 @@ workflows:
             - "Run Ktlint"
             - "Run Detekt"
             - "Run Lint"
-            - "Run Unit Tests"
-                requires: *checkout
+            - "Run Unit Tests":
+                  requires: *checkout
 
 jobs:
     "Run Ktlint":
