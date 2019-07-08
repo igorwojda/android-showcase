@@ -8,6 +8,7 @@ jobs:
         environment:
             JVM_OPTS: -Xmx4g
 
+    prepare_project:
         steps:
             - checkout
             - restore_cache:
@@ -36,9 +37,11 @@ workflows:
     build_and_check:
         jobs:
             - ktlint
+                <<: setup_environment
                 requires:
-                    - setup_environment
+                    - prepare_project
             - detekt
+                <<: setup_environment
                 requires:
-                    - setup_environment
+                    - prepare_project
 
