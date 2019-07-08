@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-    prepare_project:
+    build:
         steps:
             - checkout
             - restore_cache:
