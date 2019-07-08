@@ -1,3 +1,5 @@
+version: 2.1
+
 jobs:
     prepare_project:
         steps:
@@ -22,6 +24,7 @@ jobs:
             JVM_OPTS: -Xmx4g
 
         steps:
+            - checkout
             - run: ./gradlew ktlintCheck
     detekt:
         working_directory: ~/data
@@ -33,6 +36,7 @@ jobs:
             JVM_OPTS: -Xmx4g
 
         steps:
+            - checkout
             - run: ./gradlew detekt
 
 workflows:
@@ -40,9 +44,4 @@ workflows:
     build_and_check:
         jobs:
             - ktlint
-                requires:
-                    - prepare_project
             - detekt
-                requires:
-                    - prepare_project
-
