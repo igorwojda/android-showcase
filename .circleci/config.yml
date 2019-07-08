@@ -1,5 +1,5 @@
 jobs:
-    setup_environment:
+    prepare_project:
         working_directory: ~/data
 
         docker:
@@ -8,7 +8,6 @@ jobs:
         environment:
             JVM_OPTS: -Xmx4g
 
-    prepare_project:
         steps:
             - checkout
             - restore_cache:
@@ -22,13 +21,25 @@ jobs:
                   key: gradle-{{ .Branch }}
 
     ktlint:
+        working_directory: ~/data
+
         docker:
             - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
         steps:
             - run: ./gradlew ktlintCheck
     detekt:
+        working_directory: ~/data
+
         docker:
             - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
         steps:
             - run: ./gradlew detekt
 
@@ -37,11 +48,9 @@ workflows:
     build_and_check:
         jobs:
             - ktlint
-                <<: setup_environment
                 requires:
                     - prepare_project
             - detekt
-                <<: setup_environment
                 requires:
                     - prepare_project
 
