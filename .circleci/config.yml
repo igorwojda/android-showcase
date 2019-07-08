@@ -1,47 +1,21 @@
-aliases:
-    - &restore_gradle_cache
-        name: Restore Gradle cache
-        key: gradle-{{ .Branch }}
-
-    - &save_gradle_cache
-        name: Save Gradle cache
-        key: gradle-{{ .Branch }}
-        paths:
-            - ~/.gradle
-
-    - &download_dependencies
-        name: Download Dependencies
-        command: ./gradlew androidDependencies
-
-
-
-    - &ktlint
-        name: Run Ktlint
-        command: ./gradlew ktlintCheck
-
-    - &detekt
-        name: Run Detekt
-        command: ./gradlew detekt
-
-    - &lint
-        name: Run Lint
-        command: ./gradlew lint
-
-    - &unit_tests
-        name: Run Unit Tests
-        command: ./gradlew testDebugUnitTest
-
 jobs:
     setup_environment:
         working_directory: ~/data
+
         docker:
             - image: circleci/android:api-28
+
         environment:
             JVM_OPTS: -Xmx4g
-                - checkout
-                - restore_cache: *restore_gradle_cache
-                - run: *download_dependencies
-                - save_cache: *save_gradle_cache
+                -
+            - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run: ./gradlew androidDependencies
+                       - save_cache:
+                       key: gradle-{{ .Branch }}
+                       paths:
+                           - ~/.gradle
 
     ktlint:
         docker:
