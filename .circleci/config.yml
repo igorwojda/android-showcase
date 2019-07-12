@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-    resolve_dependencies:
+    prepare_dependencies:
         working_directory: ~/data
 
         docker:
@@ -101,16 +101,16 @@ workflows:
         jobs:
             - lint:
                   requires:
-                      - resolve_dependencies
+                      - prepare_dependencies
             - detekt:
                   requires:
-                      - resolve_dependencies
+                      - prepare_dependencies
             - ktlint:
                   requires:
-                      - resolve_dependencies
+                      - prepare_dependencies
             - test:
                   requires:
-                      - resolve_dependencies
+                      - prepare_dependencies
             - build:
                   requires:
                       - lint
