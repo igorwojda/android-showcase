@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-    ktlint:
+    resolve_dependencies:
         working_directory: ~/data
 
         docker:
@@ -20,6 +20,20 @@ jobs:
             - save_cache:
                   paths:
                       - ~/.gradle
+                  key: gradle-{{ .Branch }}
+
+    ktlint:
+        working_directory: ~/data
+
+        docker:
+            - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
+        steps:
+            - checkout
+            - restore_cache:
                   key: gradle-{{ .Branch }}
             - run: ./gradlew ktlintCheck
     detekt:
@@ -34,13 +48,6 @@ jobs:
         steps:
             - checkout
             - restore_cache:
-                  key: gradle-{{ .Branch }}
-            - run:
-                  name: Download Dependencies
-                  command: ./gradlew androidDependencies
-            - save_cache:
-                  paths:
-                      - ~/.gradle
                   key: gradle-{{ .Branch }}
             - run: ./gradlew detekt
 
@@ -57,13 +64,6 @@ jobs:
             - checkout
             - restore_cache:
                   key: gradle-{{ .Branch }}
-            - run:
-                  name: Download Dependencies
-                  command: ./gradlew androidDependencies
-            - save_cache:
-                  paths:
-                      - ~/.gradle
-                  key: gradle-{{ .Branch }}
             - run: ./gradlew lint
 
     test:
@@ -78,13 +78,6 @@ jobs:
         steps:
             - checkout
             - restore_cache:
-                  key: gradle-{{ .Branch }}
-            - run:
-                  name: Download Dependencies
-                  command: ./gradlew androidDependencies
-            - save_cache:
-                  paths:
-                      - ~/.gradle
                   key: gradle-{{ .Branch }}
             - run: ./gradlew testDebugUnitTest
 
@@ -101,25 +94,26 @@ jobs:
             - checkout
             - restore_cache:
                   key: gradle-{{ .Branch }}
-            - run:
-                  name: Download Dependencies
-                  command: ./gradlew androidDependencies
-            - save_cache:
-                  paths:
-                      - ~/.gradle
-                  key: gradle-{{ .Branch }}
             - run: ./gradlew :app:bundleDebug
 workflows:
     version: 2
     build_and_check:
         jobs:
-            - lint
-            - detekt
-            - ktlint
-            - test
+            - lint:
+                  requires:
+                      - resolve_dependencies
+            - detekt:
+                  requires:
+                      - resolve_dependencies
+            - ktlint:
+                  requires:
+                      - resolve_dependencies
+            - test:
+                  requires:
+                      - resolve_dependencies
             - build:
-                requires:
-                    - lint
-                    - detekt
-                    - ktlint
-                    - test
+                  requires:
+                      - lint
+                      - detekt
+                      - ktlint
+                      - test
