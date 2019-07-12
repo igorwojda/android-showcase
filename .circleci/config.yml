@@ -64,7 +64,7 @@ jobs:
             - checkout
             - restore_cache:
                   key: gradle-{{ .Branch }}
-            - run: ./gradlew lint
+            - run: ./gradlew lint --no-parallel
 
     test:
         working_directory: ~/data
