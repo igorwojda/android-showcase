@@ -117,3 +117,4 @@ workflows:
             - detekt
             - ktlint
             - test
+            - build
