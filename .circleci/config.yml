@@ -12,6 +12,15 @@ jobs:
 
         steps:
             - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run:
+                  name: Download Dependencies
+                  command: ./gradlew androidDependencies
+            - save_cache:
+                  paths:
+                      - ~/.gradle
+                  key: gradle-{{ .Branch }}
             - run: ./gradlew ktlintCheck
     detekt:
         working_directory: ~/data
@@ -24,6 +33,15 @@ jobs:
 
         steps:
             - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run:
+                  name: Download Dependencies
+                  command: ./gradlew androidDependencies
+            - save_cache:
+                  paths:
+                      - ~/.gradle
+                  key: gradle-{{ .Branch }}
             - run: ./gradlew detekt
 
 workflows:
