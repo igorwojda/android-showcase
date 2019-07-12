@@ -30,5 +30,5 @@ workflows:
     version: 2
     build_and_check:
         jobs:
-            - ktlint
             - detekt
+            - ktlint
