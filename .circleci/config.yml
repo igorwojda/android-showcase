@@ -88,7 +88,7 @@ jobs:
                   key: gradle-{{ .Branch }}
             - run: ./gradlew testDebugUnitTest
 
-    build2Ż:
+    build2:
         working_directory: ~/data
 
         docker:
