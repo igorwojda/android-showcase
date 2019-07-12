@@ -88,6 +88,27 @@ jobs:
                   key: gradle-{{ .Branch }}
             - run: ./gradlew testDebugUnitTest
 
+    build:
+        working_directory: ~/data
+
+        docker:
+            - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
+        steps:
+            - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run:
+                  name: Download Dependencies
+                  command: ./gradlew androidDependencies
+            - save_cache:
+                  paths:
+                      - ~/.gradle
+                  key: gradle-{{ .Branch }}
+            - run: ./gradlew :app:bundleDebug
 workflows:
     version: 2
     build_and_check:
