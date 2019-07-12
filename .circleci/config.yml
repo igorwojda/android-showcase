@@ -1,19 +1,6 @@
 version: 2.1
 
 jobs:
-    build:
-        steps:
-            - checkout
-            - restore_cache:
-                  key: gradle-{{ .Branch }}
-            - run:
-                  name: Download Dependencies
-                  command: ./gradlew androidDependencies
-            - save_cache:
-                  paths:
-                      - ~/.gradle
-                  key: gradle-{{ .Branch }}
-
     ktlint:
         working_directory: ~/data
 
