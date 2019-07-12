@@ -88,7 +88,7 @@ jobs:
                   key: gradle-{{ .Branch }}
             - run: ./gradlew testDebugUnitTest
 
-    build2:
+    build:
         working_directory: ~/data
 
         docker:
@@ -117,4 +117,9 @@ workflows:
             - detekt
             - ktlint
             - test
-            - build2
+            - build
+                requires:
+                    - lint
+                    - detekt
+                    - ktlint
+                    - test
