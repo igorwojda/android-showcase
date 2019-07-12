@@ -1,38 +1,120 @@
 version: 2.1
 
 jobs:
-    build:
-        working_directory: ~/code
+    prepare_dependencies:
+        working_directory: ~/data
+
         docker:
             - image: circleci/android:api-28
+
         environment:
             JVM_OPTS: -Xmx4g
+
         steps:
             - checkout
             - restore_cache:
-                  key: jars-{{ checksum "build.gradle.kts" }}-{{ checksum  "app/build.gradle.kts" }}
+                  key: gradle-{{ .Branch }}
             - run:
                   name: Download Dependencies
                   command: ./gradlew androidDependencies
             - save_cache:
                   paths:
                       - ~/.gradle
-                  key: jars-{{ checksum "build.gradle.kts" }}-{{ checksum  "app/build.gradle.kts" }}
-            - run:
-                  name: Run Tests
-                  command: ./gradlew test
-            - run:
-                  name: Run ktlint
-                  command: ./gradlew ktlintCheck
-            - run:
-                  name: Run Detekt
-                  command: ./gradlew detekt
-            - run:
-                  name: Run Lint
-                  command: ./gradlew lint
-            - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-                  path: app/build/reports
-                  destination: reports
-            - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-                  path: app/build/test-results
-            # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+                  key: gradle-{{ .Branch }}
+
+    ktlint:
+        working_directory: ~/data
+
+        docker:
+            - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
+        steps:
+            - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run: ./gradlew ktlintCheck
+    detekt:
+        working_directory: ~/data
+
+        docker:
+            - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
+        steps:
+            - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run: ./gradlew detekt
+
+    lint:
+        working_directory: ~/data
+
+        docker:
+            - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
+        steps:
+            - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run: ./gradlew lint
+
+    test:
+        working_directory: ~/data
+
+        docker:
+            - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
+        steps:
+            - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run: ./gradlew testDebugUnitTest
+
+    build:
+        working_directory: ~/data
+
+        docker:
+            - image: circleci/android:api-28
+
+        environment:
+            JVM_OPTS: -Xmx4g
+
+        steps:
+            - checkout
+            - restore_cache:
+                  key: gradle-{{ .Branch }}
+            - run: ./gradlew :app:bundleDebug
+workflows:
+    version: 2
+    build_and_check:
+        jobs:
+            - prepare_dependencies
+            - lint:
+                  requires:
+                      - prepare_dependencies
+            - detekt:
+                  requires:
+                      - prepare_dependencies
+            - ktlint:
+                  requires:
+                      - prepare_dependencies
+            - test:
+                  requires:
+                      - prepare_dependencies
+            - build:
+                  requires:
+                      - lint
+                      - detekt
+                      - ktlint
+                      - test
