@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.igorwojda.lastfm">
+          xmlns:tools="http://schemas.android.com/tools" package="com.igorwojda.showcase">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".core.LastFmApplication"
+        android:name=".core.showcaseApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"

@@ -7,7 +7,7 @@ object AndroidConfig {
     const val versionCode = 1
     const val versionName = "1.0"
 
-    const val id = "com.igorwojda.lastfm"
+    const val id = "com.igorwojda.showcase"
     const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     const val supportLibraryVectorDrawables = true
 }

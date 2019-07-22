@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.igorwojda.lastfm.feature.base">
+          xmlns:tools="http://schemas.android.com/tools" package="com.igorwojda.showcase.feature.base">
 
     <application
             android:allowBackup="true"
