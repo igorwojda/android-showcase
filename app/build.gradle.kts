@@ -1,25 +1,25 @@
 import com.android.build.gradle.internal.dsl.BaseFlavor
 
 plugins {
-    id(GradlePluginId.androidApplication)
-    id(GradlePluginId.kotlinAndroid)
-    id(GradlePluginId.kotlinAndroidExtensions)
-    id(GradlePluginId.ktlintGradle)
+    id(GradlePluginId.ANDROID_APPLICATION)
+    id(GradlePluginId.KOTLIN_ANDROID)
+    id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
+    id(GradlePluginId.KTLINT_GRADLE)
 }
 
 android {
-    compileSdkVersion(AndroidConfig.compileSdkVersion)
+    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
-        applicationId = AndroidConfig.id
-        minSdkVersion(AndroidConfig.minSdkVersion)
-        targetSdkVersion(AndroidConfig.targetSdkVersion)
-        buildToolsVersion(AndroidConfig.buildToolsVersion)
+        applicationId = AndroidConfig.ID
+        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
+        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
+        buildToolsVersion(AndroidConfig.BUILD_TOOLS_VERSION)
 
-        versionCode = AndroidConfig.versionCode
-        versionName = AndroidConfig.versionName
-        testInstrumentationRunner = AndroidConfig.testInstrumentationRunner
-        vectorDrawables.useSupportLibrary = AndroidConfig.supportLibraryVectorDrawables
+        versionCode = AndroidConfig.VERSION_CODE
+        versionName = AndroidConfig.VERSION_NAME
+        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+        vectorDrawables.useSupportLibrary = AndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
 
         stringResValue("apiBaseUrl")
         stringResValue("apiToken")
@@ -36,7 +36,7 @@ android {
         }
 
         testOptions {
-            unitTests.isReturnDefaultValues = TestOptions.isReturnDefaultValues
+            unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
         }
 
         compileOptions {
@@ -49,10 +49,10 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.featureBase))
-    implementation(project(ModuleDependency.featureAlbum))
+    implementation(project(ModuleDependency.FEATURE_BASE))
+    implementation(project(ModuleDependency.FEATURE_ALBUM))
 
-    implementation(LibraryDependency.loggingInterceptor)
+    implementation(LibraryDependency.LOGGING_INTERCEPTOR)
 
     addCommonDependencies()
     addTestDependencies()

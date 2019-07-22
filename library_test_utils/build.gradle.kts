@@ -1,21 +1,21 @@
 plugins {
-    id(GradlePluginId.androidLibrary)
-    id(GradlePluginId.kotlinAndroid)
-    id(GradlePluginId.kotlinAndroidExtensions)
-    id(GradlePluginId.ktlintGradle)
+    id(GradlePluginId.ANDROID_LIBRARY)
+    id(GradlePluginId.KOTLIN_ANDROID)
+    id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
+    id(GradlePluginId.KTLINT_GRADLE)
 }
 
 android {
-    compileSdkVersion(AndroidConfig.compileSdkVersion)
+    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
-        minSdkVersion(AndroidConfig.minSdkVersion)
-        targetSdkVersion(AndroidConfig.targetSdkVersion)
+        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
+        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
 
-        versionCode = AndroidConfig.versionCode
-        versionName = AndroidConfig.versionName
-        testInstrumentationRunner = AndroidConfig.testInstrumentationRunner
-        vectorDrawables.useSupportLibrary = AndroidConfig.supportLibraryVectorDrawables
+        versionCode = AndroidConfig.VERSION_CODE
+        versionName = AndroidConfig.VERSION_NAME
+        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+        vectorDrawables.useSupportLibrary = AndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
     }
 
     buildTypes {
@@ -30,14 +30,14 @@ android {
     }
 
     testOptions {
-        unitTests.isReturnDefaultValues = TestOptions.isReturnDefaultValues
+        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
 }
 
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(LibraryDependency.kotlin)
-    implementation(TestLibraryDependency.junit)
-    implementation(TestLibraryDependency.coroutinesTest)
+    implementation(LibraryDependency.KOTLIN)
+    implementation(TestLibraryDependency.JUNIT)
+    implementation(TestLibraryDependency.COROUTINES_TEST)
 }
