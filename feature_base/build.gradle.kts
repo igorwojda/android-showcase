@@ -11,7 +11,6 @@ android {
     defaultConfig {
         minSdkVersion(AndroidConfig.minSdkVersion)
         targetSdkVersion(AndroidConfig.targetSdkVersion)
-        buildToolsVersion(AndroidConfig.buildToolsVersion)
 
         versionCode = AndroidConfig.versionCode
         versionName = AndroidConfig.versionName
