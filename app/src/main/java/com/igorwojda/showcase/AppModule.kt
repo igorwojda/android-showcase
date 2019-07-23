@@ -2,8 +2,8 @@ package com.igorwojda.showcase
 
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.igorwojda.showcase.core.retrofit.AuthenticationInterceptor
-import com.igorwojda.showcase.core.retrofit.UserAgentInterceptor
+import com.igorwojda.showcase.app.data.retrofit.AuthenticationInterceptor
+import com.igorwojda.showcase.app.data.retrofit.UserAgentInterceptor
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -2,10 +2,10 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.igorwojda.showcase.base.presentation.BaseViewModel
+import com.igorwojda.showcase.base.presentation.extension.toLiveData
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.base.presentation.BaseViewModel
-import com.igorwojda.showcase.feature.base.presentation.extension.toLiveData
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailsViewModel(

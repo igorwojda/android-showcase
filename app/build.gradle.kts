@@ -44,15 +44,17 @@ android {
             targetCompatibility = JavaVersion.VERSION_1_8
         }
     }
+
+    dynamicFeatures = mutableSetOf(ModuleDependency.FEATURE_ALBUM)
 }
 
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.FEATURE_BASE, "default"))
-    implementation(project(ModuleDependency.FEATURE_ALBUM, "default"))
+    implementation(project(ModuleDependency.APP))
 
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
+    implementation("com.google.android.play:core:1.6.1")
 
     addCommonDependencies()
     addTestDependencies()
