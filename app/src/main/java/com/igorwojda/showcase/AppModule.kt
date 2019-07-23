@@ -21,10 +21,12 @@ private const val TAG_API_TOKEN = "TAG_API_TOKEN"
 
 val appModule = Kodein.Module("baseDataModule") {
 
-    // build parameters
-    bind(TAG_API_BASE_URL) from Provider(erased<Context>(), erased()) { context.getString(R.string.api_base_url) }
+    bind(TAG_API_BASE_URL) from Provider(
+        erased<Context>(),
+        erased()
+    ) { context.getString(R.string.build_param_api_base_url) }
 
-    bind(TAG_API_TOKEN) from Provider(erased<Context>(), erased()) { context.getString(R.string.api_token) }
+    bind(TAG_API_TOKEN) from Provider(erased<Context>(), erased()) { context.getString(R.string.build_param_api_token) }
 
     bind() from singleton { AuthenticationInterceptor(instance(TAG_API_TOKEN)) }
 
