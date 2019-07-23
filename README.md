@@ -91,7 +91,7 @@ Here is a code snippet from build script:
 
 ```kotlin
 //Module depends on base feature module
-implementation(project(ModuleDependency.featureBase))
+implementation(project(ModuleDependency.featureBase, "default"))
 
 //We want to use these libraries in this module
 implementation(LibraryDependency.supportAppCompact)

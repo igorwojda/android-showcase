@@ -1,5 +1,5 @@
 plugins {
-    id(GradlePluginId.ANDROID_FEATURE)
+    id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
     id(GradlePluginId.KTLINT_GRADLE)

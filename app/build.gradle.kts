@@ -49,8 +49,8 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.FEATURE_BASE))
-    implementation(project(ModuleDependency.FEATURE_ALBUM))
+    implementation(project(ModuleDependency.FEATURE_BASE, "default"))
+    implementation(project(ModuleDependency.FEATURE_ALBUM, "default"))
 
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
 
