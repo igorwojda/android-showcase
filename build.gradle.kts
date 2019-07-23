@@ -14,9 +14,9 @@ buildscript {
     }
 
     dependencies {
-        classpath(GradleDependency.androidGradle)
-        classpath(GradleDependency.kotlin)
-        classpath(GradleDependency.ktlintGradle)
+        classpath(GradleDependency.ANDROID_GRADLE)
+        classpath(GradleDependency.KOTLIN)
+        classpath(GradleDependency.KTLINT_GRADLE)
     }
 }
 
@@ -28,9 +28,9 @@ allprojects {
 }
 
 plugins {
-    id(GradlePluginId.detekt) version GradlePluginVersion.detekt
-    id(GradlePluginId.ktlintGradle) version GradlePluginVersion.ktlintGradle
-    id(GradlePluginId.gradleVersionPlugin) version GradlePluginVersion.gradleVersionPlugin
+    id(GradlePluginId.DETEKT) version GradlePluginVersion.DETEKT
+    id(GradlePluginId.KTLINT_GRADLE) version GradlePluginVersion.KTLINT_GRADLE
+    id(GradlePluginId.GRADLE_VERSION_PLUGIN) version GradlePluginVersion.GRADLE_VERSION_PLUGIN
 }
 
 subprojects {
@@ -38,15 +38,15 @@ subprojects {
         maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
     }
 
-    plugins.apply(GradlePluginId.ktlintGradle)
+    plugins.apply(GradlePluginId.KTLINT_GRADLE)
 
     ktlint {
-        version.set(CoreVersion.ktlint)
+        version.set(CoreVersion.KTLINT)
         verbose.set(true)
         android.set(true)
     }
 
-    plugins.apply(GradlePluginId.detekt)
+    plugins.apply(GradlePluginId.DETEKT)
 
     detekt {
         config = files("${project.rootDir}/config/detekt.yml")
