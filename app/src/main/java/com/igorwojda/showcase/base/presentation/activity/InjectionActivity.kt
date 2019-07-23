@@ -3,7 +3,7 @@ package com.igorwojda.showcase.base.presentation.activity
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
-import com.igorwojda.showcase.feature.base.BuildConfig
+import com.igorwojda.showcase.BuildConfig
 import org.kodein.di.Copy
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware

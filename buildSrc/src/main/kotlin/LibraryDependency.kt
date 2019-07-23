@@ -1,5 +1,5 @@
 private object LibraryVersion {
-    const val KODEIN = "6.3.2"
+    const val KODEIN = "6.3.3"
     const val RETROFIT = "2.6.0"
     const val LOGGING_INTERCEPTOR = "4.0.0"
     const val STETHO = "1.5.0"
@@ -28,7 +28,8 @@ object LibraryDependency {
     const val STETHO = "com.facebook.stetho:stetho:${LibraryVersion.STETHO}"
     const val STETHO_OK_HTTP = "com.facebook.stetho:stetho-okhttp3:${LibraryVersion.STETHO}"
     const val TIMBER = "com.jakewharton.timber:timber:${LibraryVersion.TIMBER}"
-    const val SUPPORT_CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${LibraryVersion.CONSTRAINT_LAYOUT}"
+    const val SUPPORT_CONSTRAINT_LAYOUT =
+        "androidx.constraintlayout:constraintlayout:${LibraryVersion.CONSTRAINT_LAYOUT}"
     const val APP_COMPACT = "androidx.appcompat:appcompat:${LibraryVersion.APP_COMPACT}"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${LibraryVersion.RECYCLER_VIEW}"
     const val COORDINATOR_LAYOUT = "androidx.coordinatorlayout:coordinatorlayout:${LibraryVersion.COORDINATOR_LAYOUT}"
