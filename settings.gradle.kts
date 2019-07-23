@@ -1,8 +1,8 @@
 rootProject.buildFileName = "build.gradle.kts"
 
 include(
-    ModuleDependency.app,
-    ModuleDependency.featureBase,
-    ModuleDependency.featureAlbum,
-    ModuleDependency.libraryTestUtils
+    ModuleDependency.APP,
+    ModuleDependency.FEATURE_BASE,
+    ModuleDependency.FEATURE_ALBUM,
+    ModuleDependency.LIBRARY_TEST_UTILS
 )

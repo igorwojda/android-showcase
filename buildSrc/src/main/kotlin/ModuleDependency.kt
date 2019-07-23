@@ -1,6 +1,6 @@
 object ModuleDependency {
-    const val app = ":app"
-    const val featureBase = ":feature_base"
-    const val featureAlbum = ":feature_album"
-    const val libraryTestUtils = ":library_test_utils"
+    const val APP = ":app"
+    const val FEATURE_BASE = ":feature_base"
+    const val FEATURE_ALBUM = ":feature_album"
+    const val LIBRARY_TEST_UTILS = ":library_test_utils"
 }
