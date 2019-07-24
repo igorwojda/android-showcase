@@ -3,7 +3,7 @@ package com.igorwojda.showcase.base.presentation.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.igorwojda.showcase.feature.base.BuildConfig
+import com.igorwojda.showcase.BuildConfig
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinTrigger

@@ -6,27 +6,27 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 Define common dependencies, so they can be easily updated across feature modules
  */
 fun DependencyHandler.addCommonDependencies() {
-    implementation(LibraryDependency.KOTLIN)
-    implementation(LibraryDependency.KODEIN)
-    implementation(LibraryDependency.KODEIN_ANDROID_X)
-    implementation(LibraryDependency.RETROFIT)
-    implementation(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
-    implementation(LibraryDependency.STETHO)
-    implementation(LibraryDependency.STETHO_OK_HTTP)
-    implementation(LibraryDependency.TIMBER)
-    implementation(LibraryDependency.APP_COMPACT)
-    implementation(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
-    implementation(LibraryDependency.RECYCLER_VIEW)
-    implementation(LibraryDependency.SUPPORT_MATERIAL)
-    implementation(LibraryDependency.COROUTINES_ANDROID)
-    implementation(LibraryDependency.LIFECYCLE_EXTENSIONS)
-    implementation(LibraryDependency.COORDINATOR_LAYOUT)
-    implementation(LibraryDependency.CORE_KTX)
-    implementation(LibraryDependency.FRAGMENT_KTX)
-    implementation(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
-    implementation(LibraryDependency.PICASSO)
-    implementation(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
-    implementation(LibraryDependency.K_ANDROID)
+    api(LibraryDependency.KOTLIN)
+    api(LibraryDependency.KODEIN)
+    api(LibraryDependency.KODEIN_ANDROID_X)
+    api(LibraryDependency.RETROFIT)
+    api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
+    api(LibraryDependency.STETHO)
+    api(LibraryDependency.STETHO_OK_HTTP)
+    api(LibraryDependency.TIMBER)
+    api(LibraryDependency.APP_COMPACT)
+    api(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
+    api(LibraryDependency.RECYCLER_VIEW)
+    api(LibraryDependency.SUPPORT_MATERIAL)
+    api(LibraryDependency.COROUTINES_ANDROID)
+    api(LibraryDependency.LIFECYCLE_EXTENSIONS)
+    api(LibraryDependency.COORDINATOR_LAYOUT)
+    api(LibraryDependency.CORE_KTX)
+    api(LibraryDependency.FRAGMENT_KTX)
+    api(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
+    api(LibraryDependency.PICASSO)
+    api(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
+    api(LibraryDependency.K_ANDROID)
 }
 
 fun DependencyHandler.addTestDependencies() {
@@ -49,6 +49,9 @@ fun DependencyHandler.addTestDependencies() {
  */
 private fun DependencyHandler.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
+
+private fun DependencyHandler.api(dependencyNotation: Any): Dependency? =
+    add("api", dependencyNotation)
 
 private fun DependencyHandler.kapt(dependencyNotation: Any): Dependency? =
     add("kapt", dependencyNotation)

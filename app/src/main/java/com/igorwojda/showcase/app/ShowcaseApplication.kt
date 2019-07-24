@@ -4,7 +4,6 @@ import android.content.Context
 import com.facebook.stetho.Stetho
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.igorwojda.showcase.BuildConfig
-import com.igorwojda.showcase.feature.album.albumModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule

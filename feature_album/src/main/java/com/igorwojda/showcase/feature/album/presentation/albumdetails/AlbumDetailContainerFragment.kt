@@ -2,11 +2,11 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
 import android.os.Bundle
 import android.view.View
+import com.igorwojda.showcase.base.presentation.extension.observe
+import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
-import com.igorwojda.showcase.feature.base.presentation.extension.observe
-import com.igorwojda.showcase.feature.base.presentation.fragment.BaseContainerFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance

@@ -37,7 +37,7 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.APP, "default"))
+    implementation(project(ModuleDependency.APP))
 
     addCommonDependencies()
     addTestDependencies()

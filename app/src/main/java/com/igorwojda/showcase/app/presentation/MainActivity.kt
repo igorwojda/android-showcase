@@ -2,8 +2,7 @@ package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
 import com.igorwojda.showcase.R
-import com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchActivity
-import com.igorwojda.showcase.feature.base.presentation.activity.BaseContainerActivity
+import com.igorwojda.showcase.base.presentation.activity.BaseContainerActivity
 
 class MainActivity : BaseContainerActivity() {
 
@@ -11,6 +10,6 @@ class MainActivity : BaseContainerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AlbumSearchActivity.start(this)
+//        AlbumSearchActivity.start(this)
     }
 }

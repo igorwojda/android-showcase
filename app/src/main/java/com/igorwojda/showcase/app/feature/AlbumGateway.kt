@@ -2,6 +2,6 @@ package com.igorwojda.showcase.app.feature
 
 import android.content.Context
 
-interface AlbumFeature {
+interface AlbumGateway {
     fun navigateToAlbumSearch(context: Context)
 }

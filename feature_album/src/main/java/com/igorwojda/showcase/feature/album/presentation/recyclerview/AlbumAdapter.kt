@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.igorwojda.showcase.base.presentation.extension.setOnDebouncedClickListener
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.presentation.recyclerview.AlbumAdapter.MyViewHolder
-import com.igorwojda.showcase.feature.base.presentation.extension.setOnDebouncedClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 import kotlin.properties.Delegates

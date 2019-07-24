@@ -51,8 +51,6 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.APP))
-
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
     implementation("com.google.android.play:core:1.6.1")
 

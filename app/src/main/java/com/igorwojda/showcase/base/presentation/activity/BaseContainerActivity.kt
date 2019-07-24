@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
+import com.igorwojda.showcase.R
 import com.igorwojda.showcase.base.presentation.activity.delegate.ActivityExtraDelegate
 import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
-import com.igorwojda.showcase.feature.base.R
 import timber.log.Timber
 
 abstract class BaseContainerActivity : InjectionActivity() {
