@@ -7,6 +7,7 @@ Define common dependencies, so they can be easily updated across feature modules
  */
 fun DependencyHandler.addCommonDependencies() {
     api(LibraryDependency.KOTLIN)
+    api(LibraryDependency.KOTLIN_REFLECT)
     api(LibraryDependency.KODEIN)
     api(LibraryDependency.KODEIN_ANDROID_X)
     api(LibraryDependency.RETROFIT)
@@ -75,5 +76,4 @@ private fun DependencyHandler.project(
     )
 
 @Suppress("unchecked_cast", "nothing_to_inline")
-private inline fun <T> uncheckedCast(obj: Any?): T =
-    obj as T
+private inline fun <T> uncheckedCast(obj: Any?): T = obj as T

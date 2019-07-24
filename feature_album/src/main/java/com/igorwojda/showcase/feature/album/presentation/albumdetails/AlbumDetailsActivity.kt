@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import com.igorwojda.showcase.base.presentation.activity.BaseContainerActivity
 import com.igorwojda.showcase.base.presentation.extension.startActivity
-import com.igorwojda.showcase.feature.album.R
 
 internal class AlbumDetailsActivity : BaseContainerActivity() {
 
@@ -30,11 +29,9 @@ internal class AlbumDetailsActivity : BaseContainerActivity() {
         }
     }
 
-    override val layoutResourceId = R.layout.activity_album_details
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        displayFragment { AlbumDetailContainerFragment(albumName, artistName, mbId) }
+        displayContainerFragment { AlbumDetailContainerFragment(albumName, artistName, mbId) }
     }
 }

@@ -14,12 +14,10 @@ class AlbumSearchActivity : BaseContainerActivity() {
         }
     }
 
-    override val layoutResourceId = R.layout.activity_album_list
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        displayFragment { AlbumSearchFragment() }
+        displayContainerFragment { AlbumSearchFragment() }
 
         title = resources.getString(R.string.search_album)
     }

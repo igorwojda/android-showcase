@@ -6,13 +6,14 @@ import com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearch
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 
-class AlbumGatewayImpl : AlbumGateway, KodeinAware {
+object AlbumGatewayImpl : AlbumGateway, KodeinAware {
 
     override val kodein by Kodein.lazy {
         import(albumModule)
     }
 
     override fun navigateToAlbumSearch(context: Context) {
+        kodeinTrigger?.trigger()
         AlbumSearchActivity.start(context)
     }
 }

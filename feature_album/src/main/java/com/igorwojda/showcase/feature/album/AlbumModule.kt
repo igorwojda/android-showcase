@@ -12,7 +12,7 @@ internal const val FEATURE_NAME = "Album"
 
 val albumModule = Kodein.Module("${FEATURE_NAME}Module") {
 
-    bind<AlbumGateway>() with provider { AlbumGatewayImpl() }
+    bind<AlbumGateway>() with provider { AlbumGatewayImpl }
 
     import(presentationModule)
     import(domainModule)
