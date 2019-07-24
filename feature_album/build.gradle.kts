@@ -20,12 +20,12 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        getByName(BuildType.RELEASE) {
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             proguardFiles("proguard-android.txt", "proguard-rules.pro")
         }
 
-        getByName("debug") {
+        getByName(BuildType.DEBUG) {
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
         }
     }
