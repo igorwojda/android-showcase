@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.app.feature
+package com.igorwojda.showcase.app.gateway
 
 import android.content.Context
 
