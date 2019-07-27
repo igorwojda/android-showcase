@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
-internal class AlbumDetailContainerFragment() : BaseContainerFragment() {
+internal class AlbumDetailFragment() : BaseContainerFragment() {
 
     private var artistName by argument<String>()
     private var albumName by argument<String>()
