@@ -2,8 +2,8 @@ package com.igorwojda.showcase.feature.album.presentation.albumsearch
 
 import android.content.Context
 import android.os.Bundle
-import com.igorwojda.showcase.base.presentation.activity.BaseContainerActivity
-import com.igorwojda.showcase.base.presentation.extension.startActivity
+import com.igorwojda.base.presentation.activity.BaseContainerActivity
+import com.igorwojda.base.presentation.extension.startActivity
 import com.igorwojda.showcase.feature.album.R
 
 class AlbumSearchActivity : BaseContainerActivity() {

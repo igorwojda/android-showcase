@@ -1,8 +1,8 @@
-package com.igorwojda.showcase.base.presentation.fragment.delegate
+package com.igorwojda.base.presentation.fragment.delegate
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.igorwojda.showcase.base.presentation.extension.putAny
+import com.igorwojda.base.presentation.extension.putAny
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

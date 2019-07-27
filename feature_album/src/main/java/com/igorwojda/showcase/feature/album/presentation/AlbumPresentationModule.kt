@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation
 
 import androidx.fragment.app.Fragment
-import com.igorwojda.showcase.base.di.KotlinViewModelProvider
+import com.igorwojda.base.di.KotlinViewModelProvider
 import com.igorwojda.showcase.feature.album.FEATURE_NAME
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchViewModel

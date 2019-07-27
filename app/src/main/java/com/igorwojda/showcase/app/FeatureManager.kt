@@ -2,6 +2,7 @@ package com.igorwojda.showcase.app
 
 import com.igorwojda.showcase.app.gateway.AlbumGateway
 
+@Suppress("detekt.UnsafeCast")
 object FeatureManager {
 
     // Our gateway is implemented as a Kotlin object (singleton), se we access it with ".objectInstance"

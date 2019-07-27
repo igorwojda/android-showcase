@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.extension
+package com.igorwojda.base.presentation.extension
 
 import androidx.appcompat.app.AppCompatActivity
 

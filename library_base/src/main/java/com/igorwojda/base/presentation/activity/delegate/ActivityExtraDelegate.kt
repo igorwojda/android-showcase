@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.activity.delegate
+package com.igorwojda.base.presentation.activity.delegate
 
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.properties.ReadOnlyProperty

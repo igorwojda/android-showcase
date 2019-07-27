@@ -1,11 +1,11 @@
-package com.igorwojda.showcase.base.presentation.fragment
+package com.igorwojda.base.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import com.igorwojda.showcase.base.presentation.fragment.delegate.FragmentArgumentDelegate
+import com.igorwojda.base.presentation.fragment.delegate.FragmentArgumentDelegate
 import timber.log.Timber
 
 abstract class BaseContainerFragment : InjectionFragment() {

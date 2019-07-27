@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import com.igorwojda.showcase.base.presentation.extension.observe
-import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
+import com.igorwojda.base.presentation.extension.observe
+import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity
