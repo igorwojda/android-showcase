@@ -51,6 +51,7 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
+    // api means that all features modules that depend on app will have access to dependencies defined in LIBRARY_BASE
     api(project(ModuleDependency.LIBRARY_BASE))
 
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
