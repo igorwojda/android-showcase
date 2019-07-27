@@ -2,6 +2,7 @@ package com.igorwojda.showcase
 
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.igorwojda.showcase.app.FeatureManager
 import com.igorwojda.showcase.app.data.retrofit.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.retrofit.UserAgentInterceptor
 import com.squareup.picasso.Picasso
@@ -19,7 +20,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 private const val TAG_API_BASE_URL = "TAG_API_BASE_URL"
 private const val TAG_API_TOKEN = "TAG_API_TOKEN"
 
-val appModule = Kodein.Module("baseDataModule") {
+val appModule = Kodein.Module("appModule") {
 
     bind(TAG_API_BASE_URL) from Provider(
         erased<Context>(),
@@ -60,4 +61,6 @@ val appModule = Kodein.Module("baseDataModule") {
     }
 
     bind() from singleton { Picasso.get() }
+
+    bind() from singleton { FeatureManager.albumGateway }
 }

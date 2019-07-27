@@ -4,10 +4,13 @@ import android.os.Bundle
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.app.gateway.AlbumGateway
 import com.igorwojda.showcase.base.presentation.activity.BaseContainerActivity
+import org.kodein.di.generic.instance
 
 class MainActivity : BaseContainerActivity() {
 
     override val layoutResourceId = R.layout.activity_main
+
+    private val albumGateway: AlbumGateway by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,11 +22,6 @@ class MainActivity : BaseContainerActivity() {
 //            null
 //        }
 
-
-        // Our gateway is implemented as a Kotlin object (singleton ), se we access it with ".objectInstance"
-        val albumGateway =
-            Class.forName("com.igorwojda.showcase.feature.album.AlbumGatewayImpl").kotlin.objectInstance
-                as AlbumGateway
 
         albumGateway.navigateToAlbumSearch(this)
     }

@@ -18,6 +18,7 @@ class ShowcaseApplication : SplitCompatApplication(), KodeinAware {
     override val kodein = Kodein.lazy {
         import(androidXModule(this@ShowcaseApplication))
         import(appModule)
+        importAll(FeatureManager.kodeinModules)
     }
 
     private lateinit var context: Context
