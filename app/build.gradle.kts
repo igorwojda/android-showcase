@@ -54,7 +54,7 @@ dependencies {
     api(project(ModuleDependency.LIBRARY_BASE))
 
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
-    implementation("com.google.android.play:core:1.6.1")
+    implementation(LibraryDependency.PLAY_CORE)
 
     addCommonDependencies()
     addTestDependencies()
