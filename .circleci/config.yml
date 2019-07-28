@@ -100,7 +100,7 @@ workflows:
     verify_code:
         # Longest running tasks should ideally run first (due to limited number of parallel executors in the free account)
         jobs:
-            - build
+            - build_app
             - lint
             - unit_test
             - detekt
