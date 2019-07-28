@@ -103,7 +103,7 @@ workflows:
             jobs:
                 - build
                 - lint
-                - test
+                - unit_test
                 - detekt
                 - ktlint
                 # Following builds will utilise new cache
