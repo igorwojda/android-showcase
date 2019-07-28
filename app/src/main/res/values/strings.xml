@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">showcase</string>
+    <string name="feature_album">feature_album</string>
 </resources>

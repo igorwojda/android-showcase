@@ -7,6 +7,7 @@ Define common dependencies, so they can be easily updated across feature modules
  */
 fun DependencyHandler.addCommonDependencies() {
     implementation(LibraryDependency.KOTLIN)
+    implementation(LibraryDependency.KOTLIN_REFLECT)
     implementation(LibraryDependency.KODEIN)
     implementation(LibraryDependency.KODEIN_ANDROID_X)
     implementation(LibraryDependency.RETROFIT)
@@ -19,10 +20,10 @@ fun DependencyHandler.addCommonDependencies() {
     implementation(LibraryDependency.RECYCLER_VIEW)
     implementation(LibraryDependency.SUPPORT_MATERIAL)
     implementation(LibraryDependency.COROUTINES_ANDROID)
-    implementation(LibraryDependency.LIFECYCLE_EXTENSIONS)
     implementation(LibraryDependency.COORDINATOR_LAYOUT)
     implementation(LibraryDependency.CORE_KTX)
     implementation(LibraryDependency.FRAGMENT_KTX)
+    implementation(LibraryDependency.LIFECYCLE_EXTENSIONS)
     implementation(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
     implementation(LibraryDependency.PICASSO)
     implementation(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
@@ -50,6 +51,9 @@ fun DependencyHandler.addTestDependencies() {
 private fun DependencyHandler.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
 
+private fun DependencyHandler.api(dependencyNotation: Any): Dependency? =
+    add("api", dependencyNotation)
+
 private fun DependencyHandler.kapt(dependencyNotation: Any): Dependency? =
     add("kapt", dependencyNotation)
 
@@ -72,5 +76,4 @@ private fun DependencyHandler.project(
     )
 
 @Suppress("unchecked_cast", "nothing_to_inline")
-private inline fun <T> uncheckedCast(obj: Any?): T =
-    obj as T
+private inline fun <T> uncheckedCast(obj: Any?): T = obj as T

@@ -1,5 +1,5 @@
 plugins {
-    id(GradlePluginId.ANDROID_FEATURE)
+    id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
     id(GradlePluginId.KTLINT_GRADLE)
@@ -37,7 +37,7 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.FEATURE_BASE))
+    implementation(project(ModuleDependency.APP))
 
     addCommonDependencies()
     addTestDependencies()

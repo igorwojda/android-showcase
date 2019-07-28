@@ -2,9 +2,9 @@ package com.igorwojda.showcase.feature.album.presentation.albumsearch
 
 import android.content.Context
 import android.os.Bundle
+import com.igorwojda.base.presentation.activity.BaseContainerActivity
+import com.igorwojda.base.presentation.extension.startActivity
 import com.igorwojda.showcase.feature.album.R
-import com.igorwojda.showcase.feature.base.presentation.activity.BaseContainerActivity
-import com.igorwojda.showcase.feature.base.presentation.extension.startActivity
 
 class AlbumSearchActivity : BaseContainerActivity() {
 
@@ -14,12 +14,10 @@ class AlbumSearchActivity : BaseContainerActivity() {
         }
     }
 
-    override val layoutResourceId = R.layout.activity_album_list
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        displayFragment { AlbumSearchFragment() }
+        displayContainerFragment { AlbumSearchFragment() }
 
         title = resources.getString(R.string.search_album)
     }

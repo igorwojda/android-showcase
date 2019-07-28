@@ -44,15 +44,22 @@ android {
             targetCompatibility = JavaVersion.VERSION_1_8
         }
     }
+
+    dynamicFeatures = mutableSetOf(ModuleDependency.FEATURE_ALBUM)
+
+    dexOptions {
+        preDexLibraries = true
+    }
 }
 
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.FEATURE_BASE))
-    implementation(project(ModuleDependency.FEATURE_ALBUM))
+    // api means that all features modules that depend on app will have access to dependencies defined in LIBRARY_BASE
+    api(project(ModuleDependency.LIBRARY_BASE))
 
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
+    implementation(LibraryDependency.PLAY_CORE)
 
     addCommonDependencies()
     addTestDependencies()

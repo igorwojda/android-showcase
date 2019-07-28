@@ -1,9 +1,9 @@
 private object TestLibraryVersion {
     const val JUNIT = "4.12"
-    const val KLUENT = "1.51"
+    const val KLUENT = "1.53"
     const val TEST_RUNNER = "1.0.2"
     const val ESPRESSO_CORE = "3.0.2"
-    const val MOCKITO = "2.28.2"
+    const val MOCKITO = "3.0.0"
     const val MOCKITO_KOTLIN = "2.1.0"
     const val COROUTINES_ANDROID = "1.3.0-M2"
 }
