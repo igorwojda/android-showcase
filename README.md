@@ -32,7 +32,7 @@ Feedback and new contributions are welcome whether it's through bug reports or n
 
 # Author
 
-![avatar.png](misc/image/avatar.png)[Follow me](https://twitter.com/igorwojda)
+![avatar.png](misc/image/avatar.png)[](https://twitter.com/igorwojda)
 
 [![Follow me](https://img.shields.io/twitter/follow/igorwojda?style=social)](https://twitter.com/igorwojda)
 
