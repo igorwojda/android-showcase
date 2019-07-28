@@ -8,7 +8,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            JVM_OPTS: -Xmx3g
 
         steps:
             - checkout
@@ -29,7 +29,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            JVM_OPTS: -Xmx3g
 
         steps:
             - checkout
@@ -43,7 +43,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            JVM_OPTS: -Xmx3g
 
         steps:
             - checkout
@@ -58,7 +58,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            JVM_OPTS: -Xmx3g
 
         steps:
             - checkout
@@ -73,7 +73,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            JVM_OPTS: -Xmx3g
 
         steps:
             - checkout
@@ -88,7 +88,8 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            JVM_OPTS: -Xmx3g
+            GRADLE_OPTS: -Xmx2g -XX:+HeapDumpOnOutOfMemoryError -Dorg.gradle.caching=true -Dorg.gradle.configureondemand=true -Dkotlin.compiler.execution.strategy=in-process -Dkotlin.incremental=false
 
         steps:
             - checkout
@@ -99,23 +100,22 @@ workflows:
     version: 2
     verify_code:
         jobs:
-            - build_app
-#            - update_dependency_cache
-#            - lint:
-#                  requires:
-#                      - update_dependency_cache
-#            - detekt:
-#                  requires:
-#                      - update_dependency_cache
-#            - ktlint:
-#                  requires:
-#                      - update_dependency_cache
-#            - unit_test:
-#                  requires:
-#                      - update_dependency_cache
-#            - build_app:
-#                  requires:
-#                      - lint
-#                      - detekt
-#                      - ktlint
-#                      - unit_test
+            - update_dependency_cache
+            - lint:
+                  requires:
+                      - update_dependency_cache
+            - detekt:
+                  requires:
+                      - update_dependency_cache
+            - ktlint:
+                  requires:
+                      - update_dependency_cache
+            - unit_test:
+                  requires:
+                      - update_dependency_cache
+            - build_app:
+                  requires:
+                      - lint
+                      - detekt
+                      - ktlint
+                      - unit_test
