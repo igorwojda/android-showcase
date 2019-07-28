@@ -1,26 +1,52 @@
 # Project description
-This is sample project that presents modern approach to Android application development. It utilises Kotlin, feature modules, testing, CI and static analysis and popular 3rd party libraries.
+This project presents modern approach to Android application development. The goal of the project is to present modular,
+scalable, testable and maintainable architecture (suitable for large teams and
+[SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle)). Project takes advantage of Kotlin, feature
+modules, tests, CI, static analysis and popular 3rd party libraries.
+
+
+This project bring to table set of best tools, libraries, frameworks, coding standards.
+
 
 [![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=svg)](https://circleci.com/gh/igorwojda/android-showcase)
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 
 # Project characteristics
-* 100% Kotlin
+* 100% [Kotlin](https://kotlinlang.org/)
 * CA + MVVM (Clean Architecture + Model-View-ViewModel)
-* Kotlin Coroutines
-* Gradle Kotlin DSL
-* Feature modules
-* Dependency Injection (Kodein)
-* AndroidX support libraries
-* Android Architecture components
-* Unit Tests
-* Uses [many popular libraries](buildSrc\src\main\kotlin\LibraryDependency.kt) from Android ecosystem
-* Takes advantage of top static analysis tools (detekt, ktlint, Android lint)
+* [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+* [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+* Dynamic feature modules
+* Dependency Injection ([Kodein](https://github.com/Kodein-Framework/Kodein-DI))
+* [AndroidX](https://developer.android.com/jetpack/androidx)
+* [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
+* [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) and mocks
+* Takes advantage of
+  [many popular libraries](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt),
+*  All relevant static analysis tools ([detekt](https://github.com/arturbosch/detekt)
+   [ktlint](https://github.com/pinterest/ktlint), [Android lint](https://developer.android.com/studio/write/lint),
+   [codebeat](https://codebeat.co))
+* Follows [Android style guide](<https://developer.android.com/kotlin/style-guide>) and [Kotlin coding conventions](<https://kotlinlang.org/docs/reference/coding-conventions.html>)
 * Gradle dependency autocompletion
 
 # Contribute
-If you think something is incorrect or you have found a better solution please create PR or open a new issue.
+Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
-# Follow me
-<iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/follow_button.html?screen_name=igorwojda”  style="width:300px; height:20px;"></iframe>
+# Author
+[Follow me](https://twitter.com/igorwojda) on twitter to be up to date.
+
+![avatar.png](misc/image/avatar.png)
+
+# License
+```
+MIT License
+
+Copyright (c) 2019 Igor Wojda
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
 
