@@ -26,7 +26,7 @@ jobs:
         working_directory: ~/data
 
         docker:
-            - image: circleci/android:api-28
+            - image: circleci/android:api-29
 
         environment:
             JVM_OPTS: -Xmx2g
@@ -40,7 +40,7 @@ jobs:
         working_directory: ~/data
 
         docker:
-            - image: circleci/android:api-28
+            - image: circleci/android:api-29
 
         environment:
             JVM_OPTS: -Xmx2g
@@ -55,7 +55,7 @@ jobs:
         working_directory: ~/data
 
         docker:
-            - image: circleci/android:api-28
+            - image: circleci/android:api-29
 
         environment:
             JVM_OPTS: -Xmx2g
@@ -70,7 +70,7 @@ jobs:
         working_directory: ~/data
 
         docker:
-            - image: circleci/android:api-28
+            - image: circleci/android:api-29
 
         environment:
             JVM_OPTS: -Xmx2g
