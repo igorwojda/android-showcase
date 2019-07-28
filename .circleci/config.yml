@@ -82,6 +82,8 @@ jobs:
             - run: ./gradlew testDebugUnitTest
 
     build_app:
+        description: An executor with sensible defaults for Android Gradle tasks (set with GRADLE_OPTS).
+
         working_directory: ~/data
 
         docker:
@@ -89,6 +91,7 @@ jobs:
 
         environment:
             JVM_OPTS: -Xmx3g
+            # See: https://github.com/circleci/circleci-docs/issues/2945#issuecomment-471637158
             GRADLE_OPTS: -Xmx2g -XX:+HeapDumpOnOutOfMemoryError -Dorg.gradle.caching=true -Dorg.gradle.configureondemand=true -Dkotlin.compiler.execution.strategy=in-process -Dkotlin.incremental=false
 
         steps:
