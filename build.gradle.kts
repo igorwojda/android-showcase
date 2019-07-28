@@ -26,7 +26,7 @@ plugins {
     id(GradlePluginId.GRADLE_VERSION_PLUGIN) version GradlePluginVersion.GRADLE_VERSION_PLUGIN
 }
 
-//all projects = root project + sub projects
+// all projects = root project + sub projects
 allprojects {
     repositories {
         google()
