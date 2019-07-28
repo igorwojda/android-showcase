@@ -5,6 +5,6 @@ end_of_line = lf
 insert_final_newline = true
 indent_size = 4
 max_line_length = 140
-
-[pipeline.yml]
-indent_size = 2
+# There is a problem with import order IDE vs ktlint, so we have to disable "import-ordering" rule
+# See https://github.com/pinterest/ktlint/issues/538
+disabled_rules = import-ordering
