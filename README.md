@@ -31,11 +31,10 @@ This project bring to table set of best practices, tools and solutions:
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
 # Author
-Follow me to stay tuned.
 
-![avatar.png](misc/image/avatar.png)
+![avatar.png](misc/image/avatar.png)[Follow me](https://twitter.com/igorwojda)
 
-[![Follow me](https://img.shields.io/twitter/follow/igorwojda?style=social)](http://kotlinlang.org/)
+[![Follow me](https://img.shields.io/twitter/follow/igorwojda?style=social)](https://twitter.com/igorwojda)
 
 # License
 ```
