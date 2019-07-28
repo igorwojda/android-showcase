@@ -101,10 +101,10 @@ workflows:
         jobs:
             # Longest running tasks should ideally run first (due to limited number of parallel executors in the free account)
             jobs:
-                - build:
-                - lint:
-                - test:
-                - detekt:
-                - ktlint:
+                - build
+                - lint
+                - test
+                - detekt
+                - ktlint
                 # Following builds will utilise new cache
-                - update_dependency_cache:
+                - update_dependency_cache
