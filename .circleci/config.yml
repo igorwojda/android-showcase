@@ -29,7 +29,7 @@ jobs:
             - image: circleci/android:api-28
 
         environment:
-            JVM_OPTS: -Xmx4g
+            JVM_OPTS: -Xmx2g
 
         steps:
             - checkout
@@ -43,7 +43,7 @@ jobs:
             - image: circleci/android:api-28
 
         environment:
-            JVM_OPTS: -Xmx4g
+            JVM_OPTS: -Xmx2g
 
         steps:
             - checkout
@@ -58,7 +58,7 @@ jobs:
             - image: circleci/android:api-28
 
         environment:
-            JVM_OPTS: -Xmx4g
+            JVM_OPTS: -Xmx2g
 
         steps:
             - checkout
@@ -73,7 +73,7 @@ jobs:
             - image: circleci/android:api-28
 
         environment:
-            JVM_OPTS: -Xmx4g
+            JVM_OPTS: -Xmx2g
 
         steps:
             - checkout
@@ -88,7 +88,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            JVM_OPTS: -Xmx4g
+            JVM_OPTS: -Xmx2g
 
         steps:
             - checkout
