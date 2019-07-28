@@ -8,7 +8,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            _JAVA_OPTS: -Xmx4g
 
         steps:
             - checkout
@@ -29,7 +29,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            _JAVA_OPTS: -Xmx4g
 
         steps:
             - checkout
@@ -43,7 +43,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            _JAVA_OPTS: -Xmx4g
 
         steps:
             - checkout
@@ -58,7 +58,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            _JAVA_OPTS: -Xmx4g
 
         steps:
             - checkout
@@ -73,7 +73,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            _JAVA_OPTS: -Xmx4g
 
         steps:
             - checkout
@@ -88,7 +88,7 @@ jobs:
             - image: circleci/android:api-29
 
         environment:
-            _JAVA_OPTS: -Xmx2g
+            _JAVA_OPTS: -Xmx4g
 
         steps:
             - checkout
@@ -99,23 +99,22 @@ workflows:
     version: 2
     build_and_check:
         jobs:
-            - build_app
-#            - prepare_dependencies
-#            - lint:
-#                  requires:
-#                      - prepare_dependencies
-#            - detekt:
-#                  requires:
-#                      - prepare_dependencies
-#            - ktlint:
-#                  requires:
-#                      - prepare_dependencies
-#            - unit_test:
-#                  requires:
-#                      - prepare_dependencies
-#            - build_app:
-#                  requires:
-#                      - lint
-#                      - detekt
-#                      - ktlint
-#                      - unit_test
+            - prepare_dependencies
+            - lint:
+                  requires:
+                      - prepare_dependencies
+            - detekt:
+                  requires:
+                      - prepare_dependencies
+            - ktlint:
+                  requires:
+                      - prepare_dependencies
+            - unit_test:
+                  requires:
+                      - prepare_dependencies
+            - build_app:
+                  requires:
+                      - lint
+                      - detekt
+                      - ktlint
+                      - unit_test
