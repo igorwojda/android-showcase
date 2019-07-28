@@ -81,7 +81,7 @@ jobs:
                   key: gradle-{{ .Branch }}
             - run: ./gradlew testDebugUnitTest
 
-    bundleDebug:
+    build_app:
         working_directory: ~/data
 
         docker:
@@ -112,7 +112,7 @@ workflows:
             - unit_test:
                   requires:
                       - prepare_dependencies
-            - bundleDebug:
+            - build_app:
                   requires:
                       - lint
                       - detekt
