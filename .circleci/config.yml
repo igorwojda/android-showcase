@@ -97,7 +97,7 @@ jobs:
             - run: ./gradlew :app:bundleDebug
 workflows:
     version: 2
-    build_and_check:
+    verify_code:
         jobs:
             - prepare_dependencies
             - lint:
