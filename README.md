@@ -1,17 +1,14 @@
 # Project description
-This project presents modern approach to Android application development. The goal of the project is to present modular,
-scalable, testable and maintainable architecture (suitable for large teams and
-[SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle)). Project takes advantage of Kotlin, feature
-modules, tests, CI, static analysis and popular 3rd party libraries.
-
-
-This project bring to table set of best tools, libraries, frameworks, coding standards.
-
-
 [![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=svg)](https://circleci.com/gh/igorwojda/android-showcase)
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 
+Showcase is a sample project that follows modern approach to Android application development. The goal of the project is
+to present modular, scalable, testable and maintainable architecture (suitable for large teams and
+[SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle)). This project is entirely written using Kotlin.
+
 # Project characteristics
+This project bring to table set of best practices, tools and solutions:
+
 * 100% [Kotlin](https://kotlinlang.org/)
 * CA + MVVM (Clean Architecture + Model-View-ViewModel)
 * [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
@@ -33,7 +30,7 @@ This project bring to table set of best tools, libraries, frameworks, coding sta
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
 # Author
-[Follow me](https://twitter.com/igorwojda) on twitter to be up to date.
+[Follow me](https://twitter.com/igorwojda) on twitter to stay tuned.
 
 ![avatar.png](misc/image/avatar.png)
 
