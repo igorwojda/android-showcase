@@ -1,15 +1,18 @@
 version: 2.1
 
-jobs:
-    update_dependency_cache:
-        working_directory: ~/data
-
+references:
+    container_config: &container_config
         docker:
             - image: circleci/android:api-29
+
+        working_directory: ~/data
 
         environment:
             JVM_OPTS: -Xmx3g
 
+jobs:
+    update_dependency_cache:
+        <<: *container_config
         steps:
             - checkout
             - restore_cache:
@@ -23,28 +26,14 @@ jobs:
                   key: gradle-{{ .Branch }}
 
     ktlint:
-        working_directory: ~/data
-
-        docker:
-            - image: circleci/android:api-29
-
-        environment:
-            JVM_OPTS: -Xmx3g
-
+        <<: *container_config
         steps:
             - checkout
             - restore_cache:
                   key: gradle-{{ .Branch }}
             - run: ./gradlew ktlintCheck
     detekt:
-        working_directory: ~/data
-
-        docker:
-            - image: circleci/android:api-29
-
-        environment:
-            JVM_OPTS: -Xmx3g
-
+        <<: *container_config
         steps:
             - checkout
             - restore_cache:
@@ -52,14 +41,7 @@ jobs:
             - run: ./gradlew detekt
 
     lint:
-        working_directory: ~/data
-
-        docker:
-            - image: circleci/android:api-29
-
-        environment:
-            JVM_OPTS: -Xmx3g
-
+        <<: *container_config
         steps:
             - checkout
             - restore_cache:
@@ -67,14 +49,7 @@ jobs:
             - run: ./gradlew lint --no-parallel
 
     unit_test:
-        working_directory: ~/data
-
-        docker:
-            - image: circleci/android:api-29
-
-        environment:
-            JVM_OPTS: -Xmx3g
-
+        <<: *container_config
         steps:
             - checkout
             - restore_cache:
@@ -84,14 +59,9 @@ jobs:
     build_app:
         description: An executor with sensible defaults for Android Gradle tasks (set with GRADLE_OPTS).
 
-        working_directory: ~/data
-
-        docker:
-            - image: circleci/android:api-29
+        <<: *container_config
 
         environment:
-            JVM_OPTS: -Xmx3g
-            # See: https://github.com/circleci/circleci-docs/issues/2945#issuecomment-471637158
             GRADLE_OPTS: -Xmx2g -XX:+HeapDumpOnOutOfMemoryError -Dorg.gradle.caching=true -Dorg.gradle.configureondemand=true -Dkotlin.compiler.execution.strategy=in-process -Dkotlin.incremental=false
 
         steps:
