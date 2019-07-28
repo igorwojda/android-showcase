@@ -102,16 +102,16 @@ workflows:
             - update_dependency_cache
             - lint:
                   requires:
-                      - prepare_dependencies
+                      - update_dependency_cache
             - detekt:
                   requires:
-                      - prepare_dependencies
+                      - update_dependency_cache
             - ktlint:
                   requires:
-                      - prepare_dependencies
+                      - update_dependency_cache
             - unit_test:
                   requires:
-                      - prepare_dependencies
+                      - update_dependency_cache
             - build_app:
                   requires:
                       - lint
