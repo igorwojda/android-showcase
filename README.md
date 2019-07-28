@@ -77,21 +77,9 @@ For projects that include multiple modules, we also need to structure our projec
 version in 20 modules are easy to accomplish (single place code change). To achieve this project utilizes [project-level properties](buildSrc/src/main/kotlin)
 that are shared across all modules.
 
-## Dependency code completion
-All dependencies in the project are defined in Gradle [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources)
-directory. Upon discovery of the directory, Gradle automatically compiles code in `buildSrc` and puts it in the classpath of our build
-script. We can easily access various kinds of dependencies in our build scripts, have a full code completion and do not worry about
-misspelled, hardcoded dependency strings:
-
-- [LibraryDependency](buildSrc\src\main\kotlin\LibraryDependency.kt) - class contains all dependencies of the libraries used in project
-- [ModuleDependency](buildSrc\src\main\kotlin\LibraryDependency.kt) - class contains all dependencies of project modules
-- [GradleDependency](buildSrc\src\main\kotlin\LibraryDependency.kt) - class contains all dependencies of Gradle plugins.
-
-Here is a code snippet from build script:
-
 ```kotlin
 //Module depends on base feature module
-implementation(project(ModuleDependency.featureBase))
+implementation(project(ModuleDependency.featureBase, "default"))
 
 //We want to use these libraries in this module
 implementation(LibraryDependency.supportAppCompact)
