@@ -1,5 +1,4 @@
 <resources>
-    <string name="feature_album">feature_album</string>
     <string name="album_details">Album details</string>
     <string name="search_hint">Enter search phrase</string>
     <string name="search_album">Search album</string>
