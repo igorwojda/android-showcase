@@ -10,50 +10,67 @@ references:
         environment:
             JVM_OPTS: -Xmx3g
 
+commands:
+    generate-gradle-checksums:
+        steps:
+            - run:
+                  name: Generate Gradle checksums
+                  command: |
+                      # This finds all *.kt files and generates checksums for caching
+                      find buildSrc -name "*.kt" -type f | sort | xargs shasum  > gradle-checksums.txt
+                      cat gradle-checksums.txt
+    restore-gradle-cache:
+        description: Restore the cache of ~/.gradle based on the local build files.
+        steps:
+            - generate-gradle-checksums
+            - restore_cache:
+                  keys:
+                      - gradle-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "gradle-checksums.txt" }}
+                      - gradle-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-
+    save-gradle-cache:
+        description: Cache the contents of ~/.gradle based on the local build files.
+        steps:
+            - save_cache:
+                  paths:
+                      - ~/.gradle
+                  key: gradle-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "gradle-checksums.txt" }}
+
 jobs:
     update_dependency_cache:
         <<: *container_config
         steps:
             - checkout
-            - restore_cache:
-                  key: gradle-{{ .Branch }}
+            - restore-gradle-cache
             - run:
                   name: Download Dependencies
                   command: ./gradlew androidDependencies
-            - save_cache:
-                  paths:
-                      - ~/.gradle
-                  key: gradle-{{ .Branch }}
+            - save-gradle-cache
 
     ktlint:
         <<: *container_config
         steps:
             - checkout
-            - restore_cache:
-                  key: gradle-{{ .Branch }}
+            - restore-gradle-cache
             - run: ./gradlew ktlintCheck
     detekt:
         <<: *container_config
         steps:
             - checkout
-            - restore_cache:
-                  key: gradle-{{ .Branch }}
+            - restore-gradle-cache
             - run: ./gradlew detekt
 
     lint:
         <<: *container_config
         steps:
             - checkout
-            - restore_cache:
-                  key: gradle-{{ .Branch }}
+            - restore-gradle-cache
             - run: ./gradlew lint --no-parallel
 
     unit_test:
         <<: *container_config
         steps:
             - checkout
-            - restore_cache:
-                  key: gradle-{{ .Branch }}
+            - restore-gradle-cache
             - run: ./gradlew testDebugUnitTest
 
     build_app:
@@ -66,8 +83,7 @@ jobs:
 
         steps:
             - checkout
-            - restore_cache:
-                  key: gradle-{{ .Branch }}
+            - restore-gradle-cache
             - run: ./gradlew :app:bundleDebug
 workflows:
     version: 2
