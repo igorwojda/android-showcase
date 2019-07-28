@@ -98,12 +98,23 @@ jobs:
 workflows:
     version: 2
     verify_code:
-        # Longest running tasks should ideally run first (due to limited number of parallel executors in the free account)
         jobs:
-            - build_app
-            - lint
-            - unit_test
-            - detekt
-            - ktlint
-            # Following builds will utilise new cache
             - update_dependency_cache
+            - lint:
+                  requires:
+                      - prepare_dependencies
+            - detekt:
+                  requires:
+                      - prepare_dependencies
+            - ktlint:
+                  requires:
+                      - prepare_dependencies
+            - unit_test:
+                  requires:
+                      - prepare_dependencies
+            - build_app:
+                  requires:
+                      - lint
+                      - detekt
+                      - ktlint
+                      - unit_test
