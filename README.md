@@ -1,6 +1,7 @@
 # Project description
-[![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=svg)](https://circleci.com/gh/igorwojda/android-showcase)
+[![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=shield)](https://circleci.com/gh/igorwojda/android-showcase)
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.41-blue.svg)](http://kotlinlang.org/)
 
 Showcase is a sample project that follows modern approach to Android application development. The goal of the project is
 to present modular, scalable, testable and maintainable architecture (suitable for large teams and
@@ -30,9 +31,11 @@ This project bring to table set of best practices, tools and solutions:
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
 # Author
-[Follow me](https://twitter.com/igorwojda) on twitter to stay tuned.
+Follow me to stay tuned.
 
 ![avatar.png](misc/image/avatar.png)
+
+[![Follow me](https://img.shields.io/twitter/follow/igorwojda?style=social)](http://kotlinlang.org/)
 
 # License
 ```
