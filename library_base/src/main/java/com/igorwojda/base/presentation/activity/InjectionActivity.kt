@@ -18,6 +18,7 @@ abstract class InjectionActivity : AppCompatActivity(), KodeinAware {
 
     final override val kodeinContext = kcontext<AppCompatActivity>(this)
 
+    // Using retainedKodein will not recreate Kodein when the Activity restarts
     final override val kodein: Kodein by retainedKodein {
         extend(parentKodein, copy = Copy.All)
     }

@@ -2,7 +2,7 @@
 This is a showcase for Kotlin Android application. Project utilizes most popular libraries, unit testing and architecture which is suitable
 for long [development live cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle).
 
-[![CircleCI](https://circleci.com/gh/igorwojda/Android-Showcase.svg?style=svg)](https://circleci.com/gh/igorwojda/Android-Showcase)
+[![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=svg)](https://circleci.com/gh/igorwojda/android-showcase)
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 
 # Project characteristics
