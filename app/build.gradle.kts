@@ -46,6 +46,10 @@ android {
     }
 
     dynamicFeatures = mutableSetOf(ModuleDependency.FEATURE_ALBUM)
+
+    dexOptions {
+        preDexLibraries = true
+    }
 }
 
 androidExtensions { isExperimental = true }
