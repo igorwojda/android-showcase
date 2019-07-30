@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">showcase</string>
     <string name="feature_album">feature_album</string>
+
+    <string name="coming_soon">Coming soon</string>
+
+    <!--Bottom menu-->
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
 </resources>

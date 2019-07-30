@@ -16,9 +16,10 @@ This project bring to table set of best practices, tools and solutions:
 * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 * Dynamic feature modules
 * Dependency Injection ([Kodein](https://github.com/Kodein-Framework/Kodein-DI))
-* [AndroidX](https://developer.android.com/jetpack/androidx)
 * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
+* [AndroidX](https://developer.android.com/jetpack/androidx)
 * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) and mocks
+* [Material Design Components for Android](https://www.material.io/develop/android/)
 * Takes advantage of
   [many popular libraries](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt),
 *  All relevant static analysis tools ([detekt](https://github.com/arturbosch/detekt)

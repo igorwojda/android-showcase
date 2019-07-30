@@ -18,7 +18,7 @@ fun DependencyHandler.addCommonDependencies() {
     implementation(LibraryDependency.APP_COMPACT)
     implementation(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
     implementation(LibraryDependency.RECYCLER_VIEW)
-    implementation(LibraryDependency.SUPPORT_MATERIAL)
+    implementation(LibraryDependency.MATERIAL)
     implementation(LibraryDependency.COROUTINES_ANDROID)
     implementation(LibraryDependency.COORDINATOR_LAYOUT)
     implementation(LibraryDependency.CORE_KTX)

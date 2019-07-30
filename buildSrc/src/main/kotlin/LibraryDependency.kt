@@ -37,7 +37,7 @@ object LibraryDependency {
     const val APP_COMPACT = "androidx.appcompat:appcompat:${LibraryVersion.APP_COMPACT}"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${LibraryVersion.RECYCLER_VIEW}"
     const val COORDINATOR_LAYOUT = "androidx.coordinatorlayout:coordinatorlayout:${LibraryVersion.COORDINATOR_LAYOUT}"
-    const val SUPPORT_MATERIAL = "com.google.android.material:material:${LibraryVersion.MATERIAL}"
+    const val MATERIAL = "com.google.android.material:material:${LibraryVersion.MATERIAL}"
     const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${CoreVersion.COROUTINES_ANDROID}"
     const val CORE_KTX = "androidx.core:core-ktx:${LibraryVersion.CORE_KTX}"
     const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${LibraryVersion.FRAGMENT_KTX}"
