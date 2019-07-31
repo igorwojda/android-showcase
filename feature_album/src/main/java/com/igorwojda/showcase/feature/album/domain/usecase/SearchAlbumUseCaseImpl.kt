@@ -16,5 +16,6 @@ internal class SearchAlbumUseCaseImpl(
             listOf()
         } else {
             albumRepository.searchAlbum(phrase)
+                .filter { it.images.isNotEmpty() }
         }
 }
