@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:dist="http://schemas.android.com/apk/distribution"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.igorwojda.showcase.feature.album">
 
     <dist:module
@@ -14,25 +15,17 @@
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon">
+
         <meta-data
             android:name="aia-compat-api-min-version"
             android:value="1"/>
 
-        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchActivity" />
 
-        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity" />
+
     </application>
 
 </manifest>
