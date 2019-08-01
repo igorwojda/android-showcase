@@ -4,29 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
+import com.igorwojda.base.presentation.activity.BaseContainerActivity
 import com.igorwojda.showcase.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_common1.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseContainerActivity() {
 
-//    override val layoutResourceId = R.layout.activity_main
+    override val layoutResourceId = R.layout.activity_main
 
 //    private val albumGateway: AlbumGateway by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
         setupBottomNavigation()
 
 //        albumGateway.navigateToAlbumSearch(this)
 
         if (savedInstanceState == null) {
-            replaceContainer(BlogFragment())
+            replaceSubScreenContainer(BlogFragment())
         }
     }
 
@@ -36,15 +35,15 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.bottomMenuHome -> {
-                    replaceContainer(BlogFragment())
+                    replaceSubScreenContainer(BlogFragment())
                     selectItem
                 }
                 R.id.bottomMenuFavourites -> {
-                    replaceContainer(ChapterFragment())
+                    replaceSubScreenContainer(ChapterFragment())
                     selectItem
                 }
                 R.id.bottomMenuProfile -> {
-                    replaceContainer(StoreFragment())
+                    replaceSubScreenContainer(StoreFragment())
                     selectItem
                 }
                 else -> {
@@ -54,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    protected fun replaceContainer(fragment: Fragment) {
-        supportFragmentManager.transaction { replace(R.id.container2, fragment) }
+    private fun replaceSubScreenContainer(fragment: Fragment) {
+        supportFragmentManager.transaction { replace(R.id.subScreenContainer, fragment) }
     }
 }
 

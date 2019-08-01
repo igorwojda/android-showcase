@@ -19,15 +19,15 @@ abstract class BaseContainerActivity : InjectionActivity() {
         Timber.v("onCreate ${javaClass.simpleName}")
     }
 
-    protected fun replaceContainer(fragment: Fragment) {
-        supportFragmentManager.transaction { replace(R.id.baseActivityContainer, fragment) }
+    protected fun replaceScreenContainer(fragment: Fragment) {
+        supportFragmentManager.transaction { replace(R.id.screenContainer, fragment) }
     }
 
     protected inline fun <reified T : BaseContainerFragment> displayContainerFragment(createFragment: () -> T) =
-        getContainerFragment() ?: createFragment().also { replaceContainer(it) }
+        getContainerFragment() ?: createFragment().also { replaceScreenContainer(it) }
 
     protected inline fun <reified T : BaseContainerFragment> getContainerFragment(): T? =
-        supportFragmentManager.findFragmentById(R.id.baseActivityContainer) as? T
+        supportFragmentManager.findFragmentById(R.id.screenContainer) as? T
 
     protected inline fun <reified T : Any?> extra() =
         ActivityExtraDelegate<T>()
