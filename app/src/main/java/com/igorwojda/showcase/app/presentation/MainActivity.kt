@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-//        setupBottomNavigation()
+        setupBottomNavigation()
 
 //        albumGateway.navigateToAlbumSearch(this)
 
@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupBottomNavigation() {
         val selectItem = true
-        val dontSelectItem = false
 
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -43,16 +42,15 @@ class MainActivity : AppCompatActivity() {
                     selectItem
                 }
                 R.id.bottomMenuFavourites -> {
-//                    replaceContainer(ChapterFragment())
+                    replaceContainer(ChapterFragment())
                     selectItem
                 }
                 R.id.bottomMenuProfile -> {
                     replaceContainer(StoreFragment())
-//                    toast(R.string.coming_soon)
-                    selectItem // don't select item
+                    selectItem
                 }
                 else -> {
-                    dontSelectItem
+                    !selectItem
                 }
             }
         }
