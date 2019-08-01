@@ -25,8 +25,6 @@ class MainActivity : AppCompatActivity() {
 
 //        albumGateway.navigateToAlbumSearch(this)
 
-        supportActionBar?.hide()
-
         if (savedInstanceState == null) {
             replaceContainer(BlogFragment())
         }

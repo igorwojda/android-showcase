@@ -15,6 +15,7 @@ abstract class BaseContainerActivity : InjectionActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState).also {
         setContentView(layoutResourceId)
+        supportActionBar?.hide()
         Timber.v("onCreate ${javaClass.simpleName}")
     }
 
