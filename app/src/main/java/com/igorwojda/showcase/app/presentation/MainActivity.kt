@@ -21,9 +21,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        setupBottomNavigation()
+//        setupBottomNavigation()
 
 //        albumGateway.navigateToAlbumSearch(this)
+
+        supportActionBar?.hide()
 
         if (savedInstanceState == null) {
             replaceContainer(BlogFragment())
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     selectItem
                 }
                 R.id.bottomMenuFavourites -> {
-                    replaceContainer(ChapterFragment())
+//                    replaceContainer(ChapterFragment())
                     selectItem
                 }
                 R.id.bottomMenuProfile -> {
