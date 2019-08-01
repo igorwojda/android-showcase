@@ -1,8 +1,8 @@
 package com.igorwojda.showcase.app.gateway
 
-import android.content.Context
+import androidx.fragment.app.Fragment
 
 interface AlbumGateway : BaseGateway {
 
-    fun navigateToAlbumSearch(context: Context)
+    fun getAlbumSearchFragment(): Fragment
 }

@@ -16,7 +16,7 @@ import com.pawegio.kandroid.textWatcher
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
-internal class AlbumSearchFragment : BaseContainerFragment() {
+class AlbumSearchFragment : BaseContainerFragment() {
 
     override val layoutResourceId = R.layout.fragment_album_list
 

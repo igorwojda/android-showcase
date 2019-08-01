@@ -8,24 +8,24 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
 import com.igorwojda.base.presentation.activity.BaseContainerActivity
 import com.igorwojda.showcase.R
+import com.igorwojda.showcase.app.gateway.AlbumGateway
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_common1.*
+import org.kodein.di.generic.instance
 
 class MainActivity : BaseContainerActivity() {
 
     override val layoutResourceId = R.layout.activity_main
 
-//    private val albumGateway: AlbumGateway by instance()
+    private val albumGateway: AlbumGateway by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setupBottomNavigation()
 
-//        albumGateway.navigateToAlbumSearch(this)
-
         if (savedInstanceState == null) {
-            replaceSubScreenContainer(BlogFragment())
+            replaceSubScreenContainer(albumGateway.getAlbumSearchFragment())
         }
     }
 
