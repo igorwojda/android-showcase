@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/subScreenContainer"
+        android:id="@+id/menuContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -27,7 +27,7 @@
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@drawable/bottom_navigation_colors"
         app:itemTextColor="@drawable/bottom_navigation_colors"
-        app:layout_constraintTop_toBottomOf="@id/subScreenContainer"
+        app:layout_constraintTop_toBottomOf="@id/activityContainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

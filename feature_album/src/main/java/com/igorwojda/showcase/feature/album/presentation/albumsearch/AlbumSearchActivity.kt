@@ -17,7 +17,7 @@ class AlbumSearchActivity : BaseContainerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        displayScreenContainer { AlbumSearchFragment() }
+        displayInScreenContainer { AlbumSearchFragment() }
 
         title = resources.getString(R.string.search_album)
     }

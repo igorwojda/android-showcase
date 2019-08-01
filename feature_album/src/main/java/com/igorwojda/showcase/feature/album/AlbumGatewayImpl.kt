@@ -7,5 +7,5 @@ object AlbumGatewayImpl : AlbumGateway {
 
     override val kodeinModule = albumModule
 
-    override fun getAlbumSearchFragment() = AlbumSearchFragment()
+    override fun createAlbumSearchFragment() = AlbumSearchFragment()
 }

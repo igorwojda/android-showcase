@@ -9,7 +9,7 @@ import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity
-import com.igorwojda.showcase.feature.album.presentation.recyclerview.AlbumAdapter
+import com.igorwojda.showcase.feature.album.presentation.albumsearch.adapter.AlbumAdapter
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
 import com.pawegio.kandroid.textWatcher

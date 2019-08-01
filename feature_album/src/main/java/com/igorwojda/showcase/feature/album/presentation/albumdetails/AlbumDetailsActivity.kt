@@ -3,6 +3,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 import android.content.Context
 import android.os.Bundle
 import com.igorwojda.base.presentation.activity.BaseContainerActivity
+import com.igorwojda.base.presentation.extension.extra
 import com.igorwojda.base.presentation.extension.startActivity
 
 internal class AlbumDetailsActivity : BaseContainerActivity() {
@@ -32,6 +33,6 @@ internal class AlbumDetailsActivity : BaseContainerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        displayScreenContainer { AlbumDetailFragment(albumName, artistName, mbId) }
+        displayInScreenContainer { AlbumDetailFragment(albumName, artistName, mbId) }
     }
 }

@@ -23,5 +23,6 @@
                                                    android:layout_height="match_parent"
                                                    android:id="@+id/recyclerView"
                                                    android:scrollbars="vertical"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

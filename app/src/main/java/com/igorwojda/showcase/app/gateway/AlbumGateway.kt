@@ -4,5 +4,5 @@ import androidx.fragment.app.Fragment
 
 interface AlbumGateway : BaseGateway {
 
-    fun getAlbumSearchFragment(): Fragment
+    fun createAlbumSearchFragment(): Fragment
 }

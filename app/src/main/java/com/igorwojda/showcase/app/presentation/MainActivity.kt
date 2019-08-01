@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
-import com.igorwojda.base.presentation.activity.BaseContainerActivity
+import com.igorwojda.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.app.gateway.AlbumGateway
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_common1.*
 import org.kodein.di.generic.instance
 
-class MainActivity : BaseContainerActivity() {
+class MainActivity : BaseActivity() {
 
     override val layoutResourceId = R.layout.activity_main
 
@@ -25,7 +25,7 @@ class MainActivity : BaseContainerActivity() {
         setupBottomNavigation()
 
         if (savedInstanceState == null) {
-            replaceSubScreenContainer(albumGateway.getAlbumSearchFragment())
+            replaceMenuContainer(albumGateway.createAlbumSearchFragment())
         }
     }
 
@@ -35,15 +35,15 @@ class MainActivity : BaseContainerActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.bottomMenuHome -> {
-                    replaceSubScreenContainer(BlogFragment())
+                    replaceMenuContainer(BlogFragment())
                     selectItem
                 }
                 R.id.bottomMenuFavourites -> {
-                    replaceSubScreenContainer(ChapterFragment())
+                    replaceMenuContainer(ChapterFragment())
                     selectItem
                 }
                 R.id.bottomMenuProfile -> {
-                    replaceSubScreenContainer(StoreFragment())
+                    replaceMenuContainer(StoreFragment())
                     selectItem
                 }
                 else -> {
@@ -53,11 +53,10 @@ class MainActivity : BaseContainerActivity() {
         }
     }
 
-    private fun replaceSubScreenContainer(fragment: Fragment) {
-        supportFragmentManager.transaction { replace(R.id.subScreenContainer, fragment) }
+    private fun replaceMenuContainer(fragment: Fragment) {
+        supportFragmentManager.transaction { replace(R.id.menuContainer, fragment) }
     }
 }
-
 
 class BlogFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
