@@ -1,6 +1,7 @@
 package com.igorwojda.base.presentation.activity
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
@@ -16,6 +17,10 @@ abstract class BaseContainerActivity : InjectionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState).also {
         setContentView(layoutResourceId)
         supportActionBar?.hide()
+
+        // The window will not be resized when  virtual keyboard is shown (bottom navigation bar will be hidden under keyboard)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+
         Timber.v("onCreate ${javaClass.simpleName}")
     }
 
@@ -23,10 +28,10 @@ abstract class BaseContainerActivity : InjectionActivity() {
         supportFragmentManager.transaction { replace(R.id.screenContainer, fragment) }
     }
 
-    protected inline fun <reified T : BaseContainerFragment> displayContainerFragment(createFragment: () -> T) =
-        getContainerFragment() ?: createFragment().also { replaceScreenContainer(it) }
+    protected inline fun <reified T : BaseContainerFragment> displayScreenContainer(createFragment: () -> T) =
+        getScreenContainer() ?: createFragment().also { replaceScreenContainer(it) }
 
-    protected inline fun <reified T : BaseContainerFragment> getContainerFragment(): T? =
+    protected inline fun <reified T : BaseContainerFragment> getScreenContainer(): T? =
         supportFragmentManager.findFragmentById(R.id.screenContainer) as? T
 
     protected inline fun <reified T : Any?> extra() =

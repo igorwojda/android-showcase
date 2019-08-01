@@ -32,6 +32,6 @@ internal class AlbumDetailsActivity : BaseContainerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        displayContainerFragment { AlbumDetailFragment(albumName, artistName, mbId) }
+        displayScreenContainer { AlbumDetailFragment(albumName, artistName, mbId) }
     }
 }
