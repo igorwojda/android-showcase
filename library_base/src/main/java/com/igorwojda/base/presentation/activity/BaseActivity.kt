@@ -16,7 +16,8 @@ abstract class BaseActivity : InjectionActivity() {
 
         supportActionBar?.hide()
 
-        // The window will not be resized when virtual keyboard is shown (eg. bottom navigation bar will be hidden under virtual keyboard)
+        // The window will not be resized when virtual keyboard is shown (eg. bottom navigation bar will be
+        // hidden under virtual keyboard)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
 
         Timber.v("onCreate ${javaClass.simpleName}")
