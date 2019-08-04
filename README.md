@@ -80,7 +80,7 @@ This project bring to table set of best practices, tools and solutions:
 * Script to update all dependencies in the project, create PR to run all checks
 * Continuous deployment (automatically publish app to Google play store using CI)
 * …
-* 70+ other things (seriously 🤓🤣)
+* 70+ other things (seriously 🤓)
 
 
 # ‍Contribute

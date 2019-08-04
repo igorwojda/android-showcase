@@ -2,16 +2,17 @@ package com.igorwojda.showcase.feature.album.presentation.albumsearch
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
 import com.igorwojda.base.presentation.extension.observe
 import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity
-import com.igorwojda.showcase.feature.album.presentation.albumsearch.adapter.AlbumAdapter
+import com.igorwojda.showcase.feature.album.presentation.albumsearch.recyclerview.AlbumAdapter
+import com.igorwojda.showcase.feature.album.presentation.albumsearch.recyclerview.GridAutofitLayoutManager
 import com.pawegio.kandroid.hide
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
+
 
 class AlbumSearchFragment : BaseContainerFragment() {
 
@@ -23,7 +24,7 @@ class AlbumSearchFragment : BaseContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val context = requireNotNull(context)
+        val context = checkNotNull(context)
 
         albumAdapter.setOnDebouncedClickListener {
             AlbumDetailsActivity.start(context, it.artist, it.name, it.mbId)
@@ -31,8 +32,12 @@ class AlbumSearchFragment : BaseContainerFragment() {
 
         recyclerView.apply {
             setHasFixedSize(true)
-            val numColumns = 2
-            layoutManager = GridLayoutManager(context, numColumns)
+            val columnWidth = context.resources.getDimension(R.dimen.image_size).toInt()
+            layoutManager =
+                GridAutofitLayoutManager(
+                    context,
+                    columnWidth
+                )
             adapter = albumAdapter
         }
 

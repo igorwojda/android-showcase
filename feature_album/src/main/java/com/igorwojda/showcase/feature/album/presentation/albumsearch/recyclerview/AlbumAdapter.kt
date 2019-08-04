@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.presentation.albumsearch.adapter
+package com.igorwojda.showcase.feature.album.presentation.albumsearch.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import com.igorwojda.base.presentation.extension.setOnDebouncedClickListener
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
-import com.igorwojda.showcase.feature.album.presentation.albumsearch.adapter.AlbumAdapter.MyViewHolder
+import com.igorwojda.showcase.feature.album.presentation.albumsearch.recyclerview.AlbumAdapter.MyViewHolder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 
@@ -27,7 +27,8 @@ internal class AlbumAdapter(
         fun bind(albumDomainModel: AlbumDomainModel) {
             itemView.setOnDebouncedClickListener { onDebouncedClickListener?.invoke(albumDomainModel) }
 
-            val url = albumDomainModel.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
+            val url = albumDomainModel.images.firstOrNull { it.size == AlbumDomainImageSize.EXTRA_LARGE }?.url
+
             if (albumDomainModel.images.isNotEmpty() && !url.isNullOrEmpty()) {
                 loadImage(url)
             } else {
@@ -36,11 +37,7 @@ internal class AlbumAdapter(
         }
 
         private fun loadImage(it: String) {
-            val imageSize = 400
-
             picasso.load(it)
-                .resize(imageSize, imageSize)
-                .centerCrop()
                 .into(itemView.imageView)
         }
     }
