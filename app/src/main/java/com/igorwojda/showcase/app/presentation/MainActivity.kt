@@ -21,7 +21,7 @@ class MainActivity : BaseContainerActivity() {
         setupBottomNavigation()
 
         if (savedInstanceState == null) {
-            replaceScreenContent(albumGateway.createAlbumSearchFragment())
+            bottomNavigation.selectedItemId = R.id.bottomMenuHome
         }
     }
 
@@ -31,7 +31,7 @@ class MainActivity : BaseContainerActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.bottomMenuHome -> {
-                    replaceScreenContent(BlogFragment())
+                    replaceScreenContent(albumGateway.createAlbumSearchFragment())
                     selectItem
                 }
                 R.id.bottomMenuFavourites -> {
