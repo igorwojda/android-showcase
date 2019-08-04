@@ -39,7 +39,7 @@ This project bring to table set of best practices, tools and solutions:
   * Material components
   * Stetho
   * Android KTX
-  * [...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
+  * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
   * Feature modules
   * Clean Architecture (at module level)
