@@ -5,30 +5,6 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 /*
 Define common dependencies, so they can be easily updated across feature modules
  */
-fun DependencyHandler.addCommonDependencies() {
-    implementation(LibraryDependency.KOTLIN)
-    implementation(LibraryDependency.KOTLIN_REFLECT)
-    implementation(LibraryDependency.KODEIN)
-    implementation(LibraryDependency.KODEIN_ANDROID_X)
-    implementation(LibraryDependency.RETROFIT)
-    implementation(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
-    implementation(LibraryDependency.STETHO)
-    implementation(LibraryDependency.STETHO_OK_HTTP)
-    implementation(LibraryDependency.TIMBER)
-    implementation(LibraryDependency.APP_COMPACT)
-    implementation(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
-    implementation(LibraryDependency.RECYCLER_VIEW)
-    implementation(LibraryDependency.MATERIAL)
-    implementation(LibraryDependency.COROUTINES_ANDROID)
-    implementation(LibraryDependency.COORDINATOR_LAYOUT)
-    implementation(LibraryDependency.CORE_KTX)
-    implementation(LibraryDependency.FRAGMENT_KTX)
-    implementation(LibraryDependency.LIFECYCLE_EXTENSIONS)
-    implementation(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
-    implementation(LibraryDependency.PICASSO)
-    implementation(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
-    implementation(LibraryDependency.K_ANDROID)
-}
 
 fun DependencyHandler.addTestDependencies() {
     testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
