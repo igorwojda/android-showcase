@@ -1,10 +1,7 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
-import androidx.annotation.IdRes
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.transaction
-import com.igorwojda.base.presentation.activity.BaseActivity
+import com.igorwojda.base.presentation.activity.BaseContainerActivity
 import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.app.gateway.AlbumGateway
@@ -12,9 +9,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_common1.*
 import org.kodein.di.generic.instance
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseContainerActivity() {
 
-    override val layoutResourceId = R.layout.activity_main
+    override val layoutResId = R.layout.activity_main
 
     private val albumGateway: AlbumGateway by instance()
 
@@ -24,7 +21,7 @@ class MainActivity : BaseActivity() {
         setupBottomNavigation()
 
         if (savedInstanceState == null) {
-            displayMenuContainer { albumGateway.createAlbumSearchFragment() }
+            replaceScreenContent(albumGateway.createAlbumSearchFragment())
         }
     }
 
@@ -34,15 +31,15 @@ class MainActivity : BaseActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.bottomMenuHome -> {
-                    displayMenuContainer { BlogFragment() }
+                    replaceScreenContent(BlogFragment())
                     selectItem
                 }
                 R.id.bottomMenuFavourites -> {
-                    displayMenuContainer { ChapterFragment() }
+                    replaceScreenContent(ChapterFragment())
                     selectItem
                 }
                 R.id.bottomMenuProfile -> {
-                    displayMenuContainer { StoreFragment() }
+                    replaceScreenContent(StoreFragment())
                     selectItem
                 }
                 else -> {
@@ -50,18 +47,6 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-    }
-
-    private inline fun <reified T : BaseContainerFragment> displayMenuContainer(createFragment: () -> T): T {
-        @IdRes val containerId = R.id.menuContainer
-        return getMenuContainer(containerId) ?: createFragment().also { replaceMenuContainer(it, containerId) }
-    }
-
-    private inline fun <reified T : BaseContainerFragment> getMenuContainer(containerId: Int): T? =
-        supportFragmentManager.findFragmentById(containerId) as? T
-
-    private fun replaceMenuContainer(fragment: Fragment, containerId: Int) {
-        supportFragmentManager.transaction { replace(containerId, fragment) }
     }
 }
 

@@ -9,18 +9,21 @@ import timber.log.Timber
 abstract class BaseActivity : InjectionActivity() {
 
     @get:LayoutRes
-    protected abstract val layoutResourceId: Int
+    protected abstract val layoutResId: Int
 
-    override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState).also {
-        setContentView(layoutResourceId)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContentView(layoutResId)
 
         supportActionBar?.hide()
 
-        // The window will not be resized when virtual keyboard is shown (eg. bottom navigation bar will be
+        // The window will not be resized when virtual keyboard is shown (bottom navigation bar will be
         // hidden under virtual keyboard)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
 
         Timber.v("onCreate ${javaClass.simpleName}")
+
     }
 
     protected inline fun <reified T : Any?> extra() =
