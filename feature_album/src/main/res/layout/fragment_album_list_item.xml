@@ -7,18 +7,21 @@
               android:clickable="true"
               android:focusable="true"
               android:gravity="center_horizontal"
+              android:background="@android:color/transparent"
               android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView android:layout_width="@dimen/image_size"
-                                       android:layout_height="@dimen/image_size"
-                                       android:layout_margin="10dp"
-                                       app:cardCornerRadius="8dp">
+    <com.google.android.material.card.MaterialCardView android:layout_width="@dimen/image_size"
+                                                       android:layout_height="@dimen/image_size"
+                                                       android:layout_margin="10dp"
+                                                       app:cardCornerRadius="8dp"
+                                                       app:cardBackgroundColor="@android:color/transparent"
+                                                       app:cardElevation="0dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:id="@+id/imageView"/>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
