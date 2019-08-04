@@ -27,10 +27,11 @@ This project bring to table set of best practices, tools and solutions:
   [Kotlin coding conventions](<https://kotlinlang.org/docs/reference/coding-conventions.html>)
 
 # Tech-stack
-Project tech-stack co
 
-* Top
+* Core
+  * Android SDK
   * Kotlin + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+* Libraries
   * Kodein
   * Retrofit
   * AndroidX
@@ -40,17 +41,18 @@ Project tech-stack co
   * Android KTX
   * [...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
+  * Feature modules
   * Clean Architecture (at module level)
   * Model-View-ViewModel (presentation layer)
   * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
   * Dependency Injection ([Kodein](https://github.com/Kodein-Framework/Kodein-DI))
-* Presentation
+* Presentation layer
   * [Material Design Components](https://www.material.io/develop/android/)
   * [Shared element transitions](https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html)
   * [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive)
 * Testing
   * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing)
-  * [Mockito](https://github.com/mockito/mockito) + [Mockito-kotlin](https://github.com/nhaarman/mockito-kotlin)
+  * [Mockito](https://github.com/mockito/mockito) + [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin)
   * Fluent assertions ( [Kluent](https://github.com/MarkusAmshove/Kluent))
 * Gradle
   * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
@@ -59,22 +61,23 @@ Project tech-stack co
   * Custom gradle tasks
   * 3rd party plugins (eg. [Gradle versions plugin](https://github.com/ben-manes/gradle-versions-plugin))
 * CI
-  * Pipeline configuration using [CircleCI](https://circleci.com/)
+  * Pipeline configuration ([CircleCI](https://circleci.com/))
   * Static analysis tools ([detekt](https://github.com/arturbosch/detekt) [ktlint](https://github.com/pinterest/ktlint),
     [Android lint](https://developer.android.com/studio/write/lint), [codebeat](https://codebeat.co))
-  * Unit tests
-  * Build
+  * Tests
+  * Build app
 
 # Improvements
- There are many things to try, play with and add to this repository:
-* Add support for DayNight MaterialTheme
-* Add Android Dynamic delivery
-* Add caching layer (In memory + Room)
-* Add UI tests (including CI pipeline)
-* Try Data binding approach
-* Add custom lint, ktlint and detekt tasks
-* Add espresso tests and run then on CI pipeline
-* Write script to update all dependencies in the project, create PR to run all checks
+
+ There are many things I personally want to try, play with and add to `android-show-case` project:
+* Support for DayNight MaterialTheme
+* Android Dynamic delivery
+* Caching layer (memory + disk)
+* Add Room
+* UI tests (including CI pipeline emulator configuration)
+* Data binding
+* Custom lint, ktlint and detekt tasks
+* Script to update all dependencies in the project, create PR to run all checks
 * Continuous deployment (automatically publish app to Google play store using CI)
 * …
 * 70+ other things (seriously 🤓🤣)
