@@ -7,16 +7,16 @@ class KotlinAnimationListener : Animation.AnimationListener {
     private var onAnimationEndListener: ((animation: Animation?) -> Unit)? = null
     private var onAnimationStartListener: ((animation: Animation?) -> Unit)? = null
 
-    fun onAnimationStart(func: (animation: Animation?) -> Unit) {
-        onAnimationStartListener = func
+    fun onAnimationStart(listener: (animation: Animation?) -> Unit) {
+        onAnimationStartListener = listener
     }
 
-    fun onAnimationEnd(func: (animation: Animation?) -> Unit) {
-        onAnimationEndListener = func
+    fun onAnimationEnd(listener: (animation: Animation?) -> Unit) {
+        onAnimationEndListener = listener
     }
 
-    fun onAnimationRepeat(func: (animation: Animation?) -> Unit) {
-        onAnimationRepeatListener = func
+    fun onAnimationRepeat(listener: (animation: Animation?) -> Unit) {
+        onAnimationRepeatListener = listener
     }
 
     override fun onAnimationEnd(animation: Animation?) {

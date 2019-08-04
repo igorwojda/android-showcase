@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.igorwojda.base.common.delegate.observer
 import com.igorwojda.base.presentation.animation.AlphaAnimationHelperFactory
 import com.igorwojda.base.presentation.extension.setOnDebouncedClickListener
+import com.igorwojda.base.presentation.picasso.PicassoCallback
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
-import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 
@@ -65,19 +65,19 @@ internal class AlbumAdapter(
         }
 
         private fun loadImage(it: String) {
+
+            val callback = PicassoCallback().apply {
+
+                onSuccess { alphaAnimationHelper.show() }
+
+                onError { setDefaultImage() }
+            }
+
             picasso
                 .load(it)
-                .into(itemView.imageView, PicassoCallback())
-        }
-
-        private inner class PicassoCallback : Callback {
-            override fun onSuccess() {
-                alphaAnimationHelper.show()
-            }
-
-            override fun onError(e: Exception?) {
-                setDefaultImage()
-            }
+                .into(itemView.imageView, callback)
         }
     }
 }
+
+

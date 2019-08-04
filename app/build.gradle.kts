@@ -74,7 +74,6 @@ dependencies {
     api(LibraryDependency.RECYCLER_VIEW)
     api(LibraryDependency.MATERIAL)
     api(LibraryDependency.FRAGMENT_KTX)
-    api(LibraryDependency.PICASSO)
     api(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
     api(LibraryDependency.K_ANDROID)
 
