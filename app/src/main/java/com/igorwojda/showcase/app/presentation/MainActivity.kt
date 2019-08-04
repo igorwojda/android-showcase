@@ -15,6 +15,10 @@ class MainActivity : BaseContainerActivity() {
 
     private val albumGateway: AlbumGateway by instance()
 
+    private val albumSearchFragment by lazy { albumGateway.createAlbumSearchFragment() }
+    private val favouritesFragment by lazy { FavouritesFragment() }
+    private val profileFragment by lazy { ProfileFragment() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,15 +35,15 @@ class MainActivity : BaseContainerActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.bottomMenuHome -> {
-                    replaceScreenContent(albumGateway.createAlbumSearchFragment())
+                    replaceScreenContent(albumSearchFragment)
                     selectItem
                 }
                 R.id.bottomMenuFavourites -> {
-                    replaceScreenContent(ChapterFragment())
+                    replaceScreenContent(favouritesFragment)
                     selectItem
                 }
                 R.id.bottomMenuProfile -> {
-                    replaceScreenContent(StoreFragment())
+                    replaceScreenContent(profileFragment)
                     selectItem
                 }
                 else -> {
@@ -51,11 +55,11 @@ class MainActivity : BaseContainerActivity() {
 }
 
 
-class ChapterFragment : BaseContainerFragment() {
+class FavouritesFragment : BaseContainerFragment() {
     override val layoutResourceId = R.layout.fragment_common1
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        tvCommon.text = "Chapter Fragment"
+        tvCommon.text = "Favourites Fragment"
         commonLayout.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
 
         super.onActivityCreated(savedInstanceState)
@@ -63,12 +67,12 @@ class ChapterFragment : BaseContainerFragment() {
 }
 
 
-class StoreFragment : BaseContainerFragment() {
+class ProfileFragment : BaseContainerFragment() {
     override val layoutResourceId = R.layout.fragment_common1
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        tvCommon.text = "Blog Fragment"
+        tvCommon.text = "Profile Fragment"
         commonLayout.setBackgroundColor(resources.getColor(android.R.color.holo_orange_dark))
 
     }
