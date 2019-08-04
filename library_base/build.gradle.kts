@@ -37,5 +37,26 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    addCommonDependencies()
+    api(LibraryDependency.KOTLIN)
+    api(LibraryDependency.KOTLIN_REFLECT)
+    api(LibraryDependency.KODEIN)
+    api(LibraryDependency.KODEIN_ANDROID_X)
+    api(LibraryDependency.RETROFIT)
+    api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
+    api(LibraryDependency.STETHO)
+    api(LibraryDependency.STETHO_OK_HTTP)
+    api(LibraryDependency.TIMBER)
+    api(LibraryDependency.APP_COMPACT)
+    api(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
+    api(LibraryDependency.RECYCLER_VIEW)
+    api(LibraryDependency.MATERIAL)
+    api(LibraryDependency.COROUTINES_ANDROID)
+    api(LibraryDependency.COORDINATOR_LAYOUT)
+    api(LibraryDependency.CORE_KTX)
+    api(LibraryDependency.FRAGMENT_KTX)
+    api(LibraryDependency.LIFECYCLE_EXTENSIONS)
+    api(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
+    api(LibraryDependency.PICASSO)
+    api(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
+    api(LibraryDependency.K_ANDROID)
 }
