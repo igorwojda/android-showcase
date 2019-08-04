@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
 import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
+import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -15,24 +16,26 @@ class SearchAlbumUseCaseTest {
     @Mock
     internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
 
-    private lateinit var cut: SearchAlbumUseCaseImpl
+    private lateinit var cut: SearchAlbumUseCase
 
     @Before
     fun setUp() {
-        cut = SearchAlbumUseCaseImpl(mockAlbumRepository)
+        cut = SearchAlbumUseCase(mockAlbumRepository)
     }
 
     @Test
-    fun `when execute then getAlbum`() {
+    fun `return list of artist`() {
         runBlocking {
             // given
             val phrase = "abc"
+
+            given(mockAlbumRepository.searchAlbum(phrase)).willReturn(listOf())
 
             // when
             cut.execute(phrase)
 
             // then
-            verify(mockAlbumRepository).searchAlbum(phrase)
+            val result = verify(mockAlbumRepository).searchAlbum(phrase)
         }
     }
 }

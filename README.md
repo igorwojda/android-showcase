@@ -3,9 +3,13 @@
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.41-blue.svg)](http://kotlinlang.org/)
 
-Showcase is a sample project that follows modern approach to Android application development. The goal of the project is
-to present modular, scalable, testable and maintainable architecture (suitable for large teams and
-[SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle)). This project is entirely written using Kotlin.
+Showcase is a sample project that presents modern approach to [Kotlin](https://kotlinlang.org/)
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system))  
+application development. The goal of the project is to provide modular, scalable, maintainable and testable architecture
+(suitable for lager teams long
+[System Development Life Cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle)). This project takes
+advantage of many popular libraries and tools of the Android ecosystem including static analysis and
+[CI](https://en.wikipedia.org/wiki/Continuous_integration) setup.
 
 # Project characteristics
 This project bring to table set of best practices, tools and solutions:

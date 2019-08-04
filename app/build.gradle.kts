@@ -67,7 +67,7 @@ dependencies {
 
 fun BaseFlavor.stringResValue(gradlePropertyName: String) {
     val propertyValue = project.properties[gradlePropertyName] as? String
-    checkNotNull(propertyValue) { "$gradlePropertyName is null" }
+    checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
 
     val androidResourceName = "build_param_${gradlePropertyName.toSnakeCase()}"
     resValue("string", androidResourceName, propertyValue)

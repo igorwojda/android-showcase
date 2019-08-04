@@ -15,11 +15,11 @@ class GetAlbumUseCaseTest {
     @Mock
     internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
 
-    private lateinit var cut: GetAlbumUseCaseImpl
+    private lateinit var cut: GetAlbumUseCase
 
     @Before
     fun setUp() {
-        cut = GetAlbumUseCaseImpl(mockAlbumRepository)
+        cut = GetAlbumUseCase(mockAlbumRepository)
     }
 
     @Test

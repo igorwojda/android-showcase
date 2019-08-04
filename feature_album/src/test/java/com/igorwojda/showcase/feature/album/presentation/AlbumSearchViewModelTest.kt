@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation
 
-import com.igorwojda.showcase.feature.album.domain.usecase.SearchAlbumUseCaseImpl
+import com.igorwojda.showcase.feature.album.domain.usecase.SearchAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchViewModel
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.verify
@@ -21,7 +21,7 @@ class AlbumSearchViewModelTest {
     var coroutinesTestRule = CoroutineRule()
 
     @Mock
-    internal lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCaseImpl
+    internal lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCase
 
     private lateinit var cut: AlbumSearchViewModel
 
