@@ -28,7 +28,7 @@ internal class AlbumAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_album_list_item, parent, false)
-        return MyViewHolder(view, alphaAnimationHelperFactory)
+        return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -47,9 +47,8 @@ internal class AlbumAdapter(
     }
 
     internal inner class MyViewHolder(
-        view: View,
-        alphaAnimationHelperFactory: AlphaAnimationHelperFactory
-    ) : RecyclerView.ViewHolder(view) {
+        itemView: View
+    ) : RecyclerView.ViewHolder(itemView) {
 
         private val alphaAnimationHelper = alphaAnimationHelperFactory.create(itemView, false)
 
