@@ -35,11 +35,6 @@ internal class AlbumAdapter(
         holder.bind(albums[position])
     }
 
-    override fun onViewDetachedFromWindow(holder: MyViewHolder) {
-        holder.dispose()
-        super.onViewDetachedFromWindow(holder)
-    }
-
     override fun getItemCount(): Int = albums.size
 
     fun setOnDebouncedClickListener(listener: (album: AlbumDomainModel) -> Unit) {
@@ -73,10 +68,6 @@ internal class AlbumAdapter(
             picasso
                 .load(it)
                 .into(itemView.imageView, PicassoCallback())
-        }
-
-        fun dispose() {
-            alphaAnimationHelper.dispose()
         }
 
         private inner class PicassoCallback : Callback {
