@@ -2,6 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation
 
 import androidx.fragment.app.Fragment
 import com.igorwojda.base.di.KotlinViewModelProvider
+import com.igorwojda.base.presentation.animation.AlphaAnimationHelperFactory
 import com.igorwojda.showcase.feature.album.FEATURE_NAME
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchViewModel
@@ -15,12 +16,14 @@ import org.kodein.di.generic.singleton
 
 internal val presentationModule = Kodein.Module("${FEATURE_NAME}PresentationModule") {
 
-    // AlbumSearch
+    // AlbumList
     bind<AlbumSearchViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
         KotlinViewModelProvider.of(context) { AlbumSearchViewModel(instance()) }
     }
 
-    bind() from singleton { AlbumAdapter(instance()) }
+    bind() from singleton { AlbumAdapter(instance(), instance()) }
+
+    bind() from singleton { AlphaAnimationHelperFactory() }
 
     // AlbumDetails
     bind<AlbumDetailsViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
