@@ -15,24 +15,72 @@ advantage of many popular libraries and tools of the Android ecosystem including
 This project bring to table set of best practices, tools and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
-* CA + MVVM (Clean Architecture + Model-View-ViewModel)
-* [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
-* [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+* Modern architecture (Clean Architecture + Model-View-ViewModel)
 * Dynamic feature modules
-* Dependency Injection ([Kodein](https://github.com/Kodein-Framework/Kodein-DI))
-* [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
-* [AndroidX](https://developer.android.com/jetpack/androidx)
-* [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) and mocks
-* [Material Design Components for Android](https://www.material.io/develop/android/)
-* Takes advantage of
-  [many popular libraries](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt),
-*  All relevant static analysis tools ([detekt](https://github.com/arturbosch/detekt)
-   [ktlint](https://github.com/pinterest/ktlint), [Android lint](https://developer.android.com/studio/write/lint),
-   [codebeat](https://codebeat.co))
-* Follows [Android style guide](<https://developer.android.com/kotlin/style-guide>) and [Kotlin coding conventions](<https://kotlinlang.org/docs/reference/coding-conventions.html>)
-* Gradle dependency autocompletion
+* [Jetpack](https://developer.android.com/jetpack) ([AndroidX](https://developer.android.com/jetpack/androidx))
+* Dependency Injection
+* Testing
+* CI configuration
+* Static analysis tools
+* Modern UI
+* [Android style guide](<https://developer.android.com/kotlin/style-guide>) and
+  [Kotlin coding conventions](<https://kotlinlang.org/docs/reference/coding-conventions.html>)
 
-# Contribute
+# Tech-stack
+Project tech-stack co
+
+* Top
+  * Kotlin + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+  * Kodein
+  * Retrofit
+  * AndroidX
+  * Architecture components
+  * Material components
+  * Stetho
+  * Android KTX
+  * [...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
+* Architecture
+  * Clean Architecture (at module level)
+  * Model-View-ViewModel (presentation layer)
+  * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
+  * Dependency Injection ([Kodein](https://github.com/Kodein-Framework/Kodein-DI))
+* Presentation
+  * [Material Design Components](https://www.material.io/develop/android/)
+  * [Shared element transitions](https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html)
+  * [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive)
+* Testing
+  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing)
+  * [Mockito](https://github.com/mockito/mockito) + [Mockito-kotlin](https://github.com/nhaarman/mockito-kotlin)
+  * Fluent assertions ( [Kluent](https://github.com/MarkusAmshove/Kluent))
+* Gradle
+  * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+  * Multi module configuration
+  * Gradle dependency autocompletion
+  * Custom gradle tasks
+  * 3rd party plugins (eg. [Gradle versions plugin](https://github.com/ben-manes/gradle-versions-plugin))
+* CI
+  * Pipeline configuration using [CircleCI](https://circleci.com/)
+  * Static analysis tools ([detekt](https://github.com/arturbosch/detekt) [ktlint](https://github.com/pinterest/ktlint),
+    [Android lint](https://developer.android.com/studio/write/lint), [codebeat](https://codebeat.co))
+  * Unit tests
+  * Build
+
+# Improvements
+ There are many things to try, play with and add to this repository:
+* Add support for DayNight MaterialTheme
+* Add Android Dynamic delivery
+* Add caching layer (In memory + Room)
+* Add UI tests (including CI pipeline)
+* Try Data binding approach
+* Add custom lint, ktlint and detekt tasks
+* Add espresso tests and run then on CI pipeline
+* Write script to update all dependencies in the project, create PR to run all checks
+* Continuous deployment (automatically publish app to Google play store using CI)
+* …
+* 70+ other things (seriously 🤓🤣)
+
+
+# ‍Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
 # Author
