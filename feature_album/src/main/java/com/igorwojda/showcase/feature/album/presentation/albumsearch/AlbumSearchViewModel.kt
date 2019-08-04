@@ -19,7 +19,7 @@ internal class AlbumSearchViewModel(
     private var searchAlbumJob: Job? = null
 
     init {
-        searchAlbum("pop")
+        searchAlbum("sd")
     }
 
     fun searchAlbum(phrase: String) {

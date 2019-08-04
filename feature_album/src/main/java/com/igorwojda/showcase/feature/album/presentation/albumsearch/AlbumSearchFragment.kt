@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation.albumsearch
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.igorwojda.base.presentation.extension.observe
@@ -11,8 +10,6 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity
 import com.igorwojda.showcase.feature.album.presentation.albumsearch.adapter.AlbumAdapter
 import com.pawegio.kandroid.hide
-import com.pawegio.kandroid.show
-import com.pawegio.kandroid.textWatcher
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
@@ -37,16 +34,6 @@ class AlbumSearchFragment : BaseContainerFragment() {
             val numColumns = 2
             layoutManager = GridLayoutManager(context, numColumns)
             adapter = albumAdapter
-        }
-
-        searchTextInput.textWatcher {
-            afterTextChanged { editable: Editable? ->
-                editable?.let {
-                    val phrase = it.toString()
-                    viewModel.searchAlbum(phrase)
-                    loadingSpinner.show()
-                }
-            }
         }
 
         observe(viewModel.state, ::onStateChange)

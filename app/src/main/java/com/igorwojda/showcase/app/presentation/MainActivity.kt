@@ -50,16 +50,6 @@ class MainActivity : BaseContainerActivity() {
     }
 }
 
-class BlogFragment : BaseContainerFragment() {
-    override val layoutResourceId = R.layout.fragment_common1
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        tvCommon.text = "Store Fragment"
-        commonLayout.setBackgroundColor(resources.getColor(android.R.color.darker_gray))
-    }
-}
-
 
 class ChapterFragment : BaseContainerFragment() {
     override val layoutResourceId = R.layout.fragment_common1
