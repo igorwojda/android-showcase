@@ -18,6 +18,10 @@ internal class AlbumSearchViewModel(
     val state = _state.toLiveData()
     private var searchAlbumJob: Job? = null
 
+    init {
+        searchAlbum("pop")
+    }
+
     fun searchAlbum(phrase: String) {
         searchAlbumJob?.cancel()
 

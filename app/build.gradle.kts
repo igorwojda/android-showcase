@@ -67,7 +67,7 @@ dependencies {
     implementation(LibraryDependency.STETHO_OK_HTTP)
 
     api(LibraryDependency.RETROFIT)
-    implementation(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
+    api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
 
     api(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
     api(LibraryDependency.COORDINATOR_LAYOUT)
