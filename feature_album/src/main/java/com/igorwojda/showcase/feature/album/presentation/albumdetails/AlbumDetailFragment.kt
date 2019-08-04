@@ -56,6 +56,6 @@ internal class AlbumDetailFragment() : BaseContainerFragment() {
             .resize(imageSize, imageSize)
             .centerCrop()
             .placeholder(R.drawable.progress_animation)
-            .into(imageView)
+            .into(coverImageView)
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="title">@color/white</color>
-    <color name="list_background">@color/shark</color>
+    <color name="artist_list_background">@color/shark</color>
+    <color name="artist_list_item_background">@color/outer_space</color>
 </resources>

@@ -14,13 +14,22 @@
                                                        android:layout_height="@dimen/image_size"
                                                        android:layout_margin="10dp"
                                                        app:cardCornerRadius="8dp"
-                                                       app:cardBackgroundColor="@android:color/transparent"
+                                                       app:cardBackgroundColor="#24282B"
                                                        app:cardElevation="0dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
-            android:id="@+id/imageView"/>
+            android:id="@+id/coverImageView"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_image"
+            android:alpha="0.5"
+            android:layout_gravity="center"
+            android:id="@+id/coverErrorImageView"
+            android:visibility="gone"/>
 
     </com.google.android.material.card.MaterialCardView>
 

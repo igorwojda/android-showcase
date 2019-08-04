@@ -11,6 +11,8 @@ import com.igorwojda.base.presentation.picasso.PicassoCallback
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.pawegio.kandroid.hide
+import com.pawegio.kandroid.show
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 
@@ -48,6 +50,8 @@ internal class AlbumAdapter(
         private val alphaAnimationHelper = alphaAnimationHelperFactory.create(itemView, false)
 
         private var url by observer<String?>(null) {
+            itemView.coverErrorImageView.hide()
+
             if (it == null) {
                 setDefaultImage()
             } else {
@@ -61,7 +65,8 @@ internal class AlbumAdapter(
         }
 
         private fun setDefaultImage() {
-            itemView.imageView.setImageBitmap(null)
+            alphaAnimationHelper.show()
+            itemView.coverErrorImageView.show()
         }
 
         private fun loadImage(it: String) {
@@ -75,7 +80,7 @@ internal class AlbumAdapter(
 
             picasso
                 .load(it)
-                .into(itemView.imageView, callback)
+                .into(itemView.coverImageView, callback)
         }
     }
 }
