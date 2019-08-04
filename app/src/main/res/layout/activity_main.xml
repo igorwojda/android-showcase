@@ -27,7 +27,7 @@
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@drawable/bottom_navigation_colors"
         app:itemTextColor="@drawable/bottom_navigation_colors"
-        app:layout_constraintTop_toBottomOf="@id/activityContainer"
+        app:layout_constraintTop_toBottomOf="@id/screenContainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,12 +1,11 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
 import com.igorwojda.base.presentation.activity.BaseActivity
+import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.app.gateway.AlbumGateway
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,7 +24,7 @@ class MainActivity : BaseActivity() {
         setupBottomNavigation()
 
         if (savedInstanceState == null) {
-            replaceMenuContainer(albumGateway.createAlbumSearchFragment())
+            displayMenuContainer { albumGateway.createAlbumSearchFragment() }
         }
     }
 
@@ -35,15 +34,15 @@ class MainActivity : BaseActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.bottomMenuHome -> {
-                    replaceMenuContainer(BlogFragment())
+                    displayMenuContainer { BlogFragment() }
                     selectItem
                 }
                 R.id.bottomMenuFavourites -> {
-                    replaceMenuContainer(ChapterFragment())
+                    displayMenuContainer { ChapterFragment() }
                     selectItem
                 }
                 R.id.bottomMenuProfile -> {
-                    replaceMenuContainer(StoreFragment())
+                    displayMenuContainer { StoreFragment() }
                     selectItem
                 }
                 else -> {
@@ -53,14 +52,21 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun replaceMenuContainer(fragment: Fragment) {
-        supportFragmentManager.transaction { replace(R.id.menuContainer, fragment) }
+    private inline fun <reified T : BaseContainerFragment> displayMenuContainer(createFragment: () -> T): T {
+        @IdRes val containerId = R.id.menuContainer
+        return getMenuContainer(containerId) ?: createFragment().also { replaceMenuContainer(it, containerId) }
+    }
+
+    private inline fun <reified T : BaseContainerFragment> getMenuContainer(containerId: Int): T? =
+        supportFragmentManager.findFragmentById(containerId) as? T
+
+    private fun replaceMenuContainer(fragment: Fragment, containerId: Int) {
+        supportFragmentManager.transaction { replace(containerId, fragment) }
     }
 }
 
-class BlogFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_common1, container, false)
+class BlogFragment : BaseContainerFragment() {
+    override val layoutResourceId = R.layout.fragment_common1
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -70,9 +76,8 @@ class BlogFragment : Fragment() {
 }
 
 
-class ChapterFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_common1, container, false)
+class ChapterFragment : BaseContainerFragment() {
+    override val layoutResourceId = R.layout.fragment_common1
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         tvCommon.text = "Chapter Fragment"
@@ -83,9 +88,8 @@ class ChapterFragment : Fragment() {
 }
 
 
-class StoreFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_common1, container, false)
+class StoreFragment : BaseContainerFragment() {
+    override val layoutResourceId = R.layout.fragment_common1
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

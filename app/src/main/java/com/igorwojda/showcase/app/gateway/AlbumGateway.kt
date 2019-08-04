@@ -1,8 +1,8 @@
 package com.igorwojda.showcase.app.gateway
 
-import androidx.fragment.app.Fragment
+import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 
 interface AlbumGateway : BaseGateway {
 
-    fun createAlbumSearchFragment(): Fragment
+    fun createAlbumSearchFragment(): BaseContainerFragment
 }

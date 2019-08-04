@@ -1,6 +1,7 @@
 package com.igorwojda.base.presentation.activity
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
@@ -18,13 +19,15 @@ abstract class BaseContainerActivity : BaseActivity() {
         Timber.v("onCreate ${javaClass.simpleName}")
     }
 
-    protected fun replaceScreenContainer(fragment: Fragment) {
-        supportFragmentManager.transaction { replace(R.id.activityContainer, fragment) }
+    protected inline fun <reified T : BaseContainerFragment> displayScreenContainer(createFragment: () -> T): T {
+        @IdRes val containerId = R.id.screenContainer
+        return getScreenContainer(containerId) ?: createFragment().also { replaceScreenContainer(it, containerId) }
     }
 
-    protected inline fun <reified T : BaseContainerFragment> displayInScreenContainer(createFragment: () -> T) =
-        getScreenContainer() ?: createFragment().also { replaceScreenContainer(it) }
+    protected inline fun <reified T : BaseContainerFragment> getScreenContainer(containerId: Int): T? =
+        supportFragmentManager.findFragmentById(containerId) as? T
 
-    protected inline fun <reified T : BaseContainerFragment> getScreenContainer(): T? =
-        supportFragmentManager.findFragmentById(R.id.activityContainer) as? T
+    protected fun replaceScreenContainer(fragment: Fragment, containerId: Int) {
+        supportFragmentManager.transaction { replace(containerId, fragment) }
+    }
 }
