@@ -22,9 +22,9 @@
             android:name="aia-compat-api-min-version"
             android:value="1"/>
 
-        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchActivity" />
+        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumSearchActivity"/>
 
-        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity" />
+        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity"/>
 
     </application>
 

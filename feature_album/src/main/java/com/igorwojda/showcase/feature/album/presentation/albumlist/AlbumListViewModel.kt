@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.presentation.albumsearch
+package com.igorwojda.showcase.feature.album.presentation.albumlist
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-internal class AlbumSearchViewModel(
+internal class AlbumListViewModel(
     private val searchAlbumUseCase: SearchAlbumUseCase
 ) : BaseViewModel() {
 

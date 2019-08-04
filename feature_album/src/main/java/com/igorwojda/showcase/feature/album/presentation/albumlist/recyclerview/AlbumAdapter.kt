@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.presentation.albumsearch.recyclerview
+package com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View

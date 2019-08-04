@@ -5,8 +5,8 @@ import com.igorwojda.base.di.KotlinViewModelProvider
 import com.igorwojda.base.presentation.animation.AlphaAnimationHelperFactory
 import com.igorwojda.showcase.feature.album.FEATURE_NAME
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsViewModel
-import com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchViewModel
-import com.igorwojda.showcase.feature.album.presentation.albumsearch.recyclerview.AlbumAdapter
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel
+import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.AndroidLifecycleScope
 import org.kodein.di.generic.bind
@@ -17,8 +17,8 @@ import org.kodein.di.generic.singleton
 internal val presentationModule = Kodein.Module("${FEATURE_NAME}PresentationModule") {
 
     // AlbumList
-    bind<AlbumSearchViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
-        KotlinViewModelProvider.of(context) { AlbumSearchViewModel(instance()) }
+    bind<AlbumListViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
+        KotlinViewModelProvider.of(context) { AlbumListViewModel(instance()) }
     }
 
     bind() from singleton { AlbumAdapter(instance(), instance()) }

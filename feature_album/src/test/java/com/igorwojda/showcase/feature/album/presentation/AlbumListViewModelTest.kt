@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation
 
 import com.igorwojda.showcase.feature.album.domain.usecase.SearchAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumsearch.AlbumSearchViewModel
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -14,7 +14,7 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class AlbumSearchViewModelTest {
+class AlbumListViewModelTest {
 
     @ExperimentalCoroutinesApi
     @get:Rule
@@ -23,11 +23,11 @@ class AlbumSearchViewModelTest {
     @Mock
     internal lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCase
 
-    private lateinit var cut: AlbumSearchViewModel
+    private lateinit var cut: AlbumListViewModel
 
     @Before
     fun setUp() {
-        cut = AlbumSearchViewModel(mockGetAlbumSearchUseCase)
+        cut = AlbumListViewModel(mockGetAlbumSearchUseCase)
     }
 
     @Test
