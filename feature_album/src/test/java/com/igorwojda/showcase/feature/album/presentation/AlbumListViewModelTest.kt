@@ -1,12 +1,11 @@
 package com.igorwojda.showcase.feature.album.presentation
 
-import com.igorwojda.showcase.feature.album.domain.usecase.SearchAlbumUseCase
+import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,27 +20,18 @@ class AlbumListViewModelTest {
     var coroutinesTestRule = CoroutineRule()
 
     @Mock
-    internal lateinit var mockGetAlbumSearchUseCase: SearchAlbumUseCase
+    internal lateinit var mockGetAlbumSearchUseCase: GetAlbumListUseCase
 
     private lateinit var cut: AlbumListViewModel
 
-    @Before
-    fun setUp() {
-        cut = AlbumListViewModel(mockGetAlbumSearchUseCase)
-    }
-
     @Test
-    fun `when init then getAlbumSearchUseCase execute`() {
+    fun `when init then execute getAlbumUseCase`() {
         runBlocking {
             // given
-            val phrase = "abc"
-            cut.debounceDelay = 0
-
-            // when
-            cut.searchAlbum(phrase)
+            cut = AlbumListViewModel(mockGetAlbumSearchUseCase)
 
             // then
-            verify(mockGetAlbumSearchUseCase).execute(phrase)
+            verify(mockGetAlbumSearchUseCase).execute()
         }
     }
 }
