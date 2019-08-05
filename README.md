@@ -39,6 +39,7 @@ This project bring to table set of best practices, tools and solutions:
   * Material components
   * Stetho
   * Android KTX
+  * [Lottie](http://airbnb.io/lottie/#/)
   * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
   * Feature modules

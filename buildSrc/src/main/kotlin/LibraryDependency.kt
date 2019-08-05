@@ -18,6 +18,7 @@ private object LibraryVersion {
     const val PICASSO = "2.71828"
     const val CUSTOM_FLOATING_ACTION_BUTTON = "2.1.1"
     const val K_ANDROID = "0.8.8@aar"
+    const val LOTTIE = "3.0.7"
 }
 
 object LibraryDependency {
@@ -49,4 +50,5 @@ object LibraryDependency {
     const val CUSTOM_FLOATING_ACTION_BUTTON =
         "com.robertlevonyan.view:CustomFloatingActionButton:${LibraryVersion.CUSTOM_FLOATING_ACTION_BUTTON}"
     const val K_ANDROID = "com.pawegio.kandroid:kandroid:${LibraryVersion.K_ANDROID}"
+    const val LOTTIE = "com.airbnb.android:lottie:${LibraryVersion.LOTTIE}"
 }
