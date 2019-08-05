@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import com.igorwojda.base.presentation.fragment.delegate.FragmentArgumentDelegate
 import timber.log.Timber
 
 abstract class BaseContainerFragment : InjectionFragment() {
@@ -17,7 +16,4 @@ abstract class BaseContainerFragment : InjectionFragment() {
         inflater.inflate(layoutResourceId, null).also {
             Timber.v("onCreateView ${javaClass.simpleName}")
         }
-
-    protected inline fun <reified T : Any?> argument() =
-        FragmentArgumentDelegate<T>()
 }

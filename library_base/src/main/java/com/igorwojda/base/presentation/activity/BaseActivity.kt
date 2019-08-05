@@ -3,7 +3,6 @@ package com.igorwojda.base.presentation.activity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.annotation.LayoutRes
-import com.igorwojda.base.presentation.activity.delegate.ActivityExtraDelegate
 import timber.log.Timber
 
 abstract class BaseActivity : InjectionActivity() {
@@ -25,7 +24,4 @@ abstract class BaseActivity : InjectionActivity() {
         Timber.v("onCreate ${javaClass.simpleName}")
 
     }
-
-    protected inline fun <reified T : Any?> extra() =
-        ActivityExtraDelegate<T>()
 }

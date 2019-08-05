@@ -3,6 +3,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 import android.content.Context
 import android.os.Bundle
 import com.igorwojda.base.presentation.activity.BaseContainerActivity
+import com.igorwojda.base.presentation.extension.extra
 import com.igorwojda.base.presentation.extension.startActivity
 
 internal class AlbumDetailsActivity : BaseContainerActivity() {
