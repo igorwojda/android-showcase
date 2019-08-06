@@ -8,22 +8,18 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/coverImageView"
-        android:background="@color/title"/>
+        android:id="@+id/coverImageView"/>
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:id="@+id/nameTextView"
-              android:textSize="28sp"/>
+              android:id="@+id/nameTextView"/>
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:id="@+id/artistTextView"
-              android:textSize="28sp"/>
+              android:id="@+id/artistTextView"/>
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:id="@+id/publishedTextView"
-              android:textSize="28sp"/>
+              android:id="@+id/publishedTextView"/>
 </LinearLayout>
 
