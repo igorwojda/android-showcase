@@ -93,8 +93,10 @@ task("staticCheck") {
 
     group = "check"
     afterEvaluate {
-        // Get modules with "lint" task (non-android modules do not have lint task)
-        val lintTasks = subprojects.mapNotNull { "${it.name}:lint" }
+        // Filter modules with "lintDebug" task (non-android modules do not have lintDebug task)
+        // lint task should be avoided because it is parent task for lintDebug and lintRelease, so it runs lint
+        // multiple times for each build variant
+        val lintTasks = subprojects.mapNotNull { "${it.name}:lintDebug" }
 
         // Get modules with "testDebugUnitTest" task (app module does not have it)
         val testTasks = subprojects.mapNotNull { "${it.name}:testDebugUnitTest" }

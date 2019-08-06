@@ -64,7 +64,7 @@ jobs:
         steps:
             - checkout
             - restore-gradle-cache
-            - run: ./gradlew lint --no-parallel
+            - run: ./gradlew lintDebug
 
     unit_test:
         <<: *container_config
