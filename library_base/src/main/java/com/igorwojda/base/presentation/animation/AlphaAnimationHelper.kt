@@ -10,18 +10,9 @@ class AlphaAnimationHelper internal constructor(
     private val animationDuration: Long = 200
 ) {
 
-    companion object {
-        const val FADE_OUT_VISIBILITY = View.INVISIBLE
-    }
-
     private val fadeInAnimation by lazy {
         AlphaAnimation(0f, 1f).apply {
             fillAfter = true
-            setAnimationListener {
-                onAnimationStart {
-                    view.visibility = View.VISIBLE
-                }
-            }
         }
     }
 
@@ -30,7 +21,6 @@ class AlphaAnimationHelper internal constructor(
             fillAfter = true
             setAnimationListener {
                 onAnimationEnd {
-                    view.visibility = FADE_OUT_VISIBILITY
                     view.clearAnimation()
                 }
             }
@@ -45,10 +35,6 @@ class AlphaAnimationHelper internal constructor(
 
         val animation = if (new) fadeInAnimation else fadeOutAnimation
         view.startAnimation(animation)
-    }
-
-    init {
-        view.visibility = if (shown) View.VISIBLE else FADE_OUT_VISIBILITY
     }
 
     fun show() {
