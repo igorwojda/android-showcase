@@ -68,7 +68,7 @@ This project takes advantage of many popular libraries and tools of the Android 
 
 # Improvements
 
- There are many things I personally want to try, play with and add to `android-show-case` project:
+ There are many things I personally want to try, play with and add to `android-showcase` project:
 * Support for DayNight MaterialTheme
 * Android Dynamic delivery
 * Caching layer (memory + disk)
@@ -80,17 +80,6 @@ This project takes advantage of many popular libraries and tools of the Android 
 * Continuous deployment (automatically publish app to Google play store using CI)
 * …
 * 100+ other things to try, explore and potentially add here (seriously 🤓)
-
-
-			§ Add support for DayNight MaterialTheme
-			§ Add Androdi Dynamic delivery
-			§ Add caching layer (In memory + Room)
-			§ Add UI tests (including CI pipeline)
-			§ Try Data binding approach
-			§ Add custom lint, ktlint and detekt tasks
-			§ Add espressot tests
-			§ Write script to update all dependencies in the project, create PR to run all checks
-Continous deployment (automatically publish app to playstore using CI)
 
 # Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
