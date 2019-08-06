@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/commonLayout"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#FFCCCC"
+              android:background="@color/fragment_background"
+              android:orientation="vertical"
               android:gravity="center">
 
     <TextView
         android:id="@+id/tvCommon"
+        android:text="@string/under_construction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="26sp"/>
+        android:textColor="@color/textColor"
+        android:textSize="18sp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/underConstructionAnimation"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="lottie_building_screen.json"/>
+
 </LinearLayout>

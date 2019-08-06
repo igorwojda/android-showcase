@@ -7,8 +7,6 @@ import com.igorwojda.showcase.R
 import com.igorwojda.showcase.app.gateway.AlbumGateway
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_favourites.*
-import kotlinx.android.synthetic.main.fragment_profile.commonLayout
-import kotlinx.android.synthetic.main.fragment_profile.tvCommon
 import org.kodein.di.generic.instance
 
 class MainActivity : BaseContainerActivity() {
@@ -69,10 +67,8 @@ class FavouritesFragment : BaseContainerFragment() {
 class ProfileFragment : BaseContainerFragment() {
     override val layoutResourceId = R.layout.fragment_profile
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        tvCommon.text = "Profile Fragment"
-        commonLayout.setBackgroundColor(resources.getColor(android.R.color.holo_orange_dark))
-
+    override fun onResume() {
+        super.onResume()
+        underConstructionAnimation.playAnimation()
     }
 }
