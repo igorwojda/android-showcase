@@ -11,6 +11,6 @@ internal class GetAlbumListUseCase(
         val phrase = "sd"
 
         return albumRepository.searchAlbum(phrase)
-            .filter { it.images.isNotEmpty() }
+            .filter { it.getDefaultImageUrl() != null }
     }
 }

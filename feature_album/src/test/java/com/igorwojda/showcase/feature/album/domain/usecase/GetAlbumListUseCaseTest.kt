@@ -1,9 +1,8 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
 import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
+import com.igorwojda.showcase.feature.album.domain.DomainFixtures
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
-import com.igorwojda.showcase.feature.album.domain.model.AlbumImageDomainModel
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.given
 import kotlinx.coroutines.runBlocking
@@ -31,7 +30,7 @@ class GetAlbumListUseCaseTest {
     fun `return list of albums`() {
         runBlocking {
             // given
-            val albums = getAlbumList()
+            val albums = DomainFixtures.getAlbumList()
             given(mockAlbumRepository.searchAlbum(any())).willReturn(albums)
 
             // when
@@ -43,11 +42,11 @@ class GetAlbumListUseCaseTest {
     }
 
     @Test
-    fun `filter albums without images`() {
+    fun `filter albums without default image`() {
         runBlocking {
             // given
-            val albumWithImage = getAlbum(listOf(AlbumDomainImageSize.EXTRA_LARGE))
-            val albumWithoutImage = getAlbum(null)
+            val albumWithImage = DomainFixtures.getAlbum(listOf(AlbumDomainImageSize.EXTRA_LARGE))
+            val albumWithoutImage = DomainFixtures.getAlbum(null)
             val albums = listOf(albumWithImage, albumWithoutImage)
             given(mockAlbumRepository.searchAlbum(any())).willReturn(albums)
 
@@ -58,14 +57,4 @@ class GetAlbumListUseCaseTest {
             result shouldEqual listOf(albumWithImage)
         }
     }
-
-    private fun getAlbumList() = listOf(getAlbum(listOf(AlbumDomainImageSize.EXTRA_LARGE)))
-
-    private fun getAlbum(imageSizes: List<AlbumDomainImageSize>?): AlbumDomainModel {
-        val images = imageSizes?.map { getAlbumImage(it) } ?: listOf()
-        return AlbumDomainModel("name", "artist", images, null, null)
-    }
-
-    private fun getAlbumImage(size: AlbumDomainImageSize = AlbumDomainImageSize.EXTRA_LARGE) =
-        AlbumImageDomainModel("url", size)
 }

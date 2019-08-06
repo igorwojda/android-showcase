@@ -61,7 +61,7 @@ internal class AlbumAdapter(
 
         fun bind(albumDomainModel: AlbumDomainModel) {
             itemView.setOnDebouncedClickListener { onDebouncedClickListener?.invoke(albumDomainModel) }
-            url = albumDomainModel.images.firstOrNull { it.size == AlbumDomainImageSize.EXTRA_LARGE }?.url
+            url = albumDomainModel.getDefaultImageUrl()
         }
 
         private fun setDefaultImage() {
