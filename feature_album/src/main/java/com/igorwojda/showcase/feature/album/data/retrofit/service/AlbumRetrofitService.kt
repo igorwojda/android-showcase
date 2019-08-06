@@ -8,7 +8,8 @@ import retrofit2.http.Query
 internal interface AlbumRetrofitService {
     @POST("./?method=album.search")
     suspend fun searchAlbumAsync(
-        @Query("album") phrase: String
+        @Query("album") phrase: String,
+        @Query("limit") limit: Int = 60
     ): SearchAlbumResponse
 
     @POST("./?method=album.getInfo")

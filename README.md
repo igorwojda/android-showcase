@@ -3,33 +3,83 @@
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.41-blue.svg)](http://kotlinlang.org/)
 
-Showcase is a sample project that presents modern approach to [Kotlin](https://kotlinlang.org/)
-[Android](https://en.wikipedia.org/wiki/Android_(operating_system))  
-application development. The goal of the project is to provide modular, scalable, maintainable and testable architecture
-(suitable for lager teams long
-[System Development Life Cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle)). This project takes
-advantage of many popular libraries and tools of the Android ecosystem including static analysis and
-[CI](https://en.wikipedia.org/wiki/Continuous_integration) setup.
+Showcase is a sample project that presents modern, 2019 approach to
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using [Kotlin](https://kotlinlang.org/) and latest tech-stack.
+
+The goal of the project is to demonstrate best practices, provide guidance and present flexible application architecture (modular, scalable, maintainable and testable architecture suitable for growing teams and longer
+[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management)).
+
+`Android showcase` will be heavily maintained to match up to date industry standards ⭐️.
 
 # Project characteristics
+
 This project bring to table set of best practices, tools and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
-* CA + MVVM (Clean Architecture + Model-View-ViewModel)
-* [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
-* [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
-* Dynamic feature modules
-* Dependency Injection ([Kodein](https://github.com/Kodein-Framework/Kodein-DI))
-* [AndroidX](https://developer.android.com/jetpack/androidx)
-* [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
-* [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) and mocks
-* Takes advantage of
-  [many popular libraries](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt),
-*  All relevant static analysis tools ([detekt](https://github.com/arturbosch/detekt)
-   [ktlint](https://github.com/pinterest/ktlint), [Android lint](https://developer.android.com/studio/write/lint),
-   [codebeat](https://codebeat.co))
-* Follows [Android style guide](<https://developer.android.com/kotlin/style-guide>) and [Kotlin coding conventions](<https://kotlinlang.org/docs/reference/coding-conventions.html>)
-* Gradle dependency autocompletion
+* Modern architecture (feature modules, Clean Architecture, Model-View-ViewModel)
+* [Android Jetpack](https://developer.android.com/jetpack)
+* CI pipeline
+* Testing
+* Static analysis tools
+* Dependency Injection
+* Material design
+
+# Tech-stack
+
+This project takes advantage of many popular libraries and tools of the Android ecosystem:
+
+* Core
+  * Android SDK
+  * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+* Libraries
+  * [Kodein](https://kodein.org/Kodein-DI/)
+  * [Retrofit](https://square.github.io/retrofit/)
+  * [AndroidX](https://developer.android.com/jetpack/androidx)
+  * [Jetpack](https://developer.android.com/jetpack)
+  * [Android KTX](https://developer.android.com/kotlin/ktx)
+  * [Lottie](http://airbnb.io/lottie)
+  * [Stetho](http://facebook.github.io/stetho/)
+  * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
+* Architecture
+  * [Dynamic Feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
+  * Clean Architecture (at module level)
+  * Model-View-ViewModel (presentation layer)
+  * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
+* Presentation layer
+  * [Material Components for Android](https://www.material.io/develop/android/)
+  * [Shared element transitions](https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html)
+  * [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive)
+* Testing
+  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing)
+  * [Mockito](https://github.com/mockito/mockito) + [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin)
+  * [Kluent](https://github.com/MarkusAmshove/Kluent)
+* Gradle
+  * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+  * Multi module configuration
+  * Dependency autocompletion
+  * Custom gradle tasks
+  * 3rd party plugins (eg. [Gradle versions plugin](https://github.com/ben-manes/gradle-versions-plugin))
+* CI
+  * Pipeline configuration ([CircleCI](https://circleci.com/))
+    * Static analysis tools ([detekt](https://github.com/arturbosch/detekt) [ktlint](https://github.com/pinterest/ktlint),
+      [Android lint](https://developer.android.com/studio/write/lint), [codebeat](https://codebeat.co))
+    * Unit tests
+    * Build app
+
+# Improvements
+
+ There are many things I personally want to try, play with and add to `android-showcase` project:
+* Support for DayNight MaterialTheme
+* Android Dynamic delivery
+* Caching layer (memory + disk)
+* Add Room
+* UI tests (including CI pipeline emulator configuration)
+* Data binding
+* Custom lint, ktlint and detekt tasks
+* Add script to update all dependencies in the project, create PR to run all checks
+* Continuous deployment (automatically publish app to Google play store using CI)
+* …
+* 100+ other things to try, explore and potentially add here (seriously 🤓)
 
 # Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.

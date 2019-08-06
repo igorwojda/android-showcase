@@ -4,14 +4,14 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
-                                                             android:layout_height="wrap_content"
-                                                             android:id="@+id/searchTextInput"
-                                                             android:hint="@string/search_hint"/>
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:id="@+id/recyclerView"
+                                                   android:scrollbars="vertical"/>
 
         <ProgressBar android:id="@+id/loadingSpinner"
                      style="?android:progressBarStyleLarge"
@@ -19,9 +19,6 @@
                      android:layout_height="wrap_content"
                      android:layout_gravity="center"/>
 
-        <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   android:id="@+id/recyclerView"
-                                                   android:scrollbars="vertical"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
 import android.os.Bundle
 import android.view.View
+import com.igorwojda.base.presentation.extension.argument
 import com.igorwojda.base.presentation.extension.observe
 import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
@@ -56,6 +57,6 @@ internal class AlbumDetailFragment() : BaseContainerFragment() {
             .resize(imageSize, imageSize)
             .centerCrop()
             .placeholder(R.drawable.progress_animation)
-            .into(imageView)
+            .into(coverImageView)
     }
 }

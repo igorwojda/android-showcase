@@ -8,7 +8,8 @@ private object LibraryVersion {
     const val APP_COMPACT = "1.0.2"
     const val RECYCLER_VIEW = "1.0.0"
     const val COORDINATOR_LAYOUT = "1.0.0"
-    const val MATERIAL = "1.0.0"
+    // 1.1.x version is required in order to support the dark theme functionality in Android Q (adds Theme.MaterialComponents.DayNight)
+    const val MATERIAL = "1.1.0-alpha09"
     const val CONSTRAINT_LAYOUT = "1.1.3"
     const val CORE_KTX = "1.0.2"
     const val FRAGMENT_KTX = "1.0.0"
@@ -17,11 +18,12 @@ private object LibraryVersion {
     const val PICASSO = "2.71828"
     const val CUSTOM_FLOATING_ACTION_BUTTON = "2.1.1"
     const val K_ANDROID = "0.8.8@aar"
+    const val LOTTIE = "3.0.7"
 }
 
 object LibraryDependency {
     const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${CoreVersion.KOTLIN}"
-    // Required by Android dynamic modules
+    // Required by Android dynamic feature modules
     const val KOTLIN_REFLECT = "org.jetbrains.kotlin:kotlin-reflect:${CoreVersion.KOTLIN}"
     const val KODEIN = "org.kodein.di:kodein-di-generic-jvm:${LibraryVersion.KODEIN}"
     const val KODEIN_ANDROID_X = "org.kodein.di:kodein-di-framework-android-x:${LibraryVersion.KODEIN}"
@@ -37,7 +39,7 @@ object LibraryDependency {
     const val APP_COMPACT = "androidx.appcompat:appcompat:${LibraryVersion.APP_COMPACT}"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${LibraryVersion.RECYCLER_VIEW}"
     const val COORDINATOR_LAYOUT = "androidx.coordinatorlayout:coordinatorlayout:${LibraryVersion.COORDINATOR_LAYOUT}"
-    const val SUPPORT_MATERIAL = "com.google.android.material:material:${LibraryVersion.MATERIAL}"
+    const val MATERIAL = "com.google.android.material:material:${LibraryVersion.MATERIAL}"
     const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${CoreVersion.COROUTINES_ANDROID}"
     const val CORE_KTX = "androidx.core:core-ktx:${LibraryVersion.CORE_KTX}"
     const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${LibraryVersion.FRAGMENT_KTX}"
@@ -48,4 +50,5 @@ object LibraryDependency {
     const val CUSTOM_FLOATING_ACTION_BUTTON =
         "com.robertlevonyan.view:CustomFloatingActionButton:${LibraryVersion.CUSTOM_FLOATING_ACTION_BUTTON}"
     const val K_ANDROID = "com.pawegio.kandroid:kandroid:${LibraryVersion.K_ANDROID}"
+    const val LOTTIE = "com.airbnb.android:lottie:${LibraryVersion.LOTTIE}"
 }

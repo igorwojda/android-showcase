@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="outer_space">#2B2E30</color>
+    <color name="shark">#1A1E21</color>
+    <color name="mine_shaft">#3D3D3D</color>
+    <color name="red_orange">#FB3430</color>
+    <color name="white">#FFFFFF</color>
+</resources>

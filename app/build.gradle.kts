@@ -60,13 +60,29 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    // api means that all features modules that depend on app will have access to dependencies defined in LIBRARY_BASE
+
     api(project(ModuleDependency.LIBRARY_BASE))
+
+    api(LibraryDependency.KOTLIN)
+    api(LibraryDependency.KOTLIN_REFLECT)
 
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
     implementation(LibraryDependency.PLAY_CORE)
+    implementation(LibraryDependency.STETHO)
+    implementation(LibraryDependency.STETHO_OK_HTTP)
 
-    addCommonDependencies()
+    api(LibraryDependency.RETROFIT)
+    api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
+
+    api(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
+    api(LibraryDependency.COORDINATOR_LAYOUT)
+    api(LibraryDependency.RECYCLER_VIEW)
+    api(LibraryDependency.MATERIAL)
+    api(LibraryDependency.FRAGMENT_KTX)
+    api(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
+    api(LibraryDependency.K_ANDROID)
+    api(LibraryDependency.LOTTIE)
+
     addTestDependencies()
 }
 
