@@ -54,7 +54,6 @@ class MainActivity : BaseContainerActivity() {
     }
 }
 
-
 class FavouritesFragment : BaseContainerFragment() {
     override val layoutResourceId = R.layout.fragment_favourites
 

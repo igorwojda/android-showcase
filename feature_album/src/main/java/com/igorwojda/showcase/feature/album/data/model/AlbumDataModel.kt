@@ -16,7 +16,7 @@ internal fun AlbumDataModel.toDomainModel() = AlbumDomainModel(
     mbId = this.mbId,
     name = this.name,
     artist = this.artist,
-    images = if(this.images != null) this.images.toDomainModel() else listOf(),
+    images = if (this.images != null) this.images.toDomainModel() else listOf(),
     wiki = this.wiki?.toDomainModel()
 )
 

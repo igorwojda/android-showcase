@@ -13,7 +13,6 @@ import com.pawegio.kandroid.hide
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
-
 class AlbumListFragment : BaseContainerFragment() {
 
     override val layoutResourceId = R.layout.fragment_album_list

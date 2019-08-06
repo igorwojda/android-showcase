@@ -22,6 +22,5 @@ abstract class BaseActivity : InjectionActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
 
         Timber.v("onCreate ${javaClass.simpleName}")
-
     }
 }

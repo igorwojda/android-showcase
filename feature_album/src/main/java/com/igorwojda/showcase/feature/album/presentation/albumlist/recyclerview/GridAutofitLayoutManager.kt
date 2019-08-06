@@ -14,12 +14,9 @@ class GridAutofitLayoutManager : GridLayoutManager {
         const val INITIAL_SPAN_COUNT = 1
     }
 
-
     private val defaultColumnWidth by lazy {
 
-        fun dpToPx(dp: Int): Int {
-            return (dp * Resources.getSystem().displayMetrics.density).toInt()
-        }
+        fun dpToPx(dp: Int) = (dp * Resources.getSystem().displayMetrics.density).toInt()
 
         return@lazy dpToPx(48)
     }
@@ -36,7 +33,6 @@ class GridAutofitLayoutManager : GridLayoutManager {
         }
 
     private var columnWidthChanged = true
-
 
     constructor(context: Context, columnWidth: Int) : super(context, INITIAL_SPAN_COUNT) {
         this.columnWidth = columnWidth

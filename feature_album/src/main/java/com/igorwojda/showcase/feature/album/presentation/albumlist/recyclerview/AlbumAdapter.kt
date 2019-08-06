@@ -9,13 +9,11 @@ import com.igorwojda.base.presentation.animation.AlphaAnimationHelperFactory
 import com.igorwojda.base.presentation.extension.setOnDebouncedClickListener
 import com.igorwojda.base.presentation.picasso.PicassoCallback
 import com.igorwojda.showcase.feature.album.R
-import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
-
 
 internal class AlbumAdapter(
     private val picasso: Picasso,
@@ -84,5 +82,3 @@ internal class AlbumAdapter(
         }
     }
 }
-
-
