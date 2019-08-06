@@ -33,6 +33,8 @@ class GridAutofitLayoutManager : GridLayoutManager {
         }
 
     private var columnWidthChanged = true
+    private var lastWidth = 0
+    private var lastHeight = 0
 
     constructor(context: Context, columnWidth: Int) : super(context, INITIAL_SPAN_COUNT) {
         this.columnWidth = columnWidth
@@ -50,8 +52,10 @@ class GridAutofitLayoutManager : GridLayoutManager {
     }
 
     override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
-        if (columnWidthChanged && columnWidth > 0) {
-            val totalSpace = if (orientation == LinearLayoutManager.VERTICAL) {
+        val width = width
+        val height = height
+        if (columnWidth > 0 && width > 0 && height > 0 && (columnWidthChanged || lastWidth != width || lastHeight != height)) {
+            val totalSpace: Int = if (orientation == LinearLayoutManager.VERTICAL) {
                 width - paddingRight - paddingLeft
             } else {
                 height - paddingTop - paddingBottom
@@ -60,6 +64,8 @@ class GridAutofitLayoutManager : GridLayoutManager {
             setSpanCount(spanCount)
             columnWidthChanged = false
         }
+        lastWidth = width
+        lastHeight = height
         super.onLayoutChildren(recycler, state)
     }
 }
