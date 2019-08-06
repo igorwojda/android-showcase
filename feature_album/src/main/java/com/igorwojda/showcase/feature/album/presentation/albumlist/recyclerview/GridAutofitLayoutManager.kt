@@ -54,7 +54,11 @@ class GridAutofitLayoutManager : GridLayoutManager {
     override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         val width = width
         val height = height
-        if (columnWidth > 0 && width > 0 && height > 0 && (columnWidthChanged || lastWidth != width || lastHeight != height)) {
+
+        @Suppress("detekt.ComplexCondition")
+        if (columnWidth > 0 && width > 0 && height > 0 &&
+            (columnWidthChanged || lastWidth != width || lastHeight != height)
+        ) {
             val totalSpace: Int = if (orientation == LinearLayoutManager.VERTICAL) {
                 width - paddingRight - paddingLeft
             } else {
