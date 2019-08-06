@@ -77,6 +77,7 @@ dependencies {
     api(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
     api(LibraryDependency.K_ANDROID)
     api(LibraryDependency.LOTTIE)
+    api(LibraryDependency.THREE_TEN_APB)
 
     addTestDependencies()
 }

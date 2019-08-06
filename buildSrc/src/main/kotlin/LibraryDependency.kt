@@ -19,6 +19,7 @@ private object LibraryVersion {
     const val CUSTOM_FLOATING_ACTION_BUTTON = "2.1.1"
     const val K_ANDROID = "0.8.8@aar"
     const val LOTTIE = "3.0.7"
+    const val THREE_TEN_APB = "1.2.0"
 }
 
 object LibraryDependency {
@@ -51,4 +52,5 @@ object LibraryDependency {
         "com.robertlevonyan.view:CustomFloatingActionButton:${LibraryVersion.CUSTOM_FLOATING_ACTION_BUTTON}"
     const val K_ANDROID = "com.pawegio.kandroid:kandroid:${LibraryVersion.K_ANDROID}"
     const val LOTTIE = "com.airbnb.android:lottie:${LibraryVersion.LOTTIE}"
+    const val THREE_TEN_APB = "com.jakewharton.threetenabp:threetenabp:${LibraryVersion.THREE_TEN_APB}"
 }

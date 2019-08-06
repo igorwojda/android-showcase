@@ -9,14 +9,14 @@ internal data class AlbumDataModel(
     val name: String,
     val artist: String,
     val wiki: AlbumWikiDataModel?,
-    @field:Json(name = "image") val images: List<AlbumImageDataModel> = listOf()
+    @field:Json(name = "image") val images: List<AlbumImageDataModel>?
 )
 
 internal fun AlbumDataModel.toDomainModel() = AlbumDomainModel(
     mbId = this.mbId,
     name = this.name,
     artist = this.artist,
-    images = this.images.toDomainModel(),
+    images = if(this.images != null) this.images.toDomainModel() else listOf(),
     wiki = this.wiki?.toDomainModel()
 )
 
