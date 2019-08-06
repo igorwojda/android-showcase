@@ -9,7 +9,7 @@ Showcase is a sample project that presents modern, 2019 approach to
 The goal of the project is to demonstrate best practices, provide guidance and present flexible application architecture (modular, scalable, maintainable and testable architecture suitable for growing teams and longer
 [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management)).
 
-`Android showcase` will be heavily maintained to match up to date industry standards ⭐️.
+`Android showcase` will be heavily maintained to match up to date industry standards.
 
 # Project characteristics
 
@@ -61,10 +61,17 @@ This project takes advantage of many popular libraries and tools of the Android 
   * 3rd party plugins (eg. [Gradle versions plugin](https://github.com/ben-manes/gradle-versions-plugin))
 * CI
   * Pipeline configuration ([CircleCI](https://circleci.com/))
-    * Static analysis tools ([detekt](https://github.com/arturbosch/detekt) [ktlint](https://github.com/pinterest/ktlint),
-      [Android lint](https://developer.android.com/studio/write/lint), [codebeat](https://codebeat.co))
-    * Unit tests
-    * Build app
+  * Static analysis tools ([detekt](https://github.com/arturbosch/detekt) [ktlint](https://github.com/pinterest/ktlint),
+    [Android lint](https://developer.android.com/studio/write/lint), [codebeat](https://codebeat.co))
+  * Unit tests
+  * Build app
+
+# Ci pipeline
+
+[CI config](.circleci/config.yml) allows to execute various jobs in parallel eg. app build will not be stared until all
+static checks and tests complete successfully.
+
+![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
 
 # Improvements
 
