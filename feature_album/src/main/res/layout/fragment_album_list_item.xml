@@ -13,6 +13,7 @@
                                                        android:layout_height="@dimen/image_size"
                                                        app:cardCornerRadius="8dp"
                                                        app:cardBackgroundColor="#24282B"
+                                                       android:layout_margin="8dp"
                                                        app:cardElevation="0dp">
 
         <androidx.appcompat.widget.AppCompatImageView
