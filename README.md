@@ -17,44 +17,42 @@ This project bring to table set of best practices, tools and solutions:
 * 100% [Kotlin](https://kotlinlang.org/)
 * Modern architecture (Clean Architecture + Model-View-ViewModel)
 * Dynamic feature modules
-* [Jetpack](https://developer.android.com/jetpack) ([AndroidX](https://developer.android.com/jetpack/androidx))
+* [Jetpack](https://developer.android.com/jetpack)
 * Dependency Injection
 * Testing
 * CI configuration
 * Static analysis tools
-* Modern UI
-* [Android style guide](<https://developer.android.com/kotlin/style-guide>) and
+* Material design
+* Follows [Android style guide](<https://developer.android.com/kotlin/style-guide>) and
   [Kotlin coding conventions](<https://kotlinlang.org/docs/reference/coding-conventions.html>)
 
 # Tech-stack
 
 * Core
   * Android SDK
-  * Kotlin + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+  * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
 * Libraries
-  * Kodein
-  * Retrofit
-  * AndroidX
-  * Architecture components
-  * Material components
-  * Stetho
-  * Android KTX
-  * [Lottie](http://airbnb.io/lottie/#/)
+  * [Kodein](https://kodein.org/Kodein-DI/)
+  * [Retrofit](https://square.github.io/retrofit/)
+  * [AndroidX](https://developer.android.com/jetpack/androidx)
+  * [Jetpack](https://developer.android.com/jetpack)
+  * [Android KTX](https://developer.android.com/kotlin/ktx)
+  * [Lottie](http://airbnb.io/lottie)
+  * [Stetho](http://facebook.github.io/stetho/)
   * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
   * Feature modules
   * Clean Architecture (at module level)
   * Model-View-ViewModel (presentation layer)
   * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
-  * Dependency Injection ([Kodein](https://github.com/Kodein-Framework/Kodein-DI))
 * Presentation layer
-  * [Material Design Components](https://www.material.io/develop/android/)
+  * [Material Components for Android](https://www.material.io/develop/android/)
   * [Shared element transitions](https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html)
   * [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive)
 * Testing
   * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing)
   * [Mockito](https://github.com/mockito/mockito) + [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin)
-  * Fluent assertions ( [Kluent](https://github.com/MarkusAmshove/Kluent))
+  * [Kluent](https://github.com/MarkusAmshove/Kluent)
 * Gradle
   * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
   * Multi module configuration
@@ -81,10 +79,10 @@ This project bring to table set of best practices, tools and solutions:
 * Script to update all dependencies in the project, create PR to run all checks
 * Continuous deployment (automatically publish app to Google play store using CI)
 * …
-* 70+ other things (seriously 🤓)
+* 100+ other things to try, explore and potentially add here (seriously 🤓)
 
 
-# ‍Contribute
+# Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
 # Author
