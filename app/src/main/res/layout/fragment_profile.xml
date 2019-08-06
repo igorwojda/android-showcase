@@ -12,7 +12,6 @@
         android:text="@string/under_construction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColor"
         android:textSize="18sp"/>
 
     <com.airbnb.lottie.LottieAnimationView

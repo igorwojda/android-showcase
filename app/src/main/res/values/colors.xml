@@ -6,5 +6,4 @@
 
     <color name="iconColor">@color/white</color>
     <color name="textColor">@color/white</color>
-    <color name="grayTextColor">@color/mine_shaft</color>
 </resources>

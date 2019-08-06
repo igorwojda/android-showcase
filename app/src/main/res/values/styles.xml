@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="android:windowBackground">@color/shark</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>
