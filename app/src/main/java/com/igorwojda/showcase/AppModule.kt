@@ -2,7 +2,6 @@ package com.igorwojda.showcase
 
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.igorwojda.showcase.app.FeatureManager
 import com.igorwojda.showcase.app.data.retrofit.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.retrofit.UserAgentInterceptor
 import com.squareup.picasso.Picasso
@@ -61,6 +60,4 @@ val appModule = Kodein.Module("appModule") {
     }
 
     bind() from singleton { Picasso.get() }
-
-    bind() from singleton { FeatureManager.albumGateway }
 }

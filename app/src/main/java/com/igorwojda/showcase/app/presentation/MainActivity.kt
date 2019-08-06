@@ -4,18 +4,15 @@ import android.os.Bundle
 import com.igorwojda.base.presentation.activity.BaseContainerActivity
 import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.R
-import com.igorwojda.showcase.app.gateway.AlbumGateway
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_favourites.*
-import org.kodein.di.generic.instance
 
 class MainActivity : BaseContainerActivity() {
 
     override val layoutResId = R.layout.activity_main
 
-    private val albumGateway: AlbumGateway by instance()
-
-    private val albumSearchFragment by lazy { albumGateway.createAlbumSearchFragment() }
+    private val albumSearchFragment by lazy { AlbumListFragment() }
     private val favouritesFragment by lazy { FavouritesFragment() }
     private val profileFragment by lazy { ProfileFragment() }
 

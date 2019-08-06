@@ -37,15 +37,5 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    api(LibraryDependency.KODEIN)
-    api(LibraryDependency.KODEIN_ANDROID_X)
-
-    api(LibraryDependency.TIMBER)
-    api(LibraryDependency.APP_COMPACT)
-    api(LibraryDependency.COROUTINES_ANDROID)
-    api(LibraryDependency.CORE_KTX)
-    api(LibraryDependency.FRAGMENT_KTX)
-    api(LibraryDependency.LIFECYCLE_EXTENSIONS)
-    api(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
-    api(LibraryDependency.PICASSO)
+    addCommonDependencies()
 }
