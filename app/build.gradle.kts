@@ -50,6 +50,11 @@ android {
     dexOptions {
         preDexLibraries = true
     }
+
+    lintOptions {
+        // By default lint does not check test sources, but setting this option means that lint will nto even parse them
+        isIgnoreTestSources = true
+    }
 }
 
 androidExtensions { isExperimental = true }
