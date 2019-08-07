@@ -90,7 +90,7 @@ jobs:
             - run: ./gradlew :app:bundleDebug
 workflows:
     version: 2
-    verify_code:
+    check:
         jobs:
             - update_dependency_cache
             - lint:
