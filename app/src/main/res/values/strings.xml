@@ -5,7 +5,7 @@
     <string name="coming_soon">Coming soon</string>
 
     <!--Bottom menu-->
-    <string name="home">Home</string>
+    <string name="albums">Albums</string>
     <string name="favorites">Favorites</string>
     <string name="profile">Profile</string>
     <string name="under_construction">Under construction</string>

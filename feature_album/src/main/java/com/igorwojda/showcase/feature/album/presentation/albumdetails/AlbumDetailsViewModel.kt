@@ -15,9 +15,9 @@ internal class AlbumDetailsViewModel(
     private val _state = MutableLiveData<AlbumDomainModel>()
     val state = _state.toLiveData()
 
-    fun getAlbum(artistName: String, albumName: String, mbId: String?) {
+    fun getAlbum(args: AlbumDetailFragmentArgs) {
         viewModelScope.launch {
-            getAlbumUseCase.execute(artistName, albumName, mbId).also { _state.postValue(it) }
+            getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also { _state.postValue(it) }
         }
     }
 }

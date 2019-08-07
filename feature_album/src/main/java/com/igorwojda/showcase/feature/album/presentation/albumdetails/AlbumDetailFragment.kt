@@ -2,7 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
 import android.os.Bundle
 import android.view.View
-import com.igorwojda.base.presentation.extension.argument
+import androidx.navigation.fragment.navArgs
 import com.igorwojda.base.presentation.extension.observe
 import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
@@ -12,22 +12,13 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
-internal class AlbumDetailFragment() : BaseContainerFragment() {
-
-    private var artistName by argument<String>()
-    private var albumName by argument<String>()
-    private var mbId by argument<String?>()
+internal class AlbumDetailFragment : BaseContainerFragment() {
 
     private val viewModel: AlbumDetailsViewModel by instance()
     private val picasso: Picasso by instance()
+    private val args: AlbumDetailFragmentArgs by navArgs()
 
     override val layoutResourceId = R.layout.fragment_album_detail
-
-    constructor(artistName: String, albumName: String, mbId: String?) : this() {
-        this.artistName = artistName
-        this.albumName = albumName
-        this.mbId = mbId
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +27,7 @@ internal class AlbumDetailFragment() : BaseContainerFragment() {
 
         observe(viewModel.state, ::onStateChange)
 
-        viewModel.getAlbum(artistName, albumName, mbId)
+        viewModel.getAlbum(args)
     }
 
     private fun onStateChange(albumDomainModel: AlbumDomainModel) {

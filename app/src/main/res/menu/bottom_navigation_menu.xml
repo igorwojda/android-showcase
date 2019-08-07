@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/bottomMenuHome"
-          android:title="@string/home"
-          android:icon="@drawable/ic_round_home"/>
-    <item android:id="@+id/bottomMenuFavourites"
+    <item android:id="@+id/album_nav_graph"
+          android:title="@string/albums"
+          android:icon="@drawable/ic_round_dashboard"/>
+    <item android:id="@+id/favouritesFragment"
           android:title="@string/favorites"
           android:icon="@drawable/ic_round_favorite"/>
-    <item android:id="@+id/bottomMenuProfile"
+    <item android:id="@+id/profileFragment"
           android:title="@string/profile"
           android:icon="@drawable/ic_round_person"/>
 </menu>

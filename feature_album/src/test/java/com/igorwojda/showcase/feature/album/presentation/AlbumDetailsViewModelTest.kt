@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailFragmentArgs
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsViewModel
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.verify
@@ -39,7 +40,7 @@ class AlbumDetailsViewModelTest {
             val mbId = "123"
 
             // when
-            cut.getAlbum(artistName, albumName, mbId)
+            cut.getAlbum(AlbumDetailFragmentArgs(artistName, albumName, mbId))
 
             // then
             verify(mockSearchAlbumUseCase).execute(artistName, albumName, mbId)
