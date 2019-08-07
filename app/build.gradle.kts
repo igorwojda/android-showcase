@@ -1,10 +1,12 @@
 import com.android.build.gradle.internal.dsl.BaseFlavor
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
     id(GradlePluginId.ANDROID_APPLICATION)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
     id(GradlePluginId.KTLINT_GRADLE)
+    id(GradlePluginId.SAFE_ARGS)
 }
 
 android {
@@ -48,6 +50,18 @@ android {
     lintOptions {
         // By default lint does not check test sources, but setting this option means that lint will nto even parse them
         isIgnoreTestSources = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        // "this" is currently lacking a proper type
+        // See: https://youtrack.jetbrains.com/issue/KT-31077
+        val options = this as KotlinJvmOptions
+        options.jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 

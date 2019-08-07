@@ -16,6 +16,7 @@ buildscript {
     dependencies {
         classpath(GradleDependency.ANDROID_GRADLE)
         classpath(GradleDependency.KOTLIN)
+        classpath(GradleDependency.SAFE_ARGS)
         classpath(GradleDependency.KTLINT_GRADLE)
     }
 }

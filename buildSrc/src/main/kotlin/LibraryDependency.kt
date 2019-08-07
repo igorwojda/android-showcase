@@ -46,6 +46,8 @@ object LibraryDependency {
     const val LIFECYCLE_EXTENSIONS = "android.arch.lifecycle:extensions:${LibraryVersion.LIFECYCLE}"
     const val LIFECYCLE_VIEW_MODEL_KTX =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${LibraryVersion.LIFECYCLE_VIEW_MODEL_KTX}"
+    const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${CoreVersion.NAVIGATION}"
+    const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx:${CoreVersion.NAVIGATION}"
     const val PICASSO = "com.squareup.picasso:picasso:${LibraryVersion.PICASSO}"
     const val CUSTOM_FLOATING_ACTION_BUTTON =
         "com.robertlevonyan.view:CustomFloatingActionButton:${LibraryVersion.CUSTOM_FLOATING_ACTION_BUTTON}"
