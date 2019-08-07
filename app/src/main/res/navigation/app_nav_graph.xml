@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/app_navigation_graph" app:startDestination="@id/album_nav_graph">
+    <include app:graph="@navigation/album_nav_graph"/>
+    <fragment android:id="@+id/profileFragment" android:name="com.igorwojda.showcase.app.presentation.ProfileFragment"
+              android:label="ProfileFragment"/>
+    <fragment android:id="@+id/favouritesFragment"
+              android:name="com.igorwojda.showcase.app.presentation.FavouritesFragment"
+              android:label="FavouritesFragment"/>
+</navigation>

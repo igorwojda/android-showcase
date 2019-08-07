@@ -10,6 +10,7 @@ abstract class BaseActivity : InjectionActivity() {
     @get:LayoutRes
     protected abstract val layoutResId: Int
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

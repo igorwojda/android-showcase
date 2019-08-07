@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
     id(GradlePluginId.KOTLIN_ANDROID)
@@ -31,6 +33,13 @@ android {
 
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
+    }
+
+    kotlinOptions {
+        // "this" is currently lacking a proper type
+        // See: https://youtrack.jetbrains.com/issue/KT-31077
+        val options = this as KotlinJvmOptions
+        options.jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 

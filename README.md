@@ -16,10 +16,10 @@ The goal of the project is to demonstrate best practices, provide guidance and p
 This project bring to table set of best practices, tools and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
-* Modern architecture (feature modules, Clean Architecture, Model-View-ViewModel)
+* Modern architecture
 * [Android Jetpack](https://developer.android.com/jetpack)
 * CI pipeline
-* Testing
+* Tests
 * Static analysis tools
 * Dependency Injection
 * Material design
@@ -45,12 +45,15 @@ This project takes advantage of many popular libraries and tools of the Android 
   * Clean Architecture (at module level)
   * Model-View-ViewModel (presentation layer)
   * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
+    * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+    * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+    * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation) + Gradle [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) plugin
 * Presentation layer
   * [Material Components for Android](https://www.material.io/develop/android/)
   * [Shared element transitions](https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html)
   * [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive)
-* Testing
-  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing)
+* Tests
+  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
   * [Mockito](https://github.com/mockito/mockito) + [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin)
   * [Kluent](https://github.com/MarkusAmshove/Kluent)
 * Gradle
@@ -58,7 +61,11 @@ This project takes advantage of many popular libraries and tools of the Android 
   * Multi module configuration
   * Dependency autocompletion
   * Custom gradle tasks
-  * 3rd party plugins (eg. [Gradle versions plugin](https://github.com/ben-manes/gradle-versions-plugin))
+  * Additional Gradle plugins
+    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args)
+    * [Versions](https://github.com/ben-manes/gradle-versions-plugin)
+    * [Ktlint](https://github.com/JLLeitschuh/ktlint-gradle)
+    * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
 * CI
   * Pipeline configuration ([CircleCI](https://circleci.com/))
   * Static analysis tools ([detekt](https://github.com/arturbosch/detekt) [ktlint](https://github.com/pinterest/ktlint),

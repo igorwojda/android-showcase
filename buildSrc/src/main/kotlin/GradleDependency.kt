@@ -14,10 +14,12 @@ object GradlePluginId {
     const val KOTLIN_ANDROID = "org.jetbrains.kotlin.android"
     const val KOTLIN_ANDROID_EXTENSIONS = "kotlin-android-extensions"
     const val GRADLE_VERSION_PLUGIN = "com.github.ben-manes.versions"
+    const val SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
 }
 
 object GradleDependency {
     const val KOTLIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${CoreVersion.KOTLIN}"
     const val ANDROID_GRADLE = "com.android.tools.build:gradle:${GradlePluginVersion.ANDROID_GRADLE}"
     const val KTLINT_GRADLE = "org.jlleitschuh.gradle:ktlint-gradle:${GradlePluginVersion.KTLINT_GRADLE}"
+    const val SAFE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${CoreVersion.NAVIGATION}"
 }

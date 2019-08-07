@@ -2,11 +2,11 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.igorwojda.base.presentation.extension.observe
 import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
 import com.pawegio.kandroid.hide
@@ -26,7 +26,10 @@ class AlbumListFragment : BaseContainerFragment() {
         val context = checkNotNull(context)
 
         albumAdapter.setOnDebouncedClickListener {
-            AlbumDetailsActivity.start(context, it.artist, it.name, it.mbId)
+            val navController = findNavController()
+            navController.navigate(AlbumListFragmentDirections.actionAlbumsToAlbumDetail(it.artist, it.name, it.mbId))
+
+//            navController.navigate()
         }
 
         recyclerView.apply {
