@@ -2,14 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/album_nav_graph" app:startDestination="@id/albums">
-    <fragment android:id="@+id/albums"
+            android:id="@+id/album_nav_graph" app:startDestination="@+id/albumsFragment">
+    <fragment android:id="@+id/albumsFragment"
               android:name="com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListFragment"
               android:label="AlbumListFragment"
               tools:layout="@layout/fragment_album_list">
-        <action android:id="@+id/action_albums_to_albumDetail" app:destination="@id/albumDetail"/>
+        <action android:id="@+id/action_albums_to_albumDetail" app:destination="@id/Fragment"/>
     </fragment>
-    <fragment android:id="@+id/albumDetail"
+    <fragment android:id="@+id/Fragment"
               android:name="com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailFragment"
               android:label="AlbumDetailFragment"
               tools:layout="@layout/fragment_album_detail">

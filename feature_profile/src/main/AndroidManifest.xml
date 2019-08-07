@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.igorwojda.showcase.feature.profile">
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon">
+
+    </application>
+
+</manifest>

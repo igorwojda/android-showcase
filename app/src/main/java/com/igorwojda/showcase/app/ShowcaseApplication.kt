@@ -6,6 +6,7 @@ import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.igorwojda.showcase.BuildConfig
 import com.igorwojda.showcase.appModule
 import com.igorwojda.showcase.feature.album.albumModule
+import com.igorwojda.showcase.feature.profile.profileModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -20,6 +21,7 @@ class ShowcaseApplication : SplitCompatApplication(), KodeinAware {
         import(androidXModule(this@ShowcaseApplication))
         import(appModule)
         import(albumModule)
+        import(profileModule)
     }
 
     private lateinit var context: Context

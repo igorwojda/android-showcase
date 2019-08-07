@@ -1,11 +1,9 @@
-import com.android.build.gradle.internal.dsl.BaseFlavor
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
-    id(GradlePluginId.ANDROID_APPLICATION)
+    id(GradlePluginId.ANDROID_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
-    id(GradlePluginId.KTLINT_GRADLE)
     id(GradlePluginId.SAFE_ARGS)
 }
 
@@ -13,18 +11,13 @@ android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
-        applicationId = AndroidConfig.ID
         minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
         targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
-        buildToolsVersion(AndroidConfig.BUILD_TOOLS_VERSION)
 
         versionCode = AndroidConfig.VERSION_CODE
         versionName = AndroidConfig.VERSION_NAME
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables.useSupportLibrary = AndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
-
-        resValueFromGradleProperty("apiBaseUrl")
-        resValueFromGradleProperty("apiToken")
     }
 
     buildTypes {
@@ -36,20 +29,10 @@ android {
         getByName(BuildType.DEBUG) {
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
         }
-
-        testOptions {
-            unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
-        }
-
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
-        }
     }
 
-    lintOptions {
-        // By default lint does not check test sources, but setting this option means that lint will nto even parse them
-        isIgnoreTestSources = true
+    testOptions {
+        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
 
     compileOptions {
@@ -68,23 +51,9 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.FEATURE_ALBUM))
-    implementation(project(ModuleDependency.FEATURE_PROFILE))
-
-    implementation(LibraryDependency.LOGGING_INTERCEPTOR)
-    implementation(LibraryDependency.PLAY_CORE)
+    api(project(ModuleDependency.LIBRARY_BASE))
 
     addCommonDependencies()
 
     addTestDependencies()
 }
-
-fun BaseFlavor.resValueFromGradleProperty(gradlePropertyName: String) {
-    val propertyValue = project.properties[gradlePropertyName] as? String
-    checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
-
-    val androidResourceName = "build_param_${gradlePropertyName.toSnakeCase()}"
-    resValue("string", androidResourceName, propertyValue)
-}
-
-fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }

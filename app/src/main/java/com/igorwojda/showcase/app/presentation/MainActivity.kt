@@ -33,12 +33,3 @@ class FavouritesFragment : BaseContainerFragment() {
         underConstructionAnimation.playAnimation()
     }
 }
-
-class ProfileFragment : BaseContainerFragment() {
-    override val layoutResourceId = R.layout.fragment_profile
-
-    override fun onResume() {
-        super.onResume()
-        underConstructionAnimation.playAnimation()
-    }
-}
