@@ -21,8 +21,8 @@ android {
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables.useSupportLibrary = AndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
 
-        stringResValue("apiBaseUrl")
-        stringResValue("apiToken")
+        resValueFromGradleProperty("apiBaseUrl")
+        resValueFromGradleProperty("apiToken")
     }
 
     buildTypes {
@@ -64,7 +64,7 @@ dependencies {
     addTestDependencies()
 }
 
-fun BaseFlavor.stringResValue(gradlePropertyName: String) {
+fun BaseFlavor.resValueFromGradleProperty(gradlePropertyName: String) {
     val propertyValue = project.properties[gradlePropertyName] as? String
     checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
 
