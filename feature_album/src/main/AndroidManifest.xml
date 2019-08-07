@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:dist="http://schemas.android.com/apk/distribution"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.igorwojda.showcase.feature.album">
-
-    <dist:module
-        dist:instant="false"
-        dist:onDemand="true"
-        dist:title="@string/feature_album">
-        <dist:fusing dist:include="true"/>
-    </dist:module>
 
     <application
         android:allowBackup="true"
@@ -17,12 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon">
-
-        <meta-data
-            android:name="aia-compat-api-min-version"
-            android:value="1"/>
-
-        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumSearchActivity"/>
 
         <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity"/>
 
