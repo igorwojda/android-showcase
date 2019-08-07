@@ -70,6 +70,7 @@ androidExtensions { isExperimental = true }
 dependencies {
     implementation(project(ModuleDependency.FEATURE_ALBUM))
     implementation(project(ModuleDependency.FEATURE_PROFILE))
+    implementation(project(ModuleDependency.FEATURE_FAVOURITE))
 
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
     implementation(LibraryDependency.PLAY_CORE)

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/favourite_nav_graph" app:startDestination="@+id/favouriteFragment">
+    <fragment android:id="@+id/favouriteFragment"
+              android:name="com.igorwojda.showcase.feature.favourite.presentation.favourite.FavouriteFragment"
+              android:label="FavouriteFragment"
+              tools:layout="@layout/fragment_favourites"/>
+</navigation>
