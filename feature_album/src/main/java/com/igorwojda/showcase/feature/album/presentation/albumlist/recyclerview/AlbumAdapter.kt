@@ -18,7 +18,7 @@ internal class AlbumAdapter(
     private val picasso: Picasso
 ) : RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() {
 
-    var albums by observer(listOf<AlbumDomainModel>()) {
+    var albums: List<AlbumDomainModel> by observer(listOf()) {
         notifyDataSetChanged()
     }
 
