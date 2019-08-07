@@ -3,10 +3,10 @@
     <item android:id="@+id/album_nav_graph"
           android:title="@string/albums"
           android:icon="@drawable/ic_round_dashboard"/>
-    <item android:id="@+id/favourites"
+    <item android:id="@+id/favouritesFragment"
           android:title="@string/favorites"
           android:icon="@drawable/ic_round_favorite"/>
-    <item android:id="@+id/profile"
+    <item android:id="@+id/profileFragment"
           android:title="@string/profile"
           android:icon="@drawable/ic_round_person"/>
 </menu>
