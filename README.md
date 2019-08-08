@@ -67,6 +67,16 @@ This project takes advantage of many popular libraries and tools of the Android 
     * [Ktlint](https://github.com/JLLeitschuh/ktlint-gradle)
     * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
 
+# Architecture
+
+## Module dependencies
+
+![module_dependencies.png](misc/image/module_dependencies.png)
+
+## Feature structure
+
+![feature_structure.png](misc/image/feature_structure.png)
+
 # Ci pipeline
 
 [CI config](.circleci/config.yml) allows to execute various jobs in parallel eg. app build will not be stared until all
