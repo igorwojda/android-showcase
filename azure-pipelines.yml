@@ -4,17 +4,17 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
 trigger:
-- master
+    - master
 
 pool:
-  vmImage: 'macos-latest'
+    vmImage: 'macos-latest'
 
 steps:
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx4096m'
-    publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleDebug'
+    - task: Gradle@2
+      inputs:
+          workingDirectory: ''
+          gradleWrapperFile: 'gradlew'
+          gradleOptions: '-Xmx4096m'
+          publishJUnitResults: false
+          testResultsFiles: '**/TEST-*.xml'
+          tasks: 'app:assembleDebug'
