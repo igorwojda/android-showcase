@@ -71,9 +71,10 @@ This project takes advantage of many popular libraries and tools of the Android 
 
 ## Module dependencies
 
-![module_dependencies.png](misc/image/module_dependencies.png)
+<img src="misc/image/module_dependencies.png" width="200"/>
 
 ## Feature structure
+Each feature contains own layers of the clean architecture. This allows for feature to be developed and scaled independently.
 
 ![feature_structure.png](misc/image/feature_structure.png)
 
