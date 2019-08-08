@@ -74,7 +74,7 @@ This project takes advantage of many popular libraries and tools of the Android 
 <img src="misc/image/module_dependencies.png" width="600"/>
 
 ## Feature structure
-Each feature contains own layers of the clean architecture. This allows for feature to be developed and scaled independently.
+Each feature contains own layers of the Clean Architecture (`Presentation`/`Domain`/`Data`) and feature specific elements. This allows for feature to be developed in isolation and scaled independently from other features.
 
 ![feature_structure.png](misc/image/feature_structure.png)
 
