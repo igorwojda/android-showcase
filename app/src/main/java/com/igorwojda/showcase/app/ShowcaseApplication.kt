@@ -4,6 +4,7 @@ import android.content.Context
 import com.facebook.stetho.Stetho
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.igorwojda.showcase.BuildConfig
+import com.igorwojda.showcase.app.kodein.FragmentArgsExternalSource
 import com.igorwojda.showcase.appModule
 import com.igorwojda.showcase.feature.album.albumModule
 import com.igorwojda.showcase.feature.favourite.favouriteModule
@@ -24,6 +25,8 @@ class ShowcaseApplication : SplitCompatApplication(), KodeinAware {
         import(albumModule)
         import(profileModule)
         import(favouriteModule)
+
+        externalSources.add(FragmentArgsExternalSource())
     }
 
     private lateinit var context: Context

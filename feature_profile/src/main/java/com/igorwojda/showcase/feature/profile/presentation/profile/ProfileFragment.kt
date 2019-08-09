@@ -5,6 +5,7 @@ import com.igorwojda.showcase.feature.profile.R
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : BaseContainerFragment() {
+
     override val layoutResourceId = R.layout.fragment_profile
 
     override fun onResume() {
