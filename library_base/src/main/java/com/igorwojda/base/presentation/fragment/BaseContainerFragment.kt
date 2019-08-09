@@ -28,7 +28,7 @@ abstract class BaseContainerFragment : InjectionFragment() {
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) {
-            viewModel.setAgrs(navArgs)
+            viewModel.setArgs(navArgs)
             viewModel.loadData()
         }
     }

@@ -15,7 +15,7 @@ internal class AlbumDetailsViewModel(
 
     private lateinit var args: AlbumDetailFragmentArgs
 
-    override fun setAgrs(args: NavArgs?) {
+    override fun setArgs(args: NavArgs?) {
         this.args = args as AlbumDetailFragmentArgs
     }
 

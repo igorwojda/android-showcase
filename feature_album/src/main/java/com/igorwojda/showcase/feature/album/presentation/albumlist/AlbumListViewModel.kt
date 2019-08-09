@@ -13,7 +13,7 @@ internal class AlbumListViewModel(
     private val getAlbumListUseCase: GetAlbumListUseCase
 ) : BaseViewModel() {
 
-    override fun setAgrs(args: NavArgs?) {
+    override fun setArgs(args: NavArgs?) {
     }
 
     override fun loadData() {

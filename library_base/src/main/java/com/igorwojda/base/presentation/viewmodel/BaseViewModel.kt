@@ -5,7 +5,7 @@ import androidx.navigation.NavArgs
 
 abstract class BaseViewModel : ViewModel() {
 
-    abstract fun setAgrs(args: NavArgs?)
+    abstract fun setArgs(args: NavArgs?)
 
     abstract fun loadData()
 }
