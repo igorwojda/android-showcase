@@ -29,7 +29,6 @@ fun DependencyHandler.addCommonDependencies() {
     implementation(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
     implementation(LibraryDependency.NAVIGATION_UI_KTX)
     implementation(LibraryDependency.PICASSO)
-    implementation(LibraryDependency.CUSTOM_FLOATING_ACTION_BUTTON)
     implementation(LibraryDependency.K_ANDROID)
     implementation(LibraryDependency.LOTTIE)
 }
