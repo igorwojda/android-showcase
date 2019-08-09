@@ -22,9 +22,7 @@ class FragmentArgsExternalSource : ExternalSource {
 
                 val navArgsInstance = getNavArgsInstance(fragment)
 
-                if (navArgsInstance == null) {
-                    return null
-                } else {
+                if (navArgsInstance != null) {
                     return { navArgsInstance }
                 }
             }

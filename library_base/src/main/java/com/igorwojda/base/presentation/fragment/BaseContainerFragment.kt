@@ -8,7 +8,6 @@ import androidx.annotation.LayoutRes
 import com.igorwojda.base.presentation.viewmodel.BaseViewModel
 import timber.log.Timber
 
-
 abstract class BaseContainerFragment : InjectionFragment() {
 
     @get:LayoutRes
@@ -20,8 +19,12 @@ abstract class BaseContainerFragment : InjectionFragment() {
         inflater.inflate(layoutResourceId, null).also {
             Timber.v("onCreateView ${javaClass.simpleName}")
         }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (savedInstanceState == null) {
+            viewModel?.loadData()
+        }
+    }
 }
-
-
-
-

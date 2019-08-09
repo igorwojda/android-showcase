@@ -52,5 +52,3 @@ class ShowcaseApplication : SplitCompatApplication(), KodeinAware {
         }
     }
 }
-
-

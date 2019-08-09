@@ -10,19 +10,24 @@ import kotlinx.coroutines.launch
 
 internal class AlbumDetailsViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
-    private val albumDetailFragmentArgs: AlbumDetailFragmentArgs
+    private val args: AlbumDetailFragmentArgs
 ) : BaseViewModel() {
 
-    init {
-        getAlbum(albumDetailFragmentArgs)
-    }
 
     private val _state = MutableLiveData<AlbumDomainModel>()
     val state = _state.toLiveData()
 
-    private fun getAlbum(args: AlbumDetailFragmentArgs) {
+    override fun onLoadData() {
+        getAlbum()
+    }
+
+    private fun getAlbum() {
         viewModelScope.launch {
-            getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also { _state.postValue(it) }
+            getAlbumUseCase.execute(
+                args.artistName,
+                args.albumName,
+                args.mbId
+            ).also { _state.postValue(it) }
         }
     }
 }
