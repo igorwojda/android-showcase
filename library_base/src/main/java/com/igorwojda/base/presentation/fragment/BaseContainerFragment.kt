@@ -23,7 +23,7 @@ abstract class BaseContainerFragment : InjectionFragment() {
 
     protected abstract val viewModel: BaseViewModel
 
-    private val navArgsReflection by navArgsReflection()
+    private val navArgs by navArgsReflection()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(layoutResourceId, null).also {
@@ -35,57 +35,61 @@ abstract class BaseContainerFragment : InjectionFragment() {
 
         if (savedInstanceState == null) {
 //            viewModel.setAgrs(getNavArgsForFragment())
-            viewModel.setAgrs(navArgsReflection)
+            viewModel.setAgrs(navArgs)
             viewModel.loadData()
         }
     }
 }
 
+
+// This code servers as a wrapper for NavArgsLazy class.
+
+@MainThread
+fun Fragment.navArgsReflection() = NavArgsLazyReflection<NavArgs>(this::class) { arguments }
+
 /**
- * This method will be called during initialization to provide [NavArgs]
+ * This delegate will be called during initialization to provide [NavArgs]
  * instance via reflection. If no arguments where passed to fragment this
  * method will return null.
  */
 
-// This code servers as a wrapper for NavArgsLazy class.
-
-
-class NavArgsReflection<Args : NavArgs?>(
+class NavArgsLazyReflection<Args : NavArgs?>(
     private val navArgsClass: KClass<out Fragment>,
     private val arguments: () -> Bundle?
 ) :
     ReadOnlyProperty<Any?, Args?> {
 
-    private var navArgsLazy: Args? = null
+    private var navArgs: NavArgsLazy<*>? = null
 
     override fun getValue(thisRef: Any?, property: KProperty<*>): Args? {
+        if (navArgs == null) {
+            val localArguments = arguments.invoke() ?: return null
 
-        if (navArgsLazy == null) {
             // SafeArgs plugin adds "Agrs" suffix to the fragment class eg.
             // If com.abc.MyFragment class has arguments defined in nav_graph.xml then
             // class com.abc.MyFragmentArgs will be generated.
-
-            arguments.invoke() ?: return null
-
-            val canonicalName = "${navArgsClass.java.canonicalName}Args"
-            @Suppress("UNCHECKED_CAST")
-            val navArgsClass = requireNotNull(getClass(canonicalName) as? KClass<NavArgs>) {
-                "Arguments where passed to a fragment, but corresponding argument class $canonicalName does not exist. Arguments: $arguments"
-            }
+            val className = "${navArgsClass.java.canonicalName}Args"
 
             // Let's check if Args class actually exists
-            navArgsLazy = NavArgsLazy(navArgsClass) { arguments.invoke() ?: throw  Exception("AAA") }.value as Args
+            val navArgsClass = requireNotNull(getArgNavClass(className)) {
+                "Arguments where passed to a fragment, but corresponding argument class $className does not exist. Arguments: $arguments"
+            }
+
+            navArgs = NavArgsLazy(navArgsClass) { localArguments }
         }
 
-        return navArgsLazy
+        @Suppress("UNCHECKED_CAST")
+        return navArgs?.value as Args
+    }
+
+    private fun getNavArgsForFragment() {
+
+    }
+
+    private fun getArgNavClass(className: String): KClass<NavArgs>? = try {
+        @Suppress("UNCHECKED_CAST")
+        Class.forName(className).kotlin as KClass<NavArgs>
+    } catch (e: ClassNotFoundException) {
+        null
     }
 }
-
-fun getClass(className: String): KClass<*>? = try {
-    Class.forName(className).kotlin
-} catch (e: ClassNotFoundException) {
-    null
-}
-
-@MainThread
-fun Fragment.navArgsReflection() = NavArgsReflection<NavArgs>(this::class) { arguments }
