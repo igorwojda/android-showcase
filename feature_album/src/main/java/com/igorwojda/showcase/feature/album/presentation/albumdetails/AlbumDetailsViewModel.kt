@@ -2,7 +2,6 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavArgs
 import com.igorwojda.base.presentation.extension.toLiveData
 import com.igorwojda.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
@@ -10,17 +9,12 @@ import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailsViewModel(
-    private val getAlbumUseCase: GetAlbumUseCase
+    private val getAlbumUseCase: GetAlbumUseCase,
+    private val albumDetailFragmentArgs: AlbumDetailFragmentArgs
 ) : BaseViewModel() {
 
-    private lateinit var args: AlbumDetailFragmentArgs
-
-    override fun setArgs(args: NavArgs?) {
-        this.args = args as AlbumDetailFragmentArgs
-    }
-
-    override fun loadData() {
-        getAlbum(args)
+    init {
+        getAlbum(albumDetailFragmentArgs)
     }
 
     private val _state = MutableLiveData<AlbumDomainModel>()
