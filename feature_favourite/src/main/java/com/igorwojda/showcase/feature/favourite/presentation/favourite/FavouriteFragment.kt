@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.favourite.presentation.favourite
 
-import com.igorwojda.base.presentation.fragment.BaseContainerFragment
+import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.favourite.R
 import kotlinx.android.synthetic.main.fragment_favourites.*
 

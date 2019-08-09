@@ -1,4 +1,4 @@
-package com.igorwojda.base.presentation.activity
+package com.igorwojda.showcase.base.presentation.activity
 
 import android.os.Bundle
 import android.os.PersistableBundle

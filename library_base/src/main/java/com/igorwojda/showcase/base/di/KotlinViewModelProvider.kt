@@ -1,4 +1,4 @@
-package com.igorwojda.base.di
+package com.igorwojda.showcase.base.di
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

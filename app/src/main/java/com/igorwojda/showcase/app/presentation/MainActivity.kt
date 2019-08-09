@@ -3,8 +3,8 @@ package com.igorwojda.showcase.app.presentation
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.igorwojda.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.R
+import com.igorwojda.showcase.base.presentation.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {

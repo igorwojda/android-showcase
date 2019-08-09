@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.igorwojda.base.common.delegate.observer
-import com.igorwojda.base.presentation.extension.setOnDebouncedClickListener
-import com.igorwojda.base.presentation.picasso.PicassoCallback
+import com.igorwojda.showcase.base.delegate.observer
+import com.igorwojda.showcase.base.presentation.extension.setOnDebouncedClickListener
+import com.igorwojda.showcase.base.presentation.picasso.PicassoCallback
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.pawegio.kandroid.hide

@@ -1,4 +1,4 @@
-package com.igorwojda.base.presentation.extension
+package com.igorwojda.showcase.base.presentation.extension
 
 import android.os.SystemClock
 import android.view.View

@@ -1,4 +1,4 @@
-package com.igorwojda.base.presentation.extension
+package com.igorwojda.showcase.base.presentation.extension
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

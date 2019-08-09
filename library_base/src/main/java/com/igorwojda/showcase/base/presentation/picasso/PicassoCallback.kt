@@ -1,4 +1,4 @@
-package com.igorwojda.base.presentation.picasso
+package com.igorwojda.showcase.base.presentation.picasso
 
 import com.squareup.picasso.Callback
 

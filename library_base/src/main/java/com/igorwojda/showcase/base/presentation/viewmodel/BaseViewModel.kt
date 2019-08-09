@@ -1,4 +1,4 @@
-package com.igorwojda.base.presentation.viewmodel
+package com.igorwojda.showcase.base.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 
