@@ -1,6 +1,7 @@
-package com.igorwojda.base.presentation.navigation
+package com.igorwojda.base.presentation.androidx.navigation
 
 import android.os.Bundle
+import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavArgs
 import androidx.navigation.NavArgsLazy
@@ -52,3 +53,6 @@ class NavArgsReflectionLazy<Args : NavArgs?>(
         null
     }
 }
+
+@MainThread
+fun Fragment.navArgsReflection() = NavArgsReflectionLazy<NavArgs>(this::class) { arguments }
