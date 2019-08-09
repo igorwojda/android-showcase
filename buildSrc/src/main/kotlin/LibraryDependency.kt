@@ -1,6 +1,6 @@
 private object LibraryVersion {
     const val KODEIN = "6.3.3"
-    const val RETROFIT = "2.6.0"
+    const val RETROFIT = "2.6.1"
     const val LOGGING_INTERCEPTOR = "4.0.1"
     const val STETHO = "1.5.0"
     const val TIMBER = "4.7.1"
@@ -16,7 +16,6 @@ private object LibraryVersion {
     const val LIFECYCLE = "1.1.1"
     const val LIFECYCLE_VIEW_MODEL_KTX = "2.1.0-rc01"
     const val PICASSO = "2.71828"
-    const val CUSTOM_FLOATING_ACTION_BUTTON = "2.1.1"
     const val K_ANDROID = "0.8.8@aar"
     const val LOTTIE = "3.0.7"
 }
@@ -49,8 +48,6 @@ object LibraryDependency {
     const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${CoreVersion.NAVIGATION}"
     const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx:${CoreVersion.NAVIGATION}"
     const val PICASSO = "com.squareup.picasso:picasso:${LibraryVersion.PICASSO}"
-    const val CUSTOM_FLOATING_ACTION_BUTTON =
-        "com.robertlevonyan.view:CustomFloatingActionButton:${LibraryVersion.CUSTOM_FLOATING_ACTION_BUTTON}"
     const val K_ANDROID = "com.pawegio.kandroid:kandroid:${LibraryVersion.K_ANDROID}"
     const val LOTTIE = "com.airbnb.android:lottie:${LibraryVersion.LOTTIE}"
 }
