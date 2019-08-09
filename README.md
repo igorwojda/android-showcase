@@ -12,7 +12,7 @@ The goal of the project is to demonstrate best practices, provide guidance and p
 
 `Android showcase` will be heavily maintained to match up to date industry standards.
 
-# Project characteristics
+## Project characteristics
 
 This project bring to table set of best practices, tools and solutions:
 
@@ -25,68 +25,68 @@ This project bring to table set of best practices, tools and solutions:
 * Dependency Injection
 * Material design
 
-# Tech-stack
+## Tech-stack
 
 This project takes advantage of many popular libraries and tools of the Android ecosystem:
 
 * Core
-  * Android SDK
-  * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+    * Android SDK
+    * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
 * Libraries
-  * [Kodein](https://kodein.org/Kodein-DI/)
-  * [Retrofit](https://square.github.io/retrofit/)
-  * [AndroidX](https://developer.android.com/jetpack/androidx)
-  * [Jetpack](https://developer.android.com/jetpack)
-  * [Android KTX](https://developer.android.com/kotlin/ktx)
-  * [Lottie](http://airbnb.io/lottie)
-  * [Stetho](http://facebook.github.io/stetho/)
-  * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
+    * [Kodein](https://kodein.org/Kodein-DI/)
+    * [Retrofit](https://square.github.io/retrofit/)
+    * [AndroidX](https://developer.android.com/jetpack/androidx)
+    * [Jetpack](https://developer.android.com/jetpack)
+    * [Android KTX](https://developer.android.com/kotlin/ktx)
+    * [Lottie](http://airbnb.io/lottie)
+    * [Stetho](http://facebook.github.io/stetho/)
+    * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
-  * Feature modules
-  * Clean Architecture (at module level)
-  * Model-View-ViewModel (presentation layer)
-  * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
-    * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-    * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
-    * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation) + Gradle [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) plugin
+    * Feature modules
+    * Clean Architecture (at module level)
+    * Model-View-ViewModel (presentation layer)
+    * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
+        * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+        * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+        * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation) + Gradle [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) plugin
 * Presentation layer
-  * [Material Components for Android](https://www.material.io/develop/android/)
-  * [Shared element transitions](https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html)
-  * [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive)
+    * [Material Components for Android](https://www.material.io/develop/android/)
+    * [Shared element transitions](https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html)
+    * [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive)
 * Tests
-  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
-  * [Mockito](https://github.com/mockito/mockito) + [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin)
-  * [Kluent](https://github.com/MarkusAmshove/Kluent)
+    * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
+    * [Mockito](https://github.com/mockito/mockito) + [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin)
+    * [Kluent](https://github.com/MarkusAmshove/Kluent)
 * Gradle
-  * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
-  * Multi module configuration
-  * Dependency autocompletion
-  * Custom gradle tasks
-  * Additional Gradle plugins
-    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args)
-    * [Versions](https://github.com/ben-manes/gradle-versions-plugin)
-    * [Ktlint](https://github.com/JLLeitschuh/ktlint-gradle)
-    * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
+    * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+    * Multi module configuration
+    * Dependency autocompletion
+    * Custom gradle tasks
+    * Additional Gradle plugins
+        * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args)
+        * [Versions](https://github.com/ben-manes/gradle-versions-plugin)
+        * [Ktlint](https://github.com/JLLeitschuh/ktlint-gradle)
+        * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
 
-# Architecture
+## Architecture
 
-## Module dependencies
+### Module dependencies
 
 <img src="misc/image/module_dependencies.png" width="600"/>
 
-## Feature structure
+### Feature structure
 Each feature contains own layers of the Clean Architecture (`Presentation`/`Domain`/`Data`) and feature specific elements. This allows for feature to be developed in isolation and scaled independently from other features.
 
 ![feature_structure.png](misc/image/feature_structure.png)
 
-# Ci pipeline
+## Ci pipeline
 
 [CI config](.circleci/config.yml) allows to execute various jobs in parallel eg. app build will not be stared until all
 static checks and tests complete successfully.
 
 ![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
 
-# Improvements
+## Improvements
 
  There are many things I personally want to try, play with and add to `android-showcase` project:
 * Support for DayNight MaterialTheme
@@ -101,16 +101,16 @@ static checks and tests complete successfully.
 * …
 * 100+ other things to try, explore and potentially add here (seriously 🤓)
 
-# Contribute
+## Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
-# Author
+## Author
 
 [![Follow me](https://github.com/igorwojda/android-showcase/raw/master/misc/image/avatar.png)](https://twitter.com/igorwojda)
 
 [![Follow me](https://img.shields.io/twitter/follow/igorwojda?style=social)](https://twitter.com/igorwojda)
 
-# License
+## License
 ```
 MIT License
 
