@@ -13,7 +13,6 @@ internal class AlbumDetailsViewModel(
     private val args: AlbumDetailFragmentArgs
 ) : BaseViewModel() {
 
-
     private val _state = MutableLiveData<AlbumDomainModel>()
     val state = _state.toLiveData()
 
