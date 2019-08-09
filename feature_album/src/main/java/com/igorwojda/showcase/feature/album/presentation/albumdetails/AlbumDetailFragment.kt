@@ -2,7 +2,6 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.navArgs
 import com.igorwojda.base.presentation.extension.observe
 import com.igorwojda.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
@@ -14,9 +13,9 @@ import org.kodein.di.generic.instance
 
 internal class AlbumDetailFragment : BaseContainerFragment() {
 
-    private val viewModel: AlbumDetailsViewModel by instance()
+    override val viewModel: AlbumDetailsViewModel by instance()
+
     private val picasso: Picasso by instance()
-    private val args: AlbumDetailFragmentArgs by navArgs()
 
     override val layoutResourceId = R.layout.fragment_album_detail
 
@@ -26,8 +25,6 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         activity?.title = resources.getString(R.string.album_details)
 
         observe(viewModel.state, ::onStateChange)
-
-        viewModel.getAlbum(args)
     }
 
     private fun onStateChange(albumDomainModel: AlbumDomainModel) {

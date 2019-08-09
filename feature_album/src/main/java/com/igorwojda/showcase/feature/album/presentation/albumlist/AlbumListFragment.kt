@@ -5,6 +5,7 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.igorwojda.base.presentation.extension.observe
 import com.igorwojda.base.presentation.fragment.BaseContainerFragment
+import com.igorwojda.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
@@ -14,10 +15,12 @@ import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
 class AlbumListFragment : BaseContainerFragment() {
+    private val realViewModel: AlbumListViewModel by instance()
+
+    override val viewModel: BaseViewModel by lazy { realViewModel }
 
     override val layoutResourceId = R.layout.fragment_album_list
 
-    private val viewModel: AlbumListViewModel by instance()
     private val albumAdapter: AlbumAdapter by instance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,7 +45,7 @@ class AlbumListFragment : BaseContainerFragment() {
             adapter = albumAdapter
         }
 
-        observe(viewModel.state, ::onStateChange)
+        observe(realViewModel.state, ::onStateChange)
 
         loadingSpinner.hide()
     }
