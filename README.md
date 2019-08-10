@@ -78,8 +78,9 @@ This project takes advantage of many popular libraries and tools of the Android 
 <img src="misc/image/module_dependencies.png" width="600"/>
 
 ### Feature structure
-Each feature contains own set of the Clean Architecture layers (`Presentation`/`Domain`/`Data`). This allows for feature
-to be developed in isolation and scaled independently from other features.
+Feature related code is located inside feature module. This allows for feature to be developed in isolation,
+independently from other features. Notice that due usage of Android `dynamic-feature` module dependencies are kind of
+reversed (feature modules are depending on `app` module, not other way around).
 
 ![feature_structure.png](misc/image/feature_structure.png)
 
