@@ -84,9 +84,7 @@ good reason to use non-stable dependency.
 
 This is simplified diagram of dependencies between gradle modules.
 
-<p align="center">
-    <img src="https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png" alt="Drawing" style="width: 400px;"/>
-</p>
+![module_dependencies](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png?raw=true)
 
 ### Feature structure
 
@@ -96,7 +94,7 @@ can be developed in isolation, independently from other features.
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
-### App data flow
+### Data flow
 
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
 
