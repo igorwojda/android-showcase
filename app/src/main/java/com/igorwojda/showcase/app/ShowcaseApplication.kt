@@ -7,6 +7,7 @@ import com.igorwojda.showcase.BuildConfig
 import com.igorwojda.showcase.app.feature.FeatureManager
 import com.igorwojda.showcase.app.kodein.FragmentArgsExternalSource
 import com.igorwojda.showcase.appModule
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailFragmentArgs
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -28,6 +29,7 @@ class ShowcaseApplication : SplitCompatApplication(), KodeinAware {
     private lateinit var context: Context
 
     override fun onCreate() {
+        AlbumDetailFragmentArgs
         super.onCreate()
 
         context = this
