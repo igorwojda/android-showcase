@@ -85,7 +85,7 @@ good reason to use non-stable dependency.
 This is simplified diagram of dependencies between gradle modules.
 
 <p align="center">
-    <img src="https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png" alt="Drawing" style="width: 600px;"/>
+    <img src="https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png" alt="Drawing" style="width: 400px;"/>
 </p>
 
 ### Feature structure
