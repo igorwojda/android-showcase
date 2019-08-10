@@ -47,6 +47,12 @@ android {
         }
     }
 
+    dynamicFeatures = mutableSetOf(
+        ModuleDependency.FEATURE_ALBUM,
+        ModuleDependency.FEATURE_FAVOURITE,
+        ModuleDependency.FEATURE_PROFILE
+    )
+
     lintOptions {
         // By default lint does not check test sources, but setting this option means that lint will nto even parse them
         isIgnoreTestSources = true
@@ -68,14 +74,29 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    implementation(project(ModuleDependency.FEATURE_ALBUM))
-    implementation(project(ModuleDependency.FEATURE_PROFILE))
-    implementation(project(ModuleDependency.FEATURE_FAVOURITE))
+    api(project(ModuleDependency.LIBRARY_BASE))
 
+    api(LibraryDependency.KOTLIN)
+    api(LibraryDependency.KOTLIN_REFLECT)
+
+    api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
+    api(LibraryDependency.NAVIGATION_UI_KTX)
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
     implementation(LibraryDependency.PLAY_CORE)
+    implementation(LibraryDependency.STETHO)
 
-    addCommonDependencies()
+    implementation(LibraryDependency.STETHO_OK_HTTP)
+
+    api(LibraryDependency.RETROFIT)
+    api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
+
+    api(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
+    api(LibraryDependency.COORDINATOR_LAYOUT)
+    api(LibraryDependency.RECYCLER_VIEW)
+    api(LibraryDependency.MATERIAL)
+    api(LibraryDependency.FRAGMENT_KTX)
+    api(LibraryDependency.K_ANDROID)
+    api(LibraryDependency.LOTTIE)
 
     addTestDependencies()
 }

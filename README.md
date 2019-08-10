@@ -45,7 +45,7 @@ This project takes advantage of many popular libraries and tools of the Android 
     * [Stetho](http://facebook.github.io/stetho/)
     * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
-    * Feature modules
+    * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
     * Clean Architecture (at module level)
     * Model-View-ViewModel (presentation layer)
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
@@ -92,9 +92,9 @@ static checks and tests complete successfully.
 
 ## Improvements
 
- There are many things I personally want to try, play with and add to `android-showcase` project:
+There are many things I personally want to try, play with and add to `android-showcase` project:
 * Support for DayNight MaterialTheme
-* [Dynamic Feature modules](https://developer.android.com/studio/projects/dynamic-delivery) + Android Dynamic delivery
+* Android Dynamic delivery
 * Caching layer (memory + disk)
 * Add Room
 * UI tests (including CI pipeline emulator configuration)

@@ -4,11 +4,10 @@ import android.content.Context
 import com.facebook.stetho.Stetho
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.igorwojda.showcase.BuildConfig
+
+≥import com.igorwojda.showcase.app.feature.FeatureManager
 import com.igorwojda.showcase.app.kodein.FragmentArgsExternalSource
 import com.igorwojda.showcase.appModule
-import com.igorwojda.showcase.feature.album.albumModule
-import com.igorwojda.showcase.feature.favourite.favouriteModule
-import com.igorwojda.showcase.feature.profile.profileModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -22,9 +21,7 @@ class ShowcaseApplication : SplitCompatApplication(), KodeinAware {
     override val kodein = Kodein.lazy {
         import(androidXModule(this@ShowcaseApplication))
         import(appModule)
-        import(albumModule)
-        import(profileModule)
-        import(favouriteModule)
+        importAll(FeatureManager.kodeinModules)
 
         externalSources.add(FragmentArgsExternalSource())
     }

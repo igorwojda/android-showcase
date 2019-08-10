@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
-    id(GradlePluginId.ANDROID_FEATURE)
+    id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
     id(GradlePluginId.SAFE_ARGS)
@@ -51,9 +51,7 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    api(project(ModuleDependency.LIBRARY_BASE))
-
-    addCommonDependencies()
+    implementation(project(ModuleDependency.APP))
 
     addTestDependencies()
 }

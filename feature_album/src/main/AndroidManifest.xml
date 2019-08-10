@@ -10,8 +10,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon">
 
-        <activity android:name="com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsActivity"/>
-
     </application>
 
 </manifest>
