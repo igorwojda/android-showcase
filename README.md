@@ -1,6 +1,7 @@
 # Project description
 [![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=shield)](https://circleci.com/gh/igorwojda/android-showcase)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.41-blue.svg)](http://kotlinlang.org/)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a7ef0746703e4c81b0e4af2c46e2885e)](https://app.codacy.com/app/igorwojda/android-showcase?utm_source=github.com&utm_medium=referral&utm_content=igorwojda/android-showcase&utm_campaign=Badge_Grade_Dashboard)
@@ -8,12 +9,15 @@
 
 
 Showcase is a sample project that presents modern, 2019 approach to
-[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using [Kotlin](https://kotlinlang.org/) and latest tech-stack.
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using
+[Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
-The goal of the project is to demonstrate best practices, provide guidance and present flexible application architecture (modular, scalable, maintainable and testable architecture suitable for growing teams and longer
-[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management)).
+The goal of the project is to demonstrate best practices, provide guidance and present flexible application architecture
+(modular, scalable, maintainable and testable architecture suitable for growing teams and longer
+[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management)). Many of the project design
+decisions follows or even extends official Google recommendations.
 
-`Android showcase` will be heavily maintained to match up to date industry standards.
+`Android showcase` is being heavily maintained to match up to date industry standards.
 
 ## Project characteristics
 
@@ -30,7 +34,10 @@ This project bring to table set of best practices, tools and solutions:
 
 ## Tech-stack
 
-This project takes advantage of many popular libraries and tools of the Android ecosystem:
+Min API level is set to [`21`](https://android-arsenal.com/api?level=21), so presented approach is suitable for over
+[85% of devices](https://developer.android.com/about/dashboards) running Android. This project takes advantage of many
+popular libraries and tools of the Android ecosystem. Most of the libraries are in stable version, unless there is a
+good reason to use non-stable dependency.
 
 * Core
     * Android SDK
@@ -75,13 +82,23 @@ This project takes advantage of many popular libraries and tools of the Android 
 
 ### Module dependencies
 
-<img src="misc/image/module_dependencies.png" width="600"/>
+This is simplified diagram of dependencies between gradle modules.
+
+<p align="center">
+    <img src="https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png" alt="Drawing" style="width: 600px;"/>
+</p>
 
 ### Feature structure
-Each feature contains own set of the Clean Architecture layers (`Presentation`/`Domain`/`Data`). This allows for feature
-to be developed in isolation and scaled independently from other features.
 
-![feature_structure.png](misc/image/feature_structure.png)
+Each feature is maximally isolated (code contained in the feature module) to provide better separation of concerns in
+the codebase. Single feature contains own set of the Clean Architecture layers (`Presentation`/`Domain`/`Data`), so it
+can be developed in isolation, independently from other features.
+
+![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
+
+### App data flow
+
+![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
 
 ## Ci pipeline
 
@@ -90,9 +107,12 @@ static checks and tests complete successfully.
 
 ![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
 
+## What this project does not cover?
+The interface of the app utilises some of modern material design components, however is deliberately kept simple to
+focus on architecture.
+
 ## Improvements
 
- There are many things I personally want to try, play with and add to `android-showcase` project:
 * Support for DayNight MaterialTheme
 * [Dynamic Feature modules](https://developer.android.com/studio/projects/dynamic-delivery) + Android Dynamic delivery
 * Caching layer (memory + disk)
@@ -102,8 +122,7 @@ static checks and tests complete successfully.
 * Custom lint, ktlint and detekt tasks
 * Add script to update all dependencies in the project, create PR to run all checks
 * Continuous deployment (automatically publish app to Google play store using CI)
-* …
-* 100+ other things to try, explore and potentially add here (seriously 🤓)
+* and more…
 
 ## Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
