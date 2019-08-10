@@ -31,6 +31,7 @@ class AlbumDetailsViewModelTest {
 
     private lateinit var cut: AlbumDetailsViewModel
 
+
     @Before
     fun setUp() {
         cut = AlbumDetailsViewModel(
