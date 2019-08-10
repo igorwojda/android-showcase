@@ -4,8 +4,7 @@ import android.content.Context
 import com.facebook.stetho.Stetho
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.igorwojda.showcase.BuildConfig
-
-≥import com.igorwojda.showcase.app.feature.FeatureManager
+import com.igorwojda.showcase.app.feature.FeatureManager
 import com.igorwojda.showcase.app.kodein.FragmentArgsExternalSource
 import com.igorwojda.showcase.appModule
 import org.kodein.di.Kodein

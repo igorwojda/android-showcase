@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
-open class KotlinViewModelProvider private constructor() {
+class KotlinViewModelProvider private constructor() {
     companion object {
         inline fun <reified T : ViewModel> of(fragment: Fragment, crossinline factory: () -> T): T {
 

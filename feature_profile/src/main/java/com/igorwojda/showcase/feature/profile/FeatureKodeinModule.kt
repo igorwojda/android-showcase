@@ -15,5 +15,4 @@ object FeatureKodeinModule : KodeinModuleProvider {
         import(domainModule)
         import(dataModule)
     }
-
 }
