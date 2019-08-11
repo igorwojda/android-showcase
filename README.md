@@ -110,6 +110,21 @@ focus on architecture.
 * Support for DayNight MaterialTheme
 * and more…
 
+## Opening this project
+
+There are few ways to open this project.
+
+### Android Studio
+
+1. File -> New -> From Version control -> Git
+2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field
+
+### Command line + Android Studio
+
+1. Navigate to folder
+2. Run `git clone https://github.com/igorwojda/android-showcase.git`
+3. Android Studio -> File -> Open
+
 ## Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
