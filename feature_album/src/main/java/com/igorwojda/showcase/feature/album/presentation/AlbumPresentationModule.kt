@@ -3,7 +3,7 @@ package com.igorwojda.showcase.feature.album.presentation
 import androidx.fragment.app.Fragment
 import com.igorwojda.showcase.base.di.KotlinViewModelProvider
 import com.igorwojda.showcase.feature.album.FEATURE_NAME
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsViewModel
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import org.kodein.di.Kodein
@@ -23,7 +23,7 @@ internal val presentationModule = Kodein.Module("${FEATURE_NAME}PresentationModu
     bind() from singleton { AlbumAdapter(instance()) }
 
     // AlbumDetails
-    bind<AlbumDetailsViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
-        KotlinViewModelProvider.of(context) { AlbumDetailsViewModel(instance(), instance()) }
+    bind<AlbumDetailViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
+        KotlinViewModelProvider.of(context) { AlbumDetailViewModel(instance(), instance()) }
     }
 }
