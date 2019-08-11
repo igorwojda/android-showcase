@@ -99,9 +99,9 @@ workflows:
             - detekt:
                   requires:
                       - update_dependency_cache
-                      - ktlint:
-                            requires:
-                                - update_dependency_cache
+            - ktlint:
+                  requires:
+                      - update_dependency_cache
             - unit_test:
                   requires:
                       - update_dependency_cache
