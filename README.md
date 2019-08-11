@@ -127,6 +127,19 @@ focus on architecture.
 ## Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
+## Even more inspiration
+
+Other Android repositories that are worth checking out:
+
+* [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of different
+  Android architecture approaches
+* [Android sunflower](https://github.com/googlesamples/android-sunflower) complete JetPack sample covering all libraries
+* [GithubBrowserSample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
+  demonstrating usage of Android Architecture Components
+* [Plaid](https://github.com/android/plaid) - showcase of Android material design
+* [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
+  diagrams of Clean Architecture layers
+
 ## Author
 
 [![Follow me](https://github.com/igorwojda/android-showcase/raw/master/misc/image/avatar.png)](https://twitter.com/igorwojda)
