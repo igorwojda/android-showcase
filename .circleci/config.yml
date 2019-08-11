@@ -99,9 +99,11 @@ workflows:
             - detekt:
                   requires:
                       - update_dependency_cache
-            - ktlint:
-                  requires:
-                      - update_dependency_cache
+            #             Due to some problem with ktlint nad classes generate by SafeArgs plugin it had to be temporarily disabled
+            #             See: https://github.com/JLLeitschuh/ktlint-gradle/issues/266
+            #                        - ktlint:
+            #                              requires:
+            #                                  - update_dependency_cache
             - unit_test:
                   requires:
                       - update_dependency_cache
@@ -109,5 +111,5 @@ workflows:
                   requires:
                       - lint
                       - detekt
-                      - ktlint
+                      #                      - ktlint
                       - unit_test

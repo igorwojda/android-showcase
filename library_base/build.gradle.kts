@@ -4,7 +4,6 @@ plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
-    id(GradlePluginId.KTLINT_GRADLE)
 }
 
 android {
@@ -51,5 +50,15 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    addCommonDependencies()
+    api(LibraryDependency.KODEIN)
+    api(LibraryDependency.KODEIN_ANDROID_X)
+
+    api(LibraryDependency.TIMBER)
+    api(LibraryDependency.APP_COMPACT)
+    api(LibraryDependency.COROUTINES_ANDROID)
+    api(LibraryDependency.CORE_KTX)
+    api(LibraryDependency.FRAGMENT_KTX)
+    api(LibraryDependency.LIFECYCLE_EXTENSIONS)
+    api(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
+    api(LibraryDependency.PICASSO)
 }

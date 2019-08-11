@@ -1,5 +1,6 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 buildscript {
     repositories {
@@ -42,10 +43,16 @@ subprojects {
 
     plugins.apply(GradlePluginId.KTLINT_GRADLE)
 
+    // Ktlint configuration for sub-projects
     ktlint {
         version.set(CoreVersion.KTLINT)
         verbose.set(true)
         android.set(true)
+        reporters.set(setOf(ReporterType.CHECKSTYLE))
+
+        filter {
+            exclude("**/generated/**")
+        }
     }
 
     plugins.apply(GradlePluginId.DETEKT)
@@ -54,6 +61,13 @@ subprojects {
         config = files("${project.rootDir}/config/detekt.yml")
         parallel = true
     }
+}
+
+// Ktlint configuration for root project
+ktlint {
+    version.set(CoreVersion.KTLINT)
+    verbose.set(true)
+    reporters.set(setOf(ReporterType.CHECKSTYLE))
 }
 
 // JVM target applied to all Kotlin tasks across all sub-projects

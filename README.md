@@ -52,7 +52,7 @@ good reason to use non-stable dependency.
     * [Stetho](http://facebook.github.io/stetho/)
     * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
-    * Feature modules
+    * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
     * Clean Architecture (at module level)
     * Model-View-ViewModel (presentation layer)
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
@@ -82,15 +82,17 @@ good reason to use non-stable dependency.
 
 ### Module dependencies
 
-This is simplified diagram of dependencies between gradle modules.
+This is simplified diagram of dependencies between gradle modules. Notice that due usage of Android
+`dynamic-feature` module dependencies are reversed (feature modules are depending on `app` module, not other way
+around).
 
 ![module_dependencies](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png?raw=true)
 
 ### Feature structure
 
-Each feature is maximally isolated (code contained in the feature module) to provide better separation of concerns in
-the codebase. Single feature contains own set of the Clean Architecture layers (`Presentation`/`Domain`/`Data`), so it
-can be developed in isolation, independently from other features.
+Each feature is isolated into separate module to provide better separation of concerns in the codebase. This allows for
+feature to be developed in isolation, independently from other features. Each feature module contains own set of the
+Clean Architecture layers (`Presentation`/`Domain`/`Data`).
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
@@ -109,17 +111,17 @@ static checks and tests complete successfully.
 The interface of the app utilises some of modern material design components, however is deliberately kept simple to
 focus on architecture.
 
-## Improvements
+## Future improvements
 
-* Support for DayNight MaterialTheme
-* [Dynamic Feature modules](https://developer.android.com/studio/projects/dynamic-delivery) + Android Dynamic delivery
+* Android Dynamic delivery
 * Caching layer (memory + disk)
 * Add Room
 * UI tests (including CI pipeline emulator configuration)
 * Data binding
-* Custom lint, ktlint and detekt tasks
+* Add Custom lint, ktlint and detekt tasks
 * Add script to update all dependencies in the project, create PR to run all checks
 * Continuous deployment (automatically publish app to Google play store using CI)
+* Support for DayNight MaterialTheme
 * and more…
 
 ## Contribute

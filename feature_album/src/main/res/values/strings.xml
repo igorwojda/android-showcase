@@ -1,5 +1,3 @@
 <resources>
     <string name="album_details">Album details</string>
-    <string name="search_hint">Enter search phrase</string>
-    <string name="search_album">Search album</string>
 </resources>

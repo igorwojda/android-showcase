@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">showcase</string>
-    <string name="feature_album">feature_album</string>
 
-    <string name="coming_soon">Coming soon</string>
+    <!--Dynamic module titles-->
+    <string name="feature_album">feature album</string>
+    <string name="feature_favourite">feature favourite</string>
+    <string name="feature_profile">feature profile</string>
 
     <!--Bottom menu-->
     <string name="albums">Albums</string>
     <string name="favorites">Favorites</string>
     <string name="profile">Profile</string>
-    <string name="under_construction">Under construction</string>
 </resources>
