@@ -39,44 +39,28 @@ Min API level is set to [`21`](https://android-arsenal.com/api?level=21), so pre
 popular libraries and tools of the Android ecosystem. Most of the libraries are in stable version, unless there is a
 good reason to use non-stable dependency.
 
-* Core
-    * Android SDK
+* Tech-stack
     * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
-* Libraries
     * [Kodein](https://kodein.org/Kodein-DI/)
     * [Retrofit](https://square.github.io/retrofit/)
-    * [AndroidX](https://developer.android.com/jetpack/androidx)
     * [Jetpack](https://developer.android.com/jetpack)
-    * [Android KTX](https://developer.android.com/kotlin/ktx)
     * [Lottie](http://airbnb.io/lottie)
     * [Stetho](http://facebook.github.io/stetho/)
     * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
-    * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
     * Clean Architecture (at module level)
-    * Model-View-ViewModel (presentation layer)
-    * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
-        * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-        * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
-        * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation) + Gradle [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) plugin
-* Presentation layer
-    * [Material Components for Android](https://www.material.io/develop/android/)
-    * [Shared element transitions](https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html)
-    * [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive)
+    * MVVM (presentation layer)
+    * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
+    * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation), [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) plugin)
 * Tests
     * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
     * [Mockito](https://github.com/mockito/mockito) + [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin)
     * [Kluent](https://github.com/MarkusAmshove/Kluent)
 * Gradle
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
-    * Multi module configuration
-    * Dependency autocompletion
-    * Custom gradle tasks
-    * Additional Gradle plugins
-        * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args)
-        * [Versions](https://github.com/ben-manes/gradle-versions-plugin)
-        * [Ktlint](https://github.com/JLLeitschuh/ktlint-gradle)
-        * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
+    * Custom tasks
+    * Plugins ([Ktlint](https://github.com/JLLeitschuh/ktlint-gradle), [Detekt](https://github.com/arturbosch/detekt#with-gradle), [Versions](https://github.com/ben-manes/gradle-versions-plugin), [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args))
+
 
 ## Architecture
 
