@@ -9,6 +9,7 @@ import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.pawegio.kandroid.hide
+import com.pawegio.kandroid.show
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
@@ -25,6 +26,9 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.title = resources.getString(R.string.album_details)
+
+        nameTextView.hide()
+        artistTextView.hide()
 
         observe(viewModel.state, ::onStateChange)
     }
@@ -45,14 +49,14 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         val callback = PicassoCallback().apply {
             onSuccess {
                 progressBar.hide()
-//                artistInfoContainer.show()
+                nameTextView.show()
+                artistTextView.show()
             }
         }
 
         picasso.load(it)
             .resize(imageSize, imageSize)
             .centerCrop()
-            .placeholder(R.drawable.progress_animation)
             .into(coverImageView, callback)
     }
 }
