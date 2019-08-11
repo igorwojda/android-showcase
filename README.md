@@ -21,7 +21,7 @@ decisions follows or even extends official Google recommendations.
 
 ## Project characteristics
 
-<img src="misc/image/application_anim.gif)" width="336" align="right" hspace="20">
+<img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
 This project bring to table set of best practices, tools and solutions:
 
