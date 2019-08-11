@@ -2,7 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailFragmentArgs
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailsViewModel
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.verify
@@ -17,7 +17,7 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class AlbumDetailsViewModelTest {
+class AlbumDetailViewModelTest {
 
     @ExperimentalCoroutinesApi
     @get:Rule
@@ -29,11 +29,11 @@ class AlbumDetailsViewModelTest {
     @Mock
     internal lateinit var mockAlbumDetailFragmentArgs: AlbumDetailFragmentArgs
 
-    private lateinit var cut: AlbumDetailsViewModel
+    private lateinit var cut: AlbumDetailViewModel
 
     @Before
     fun setUp() {
-        cut = AlbumDetailsViewModel(
+        cut = AlbumDetailViewModel(
             mockSearchAlbumUseCase,
             mockAlbumDetailFragmentArgs
         )

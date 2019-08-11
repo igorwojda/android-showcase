@@ -4,16 +4,18 @@ import android.os.Bundle
 import android.view.View
 import com.igorwojda.showcase.base.presentation.extension.observe
 import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
+import com.igorwojda.showcase.base.presentation.picasso.PicassoCallback
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.pawegio.kandroid.hide
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
 internal class AlbumDetailFragment : BaseContainerFragment() {
 
-    override val viewModel: AlbumDetailsViewModel by instance()
+    override val viewModel: AlbumDetailViewModel by instance()
 
     private val picasso: Picasso by instance()
 
@@ -30,7 +32,6 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
     private fun onStateChange(albumDomainModel: AlbumDomainModel) {
         nameTextView.text = albumDomainModel.name
         artistTextView.text = albumDomainModel.artist
-        publishedTextView.text = albumDomainModel.wiki?.published
 
         val url = albumDomainModel.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
         if (albumDomainModel.images.isNotEmpty() && !url.isNullOrEmpty()) {
@@ -41,10 +42,17 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
     private fun loadImage(it: String) {
         val imageSize = 800
 
+        val callback = PicassoCallback().apply {
+            onSuccess {
+                progressBar.hide()
+//                artistInfoContainer.show()
+            }
+        }
+
         picasso.load(it)
             .resize(imageSize, imageSize)
             .centerCrop()
             .placeholder(R.drawable.progress_animation)
-            .into(coverImageView)
+            .into(coverImageView, callback)
     }
 }

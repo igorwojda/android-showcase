@@ -50,6 +50,6 @@ class AlbumListFragment : BaseContainerFragment() {
 
     private fun onStateChange(list: List<AlbumDomainModel>) {
         albumAdapter.albums = list
-        loadingSpinner.hide()
+        progressBar.hide()
     }
 }
