@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
 class AlbumListFragment : BaseContainerFragment() {
+
     private val realViewModel: AlbumListViewModel by instance()
 
     override val viewModel: BaseViewModel by lazy { realViewModel }
@@ -45,8 +46,6 @@ class AlbumListFragment : BaseContainerFragment() {
         }
 
         observe(realViewModel.state, ::onStateChange)
-
-        loadingSpinner.hide()
     }
 
     private fun onStateChange(list: List<AlbumDomainModel>) {
