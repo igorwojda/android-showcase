@@ -8,7 +8,7 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import kotlinx.coroutines.launch
 
-internal class AlbumDetailsViewModel(
+internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
     private val args: AlbumDetailFragmentArgs
 ) : BaseViewModel() {

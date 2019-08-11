@@ -34,6 +34,8 @@ This project bring to table set of best practices, tools and solutions:
 
 ## Tech-stack
 
+<img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
+
 Min API level is set to [`21`](https://android-arsenal.com/api?level=21), so presented approach is suitable for over
 [85% of devices](https://developer.android.com/about/dashboards) running Android. This project takes advantage of many
 popular libraries and tools of the Android ecosystem. Most of the libraries are in stable version, unless there is a
