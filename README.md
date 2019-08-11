@@ -111,7 +111,7 @@ focus on architecture.
 ## Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
-## Even more inspiration
+## Inspiration
 
 Other Android repositories that are worth checking out:
 
