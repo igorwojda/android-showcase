@@ -34,13 +34,8 @@ allprojects {
         google()
         jcenter()
     }
-}
 
-subprojects {
-    tasks.withType<Test> {
-        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
-    }
-
+    // We want to apply ktlint at all project level because it also checks build gradle files
     plugins.apply(GradlePluginId.KTLINT_GRADLE)
 
     // Ktlint configuration for sub-projects
@@ -54,6 +49,12 @@ subprojects {
             exclude("**/generated/**")
         }
     }
+}
+
+subprojects {
+    tasks.withType<Test> {
+        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+    }
 
     plugins.apply(GradlePluginId.DETEKT)
 
@@ -61,13 +62,6 @@ subprojects {
         config = files("${project.rootDir}/config/detekt.yml")
         parallel = true
     }
-}
-
-// Ktlint configuration for root project
-ktlint {
-    version.set(CoreVersion.KTLINT)
-    verbose.set(true)
-    reporters.set(setOf(ReporterType.CHECKSTYLE))
 }
 
 // JVM target applied to all Kotlin tasks across all sub-projects
