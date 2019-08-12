@@ -83,7 +83,8 @@ Clean Architecture layers (`Presentation`/`Domain`/`Data`):
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
 
-Each layer contains dedicated set of components:
+Single feature module contains dedicated set of components in each of Clean Architecture layers and some additional
+non-layer related elements:
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
