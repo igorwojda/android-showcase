@@ -76,9 +76,13 @@ around).
 
 ### Feature structure
 
-Each feature is isolated into separate module to provide better separation of concerns in the codebase. This allows for
-feature to be developed in isolation, independently from other features. Each feature module contains own set of the
-Clean Architecture layers (`Presentation`/`Domain`/`Data`).
+Feature related code is placed in separate modules to provide better separation of concerns in the codebase. This allows
+for feature to be developed in isolation, independently from other features. Each feature module contains own set of the
+Clean Architecture layers (`Presentation`/`Domain`/`Data`):
+
+![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
+
+Each layer contains dedicated set of components:
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
