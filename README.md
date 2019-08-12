@@ -12,9 +12,10 @@ Showcase is a sample project that presents modern, 2019 approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
-The goal of the project is to demonstrate best practices, provide guidance and present flexible application architecture
-(modular, scalable, maintainable and testable architecture suitable for growing teams and longer
-[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management)). Many of the project design
+The goal of the project is to demonstrate best practices, provide guidance and present modern Android application
+architecture that is modular, scalable, maintainable and testable. Application may look simple, but it has all of these
+small details that will set the rock solid foundation of the larger app suitable for bigger teams and long
+[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
 decisions follows or even extends official Google recommendations.
 
 `Android showcase` is being heavily maintained to match up to date industry standards.
