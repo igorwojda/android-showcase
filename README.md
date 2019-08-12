@@ -90,6 +90,7 @@ non-layer related elements:
 
 ### Data flow
 
+Let's take a look what exactly happens under the surface when user interacts with `album list screen`:
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
 
 ## Ci pipeline
