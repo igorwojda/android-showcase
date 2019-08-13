@@ -16,10 +16,10 @@ internal class AlbumListViewModel(
     val state = _state.toLiveData()
 
     init {
-        getAlbums()
+        getAlbumList()
     }
 
-    private fun getAlbums() {
+    private fun getAlbumList() {
         viewModelScope.launch {
             getAlbumListUseCase.execute().also { _state.postValue(it) }
         }
