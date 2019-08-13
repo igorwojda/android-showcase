@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.base.presentation.activity.BaseActivity
@@ -16,9 +16,9 @@ class MainActivity : BaseActivity() {
 
         setupBottomNavigation()
     }
-
+    
     private fun setupBottomNavigation() {
-        val navController = findNavController(R.id.navigationHostFragment)
+        val navController = navigationHostFragment.findNavController()
         bottomNavigation.setupWithNavController(navController)
     }
 }
