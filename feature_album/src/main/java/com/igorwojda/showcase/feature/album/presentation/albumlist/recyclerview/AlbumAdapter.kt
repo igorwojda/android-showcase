@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
+import coil.transform.RoundedCornersTransformation
 import com.igorwojda.showcase.base.delegate.observer
 import com.igorwojda.showcase.base.presentation.extension.setOnDebouncedClickListener
 import com.igorwojda.showcase.base.presentation.picasso.PicassoCallback
@@ -49,7 +51,11 @@ internal class AlbumAdapter(
             if (it == null) {
                 setDefaultImage()
             } else {
-                loadImage(it)
+                itemView.coverImageView.load(it) {
+                    crossfade(true)
+                    error(R.drawable.ic_image)
+                    transformations(RoundedCornersTransformation(10F))
+                }
             }
         }
 
