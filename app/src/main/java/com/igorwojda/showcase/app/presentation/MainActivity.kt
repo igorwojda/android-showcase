@@ -16,9 +16,9 @@ class MainActivity : BaseActivity() {
 
         setupBottomNavigation()
     }
-    
+
     private fun setupBottomNavigation() {
-        val navController = navigationHostFragment.findNavController()
-        bottomNavigation.setupWithNavController(navController)
+        val navController = navHostFragment.findNavController()
+        bottomNav.setupWithNavController(navController)
     }
 }
