@@ -2,14 +2,17 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import coil.ImageLoader
 import com.igorwojda.showcase.base.presentation.extension.toLiveData
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
+import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
-    private val args: AlbumDetailFragmentArgs
+    private val args: AlbumDetailFragmentArgs,
+    private val imageLoader: ImageLoader
 ) : BaseViewModel() {
 
     private val _viewState = MutableLiveData<ViewState>()
@@ -33,8 +36,10 @@ internal class AlbumDetailViewModel(
                 args.albumName,
                 args.mbId
             ).also {
-                //should this trigger action (ViewAction?) ot just update an emit state?
-                _viewState.postValue(it)
+                if (it != null) {
+                    sendAction(ViewAction.AlbumDataLoadSuccess(it))
+                }
+                // ToDo: support error
             }
         }
     }
@@ -56,6 +61,23 @@ internal class AlbumDetailViewModel(
                 isImageLoading = true
             )
         }
+        is ViewAction.AlbumDataLoadSuccess -> {
+            val imageUrl = viewAction.albumDomainModel.images.first().url
+
+//            val image
+//
+//            viewModelScope.launch {
+//                image = imageLoader.get(imageUrl, {})
+//            }
+
+
+            currentViewState.copy(
+                isImageLoading = true,
+                artist = viewAction.albumDomainModel.artist,
+                name = viewAction.albumDomainModel.name,
+                imageUrl = ""
+            )
+        }
     }
 
     data class ViewState(
@@ -70,9 +92,9 @@ internal class AlbumDetailViewModel(
     sealed class ViewAction {
         object ImageLoadingSuccess : ViewAction()
         object ImageLoadingError : ViewAction()
+        class AlbumDataLoadSuccess(val albumDomainModel: AlbumDomainModel) : ViewAction()
     }
 }
-
 
 //val url = viewState.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
 //
