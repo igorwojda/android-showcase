@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import coil.ImageLoader
 import coil.api.get
@@ -29,8 +29,8 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupBottomNavigation() {
-        val navController = findNavController(R.id.navigationHostFragment)
-        bottomNavigation.setupWithNavController(navController)
+        val navController = navHostFragment.findNavController()
+        bottomNav.setupWithNavController(navController)
     }
 }
 

@@ -12,9 +12,10 @@ Showcase is a sample project that presents modern, 2019 approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
-The goal of the project is to demonstrate best practices, provide guidance and present flexible application architecture
-(modular, scalable, maintainable and testable architecture suitable for growing teams and longer
-[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management)). Many of the project design
+The goal of the project is to demonstrate best practices, provide guidance and present modern Android application
+architecture that is modular, scalable, maintainable and testable. Application may look simple, but it has all of these
+small details that will set the rock solid foundation of the larger app suitable for bigger teams and long
+[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
 decisions follows or even extends official Google recommendations.
 
 `Android showcase` is being heavily maintained to match up to date industry standards.
@@ -76,14 +77,20 @@ around).
 
 ### Feature structure
 
-Each feature is isolated into separate module to provide better separation of concerns in the codebase. This allows for
-feature to be developed in isolation, independently from other features. Each feature module contains own set of the
-Clean Architecture layers (`Presentation`/`Domain`/`Data`).
+Feature related code is placed in separate modules to provide better separation of concerns in the codebase. This allows
+for feature to be developed in isolation, independently from other features. Each feature module contains own set of the
+Clean Architecture layers (`Presentation`/`Domain`/`Data`):
+
+![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
+
+Single feature module contains dedicated set of components in each of Clean Architecture layers and some additional
+non-layer related elements:
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
 ### Data flow
 
+Let's take a look what exactly happens under the surface when user interacts with `album list screen`:
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
 
 ## Ci pipeline
@@ -110,20 +117,19 @@ focus on architecture.
 * Support for DayNight MaterialTheme
 * and more…
 
-## Opening this project
+## Getting started
 
 There are few ways to open this project.
 
 ### Android Studio
 
-1. File -> New -> From Version control -> Git
+1. Android Studio -> File -> New -> From Version control -> Git
 2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field
 
 ### Command line + Android Studio
 
-1. Navigate to folder
-2. Run `git clone https://github.com/igorwojda/android-showcase.git`
-3. Android Studio -> File -> Open
+1. Run `git clone https://github.com/igorwojda/android-showcase.git`
+2. Android Studio -> File -> Open
 
 ## Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.

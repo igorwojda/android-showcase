@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/app_navigation_graph" app:startDestination="@id/album_nav_graph">
-    <include app:graph="@navigation/album_nav_graph"/>
-    <include app:graph="@navigation/profile_nav_graph"/>
-    <include app:graph="@navigation/favourite_nav_graph"/>
+            android:id="@+id/app_navigation_graph"
+            app:startDestination="@id/album_nav_graph">
+    <include app:graph="@navigation/feature_album_nav_graph"/>
+    <include app:graph="@navigation/feature_profile_nav_graph"/>
+    <include app:graph="@navigation/feature_favourite_nav_graph"/>
 </navigation>

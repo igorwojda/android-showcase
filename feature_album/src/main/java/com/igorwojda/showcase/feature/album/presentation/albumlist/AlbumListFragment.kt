@@ -30,7 +30,7 @@ class AlbumListFragment : BaseContainerFragment() {
         val context = checkNotNull(context)
 
         albumAdapter.setOnDebouncedClickListener {
-            val navDirections = AlbumListFragmentDirections.actionAlbumsToAlbumDetail(it.artist, it.name, it.mbId)
+            val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(it.artist, it.name, it.mbId)
             findNavController().navigate(navDirections)
         }
 
