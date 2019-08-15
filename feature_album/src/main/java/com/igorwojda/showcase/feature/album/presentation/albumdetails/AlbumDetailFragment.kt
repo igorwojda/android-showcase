@@ -34,12 +34,12 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         artistTextView.text = viewState.artist
         artistTextView.visible = viewState.artist.isNotBlank()
 
-//        coverImageView.setImageDrawable(viewState.coverImage)
+        errorImageView.visible = viewState.isError
 
         val imageSize = 800
 
-        coverImageView.load(viewState.coverImage2) {
-            size(2000, 2000)
+        coverImageView.load(viewState.coverImage) {
+            size(imageSize, imageSize)
         }
     }
 }

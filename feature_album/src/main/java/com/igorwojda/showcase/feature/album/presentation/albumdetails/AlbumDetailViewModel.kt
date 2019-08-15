@@ -1,10 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
-import android.graphics.drawable.Drawable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import coil.ImageLoader
-import coil.api.get
 import com.igorwojda.showcase.base.presentation.extension.toLiveData
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
@@ -13,8 +10,7 @@ import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
-    private val args: AlbumDetailFragmentArgs,
-    private val imageLoader: ImageLoader
+    private val args: AlbumDetailFragmentArgs
 ) : BaseViewModel() {
 
     private val _viewState = MutableLiveData<ViewState>()
@@ -40,31 +36,29 @@ internal class AlbumDetailViewModel(
             ).also {
                 if (it != null) {
                     sendAction(ViewAction.AlbumLoadSuccess(it))
+                } else {
+                    sendAction(ViewAction.AlbumLoadError)
                 }
-                // ToDo: support error
-                // ToDo: support 0 images length
             }
         }
     }
-
-    // sendAction method or rather one method per action name
-    // eg.
+    
     private fun sendAction(viewAction: ViewAction) {
-        viewModelScope.launch {
-            val st2 = reducer(viewAction)
-            _viewState.value = st2
-        }
+        val st2 = reducer(viewAction)
+        _viewState.value = st2
     }
 
-    private suspend fun reducer(viewAction: ViewAction): ViewState = when (viewAction) {
+    private fun reducer(viewAction: ViewAction): ViewState = when (viewAction) {
         is ViewAction.ImageLoadingSuccess -> {
             currentViewState.copy(
-                isProgressBarVisible = true
+                isProgressBarVisible = true,
+                isError = false
             )
         }
         is ViewAction.ImageLoadingError -> {
             currentViewState.copy(
-                isProgressBarVisible = true
+                isProgressBarVisible = true,
+                isError = false
             )
         }
         is ViewAction.AlbumLoadSuccess -> {
@@ -72,27 +66,37 @@ internal class AlbumDetailViewModel(
 
             currentViewState.copy(
                 isProgressBarVisible = false,
+                isError = false,
                 artist = viewAction.albumDomainModel.artist,
                 name = viewAction.albumDomainModel.name,
-                coverImage = imageLoader.get(imageUrl),
-                coverImage2 = imageUrl
+                coverImage = imageUrl
+            )
+        }
+        is ViewAction.AlbumLoadError -> {
+            currentViewState.copy(
+                isProgressBarVisible = false,
+                isError = true,
+                artist = "",
+                name = "",
+                coverImage = ""
             )
         }
     }
 
     data class ViewState(
         val isProgressBarVisible: Boolean = false,
+        val isError: Boolean = false,
         val upd: Boolean = true,
         val name: String = "",
         val artist: String = "",
-        val coverImage: Drawable? = null,
-        val coverImage2: String? = null
+        val coverImage: String = ""
     )
 
     sealed class ViewAction {
         object ImageLoadingSuccess : ViewAction()
         object ImageLoadingError : ViewAction()
         class AlbumLoadSuccess(val albumDomainModel: AlbumDomainModel) : ViewAction()
+        object AlbumLoadError : ViewAction()
     }
 }
 

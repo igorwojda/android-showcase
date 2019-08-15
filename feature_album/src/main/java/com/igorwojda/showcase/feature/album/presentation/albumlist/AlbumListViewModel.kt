@@ -19,6 +19,9 @@ internal class AlbumListViewModel(
         getAlbumList()
     }
 
+    // ToDo: support error
+    // ToDo: support 0 images length
+
     private fun getAlbumList() {
         viewModelScope.launch {
             getAlbumListUseCase.execute().also { _state.postValue(it) }
