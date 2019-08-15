@@ -13,12 +13,12 @@ Showcase is a sample project that presents modern, 2019 approach to
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
 The goal of the project is to demonstrate best practices, provide guidance and present modern Android application
-architecture that is modular, scalable, maintainable and testable. Application may look simple, but it has all of these
+architecture that is modular, scalable, maintainable and testable. This application may look simple, but it has all of these
 small details that will set the rock solid foundation of the larger app suitable for bigger teams and long
 [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
-decisions follows or even extends official Google recommendations.
+decisions follows official Google recommendations.
 
-`Android showcase` is being heavily maintained to match up to date industry standards.
+This project is being heavily maintained to match up to date industry standards.
 
 ## Project characteristics
 
@@ -137,7 +137,7 @@ Feedback and new contributions are welcome whether it's through bug reports or n
 ## Inspiration
 
 Other Android repositories that are worth checking out:
-
+* [Isosched](https://github.com/google/iosched) - official Android application from google IO 2019
 * [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of different
   Android architecture approaches
 * [Android sunflower](https://github.com/googlesamples/android-sunflower) complete JetPack sample covering all libraries
