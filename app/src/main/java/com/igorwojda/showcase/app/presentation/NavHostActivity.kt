@@ -5,11 +5,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.base.presentation.activity.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_nav_host.*
 
-class MainActivity : BaseActivity() {
+class NavHostActivity : BaseActivity() {
 
-    override val layoutResId = R.layout.activity_main
+    override val layoutResId = R.layout.activity_nav_host
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

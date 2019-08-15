@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
-        <activity android:name="com.igorwojda.showcase.app.presentation.MainActivity">
+        <activity android:name="com.igorwojda.showcase.app.presentation.NavHostActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
