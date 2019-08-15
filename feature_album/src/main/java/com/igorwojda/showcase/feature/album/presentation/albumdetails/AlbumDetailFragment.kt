@@ -12,14 +12,14 @@ import org.kodein.di.generic.instance
 
 internal class AlbumDetailFragment : BaseContainerFragment() {
 
-    override val viewModel: AlbumDetailViewModel by instance()
+    private val viewModel: AlbumDetailViewModel by instance()
 
     override val layoutResourceId = R.layout.fragment_album_detail
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observe(viewModel.viewState, ::onStateChange)
+        observe(viewModel.viewStateLiveData, ::onStateChange)
     }
 
     private fun onStateChange(viewState: AlbumDetailViewModel.ViewState) {

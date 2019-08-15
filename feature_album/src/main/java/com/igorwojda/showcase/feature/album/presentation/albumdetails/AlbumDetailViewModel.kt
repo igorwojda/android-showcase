@@ -1,27 +1,22 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.igorwojda.showcase.base.presentation.extension.toLiveData
+import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
+import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewState
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.Action
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.Action.*
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.ViewState
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
     private val args: AlbumDetailFragmentArgs
-) : BaseViewModel() {
+) : BaseViewModel<ViewState, Action>() {
 
-    private val _viewState = MutableLiveData<ViewState>()
-    val viewState = _viewState.toLiveData()
-
-    init {
-        _viewState.value = ViewState()
-    }
-
-    private val currentViewState
-        get() = viewState.value ?: throw RuntimeException("ViewModel state is empty")
+    override val initialViewState = ViewState()
 
     override fun onLoadData() {
         getAlbum()
@@ -35,36 +30,31 @@ internal class AlbumDetailViewModel(
                 args.mbId
             ).also {
                 if (it != null) {
-                    sendAction(ViewAction.AlbumLoadSuccess(it))
+                    sendAction(AlbumLoadSuccess(it))
                 } else {
-                    sendAction(ViewAction.AlbumLoadError)
+                    sendAction(AlbumLoadError)
                 }
             }
         }
     }
-    
-    private fun sendAction(viewAction: ViewAction) {
-        val st2 = reducer(viewAction)
-        _viewState.value = st2
-    }
 
-    private fun reducer(viewAction: ViewAction): ViewState = when (viewAction) {
-        is ViewAction.ImageLoadingSuccess -> {
-            currentViewState.copy(
+    override fun onReduce(viewAction: Action): ViewState = when (viewAction) {
+        is ImageLoadingSuccess -> {
+            viewState.copy(
                 isProgressBarVisible = true,
                 isError = false
             )
         }
-        is ViewAction.ImageLoadingError -> {
-            currentViewState.copy(
+        is ImageLoadingError -> {
+            viewState.copy(
                 isProgressBarVisible = true,
                 isError = false
             )
         }
-        is ViewAction.AlbumLoadSuccess -> {
+        is AlbumLoadSuccess -> {
             val imageUrl = viewAction.albumDomainModel.images.first().url
 
-            currentViewState.copy(
+            viewState.copy(
                 isProgressBarVisible = false,
                 isError = false,
                 artist = viewAction.albumDomainModel.artist,
@@ -72,8 +62,8 @@ internal class AlbumDetailViewModel(
                 coverImage = imageUrl
             )
         }
-        is ViewAction.AlbumLoadError -> {
-            currentViewState.copy(
+        is AlbumLoadError -> {
+            viewState.copy(
                 isProgressBarVisible = false,
                 isError = true,
                 artist = "",
@@ -90,33 +80,33 @@ internal class AlbumDetailViewModel(
         val name: String = "",
         val artist: String = "",
         val coverImage: String = ""
-    )
+    ) : BaseViewState
 
-    sealed class ViewAction {
-        object ImageLoadingSuccess : ViewAction()
-        object ImageLoadingError : ViewAction()
-        class AlbumLoadSuccess(val albumDomainModel: AlbumDomainModel) : ViewAction()
-        object AlbumLoadError : ViewAction()
+    internal sealed class Action : BaseAction {
+        object ImageLoadingSuccess : Action()
+        object ImageLoadingError : Action()
+        class AlbumLoadSuccess(val albumDomainModel: AlbumDomainModel) : Action()
+        object AlbumLoadError : Action()
     }
 }
 
-//val url = viewState.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
+//val url = viewStateLiveData.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
 //
-//if (viewState.images.isNotEmpty() && !url.isNullOrEmpty()) {
+//if (viewStateLiveData.images.isNotEmpty() && !url.isNullOrEmpty()) {
 //    loadImage(url)
 //}
 
 
 //interface ViewState
 //
-//interface ViewAction
+//interface Action
 //
-//interface Reducer<S : ViewState, A : ViewAction> {
+//interface Reducer<S : ViewState, A : Action> {
 //    fun reduce(state: S, action: A)
 //}
 
 
-// initial viewState
+// initial viewStateLiveData
 // State.Empty
 // TImetravel debugger
 // Coroutines flow is  quite helpfull
