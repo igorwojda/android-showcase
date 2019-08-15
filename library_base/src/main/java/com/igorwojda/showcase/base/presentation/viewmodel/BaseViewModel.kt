@@ -10,8 +10,11 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
 
     val viewStateLiveData = viewStateMutableLiveData.toLiveData()
 
-    protected val viewState
-        get() = viewStateLiveData.value ?: throw RuntimeException("viewStateLiveData is null")
+    protected var viewState: ViewState
+        get() = checkNotNull(viewStateLiveData.value) { "ViewState is null" }
+        private set(value) {
+            viewStateMutableLiveData.postValue(value)
+        }
 
     abstract val initialViewState: ViewState
 
@@ -24,15 +27,10 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
     }
 
     fun sendAction(viewAction: ViewAction) {
-        updateState(viewAction)
+        viewState = onReduce(viewAction)
     }
 
     protected open fun onLoadData() {}
-
-    private fun updateState(viewAction: ViewAction) {
-        val newState = onReduce(viewAction)
-        viewStateMutableLiveData.postValue(newState)
-    }
 
     protected abstract fun onReduce(viewAction: ViewAction): ViewState
 }
