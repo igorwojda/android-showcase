@@ -7,15 +7,12 @@ import com.igorwojda.showcase.base.presentation.extension.observe
 import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
 import com.pawegio.kandroid.visible
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
 internal class AlbumDetailFragment : BaseContainerFragment() {
 
     override val viewModel: AlbumDetailViewModel by instance()
-
-    private val picasso: Picasso by instance()
 
     override val layoutResourceId = R.layout.fragment_album_detail
 
