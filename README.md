@@ -45,12 +45,16 @@ popular libraries and tools of the Android ecosystem. Most of the libraries are 
 good reason to use non-stable dependency.
 
 * Tech-stack
-    * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
-    * [Kodein](https://kodein.org/Kodein-DI/)
-    * [Retrofit](https://square.github.io/retrofit/)
+    * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - Perform background operations
+    * [Kodein](https://kodein.org/Kodein-DI/) - Dependency injection
+    * [Retrofit](https://square.github.io/retrofit/) - Retrieve data from network
     * [Jetpack](https://developer.android.com/jetpack)
-    * [Lottie](http://airbnb.io/lottie)
-    * [Stetho](http://facebook.github.io/stetho/)
+        * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - deal with whole in-app navigation
+        * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
+        * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform action when lifecycle state changes
+        * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data in a lifecycle conscious way
+    * [Lottie](http://airbnb.io/lottie) - animation library
+    * [Stetho](http://facebook.github.io/stetho/) - application debugging tool
     * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
     * Clean Architecture (at module level)
