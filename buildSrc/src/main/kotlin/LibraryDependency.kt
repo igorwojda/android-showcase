@@ -49,7 +49,7 @@ object LibraryDependency {
     const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${CoreVersion.NAVIGATION}"
     const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx:${CoreVersion.NAVIGATION}"
     const val PICASSO = "com.squareup.picasso:picasso:${LibraryVersion.PICASSO}"
-    const val COIL = "io.coil-kt:coil-base:${LibraryVersion.COIL}"
+    const val COIL = "io.coil-kt:coil:${LibraryVersion.COIL}"
     const val K_ANDROID = "com.pawegio.kandroid:kandroid:${LibraryVersion.K_ANDROID}"
     const val LOTTIE = "com.airbnb.android:lottie:${LibraryVersion.LOTTIE}"
 }

@@ -2,11 +2,10 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetails
 
 import android.os.Bundle
 import android.view.View
+import coil.api.load
 import com.igorwojda.showcase.base.presentation.extension.observe
 import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
-import com.igorwojda.showcase.base.presentation.picasso.PicassoCallback
 import com.igorwojda.showcase.feature.album.R
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.ViewAction
 import com.pawegio.kandroid.visible
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_detail.*
@@ -35,23 +34,13 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         artistTextView.text = viewState.artist
         artistTextView.visible = viewState.artist.isNotBlank()
 
-        if (!viewState.isImageLoading) {
-            loadImage(viewState.imageUrl)
-        }
-    }
+//        coverImageView.setImageDrawable(viewState.coverImage)
 
-    private fun loadImage(it: String) {
         val imageSize = 800
 
-        val callback = PicassoCallback().apply {
-            onSuccess { viewModel.sendAction(ViewAction.ImageLoadingSuccess) }
-            onError { viewModel.sendAction(ViewAction.ImageLoadingError) }
+        coverImageView.load(viewState.coverImage2) {
+            size(2000, 2000)
         }
-
-        picasso.load(it)
-            .resize(imageSize, imageSize)
-            .centerCrop()
-            .into(coverImageView, callback)
     }
 }
 
