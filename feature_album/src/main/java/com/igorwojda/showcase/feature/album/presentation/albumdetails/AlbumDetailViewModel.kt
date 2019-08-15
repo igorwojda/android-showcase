@@ -38,39 +38,29 @@ internal class AlbumDetailViewModel(
         }
     }
 
-    override fun onReduce(viewAction: Action): ViewState = when (viewAction) {
-        is ImageLoadingSuccess -> {
-            viewState.copy(
-                isProgressBarVisible = true,
-                isError = false
-            )
-        }
-        is ImageLoadingError -> {
-            viewState.copy(
-                isProgressBarVisible = true,
-                isError = false
-            )
-        }
-        is AlbumLoadSuccess -> {
-            val imageUrl = viewAction.albumDomainModel.images.first().url
-
-            viewState.copy(
-                isProgressBarVisible = false,
-                isError = false,
-                artist = viewAction.albumDomainModel.artist,
-                name = viewAction.albumDomainModel.name,
-                coverImage = imageUrl
-            )
-        }
-        is AlbumLoadError -> {
-            viewState.copy(
-                isProgressBarVisible = false,
-                isError = true,
-                artist = "",
-                name = "",
-                coverImage = ""
-            )
-        }
+    override fun onReduce(viewAction: Action) = when (viewAction) {
+        is ImageLoadingSuccess -> viewState.copy(
+            isProgressBarVisible = true,
+            isError = false
+        )
+        is ImageLoadingError -> viewState.copy(
+            isProgressBarVisible = true,
+            isError = false
+        )
+        is AlbumLoadSuccess -> viewState.copy(
+            isProgressBarVisible = false,
+            isError = false,
+            artist = viewAction.albumDomainModel.artist,
+            name = viewAction.albumDomainModel.name,
+            coverImage = viewAction.albumDomainModel.images.first().url
+        )
+        is AlbumLoadError -> viewState.copy(
+            isProgressBarVisible = false,
+            isError = true,
+            artist = "",
+            name = "",
+            coverImage = ""
+        )
     }
 
     data class ViewState(
@@ -90,23 +80,7 @@ internal class AlbumDetailViewModel(
     }
 }
 
-//val url = viewStateLiveData.images.firstOrNull { it.size == AlbumDomainImageSize.LARGE }?.url
-//
-//if (viewStateLiveData.images.isNotEmpty() && !url.isNullOrEmpty()) {
-//    loadImage(url)
-//}
-
-
-//interface ViewState
-//
-//interface Action
-//
-//interface Reducer<S : ViewState, A : Action> {
-//    fun reduce(state: S, action: A)
-//}
-
-
-// initial viewStateLiveData
+/
 // State.Empty
 // TImetravel debugger
 // Coroutines flow is  quite helpfull
