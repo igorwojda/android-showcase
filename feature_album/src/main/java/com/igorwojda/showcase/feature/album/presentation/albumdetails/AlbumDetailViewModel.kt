@@ -18,6 +18,10 @@ internal class AlbumDetailViewModel(
 
     override val initialViewState = ViewState()
 
+    init {
+        loadData()
+    }
+
     override fun onLoadData() {
         getAlbum()
     }
@@ -39,11 +43,11 @@ internal class AlbumDetailViewModel(
     }
 
     override fun onReduce(viewAction: Action) = when (viewAction) {
-        is ImageLoadingSuccess -> viewState.copy(
+        is AlbumLoadingSuccess -> viewState.copy(
             isProgressBarVisible = true,
             isError = false
         )
-        is ImageLoadingError -> viewState.copy(
+        is AlbumLoadingError -> viewState.copy(
             isProgressBarVisible = true,
             isError = false
         )
@@ -64,17 +68,16 @@ internal class AlbumDetailViewModel(
     }
 
     data class ViewState(
-        val isProgressBarVisible: Boolean = false,
+        val isProgressBarVisible: Boolean = true,
         val isError: Boolean = false,
-        val upd: Boolean = true,
         val name: String = "",
         val artist: String = "",
         val coverImage: String = ""
     ) : BaseViewState
 
     internal sealed class Action : BaseAction {
-        object ImageLoadingSuccess : Action()
-        object ImageLoadingError : Action()
+        object AlbumLoadingSuccess : Action()
+        object AlbumLoadingError : Action()
         class AlbumLoadSuccess(val albumDomainModel: AlbumDomainModel) : Action()
         object AlbumLoadError : Action()
     }

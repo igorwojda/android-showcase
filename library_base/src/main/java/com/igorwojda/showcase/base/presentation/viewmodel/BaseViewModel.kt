@@ -3,22 +3,36 @@ package com.igorwojda.showcase.base.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.igorwojda.library.base.BuildConfig
-import com.igorwojda.showcase.base.delegate.observer
 import com.igorwojda.showcase.base.presentation.extension.toLiveData
 
 abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction> : ViewModel() {
 
     private val viewStateMutableLiveData = MutableLiveData<ViewState>()
-
     val viewStateLiveData = viewStateMutableLiveData.toLiveData()
-
-    private val stateTimeline = mutableListOf<Triple<ViewState, ViewAction, ViewState>>()
-
     abstract val initialViewState: ViewState
+    private var stateTransitionDebugger: StateTransitionDebugger? = null
 
-    protected var viewState: ViewState by observer(initialViewState) {
-        viewStateMutableLiveData.postValue(it)
+    init {
+        if (BuildConfig.DEBUG) {
+            stateTransitionDebugger = StateTransitionDebugger(this::class.java.simpleName)
+        }
+
+        viewStateMutableLiveData.postValue(initialViewState)
     }
+
+    protected var viewState: ViewState
+        get() {
+            // Value should never be null.
+            // Fix for an edge case when data is loaded from within init method of child class
+            if (viewStateLiveData.value == null) {
+                viewStateMutableLiveData.value = initialViewState
+            }
+
+            return checkNotNull(viewStateLiveData.value) { "ViewState is null" }
+        }
+        private set(value) {
+            viewStateMutableLiveData.postValue(value)
+        }
 
     fun loadData() {
         onLoadData()
@@ -28,8 +42,9 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         val oldState = viewState
         val newState = onReduce(viewAction)
 
-        if (BuildConfig.DEBUG) {
-            stateTimeline.add(Triple(oldState, viewAction, newState))
+        stateTransitionDebugger?.apply {
+            addStateTransition(oldState, viewAction, newState)
+            logLast()
         }
 
         viewState = newState

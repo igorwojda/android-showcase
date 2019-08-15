@@ -50,6 +50,9 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
+    api(LibraryDependency.KOTLIN)
+    api(LibraryDependency.KOTLIN_REFLECT)
+
     api(LibraryDependency.KODEIN)
     api(LibraryDependency.KODEIN_ANDROID_X)
 
