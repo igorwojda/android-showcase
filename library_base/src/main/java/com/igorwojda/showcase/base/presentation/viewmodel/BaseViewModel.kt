@@ -2,6 +2,8 @@ package com.igorwojda.showcase.base.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.igorwojda.library.base.BuildConfig
+import com.igorwojda.showcase.base.delegate.observer
 import com.igorwojda.showcase.base.presentation.extension.toLiveData
 
 abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction> : ViewModel() {
@@ -10,16 +12,12 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
 
     val viewStateLiveData = viewStateMutableLiveData.toLiveData()
 
-    protected var viewState: ViewState
-        get() = checkNotNull(viewStateLiveData.value) { "ViewState is null" }
-        private set(value) {
-            viewStateMutableLiveData.postValue(value)
-        }
+    private val stateTimeline = mutableListOf<Triple<ViewState, ViewAction, ViewState>>()
 
     abstract val initialViewState: ViewState
 
-    init {
-        viewStateMutableLiveData.postValue(initialViewState)
+    protected var viewState: ViewState by observer(initialViewState) {
+        viewStateMutableLiveData.postValue(it)
     }
 
     fun loadData() {
@@ -27,7 +25,14 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
     }
 
     fun sendAction(viewAction: ViewAction) {
-        viewState = onReduce(viewAction)
+        val oldState = viewState
+        val newState = onReduce(viewAction)
+
+        if (BuildConfig.DEBUG) {
+            stateTimeline.add(Triple(oldState, viewAction, newState))
+        }
+
+        viewState = newState
     }
 
     protected open fun onLoadData() {}

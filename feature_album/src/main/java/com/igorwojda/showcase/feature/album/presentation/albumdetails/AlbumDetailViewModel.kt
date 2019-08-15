@@ -79,9 +79,3 @@ internal class AlbumDetailViewModel(
         object AlbumLoadError : Action()
     }
 }
-
-/
-// State.Empty
-// TImetravel debugger
-// Coroutines flow is  quite helpfull
-//middleeware (secase, reepo?) emmits loading action (SearchLoadingAction, SearchSuccesAction)...hmm better foe few views using the same usecase?
