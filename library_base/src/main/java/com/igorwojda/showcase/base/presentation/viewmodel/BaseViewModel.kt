@@ -18,12 +18,12 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         }
 
         viewStateMutableLiveData.postValue(initialViewState)
+        onLoadData()
     }
 
     protected var viewState: ViewState
         get() {
-            // Value should never be null.
-            // Fix for an edge case when data is loaded from within init method of child class
+            // Handles an edge case when data is loaded from within init method of child class
             if (viewStateLiveData.value == null) {
                 viewStateMutableLiveData.value = initialViewState
             }
