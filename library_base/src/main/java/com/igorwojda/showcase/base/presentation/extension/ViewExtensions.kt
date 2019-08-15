@@ -28,7 +28,8 @@ private class ActionDebouncer(private val action: () -> Unit) {
     fun notifyAction() {
         val now = SystemClock.elapsedRealtime()
 
-        val actionAllowed = (now - lastActionTime) > DEBOUNCE_INTERVAL_MILLISECONDS
+        val millisecondsPassed = now - lastActionTime
+        val actionAllowed = millisecondsPassed > DEBOUNCE_INTERVAL_MILLISECONDS
         lastActionTime = now
 
         if (actionAllowed) {
