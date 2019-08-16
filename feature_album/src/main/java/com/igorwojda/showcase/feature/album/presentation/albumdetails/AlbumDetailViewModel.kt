@@ -7,7 +7,8 @@ import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewState
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.Action
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.Action.*
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.Action.AlbumLoadFailure
+import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.Action.AlbumLoadSuccess
 import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel.ViewState
 import kotlinx.coroutines.launch
 
@@ -28,29 +29,17 @@ internal class AlbumDetailViewModel(
 
     private fun getAlbum() {
         viewModelScope.launch {
-            getAlbumUseCase.execute(
-                args.artistName,
-                args.albumName,
-                args.mbId
-            ).also {
+            getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
                 if (it != null) {
                     sendAction(AlbumLoadSuccess(it))
                 } else {
-                    sendAction(AlbumLoadError)
+                    sendAction(AlbumLoadFailure)
                 }
             }
         }
     }
 
-    override fun onReduce(viewAction: Action) = when (viewAction) {
-        is AlbumLoadingSuccess -> viewState.copy(
-            isProgressBarVisible = true,
-            isError = false
-        )
-        is AlbumLoadingError -> viewState.copy(
-            isProgressBarVisible = true,
-            isError = false
-        )
+    override fun onReduceState(viewAction: Action) = when (viewAction) {
         is AlbumLoadSuccess -> viewState.copy(
             isProgressBarVisible = false,
             isError = false,
@@ -58,7 +47,7 @@ internal class AlbumDetailViewModel(
             name = viewAction.albumDomainModel.name,
             coverImage = viewAction.albumDomainModel.images.first().url
         )
-        is AlbumLoadError -> viewState.copy(
+        is AlbumLoadFailure -> viewState.copy(
             isProgressBarVisible = false,
             isError = true,
             artist = "",
@@ -76,9 +65,7 @@ internal class AlbumDetailViewModel(
     ) : BaseViewState
 
     internal sealed class Action : BaseAction {
-        object AlbumLoadingSuccess : Action()
-        object AlbumLoadingError : Action()
         class AlbumLoadSuccess(val albumDomainModel: AlbumDomainModel) : Action()
-        object AlbumLoadError : Action()
+        object AlbumLoadFailure : Action()
     }
 }

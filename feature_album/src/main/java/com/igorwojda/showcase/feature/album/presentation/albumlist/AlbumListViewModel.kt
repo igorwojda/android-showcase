@@ -16,7 +16,7 @@ internal class AlbumListViewModel(
 
     override val initialViewState = ViewState()
 
-    override fun onReduce(viewAction: Action): ViewState {
+    override fun onReduceState(viewAction: Action): ViewState {
         TODO("not implemented")
     }
 
@@ -43,6 +43,8 @@ internal class AlbumListViewModel(
     ) : BaseViewState
 
     internal sealed class Action : BaseAction {
+        object AlbumListLoadingFailure : Action()
+        object AlbumListLoadingSuccess : Action()
 
     }
 }

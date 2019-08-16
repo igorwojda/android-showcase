@@ -23,11 +23,6 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
 
     protected var viewState: ViewState
         get() {
-            // Handles an edge case when data is loaded from within init method of child class
-            if (viewStateLiveData.value == null) {
-                viewStateMutableLiveData.value = initialViewState
-            }
-
             return checkNotNull(viewStateLiveData.value) { "ViewState is null" }
         }
         private set(value) {
@@ -40,7 +35,7 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
 
     fun sendAction(viewAction: ViewAction) {
         val oldState = viewState
-        val newState = onReduce(viewAction)
+        val newState = onReduceState(viewAction)
 
         stateTransitionDebugger?.apply {
             addStateTransition(oldState, viewAction, newState)
@@ -52,5 +47,5 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
 
     protected open fun onLoadData() {}
 
-    protected abstract fun onReduce(viewAction: ViewAction): ViewState
+    protected abstract fun onReduceState(viewAction: ViewAction): ViewState
 }
