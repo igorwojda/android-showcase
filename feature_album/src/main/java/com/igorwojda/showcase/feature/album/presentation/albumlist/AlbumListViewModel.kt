@@ -20,7 +20,7 @@ internal class AlbumListViewModel(
 
     override fun onReduceState(viewAction: Action) = when (viewAction) {
         is Action.AlbumListLoadingSuccess -> viewState.copy(
-            isProgressBarVisible = false,
+            isLoading = false,
             albums = viewAction.albums
         )
     }
@@ -34,7 +34,7 @@ internal class AlbumListViewModel(
     }
 
     data class ViewState(
-        val isProgressBarVisible: Boolean = true,
+        val isLoading: Boolean = true,
         val albums: List<AlbumDomainModel> = listOf()
     ) : BaseViewState
 

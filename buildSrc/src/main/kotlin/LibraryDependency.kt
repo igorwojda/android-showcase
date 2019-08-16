@@ -16,7 +16,7 @@ private object LibraryVersion {
     const val LIFECYCLE = "1.1.1"
     const val LIFECYCLE_VIEW_MODEL_KTX = "2.1.0-rc01"
     const val PICASSO = "2.71828"
-    const val COIL = "0.6.0"
+    const val COIL = "0.6.1"
     const val K_ANDROID = "0.8.8@aar"
     const val LOTTIE = "3.0.7"
 }

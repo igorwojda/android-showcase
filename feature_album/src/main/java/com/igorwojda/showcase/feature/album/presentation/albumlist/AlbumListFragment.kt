@@ -46,6 +46,6 @@ class AlbumListFragment : BaseContainerFragment() {
 
     private fun onStateChange(viewState: AlbumListViewModel.ViewState) {
         albumAdapter.albums = viewState.albums
-        progressBar.visible = viewState.isProgressBarVisible
+        progressBar.visible = viewState.isLoading
     }
 }

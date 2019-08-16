@@ -23,7 +23,7 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
     }
 
     private fun onStateChange(viewState: AlbumDetailViewModel.ViewState) {
-        progressBar.visible = viewState.isProgressBarVisible
+        progressBar.visible = viewState.isLoading
 
         nameTextView.text = viewState.name
         nameTextView.visible = viewState.name.isNotBlank()
