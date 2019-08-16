@@ -41,14 +41,14 @@ internal class AlbumDetailViewModel(
             isError = false,
             artist = viewAction.albumDomainModel.artist,
             name = viewAction.albumDomainModel.name,
-            coverImage = viewAction.albumDomainModel.images.first().url
+            coverImageUrl = viewAction.albumDomainModel.getDefaultImageUrl() ?: ""
         )
         is AlbumLoadFailure -> viewState.copy(
             isLoading = false,
             isError = true,
             artist = "",
             name = "",
-            coverImage = ""
+            coverImageUrl = ""
         )
     }
 
@@ -57,7 +57,7 @@ internal class AlbumDetailViewModel(
         val isError: Boolean = false,
         val name: String = "",
         val artist: String = "",
-        val coverImage: String = ""
+        val coverImageUrl: String = ""
     ) : BaseViewState
 
     internal sealed class Action : BaseAction {

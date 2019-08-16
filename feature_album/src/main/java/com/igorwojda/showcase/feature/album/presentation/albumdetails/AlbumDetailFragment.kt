@@ -35,7 +35,7 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
 
         val imageSize = 800
 
-        coverImageView.load(viewState.coverImage) {
+        coverImageView.load(viewState.coverImageUrl) {
             size(imageSize, imageSize)
         }
     }
