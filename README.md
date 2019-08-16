@@ -91,8 +91,8 @@ Each feature module contains own set of the `Clean Architecture` layers:
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
 
 Each layer has distinct set of responsibilities:
-- `Presentation layer` - responsible presenting data to a screen and handling user interactions. `ViewModel`, retries data in background using `Coroutines` (executes `UseCases`), process data and pass it to a view (usually `Fragment`) using `LiveData`.
-- `Domain layer` - contains domain models (entities) and `UseCases` (business logic). `UseCases` usually retrieves or pass data to `Repository`, often applying some additional transformations (eg. filtering).
+- `Presentation layer` - responsible presenting data to a screen and handling user interactions. `ViewModel`, retrieves data in background using `Coroutines` (executes `UseCases`), process data and pass it to a view (usually `Fragment`) using `LiveData`.
+- `Domain layer` - contains domain models (entities) and `UseCases` (business logic). `UseCases` usually pass to/from `Repository`, often applying additional transformations (eg. filtering).
 - `Data layer` - encapsulates the source of the data (eg. network, memory cache, local database...) and serves as unified access point to the data.
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
