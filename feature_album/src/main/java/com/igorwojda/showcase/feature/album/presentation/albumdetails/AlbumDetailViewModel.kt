@@ -17,15 +17,11 @@ internal class AlbumDetailViewModel(
     private val args: AlbumDetailFragmentArgs
 ) : BaseViewModel<ViewState, Action>() {
 
-    override val initialViewState = ViewState()
-
     init {
-        loadData()
-    }
-
-    override fun onLoadData() {
         getAlbum()
     }
+
+    override val initialViewState = ViewState()
 
     private fun getAlbum() {
         viewModelScope.launch {

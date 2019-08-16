@@ -18,20 +18,21 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         }
 
         viewStateMutableLiveData.postValue(initialViewState)
-        onLoadData()
     }
 
     protected var viewState: ViewState
         get() {
+            // Value should never be null.
+            // Fix for an edge case when data is loaded from within init method of child class
+            if (viewStateLiveData.value == null) {
+                viewStateMutableLiveData.value = initialViewState
+            }
+
             return checkNotNull(viewStateLiveData.value) { "ViewState is null" }
         }
         private set(value) {
             viewStateMutableLiveData.postValue(value)
         }
-
-    fun loadData() {
-        onLoadData()
-    }
 
     fun sendAction(viewAction: ViewAction) {
         val oldState = viewState
