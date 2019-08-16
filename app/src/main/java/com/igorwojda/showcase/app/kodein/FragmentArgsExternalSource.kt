@@ -31,10 +31,8 @@ class FragmentArgsExternalSource : ExternalSource {
         return null
     }
 
-    /**
-     * This function provides appropriate [NavArgs] instance using reflection to derive
-     * Args class name from fragment class name.
-     */
+    // This function provides appropriate [NavArgs] instance using reflection to derive
+    // Args class name from fragment class name.
     @MainThread
     private fun getNavArgsInstance(fragment: Fragment): NavArgs? {
         val arguments = fragment.arguments ?: return null
