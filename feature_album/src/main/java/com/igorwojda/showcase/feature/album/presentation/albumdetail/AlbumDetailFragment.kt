@@ -31,7 +31,7 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         artistTextView.text = viewState.artist
         artistTextView.visible = viewState.artist.isNotBlank()
 
-        errorImageView.visible = viewState.isError
+        errorAnimation.visible = viewState.isError
 
         val imageSize = 800
 
