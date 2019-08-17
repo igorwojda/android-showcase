@@ -46,7 +46,7 @@ class AlbumDetailViewModelTest {
     }
 
     @Test
-    fun `GetAlbumUseCase return album`() {
+    fun `verify state when GetAlbumUseCase return album`() {
         // given
         val album = AlbumDomainModel("albumName", "artistName", listOf())
 
@@ -68,7 +68,7 @@ class AlbumDetailViewModelTest {
     }
 
     @Test
-    fun `GetAlbumUseCase return null`() {
+    fun `verify state when GetAlbumUseCase return null`() {
         // given
         mockGetAlbumUseCase.stub {
             onBlocking { execute(any(), any(), any()) } doReturn (null)

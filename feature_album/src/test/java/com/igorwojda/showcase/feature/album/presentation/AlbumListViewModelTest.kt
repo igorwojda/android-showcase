@@ -51,7 +51,7 @@ class AlbumListViewModelTest {
     }
 
     @Test
-    fun `GetAlbumSearchUseCase returns empty list`() {
+    fun `verify state when GetAlbumSearchUseCase returns empty list`() {
         // given
         mockGetAlbumSearchUseCase.stub {
             onBlocking { execute() } doReturn listOf()
@@ -68,7 +68,7 @@ class AlbumListViewModelTest {
     }
 
     @Test
-    fun `GetAlbumSearchUseCase returns non-empty list`() {
+    fun `verify state when GetAlbumSearchUseCase returns non-empty list`() {
         // given
         val album = AlbumDomainModel("albumName", "artistName", listOf())
         val albums = listOf(album)
