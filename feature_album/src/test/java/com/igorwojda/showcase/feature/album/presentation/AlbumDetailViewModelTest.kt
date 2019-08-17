@@ -1,12 +1,11 @@
 package com.igorwojda.showcase.feature.album.presentation
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailFragmentArgs
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailFragmentArgs
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.willReturn
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Before

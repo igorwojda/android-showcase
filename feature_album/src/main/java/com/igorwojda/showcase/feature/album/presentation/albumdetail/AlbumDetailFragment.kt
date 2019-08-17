@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.presentation.albumdetails
+package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import android.os.Bundle
 import android.view.View

@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/Fragment"
-        android:name="com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailFragment"
+        android:name="com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailFragment"
         android:label="AlbumDetailFragment">
         <argument
             android:name="artistName"
