@@ -8,8 +8,8 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumWikiDomainModel
 object DomainFixtures {
 
     internal fun getAlbum(
-        name: String = "name",
-        artist: String = "artist",
+        name: String = "albumName",
+        artist: String = "artistName",
         images: List<AlbumImageDomainModel> = listOf(getAlbumImage()),
         wiki: AlbumWikiDomainModel? = getAlbumWikiDomainModel(),
         mbId: String? = "mbId"

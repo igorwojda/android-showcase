@@ -42,6 +42,7 @@ class AlbumListFragment : BaseContainerFragment() {
         }
 
         observe(viewModel.stateLiveData, ::onStateChange)
+        viewModel.loadData()
     }
 
     private fun onStateChange(state: AlbumListViewModel.ViewState) {

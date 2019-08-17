@@ -12,7 +12,7 @@ internal class AlbumListViewModel(
     private val getAlbumListUseCase: GetAlbumListUseCase
 ) : BaseViewModel<AlbumListViewModel.ViewState, AlbumListViewModel.Action>(ViewState()) {
 
-    init {
+    override fun onLoadData() {
         getAlbumList()
     }
 

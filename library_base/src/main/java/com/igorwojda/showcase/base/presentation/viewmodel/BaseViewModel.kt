@@ -38,5 +38,13 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         state = onReduceState(viewAction)
     }
 
+    fun loadData() {
+        onLoadData()
+    }
+
+    protected open fun onLoadData() {
+
+    }
+
     protected abstract fun onReduceState(viewAction: ViewAction): ViewState
 }

@@ -17,7 +17,7 @@ internal class AlbumDetailViewModel(
     private val args: AlbumDetailFragmentArgs
 ) : BaseViewModel<ViewState, Action>(ViewState()) {
 
-    init {
+    override fun onLoadData() {
         getAlbum()
     }
 
@@ -37,15 +37,15 @@ internal class AlbumDetailViewModel(
         is AlbumLoadSuccess -> state.copy(
             isLoading = false,
             isError = false,
-            artist = viewAction.albumDomainModel.artist,
-            name = viewAction.albumDomainModel.name,
+            artistName = viewAction.albumDomainModel.artist,
+            albumName = viewAction.albumDomainModel.name,
             coverImageUrl = viewAction.albumDomainModel.getDefaultImageUrl() ?: ""
         )
         is AlbumLoadFailure -> state.copy(
             isLoading = false,
             isError = true,
-            artist = "",
-            name = "",
+            artistName = "",
+            albumName = "",
             coverImageUrl = ""
         )
     }
@@ -53,8 +53,8 @@ internal class AlbumDetailViewModel(
     data class ViewState(
         val isLoading: Boolean = true,
         val isError: Boolean = false,
-        val name: String = "",
-        val artist: String = "",
+        val albumName: String = "",
+        val artistName: String = "",
         val coverImageUrl: String = ""
     ) : BaseViewState
 

@@ -20,16 +20,17 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         observe(viewModel.stateLiveData, ::onStateChange)
+        viewModel.loadData()
     }
 
     private fun onStateChange(state: AlbumDetailViewModel.ViewState) {
         progressBar.visible = state.isLoading
 
-        nameTextView.text = state.name
-        nameTextView.visible = state.name.isNotBlank()
+        nameTextView.text = state.albumName
+        nameTextView.visible = state.albumName.isNotBlank()
 
-        artistTextView.text = state.artist
-        artistTextView.visible = state.artist.isNotBlank()
+        artistTextView.text = state.artistName
+        artistTextView.visible = state.artistName.isNotBlank()
 
         errorAnimation.visible = state.isError
 
@@ -40,5 +41,3 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         }
     }
 }
-
-

@@ -57,6 +57,11 @@ android {
             getByName("test").java.srcDir("${project.rootDir}/app/build/generated/source/navigation-args/debug")
         }
     }
+
+    // Removes the need to mock need to mock classes that may be irrelevant from test perspective
+    testOptions {
+        unitTests.isReturnDefaultValues = true //TestOptions.isReturnDefaultValues
+    }
 }
 
 androidExtensions { isExperimental = true }
