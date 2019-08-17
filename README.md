@@ -55,8 +55,8 @@ good reason to use non-stable dependency.
         * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
         * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform action when lifecycle state changes
         * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data in a lifecycle conscious way
-    * [Picasso](https://square.github.io/picasso/) - deal with loading images
-    * [Lottie](http://airbnb.io/lottie) - animation library
+  *   [Coil](https://github.com/coil-kt/coil) - image loading library with Kotlin idiomatic API
+  *   [Lottie](http://airbnb.io/lottie) - animation library
     * [Stetho](http://facebook.github.io/stetho/) - application debugging tool
     * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture

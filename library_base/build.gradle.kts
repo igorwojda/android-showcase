@@ -63,6 +63,5 @@ dependencies {
     api(LibraryDependency.FRAGMENT_KTX)
     api(LibraryDependency.LIFECYCLE_EXTENSIONS)
     api(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
-    api(LibraryDependency.PICASSO)
     api(LibraryDependency.COIL)
 }

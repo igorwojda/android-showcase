@@ -21,7 +21,7 @@ internal val presentationModule = Kodein.Module("${FEATURE_NAME}PresentationModu
         KotlinViewModelProvider.of(context) { AlbumListViewModel(instance()) }
     }
 
-    bind() from singleton { AlbumAdapter(instance()) }
+    bind() from singleton { AlbumAdapter() }
 
     bind() from singleton { ImageLoader(instance()) }
 

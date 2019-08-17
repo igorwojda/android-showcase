@@ -4,7 +4,6 @@ import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.igorwojda.showcase.app.data.retrofit.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.retrofit.UserAgentInterceptor
-import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein
@@ -58,6 +57,4 @@ val appModule = Kodein.Module("appModule") {
             .client(instance())
             .build()
     }
-
-    bind() from singleton { Picasso.get() }
 }

@@ -12,12 +12,9 @@ import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 
-internal class AlbumAdapter(
-    private val picasso: Picasso
-) : RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() {
+internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() {
 
     var albums: List<AlbumDomainModel> by observer(listOf()) {
         notifyDataSetChanged()
