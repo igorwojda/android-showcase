@@ -1,6 +1,6 @@
 # Project description
 [![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=shield)](https://circleci.com/gh/igorwojda/android-showcase)
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.41-blue.svg)](http://kotlinlang.org/)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.41-blue.svg)](https://kotlinlang.org)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
@@ -12,19 +12,19 @@ Showcase is a sample project that presents modern, 2019 approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
-The goal of the project is to demonstrate best practices, provide set of guidelines, and present modern Android
+The goal of the project is to demonstrate best practices, provide a set of guidelines, and present modern Android
 application architecture that is modular, scalable, maintainable and testable. This application may look simple, but it
-has all of these small details that will set the rock solid foundation of the larger app suitable for bigger teams and
+has all of these small details that will set the rock-solid foundation of the larger app suitable for bigger teams and
 long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
-decisions follows official Google recommendations.
+decisions follow official Google recommendations.
 
 This project is being heavily maintained to match current industry standards. In upcoming weeks (Aug-Dec 2019) I plan to
-write series of articles explaining many of this project architectural design decisions, so
-[stay tuned](https://twitter.com/igorwojda).
+write an extensive series of articles explaining many of this project architectural design decisions, so <a
+href="https://twitter.com/igorwojda" target="_blank">stay tuned</a>.
 
 ## Project characteristics
 
-This project bring to table set of best practices, tools and solutions:
+This project brings to table set of best practices, tools, and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
 * Modern architecture (feature modules, Clean Architecture, Model-View-ViewModel)
@@ -41,9 +41,9 @@ This project bring to table set of best practices, tools and solutions:
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
-Min API level is set to [`21`](https://android-arsenal.com/api?level=21), so presented approach is suitable for over
+Min API level is set to [`21`](https://android-arsenal.com/api?level=21), so the presented approach is suitable for over
 [85% of devices](https://developer.android.com/about/dashboards) running Android. This project takes advantage of many
-popular libraries and tools of the Android ecosystem. Most of the libraries are in stable version, unless there is a
+popular libraries and tools of the Android ecosystem. Most of the libraries are in the stable version, unless there is a
 good reason to use non-stable dependency.
 
 * Tech-stack
@@ -75,16 +75,18 @@ good reason to use non-stable dependency.
 
 ## Architecture
 
-Feature related code is placed inside one of feature modules. This modularized approach provide better
+Feature related code is placed inside one of the feature modules. This modularized approach provides better
 [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) in the codebase and allows for feature to
 be developed in isolation, independently from other features.
 
 ### Module dependencies
 
-This is simplified diagram of dependencies between gradle modules. Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on `app` module, not other way
-around).
+This is a simplified diagram of dependencies between gradle modules.
 
 ![module_dependencies](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png?raw=true)
+
+Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on
+`app` module, not another way around).
 
 ### Feature structure
 
@@ -92,34 +94,34 @@ Each feature module contains own set of the `Clean Architecture` layers:
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
 
-Each layer has distinct set of responsibilities:
-- `Presentation layer` - responsible presenting data to a screen and handling user interactions.
+Each layer has a distinct set of responsibilities:
+- `Presentation layer` - responsible for presenting data to a screen and handling user interactions.
 - `Domain layer` - contains `UseCases` (business logic) and supporting domain models (entities).
 - `Data layer` - encapsulates the source of the data (eg. network, memory cache, local database...) and serves as
   unified access point to the data for `Domain` layer.
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
-Feature also contains components that does not really belong to any layer.
+The feature module also contains components that does not belong to any layer.
 
 ### Data flow
 
-Below diagram presents application data flow when user interacts with `album list screen`:
+Below diagram presents application data flow when a user interacts with `album list screen`:
 
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
 
-In the `presentation` layer application holds `common state` for each view. This approach is derived from
-[Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and 3 [Redux
+In the `presentation` layer application holds `common state` for each view. This approach derives from
+[Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
 principles](https://redux.js.org/introduction/three-principles).
 
 ## Ci pipeline
 
-CI pipeline verify project correctness on each PR. Some of the tasks run in parallel, while other like `app build` will
-not be stared until all `static checks` and `tests` complete successfully:
+CI pipeline verifies project correctness witch each PR. Some of the tasks run in parallel, while others like `app build`
+will not be stared until all `static checks` and `tests` complete successfully:
 
 ![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
 
-All of the gradle tasks (cmd commands) that are executed by CI can be found in the [CI config](.circleci/config.yml)
+All of the Gradle tasks (cmd commands) that are executed by CI can be found in the [CI config](.circleci/config.yml)
 file:
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detekt` - runs detekt
@@ -127,11 +129,12 @@ file:
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew :app:bundleDebug` - create app bundle
 
-On top of that project contains single `./gradlew staticCheck` task that mimics all CI tasks and is intended to run on
+On top of that project contains custom `./gradlew staticCheck` task that mimics all CI tasks and is intended to run on
 local computer.
 
 ## What this project does not cover?
-The interface of the app utilises some of modern material design components, however is deliberately kept simple to
+
+The interface of the app utilises some of modern material design components, however, is deliberately kept simple to
 focus on application architecture.
 
 ## Upcoming improvements
@@ -141,15 +144,15 @@ focus on application architecture.
 * Add Room
 * UI tests (including CI pipeline emulator configuration)
 * Data binding
-* Add Custom lint, ktlint and detekt tasks
+* Add Custom `android lint`, `ktlint` and `detekt` checks/rules
 * Add script to update all dependencies in the project, create PR to run all checks
 * Continuous deployment (automatically publish app to Google play store using CI)
 * Support for DayNight MaterialTheme
-* and more…
+* and much more…
 
 ## Getting started
 
-There are few ways to open this project.
+There are a few ways to open this project.
 
 ### Android Studio
 
@@ -164,7 +167,7 @@ There are few ways to open this project.
 ## Inspiration
 
 This is project is just a sample, to inspire you and should handle most of the common cases. I encourage you to also
-take a look at other high quality projects to find architecture that works for you and your existing codebase:
+take a look at other high-quality projects to find architecture that works for you and your existing codebase:
 
 * [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
 * [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of different
@@ -179,6 +182,7 @@ take a look at other high quality projects to find architecture that works for y
   documentation
 
 ## Contribute
+
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
 ## Author

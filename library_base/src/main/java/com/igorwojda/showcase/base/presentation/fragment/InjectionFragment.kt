@@ -15,6 +15,7 @@ See description in InjectionActivity class
  */
 abstract class InjectionFragment : Fragment(), KodeinAware {
 
+    @SuppressWarnings("LeakingThisInConstructor")
     final override val kodeinContext = kcontext<Fragment>(this)
 
     final override val kodein: Kodein by kodein()
