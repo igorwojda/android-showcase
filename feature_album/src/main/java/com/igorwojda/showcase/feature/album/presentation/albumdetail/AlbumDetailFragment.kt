@@ -22,20 +22,20 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
         observe(viewModel.stateLiveData, ::onStateChange)
     }
 
-    private fun onStateChange(viewState: AlbumDetailViewModel.ViewState) {
-        progressBar.visible = viewState.isLoading
+    private fun onStateChange(state: AlbumDetailViewModel.ViewState) {
+        progressBar.visible = state.isLoading
 
-        nameTextView.text = viewState.name
-        nameTextView.visible = viewState.name.isNotBlank()
+        nameTextView.text = state.name
+        nameTextView.visible = state.name.isNotBlank()
 
-        artistTextView.text = viewState.artist
-        artistTextView.visible = viewState.artist.isNotBlank()
+        artistTextView.text = state.artist
+        artistTextView.visible = state.artist.isNotBlank()
 
-        errorAnimation.visible = viewState.isError
+        errorAnimation.visible = state.isError
 
         val imageSize = 800
 
-        coverImageView.load(viewState.coverImageUrl) {
+        coverImageView.load(state.coverImageUrl) {
             size(imageSize, imageSize)
         }
     }

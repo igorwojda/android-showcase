@@ -44,8 +44,9 @@ class AlbumListFragment : BaseContainerFragment() {
         observe(viewModel.stateLiveData, ::onStateChange)
     }
 
-    private fun onStateChange(viewState: AlbumListViewModel.ViewState) {
-        albumAdapter.albums = viewState.albums
-        progressBar.visible = viewState.isLoading
+    private fun onStateChange(state: AlbumListViewModel.ViewState) {
+        albumAdapter.albums = state.albums
+        progressBar.visible = state.isLoading
+        errorAnimation.visible = state.isError
     }
 }

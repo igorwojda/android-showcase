@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/space_medium"
-            android:text="@string/album_not_found"/>
+            android:text="@string/data_not_found"/>
 
     </LinearLayout>
 
