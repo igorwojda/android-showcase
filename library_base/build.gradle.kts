@@ -30,10 +30,6 @@ android {
         }
     }
 
-    testOptions {
-        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -44,6 +40,10 @@ android {
         // See: https://youtrack.jetbrains.com/issue/KT-31077
         val options = this as? KotlinJvmOptions
         options?.jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
 }
 
