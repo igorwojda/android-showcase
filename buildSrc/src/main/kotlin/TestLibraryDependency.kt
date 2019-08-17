@@ -6,7 +6,6 @@ private object TestLibraryVersion {
     const val MOCKITO = "3.0.0"
     const val MOCKITO_KOTLIN = "2.1.0"
     const val ANDROID_X_TEST = "1.1.1"
-
 }
 
 object TestLibraryDependency {
