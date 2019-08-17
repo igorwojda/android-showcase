@@ -15,19 +15,19 @@ import kotlinx.coroutines.launch
 internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
     private val args: AlbumDetailFragmentArgs
-) : BaseViewModel<ViewState, Action>() {
+) : BaseViewModel<ViewState, Action>(ViewState()) {
 
     init {
         getAlbum()
     }
-
-    override val initialState = ViewState()
 
     private fun getAlbum() {
         viewModelScope.launch {
             getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
                 if (it != null) {
                     sendAction(AlbumLoadSuccess(it))
+                    sendAction(AlbumLoadSuccess(it.copy()))
+                    sendAction(AlbumLoadSuccess(it.copy()))
                 } else {
                     sendAction(AlbumLoadFailure)
                 }

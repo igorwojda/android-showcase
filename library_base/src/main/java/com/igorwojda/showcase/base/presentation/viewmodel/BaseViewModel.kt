@@ -4,46 +4,38 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.igorwojda.library.base.BuildConfig
 import com.igorwojda.showcase.base.presentation.extension.toLiveData
+import kotlin.properties.Delegates
 
-abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction> : ViewModel() {
+abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>(initialState: ViewState) :
+    ViewModel() {
 
     private val stateMutableLiveData = MutableLiveData<ViewState>()
     val stateLiveData = stateMutableLiveData.toLiveData()
-    abstract val initialState: ViewState
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
+    private var stateInitialised = false
 
     init {
         if (BuildConfig.DEBUG) {
             stateTimeTravelDebugger = StateTimeTravelDebugger(this::class.java.simpleName)
         }
-
-        stateMutableLiveData.postValue(initialState)
     }
 
-    protected var state: ViewState
-        get() {
-            // Value should never be null.
-            // Fix for an edge case when data is loaded from within init method of child class
-            if (stateLiveData.value == null) {
-                stateMutableLiveData.value = initialState
-            }
+    // Delegate will handle state event deduplication
+    // (multiple states of the same type holding the same data will not be dispatched multiple times to LiveData stream)
+    protected var state by Delegates.observable(initialState) { _, old, new ->
+        stateMutableLiveData.value = new
 
-            return checkNotNull(stateLiveData.value) { "ViewState is null" }
+        if (new != old) {
+            stateTimeTravelDebugger?.apply {
+                addStateTransition(old, new)
+                logLast()
+            }
         }
-        private set(value) {
-            stateMutableLiveData.postValue(value)
-        }
+    }
 
     fun sendAction(viewAction: ViewAction) {
-        val oldState = state
-        val newState = onReduceState(viewAction)
-
-        stateTimeTravelDebugger?.apply {
-            addStateTransition(oldState, viewAction, newState)
-            logLast()
-        }
-
-        state = newState
+        stateTimeTravelDebugger?.addAction(viewAction)
+        state = onReduceState(viewAction)
     }
 
     protected open fun onLoadData() {}

@@ -10,13 +10,11 @@ import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(
     private val getAlbumListUseCase: GetAlbumListUseCase
-) : BaseViewModel<AlbumListViewModel.ViewState, AlbumListViewModel.Action>() {
+) : BaseViewModel<AlbumListViewModel.ViewState, AlbumListViewModel.Action>(ViewState()) {
 
     init {
         getAlbumList()
     }
-
-    override val initialState = ViewState()
 
     override fun onReduceState(viewAction: Action) = when (viewAction) {
         is Action.AlbumListLoadingSuccess -> state.copy(

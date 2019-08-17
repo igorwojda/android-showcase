@@ -7,9 +7,17 @@ import kotlin.reflect.full.memberProperties
 class StateTimeTravelDebugger(private val viewClassName: String) {
 
     private val stateTimeline = mutableListOf<StateTransition>()
+    private var lastViewAction: BaseAction? = null
 
-    fun addStateTransition(oldState: BaseViewState, viewAction: BaseAction, newState: BaseViewState) {
-        stateTimeline.add(StateTransition(oldState, viewAction, newState))
+    fun addAction(viewAction: BaseAction) {
+        lastViewAction = viewAction
+    }
+
+    fun addStateTransition(oldState: BaseViewState, newState: BaseViewState) {
+        val lastViewAction =
+            checkNotNull(lastViewAction) { "lastViewAction is null. Please log action before logging state transition" }
+        stateTimeline.add(StateTransition(oldState, lastViewAction, newState))
+        this.lastViewAction = null
     }
 
     private fun getMessage() = getMessage(stateTimeline)
