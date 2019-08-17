@@ -16,6 +16,7 @@ abstract class InjectionActivity : AppCompatActivity(), KodeinAware {
 
     private val parentKodein by kodein()
 
+    @SuppressWarnings("LeakingThisInConstructor")
     final override val kodeinContext = kcontext<AppCompatActivity>(this)
 
     // Using retainedKodein will not recreate Kodein when the Activity restarts
