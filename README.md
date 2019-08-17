@@ -13,12 +13,12 @@ Showcase is a sample project that presents modern, 2019 approach to
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
 The goal of the project is to demonstrate best practices, provide guidance and present modern Android application
-architecture that is modular, scalable, maintainable and testable. Application may look simple, but it has all of these
+architecture that is modular, scalable, maintainable and testable. This application may look simple, but it has all of these
 small details that will set the rock solid foundation of the larger app suitable for bigger teams and long
 [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
-decisions follows or even extends official Google recommendations.
+decisions follows official Google recommendations.
 
-`Android showcase` is being heavily maintained to match up to date industry standards.
+This project is being heavily maintained to match up to date industry standards.
 
 ## Project characteristics
 
@@ -27,6 +27,8 @@ This project bring to table set of best practices, tools and solutions:
 * 100% [Kotlin](https://kotlinlang.org/)
 * Modern architecture (feature modules, Clean Architecture, Model-View-ViewModel)
 * [Android Jetpack](https://developer.android.com/jetpack)
+* A single-activity architecture, using the Navigation component to manage fragment operations
+  * Reactive UIs
 * CI pipeline
 * Testing
 * Static analysis tools
@@ -43,12 +45,17 @@ popular libraries and tools of the Android ecosystem. Most of the libraries are 
 good reason to use non-stable dependency.
 
 * Tech-stack
-    * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
-    * [Kodein](https://kodein.org/Kodein-DI/)
-    * [Retrofit](https://square.github.io/retrofit/)
+    * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - Perform background operations
+    * [Kodein](https://kodein.org/Kodein-DI/) - Dependency injection
+    * [Retrofit](https://square.github.io/retrofit/) - Retrieve data from network
     * [Jetpack](https://developer.android.com/jetpack)
-    * [Lottie](http://airbnb.io/lottie)
-    * [Stetho](http://facebook.github.io/stetho/)
+        * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - deal with whole in-app navigation
+        * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
+        * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform action when lifecycle state changes
+        * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data in a lifecycle conscious way
+    * [Picasso](https://square.github.io/picasso/) - deal with loading images
+    * [Lottie](http://airbnb.io/lottie) - animation library
+    * [Stetho](http://facebook.github.io/stetho/) - application debugging tool
     * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
     * Clean Architecture (at module level)
@@ -67,30 +74,33 @@ good reason to use non-stable dependency.
 
 ## Architecture
 
+Feature related code is placed inside one of feature modules. This approach provide better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) in the codebase and allows
+for feature to be developed in isolation, independently from other features.
+
 ### Module dependencies
 
-This is simplified diagram of dependencies between gradle modules. Notice that due usage of Android
-`dynamic-feature` module dependencies are reversed (feature modules are depending on `app` module, not other way
+This is simplified diagram of dependencies between gradle modules. Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on `app` module, not other way
 around).
 
 ![module_dependencies](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png?raw=true)
 
 ### Feature structure
 
-Feature related code is placed in separate modules to provide better separation of concerns in the codebase. This allows
-for feature to be developed in isolation, independently from other features. Each feature module contains own set of the
-Clean Architecture layers (`Presentation`/`Domain`/`Data`):
+Each feature module contains own set of the `Clean Architecture` layers:
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
 
-Single feature module contains dedicated set of components in each of Clean Architecture layers and some additional
-non-layer related elements:
+Each layer has distinct set of responsibilities:
+- `Presentation layer` - responsible presenting data to a screen and handling user interactions. `ViewModel`, retrieves data in background using `Coroutines` (executes `UseCases`), process data and pass it to a view (usually `Fragment`) using `LiveData`.
+- `Domain layer` - contains domain models (entities) and `UseCases` (business logic). `UseCases` usually pass to/from `Repository`, often applying additional transformations (eg. filtering).
+- `Data layer` - encapsulates the source of the data (eg. network, memory cache, local database...) and serves as unified access point to the data.
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
 ### Data flow
 
 Let's take a look what exactly happens under the surface when user interacts with `album list screen`:
+
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
 
 ## Ci pipeline
@@ -102,9 +112,9 @@ static checks and tests complete successfully.
 
 ## What this project does not cover?
 The interface of the app utilises some of modern material design components, however is deliberately kept simple to
-focus on architecture.
+focus on application architecture.
 
-## Future improvements
+## Upcoming improvements
 
 * Android Dynamic delivery
 * Caching layer (memory + disk)
@@ -131,13 +141,10 @@ There are few ways to open this project.
 1. Run `git clone https://github.com/igorwojda/android-showcase.git`
 2. Android Studio -> File -> Open
 
-## Contribute
-Feedback and new contributions are welcome whether it's through bug reports or new PRs.
-
 ## Inspiration
 
 Other Android repositories that are worth checking out:
-
+* [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
 * [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of different
   Android architecture approaches
 * [Android sunflower](https://github.com/googlesamples/android-sunflower) complete JetPack sample covering all libraries
@@ -146,6 +153,9 @@ Other Android repositories that are worth checking out:
 * [Plaid](https://github.com/android/plaid) - showcase of Android material design
 * [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
   diagrams of Clean Architecture layers
+
+## Contribute
+Feedback and new contributions are welcome whether it's through bug reports or new PRs.
 
 ## Author
 
