@@ -16,10 +16,10 @@ internal class AlbumListViewModel(
         getAlbumList()
     }
 
-    override val initialViewState = ViewState()
+    override val initialState = ViewState()
 
     override fun onReduceState(viewAction: Action) = when (viewAction) {
-        is Action.AlbumListLoadingSuccess -> viewState.copy(
+        is Action.AlbumListLoadingSuccess -> state.copy(
             isLoading = false,
             albums = viewAction.albums
         )

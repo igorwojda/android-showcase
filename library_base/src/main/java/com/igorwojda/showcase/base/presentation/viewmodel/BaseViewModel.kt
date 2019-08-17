@@ -7,43 +7,43 @@ import com.igorwojda.showcase.base.presentation.extension.toLiveData
 
 abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction> : ViewModel() {
 
-    private val viewStateMutableLiveData = MutableLiveData<ViewState>()
-    val viewStateLiveData = viewStateMutableLiveData.toLiveData()
-    abstract val initialViewState: ViewState
-    private var stateTransitionDebugger: StateTransitionDebugger? = null
+    private val stateMutableLiveData = MutableLiveData<ViewState>()
+    val stateLiveData = stateMutableLiveData.toLiveData()
+    abstract val initialState: ViewState
+    private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
 
     init {
         if (BuildConfig.DEBUG) {
-            stateTransitionDebugger = StateTransitionDebugger(this::class.java.simpleName)
+            stateTimeTravelDebugger = StateTimeTravelDebugger(this::class.java.simpleName)
         }
 
-        viewStateMutableLiveData.postValue(initialViewState)
+        stateMutableLiveData.postValue(initialState)
     }
 
-    protected var viewState: ViewState
+    protected var state: ViewState
         get() {
             // Value should never be null.
             // Fix for an edge case when data is loaded from within init method of child class
-            if (viewStateLiveData.value == null) {
-                viewStateMutableLiveData.value = initialViewState
+            if (stateLiveData.value == null) {
+                stateMutableLiveData.value = initialState
             }
 
-            return checkNotNull(viewStateLiveData.value) { "ViewState is null" }
+            return checkNotNull(stateLiveData.value) { "ViewState is null" }
         }
         private set(value) {
-            viewStateMutableLiveData.postValue(value)
+            stateMutableLiveData.postValue(value)
         }
 
     fun sendAction(viewAction: ViewAction) {
-        val oldState = viewState
+        val oldState = state
         val newState = onReduceState(viewAction)
 
-        stateTransitionDebugger?.apply {
+        stateTimeTravelDebugger?.apply {
             addStateTransition(oldState, viewAction, newState)
             logLast()
         }
 
-        viewState = newState
+        state = newState
     }
 
     protected open fun onLoadData() {}

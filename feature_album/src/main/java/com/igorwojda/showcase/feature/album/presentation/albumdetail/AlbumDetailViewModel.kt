@@ -21,7 +21,7 @@ internal class AlbumDetailViewModel(
         getAlbum()
     }
 
-    override val initialViewState = ViewState()
+    override val initialState = ViewState()
 
     private fun getAlbum() {
         viewModelScope.launch {
@@ -36,14 +36,14 @@ internal class AlbumDetailViewModel(
     }
 
     override fun onReduceState(viewAction: Action) = when (viewAction) {
-        is AlbumLoadSuccess -> viewState.copy(
+        is AlbumLoadSuccess -> state.copy(
             isLoading = false,
             isError = false,
             artist = viewAction.albumDomainModel.artist,
             name = viewAction.albumDomainModel.name,
             coverImageUrl = viewAction.albumDomainModel.getDefaultImageUrl() ?: ""
         )
-        is AlbumLoadFailure -> viewState.copy(
+        is AlbumLoadFailure -> state.copy(
             isLoading = false,
             isError = true,
             artist = "",

@@ -19,7 +19,7 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observe(viewModel.viewStateLiveData, ::onStateChange)
+        observe(viewModel.stateLiveData, ::onStateChange)
     }
 
     private fun onStateChange(viewState: AlbumDetailViewModel.ViewState) {
