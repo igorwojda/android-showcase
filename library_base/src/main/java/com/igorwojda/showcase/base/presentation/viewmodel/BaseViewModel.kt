@@ -12,7 +12,6 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
     private val stateMutableLiveData = MutableLiveData<ViewState>()
     val stateLiveData = stateMutableLiveData.toLiveData()
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
-    private var stateInitialised = false
 
     init {
         if (BuildConfig.DEBUG) {
@@ -42,9 +41,7 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         onLoadData()
     }
 
-    protected open fun onLoadData() {
-
-    }
+    protected open fun onLoadData() {}
 
     protected abstract fun onReduceState(viewAction: ViewAction): ViewState
 }

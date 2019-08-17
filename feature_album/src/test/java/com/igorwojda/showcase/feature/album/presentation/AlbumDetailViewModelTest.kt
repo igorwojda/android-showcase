@@ -63,7 +63,7 @@ class AlbumDetailViewModelTest {
             isError = false,
             artistName = album.artist,
             albumName = album.name
-            //TODO: coverImageUrl
+            // TODO: coverImageUrl
         )
     }
 

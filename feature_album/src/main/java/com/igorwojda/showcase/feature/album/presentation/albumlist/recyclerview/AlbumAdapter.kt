@@ -8,7 +8,6 @@ import coil.api.load
 import coil.transform.RoundedCornersTransformation
 import com.igorwojda.showcase.base.delegate.observer
 import com.igorwojda.showcase.base.presentation.extension.setOnDebouncedClickListener
-import com.igorwojda.showcase.base.presentation.picasso.PicassoCallback
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.pawegio.kandroid.hide
@@ -66,17 +65,6 @@ internal class AlbumAdapter(
 
         private fun setDefaultImage() {
             itemView.coverErrorImageView.show()
-        }
-
-        private fun loadImage(it: String) {
-
-            val callback = PicassoCallback().apply {
-                onError { setDefaultImage() }
-            }
-
-            picasso
-                .load(it)
-                .into(itemView.coverImageView, callback)
         }
     }
 }

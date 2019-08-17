@@ -22,5 +22,3 @@ class NavHostActivity : BaseActivity() {
         bottomNav.setupWithNavController(navController)
     }
 }
-
-
