@@ -53,11 +53,12 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
     private fun getLogLine(oldState: BaseViewState, newState: BaseViewState, propertyName: String): String {
         val oldValue = getPropertyValue(oldState, propertyName)
         val newValue = getPropertyValue(newState, propertyName)
+        val indent = "\t"
 
         return if (oldValue != newValue) {
-            "\t*$propertyName: $oldValue -> $newValue\n"
+            "$indent*$propertyName: $oldValue -> $newValue\n"
         } else {
-            "\t$propertyName: $newValue\n"
+            "$indent$propertyName: $newValue\n"
         }
     }
 

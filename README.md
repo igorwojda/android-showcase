@@ -153,6 +153,8 @@ Other Android repositories that are worth checking out:
 * [Plaid](https://github.com/android/plaid) - showcase of Android material design
 * [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
   diagrams of Clean Architecture layers
+* [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
+  documentation
 
 ## Contribute
 Feedback and new contributions are welcome whether it's through bug reports or new PRs.

@@ -26,8 +26,6 @@ internal class AlbumDetailViewModel(
             getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
                 if (it != null) {
                     sendAction(AlbumLoadSuccess(it))
-                    sendAction(AlbumLoadSuccess(it.copy()))
-                    sendAction(AlbumLoadSuccess(it.copy()))
                 } else {
                     sendAction(AlbumLoadFailure)
                 }
