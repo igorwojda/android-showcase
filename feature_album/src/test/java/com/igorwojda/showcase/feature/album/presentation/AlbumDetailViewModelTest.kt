@@ -69,11 +69,6 @@ class AlbumDetailViewModelTest {
 
     @Test
     fun `verify state when GetAlbumUseCase return null`() {
-        // given
-        mockGetAlbumUseCase.stub {
-            onBlocking { execute(any(), any(), any()) } doReturn (null)
-        }
-
         // when
         cut.loadData()
 

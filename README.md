@@ -12,13 +12,15 @@ Showcase is a sample project that presents modern, 2019 approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
-The goal of the project is to demonstrate best practices, provide set of guidelines and present modern Android
+The goal of the project is to demonstrate best practices, provide set of guidelines, and present modern Android
 application architecture that is modular, scalable, maintainable and testable. This application may look simple, but it
 has all of these small details that will set the rock solid foundation of the larger app suitable for bigger teams and
 long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
 decisions follows official Google recommendations.
 
-This project is being heavily maintained to match up to date industry standards.
+This project is being heavily maintained to match current industry standards. In upcoming weeks (Aug-Dec 2019) I plan to
+write series of articles explaining many of this project architectural design decisions, so
+[stay tuned](https://twitter.com/igorwojda).
 
 ## Project characteristics
 
@@ -71,11 +73,11 @@ good reason to use non-stable dependency.
     * Custom tasks
     * Plugins ([Ktlint](https://github.com/JLLeitschuh/ktlint-gradle), [Detekt](https://github.com/arturbosch/detekt#with-gradle), [Versions](https://github.com/ben-manes/gradle-versions-plugin), [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args))
 
-
 ## Architecture
 
-Feature related code is placed inside one of feature modules. This approach provide better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) in the codebase and allows
-for feature to be developed in isolation, independently from other features.
+Feature related code is placed inside one of feature modules. This modularized approach provide better
+[separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) in the codebase and allows for feature to
+be developed in isolation, independently from other features.
 
 ### Module dependencies
 
@@ -91,24 +93,42 @@ Each feature module contains own set of the `Clean Architecture` layers:
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
 
 Each layer has distinct set of responsibilities:
-- `Presentation layer` - responsible presenting data to a screen and handling user interactions. `ViewModel`, retrieves data in background using `Coroutines` (executes `UseCases`), process data and pass it to a view (usually `Fragment`) using `LiveData`.
-- `Domain layer` - contains domain models (entities) and `UseCases` (business logic). `UseCases` usually pass to/from `Repository`, often applying additional transformations (eg. filtering).
-- `Data layer` - encapsulates the source of the data (eg. network, memory cache, local database...) and serves as unified access point to the data.
+- `Presentation layer` - responsible presenting data to a screen and handling user interactions.
+- `Domain layer` - contains `UseCases` (business logic) and supporting domain models (entities).
+- `Data layer` - encapsulates the source of the data (eg. network, memory cache, local database...) and serves as
+  unified access point to the data for `Domain` layer.
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
+Feature also contains components that does not really belong to any layer.
+
 ### Data flow
 
-Let's take a look what exactly happens under the surface when user interacts with `album list screen`:
+Below diagram presents application data flow when user interacts with `album list screen`:
 
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
 
+In the `presentation` layer application holds `common state` for each view. This approach is derived from
+[Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and 3 [Redux
+principles](https://redux.js.org/introduction/three-principles).
+
 ## Ci pipeline
 
-[CI config](.circleci/config.yml) allows to execute various jobs in parallel eg. app build will not be stared until all
-static checks and tests complete successfully.
+CI pipeline verify project correctness on each PR. Some of the tasks run in parallel, while other like `app build` will
+not be stared until all `static checks` and `tests` complete successfully:
 
 ![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
+
+All of the gradle tasks (cmd commands) that are executed by CI can be found in the [CI config](.circleci/config.yml)
+file:
+* `./gradlew lintDebug` - runs Android lint
+* `./gradlew detekt` - runs detekt
+* `./gradlew ktlintCheck` - runs ktlint
+* `./gradlew testDebugUnitTest` - run unit tests
+* `./gradlew :app:bundleDebug` - create app bundle
+
+On top of that project contains single `./gradlew staticCheck` task that mimics all CI tasks and is intended to run on
+local computer.
 
 ## What this project does not cover?
 The interface of the app utilises some of modern material design components, however is deliberately kept simple to
@@ -143,7 +163,9 @@ There are few ways to open this project.
 
 ## Inspiration
 
-Other Android repositories that are worth checking out:
+This is project is just a sample, to inspire you and should handle most of the common cases. I encourage you to also
+take a look at other high quality projects to find architecture that works for you and your existing codebase:
+
 * [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
 * [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of different
   Android architecture approaches
