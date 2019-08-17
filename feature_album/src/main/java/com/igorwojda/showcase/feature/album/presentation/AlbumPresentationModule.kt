@@ -1,9 +1,10 @@
 package com.igorwojda.showcase.feature.album.presentation
 
 import androidx.fragment.app.Fragment
+import coil.ImageLoader
 import com.igorwojda.showcase.base.di.KotlinViewModelProvider
 import com.igorwojda.showcase.feature.album.FEATURE_NAME
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import org.kodein.di.Kodein
@@ -20,7 +21,9 @@ internal val presentationModule = Kodein.Module("${FEATURE_NAME}PresentationModu
         KotlinViewModelProvider.of(context) { AlbumListViewModel(instance()) }
     }
 
-    bind() from singleton { AlbumAdapter(instance()) }
+    bind() from singleton { AlbumAdapter() }
+
+    bind() from singleton { ImageLoader(instance()) }
 
     // AlbumDetails
     bind<AlbumDetailViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {

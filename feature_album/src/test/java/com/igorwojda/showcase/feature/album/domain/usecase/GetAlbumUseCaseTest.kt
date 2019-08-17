@@ -26,8 +26,8 @@ class GetAlbumUseCaseTest {
     fun `when execute then getAlbum`() {
         runBlocking {
             // given
-            val albumName = "album"
-            val artistName = "artist"
+            val albumName = "albumName"
+            val artistName = "artistName"
             val mbId = "123"
 
             // when

@@ -76,9 +76,6 @@ androidExtensions { isExperimental = true }
 dependencies {
     api(project(ModuleDependency.LIBRARY_BASE))
 
-    api(LibraryDependency.KOTLIN)
-    api(LibraryDependency.KOTLIN_REFLECT)
-
     api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
     api(LibraryDependency.NAVIGATION_UI_KTX)
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)

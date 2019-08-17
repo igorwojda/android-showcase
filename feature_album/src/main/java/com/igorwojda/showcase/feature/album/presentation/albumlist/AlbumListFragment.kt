@@ -5,20 +5,16 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.igorwojda.showcase.base.presentation.extension.observe
 import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
-import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.feature.album.R
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
-import com.pawegio.kandroid.hide
+import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
 class AlbumListFragment : BaseContainerFragment() {
 
-    private val realViewModel: AlbumListViewModel by instance()
-
-    override val viewModel: BaseViewModel by lazy { realViewModel }
+    private val viewModel: AlbumListViewModel by instance()
 
     override val layoutResourceId = R.layout.fragment_album_list
 
@@ -45,11 +41,13 @@ class AlbumListFragment : BaseContainerFragment() {
             adapter = albumAdapter
         }
 
-        observe(realViewModel.state, ::onStateChange)
+        observe(viewModel.stateLiveData, ::onStateChange)
+        viewModel.loadData()
     }
 
-    private fun onStateChange(list: List<AlbumDomainModel>) {
-        albumAdapter.albums = list
-        progressBar.hide()
+    private fun onStateChange(state: AlbumListViewModel.ViewState) {
+        albumAdapter.albums = state.albums
+        progressBar.visible = state.isLoading
+        errorAnimation.visible = state.isError
     }
 }

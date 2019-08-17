@@ -31,10 +31,6 @@ android {
         }
     }
 
-    testOptions {
-        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -56,6 +52,11 @@ android {
         if (!gradle.startParameter.taskNames.contains("ktlintCheck")) {
             getByName("test").java.srcDir("${project.rootDir}/app/build/generated/source/navigation-args/debug")
         }
+    }
+
+    // Removes the need to mock need to mock classes that may be irrelevant from test perspective
+    testOptions {
+        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
 }
 

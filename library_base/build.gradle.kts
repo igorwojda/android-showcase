@@ -30,10 +30,6 @@ android {
         }
     }
 
-    testOptions {
-        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -45,11 +41,18 @@ android {
         val options = this as? KotlinJvmOptions
         options?.jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
+    }
 }
 
 androidExtensions { isExperimental = true }
 
 dependencies {
+    api(LibraryDependency.KOTLIN)
+    api(LibraryDependency.KOTLIN_REFLECT)
+
     api(LibraryDependency.KODEIN)
     api(LibraryDependency.KODEIN_ANDROID_X)
 
@@ -60,5 +63,5 @@ dependencies {
     api(LibraryDependency.FRAGMENT_KTX)
     api(LibraryDependency.LIFECYCLE_EXTENSIONS)
     api(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
-    api(LibraryDependency.PICASSO)
+    api(LibraryDependency.COIL)
 }

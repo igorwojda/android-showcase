@@ -1,14 +1,13 @@
 package com.igorwojda.showcase.feature.album.presentation
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailFragmentArgs
-import com.igorwojda.showcase.feature.album.presentation.albumdetails.AlbumDetailViewModel
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailFragmentArgs
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.ViewState
 import com.igorwojda.showcase.library.testutils.CoroutineRule
-import com.nhaarman.mockitokotlin2.given
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.willReturn
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import org.amshove.kluent.shouldEqual
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -23,8 +22,11 @@ class AlbumDetailViewModelTest {
     @get:Rule
     var coroutinesTestRule = CoroutineRule()
 
+    @get:Rule
+    var rule = InstantTaskExecutorRule()
+
     @Mock
-    internal lateinit var mockSearchAlbumUseCase: GetAlbumUseCase
+    internal lateinit var mockGetAlbumUseCase: GetAlbumUseCase
 
     @Mock
     internal lateinit var mockAlbumDetailFragmentArgs: AlbumDetailFragmentArgs
@@ -34,27 +36,23 @@ class AlbumDetailViewModelTest {
     @Before
     fun setUp() {
         cut = AlbumDetailViewModel(
-            mockSearchAlbumUseCase,
+            mockGetAlbumUseCase,
             mockAlbumDetailFragmentArgs
         )
     }
 
     @Test
-    fun `when init then getAlbumUseCase execute`() {
-        runBlocking {
-            // given
-            val albumName = "albumName"
-            val artistName = "artistName"
-            val mbId = "mbId"
-            given { mockAlbumDetailFragmentArgs.albumName }.willReturn { albumName }
-            given { mockAlbumDetailFragmentArgs.artistName }.willReturn { artistName }
-            given { mockAlbumDetailFragmentArgs.mbId }.willReturn { mbId }
+    fun `verify state when GetAlbumUseCase return null`() {
+        // when
+        cut.loadData()
 
-            // when
-            cut.loadData()
-
-            // then
-            verify(mockSearchAlbumUseCase).execute(artistName, albumName, mbId)
-        }
+        // then
+        cut.stateLiveData.value shouldEqual ViewState(
+            isLoading = false,
+            isError = true,
+            artistName = "",
+            albumName = "",
+            coverImageUrl = ""
+        )
     }
 }

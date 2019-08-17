@@ -15,7 +15,7 @@ private object LibraryVersion {
     const val FRAGMENT_KTX = "1.0.0"
     const val LIFECYCLE = "1.1.1"
     const val LIFECYCLE_VIEW_MODEL_KTX = "2.1.0-rc01"
-    const val PICASSO = "2.71828"
+    const val COIL = "0.6.1"
     const val K_ANDROID = "0.8.8@aar"
     const val LOTTIE = "3.0.7"
 }
@@ -47,7 +47,7 @@ object LibraryDependency {
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${LibraryVersion.LIFECYCLE_VIEW_MODEL_KTX}"
     const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${CoreVersion.NAVIGATION}"
     const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx:${CoreVersion.NAVIGATION}"
-    const val PICASSO = "com.squareup.picasso:picasso:${LibraryVersion.PICASSO}"
+    const val COIL = "io.coil-kt:coil:${LibraryVersion.COIL}"
     const val K_ANDROID = "com.pawegio.kandroid:kandroid:${LibraryVersion.K_ANDROID}"
     const val LOTTIE = "com.airbnb.android:lottie:${LibraryVersion.LOTTIE}"
 }

@@ -4,7 +4,7 @@ import com.igorwojda.showcase.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
-/**
+/*
  * Adds a User-Agent header to the request. The header follows this format:
  * <AppName>/<version> Dalvik/<version> (Linux; U; Android <android version>; <device ID> Build/<buildtag>)
  *
