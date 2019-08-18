@@ -106,6 +106,10 @@ Each layer has a distinct set of responsibilities:
 `ViewModel` used to preserve data across activity restart) and `MVI` (`actions` modify `common state` of the view and
 then new state is edited to a view via `LiveData` to be rendered).
 
+> `common state` (for each view) approach derives from
+> [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
+> principles](https://redux.js.org/introduction/three-principles).
+
 Let's take a look at two common android cases when view state can be lost:
 - Activity restart - view state should be restored from `ViewModel` state (last value edited by `LiveData`)
 - Process restart - view state should be restored from `Repository` (load data from network or local cache)
@@ -115,10 +119,6 @@ Let's take a look at two common android cases when view state can be lost:
 Below diagram presents application data flow when a user interacts with `album list screen`:
 
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
-
-In the `presentation` layer application holds `common state` for each view. This approach derives from
-[Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
-principles](https://redux.js.org/introduction/three-principles).
 
 ## Ci pipeline
 
