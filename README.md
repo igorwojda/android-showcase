@@ -100,13 +100,15 @@ Each layer has a distinct set of responsibilities:
 - `Data layer` - encapsulates the source of the data (eg. network, memory cache, local database...) and serves as
   unified access point to the data for `Domain` layer.
 
+![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
+
 `Clean architecture` is the "core architecture" of the application. `Presentation` layer is as mix of `MVVM` (Jetpack
 `ViewModel` used to preserve data across activity restart) and `MVI` (`actions` modify `common state` of the view and
 then new state is edited to a view via `LiveData` to be rendered).
 
-![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
-
-Notice that feature module also contains components that does not belong to any layer.
+Let's take a look at two common android cases when view state can be lost:
+- Activity restart - view state should be restored from `ViewModel` state (last vale edited by `LiveData`)
+- Process restart - view state should be restored from `Repository` (load data from network or local cache)
 
 ### Data flow
 
