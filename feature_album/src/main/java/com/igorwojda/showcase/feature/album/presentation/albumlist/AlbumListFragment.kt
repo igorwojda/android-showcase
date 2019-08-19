@@ -3,6 +3,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import com.igorwojda.showcase.base.presentation.extension.dimension
 import com.igorwojda.showcase.base.presentation.extension.observe
 import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
@@ -23,24 +24,20 @@ class AlbumListFragment : BaseContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val context = checkNotNull(context)
-
-        albumAdapter.setOnDebouncedClickListener {
-            val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(it.artist, it.name, it.mbId)
-            findNavController().navigate(navDirections)
-        }
-
         recyclerView.apply {
             setHasFixedSize(true)
-            val columnWidth = context.resources.getDimension(R.dimen.image_size).toInt()
             layoutManager =
                 GridAutofitLayoutManager(
-                    context,
-                    columnWidth
+                    requireContext(),
+                    columnWidth = context.dimension(R.dimen.image_size).toInt()
                 )
-            adapter = albumAdapter
+            adapter = albumAdapter.apply {
+                setOnDebouncedClickListener {
+                    val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(it.artist, it.name, it.mbId)
+                    findNavController().navigate(navDirections)
+                }
+            }
         }
-
         observe(viewModel.stateLiveData, ::onStateChange)
         viewModel.loadData()
     }
