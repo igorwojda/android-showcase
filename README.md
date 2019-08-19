@@ -122,13 +122,12 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ## Ci pipeline
 
-CI pipeline verifies project correctness witch each PR. Some of the tasks run in parallel, while others like `app build`
-will not be stared until all `static checks` and `tests` complete successfully:
+[CI pipeline](.circleci/config.yml) verifies project correctness witch each PR. Some of the tasks run in parallel, while
+others like `app build` will not be stared until all `static checks` and `tests` complete successfully:
 
 ![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
 
-All of the Gradle tasks (cmd commands) that are executed by CI can be found in the [CI config](.circleci/config.yml)
-file:
+These are all of the Gradle tasks (cmd commands) that are [executed by CI](.circleci/config.yml):
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detekt` - runs detekt
 * `./gradlew ktlintCheck` - runs ktlint
