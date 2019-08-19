@@ -2,7 +2,9 @@ package com.igorwojda.showcase.base.presentation.extension
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.widget.Toast
+import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -20,3 +22,5 @@ inline fun <reified T : AppCompatActivity> Context.startActivity(
     intent.putExtras(bundleOf(*extras))
     startActivity(intent)
 }
+
+fun Context.dimension(@DimenRes dimenRes: Int) = resources.getDimension(dimenRes)
