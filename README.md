@@ -112,7 +112,8 @@ then new state is edited to a view via `LiveData` to be rendered).
 
 Let's take a look at two common android cases when view state can be lost:
 - Activity restart - view state should be restored from `ViewModel` state (last value edited by `LiveData`)
-- Process restart - view state should be restored from `Repository` (load data from network or local cache)
+- Process restart - view state should be restored from `Repository` (whatever data comes from the local cache or
+  network)
 
 ### Data flow
 
