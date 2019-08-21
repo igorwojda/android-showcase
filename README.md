@@ -88,79 +88,23 @@ This is a simplified diagram of dependencies between gradle modules.
 Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on
 `app` module, not another way around).
 
-### Feature structure
-
-Each feature module contains own set of the `Clean Architecture` layers:
-
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
 
-### Layers
-`Clean architecture` is the "core architecture" of the application.
-
-Let's take a look at two common android cases when view state can be lost:
-- Activity restart - view state should be restored from `ViewModel` state (last value emitted by `LiveData`)
-- Process restart - view state should be restored from `Repository` (whatever data comes from the local cache or
-  network)
-
-
-Layer separate crucial parts of the application at the high level:
-- `Presentation layer` - presents data to a screen and handling user interactions
-- `Domain layer` - holds business logic
+Each layer has a distinct set of responsibilities:
+- `Presentation layer` - presents data to a screen and handle user interactions
+- `Domain layer` - contains business logic
 - `Data layer` - access, retrieve and manage application data
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
-Each layer contains multiple components with distinct set of responsibilities:
-
-**Presentation layer**
-
-`Presentation` layer is as combination of `MVVM` (Jetpack
+`Clean architecture` is the "core architecture" of the application. `Presentation` layer is as mix of `MVVM` (Jetpack
 `ViewModel` used to preserve data across activity restart) and `MVI` (`actions` modify `common state` of the view and
-then new state is edited to a view via `LiveData` to be rendered). `common state` (for each view) approach derives from  
-[Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and  [Redux principles](https://redux.js.org/introduction/three-principles).
+then new state is edited to a view via `LiveData` to be rendered).
 
--  ViewModel
-   -  Manage view `common state`
-   -  Expose `common state` to a view (via `LiveData`)
-   -  Receive `actions` from the view
-   -  Execute `UseCase`
-- View
-  -  Inflate own layout
-  -  Observer `common state` changes
-  -  Render itself (from received `common state`)
-     - Load images
-     - Play animations
-  - Set data to `Adapter`
-  - Pass user input to `ViewModel` (send `actions`)
-  - Navigation (ToDo: this should be ViewModel responsibility)
+> `common state` (for each view) approach derives from
+> [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
+> principles](https://redux.js.org/introduction/three-principles).
 
-**Domain layer**
-
-Domain layer is the center layer of the application that does not depend on any other layer.
-
-- UseCase
-  - Contains business logic
-  - Retrieve/send data from/to `Repository`
-- Domain Model
-  -  Hold data (that usually support `UseCases`)
-
-**Data layer**
-Encapsulates the source of the data (eg. network, memory cache, local database...) and serves as unified access point to the data for `Domain` layer.
-
-- Repository
-  - Retrieve/send data from/to data source eg. `Retrofit service`
-  - Manages cache (ToDo: Add cache layer)
-- Retrofit service
-  - Retrieve/send data from/to network (via `Retrofit service`)
-- Mapper
-  - converts `Data Model` to domain model
-
-**Non-layer components**
-- Kodein Module - dependency injection configuration
-- Gradle build script - contains instruction how to build module and defines all required dependencies
-- Android resources - layouts, strings, drawables, colors, fonts, etc.
-- Android assets - similar to resource.
-- Tests - code that verifies application correctness
 
 ### Data flow
 
