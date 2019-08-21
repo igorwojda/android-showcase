@@ -94,26 +94,73 @@ Each feature module contains own set of the `Clean Architecture` layers:
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
 
-Each layer has a distinct set of responsibilities:
-- `Presentation layer` - responsible for presenting data to a screen and handling user interactions.
-- `Domain layer` - contains `UseCases` (business logic) and supporting domain models (entities).
-- `Data layer` - encapsulates the source of the data (eg. network, memory cache, local database...) and serves as
-  unified access point to the data for `Domain` layer.
-
-![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
-
-`Clean architecture` is the "core architecture" of the application. `Presentation` layer is as mix of `MVVM` (Jetpack
-`ViewModel` used to preserve data across activity restart) and `MVI` (`actions` modify `common state` of the view and
-then new state is edited to a view via `LiveData` to be rendered).
-
-> `common state` (for each view) approach derives from
-> [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
-> principles](https://redux.js.org/introduction/three-principles).
+### Layers
+`Clean architecture` is the "core architecture" of the application.
 
 Let's take a look at two common android cases when view state can be lost:
 - Activity restart - view state should be restored from `ViewModel` state (last value emitted by `LiveData`)
 - Process restart - view state should be restored from `Repository` (whatever data comes from the local cache or
   network)
+
+
+Layer separate crucial parts of the application at the high level:
+- `Presentation layer` - presents data to a screen and handling user interactions
+- `Domain layer` - holds business logic
+- `Data layer` - access, retrieve and manage application data
+
+![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
+
+Each layer contains multiple components with distinct set of responsibilities:
+
+**Presentation layer**
+
+`Presentation` layer is as combination of `MVVM` (Jetpack
+`ViewModel` used to preserve data across activity restart) and `MVI` (`actions` modify `common state` of the view and
+then new state is edited to a view via `LiveData` to be rendered). `common state` (for each view) approach derives from  
+[Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and  [Redux principles](https://redux.js.org/introduction/three-principles).
+
+-  ViewModel
+   -  Manage view `common state`
+   -  Expose `common state` to a view (via `LiveData`)
+   -  Receive `actions` from the view
+   -  Execute `UseCase`
+- View
+  -  Inflate own layout
+  -  Observer `common state` changes
+  -  Render itself (from received `common state`)
+     - Load images
+     - Play animations
+  - Set data to `Adapter`
+  - Pass user input to `ViewModel` (send `actions`)
+  - Navigation (ToDo: this should be ViewModel responsibility)
+
+**Domain layer**
+
+Domain layer is the center layer of the application that does not depend on any other layer.
+
+- UseCase
+  - Contains business logic
+  - Retrieve/send data from/to `Repository`
+- Domain Model
+  -  Hold data (that usually support `UseCases`)
+
+**Data layer**
+Encapsulates the source of the data (eg. network, memory cache, local database...) and serves as unified access point to the data for `Domain` layer.
+
+- Repository
+  - Retrieve/send data from/to data source eg. `Retrofit service`
+  - Manages cache (ToDo: Add cache layer)
+- Retrofit service
+  - Retrieve/send data from/to network (via `Retrofit service`)
+- Mapper
+  - converts `Data Model` to domain model
+
+**Non-layer components**
+- Kodein Module - dependency injection configuration
+- Gradle build script - contains instruction how to build module and defines all required dependencies
+- Android resources - layouts, strings, drawables, colors, fonts, etc.
+- Android assets - similar to resource.
+- Tests - code that verifies application correctness
 
 ### Data flow
 
@@ -123,7 +170,7 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ## Ci pipeline
 
-[CI pipeline](.circleci/config.yml) verifies project correctness witch each PR. Some of the tasks run in parallel, while
+[CI pipeline](.circleci/config.yml) verifies project correctness which each PR. Some of the tasks run in parallel, while
 others like `app build` will not be stared until all `static checks` and `tests` complete successfully:
 
 ![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
@@ -145,6 +192,7 @@ focus on application architecture.
 
 ## Upcoming improvements
 
+* Improve multi-module navigation
 * Android Dynamic delivery
 * Caching layer (memory + disk)
 * Add Room
