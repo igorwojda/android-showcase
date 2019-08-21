@@ -18,8 +18,7 @@ object DomainFixtures {
     internal fun getAlbumImage(
         url: String = "url_${AlbumDomainImageSize.EXTRA_LARGE}",
         size: AlbumDomainImageSize = AlbumDomainImageSize.EXTRA_LARGE
-    ) =
-        AlbumImageDomainModel(url, size)
+    ) = AlbumImageDomainModel(url, size)
 
     private fun getAlbumWikiDomainModel(
         published: String = "published",
