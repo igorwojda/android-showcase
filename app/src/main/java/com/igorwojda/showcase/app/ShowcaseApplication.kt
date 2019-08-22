@@ -13,7 +13,7 @@ import org.kodein.di.android.x.androidXModule
 import timber.log.Timber
 
 /*
-False positive "Unused symbol" for a custom Android application class used in AndroidManifest.xml file:
+False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file:
 https://youtrack.jetbrains.net/issue/KT-27971
 */
 class ShowcaseApplication : SplitCompatApplication(), KodeinAware {
