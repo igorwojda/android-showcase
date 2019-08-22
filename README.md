@@ -27,7 +27,7 @@ href="https://twitter.com/igorwojda" target="_blank">stay tuned</a>.
 This project brings to table set of best practices, tools, and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
-* Modern architecture (feature modules, Clean Architecture, Model-View-ViewModel)
+* Modern architecture (feature modules, Clean Architecture, Model-View-ViewModel, Model-View-Intent)
 * [Android Jetpack](https://developer.android.com/jetpack)
 * A single-activity architecture, using the Navigation component to manage fragment operations
   * Reactive UIs
@@ -47,9 +47,9 @@ popular libraries and tools of the Android ecosystem. Most of the libraries are 
 good reason to use non-stable dependency.
 
 * Tech-stack
-    * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - Perform background operations
-    * [Kodein](https://kodein.org/Kodein-DI/) - Dependency injection
-    * [Retrofit](https://square.github.io/retrofit/) - Retrieve data from network
+    * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
+    * [Kodein](https://kodein.org/Kodein-DI/) - dependency injection
+    * [Retrofit](https://square.github.io/retrofit/) - networking
     * [Jetpack](https://developer.android.com/jetpack)
         * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - deal with whole in-app navigation
         * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
@@ -61,7 +61,7 @@ good reason to use non-stable dependency.
     * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 * Architecture
     * Clean Architecture (at module level)
-  *   MVVM + MVI (presentation layer)
+    * MVVM + MVI (presentation layer)
     * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation), [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) plugin)
 * Tests
@@ -207,10 +207,10 @@ MIT License
 Copyright (c) 2019 Igor Wojda
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
-associated documentation files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, 
-subject to the following conditions:
+associated documentation files (the "Software"), to deal in the Software without restriction, including 
+without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to 
+the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial 
 portions of the Software.
