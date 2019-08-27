@@ -1,15 +1,15 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import androidx.lifecycle.viewModelScope
-import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
-import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
-import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewState
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadFailure
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadSuccess
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.ViewState
+import com.igorwojda.showcase.library.base.presentation.viewmodel.BaseAction
+import com.igorwojda.showcase.library.base.presentation.viewmodel.BaseViewModel
+import com.igorwojda.showcase.library.base.presentation.viewmodel.BaseViewState
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(

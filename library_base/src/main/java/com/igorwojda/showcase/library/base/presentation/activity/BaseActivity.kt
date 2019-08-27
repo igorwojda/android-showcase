@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.activity
+package com.igorwojda.showcase.library.base.presentation.activity
 
 import android.os.Bundle
 import android.view.WindowManager

@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.viewmodel
+package com.igorwojda.showcase.library.base.presentation.viewmodel
 
 import timber.log.Timber
 import kotlin.reflect.full.memberProperties

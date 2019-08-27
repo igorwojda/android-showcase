@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.fragment
+package com.igorwojda.showcase.library.base.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

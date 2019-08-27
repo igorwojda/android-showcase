@@ -3,11 +3,11 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
-import com.igorwojda.showcase.base.presentation.extension.observe
-import com.igorwojda.showcase.base.presentation.fragment.BaseContainerFragment
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
+import com.igorwojda.showcase.library.base.presentation.extension.observe
+import com.igorwojda.showcase.library.base.presentation.fragment.BaseContainerFragment
 import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
