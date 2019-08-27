@@ -1,4 +1,5 @@
 import com.android.build.gradle.internal.dsl.BaseFlavor
+import com.android.build.gradle.internal.dsl.DefaultConfig
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
@@ -11,6 +12,12 @@ plugins {
 
 android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
+
+    val featureModules = setOf(
+        ModuleDependency.FEATURE_ALBUM,
+        ModuleDependency.FEATURE_FAVOURITE,
+        ModuleDependency.FEATURE_PROFILE
+    )
 
     defaultConfig {
         applicationId = AndroidConfig.ID
@@ -25,6 +32,9 @@ android {
 
         buildConfigFieldFromGradleProperty("apiBaseUrl")
         buildConfigFieldFromGradleProperty("apiToken")
+
+        val featureModuleNames = featureModules.map { it.removePrefix(":feature_") }
+        buildConfigField("FEATURE_MODULE_NAMES", featureModuleNames)
     }
 
     buildTypes {
@@ -47,11 +57,8 @@ android {
         }
     }
 
-    dynamicFeatures = mutableSetOf(
-        ModuleDependency.FEATURE_ALBUM,
-        ModuleDependency.FEATURE_FAVOURITE,
-        ModuleDependency.FEATURE_PROFILE
-    )
+    dynamicFeatures = featureModules.toMutableSet()
+
 
     lintOptions {
         // By default lint does not check test sources, but setting this option means that lint will nto even parse them
@@ -107,3 +114,9 @@ fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
 }
 
 fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }
+
+fun DefaultConfig.buildConfigField(name: String, value: List<String>) {
+    // Generates String that holds Java String Array code
+    val strValue = value.joinToString(prefix = "{", separator = ",", postfix = "}", transform = { "\"$it\"" })
+    buildConfigField("String[]", name, strValue)
+}
