@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.app.feature.gateway
+package com.igorwojda.showcase.app.feature
 
 import org.kodein.di.Kodein
 

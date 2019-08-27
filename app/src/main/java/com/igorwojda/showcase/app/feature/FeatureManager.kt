@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.app.feature
 
 import com.igorwojda.showcase.BuildConfig
-import com.igorwojda.showcase.app.feature.gateway.KodeinModuleProvider
 
 // Dynamic Feature modules require reversed dependency (dynamic feature module depends on app module)
 // This means we have to use reflection to access module content

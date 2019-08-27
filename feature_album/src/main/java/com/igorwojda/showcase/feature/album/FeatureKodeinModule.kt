@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album
 
-import com.igorwojda.showcase.app.feature.gateway.KodeinModuleProvider
+import com.igorwojda.showcase.app.feature.KodeinModuleProvider
 import com.igorwojda.showcase.feature.album.data.dataModule
 import com.igorwojda.showcase.feature.album.domain.domainModule
 import com.igorwojda.showcase.feature.album.presentation.presentationModule
