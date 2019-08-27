@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.delegate
+package com.igorwojda.showcase.library.base.delegate
 
 import kotlin.properties.ObservableProperty
 import kotlin.properties.ReadWriteProperty
@@ -8,7 +8,7 @@ inline fun <T> observer(
     initialValue: T,
     crossinline onChange: (newValue: T) -> Unit
 ):
-    ReadWriteProperty<Any?, T> =
+        ReadWriteProperty<Any?, T> =
     object : ObservableProperty<T>(initialValue) {
         override fun afterChange(property: KProperty<*>, oldValue: T, newValue: T) = onChange(newValue)
     }

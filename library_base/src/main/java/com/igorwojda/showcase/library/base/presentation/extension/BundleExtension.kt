@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.extension
+package com.igorwojda.showcase.library.base.presentation.extension
 
 import android.os.Bundle
 import androidx.core.os.bundleOf

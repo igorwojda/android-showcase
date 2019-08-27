@@ -1,9 +1,9 @@
-package com.igorwojda.showcase.base.presentation.viewmodel
+package com.igorwojda.showcase.library.base.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.igorwojda.library.base.BuildConfig
-import com.igorwojda.showcase.base.presentation.extension.toLiveData
+import com.igorwojda.showcase.library.base.BuildConfig
+import com.igorwojda.showcase.library.base.presentation.extension.toLiveData
 import kotlin.properties.Delegates
 
 abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>(initialState: ViewState) :
