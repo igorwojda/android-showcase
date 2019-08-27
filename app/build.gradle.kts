@@ -23,8 +23,8 @@ android {
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables.useSupportLibrary = AndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
 
-        resValueFromGradleProperty("apiBaseUrl")
-        resValueFromGradleProperty("apiToken")
+        buildConfigFieldFromGradleProperty("apiBaseUrl")
+        buildConfigFieldFromGradleProperty("apiToken")
     }
 
     buildTypes {
@@ -98,12 +98,12 @@ dependencies {
     addTestDependencies()
 }
 
-fun BaseFlavor.resValueFromGradleProperty(gradlePropertyName: String) {
+fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
     val propertyValue = project.properties[gradlePropertyName] as? String
     checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
 
-    val androidResourceName = "build_param_${gradlePropertyName.toSnakeCase()}"
-    resValue("string", androidResourceName, propertyValue)
+    val androidResourceName = "GRADLE_${gradlePropertyName.toSnakeCase()}".toUpperCase()
+    buildConfigField("String", androidResourceName, propertyValue)
 }
 
 fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }
