@@ -3,7 +3,6 @@ root = true
 [*.{kt,kts}]
 end_of_line = lf
 insert_final_newline = true
-indent_size = 4
 max_line_length = 140
 
 # Starting from ktlint 0.34.2 There is a problem with import "import-ordering" rule - ktlint contradicts
