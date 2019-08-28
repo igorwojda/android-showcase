@@ -1,7 +1,7 @@
 private object LibraryVersion {
     const val KODEIN = "6.3.3"
     const val RETROFIT = "2.6.1"
-    const val LOGGING_INTERCEPTOR = "4.0.1"
+    const val LOGGING_INTERCEPTOR = "4.1.0"
     const val STETHO = "1.5.0"
     const val TIMBER = "4.7.1"
     const val PLAY_CORE = "1.6.1"
