@@ -9,17 +9,15 @@ import com.igorwojda.showcase.BuildConfig
 object FeatureManager {
 
     private const val featurePackagePrefix = "com.igorwojda.showcase.feature"
-    private val featureNames = BuildConfig.FEATURE_MODULE_NAMES
 
-    val kodeinModules = featureNames
+    val kodeinModules = BuildConfig.FEATURE_MODULE_NAMES
         .map { "$featurePackagePrefix.$it.FeatureKodeinModule" }
         .map {
             try {
-                Class.forName(it).kotlin.objectInstance
+                Class.forName(it).kotlin.objectInstance as KodeinModuleProvider
             } catch (e: ClassNotFoundException) {
                 throw ClassNotFoundException("Kodein module class not found $it")
             }
         }
-        .map { it as KodeinModuleProvider }
         .map { it.kodeinModule }
 }
