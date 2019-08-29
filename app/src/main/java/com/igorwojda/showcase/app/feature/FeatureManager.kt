@@ -11,7 +11,7 @@ object FeatureManager {
     private const val featurePackagePrefix = "com.igorwojda.showcase.feature"
 
     val kodeinModules = BuildConfig.FEATURE_MODULE_NAMES
-        .map { "$featurePackagePrefix.$it.FeatureKodeinModule" }  // feature.x -> com.igorwojda.showcase.feature.x
+        .map { "$featurePackagePrefix.$it.FeatureKodeinModule" }
         .map {
             try {
                 Class.forName(it).kotlin.objectInstance as KodeinModuleProvider
