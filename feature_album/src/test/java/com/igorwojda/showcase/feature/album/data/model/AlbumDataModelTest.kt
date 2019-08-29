@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.model
 
+import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
-import com.igorwojda.showcase.feature.album.data.usecase.ModelFixtures
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.shouldNotContain
@@ -15,7 +15,7 @@ class AlbumDataModelTest {
     @Test
     fun `data model with full data maps to AlbumDomainModel`() {
         // given
-        val cut = ModelFixtures.getAlbum()
+        val cut = DataFixtures.getAlbum()
 
         // then
         cut.toDomainModel() shouldEqual AlbumDomainModel(
@@ -26,7 +26,7 @@ class AlbumDataModelTest {
     @Test
     fun `data model with missing data maps to AlbumDomainModel`() {
         // given
-        val cut = ModelFixtures.getMinimalAlbum()
+        val cut = DataFixtures.getMinimalAlbum()
 
         // then
         cut.toDomainModel() shouldEqual AlbumDomainModel(

@@ -1,6 +1,5 @@
 package com.igorwojda.showcase.feature.album.data.model
 
-import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.squareup.moshi.Json
 
@@ -19,7 +18,3 @@ internal fun AlbumDataModel.toDomainModel() = AlbumDomainModel(
     images = if (this.images != null) this.images.toDomainModel() else listOf(),
     wiki = this.wiki?.toDomainModel()
 )
-
-internal fun List<AlbumImageDataModel>.toDomainModel() =
-    filterNot { it.size == AlbumDataImageSize.UNKNOWN || it.url.isBlank() }
-        .map { it.toDomainModel() }

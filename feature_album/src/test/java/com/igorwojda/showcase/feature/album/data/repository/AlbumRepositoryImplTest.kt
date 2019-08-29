@@ -1,12 +1,12 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
+import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.model.AlbumListDataModel
 import com.igorwojda.showcase.feature.album.data.model.AlbumSearchResultDataModel
 import com.igorwojda.showcase.feature.album.data.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.retrofit.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.retrofit.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.retrofit.service.AlbumRetrofitService
-import com.igorwojda.showcase.feature.album.data.usecase.ModelFixtures
 import com.nhaarman.mockitokotlin2.given
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldEqual
@@ -37,13 +37,13 @@ class AlbumRepositoryImplTest {
         runBlocking {
             // given
             given(mockService.getAlbumInfoAsync(artistName, albumName, null))
-                .willReturn(GetAlbumInfoResponse(ModelFixtures.getAlbum()))
+                .willReturn(GetAlbumInfoResponse(DataFixtures.getAlbum()))
 
             // when
             val result = cut.getAlbumInfo(artistName, albumName, null)
 
             // then
-            result shouldEqual ModelFixtures.getAlbum().toDomainModel()
+            result shouldEqual DataFixtures.getAlbum().toDomainModel()
         }
     }
 
@@ -70,7 +70,7 @@ class AlbumRepositoryImplTest {
             given(mockService.searchAlbumAsync(phrase)).willReturn(
                 SearchAlbumResponse(
                     AlbumSearchResultDataModel(
-                        AlbumListDataModel(listOf(ModelFixtures.getAlbum()))
+                        AlbumListDataModel(listOf(DataFixtures.getAlbum()))
                     )
                 )
             )
@@ -79,7 +79,7 @@ class AlbumRepositoryImplTest {
             val result = cut.searchAlbum(phrase)
 
             // then
-            result shouldEqual listOf(ModelFixtures.getAlbum().toDomainModel())
+            result shouldEqual listOf(DataFixtures.getAlbum().toDomainModel())
         }
     }
 }
