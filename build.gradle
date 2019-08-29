@@ -1,2 +1,0 @@
-// Project Gradle configuration is stored in build.gradle.kts file, however empty build.gradle file is required by
-// Android Studio, so project can be properly opened after it was checked out
