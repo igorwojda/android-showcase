@@ -3,8 +3,8 @@ package com.igorwojda.showcase.feature.album.data.model
 import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.data.usecase.ModelFixtures
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
-import org.amshove.kluent.`should not contain`
 import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldNotContain
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
@@ -13,7 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner
 class AlbumDataModelTest {
 
     @Test
-    fun `Data Model with full data maps to AlbumDomainModel`() {
+    fun `data model with full data maps to AlbumDomainModel`() {
         // given
         val cut = ModelFixtures.getAlbum()
 
@@ -24,7 +24,7 @@ class AlbumDataModelTest {
     }
 
     @Test
-    fun `Data Model with missing data maps to AlbumDomainModel`() {
+    fun `data model with missing data maps to AlbumDomainModel`() {
         // given
         val cut = ModelFixtures.getMinimalAlbum()
 
@@ -41,10 +41,7 @@ class AlbumDataModelTest {
         val cut = albumDataImageSizes.map { AlbumImageDataModel("url", it) }
 
         // then
-        cut.toDomainModel().run {
-            size shouldEqual albumDataImageSizes.size - 1
-            `should not contain`(AlbumImageDataModel("url", AlbumDataImageSize.UNKNOWN))
-        }
+        cut shouldNotContain AlbumImageDataModel("url", AlbumDataImageSize.UNKNOWN)
     }
 
     @Test
@@ -57,9 +54,6 @@ class AlbumDataModelTest {
         )
 
         // then
-        cut.toDomainModel().run {
-            size shouldEqual 1
-            `should not contain`(elementWithEmptyUrl)
-        }
+        cut shouldNotContain elementWithEmptyUrl
     }
 }
