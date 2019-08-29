@@ -24,12 +24,12 @@ object DataFixtures {
             images = null
         )
 
-    private fun getAlbumImage(
+    internal fun getAlbumImage(
         url: String = "url_${AlbumDataImageSize.EXTRA_LARGE}",
         size: AlbumDataImageSize = AlbumDataImageSize.EXTRA_LARGE
     ) = AlbumImageDataModel(url, size)
 
-    private fun getAlbumWikiDataModel(
+    internal fun getAlbumWikiDataModel(
         published: String = "published",
         summary: String = "summary"
     ) = AlbumWikiDataModel(published, summary)

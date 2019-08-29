@@ -14,7 +14,3 @@ internal fun AlbumImageDataModel.toDomainModel() = AlbumImageDomainModel(
     url = this.url,
     size = this.size.toDomainEnum()
 )
-
-internal fun List<AlbumImageDataModel>.toDomainModel() =
-    filterNot { it.size == AlbumDataImageSize.UNKNOWN || it.url.isBlank() }
-        .map { it.toDomainModel() }
