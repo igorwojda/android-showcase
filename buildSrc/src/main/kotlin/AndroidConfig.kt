@@ -16,7 +16,7 @@ interface BuildType {
 
     companion object {
         const val RELEASE = "release"
-        const val DEBUG = "release"
+        const val DEBUG = "debug"
     }
 
     val isMinifyEnabled: Boolean
