@@ -68,9 +68,9 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
     }
 
     private fun getPropertyValue(baseViewState: BaseViewState, propertyName: String): String {
-        baseViewState::class.memberProperties.forEach { kCallable ->
-            if (propertyName == kCallable.name) {
-                var value = kCallable.getter.call(baseViewState).toString()
+        baseViewState::class.memberProperties.forEach {
+            if (propertyName == it.name) {
+                var value = it.getter.call(baseViewState).toString()
 
                 if (value.isBlank()) {
                     value = "\"\""
