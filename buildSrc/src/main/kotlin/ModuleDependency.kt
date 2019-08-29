@@ -11,8 +11,8 @@ object ModuleDependency {
     const val LIBRARY_BASE = ":library_base"
     const val LIBRARY_TEST_UTILS = ":library_test_utils"
 
-    // There is no easy way to retrieve dynamic feature modules from gradle based on plugin type
-    // ("com.android.dynamic-feature") but we can retrieve them from above consts via reflection
+    // Unused function false positive
+    // See: https://youtrack.jetbrains.com/issue/KT-33610
     fun getAllModules() = ModuleDependency::class.memberProperties
         .filter { it.isConst }
         .map { it.getter.call().toString() }
