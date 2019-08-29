@@ -45,15 +45,15 @@ class AlbumDataModelTest {
     }
 
     @Test
-    fun `list of AlbumImageDataModel mapping filters out empty urls`() {
+    fun `list of AlbumImageDataModel mapping filters out blank urls`() {
         // given
-        val elementWithEmptyUrl = AlbumImageDataModel("", AlbumDataImageSize.EXTRA_LARGE)
+        val elementWithBlankUrl = AlbumImageDataModel("", AlbumDataImageSize.EXTRA_LARGE)
         val cut = listOf(
-            elementWithEmptyUrl,
+            elementWithBlankUrl,
             AlbumImageDataModel("url", AlbumDataImageSize.EXTRA_LARGE)
         )
 
         // then
-        cut shouldNotContain elementWithEmptyUrl
+        cut shouldNotContain elementWithBlankUrl
     }
 }
