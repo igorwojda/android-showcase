@@ -6,7 +6,7 @@ import android.view.View
 fun View.setOnDebouncedClickListener(action: () -> Unit) {
     val actionDebouncer = ActionDebouncer(action)
 
-    // This is the only place in the project in the project where we should actually use setOnClickListener
+    // This is the only place in the project where we should actually use setOnClickListener
     setOnClickListener {
         actionDebouncer.notifyAction()
     }
