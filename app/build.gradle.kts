@@ -1,3 +1,4 @@
+
 import com.android.build.gradle.internal.dsl.BaseFlavor
 import com.android.build.gradle.internal.dsl.DefaultConfig
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
@@ -51,10 +52,10 @@ android {
     }
 
     // Each feature module that is included in settings.gradle.kts is added here as dynamic feature
-    dynamicFeatures = getDynamicFeatureModules().toMutableSet()
+    dynamicFeatures = ModuleDependency.getDynamicFeatureModules().toMutableSet()
 
     lintOptions {
-        // By default lint does not check test sources, but setting this option means that lint will nto even parse them
+        // By default lint does not check test sources, but setting this option means that lint will not even parse them
         isIgnoreTestSources = true
     }
 
@@ -98,12 +99,6 @@ dependencies {
     addTestDependencies()
 }
 
-fun getDynamicFeatureModules() = rootProject.subprojects
-    .map { ":${it.name}" }
-    .filter { it.startsWith(":feature_") }
-
-fun getDynamicFeatureModuleNames() = getDynamicFeatureModules().map { it.removePrefix(":feature_") }
-
 fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
     val propertyValue = project.properties[gradlePropertyName] as? String
     checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
@@ -112,9 +107,13 @@ fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
     buildConfigField("String", androidResourceName, propertyValue)
 }
 
+fun getDynamicFeatureModuleNames() = ModuleDependency.getDynamicFeatureModules()
+    .map { it.replace(":feature_", "") }
+    .toSet()
+
 fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }
 
-fun DefaultConfig.buildConfigField(name: String, value: List<String>) {
+fun DefaultConfig.buildConfigField(name: String, value: Set<String>) {
     // Generates String that holds Java String Array code
     val strValue = value.joinToString(prefix = "{", separator = ",", postfix = "}", transform = { "\"$it\"" })
     buildConfigField("String[]", name, strValue)

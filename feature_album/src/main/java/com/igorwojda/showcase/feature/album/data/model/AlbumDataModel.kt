@@ -12,15 +12,17 @@ internal data class AlbumDataModel(
     @field:Json(name = "image") val images: List<AlbumImageDataModel>?
 )
 
-internal fun AlbumDataModel.toDomainModel() = AlbumDomainModel(
-    mbId = this.mbId,
-    name = this.name,
-    artist = this.artist,
-    images = if (this.images != null) this.images.toDomainModel() else listOf(),
-    wiki = this.wiki?.toDomainModel()
-)
+internal fun AlbumDataModel.toDomainModel(): AlbumDomainModel {
 
-internal fun List<AlbumImageDataModel>.toDomainModel() =
-    filter { it.size != AlbumDataImageSize.UNKNOWN }
-        .filterNot { it.url.isBlank() }
-        .map { it.toDomainModel() }
+    val images = this.images
+        ?.filterNot { it.size == AlbumDataImageSize.UNKNOWN || it.url.isBlank() }
+        ?.map { it.toDomainModel() }
+
+    return AlbumDomainModel(
+        mbId = this.mbId,
+        name = this.name,
+        artist = this.artist,
+        images = images ?: listOf(),
+        wiki = this.wiki?.toDomainModel()
+    )
+}
