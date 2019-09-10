@@ -2,30 +2,17 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
-buildscript {
-    repositories {
-        // Android plugin & support libraries
-        google()
-
-        // Main open-source repository
-        jcenter()
-
-        // Ktlint Gradle
-        maven("https://plugins.gradle.org/m2/")
-    }
-
-    dependencies {
-        classpath(GradleDependency.ANDROID_GRADLE)
-        classpath(GradleDependency.KOTLIN)
-        classpath(GradleDependency.SAFE_ARGS)
-        classpath(GradleDependency.KTLINT_GRADLE)
-    }
-}
-
 plugins {
-    id(GradlePluginId.DETEKT) version GradlePluginVersion.DETEKT
-    id(GradlePluginId.KTLINT_GRADLE) version GradlePluginVersion.KTLINT_GRADLE
-    id(GradlePluginId.GRADLE_VERSION_PLUGIN) version GradlePluginVersion.GRADLE_VERSION_PLUGIN
+    id(GradlePluginId.DETEKT)
+    id(GradlePluginId.KTLINT_GRADLE)
+    id(GradlePluginId.GRADLE_VERSION_PLUGIN)
+    id(GradlePluginId.KOTLIN_JVM) apply false
+    id(GradlePluginId.KOTLIN_ANDROID) apply false
+    id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS) apply false
+    id(GradlePluginId.ANDROID_APPLICATION) apply false
+    id(GradlePluginId.ANDROID_DYNAMIC_FEATURE) apply false
+    id(GradlePluginId.ANDROID_LIBRARY) apply false
+    id(GradlePluginId.SAFE_ARGS) apply false
 }
 
 // all projects = root project + sub projects
@@ -36,7 +23,7 @@ allprojects {
     }
 
     // We want to apply ktlint at all project level because it also checks build gradle files
-    plugins.apply(GradlePluginId.KTLINT_GRADLE)
+    apply(plugin = GradlePluginId.KTLINT_GRADLE)
 
     // Ktlint configuration for sub-projects
     ktlint {
@@ -56,7 +43,7 @@ subprojects {
         maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
     }
 
-    plugins.apply(GradlePluginId.DETEKT)
+    apply(plugin = GradlePluginId.DETEKT)
 
     detekt {
         config = files("${project.rootDir}/config/detekt.yml")

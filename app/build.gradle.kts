@@ -1,4 +1,3 @@
-
 import com.android.build.gradle.internal.dsl.BaseFlavor
 import com.android.build.gradle.internal.dsl.DefaultConfig
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
