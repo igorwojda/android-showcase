@@ -46,12 +46,7 @@ android {
     // This "test" source set is a fix for SafeArgs classes not being available when running Unit tests from cmd
     // See: https://issuetracker.google.com/issues/139242292
     sourceSets {
-        // Additionally due to ktlint gradle plugin bug we need one more workaround to disable Args class generation
-        // when ktlintCheck task is running
-        // See: https://github.com/JLLeitschuh/ktlint-gradle/issues/266
-        if (!gradle.startParameter.taskNames.contains("ktlintCheck")) {
-            getByName("test").java.srcDir("${project.rootDir}/app/build/generated/source/navigation-args/debug")
-        }
+        getByName("test").java.srcDir("${project.rootDir}/app/build/generated/source/navigation-args/debug")
     }
 
     // Removes the need to mock need to mock classes that may be irrelevant from test perspective
