@@ -85,9 +85,7 @@ This is a simplified diagram of dependencies between gradle modules.
 
 ![module_dependencies](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png?raw=true)
 
-Each feature module contains own set of Clean architecture layers. `app` module structure is a bit different, because it mostly contains  
-"fundamental app configuration" (dependency injection, application class, retrofit configurations, etc.) and code that wire  
-multiple module together (eg. `NavHostActivity`).
+`Clean architecture` is the "core architecture" of the application. Each feature module contains own set of Clean architecture layers. `app` module structure is a bit different, because it mostly contains  "fundamental app configuration" (dependency injection, application class, retrofit configurations, etc.) and code that wire multiple module together (eg. `NavHostActivity`).
 > Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on
 `app` module, not another way around).
 
@@ -100,7 +98,7 @@ Each layer has a distinct set of responsibilities:
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
-`Clean architecture` is the "core architecture" of the application. `Presentation` layer is as mix of `MVVM` (Jetpack
+`Presentation` layer is as mix of `MVVM` (Jetpack
 `ViewModel` used to preserve data across activity restart) and `MVI` (`actions` modify `common state` of the view and
 then new state is edited to a view via `LiveData` to be rendered).
 
