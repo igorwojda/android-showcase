@@ -48,7 +48,6 @@ subprojects {
     detekt {
         config = files("${project.rootDir}/detekt.yml")
         parallel = true
-
     }
 }
 
