@@ -1,3 +1,5 @@
+@file:Suppress("detekt.StringLiteralDuplication")
+
 private object LibraryVersion {
     const val KODEIN = "6.3.3"
     const val RETROFIT = "2.6.1"
@@ -8,7 +10,8 @@ private object LibraryVersion {
     const val APP_COMPACT = "1.0.2"
     const val RECYCLER_VIEW = "1.0.0"
     const val COORDINATOR_LAYOUT = "1.0.0"
-    // 1.1.x version is required in order to support the dark theme functionality in Android Q (adds Theme.MaterialComponents.DayNight)
+    // 1.1.x version is required in order to support the dark theme functionality in
+    // Android Q (adds Theme.MaterialComponents.DayNight)
     const val MATERIAL = "1.1.0-alpha09"
     const val CONSTRAINT_LAYOUT = "1.1.3"
     const val CORE_KTX = "1.0.2"
