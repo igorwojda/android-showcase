@@ -184,7 +184,7 @@ take a look at other high-quality projects to find architecture that works for y
 
 ## Known issues
 - API 21 crash on start
-Android Extensions experimental mode doesn't work with Gradle Kotlin DSL ([Fixed in upcoming Kotlin 1.3.60](https://youtrack.jetbrains.com/issue/KT-22213))
+- Android Extensions experimental mode doesn't work with Gradle Kotlin DSL ([Fixed in upcoming Kotlin 1.3.60](https://youtrack.jetbrains.com/issue/KT-22213))
 - CI sometimes fails with ConcurrentModificationException when running various tasks ([Fixed in upcoming Kotlin 1.3.60](https://youtrack.jetbrains.com/issue/KT-32853))
 - Kotlin option type is not defined ([Fixed in upcoming Kotlin 1.3.60](https://youtrack.jetbrains.com/issue/KT-31077))
 - `ktlint` ignores multiple file extensions when space is present in `.editorconfig` ([Fixed in upcoming 0.34.2+ release](https://github.com/pinterest/ktlint/pull/561))
