@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.igorwojda.showcase.library.base.BuildConfig
-import org.kodein.di.Copy
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinTrigger
@@ -21,7 +20,7 @@ abstract class InjectionActivity : AppCompatActivity(), KodeinAware {
 
     // Using retainedKodein will not recreate Kodein when the Activity restarts
     final override val kodein: Kodein by retainedKodein {
-        extend(parentKodein, copy = Copy.All)
+        extend(parentKodein)
     }
 
     /*
