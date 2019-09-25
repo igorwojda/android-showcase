@@ -45,8 +45,9 @@ android {
 androidExtensions { isExperimental = true }
 
 dependencies {
-    // We use implementation here instead of testImplementation because we will add this library as testImplementation dependency
-    // to other modules. Using implementation allows us to write tests for test utilities.
+    // We use implementation here instead of testImplementation because we will add this library as
+    // testImplementation dependency to other modules. Using implementation allows us to write tests
+    // for test utilities.
     implementation(LibraryDependency.KOTLIN)
     implementation(TestLibraryDependency.JUNIT)
     implementation(TestLibraryDependency.COROUTINES_TEST)
