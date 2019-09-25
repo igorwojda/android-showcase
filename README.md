@@ -193,7 +193,6 @@ take a look at other high-quality projects to find architecture that works for y
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file ([Issue](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([Issue](https://youtrack.jetbrains.com/issue/KT-33610))
 - Unit tests are running in IDE but fail after running gradle task because of missing Agrs class ([Issue](https://issuetracker.google.com/issues/139242292))
-- Ktlint-gradle filters are ignored when source set is added explicitly ([Issue](https://github.com/JLLeitschuh/ktlint-gradle/issues/266))
 - Android Gradle Plugin 3.5.0 is failing with dynamic feature modules ([Issue](https://issuetracker.google.com/issues/136806086))
 
 ## Contribute
