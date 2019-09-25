@@ -46,7 +46,7 @@ subprojects {
     apply(plugin = GradlePluginId.DETEKT)
 
     detekt {
-        config = files("${project.rootDir}/config/detekt.yml")
+        config = files("${project.rootDir}/detekt.yml")
         parallel = true
     }
 }
