@@ -87,7 +87,7 @@ task("staticCheck") {
         and separate reports for each check (multiple statuses eg. on github PR page).
     """.trimMargin()
 
-    group = "check"
+    group = "verification"
     afterEvaluate {
         // Filter modules with "lintDebug" task (non-Android modules do not have lintDebug task)
         val lintTasks = subprojects.mapNotNull { "${it.name}:lintDebug" }
