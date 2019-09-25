@@ -85,7 +85,10 @@ This is a simplified diagram of dependencies between gradle modules.
 
 ![module_dependencies](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png?raw=true)
 
-Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on
+Each feature module contains own set of Clean architecture layers. `app` module structure is a bit different, because it mostly contains  
+"fundamental app configuration" (dependency injection, application class, retrofit configurations, etc.) and code that wire  
+multiple module together (eg. `NavHostActivity`).
+> Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on
 `app` module, not another way around).
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
