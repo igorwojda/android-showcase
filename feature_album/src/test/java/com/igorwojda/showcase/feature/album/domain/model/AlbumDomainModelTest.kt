@@ -15,6 +15,8 @@ class AlbumDomainModelTest {
     fun `model has default image url`() {
         // given
         val image = DomainFixtures.getAlbumImage()
+
+        // when
         cut = DomainFixtures.getAlbum(images = listOf(image))
 
         // then
