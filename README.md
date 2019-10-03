@@ -18,7 +18,7 @@ has all of these small details that will set the rock-solid foundation of the la
 long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
 decisions follow official Google recommendations.
 
-This project is being heavily maintained to match current industry standards. In upcoming weeks (Aug-Dec 2019) I plan to
+This project is being heavily maintained to match current industry standards. In upcoming weeks (Q4 2019) I plan to
 write an extensive series of articles explaining many of this project architectural design decisions, so <a
 href="https://twitter.com/igorwojda" target="_blank">stay tuned</a>.
 
@@ -167,8 +167,20 @@ There are a few ways to open this project.
 
 ## Inspiration
 
-This is project is just a sample, to inspire you and should handle most of the common cases. I encourage you to also
-take a look at other high-quality projects to find architecture that works for you and your existing codebase:
+This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at
+additional resources.
+
+### Articles (design decisions)
+
+Read about design decisions to have better understanding of underlying design decisions and various trade offs.
+
+* [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
+* More coming soon (Q4 2019)
+
+### Projects
+
+Other high-quality projects will help you to find solutions that works for your project:
+
 * [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
 * [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of various
   Android architecture approaches
