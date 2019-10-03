@@ -169,9 +169,8 @@ There are a few ways to open this project.
 
 This is project is just a sample, to inspire you and should handle most of the common cases. I encourage you to also
 take a look at other high-quality projects to find architecture that works for you and your existing codebase:
-
 * [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
-* [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of different
+* [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of various
   Android architecture approaches
 * [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
   libraries
@@ -180,6 +179,7 @@ take a look at other high-quality projects to find architecture that works for y
 * [Plaid](https://github.com/android/plaid) - showcase of Android material design
 * [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
   diagrams of Clean Architecture layers
+* [Android samples](https://github.com/android) - official Android samples repository
 * [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
 
