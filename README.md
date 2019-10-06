@@ -208,6 +208,7 @@ Other high-quality projects will help you to find solutions that works for your 
   existing. Also sometimes code has to be cleaned before running tests. This needs more investigation.
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file ([Issue](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([Issue](https://youtrack.jetbrains.com/issue/KT-33610))
+- Gradle Kotlin Script is not fully supported by Android Studio
 - Unit tests are running in IDE but fail after running gradle task because of missing Agrs class ([Issue](https://issuetracker.google.com/issues/139242292))
 
 
