@@ -2,6 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
@@ -19,6 +20,12 @@ class AlbumListFragment : BaseContainerFragment() {
     override val layoutResourceId = R.layout.fragment_album_list
 
     private val albumAdapter: AlbumAdapter by instance()
+
+    private val stateObserver = Observer<AlbumListViewModel.ViewState> {
+        albumAdapter.albums = it.albums
+        progressBar.visible = it.isLoading
+        errorAnimation.visible = it.isError
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +48,7 @@ class AlbumListFragment : BaseContainerFragment() {
             adapter = albumAdapter
         }
 
-        observe(viewModel.stateLiveData, ::onStateChange)
+        observe(viewModel.stateLiveData, stateObserver)
         viewModel.loadData()
-    }
-
-    private fun onStateChange(state: AlbumListViewModel.ViewState) {
-        albumAdapter.albums = state.albums
-        progressBar.visible = state.isLoading
-        errorAnimation.visible = state.isError
     }
 }

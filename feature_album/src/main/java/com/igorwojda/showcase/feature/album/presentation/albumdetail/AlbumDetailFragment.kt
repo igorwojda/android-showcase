@@ -2,6 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import coil.api.load
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.library.base.presentation.extension.observe
@@ -16,28 +17,28 @@ internal class AlbumDetailFragment : BaseContainerFragment() {
 
     override val layoutResourceId = R.layout.fragment_album_detail
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private val stateObserver = Observer<AlbumDetailViewModel.ViewState> {
+        progressBar.visible = it.isLoading
 
-        observe(viewModel.stateLiveData, ::onStateChange)
-        viewModel.loadData()
-    }
+        nameTextView.text = it.albumName
+        nameTextView.visible = it.albumName.isNotBlank()
 
-    private fun onStateChange(state: AlbumDetailViewModel.ViewState) {
-        progressBar.visible = state.isLoading
+        artistTextView.text = it.artistName
+        artistTextView.visible = it.artistName.isNotBlank()
 
-        nameTextView.text = state.albumName
-        nameTextView.visible = state.albumName.isNotBlank()
-
-        artistTextView.text = state.artistName
-        artistTextView.visible = state.artistName.isNotBlank()
-
-        errorAnimation.visible = state.isError
+        errorAnimation.visible = it.isError
 
         val imageSize = 800
 
-        coverImageView.load(state.coverImageUrl) {
+        coverImageView.load(it.coverImageUrl) {
             size(imageSize, imageSize)
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        observe(viewModel.stateLiveData, stateObserver)
+        viewModel.loadData()
     }
 }
