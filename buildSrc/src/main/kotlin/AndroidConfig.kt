@@ -9,7 +9,6 @@ object AndroidConfig {
 
     const val ID = "com.igorwojda.showcase"
     const val TEST_INSTRUMENTATION_RUNNER = "android.support.test.runner.AndroidJUnitRunner"
-    const val SUPPORT_LIBRARY_VECTOR_DRAWABLES = true
 }
 
 interface BuildType {
