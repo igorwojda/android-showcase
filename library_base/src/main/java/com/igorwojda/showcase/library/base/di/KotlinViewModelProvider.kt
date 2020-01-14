@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProviders
 class KotlinViewModelProvider private constructor() {
     companion object {
         inline fun <reified T : ViewModel> of(fragment: Fragment, crossinline factory: () -> T): T {
-
             @Suppress("UNCHECKED_CAST")
             val vmFactory = object : ViewModelProvider.Factory {
                 override fun <U : ViewModel> create(modelClass: Class<U>): U = factory() as U
@@ -19,7 +18,6 @@ class KotlinViewModelProvider private constructor() {
         }
 
         inline fun <reified T : ViewModel> of(fragmentActivity: FragmentActivity, crossinline factory: () -> T): T {
-
             @Suppress("UNCHECKED_CAST")
             val vmFactory = object : ViewModelProvider.Factory {
                 override fun <U : ViewModel> create(modelClass: Class<U>): U = factory() as U

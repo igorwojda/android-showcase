@@ -10,5 +10,6 @@ inline fun <T> observer(
 ):
         ReadWriteProperty<Any?, T> =
     object : ObservableProperty<T>(initialValue) {
-        override fun afterChange(property: KProperty<*>, oldValue: T, newValue: T) = onChange(newValue)
+        override fun afterChange(property: KProperty<*>, oldValue: T, newValue: T) =
+            onChange(newValue)
     }
