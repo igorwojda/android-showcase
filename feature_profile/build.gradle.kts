@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-
 plugins {
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
@@ -36,10 +34,7 @@ android {
     }
 
     kotlinOptions {
-        // "this" is currently lacking a proper type
-        // See: https://youtrack.jetbrains.com/issue/KT-31077
-        val options = this as? KotlinJvmOptions
-        options?.jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     // This "test" source set is a fix for SafeArgs classes not being available when running Unit tests from cmd
@@ -53,8 +48,6 @@ android {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
 }
-
-androidExtensions { isExperimental = true }
 
 dependencies {
     implementation(project(ModuleDependency.APP))
