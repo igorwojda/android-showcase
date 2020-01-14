@@ -18,7 +18,6 @@ fun DependencyHandler.addTestDependencies() {
     testImplementation(TestLibraryDependency.MOCKITO_KOTLIN)
     testImplementation(TestLibraryDependency.COROUTINES_TEST)
     testImplementation(TestLibraryDependency.ANDROID_X_CORE_TESTING)
-    testImplementation(TestLibraryDependency.ANDROID_X_TEST_RULES)
 }
 
 /*
