@@ -13,7 +13,6 @@ internal data class AlbumDataModel(
 )
 
 internal fun AlbumDataModel.toDomainModel(): AlbumDomainModel {
-
     val images = this.images
         ?.filterNot { it.size == AlbumDataImageSize.UNKNOWN || it.url.isBlank() }
         ?.map { it.toDomainModel() }

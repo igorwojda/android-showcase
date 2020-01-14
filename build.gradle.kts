@@ -30,7 +30,13 @@ allprojects {
         version.set(CoreVersion.KTLINT)
         verbose.set(true)
         android.set(true)
-        reporters.set(setOf(ReporterType.CHECKSTYLE))
+
+        // Uncomment below line and run .\gradlew ktlintCheck to see check ktlint experimental rules
+        // enableExperimentalRules.set(true)
+
+        reporters {
+            reporter(ReporterType.CHECKSTYLE)
+        }
 
         filter {
             exclude { element -> element.file.path.contains("generated/") }
@@ -82,10 +88,11 @@ tasks {
 }
 
 task("staticCheck") {
-    description = """Mimics all static checks that run on CI.
+    description =
+        """Mimics all static checks that run on CI.
         Note that this task is intended to run locally (not on CI), because on CI we prefer to have parallel execution
         and separate reports for each check (multiple statuses eg. on github PR page).
-    """.trimMargin()
+        """.trimMargin()
 
     group = "verification"
     afterEvaluate {
