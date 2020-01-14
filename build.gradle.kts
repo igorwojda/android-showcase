@@ -30,7 +30,10 @@ allprojects {
         version.set(CoreVersion.KTLINT)
         verbose.set(true)
         android.set(true)
-        reporters.set(setOf(ReporterType.CHECKSTYLE))
+
+        reporters {
+            reporter(ReporterType.CHECKSTYLE)
+        }
 
         filter {
             exclude { element -> element.file.path.contains("generated/") }
