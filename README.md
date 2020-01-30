@@ -18,7 +18,7 @@ has all of these small details that will set the rock-solid foundation of the la
 long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
 decisions follow official Google recommendations.
 
-This project is being heavily maintained to match current industry standards. In upcoming weeks (Q4 2019) I plan to
+This project is being heavily maintained to match current industry standards. In upcoming weeks I plan to
 write an extensive series of articles explaining many of this project architectural [design decisions](#design-decisions) , so <a
 href="https://twitter.com/igorwojda" target="_blank">stay tuned</a>.
 
@@ -235,7 +235,7 @@ portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT 
 LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN 
 NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+WHETHER IN AN ACTION OF  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
