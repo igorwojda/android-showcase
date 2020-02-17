@@ -3,13 +3,14 @@
 private object LibraryVersion {
     const val KODEIN = "6.5.1"
     const val RETROFIT = "2.7.1"
-    const val LOGGING_INTERCEPTOR = "4.3.0"
+    const val OK_HTTP = "4.3.1"
     const val STETHO = "1.5.0"
     const val TIMBER = "4.7.1"
     const val PLAY_CORE = "1.6.4"
     const val APP_COMPACT = "1.1.0"
     const val RECYCLER_VIEW = "1.1.0"
     const val COORDINATOR_LAYOUT = "1.1.0"
+
     // 1.1.x version is required in order to support the dark theme functionality in
     // Android Q (adds Theme.MaterialComponents.DayNight)
     const val MATERIAL = "1.1.0-alpha09"
@@ -25,13 +26,18 @@ private object LibraryVersion {
 
 object LibraryDependency {
     const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${CoreVersion.KOTLIN}"
+
     // Required by Android dynamic feature modules and SafeArgs
     const val KOTLIN_REFLECT = "org.jetbrains.kotlin:kotlin-reflect:${CoreVersion.KOTLIN}"
     const val KODEIN = "org.kodein.di:kodein-di-generic-jvm:${LibraryVersion.KODEIN}"
     const val KODEIN_ANDROID_X = "org.kodein.di:kodein-di-framework-android-x:${LibraryVersion.KODEIN}"
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${LibraryVersion.RETROFIT}"
     const val RETROFIT_MOSHI_CONVERTER = "com.squareup.retrofit2:converter-moshi:${LibraryVersion.RETROFIT}"
-    const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${LibraryVersion.LOGGING_INTERCEPTOR}"
+
+    // Retrofit will use okhttp 4 (it tas binary capability with okhttp 3)
+    // See: https://square.github.io/okhttp/upgrading_to_okhttp_4/
+    const val OK_HTTP = "com.squareup.okhttp3:okhttp:${LibraryVersion.OK_HTTP}"
+    const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${LibraryVersion.OK_HTTP}"
     const val STETHO = "com.facebook.stetho:stetho:${LibraryVersion.STETHO}"
     const val STETHO_OK_HTTP = "com.facebook.stetho:stetho-okhttp3:${LibraryVersion.STETHO}"
     const val TIMBER = "com.jakewharton.timber:timber:${LibraryVersion.TIMBER}"

@@ -71,6 +71,7 @@ dependencies {
 
     api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
     api(LibraryDependency.NAVIGATION_UI_KTX)
+    implementation(LibraryDependency.OK_HTTP)
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
     implementation(LibraryDependency.PLAY_CORE)
     implementation(LibraryDependency.STETHO)
