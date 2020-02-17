@@ -5,7 +5,7 @@ import com.igorwojda.showcase.feature.album.domain.DomainFixtures
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.given
 import kotlinx.coroutines.runBlocking
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -36,7 +36,7 @@ class GetAlbumListUseCaseTest {
             val result = cut.execute()
 
             // then
-            result shouldEqual albums
+            result shouldBeEqualTo albums
         }
     }
 
@@ -53,7 +53,7 @@ class GetAlbumListUseCaseTest {
             val result = cut.execute()
 
             // then
-            result shouldEqual listOf(albumWithImage)
+            result shouldBeEqualTo listOf(albumWithImage)
         }
     }
 }

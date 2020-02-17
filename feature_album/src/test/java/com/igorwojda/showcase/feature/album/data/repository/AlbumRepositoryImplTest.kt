@@ -9,7 +9,7 @@ import com.igorwojda.showcase.feature.album.data.retrofit.response.SearchAlbumRe
 import com.igorwojda.showcase.feature.album.data.retrofit.service.AlbumRetrofitService
 import com.nhaarman.mockitokotlin2.given
 import kotlinx.coroutines.runBlocking
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -43,7 +43,7 @@ class AlbumRepositoryImplTest {
             val result = cut.getAlbumInfo(artistName, albumName, null)
 
             // then
-            result shouldEqual DataFixtures.getAlbum().toDomainModel()
+            result shouldBeEqualTo DataFixtures.getAlbum().toDomainModel()
         }
     }
 
@@ -58,7 +58,7 @@ class AlbumRepositoryImplTest {
             val result = cut.getAlbumInfo(artistName, albumName, null)
 
             // then
-            result shouldEqual null
+            result shouldBeEqualTo null
         }
     }
 
@@ -79,7 +79,7 @@ class AlbumRepositoryImplTest {
             val result = cut.searchAlbum(phrase)
 
             // then
-            result shouldEqual listOf(DataFixtures.getAlbum().toDomainModel())
+            result shouldBeEqualTo listOf(DataFixtures.getAlbum().toDomainModel())
         }
     }
 }
