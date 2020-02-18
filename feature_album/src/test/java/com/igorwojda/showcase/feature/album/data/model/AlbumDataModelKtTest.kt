@@ -4,7 +4,7 @@ import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
@@ -21,7 +21,7 @@ class AlbumDataModelKtTest {
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel shouldEqual AlbumDomainModel(
+        domainModel shouldBeEqualTo AlbumDomainModel(
             cut.name,
             cut.artist,
             cut.images?.map { it.toDomainModel() } ?: listOf(),
@@ -39,7 +39,7 @@ class AlbumDataModelKtTest {
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel shouldEqual AlbumDomainModel(
+        domainModel shouldBeEqualTo AlbumDomainModel(
             name = "name", artist = "artist", images = emptyList(), wiki = null, mbId = null
         )
     }

@@ -11,7 +11,7 @@ import com.nhaarman.mockitokotlin2.stub
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -60,7 +60,7 @@ class AlbumListViewModelTest {
         cut.loadData()
 
         // then
-        cut.stateLiveData.value shouldEqual ViewState(
+        cut.stateLiveData.value shouldBeEqualTo ViewState(
             isLoading = false,
             isError = true,
             albums = listOf()
@@ -80,7 +80,7 @@ class AlbumListViewModelTest {
         cut.loadData()
 
         // then
-        cut.stateLiveData.value shouldEqual ViewState(
+        cut.stateLiveData.value shouldBeEqualTo ViewState(
             isLoading = false,
             isError = false,
             albums = albums

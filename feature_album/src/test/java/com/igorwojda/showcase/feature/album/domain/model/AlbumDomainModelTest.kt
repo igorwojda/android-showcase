@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.domain.model
 
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
@@ -20,7 +20,7 @@ class AlbumDomainModelTest {
         cut = DomainFixtures.getAlbum(images = listOf(image))
 
         // then
-        cut.getDefaultImageUrl() shouldEqual image.url
+        cut.getDefaultImageUrl() shouldBeEqualTo image.url
     }
 
     @Test
@@ -29,6 +29,6 @@ class AlbumDomainModelTest {
         cut = DomainFixtures.getAlbum(images = listOf())
 
         // then
-        cut.getDefaultImageUrl() shouldEqual null
+        cut.getDefaultImageUrl() shouldBeEqualTo null
     }
 }

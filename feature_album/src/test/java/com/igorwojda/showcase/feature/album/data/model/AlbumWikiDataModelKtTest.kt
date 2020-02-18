@@ -2,7 +2,7 @@ package com.igorwojda.showcase.feature.album.data.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.domain.model.AlbumWikiDomainModel
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
@@ -21,6 +21,6 @@ class AlbumWikiDataModelKtTest {
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel shouldEqual AlbumWikiDomainModel(published, summary)
+        domainModel shouldBeEqualTo AlbumWikiDomainModel(published, summary)
     }
 }

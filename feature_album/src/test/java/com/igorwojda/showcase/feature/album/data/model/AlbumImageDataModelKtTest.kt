@@ -4,7 +4,7 @@ import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.data.enum.toDomainEnum
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImageDomainModel
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,7 +24,7 @@ class AlbumImageDataModelKtTest {
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel shouldEqual AlbumImageDomainModel(url, size.toDomainEnum())
+        domainModel shouldBeEqualTo AlbumImageDomainModel(url, size.toDomainEnum())
     }
 
     @Test
