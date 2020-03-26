@@ -15,5 +15,7 @@ class FavouriteFragment : BaseContainerFragment<FragmentFavouritesBinding>() {
         underConstructionAnimation.playAnimation()
     }
 
-    override fun setupBinding(view: View) {}
+    override fun setupBinding(view: View) {
+        // TODO Create FavouriteViewModel
+    }
 }

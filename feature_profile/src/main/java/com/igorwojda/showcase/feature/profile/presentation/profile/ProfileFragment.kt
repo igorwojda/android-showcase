@@ -10,7 +10,9 @@ class ProfileFragment : BaseContainerFragment<FragmentProfileBinding>() {
 
     override val layoutResourceId = R.layout.fragment_profile
 
-    override fun setupBinding(view: View) {}
+    override fun setupBinding(view: View) {
+        // TODO Create ProfileViewModel
+    }
 
     override fun onResume() {
         super.onResume()
