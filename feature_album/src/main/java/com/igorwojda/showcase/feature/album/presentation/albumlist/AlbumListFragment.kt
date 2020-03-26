@@ -5,26 +5,29 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.igorwojda.showcase.feature.album.R
+import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumListBinding
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
 import com.igorwojda.showcase.library.base.presentation.extension.observe
 import com.igorwojda.showcase.library.base.presentation.fragment.BaseContainerFragment
-import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
-class AlbumListFragment : BaseContainerFragment() {
+class AlbumListFragment : BaseContainerFragment<FragmentAlbumListBinding>() {
 
     private val viewModel: AlbumListViewModel by instance()
 
     override val layoutResourceId = R.layout.fragment_album_list
 
+    override fun setupBinding(view: View) {
+        binding.viewState = viewModel.stateLiveData.value
+    }
+
     private val albumAdapter: AlbumAdapter by instance()
 
     private val stateObserver = Observer<AlbumListViewModel.ViewState> {
+        binding.viewState = it
         albumAdapter.albums = it.albums
-        progressBar.visible = it.isLoading
-        errorAnimation.visible = it.isError
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

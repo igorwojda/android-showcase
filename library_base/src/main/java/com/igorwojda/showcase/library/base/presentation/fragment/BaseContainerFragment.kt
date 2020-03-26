@@ -5,15 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import timber.log.Timber
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 
-abstract class BaseContainerFragment : InjectionFragment() {
+abstract class BaseContainerFragment<B : ViewDataBinding> : InjectionFragment() {
 
     @get:LayoutRes
     protected abstract val layoutResourceId: Int
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(layoutResourceId, null).also {
-            Timber.v("onCreateView ${javaClass.simpleName}")
-        }
+    lateinit var binding: B
+
+    /**
+     * Abstract method that all implementators must override to assign data binding variables.
+     */
+    protected abstract fun setupBinding(view: View)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = DataBindingUtil.inflate(inflater, layoutResourceId, null, false)
+        binding.lifecycleOwner = this
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupBinding(view)
+    }
 }

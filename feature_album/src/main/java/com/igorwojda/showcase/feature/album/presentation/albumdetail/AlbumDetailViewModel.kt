@@ -50,8 +50,7 @@ internal class AlbumDetailViewModel(
         )
     }
 
-    internal data
-    class ViewState(
+    internal data class ViewState(
         val isLoading: Boolean = true,
         val isError: Boolean = false,
         val albumName: String = "",

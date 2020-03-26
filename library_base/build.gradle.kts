@@ -39,6 +39,10 @@ android {
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
