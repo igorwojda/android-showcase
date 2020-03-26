@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.library.base.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.igorwojda.showcase.library.base.BuildConfig
@@ -10,10 +11,12 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
     ViewModel() {
 
     private val stateMutableLiveData = MutableLiveData<ViewState>()
-    val stateLiveData = stateMutableLiveData.toLiveData()
+    val stateLiveData: LiveData<ViewState>
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
 
     init {
+        stateMutableLiveData.postValue(initialState)
+        stateLiveData = stateMutableLiveData.toLiveData()
         if (BuildConfig.DEBUG) {
             stateTimeTravelDebugger = StateTimeTravelDebugger(this::class.java.simpleName)
         }
