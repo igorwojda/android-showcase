@@ -151,7 +151,6 @@ focus on application architecture.
 * Caching layer (memory + disk)
 * Android Dynamic delivery
 * Add Room
-* Data binding
 * Add Custom `android lint`, `ktlint` and `detekt` checks/rules
 * Add script to update all dependencies in the project, create PR to run all checks
 * Continuous deployment (automatically publish app to Google play store using CI)
