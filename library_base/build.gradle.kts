@@ -49,7 +49,7 @@ dependencies {
     api(LibraryDependency.KODEIN_ANDROID_X)
 
     api(LibraryDependency.TIMBER)
-    api(LibraryDependency.APP_COMPACT)
+    api(LibraryDependency.APP_COMPAT)
     api(LibraryDependency.COROUTINES_ANDROID)
     api(LibraryDependency.CORE_KTX)
     api(LibraryDependency.FRAGMENT_KTX)
