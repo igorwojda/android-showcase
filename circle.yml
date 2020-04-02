@@ -76,6 +76,23 @@ jobs:
       - restore-gradle-cache
       # --stacktrace is just a temporary flag to help with debugging of ConcurrentModificationException that happens occasionally
       - run: ./gradlew testDebugUnitTest --stacktrace
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/junit/
+            find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/junit/ \;
+          when: always
+      - store_test_results:
+          path: ~/junit
+      - run:
+          name: Save test reports
+          command: |
+            mkdir -p ~/reports/
+            cp -R ./app/build/reports/* ~/reports/
+          when: always
+      - store_artifacts:
+          path: ~/reports/
+          destination: reports
 
   build_app:
     description: An executor with sensible defaults for Android Gradle tasks (set with GRADLE_OPTS).
