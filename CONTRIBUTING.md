@@ -30,6 +30,6 @@ within few days. We may suggest some changes or improvements or alternatives.
 
 Some things that will increase the chance that your pull request is accepted:
 1. Make sure all tests and lint checks are passing (review them on the pull request page)
-1. Update [README](README.md) with any changes are needed.
+1. Update [README](README.md) with any changes are needed
 1. Write tests (if needed)
-1. Write a [good commit message](https://chris.beams.io/posts/git-commit/).
+1. Write a [good commit message](https://chris.beams.io/posts/git-commit/)
