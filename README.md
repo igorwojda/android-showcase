@@ -222,7 +222,7 @@ Other high-quality projects will help you to find solutions that works for your 
 
 ## Contribute
 
-Feedback and new contributions are welcome whether it's through bug reports or new PRs.
+Want to contribute? Check out our [Contributing](CONTRIBUTING.md) docs.
 
 ## Author
 
