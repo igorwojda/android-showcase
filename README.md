@@ -83,7 +83,7 @@ Modularized code-base approach provides few benefits:
 - better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API., Feature related classes life in different modules and can't be referenced without explicit module dependency.
 - features can be developed in parallel eg. by different teams
 - each feature can be developed in isolation, independently from other features
-- Faster compile tim
+- faster compile time
 
 ### Cross-module dependencies
 
@@ -117,8 +117,6 @@ then new state is edited to a view via `LiveData` to be rendered).
 All the external dependencies (external libraries) are defined in the single place - Gradle `buildSrc` folder. This approach allows to easily
 manage dependencies and use the same dependency version across all modules. Because each feature module depends on `app` module
 we can easily share all core dependencies without redefining them in each feature module.
-
-between modules .
 
 [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 
