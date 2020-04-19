@@ -13,14 +13,15 @@ Showcase is a sample project that presents modern, 2020 approach to
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
 The goal of the project is to demonstrate best practices, provide a set of guidelines, and present modern Android
-application architecture that is modular, scalable, maintainable and testable. This application may look simple, but it
-has all of these small details that will set the rock-solid foundation of the larger app suitable for bigger teams and
-long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
-decisions follow official Google recommendations.
+[application architecture](#architecture) that is modular, scalable, maintainable and testable.
+This application may look quite simple, but it has all of these small details that will set the rock-solid foundation for the
+larger app suitable for bigger teams and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
+Many of the project design decisions follow official Google recommendations. Keep in mind that every app is different, so
+various rules/patterns/approaches may work for one app, but not for another. Understanding various design and architectural trade offs is
+a very important aspect of developer job.
 
-This project is being heavily maintained to match current industry standards. In upcoming weeks I plan to
-write an extensive series of articles explaining many of this project architectural [design decisions](#design-decisions) , so <a
-href="https://twitter.com/igorwojda" target="_blank">stay tuned</a>.
+This project is being maintained to match current industry standards.
+
 
 ## Project characteristics
 
@@ -75,11 +76,16 @@ good reason to use non-stable dependency.
 
 ## Architecture
 
-Feature related code is placed inside one of the feature modules. This modularized approach provides better
-[separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) in the codebase and allows for feature to
-be developed in isolation, independently from other features.
+Feature related code is placed inside one of the feature modules.
+We can think about each feature as the equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private library.
 
-### Module dependencies
+Modularized code-base approach provides few benefits:
+- better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API., Feature related classes life in different modules and can't be referenced without explicit module dependency.
+- features can be developed in parallel eg. by different teams
+- each feature can be developed in isolation, independently from other features
+- Faster compile tim
+
+### Cross-module dependencies
 
 This is a simplified diagram of dependencies between gradle modules.
 
@@ -106,6 +112,15 @@ then new state is edited to a view via `LiveData` to be rendered).
 > [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
 > principles](https://redux.js.org/introduction/three-principles).
 
+### External dependencies
+
+All the external dependencies (external libraries) are defined in the single place - Gradle `buildSrc` folder. This approach allows to easily
+manage dependencies and use the same dependency version across all modules. Because each feature module depends on `app` module
+we can easily share all core dependencies without redefining them in each feature module.
+
+between modules .
+
+[and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 
 ### Data flow
 
