@@ -156,19 +156,7 @@ focus on application architecture.
 
 ## Upcoming improvements
 
-* Add test coverage support (Jacoco)
-* Improve error handling
-* Improve multi-module navigation
-* UI tests (including CI pipeline emulator configuration)
-* Caching layer (memory + disk)
-* Android Dynamic delivery
-* Add Room
-* Data binding
-* Add Custom `android lint`, `ktlint` and `detekt` checks/rules
-* Add script to update all dependencies in the project, create PR to run all checks
-* Continuous deployment (automatically publish app to Google play store using CI)
-* Support for DayNight MaterialTheme
-* and much more…
+Check list of all upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement).
 
 ## Getting started
 
