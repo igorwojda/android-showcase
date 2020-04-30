@@ -3,8 +3,10 @@ package com.igorwojda.showcase.feature.album.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListFragmentDirections
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.ViewState
+import com.igorwojda.showcase.library.base.navigation.NavigationManager
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.stub
@@ -32,11 +34,17 @@ class AlbumListViewModelTest {
     @Mock
     internal lateinit var mockGetAlbumSearchUseCase: GetAlbumListUseCase
 
+    @Mock
+    internal lateinit var mockNavigationManager: NavigationManager
+
     private lateinit var cut: AlbumListViewModel
 
     @Before
     fun setUp() {
-        cut = AlbumListViewModel(mockGetAlbumSearchUseCase)
+        cut = AlbumListViewModel(
+            mockNavigationManager,
+            mockGetAlbumSearchUseCase
+        )
     }
 
     @Test
@@ -48,6 +56,29 @@ class AlbumListViewModelTest {
         runBlocking {
             verify(mockGetAlbumSearchUseCase).execute()
         }
+    }
+
+    @Test
+    fun `navigate to album details`() {
+        // given
+        val artistName = "artistName"
+        val albumName = "albumName"
+        val mbId = "mbId"
+
+        val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(
+            artistName,
+            albumName,
+            mbId
+        )
+        
+        // when
+        cut.navigateToAlbumDetails(artistName, albumName, mbId)
+
+        // then
+
+        verify(mockNavigationManager).navigate(
+            navDirections
+        )
     }
 
     @Test
