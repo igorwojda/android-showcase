@@ -1,7 +1,8 @@
 # Project description
 [![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=shield)](https://circleci.com/gh/igorwojda/android-showcase)
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.70-blue.svg)](https://kotlinlang.org)
-[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![AGP](https://img.shields.io/badge/AndroidStudio-3.5.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Gradle](https://img.shields.io/badge/Gradle-5.6.4-blue?style=flat)](https://gradle.org)
 
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a7ef0746703e4c81b0e4af2c46e2885e)](https://app.codacy.com/app/igorwojda/android-showcase?utm_source=github.com&utm_medium=referral&utm_content=igorwojda/android-showcase&utm_campaign=Badge_Grade_Dashboard)
@@ -9,16 +10,12 @@
 
 
 Showcase is a sample project that presents modern, 2020 approach to
-[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using
-[Kotlin](https://kotlinlang.org/) and latest tech-stack.
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development with up to date tech-stack.
 
-The goal of the project is to demonstrate best practices, provide a set of guidelines, and present modern Android application
-[Architecture](#architecture) that is modular, scalable, maintainable and testable.
-This application may look quite simple, but it has all of these small details that will set the rock-solid foundation for the
-larger app suitable for bigger teams and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
-
-Many of the project design decisions follow official Google recommendations. Keep in mind that every app is different, so
-various rules/patterns/approaches may work for one app, but not for another.
+The goal of the project is to demonstrate best practices by using up to date tech-stack and presenting modern Android application
+[Architecture](#architecture) that is modular, scalable, maintainable and testable. This application may look quite simple,
+but it has all of these small details that will set the rock-solid foundation for the larger app suitable for bigger teams
+and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
 This project is being maintained to match current industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
