@@ -3,14 +3,14 @@ package com.igorwojda.showcase.library.base.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.igorwojda.showcase.library.base.BuildConfig
-import com.igorwojda.showcase.library.base.presentation.extension.toLiveData
+import com.igorwojda.showcase.library.base.presentation.extension.asLiveData
 import kotlin.properties.Delegates
 
 abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>(initialState: ViewState) :
     ViewModel() {
 
     private val stateMutableLiveData = MutableLiveData<ViewState>()
-    val stateLiveData = stateMutableLiveData.toLiveData()
+    val stateLiveData = stateMutableLiveData.asLiveData()
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
 
     init {
