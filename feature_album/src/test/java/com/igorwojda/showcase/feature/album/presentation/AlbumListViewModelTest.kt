@@ -70,12 +70,11 @@ class AlbumListViewModelTest {
             albumName,
             mbId
         )
-        
+
         // when
         cut.navigateToAlbumDetails(artistName, albumName, mbId)
 
         // then
-
         verify(mockNavigationManager).navigate(
             navDirections
         )
