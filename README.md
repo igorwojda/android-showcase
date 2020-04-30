@@ -1,9 +1,8 @@
 # Project description
 [![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=shield)](https://circleci.com/gh/igorwojda/android-showcase)
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.70-blue.svg)](https://kotlinlang.org)
-[![API](https://img.shie https://img.shields.io/badge/Gradle-3.5.3-orange?style=flatlds.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
-![Android Studio][https://img.shields.io/badge/AndroidStudio-3.5.3-green?style=flat](https://developer.android.com/studio)
-![Gradle][https://img.shields.io/badge/Gradle-5.6.4-green?style=flat](https://gradle.org/releases/)
+[![Android Studio]](https://img.shields.io/badge/AndroidStudio-3.5.3-green?style=flat](https://developer.android.com/studio)
+[![Gradle]](https://img.shields.io/badge/Gradle-5.6.4-green?style=flat](https://gradle.org/releases/)
 
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a7ef0746703e4c81b0e4af2c46e2885e)](https://app.codacy.com/app/igorwojda/android-showcase?utm_source=github.com&utm_medium=referral&utm_content=igorwojda/android-showcase&utm_campaign=Badge_Grade_Dashboard)
