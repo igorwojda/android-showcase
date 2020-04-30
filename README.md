@@ -12,16 +12,15 @@ Showcase is a sample project that presents modern, 2020 approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
-The goal of the project is to demonstrate best practices, provide a set of guidelines, and present modern Android
-[application architecture](#architecture) that is modular, scalable, maintainable and testable.
+The goal of the project is to demonstrate best practices, provide a set of guidelines, and present modern Android application
+[Architecture](#architecture) that is modular, scalable, maintainable and testable.
 This application may look quite simple, but it has all of these small details that will set the rock-solid foundation for the
 larger app suitable for bigger teams and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
+
 Many of the project design decisions follow official Google recommendations. Keep in mind that every app is different, so
-various rules/patterns/approaches may work for one app, but not for another. Understanding various design and architectural trade offs is
-a very important aspect of developer job.
+various rules/patterns/approaches may work for one app, but not for another.
 
-This project is being maintained to match current industry standards.
-
+This project is being maintained to match current industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
 ## Project characteristics
 
@@ -157,19 +156,7 @@ focus on application architecture.
 
 ## Upcoming improvements
 
-* Add test coverage support (Jacoco)
-* Improve error handling
-* Improve multi-module navigation
-* UI tests (including CI pipeline emulator configuration)
-* Caching layer (memory + disk)
-* Android Dynamic delivery
-* Add Room
-* Data binding
-* Add Custom `android lint`, `ktlint` and `detekt` checks/rules
-* Add script to update all dependencies in the project, create PR to run all checks
-* Continuous deployment (automatically publish app to Google play store using CI)
-* Support for DayNight MaterialTheme
-* and much more…
+Check list of all upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement).
 
 ## Getting started
 
@@ -222,7 +209,7 @@ Other high-quality projects will help you to find solutions that works for your 
 
 ## Contribute
 
-Feedback and new contributions are welcome whether it's through bug reports or new PRs.
+Want to contribute? Check out our [Contributing](CONTRIBUTING.md) docs.
 
 ## Author
 
