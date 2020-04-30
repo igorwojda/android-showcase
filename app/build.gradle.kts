@@ -69,18 +69,14 @@ android {
 dependencies {
     api(project(ModuleDependency.LIBRARY_BASE))
 
-    api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
-    api(LibraryDependency.NAVIGATION_UI_KTX)
     implementation(LibraryDependency.OK_HTTP)
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
     implementation(LibraryDependency.PLAY_CORE)
     implementation(LibraryDependency.STETHO)
-
     implementation(LibraryDependency.STETHO_OK_HTTP)
 
     api(LibraryDependency.RETROFIT)
     api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
-
     api(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
     api(LibraryDependency.COORDINATOR_LAYOUT)
     api(LibraryDependency.RECYCLER_VIEW)

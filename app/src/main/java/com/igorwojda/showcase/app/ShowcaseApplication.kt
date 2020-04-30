@@ -7,6 +7,7 @@ import com.igorwojda.showcase.BuildConfig
 import com.igorwojda.showcase.app.feature.FeatureManager
 import com.igorwojda.showcase.app.kodein.FragmentArgsExternalSource
 import com.igorwojda.showcase.appModule
+import com.igorwojda.showcase.library.base.baseModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -19,6 +20,7 @@ https://youtrack.jetbrains.net/issue/KT-27971
 class ShowcaseApplication : SplitCompatApplication(), KodeinAware {
     override val kodein = Kodein.lazy {
         import(androidXModule(this@ShowcaseApplication))
+        import(baseModule)
         import(appModule)
         importAll(FeatureManager.kodeinModules)
 

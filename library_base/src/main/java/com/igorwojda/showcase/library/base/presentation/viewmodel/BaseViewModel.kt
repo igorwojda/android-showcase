@@ -11,6 +11,7 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
 
     private val stateMutableLiveData = MutableLiveData<ViewState>()
     val stateLiveData = stateMutableLiveData.asLiveData()
+
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
 
     init {
