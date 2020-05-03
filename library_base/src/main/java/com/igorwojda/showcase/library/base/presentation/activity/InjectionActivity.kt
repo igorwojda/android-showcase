@@ -38,8 +38,9 @@ abstract class InjectionActivity : AppCompatActivity(), KodeinAware {
     http://kodein.org/Kodein-DI/?latest/android#_using_a_trigger
 
      */
-    final override val kodeinTrigger: KodeinTrigger?
-        get() = if (BuildConfig.DEBUG) KodeinTrigger() else super.kodeinTrigger
+    final override val kodeinTrigger: KodeinTrigger? by lazy {
+        if (BuildConfig.DEBUG) KodeinTrigger() else super.kodeinTrigger
+    }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
