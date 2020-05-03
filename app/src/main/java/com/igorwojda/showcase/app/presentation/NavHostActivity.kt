@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.igorwojda.showcase.R
@@ -14,27 +13,24 @@ class NavHostActivity : BaseActivity() {
 
     override val layoutResId = R.layout.activity_nav_host
 
+    private val navController get() = navHostFragment.findNavController()
+
     private val navigationManager: NavigationManager by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupBottomNavigation()
-
+        initBottomNavigation()
         initNavigationManager()
     }
 
-    private fun initNavigationManager() {
-        val host = navHostFragment as NavHostFragment
-        val navController = host.navController
-
-        navigationManager.setOnNavigationEvent {
-            navHostFragment.findNavController().navigate(it)
-        }
+    private fun initBottomNavigation() {
+        bottomNav.setupWithNavController(navController)
     }
 
-    private fun setupBottomNavigation() {
-        val navController = navHostFragment.findNavController()
-        bottomNav.setupWithNavController(navController)
+    private fun initNavigationManager() {
+        navigationManager.setOnNavigationEvent {
+            navController.navigate(it)
+        }
     }
 }
