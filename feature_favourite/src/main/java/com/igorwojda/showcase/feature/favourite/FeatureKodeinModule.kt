@@ -6,11 +6,11 @@ import com.igorwojda.showcase.feature.favourite.domain.domainModule
 import com.igorwojda.showcase.feature.favourite.presentation.presentationModule
 import org.kodein.di.Kodein
 
-internal const val FEATURE_NAME = "Favourite"
+internal const val MODULE_NAME = "Favourite"
 
 object FeatureKodeinModule : KodeinModuleProvider {
 
-    override val kodeinModule = Kodein.Module("${FEATURE_NAME}Module") {
+    override val kodeinModule = Kodein.Module("${MODULE_NAME}Module") {
         import(presentationModule)
         import(domainModule)
         import(dataModule)

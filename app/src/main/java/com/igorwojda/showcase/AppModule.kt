@@ -12,7 +12,9 @@ import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-val appModule = Kodein.Module("appModule") {
+internal const val MODULE_NAME = "App"
+
+val appModule = Kodein.Module("${MODULE_NAME}Module") {
 
     bind() from singleton { AuthenticationInterceptor(BuildConfig.GRADLE_API_TOKEN) }
 
