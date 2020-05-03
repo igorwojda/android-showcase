@@ -15,10 +15,8 @@ class GridAutofitLayoutManager : GridLayoutManager {
     }
 
     private val defaultColumnWidth by lazy {
-
         fun dpToPx(dp: Int) = (dp * Resources.getSystem().displayMetrics.density).toInt()
-
-        return@lazy dpToPx(48)
+        dpToPx(48)
     }
 
     private var columnWidth = 0
