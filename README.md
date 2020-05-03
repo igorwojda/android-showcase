@@ -81,32 +81,68 @@ Modularized code-base approach provides few benefits:
 - each feature can be developed in isolation, independently from other features
 - faster compile time
 
-### Cross-module dependencies
+### Module types and module dependencies
 
-This is a simplified diagram of dependencies between gradle modules.
+This is a diagram present dependencies between project modules (Gradle sub-projects).
 
 ![module_dependencies](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies.png?raw=true)
 
-`Clean architecture` is the "core architecture" of the application. Each feature module contains own set of Clean architecture layers. `app` module structure is a bit different, because it mostly contains  "fundamental app configuration" (dependency injection, application class, retrofit configurations, etc.) and code that wire multiple module together (eg. `NavHostActivity`).
-> Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on
-`app` module, not another way around).
+Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on `app` module, not another way around).
 
-![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
+We have three kinds of modules in the application:
 
-Each layer has a distinct set of responsibilities:
-- `Presentation layer` - presents data to a screen and handle user interactions
-- `Domain layer` - contains business logic
-- `Data layer` - access, retrieve and manage application data
+- `app` module - this is the main module. It contains code that wires multiple modules together (dependency injection setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required permissions setup, custom application class, etc.).
+- helper modules
+  - application-independent `library_base` module containing common code base that could be reused in other projects/applications (this code is not specific to this application) eg. base classes, utilities, custom delegates, extensions.
+  - additional application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to share some assets or code only between few feature modules (currently app has no such modules)
+- feature modules - the most common type of module containing all code related to given feature.
+
+### Feature module structure
+
+`Clean architecture` is the "core architecture" of the application, so each `feature module` contains own set of Clean architecture layers:
+
+![module_dependencies_layers](https://github.com/igorwojda/android-showcase/blob/master/misc/image/module_dependencies_layers.png?raw=true)
+
+> Notice that `app` module and `library_x` modules structure differs a bit from feature module structure.
+
+Each feature module contains non-layer components and 3 layers with distinct set of responsibilities.
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/master/misc/image/feature_structure.png?raw=true)
 
-`Presentation` layer is as mix of `MVVM` (Jetpack
-`ViewModel` used to preserve data across activity restart) and `MVI` (`actions` modify `common state` of the view and
-then new state is edited to a view via `LiveData` to be rendered).
+#### Presentation layer
+
+This layer is closest to what user sees on the screen. `Presentation` layer is as mix of `MVVM` (Jetpack `ViewModel` used to preserve data across activity restart) and
+`MVI` (`actions` modify `common state` of the view and then new state is edited to a view via `LiveData` to be rendered).
 
 > `common state` (for each view) approach derives from
 > [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
 > principles](https://redux.js.org/introduction/three-principles).
+
+> Components:
+- Views (Fragments) - presents data on the scree screen and pass user interactions to View Model. Views are hard to test, so they should be as simple as possible.
+- View Models - dispatches (through `LiveData`) state changes to the view and and deals with user interactions (these view models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
+- View States - common state for a single view
+
+#### Domain layer
+
+This is the core layer of the application. Notice that `domain` layer is independent from any other layers. This allows us to make domain models and business logic independent from other layers.
+In other words  changes in other layers will have no effect our `domain` layer eg. changing database (`data` layer) or screen UI (`presentation` layer) ideally will not have any effect on code withing `domain` layer.
+
+Components:
+- UseCase - contains business logic
+- Domain models - defies core structure of the data that will be used within application. This is the source of truth for application data.
+- Repository interfaces - required to keep `domain` layer independent from `data layer` ([Dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)).
+
+#### Data layer
+
+Manages application data and exposes these data sources as repositories to `domain` layer. Typical responsibilities of this layer would be to retrieve data from internet and optionally cache this data locally.
+
+Components:
+- Repository is exposing data to `domain` layer. Depending on application structure and quality of the external APIs repository can also merge, filter and transform the data. Intention of
+this operations is just to create high quality data source for `domain` layer, not to perform any business logic (`domain` layer `use case` responsibility).
+- Mapper - maps `data model` to `domain model` (to keep `domain` layer independent from `data` layer).
+- Retrofit service - defines set of API endpoints.
+- Data model - defines the structure of the data retrieved from network and contains annotations, so Retrofit (Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
 
 ### External dependencies
 
