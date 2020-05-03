@@ -6,7 +6,7 @@ import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListFragmentDirections
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.ViewState
-import com.igorwojda.showcase.library.base.navigation.NavigationManager
+import com.igorwojda.showcase.library.base.presentation.navigation.NavigationManager
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.stub
