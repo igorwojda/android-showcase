@@ -1,7 +1,7 @@
 @file:Suppress("detekt.StringLiteralDuplication")
 
 private object LibraryVersion {
-    const val KODEIN = "6.5.1"
+    const val KODEIN = "6.5.5"
     const val RETROFIT = "2.7.1"
     const val OK_HTTP = "4.3.1"
     const val STETHO = "1.5.0"
