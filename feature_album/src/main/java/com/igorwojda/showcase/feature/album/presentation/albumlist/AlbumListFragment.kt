@@ -3,7 +3,6 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
@@ -33,8 +32,7 @@ class AlbumListFragment : BaseContainerFragment() {
         val context = checkNotNull(context)
 
         albumAdapter.setOnDebouncedClickListener {
-            val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(it.artist, it.name, it.mbId)
-            findNavController().navigate(navDirections)
+            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
         }
 
         recyclerView.apply {

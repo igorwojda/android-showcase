@@ -44,10 +44,10 @@ android {
 dependencies {
     api(LibraryDependency.KOTLIN)
     api(LibraryDependency.KOTLIN_REFLECT)
-
     api(LibraryDependency.KODEIN)
     api(LibraryDependency.KODEIN_ANDROID_X)
-
+    api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
+    api(LibraryDependency.NAVIGATION_UI_KTX)
     api(LibraryDependency.TIMBER)
     api(LibraryDependency.APP_COMPAT)
     api(LibraryDependency.COROUTINES_ANDROID)
