@@ -122,6 +122,7 @@ Components:
 - **View (Fragment)** - presents data on the screen and pass user interactions to View Model. Views are hard to test, so they should be as simple as possible.
 - **View model** - dispatches (through `LiveData`) state changes to the view and deals with user interactions (these view models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
 - **View state** - common state for a single view
+- **Navigation manager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of separately, inside each view)
 
 #### Domain layer
 
