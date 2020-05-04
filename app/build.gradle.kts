@@ -69,6 +69,10 @@ android {
 dependencies {
     api(project(ModuleDependency.LIBRARY_BASE))
 
+    api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
+    api(LibraryDependency.NAVIGATION_UI_KTX)
+    api(LibraryDependency.NAVIGATION_DYNAMIC_FEATURE_FRAGMENT_KTX)
+
     implementation(LibraryDependency.OK_HTTP)
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
     implementation(LibraryDependency.PLAY_CORE)

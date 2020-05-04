@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/album_nav_graph"
-            app:startDestination="@+id/albumListFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:moduleName="feature_album"
+    app:startDestination="@id/albumListFragment">
     <fragment
         android:id="@+id/albumListFragment"
         android:name="com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListFragment"
-        android:label="AlbumListFragment">
+        android:label="AlbumListFragment"
+        app:moduleName="feature_album">
         <action
             android:id="@+id/action_album_list_to_albumDetail"
-            app:destination="@id/Fragment"/>
+            app:destination="@id/albumDetailFragment"/>
     </fragment>
+
     <fragment
-        android:id="@+id/Fragment"
+        android:id="@+id/albumDetailFragment"
         android:name="com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailFragment"
-        android:label="AlbumDetailFragment">
+        android:label="AlbumDetailFragment"
+        app:moduleName="feature_album">
         <argument
             android:name="artistName"
             app:argType="string"/>

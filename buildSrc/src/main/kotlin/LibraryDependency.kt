@@ -55,6 +55,10 @@ object LibraryDependency {
     const val LIFECYCLE_VIEW_MODEL_KTX =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${LibraryVersion.LIFECYCLE_VIEW_MODEL_KTX}"
     const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${CoreVersion.NAVIGATION}"
+
+    // Dynamic Feature Module Support
+    const val NAVIGATION_DYNAMIC_FEATURE_FRAGMENT_KTX =
+        "androidx.navigation:navigation-dynamic-features-fragment:${CoreVersion.NAVIGATION}"
     const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx:${CoreVersion.NAVIGATION}"
     const val COIL = "io.coil-kt:coil:${LibraryVersion.COIL}"
     const val K_ANDROID = "com.pawegio.kandroid:kandroid:${LibraryVersion.K_ANDROID}"
