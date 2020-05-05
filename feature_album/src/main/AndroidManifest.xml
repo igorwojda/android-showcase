@@ -6,7 +6,7 @@
         dist:instant="false"
         dist:onDemand="false"
         dist:title="@string/feature_album">
-        <dist:fusing dist:include="true"/>
+        <dist:fusing dist:include="false"/>
     </dist:module>
 
 </manifest>
