@@ -9,7 +9,7 @@
         android:label="AlbumListFragment"
         app:moduleName="feature_album">
         <action
-            android:id="@+id/action_album_list_to_albumDetail"
+            android:id="@+id/actionAlbumListToAlbumDetail"
             app:destination="@id/albumDetailFragment"/>
     </fragment>
 
