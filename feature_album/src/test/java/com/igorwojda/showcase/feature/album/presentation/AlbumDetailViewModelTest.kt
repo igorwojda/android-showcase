@@ -7,7 +7,7 @@ import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetail
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.ViewState
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -47,7 +47,7 @@ class AlbumDetailViewModelTest {
         cut.loadData()
 
         // then
-        cut.stateLiveData.value shouldEqual ViewState(
+        cut.stateLiveData.value shouldBeEqualTo ViewState(
             isLoading = false,
             isError = true,
             artistName = "",
