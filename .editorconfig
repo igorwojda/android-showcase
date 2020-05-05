@@ -1,6 +1,6 @@
 root = true
 
-[*.{kt,kts}]
+[*.{kt, kts}]
 end_of_line = lf
 insert_final_newline = true
 max_line_length = 120
