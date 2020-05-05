@@ -10,7 +10,7 @@ class AlbumDataImageSizeKtTest {
     @Test
     fun `maps to AlbumDomainImageSize`() {
         // given
-        val dataEnums = enumValues<AlbumDataImageSize>().filterNot { it == AlbumDataImageSize.UNKNOWN }
+        val dataEnums = AlbumDataImageSize.values().filterNot { it == AlbumDataImageSize.UNKNOWN }
 
         // when
         dataEnums.forEach { it.toDomainEnum() }
