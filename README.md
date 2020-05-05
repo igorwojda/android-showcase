@@ -1,7 +1,7 @@
 # Project description
 [![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=shield)](https://circleci.com/gh/igorwojda/android-showcase)
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.70-blue.svg)](https://kotlinlang.org)
-[![AGP](https://img.shields.io/badge/AndroidStudio-3.5.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.72-blue.svg)](https://kotlinlang.org)
+[![AGP](https://img.shields.io/badge/AndroidStudio-3.6.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-5.6.4-blue?style=flat)](https://gradle.org)
 
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)

@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/app_navigation_graph"
-            app:startDestination="@id/album_nav_graph">
-    <include app:graph="@navigation/feature_album_nav_graph"/>
-    <include app:graph="@navigation/feature_profile_nav_graph"/>
-    <include app:graph="@navigation/feature_favourite_nav_graph"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_navigation_graph"
+    app:startDestination="@id/featureAlbumNavGraph">
+
+    <include-dynamic
+        android:id="@+id/featureAlbumNavGraph"
+        app:graphResName="feature_album_nav_graph"
+        app:moduleName="feature_album"/>
+
+    <include-dynamic
+        android:id="@+id/featureFavouriteNavGraph"
+        app:graphResName="feature_favourite_nav_graph"
+        app:moduleName="feature_favourite"/>
+
+    <include-dynamic
+        android:id="@+id/featureProfileNavGraph"
+        app:graphResName="feature_profile_nav_graph"
+        app:moduleName="feature_profile"/>
+
 </navigation>

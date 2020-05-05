@@ -48,6 +48,7 @@ dependencies {
     api(LibraryDependency.KODEIN_ANDROID_X)
     api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
     api(LibraryDependency.NAVIGATION_UI_KTX)
+    api(LibraryDependency.NAVIGATION_DYNAMIC_FEATURE_FRAGMENT_KTX)
     api(LibraryDependency.TIMBER)
     api(LibraryDependency.APP_COMPAT)
     api(LibraryDependency.COROUTINES_ANDROID)
