@@ -24,9 +24,9 @@ This project is being maintained to match current industry standards. Please che
 This project brings to table set of best practices, tools, and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
-* Modern architecture (feature modules, Clean Architecture, Model-View-ViewModel, Model-View-Intent)
+* Modern architecture (dynamic feature modules, Clean Architecture, Model-View-ViewModel, Model-View-Intent)
 * [Android Jetpack](https://developer.android.com/jetpack)
-* A single-activity architecture, using the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) to manage fragment operations
+* A single-activity architecture, using the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
 * Reactive UI
 * CI pipeline
 * Testing
