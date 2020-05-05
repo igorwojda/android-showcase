@@ -10,13 +10,13 @@
         app:moduleName="feature_album"/>
 
     <include-dynamic
-        android:id="@+id/featureProfileNavGraph"
-        app:graphResName="feature_profile_nav_graph"
-        app:moduleName="feature_profile"/>
-
-    <include-dynamic
         android:id="@+id/featureFavouriteNavGraph"
         app:graphResName="feature_favourite_nav_graph"
         app:moduleName="feature_favourite"/>
+
+    <include-dynamic
+        android:id="@+id/featureProfileNavGraph"
+        app:graphResName="feature_profile_nav_graph"
+        app:moduleName="feature_profile"/>
 
 </navigation>
