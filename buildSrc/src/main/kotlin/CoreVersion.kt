@@ -5,5 +5,6 @@ object CoreVersion {
     const val KTLINT = "0.36.0"
 
     // 2.3.x required for androidx.navigation:navigation-dynamic-features-fragment dependency
+    // DynamicNavHostFragmentDynamicNavHostFragment
     const val NAVIGATION = "2.3.0-alpha06"
 }
