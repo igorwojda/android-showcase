@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class AlbumDataModelKtTest {
+class AlbumDataModelTest {
 
     @Test
     fun `data model with full data maps to AlbumDomainModel`() {

@@ -11,7 +11,7 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class AlbumImageDataModelKtTest {
+class AlbumImageDataModelTest {
 
     @Test
     fun `maps to AlbumWikiDomainModel`() {
