@@ -6,19 +6,16 @@
 
     <include-dynamic
         android:id="@+id/featureAlbumNavGraph"
-        app:graphPackage="com.igorwojda.showcase.feature.album"
         app:graphResName="feature_album_nav_graph"
         app:moduleName="feature_album"/>
 
     <include-dynamic
         android:id="@+id/featureProfileNavGraph"
-        app:graphPackage="com.igorwojda.showcase.feature.profile"
         app:graphResName="feature_profile_nav_graph"
         app:moduleName="feature_profile"/>
 
     <include-dynamic
         android:id="@+id/featureFavouriteNavGraph"
-        app:graphPackage="com.igorwojda.showcase.feature.favourite"
         app:graphResName="feature_favourite_nav_graph"
         app:moduleName="feature_favourite"/>
 
