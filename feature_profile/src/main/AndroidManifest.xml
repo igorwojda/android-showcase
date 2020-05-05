@@ -5,8 +5,6 @@
     <dist:module
         dist:instant="false"
         dist:onDemand="false"
-        dist:title="@string/feature_profile">
-        <dist:fusing dist:include="true"/>
-    </dist:module>
+        dist:title="@string/feature_profile"></dist:module>
 
 </manifest>
