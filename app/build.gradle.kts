@@ -84,8 +84,6 @@ dependencies {
     api(LibraryDependency.FRAGMENT_KTX)
     api(LibraryDependency.K_ANDROID)
     api(LibraryDependency.LOTTIE)
-
-    addTestDependencies()
 }
 
 fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {

@@ -57,4 +57,6 @@ dependencies {
     api(LibraryDependency.LIFECYCLE_EXTENSIONS)
     api(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
     api(LibraryDependency.COIL)
+
+    addTestDependencies()
 }
