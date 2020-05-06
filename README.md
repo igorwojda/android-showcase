@@ -120,9 +120,9 @@ This layer is closest to what the user sees on the screen. The `presentation` la
 
 Components:
 - **View (Fragment)** - presents data on the screen and pass user interactions to View Model. Views are hard to test, so they should be as simple as possible.
-- **View model** - dispatches (through `LiveData`) state changes to the view and deals with user interactions (these view models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
-- **View state** - common state for a single view
-- **Navigation manager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of separately, inside each view)
+- **ViewModel** - dispatches (through `LiveData`) state changes to the view and deals with user interactions (these view models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
+- **ViewState** - common state for a single view
+- **NavManager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of separately, inside each view)
 
 #### Domain layer
 
@@ -131,7 +131,7 @@ In other words, changes in other layers will have no effect on `domain` layer eg
 
 Components:
 - **UseCase** - contains business logic
-- **Domain model** - defies the core structure of the data that will be used within the application. This is the source of truth for application data.
+- **DomainModel** - defies the core structure of the data that will be used within the application. This is the source of truth for application data.
 - **Repository interface** - required to keep the `domain` layer independent from the `data layer` ([Dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)).
 
 #### Data layer
@@ -143,8 +143,8 @@ Components:
 these operations is to create high-quality data source for the `domain` layer, not to perform any business logic (`domain` layer `use case` responsibility).
 
 - **Mapper** - maps `data model` to `domain model` (to keep `domain` layer independent from the `data` layer).
-- **Retrofit service** - defines a set of API endpoints.
-- **Data model** - defines the structure of the data retrieved from the network and contains annotations, so Retrofit (Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
+- **RetrofitService** - defines a set of API endpoints.
+- **DataModel** - defines the structure of the data retrieved from the network and contains annotations, so Retrofit (Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
 
 ### Data flow
 

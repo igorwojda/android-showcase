@@ -12,10 +12,10 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class NavigationManagerTest {
+class NavManagerTest {
 
     @MockK
-    lateinit var navigationEventListener: (navDirections: NavDirections) -> Unit
+    lateinit var navEventListener: (navDirections: NavDirections) -> Unit
 
     private lateinit var cut: NavManager
 
@@ -30,14 +30,14 @@ class NavigationManagerTest {
     fun `when call navigate then call navigation event callback`() {
         // given
         val navDirections = mockk<NavDirections>()
-        every { navigationEventListener.invoke(navDirections) } returns Unit
+        every { navEventListener.invoke(navDirections) } returns Unit
 
-        cut.setOnNavEvent(navigationEventListener)
+        cut.setOnNavEvent(navEventListener)
 
         // when
         cut.navigate(navDirections)
 
         // then
-        verify { navigationEventListener.invoke(navDirections) }
+        verify { navEventListener.invoke(navDirections) }
     }
 }

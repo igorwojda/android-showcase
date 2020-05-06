@@ -5,7 +5,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.library.base.presentation.activity.BaseActivity
-import com.igorwojda.showcase.library.base.presentation.navigation.NavigationManager
+import com.igorwojda.showcase.library.base.presentation.navigation.NavManager
 import kotlinx.android.synthetic.main.activity_nav_host.*
 import org.kodein.di.generic.instance
 
@@ -15,21 +15,21 @@ class NavHostActivity : BaseActivity() {
 
     private val navController get() = navHostFragment.findNavController()
 
-    private val navigationManager: NavigationManager by instance()
+    private val navManager: NavManager by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initBottomNavigation()
-        initNavigationManager()
+        initNavManager()
     }
 
     private fun initBottomNavigation() {
         bottomNav.setupWithNavController(navController)
     }
 
-    private fun initNavigationManager() {
-        navigationManager.setOnNavigationEvent {
+    private fun initNavManager() {
+        navManager.setOnNavEvent {
             navController.navigate(it)
         }
     }
