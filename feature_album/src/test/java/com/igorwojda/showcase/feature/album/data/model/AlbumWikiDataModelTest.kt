@@ -5,9 +5,9 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumWikiDomainModel
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
+import org.junit.runners.JUnit4
 
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(JUnit4::class)
 class AlbumWikiDataModelTest {
 
     @Test

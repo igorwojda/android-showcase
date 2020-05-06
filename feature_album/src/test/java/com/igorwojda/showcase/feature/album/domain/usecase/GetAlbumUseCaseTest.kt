@@ -1,40 +1,45 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
 import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
-import com.nhaarman.mockitokotlin2.verify
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.junit.MockitoJUnitRunner
+import org.junit.runners.JUnit4
 
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(JUnit4::class)
 class GetAlbumUseCaseTest {
 
-    @Mock
+    @MockK
     internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
 
     private lateinit var cut: GetAlbumUseCase
 
     @Before
     fun setUp() {
+        MockKAnnotations.init(this)
+
         cut = GetAlbumUseCase(mockAlbumRepository)
     }
 
     @Test
     fun `when execute then getAlbum`() {
-        runBlocking {
-            // given
-            val albumName = "albumName"
-            val artistName = "artistName"
-            val mbId = "123"
+        // given
+        val albumName = "albumName"
+        val artistName = "artistName"
+        val mbId = "123"
 
-            // when
-            cut.execute(artistName, albumName, mbId)
+        coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } answers { mockk() }
 
-            // then
-            verify(mockAlbumRepository).getAlbumInfo(artistName, albumName, mbId)
-        }
+        // when
+        runBlocking { cut.execute(artistName, albumName, mbId) }
+
+        // then
+        coVerify { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) }
     }
 }

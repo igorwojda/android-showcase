@@ -8,20 +8,19 @@ import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListView
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.ViewState
 import com.igorwojda.showcase.library.base.presentation.navigation.NavigationManager
 import com.igorwojda.showcase.library.testutils.CoroutineRule
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.stub
-import com.nhaarman.mockitokotlin2.verify
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.junit.MockitoJUnitRunner
+import org.junit.runners.JUnit4
 
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(JUnit4::class)
 class AlbumListViewModelTest {
 
     @ExperimentalCoroutinesApi
@@ -31,16 +30,18 @@ class AlbumListViewModelTest {
     @get:Rule
     var rule = InstantTaskExecutorRule()
 
-    @Mock
+    @MockK
     internal lateinit var mockGetAlbumSearchUseCase: GetAlbumListUseCase
 
-    @Mock
+    @MockK(relaxed = true)
     internal lateinit var mockNavigationManager: NavigationManager
 
     private lateinit var cut: AlbumListViewModel
 
     @Before
     fun setUp() {
+        MockKAnnotations.init(this)
+
         cut = AlbumListViewModel(
             mockNavigationManager,
             mockGetAlbumSearchUseCase
@@ -53,9 +54,7 @@ class AlbumListViewModelTest {
         cut.loadData()
 
         // then
-        runBlocking {
-            verify(mockGetAlbumSearchUseCase).execute()
-        }
+        coVerify { mockGetAlbumSearchUseCase.execute() }
     }
 
     @Test
@@ -75,17 +74,14 @@ class AlbumListViewModelTest {
         cut.navigateToAlbumDetails(artistName, albumName, mbId)
 
         // then
-        verify(mockNavigationManager).navigate(
-            navDirections
-        )
+        coVerify { mockNavigationManager.navigate(navDirections) }
     }
 
     @Test
     fun `verify state when GetAlbumSearchUseCase returns empty list`() {
         // given
-        mockGetAlbumSearchUseCase.stub {
-            onBlocking { execute() } doReturn listOf()
-        }
+        coEvery { mockGetAlbumSearchUseCase.execute() } returns listOf()
+
         // when
         cut.loadData()
 
@@ -102,9 +98,7 @@ class AlbumListViewModelTest {
         // given
         val album = AlbumDomainModel("albumName", "artistName", listOf())
         val albums = listOf(album)
-        mockGetAlbumSearchUseCase.stub {
-            onBlocking { execute() } doReturn albums
-        }
+        coEvery { mockGetAlbumSearchUseCase.execute() } returns albums
 
         // when
         cut.loadData()
