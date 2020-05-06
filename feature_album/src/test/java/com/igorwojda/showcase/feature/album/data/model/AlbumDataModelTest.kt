@@ -7,10 +7,10 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
+import org.junit.runners.JUnit4
 
-@RunWith(MockitoJUnitRunner::class)
-class AlbumDataModelKtTest {
+@RunWith(JUnit4::class)
+class AlbumDataModelTest {
 
     @Test
     fun `data model with full data maps to AlbumDomainModel`() {

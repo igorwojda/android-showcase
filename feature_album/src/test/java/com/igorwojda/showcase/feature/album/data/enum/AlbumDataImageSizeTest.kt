@@ -2,10 +2,10 @@ package com.igorwojda.showcase.feature.album.data.enum
 
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
+import org.junit.runners.JUnit4
 
-@RunWith(MockitoJUnitRunner::class)
-class AlbumDataImageSizeKtTest {
+@RunWith(JUnit4::class)
+class AlbumDataImageSizeTest {
 
     @Test
     fun `maps to AlbumDomainImageSize`() {

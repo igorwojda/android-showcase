@@ -2,58 +2,56 @@ package com.igorwojda.showcase.feature.album.domain.usecase
 
 import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.given
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.junit.MockitoJUnitRunner
+import org.junit.runners.JUnit4
 
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(JUnit4::class)
 class GetAlbumListUseCaseTest {
 
-    @Mock
+    @MockK
     internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
 
     private lateinit var cut: GetAlbumListUseCase
 
     @Before
     fun setUp() {
+        MockKAnnotations.init(this)
+
         cut = GetAlbumListUseCase(mockAlbumRepository)
     }
 
     @Test
     fun `return list of albums`() {
-        runBlocking {
-            // given
-            val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())
-            given(mockAlbumRepository.searchAlbum(any())).willReturn(albums)
+        // given
+        val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns albums
 
-            // when
-            val result = cut.execute()
+        // when
+        val result = runBlocking { cut.execute() }
 
-            // then
-            result shouldBeEqualTo albums
-        }
+        // then
+        result shouldBeEqualTo albums
     }
 
     @Test
     fun `filter albums without default image`() {
-        runBlocking {
-            // given
-            val albumWithImage = DomainFixtures.getAlbum()
-            val albumWithoutImage = DomainFixtures.getAlbum(images = listOf())
-            val albums = listOf(albumWithImage, albumWithoutImage)
-            given(mockAlbumRepository.searchAlbum(any())).willReturn(albums)
+        // given
+        val albumWithImage = DomainFixtures.getAlbum()
+        val albumWithoutImage = DomainFixtures.getAlbum(images = listOf())
+        val albums = listOf(albumWithImage, albumWithoutImage)
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns albums
 
-            // when
-            val result = cut.execute()
+        // when
+        val result = runBlocking { cut.execute() }
 
-            // then
-            result shouldBeEqualTo listOf(albumWithImage)
-        }
+        // then
+        result shouldBeEqualTo listOf(albumWithImage)
     }
 }

@@ -13,9 +13,7 @@ fun DependencyHandler.addTestDependencies() {
     androidTestImplementation(TestLibraryDependency.ESPRESSO_CORE)
     testImplementation(TestLibraryDependency.KLUENT)
     androidTestImplementation(TestLibraryDependency.KLUENT_ANDROID)
-    testImplementation(TestLibraryDependency.MOCKITO_INLINE)
-    androidTestImplementation(TestLibraryDependency.MOCKITO_ANDROID)
-    testImplementation(TestLibraryDependency.MOCKITO_KOTLIN)
+    testImplementation(TestLibraryDependency.MOCKK)
     testImplementation(TestLibraryDependency.COROUTINES_TEST)
     testImplementation(TestLibraryDependency.ANDROID_X_CORE_TESTING)
 }
