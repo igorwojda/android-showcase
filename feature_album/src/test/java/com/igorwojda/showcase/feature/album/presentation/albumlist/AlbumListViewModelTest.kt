@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.ViewState
-import com.igorwojda.showcase.library.base.presentation.navigation.NavigationManager
+import com.igorwojda.showcase.library.base.presentation.navigation.NavManager
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -32,7 +32,7 @@ class AlbumListViewModelTest {
     internal lateinit var mockGetAlbumSearchUseCase: GetAlbumListUseCase
 
     @MockK(relaxed = true)
-    internal lateinit var mockNavigationManager: NavigationManager
+    internal lateinit var mockNavManager: NavManager
 
     private lateinit var cut: AlbumListViewModel
 
@@ -41,7 +41,7 @@ class AlbumListViewModelTest {
         MockKAnnotations.init(this)
 
         cut = AlbumListViewModel(
-            mockNavigationManager,
+            mockNavManager,
             mockGetAlbumSearchUseCase
         )
     }
@@ -72,7 +72,7 @@ class AlbumListViewModelTest {
         cut.navigateToAlbumDetails(artistName, albumName, mbId)
 
         // then
-        coVerify { mockNavigationManager.navigate(navDirections) }
+        coVerify { mockNavManager.navigate(navDirections) }
     }
 
     @Test
