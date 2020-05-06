@@ -1,9 +1,7 @@
-package com.igorwojda.showcase.feature.album.presentation
+package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailFragmentArgs
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.ViewState
 import com.igorwojda.showcase.library.testutils.CoroutineRule
 import io.mockk.MockKAnnotations
