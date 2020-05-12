@@ -238,7 +238,7 @@ Other high-quality projects will help you to find solutions that work for your p
 
 ## Contribute
 
-Want to contribute? Check out our [Contributing](CONTRIBUTING.md) docs.
+Want to contribute? Check our [Contributing](CONTRIBUTING.md) docs.
 
 ## Author
 
