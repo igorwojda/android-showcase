@@ -214,7 +214,7 @@ additional resources.
 
 ### Cheat sheet
 
-* [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+ most important tools.
+* [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+ most important tools
 
 ### Android projects
 
