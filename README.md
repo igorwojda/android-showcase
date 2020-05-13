@@ -212,7 +212,11 @@ There are a few ways to open this project.
 This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at
 additional resources.
 
-### Projects
+### Cheat sheet
+
+* [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+ most important tools.
+
+### Android projects
 
 Other high-quality projects will help you to find solutions that work for your project:
 
