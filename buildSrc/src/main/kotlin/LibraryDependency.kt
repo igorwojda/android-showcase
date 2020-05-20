@@ -2,26 +2,26 @@
 
 private object LibraryVersion {
     const val KODEIN = "6.5.5"
-    const val RETROFIT = "2.7.1"
-    const val OK_HTTP = "4.3.1"
+    const val RETROFIT = "2.8.2"
+    const val OK_HTTP = "4.7.2"
     const val STETHO = "1.5.0"
     const val TIMBER = "4.7.1"
-    const val PLAY_CORE = "1.6.4"
+    const val PLAY_CORE = "1.7.3"
     const val APP_COMPAT = "1.1.0"
     const val RECYCLER_VIEW = "1.1.0"
     const val COORDINATOR_LAYOUT = "1.1.0"
 
     // 1.1.x version is required in order to support the dark theme functionality in
     // Android Q (adds Theme.MaterialComponents.DayNight)
-    const val MATERIAL = "1.1.0-alpha09"
+    const val MATERIAL = "1.1.0"
     const val CONSTRAINT_LAYOUT = "1.1.3"
-    const val CORE_KTX = "1.1.0"
-    const val FRAGMENT_KTX = "1.1.0"
+    const val CORE_KTX = "1.2.0"
+    const val FRAGMENT_KTX = "1.2.4"
     const val LIFECYCLE = "1.1.1"
-    const val LIFECYCLE_VIEW_MODEL_KTX = "2.1.0"
-    const val COIL = "0.9.1"
+    const val LIFECYCLE_VIEW_MODEL_KTX = "2.2.0"
+    const val COIL = "0.11.0"
     const val K_ANDROID = "0.8.8@aar"
-    const val LOTTIE = "3.3.1"
+    const val LOTTIE = "3.4.0"
 }
 
 object LibraryDependency {
