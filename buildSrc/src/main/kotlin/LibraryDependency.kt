@@ -10,9 +10,6 @@ private object LibraryVersion {
     const val APP_COMPAT = "1.1.0"
     const val RECYCLER_VIEW = "1.1.0"
     const val COORDINATOR_LAYOUT = "1.1.0"
-
-    // 1.1.x version is required in order to support the dark theme functionality in
-    // Android Q (adds Theme.MaterialComponents.DayNight)
     const val MATERIAL = "1.1.0"
     const val CONSTRAINT_LAYOUT = "1.1.3"
     const val CORE_KTX = "1.2.0"
