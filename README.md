@@ -234,6 +234,7 @@ Other high-quality projects will help you to find solutions that work for your p
 * [Android samples](https://github.com/android) - official Android samples repository
 * [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
+* [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
 
 ## Known issues
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
