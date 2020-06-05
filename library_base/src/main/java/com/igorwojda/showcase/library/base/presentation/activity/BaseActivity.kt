@@ -5,15 +5,10 @@ import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import timber.log.Timber
 
-abstract class BaseActivity : InjectionActivity() {
-
-    @get:LayoutRes
-    protected abstract val layoutResId: Int
+abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : InjectionActivity(contentLayoutId) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(layoutResId)
 
         supportActionBar?.hide()
 

@@ -9,9 +9,7 @@ import com.igorwojda.showcase.library.base.presentation.navigation.NavManager
 import kotlinx.android.synthetic.main.activity_nav_host.*
 import org.kodein.di.generic.instance
 
-class NavHostActivity : BaseActivity() {
-
-    override val layoutResId = R.layout.activity_nav_host
+class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
 
     private val navController get() = navHostFragment.findNavController()
 
