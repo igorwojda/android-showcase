@@ -36,8 +36,11 @@ internal class AlbumListViewModel(
             getAlbumListUseCase.execute().also { result ->
                 val action = when (result) {
                     is GetAlbumListUseCase.Result.Success ->
-                        if (result.data.isEmpty()) Action.AlbumListLoadingFailure
-                            else Action.AlbumListLoadingSuccess(result.data)
+                        if (result.data.isEmpty()) {
+                            Action.AlbumListLoadingFailure
+                        } else {
+                            Action.AlbumListLoadingSuccess(result.data)
+                        }
 
                     is GetAlbumListUseCase.Result.Error ->
                         Action.AlbumListLoadingFailure
