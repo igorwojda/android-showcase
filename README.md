@@ -171,7 +171,7 @@ we can easily share all core dependencies without redefining them in each featur
 [CI pipeline](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) verifies project correctness which each PR.
 All of the tasks run in parallel:
 
-These are all of the Gradle tasks that are [executed by GitHub Actions](https://github.com/features/actions):
+These are all of the Gradle tasks that are executed by [GitHub Actions](https://github.com/features/actions):
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detekt` - runs detekt
 * `./gradlew ktlintCheck` - runs ktlint
