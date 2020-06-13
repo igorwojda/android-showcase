@@ -3,7 +3,7 @@
 ![Detekt](https://github.com/igorwojda/android-showcase/workflows/detekt/badge.svg)
 ![Ktlint](https://github.com/igorwojda/android-showcase/workflows/ktlint/badge.svg)
 ![Android Lint](https://github.com/igorwojda/android-showcase/workflows/android%20lint/badge.svg)
-![Unit test](https://github.com/igorwojda/android-showcase/workflows/uni%20test/badge.svg)
+![Unit test](https://github.com/igorwojda/android-showcase/workflows/unit%20test/badge.svg)
 ![UI test](https://github.com/igorwojda/android-showcase/workflows/ui%20test/badge.svg)
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.72-blue.svg)](https://kotlinlang.org)

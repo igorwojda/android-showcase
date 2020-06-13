@@ -1,4 +1,4 @@
-name: Androi lint
+name: android lint
 
 on:
   push:
