@@ -1,10 +1,10 @@
 # Android showcase
-![](https://github.com/igorwojda/android-showcase/workflows/build%20debug/badge.svg)
-![](https://github.com/igorwojda/android-showcase/workflows/detekt/badge.svg)
-![](https://github.com/igorwojda/android-showcase/workflows/ktlint/badge.svg)
+[![](https://github.com/igorwojda/android-showcase/workflows/build%20debug/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22build+debug%22)
+[![](https://github.com/igorwojda/android-showcase/workflows/detekt/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3Adetekt)
+[![](https://github.com/igorwojda/android-showcase/workflows/ktlint/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3Aktlint)
 [![](https://github.com/igorwojda/android-showcase/workflows/android%20lint/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22android+lint%22)
-![](https://github.com/igorwojda/android-showcase/workflows/unit%20test/badge.svg)
-![](https://github.com/igorwojda/android-showcase/workflows/ui%20test/badge.svg)
+[![](https://github.com/igorwojda/android-showcase/workflows/unit%20test/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22unit+test%22)
+[![](https://github.com/igorwojda/android-showcase/workflows/ui%20test/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22ui+test%22)
 
 [![Actions Status](https://github.com/{user}/{repo}/workflows/{action}/badge.svg)](https://github.com/igorwojda/android-showcase/actions)
 
