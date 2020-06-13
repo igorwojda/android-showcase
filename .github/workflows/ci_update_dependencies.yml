@@ -1,0 +1,40 @@
+name: Update dependency cache
+# Updated cache will be used for subsequent builds/checks.
+# (It's not possible to define dependencies between Git Action workflows, so
+# other will run with old dependency cache)
+
+on:
+  push:
+    branches: [master] # Just in case master was not up to date while merging PR
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  run:
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Generate Gradle checksums
+        run: |
+          find buildSrc -name "*.kt" -type f | sort | xargs shasum  > gradle-checksums.txt
+          cat gradle-checksums.txt
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.gradle
+          key: gradle-${{ hashFiles('gradle-checksums.txt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ hashFiles('gradle-checksums.txt') }}-
+
+      - name: Download Dependencies
+        run: ./gradlew androidDependencies

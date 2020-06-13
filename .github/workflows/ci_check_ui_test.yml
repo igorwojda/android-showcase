@@ -1,0 +1,23 @@
+name: Check UI test
+
+on:
+  push:
+    branches: [master] # Just in case master was not up to date while merging PR
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  run:
+    continue-on-error: true
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: run UI tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
