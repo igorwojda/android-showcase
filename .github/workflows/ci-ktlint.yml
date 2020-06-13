@@ -1,4 +1,4 @@
-name: ci-check-detekt
+name: Ktlint
 
 on:
   push:
@@ -21,10 +21,10 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: detekt
-        run: ./gradlew detekt
+      - name: ktlint
+        run: ./gradlew ktlintCheck
 
       - uses: actions/upload-artifact@v2
         with:
-          name: detekt-report
-          path: ./**/build/reports/detekt/detekt.*
+          name: ktlint-report
+          path: ./**/build/reports/ktlint/
