@@ -1,4 +1,4 @@
-name: ci-detekt
+name: detekt
 
 on:
   push:

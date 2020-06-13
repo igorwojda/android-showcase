@@ -1,4 +1,4 @@
-name: Ktlint
+name: ktlint
 
 on:
   push:
