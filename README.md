@@ -2,9 +2,11 @@
 ![](https://github.com/igorwojda/android-showcase/workflows/build%20debug/badge.svg)
 ![](https://github.com/igorwojda/android-showcase/workflows/detekt/badge.svg)
 ![](https://github.com/igorwojda/android-showcase/workflows/ktlint/badge.svg)
-![](https://github.com/igorwojda/android-showcase/workflows/android%20lint/badge.svg)
+[![](https://github.com/igorwojda/android-showcase/workflows/android%20lint/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22android+lint%22)
 ![](https://github.com/igorwojda/android-showcase/workflows/unit%20test/badge.svg)
 ![](https://github.com/igorwojda/android-showcase/workflows/ui%20test/badge.svg)
+
+[![Actions Status](https://github.com/{user}/{repo}/workflows/{action}/badge.svg)](https://github.com/igorwojda/android-showcase/actions)
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.72-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AndroidStudio-3.6.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
@@ -171,7 +173,7 @@ we can easily share all core dependencies without redefining them in each featur
 [CI pipeline](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) verifies project correctness which each PR.
 All of the tasks run in parallel:
 
-These are all of the Gradle tasks that are executed by [GitHub Actions](https://github.com/features/actions):
+These are all of the Gradle tasks that are [GitHub Actions](https://github.com/features/actions):
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detekt` - runs detekt
 * `./gradlew ktlintCheck` - runs ktlint
