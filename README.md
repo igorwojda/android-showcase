@@ -34,8 +34,8 @@ This project brings to table set of best practices, tools, and solutions:
 * [Android Jetpack](https://developer.android.com/jetpack)
 * A single-activity architecture, using the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
 * Reactive UI
-* CI pipeline
-* Testing
+* CI pipeline ([GitHub Actions](https://github.com/features/actions))
+* Testing (Unit, UI)
 * Static analysis tools
 * Dependency Injection
 * Material design
@@ -171,9 +171,7 @@ we can easily share all core dependencies without redefining them in each featur
 [CI pipeline](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) verifies project correctness which each PR.
 All of the tasks run in parallel:
 
-![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
-
-These are all of the Gradle tasks (cmd commands) that are [executed by CI](/circle.yml):
+These are all of the Gradle tasks that are [executed by GitHub Actions](https://github.com/features/actions):
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detekt` - runs detekt
 * `./gradlew ktlintCheck` - runs ktlint
