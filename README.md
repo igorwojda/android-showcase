@@ -1,5 +1,5 @@
 # Android showcase
-![](https://github.com/igorwojda/android-showcase/workflows/.github/workflows/ci-ktlint.yml/badge.svg)
+![](https://github.com/igorwojda/android-showcase/.github/workflows/ci-ktlint.yml/badge.svg)
 
 
 ![Build app](https://github.com/igorwojda/android-showcase/workflows/ci-build-debug/badge.svg)
