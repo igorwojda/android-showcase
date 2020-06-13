@@ -1,4 +1,4 @@
-name: ci-check-buil-debug
+name: ci-check-build-debug
 
 on:
   push:
