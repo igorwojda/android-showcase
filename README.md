@@ -6,8 +6,6 @@
 [![](https://github.com/igorwojda/android-showcase/workflows/unit%20test/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22unit+test%22)
 [![](https://github.com/igorwojda/android-showcase/workflows/ui%20test/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22ui+test%22)
 
-[![Actions Status](https://github.com/{user}/{repo}/workflows/{action}/badge.svg)](https://github.com/igorwojda/android-showcase/actions)
-
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.72-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AndroidStudio-3.6.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-5.6.4-blue?style=flat)](https://gradle.org)
