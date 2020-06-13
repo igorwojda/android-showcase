@@ -1,4 +1,4 @@
-name: Check detekt
+name: ci-check-detekt
 
 on:
   push:

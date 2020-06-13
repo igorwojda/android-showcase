@@ -1,10 +1,10 @@
 # Android showcase
-![Build app](https://github.com/igorwojda/android-showcase/.github/workflows/ci_check_build_debug.yml/badge.svg)
-![Detekt](https://github.com/igorwojda/android-showcase/.github/workflows/ci_check_detekt.yml/badge.svg)
-![Ktlint](https://github.com/igorwojda/android-showcase/.github/workflows/ci_check_ktlint.yml/badge.svg)
-![Android Lint](https://github.com/igorwojda/android-showcase/.github/workflows/ci_check_lint_debug.yml/badge.svg)
-![Unit test](https://github.com/igorwojda/android-showcase/.github/workflows/ci_check_unit_test.yml/badge.svg)
-![UI test](https://github.com/igorwojda/android-showcase/.github/workflows/ci_check_ui_test.yml/badge.svg)
+![Build app](https://github.com/igorwojda/android-showcase/workflows/ci_check_build_debug.yml/badge.svg)
+![Detekt](https://github.com/igorwojda/android-showcase/workflows/ci_check_detekt.yml/badge.svg)
+![Ktlint](https://github.com/igorwojda/android-showcase/workflows/ci_check_ktlint.yml/badge.svg)
+![Android Lint](https://github.com/igorwojda/android-showcase/workflows/ci_check_lint_debug.yml/badge.svg)
+![Unit test](https://github.com/igorwojda/android-showcase/workflows/ci_check_unit_test.yml/badge.svg)
+![UI test](https://github.com/igorwojda/android-showcase/workflows/ci_check_ui_test.yml/badge.svg)
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.72-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AndroidStudio-3.6.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)

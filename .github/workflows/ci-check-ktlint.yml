@@ -1,4 +1,4 @@
-name: Check ktlint
+name: ci-check-ktlint
 
 on:
   push:

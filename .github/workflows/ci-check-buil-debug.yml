@@ -1,4 +1,4 @@
-name: Build debug apk
+name: ci-check-buil-debug
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Check UI test
+name: ci-check-ui-test
 
 on:
   push:

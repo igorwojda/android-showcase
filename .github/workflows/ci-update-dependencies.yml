@@ -1,4 +1,7 @@
-name: Check Android lint
+name: ci-update-dependencies
+# Updated cache will be used for subsequent builds/checks.
+# (It's not possible to define dependencies between Git Action workflows, so
+# other will run with old dependency cache)
 
 on:
   push:
@@ -33,15 +36,5 @@ jobs:
           restore-keys: |
             gradle-${{ hashFiles('gradle-checksums.txt') }}-
 
-      - name: lintDebug
-        run: ./gradlew lint
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: android-lint-report
-          path: ~/app/build/reports/lint-results.html
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: android-lint-report
-          path: ./**/build/reports/lint-results.xml
+      - name: Download Dependencies
+        run: ./gradlew androidDependencies

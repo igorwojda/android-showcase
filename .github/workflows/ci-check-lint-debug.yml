@@ -1,4 +1,4 @@
-name: Check unit test
+name: ci-check-lint-debug
 
 on:
   push:
@@ -33,10 +33,15 @@ jobs:
           restore-keys: |
             gradle-${{ hashFiles('gradle-checksums.txt') }}-
 
-      - name: unitTest
-        run: ./gradlew test
+      - name: lintDebug
+        run: ./gradlew lint
 
       - uses: actions/upload-artifact@v2
         with:
-          name: unit-test-report
-          path: ./**/build/reports/tests/
+          name: android-lint-report
+          path: ~/app/build/reports/lint-results.html
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: android-lint-report
+          path: ./**/build/reports/lint-results.xml
