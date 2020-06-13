@@ -1,10 +1,10 @@
 # Android showcase
-![Build app](https://github.com/igorwojda/android-showcase/workflows/build%20debug/badge.svg)
-![Detekt](https://github.com/igorwojda/android-showcase/workflows/detekt/badge.svg)
-![Ktlint](https://github.com/igorwojda/android-showcase/workflows/ktlint/badge.svg)
-![Android Lint](https://github.com/igorwojda/android-showcase/workflows/android%20lint/badge.svg)
-![Unit test](https://github.com/igorwojda/android-showcase/workflows/unit%20test/badge.svg)
-![UI test](https://github.com/igorwojda/android-showcase/workflows/ui%20test/badge.svg)
+![](https://github.com/igorwojda/android-showcase/workflows/build%20debug/badge.svg)
+![](https://github.com/igorwojda/android-showcase/workflows/detekt/badge.svg)
+![](https://github.com/igorwojda/android-showcase/workflows/ktlint/badge.svg)
+![](https://github.com/igorwojda/android-showcase/workflows/android%20lint/badge.svg)
+![](https://github.com/igorwojda/android-showcase/workflows/unit%20test/badge.svg)
+![](https://github.com/igorwojda/android-showcase/workflows/ui%20test/badge.svg)
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.72-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AndroidStudio-3.6.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
@@ -168,8 +168,8 @@ we can easily share all core dependencies without redefining them in each featur
 
 ## Ci pipeline
 
-[CI pipeline](circle.yml) verifies project correctness which each PR. Some of the tasks run in parallel, while
-others like `app build` will not be stared until all `static checks` and `tests` complete successfully:
+[CI pipeline](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) verifies project correctness which each PR.
+All of the tasks run in parallel:
 
 ![ci_pipeline.jpg](misc/image/ci_pipeline.jpg)
 
@@ -178,10 +178,8 @@ These are all of the Gradle tasks (cmd commands) that are [executed by CI](/circ
 * `./gradlew detekt` - runs detekt
 * `./gradlew ktlintCheck` - runs ktlint
 * `./gradlew testDebugUnitTest` - run unit tests
+* `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
-
-On top of that project contains a custom `./gradlew staticCheck` task that mimics all CI tasks and is intended to run on
-a local computer.
 
 ### Design decisions
 
