@@ -54,7 +54,9 @@ class AlbumDetailViewModelTest {
         every { mockAlbumDetailFragmentArgs.albumName } returns albumName
         every { mockAlbumDetailFragmentArgs.artistName } returns artistName
         every { mockAlbumDetailFragmentArgs.mbId } returns mbId
-        coEvery { mockGetAlbumUseCase.execute(artistName, albumName, mbId) } returns null
+        coEvery {
+            mockGetAlbumUseCase.execute(artistName, albumName, mbId)
+        } returns GetAlbumUseCase.Result.Error(Exception())
 
         // when
         cut.loadData()

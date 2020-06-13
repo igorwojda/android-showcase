@@ -29,7 +29,7 @@ class AlbumListViewModelTest {
     var rule = InstantTaskExecutorRule()
 
     @MockK
-    internal lateinit var mockGetAlbumSearchUseCase: GetAlbumListUseCase
+    internal lateinit var mockGetAlbumListUseCase: GetAlbumListUseCase
 
     @MockK(relaxed = true)
     internal lateinit var mockNavManager: NavManager
@@ -42,7 +42,7 @@ class AlbumListViewModelTest {
 
         cut = AlbumListViewModel(
             mockNavManager,
-            mockGetAlbumSearchUseCase
+            mockGetAlbumListUseCase
         )
     }
 
@@ -52,7 +52,7 @@ class AlbumListViewModelTest {
         cut.loadData()
 
         // then
-        coVerify { mockGetAlbumSearchUseCase.execute() }
+        coVerify { mockGetAlbumListUseCase.execute() }
     }
 
     @Test
@@ -76,9 +76,9 @@ class AlbumListViewModelTest {
     }
 
     @Test
-    fun `verify state when GetAlbumSearchUseCase returns empty list`() {
+    fun `verify state when GetAlbumListUseCase returns empty list`() {
         // given
-        coEvery { mockGetAlbumSearchUseCase.execute() } returns listOf()
+        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(emptyList())
 
         // when
         cut.loadData()
@@ -92,11 +92,11 @@ class AlbumListViewModelTest {
     }
 
     @Test
-    fun `verify state when GetAlbumSearchUseCase returns non-empty list`() {
+    fun `verify state when GetAlbumListUseCase returns non-empty list`() {
         // given
         val album = AlbumDomainModel("albumName", "artistName", listOf())
         val albums = listOf(album)
-        coEvery { mockGetAlbumSearchUseCase.execute() } returns albums
+        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(albums)
 
         // when
         cut.loadData()

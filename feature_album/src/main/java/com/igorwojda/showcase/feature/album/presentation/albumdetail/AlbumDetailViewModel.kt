@@ -24,10 +24,11 @@ internal class AlbumDetailViewModel(
     private fun getAlbum() {
         viewModelScope.launch {
             getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
-                if (it != null) {
-                    sendAction(AlbumLoadSuccess(it))
-                } else {
-                    sendAction(AlbumLoadFailure)
+                when {
+                    it is GetAlbumUseCase.Result.Success ->
+                        sendAction(AlbumLoadSuccess(it.data))
+                    it is GetAlbumUseCase.Result.Error ->
+                        sendAction(AlbumLoadFailure)
                 }
             }
         }

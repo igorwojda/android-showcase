@@ -11,6 +11,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import java.net.UnknownHostException
 
 @RunWith(JUnit4::class)
 class GetAlbumListUseCaseTest {
@@ -37,7 +38,7 @@ class GetAlbumListUseCaseTest {
         val result = runBlocking { cut.execute() }
 
         // then
-        result shouldBeEqualTo albums
+        result shouldBeEqualTo GetAlbumListUseCase.Result.Success(albums)
     }
 
     @Test
@@ -52,6 +53,19 @@ class GetAlbumListUseCaseTest {
         val result = runBlocking { cut.execute() }
 
         // then
-        result shouldBeEqualTo listOf(albumWithImage)
+        result shouldBeEqualTo GetAlbumListUseCase.Result.Success(listOf(albumWithImage))
+    }
+
+    @Test
+    fun `return error when repository throws an exception`() {
+        // given
+        val exception = UnknownHostException()
+        coEvery { mockAlbumRepository.searchAlbum(any()) } throws exception
+
+        // when
+        val result = runBlocking { cut.execute() }
+
+        // then
+        result shouldBeEqualTo GetAlbumListUseCase.Result.Error(exception)
     }
 }
