@@ -1,4 +1,4 @@
-name: ci-check-build-debug
+name: ci-check-android-lint-debug
 
 on:
   push:

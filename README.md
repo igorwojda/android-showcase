@@ -2,7 +2,7 @@
 ![Build app](https://github.com/igorwojda/android-showcase/workflows/ci-check-build-debug/badge.svg)
 ![Detekt](https://github.com/igorwojda/android-showcase/workflows/ci-check-detekt/badge.svg)
 ![Ktlint](https://github.com/igorwojda/android-showcase/workflows/ci-check-ktlint/badge.svg)
-![Android Lint](https://github.com/igorwojda/android-showcase/workflows/ci-check-lint-debug/badge.svg)
+![Android Lint](https://github.com/igorwojda/android-showcase/workflows/ci-check-android-lint-debug/badge.svg)
 ![Unit test](https://github.com/igorwojda/android-showcase/workflows/ci-check-unit-test/badge.svg)
 ![UI test](https://github.com/igorwojda/android-showcase/workflows/ci-check-ui-test/badge.svg)
 
