@@ -12,7 +12,7 @@
 Showcase is a sample project that presents a modern, 2020 approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development with up to date tech-stack.
 
-The goal of the project is to demonstrate best practices by using up to date tech-stack and presenting modern Android application
+The goal of the project is to demonstrate best practices by using up to date tech-stack and presenting mod  ern Android application
 [Architecture](#architecture) that is modular, scalable, maintainable, and testable. This application may look quite simple,
 but it has all of these small details that will set the rock-solid foundation for the larger app suitable for bigger teams
 and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
@@ -20,7 +20,7 @@ and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifec
 This project is being maintained to match current industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
 ## Project characteristics
-``
+
 This project brings to table set of best practices, tools, and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
