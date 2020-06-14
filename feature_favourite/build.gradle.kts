@@ -52,5 +52,9 @@ android {
 dependencies {
     implementation(project(ModuleDependency.APP))
 
+    // Fix running instrumentation tests from feature module (this fix will be redundant after updating AGP to 4.x)
+    // More: https://github.com/android/app-bundle-samples/issues/42
+    androidTestImplementation(project(":feature_favourite"))
+
     addTestDependencies()
 }
