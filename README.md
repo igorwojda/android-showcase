@@ -1,10 +1,4 @@
 # Android showcase
-[![](https://github.com/igorwojda/android-showcase/workflows/build%20debug/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22build+debug%22)
-[![](https://github.com/igorwojda/android-showcase/workflows/detekt/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3Adetekt)
-[![](https://github.com/igorwojda/android-showcase/workflows/ktlint/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3Aktlint)
-[![](https://github.com/igorwojda/android-showcase/workflows/android%20lint/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22android+lint%22)
-[![](https://github.com/igorwojda/android-showcase/workflows/unit%20test/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22unit+test%22)
-[![](https://github.com/igorwojda/android-showcase/workflows/ui%20test/badge.svg)](https://github.com/igorwojda/android-showcase/actions?query=workflow%3A%22ui+test%22)
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.72-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AndroidStudio-3.6.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
@@ -26,7 +20,7 @@ and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifec
 This project is being maintained to match current industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
 ## Project characteristics
-
+``
 This project brings to table set of best practices, tools, and solutions:
 
 * 100% [Kotlin](https://kotlinlang.org/)
