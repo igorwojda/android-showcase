@@ -34,6 +34,12 @@ android {
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
+
+    packagingOptions {
+        // May not be needed after updating to AGP 4.x - check
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
 }
 
 dependencies {
