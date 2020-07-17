@@ -59,7 +59,6 @@ subprojects {
     afterEvaluate {
         configureAndroid()
     }
-
 }
 
 fun Project.configureAndroid() {
