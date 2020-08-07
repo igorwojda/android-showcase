@@ -1,3 +1,4 @@
+import com.android.build.gradle.BaseExtension
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
@@ -54,6 +55,17 @@ subprojects {
     detekt {
         config = files("${project.rootDir}/detekt.yml")
         parallel = true
+    }
+    afterEvaluate {
+        configureAndroid()
+    }
+}
+
+fun Project.configureAndroid() {
+    (project.extensions.findByName("android") as? BaseExtension)?.run {
+        sourceSets {
+            map { it.java.srcDir("src/${it.name}/kotlin") }
+        }
     }
 }
 
