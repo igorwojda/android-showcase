@@ -6,6 +6,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 internal interface AlbumRetrofitService {
+
     @POST("./?method=album.search")
     suspend fun searchAlbumAsync(
         @Query("album") phrase: String,
