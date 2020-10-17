@@ -5,6 +5,7 @@ plugins {
     id(GradlePluginId.ANDROID_APPLICATION)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
+    kotlin("kapt")
     id(GradlePluginId.KTLINT_GRADLE)
     id(GradlePluginId.SAFE_ARGS)
 }
@@ -84,6 +85,9 @@ dependencies {
     api(LibraryDependency.FRAGMENT_KTX)
     api(LibraryDependency.K_ANDROID)
     api(LibraryDependency.LOTTIE)
+    api(LibraryDependency.ROOM_RUNTIME)
+    kapt(LibraryDependency.ROOM_COMPILER)
+    api(LibraryDependency.ROOM_KTX)
 }
 
 fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {

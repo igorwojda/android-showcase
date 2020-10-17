@@ -7,6 +7,7 @@ import com.igorwojda.showcase.feature.album.data.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.retrofit.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.retrofit.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.retrofit.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.room.AlbumDatabase
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -20,6 +21,9 @@ class AlbumRepositoryImplTest {
     @MockK
     internal lateinit var mockService: AlbumRetrofitService
 
+    @MockK
+    internal lateinit var albumDatabase: AlbumDatabase
+
     private lateinit var cut: AlbumRepositoryImpl
 
     private val artistName = "artistName"
@@ -29,7 +33,7 @@ class AlbumRepositoryImplTest {
     fun setUp() {
         MockKAnnotations.init(this)
 
-        cut = AlbumRepositoryImpl(mockService)
+        cut = AlbumRepositoryImpl(mockService, albumDatabase)
     }
 
     @Test
