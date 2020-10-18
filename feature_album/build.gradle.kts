@@ -1,6 +1,7 @@
 plugins {
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
+    kotlin("kapt")
     id(GradlePluginId.SAFE_ARGS)
     id(GradlePluginId.ANDROID_JUNIT_5)
 }
@@ -47,6 +48,7 @@ android {
 
 dependencies {
     implementation(project(ModuleDependency.APP))
+    kapt(LibraryDependency.ROOM_COMPILER)
 
     testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
     testImplementation(libs.bundles.test)

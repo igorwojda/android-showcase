@@ -7,6 +7,7 @@ import com.igorwojda.showcase.feature.album.data.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.retrofit.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.retrofit.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.retrofit.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.room.AlbumDao
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -20,6 +21,9 @@ class AlbumRepositoryImplTest {
     @MockK
     internal lateinit var mockService: AlbumRetrofitService
 
+    @MockK
+    internal lateinit var albumDao: AlbumDao
+
     private lateinit var cut: AlbumRepositoryImpl
 
     private val artistName = "Michael Jackson"
@@ -29,7 +33,7 @@ class AlbumRepositoryImplTest {
     fun setUp() {
         MockKAnnotations.init(this)
 
-        cut = AlbumRepositoryImpl(mockService)
+        cut = AlbumRepositoryImpl(mockService, albumDao)
     }
 
     @Test
@@ -69,6 +73,10 @@ class AlbumRepositoryImplTest {
                 AlbumListDataModel(listOf(DataFixtures.getAlbum()))
             )
         )
+
+        coEvery {
+            albumDao.insertAlbums(any())
+        } returns Unit
 
         // when
         val result = runBlocking { cut.searchAlbum(phrase) }
