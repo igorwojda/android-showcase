@@ -2,6 +2,7 @@ plugins {
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
+    kotlin("kapt")
     id(GradlePluginId.SAFE_ARGS)
 }
 
@@ -51,6 +52,7 @@ android {
 
 dependencies {
     implementation(project(ModuleDependency.APP))
+    kapt(LibraryDependency.ROOM_COMPILER)
 
     // Fix running instrumentation tests from feature module (this fix will be redundant after updating AGP to 4.x)
     // More: https://github.com/android/app-bundle-samples/issues/42

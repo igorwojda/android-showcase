@@ -18,6 +18,7 @@ private object LibraryVersion {
     const val COIL = "0.11.0"
     const val K_ANDROID = "0.8.8@aar"
     const val LOTTIE = "3.4.0"
+    const val ROOM = "2.3.0-alpha02"
 }
 
 object LibraryDependency {
@@ -59,4 +60,9 @@ object LibraryDependency {
     const val COIL = "io.coil-kt:coil:${LibraryVersion.COIL}"
     const val K_ANDROID = "com.pawegio.kandroid:kandroid:${LibraryVersion.K_ANDROID}"
     const val LOTTIE = "com.airbnb.android:lottie:${LibraryVersion.LOTTIE}"
+
+    // Room Persistence Library
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${LibraryVersion.ROOM}"
+    const val ROOM_RUNTIME = "androidx.room:room-runtime:${LibraryVersion.ROOM}"
+    const val ROOM_KTX = "androidx.room:room-ktx:${LibraryVersion.ROOM}"
 }
