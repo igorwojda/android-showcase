@@ -195,13 +195,13 @@ There are a few ways to open this project.
 
 ### Android Studio
 
-1. Android Studio -> File -> New -> From Version control -> Git
+1. `Android Studio` -> `File` -> `New` -> `From Version control` -> `Git`
 2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field
 
 ### Command-line + Android Studio
 
-1. Run `git clone https://github.com/igorwojda/android-showcase.git`
-2. Android Studio -> File -> Open
+1. Run `git clone https://github.com/igorwojda/android-showcase.git` to clone project
+2. Go to `Android Studio` -> `File` -> `Open` and select cloned directory
 
 ## Inspiration
 

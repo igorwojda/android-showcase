@@ -42,3 +42,6 @@ google-services.json
 
 # Cache of project
 .gradletasknamecache
+
+#MacOS DS_Store
+**/.DS_Store
