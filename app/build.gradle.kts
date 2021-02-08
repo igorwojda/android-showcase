@@ -70,6 +70,7 @@ dependencies {
 
     // Gradle 7 introduces version catalogs - a new way for sharing dependency versions across projects.
     // Dependencies are defined in gradle.settings.kts file.
+    // False positive cannot access class (fixed in InteliJ IDEA 2021.1 EAP 1 afair)
     api(libs.bundles.kotlin)
     api(libs.bundles.stetho)
     api(libs.bundles.retrofit)

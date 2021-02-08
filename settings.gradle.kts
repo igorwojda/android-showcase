@@ -8,6 +8,12 @@ include(
     ":library_test_utils"
 )
 
+// Due to lack of the ability to share dependency versions we have to define single version mutliple times.
+// This affect dependencies that
+// - share version between library dependency and gradle plugin dependency (eg. kotlin, navigation)
+// - share version between implementation and test implementation of the library (eg. coroutines)
+// More: https://github.com/gradle/gradle/issues/16077
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
