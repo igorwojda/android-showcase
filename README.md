@@ -1,8 +1,8 @@
 # Android showcase
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.4-blue.svg)](https://kotlinlang.org)
-[![AGP](https://img.shields.io/badge/AGP-4.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
-[![Gradle](https://img.shields.io/badge/Gradle-6.x-blue?style=flat)](https://gradle.org)
+[![AGP](https://img.shields.io/badge/AGP-4-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Gradle](https://img.shields.io/badge/Gradle-7-blue?style=flat)](https://gradle.org)
 
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a7ef0746703e4c81b0e4af2c46e2885e)](https://app.codacy.com/app/igorwojda/android-showcase?utm_source=github.com&utm_medium=referral&utm_content=igorwojda/android-showcase&utm_campaign=Badge_Grade_Dashboard)
@@ -230,10 +230,12 @@ Other high-quality projects will help you to find solutions that work for your p
 * [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
 
 ## Known issues
-- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is fixed in AS 4.2 (see [527](https://github.com/pinterest/ktlint/issues/527) and [KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
+- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is partially fixed in AS 4.2 (see [527](https://github.com/pinterest/ktlint/issues/527) and [KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file ([Issue](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([Issue](https://youtrack.jetbrains.com/issue/KT-33610))
 - Unit tests are running in IDE but fail after running gradle task because of missing Agrs class ([Issue](https://issuetracker.google.com/issues/139242292))
+- False positive cannot access class [Issue](https://youtrack.jetbrains.com/issue/KT-44797).the This is fixed in InteliJ IDEA 2021.1 EAP 1 afair.
+- Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the library ()[Issue](https://github.com/gradle/gradle/issues/16077))
 
 ## Contribute
 
