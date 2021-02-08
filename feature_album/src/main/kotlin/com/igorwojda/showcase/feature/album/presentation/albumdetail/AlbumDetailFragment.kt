@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import coil.load
-import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.base.presentation.extension.observe
 import com.igorwojda.showcase.base.presentation.extension.visible
 import com.igorwojda.showcase.base.presentation.fragment.InjectionFragment
+import com.igorwojda.showcase.feature.album.R
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
