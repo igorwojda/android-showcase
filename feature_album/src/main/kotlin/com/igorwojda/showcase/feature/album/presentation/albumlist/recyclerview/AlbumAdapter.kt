@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -11,10 +10,10 @@ import com.igorwojda.showcase.base.presentation.extension.hide
 import com.igorwojda.showcase.base.presentation.extension.setOnDebouncedClickListener
 import com.igorwojda.showcase.base.presentation.extension.show
 import com.igorwojda.showcase.feature.album.R
+import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumListItemBinding
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
-import kotlinx.android.synthetic.main.fragment_album_list_item.view.*
 
-internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() {
+internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
     var albums: List<AlbumDomainModel> by observer(listOf()) {
         notifyDataSetChanged()
@@ -22,12 +21,14 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() 
 
     private var onDebouncedClickListener: ((album: AlbumDomainModel) -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_album_list_item, parent, false)
-        return MyViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = FragmentAlbumListItemBinding.inflate(inflater, parent, false)
+
+        return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(albums[position])
     }
 
@@ -37,17 +38,16 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() 
         this.onDebouncedClickListener = listener
     }
 
-    internal inner class MyViewHolder(
-        itemView: View
-    ) : RecyclerView.ViewHolder(itemView) {
+    internal inner class ViewHolder(private val itemBinding: FragmentAlbumListItemBinding)
+        : RecyclerView.ViewHolder(itemBinding.root) {
 
         private var url by observer<String?>(null) {
-            itemView.coverErrorImageView.hide()
+            itemBinding.coverErrorImageView.hide()
 
             if (it == null) {
                 setDefaultImage()
             } else {
-                itemView.coverImageView.load(it) {
+                itemBinding.coverImageView.load(it) {
                     crossfade(true)
                     error(R.drawable.ic_image)
                     transformations(RoundedCornersTransformation(10F))
@@ -61,7 +61,7 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() 
         }
 
         private fun setDefaultImage() {
-            itemView.coverErrorImageView.show()
+            itemBinding.coverErrorImageView.show()
         }
     }
 }

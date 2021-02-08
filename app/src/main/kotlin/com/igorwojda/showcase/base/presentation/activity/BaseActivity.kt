@@ -2,10 +2,9 @@ package com.igorwojda.showcase.base.presentation.activity
 
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.annotation.LayoutRes
 import timber.log.Timber
 
-abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : InjectionActivity(contentLayoutId) {
+abstract class BaseActivity : InjectionActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

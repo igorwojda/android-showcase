@@ -29,7 +29,6 @@ pluginManagement {
         id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
         id("org.jetbrains.kotlin.android") version kotlinVersion
-        id("org.jetbrains.kotlin.android.extensions") version kotlinVersion
         id("com.android.application") version agpVersion
         id("com.android.library") version agpVersion
         id("com.android.dynamic-feature") version agpVersion
@@ -108,7 +107,8 @@ dependencyResolutionManagement {
             version("lifecycle", "2.2.0")
             alias("viewmodel-ktx").to("androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("lifecycle")
             alias("livedata-ktx").to("androidx.lifecycle", "lifecycle-livedata-ktx").versionRef("lifecycle")
-            bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx"))
+            alias("lifecycle-common").to("androidx.lifecycle", "lifecycle-common-java8").versionRef("lifecycle")
+            bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx", "lifecycle-common"))
 
             version("navigation", "2.3.3")
             alias("navigation-fragment").to("androidx.navigation", "navigation-fragment-ktx").versionRef("navigation")
