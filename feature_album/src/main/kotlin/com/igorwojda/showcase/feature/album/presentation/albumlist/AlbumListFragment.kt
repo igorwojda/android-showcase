@@ -21,14 +21,12 @@ class AlbumListFragment : InjectionFragment() {
 
     private val albumAdapter: AlbumAdapter by instance()
 
-
     private val stateObserver = Observer<AlbumListViewModel.ViewState> {
         albumAdapter.albums = it.albums
 
         binding.progressBar.visible = it.isLoading
         binding.errorAnimation.visible = it.isError
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

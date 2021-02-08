@@ -1,9 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import coil.load
 import com.igorwojda.showcase.base.delegate.viewBinding

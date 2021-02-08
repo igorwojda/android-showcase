@@ -38,8 +38,8 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
         this.onDebouncedClickListener = listener
     }
 
-    internal inner class ViewHolder(private val itemBinding: FragmentAlbumListItemBinding)
-        : RecyclerView.ViewHolder(itemBinding.root) {
+    internal inner class ViewHolder(private val itemBinding: FragmentAlbumListItemBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
 
         private var url by observer<String?>(null) {
             itemBinding.coverErrorImageView.hide()
