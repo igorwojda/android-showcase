@@ -2,7 +2,6 @@ package com.igorwojda.showcase.base.presentation.activity
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.igorwojda.showcase.BuildConfig
 import org.kodein.di.Kodein
@@ -12,7 +11,7 @@ import org.kodein.di.android.kodein
 import org.kodein.di.android.retainedKodein
 import org.kodein.di.generic.kcontext
 
-abstract class InjectionActivity(@LayoutRes contentLayoutId: Int) : AppCompatActivity(contentLayoutId), KodeinAware {
+abstract class InjectionActivity : AppCompatActivity(), KodeinAware {
 
     private val parentKodein by kodein()
 

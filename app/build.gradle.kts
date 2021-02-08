@@ -4,7 +4,6 @@ import com.android.build.gradle.internal.dsl.DefaultConfig
 plugins {
     id(GradlePluginId.ANDROID_APPLICATION)
     id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
-    id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS) // or kotlin("android.extensions")
     id(GradlePluginId.KTLINT_GRADLE)
     id(GradlePluginId.SAFE_ARGS)
 }
@@ -55,6 +54,8 @@ android {
         // By default lint does not check test sources, but setting this option means that lint will not even parse them
         isIgnoreTestSources = true
     }
+
+    buildFeatures.viewBinding = true
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
