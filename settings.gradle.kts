@@ -42,3 +42,26 @@ pluginManagement {
         }
     }
 }
+
+// Gradle 7 introduces a new way for sharing dependency versions across projects
+// https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html
+dependencyResolutionManagement {
+    versionCatalogs {
+
+        create("libs") {
+            version("okhttp", "4.9.1")
+
+            alias("okhttp-okhttp").to("com.squareup.okhttp3", "okhttp").versionRef("okhttp")
+            alias("okhttp-interceptor").to("com.squareup.okhttp3", "logging-interceptor").versionRef("okhttp")
+            // bundle is basically an alias for several dependencies
+            bundle("okhttp", listOf("okhttp-okhttp", "okhttp-interceptor"))
+
+
+            version("kotlin", "1.4.30")
+            alias("kotlin-stdlib").to("org.jetbrains.kotlin", "kotlin-stdlib").versionRef("kotlin")
+            // Required by Android dynamic feature modules and SafeArgs
+            alias("kotlin-reflect").to("org.jetbrains.kotlin", "kotlin-reflect").versionRef("kotlin")
+            bundle("kotlin", listOf("kotlin-stdlib", "kotlin-reflect"))
+        }
+    }
+}

@@ -3,7 +3,7 @@ import com.android.build.gradle.internal.dsl.DefaultConfig
 
 plugins {
     id(GradlePluginId.ANDROID_APPLICATION)
-    id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android")
+    id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS) // or kotlin("android.extensions")
     id(GradlePluginId.KTLINT_GRADLE)
     id(GradlePluginId.SAFE_ARGS)
@@ -67,6 +67,16 @@ android {
 }
 
 dependencies {
+
+    // Gradle 7 introduces a new way for sharing dependency versions across projects.
+    // Dependencies are defined in gradle.settings.kts file.
+    // implementation(libs.okhttp.okhttp)
+    // implementation(libs.okhttp.interceptor)
+    // implementation(libs.bundles.okhttp)
+    implementation(libs.bundles.kotlin)
+    // api(LibraryDependency.KOTLIN)
+    // api(LibraryDependency.KOTLIN_REFLECT)
+
     implementation(LibraryDependency.OK_HTTP)
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
     implementation(LibraryDependency.PLAY_CORE)
@@ -81,8 +91,7 @@ dependencies {
     api(LibraryDependency.MATERIAL)
     api(LibraryDependency.FRAGMENT_KTX)
     api(LibraryDependency.LOTTIE)
-    api(LibraryDependency.KOTLIN)
-    api(LibraryDependency.KOTLIN_REFLECT)
+
     api(LibraryDependency.KODEIN)
     api(LibraryDependency.KODEIN_ANDROID_X)
     api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)

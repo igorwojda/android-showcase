@@ -20,7 +20,7 @@ private object LibraryVersion {
 }
 
 object LibraryDependency {
-    const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${CoreVersion.KOTLIN}"
+    const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib:${CoreVersion.KOTLIN}"
 
     // Required by Android dynamic feature modules and SafeArgs
     const val KOTLIN_REFLECT = "org.jetbrains.kotlin:kotlin-reflect:${CoreVersion.KOTLIN}"
