@@ -112,7 +112,9 @@ dependencyResolutionManagement {
 
             version("navigation", "2.3.3")
             alias("navigation-fragment").to("androidx.navigation", "navigation-fragment-ktx").versionRef("navigation")
-            alias("navigation-dynamic").to("androidx.navigation", "navigation-dynamic-features-fragment").versionRef("navigation")
+            alias("navigation-dynamic")
+                .to("androidx.navigation", "navigation-dynamic-features-fragment")
+                .versionRef("navigation")
             alias("navigation-ui-ktx").to("androidx.navigation", "navigation-ui-ktx").versionRef("navigation")
             bundle("navigation", listOf("navigation-fragment", "navigation-dynamic", "navigation-ui-ktx"))
 
@@ -126,16 +128,19 @@ dependencyResolutionManagement {
             alias("espresso").to("com.android.support.test.espresso:espresso-core:3.1.0")
             alias("mockk").to("io.mockk:mockk:1.10.5")
             alias("arch").to("androidx.arch.core:core-testing:2.1.0")
-            bundle("test", listOf(
-                "junit",
-                "test-coroutines",
-                "kluent-core",
-                "kluent-android",
-                "test-runner",
-                "espresso",
-                "mockk",
-                "arch"
-            ))
+            bundle(
+                "test",
+                listOf(
+                    "junit",
+                    "test-coroutines",
+                    "kluent-core",
+                    "kluent-android",
+                    "test-runner",
+                    "espresso",
+                    "mockk",
+                    "arch"
+                )
+            )
         }
     }
 }
