@@ -1,8 +1,7 @@
 object GradlePluginVersion {
-    const val ANDROID_GRADLE = "3.6.3"
-    const val KTLINT_GRADLE = "9.2.1"
-    const val DETEKT = "1.9.1"
-    const val GRADLE_VERSION_PLUGIN = "0.22.0"
+    const val ANDROID_GRADLE = "4.1.2"
+    const val KTLINT_GRADLE = "9.4.1"
+    const val DETEKT = "1.16.0-RC1"
     const val KOTLIN = CoreVersion.KOTLIN
     const val SAFE_ARGS = CoreVersion.NAVIGATION
 }
@@ -16,7 +15,6 @@ object GradlePluginId {
     const val KOTLIN_JVM = "org.jetbrains.kotlin.jvm"
     const val KOTLIN_ANDROID = "org.jetbrains.kotlin.android"
     const val KOTLIN_ANDROID_EXTENSIONS = "org.jetbrains.kotlin.android.extensions"
-    const val GRADLE_VERSION_PLUGIN = "com.github.ben-manes.versions"
     const val SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
 }
 

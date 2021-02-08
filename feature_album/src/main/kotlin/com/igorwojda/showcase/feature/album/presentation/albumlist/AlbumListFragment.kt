@@ -3,12 +3,12 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import com.igorwojda.showcase.base.presentation.extension.observe
+import com.igorwojda.showcase.base.presentation.extension.visible
+import com.igorwojda.showcase.base.presentation.fragment.InjectionFragment
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
-import com.igorwojda.showcase.library.base.presentation.extension.observe
-import com.igorwojda.showcase.library.base.presentation.fragment.InjectionFragment
-import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import org.kodein.di.generic.instance
 
@@ -27,7 +27,7 @@ class AlbumListFragment : InjectionFragment(R.layout.fragment_album_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val context = checkNotNull(context)
+        val context = requireContext()
 
         albumAdapter.setOnDebouncedClickListener {
             viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)

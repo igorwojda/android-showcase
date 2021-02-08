@@ -1,13 +1,12 @@
 # Android showcase
 
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.72-blue.svg)](https://kotlinlang.org)
-[![AGP](https://img.shields.io/badge/AGP-3.6.3-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
-[![Gradle](https://img.shields.io/badge/Gradle-5.6.4-blue?style=flat)](https://gradle.org)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.4-blue.svg)](https://kotlinlang.org)
+[![AGP](https://img.shields.io/badge/AGP-4.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Gradle](https://img.shields.io/badge/Gradle-6.x-blue?style=flat)](https://gradle.org)
 
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a7ef0746703e4c81b0e4af2c46e2885e)](https://app.codacy.com/app/igorwojda/android-showcase?utm_source=github.com&utm_medium=referral&utm_content=igorwojda/android-showcase&utm_campaign=Badge_Grade_Dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
-
 
 Showcase is a sample project that presents a modern, 2020 approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development with up to date tech-stack.
@@ -92,9 +91,7 @@ Note that due usage of Android `dynamic-feature` module dependencies are reverse
 We have three kinds of modules in the application:
 
 - `app` module - this is the main module. It contains code that wires multiple modules together (dependency injection setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required permissions setup, custom application class, etc.).
-- helper modules
-  - application-independent `library_base` module containing common code base that could be reused in other projects/applications (this code is not specific to this application) eg. base classes, utilities, custom delegates, extensions.
-  - additional application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to share some assets or code only between few feature modules (currently app has no such modules)
+- application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to share some assets or code only between few feature modules (currently app has no such modules)
 - feature modules - the most common type of module containing all code related to a given feature.
 
 ### Feature module structure
@@ -233,7 +230,7 @@ Other high-quality projects will help you to find solutions that work for your p
 * [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
 
 ## Known issues
-- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
+- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is fixed in AS 4.2 (see [527](https://github.com/pinterest/ktlint/issues/527) and [KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file ([Issue](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([Issue](https://youtrack.jetbrains.com/issue/KT-33610))
 - Unit tests are running in IDE but fail after running gradle task because of missing Agrs class ([Issue](https://issuetracker.google.com/issues/139242292))

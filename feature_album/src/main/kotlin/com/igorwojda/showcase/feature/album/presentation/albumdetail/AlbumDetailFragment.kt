@@ -3,11 +3,11 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetail
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import coil.api.load
+import coil.load
+import com.igorwojda.showcase.base.presentation.extension.observe
+import com.igorwojda.showcase.base.presentation.extension.visible
+import com.igorwojda.showcase.base.presentation.fragment.InjectionFragment
 import com.igorwojda.showcase.feature.album.R
-import com.igorwojda.showcase.library.base.presentation.extension.observe
-import com.igorwojda.showcase.library.base.presentation.fragment.InjectionFragment
-import com.pawegio.kandroid.visible
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import org.kodein.di.generic.instance
 
