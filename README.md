@@ -230,7 +230,7 @@ Other high-quality projects will help you to find solutions that work for your p
 * [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
 
 ## Known issues
-- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
+- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is fixed in AS 4.2 (see [527](https://github.com/pinterest/ktlint/issues/527) and [KT-10974](https://youtrack.jetbrains.com/issue/))
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file ([Issue](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([Issue](https://youtrack.jetbrains.com/issue/KT-33610))
 - Unit tests are running in IDE but fail after running gradle task because of missing Agrs class ([Issue](https://issuetracker.google.com/issues/139242292))
