@@ -7,9 +7,9 @@ import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetail
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadFailure
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadSuccess
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.ViewState
-import com.igorwojda.showcase.library.base.presentation.viewmodel.BaseAction
-import com.igorwojda.showcase.library.base.presentation.viewmodel.BaseViewModel
-import com.igorwojda.showcase.library.base.presentation.viewmodel.BaseViewState
+import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
+import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
+import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewState
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(

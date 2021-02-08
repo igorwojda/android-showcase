@@ -6,7 +6,7 @@ import com.igorwojda.showcase.feature.album.MODULE_NAME
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
-import com.igorwojda.showcase.library.base.di.KotlinViewModelProvider
+import com.igorwojda.showcase.base.di.KotlinViewModelProvider
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.AndroidLifecycleScope
 import org.kodein.di.generic.bind
