@@ -12,13 +12,13 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+
+        // Ktlint Gradle
+        maven("https://plugins.gradle.org/m2/")
     }
 
-    // Currently these dependency versions can't be easly shared between 
-    // gradle.settings.kts file and buildSrc folder. 
-    // Gradle 7 will offer TOML to dealt with dependencies
-    // https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html
     plugins {
+
         id("io.gitlab.arturbosch.detekt") version "1.16.0-RC1"
         id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
         id("org.jetbrains.kotlin.jvm") version "1.4.30"
