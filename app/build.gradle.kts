@@ -68,45 +68,29 @@ android {
 
 dependencies {
 
-    // Gradle 7 introduces a new way for sharing dependency versions across projects.
+    // Gradle 7 introduces version catalogs - a new way for sharing dependency versions across projects.
     // Dependencies are defined in gradle.settings.kts file.
-    // implementation(libs.okhttp.okhttp)
-    // implementation(libs.okhttp.interceptor)
-    // implementation(libs.bundles.okhttp)
-    implementation(libs.bundles.kotlin)
-    // api(LibraryDependency.KOTLIN)
-    // api(LibraryDependency.KOTLIN_REFLECT)
+    api(libs.bundles.kotlin)
+    api(libs.bundles.stetho)
+    api(libs.bundles.retrofit)
+    api(libs.bundles.okhttp)
+    api(libs.bundles.kodein)
+    api(libs.play.core)
+    api(libs.timber)
+    api(libs.coil)
+    api(libs.constraintlayout)
+    api(libs.coordinatorlayout)
+    api(libs.appcompat)
+    api(libs.recyclerview)
+    api(libs.material)
+    api(libs.coroutines)
+    api(libs.lottie)
+    api(libs.bundles.ktx)
+    api(libs.bundles.navigation)
+    api(libs.bundles.lifecycle)
 
-    implementation(LibraryDependency.OK_HTTP)
-    implementation(LibraryDependency.LOGGING_INTERCEPTOR)
-    implementation(LibraryDependency.PLAY_CORE)
-    implementation(LibraryDependency.STETHO)
-    implementation(LibraryDependency.STETHO_OK_HTTP)
-
-    api(LibraryDependency.RETROFIT)
-    api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
-    api(LibraryDependency.SUPPORT_CONSTRAINT_LAYOUT)
-    api(LibraryDependency.COORDINATOR_LAYOUT)
-    api(LibraryDependency.RECYCLER_VIEW)
-    api(LibraryDependency.MATERIAL)
-    api(LibraryDependency.FRAGMENT_KTX)
-    api(LibraryDependency.LOTTIE)
-
-    api(LibraryDependency.KODEIN)
-    api(LibraryDependency.KODEIN_ANDROID_X)
-    api(LibraryDependency.NAVIGATION_FRAGMENT_KTX)
-    api(LibraryDependency.NAVIGATION_UI_KTX)
-    api(LibraryDependency.NAVIGATION_DYNAMIC_FEATURE_FRAGMENT_KTX)
-    api(LibraryDependency.TIMBER)
-    api(LibraryDependency.APP_COMPAT)
-    api(LibraryDependency.COROUTINES_ANDROID)
-    api(LibraryDependency.CORE_KTX)
-    api(LibraryDependency.FRAGMENT_KTX)
-    api(LibraryDependency.LIFECYCLE_EXTENSIONS)
-    api(LibraryDependency.LIFECYCLE_VIEW_MODEL_KTX)
-    api(LibraryDependency.COIL)
-
-    addTestDependencies()
+    testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
+    testImplementation(libs.bundles.test)
 }
 
 fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {

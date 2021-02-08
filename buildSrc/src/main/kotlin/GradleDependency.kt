@@ -1,11 +1,3 @@
-object GradlePluginVersion {
-    const val ANDROID_GRADLE = "4.1.2"
-    const val KTLINT_GRADLE = "9.4.1"
-    const val DETEKT = "1.16.0-RC1"
-    const val KOTLIN = CoreVersion.KOTLIN
-    const val SAFE_ARGS = CoreVersion.NAVIGATION
-}
-
 object GradlePluginId {
     const val DETEKT = "io.gitlab.arturbosch.detekt"
     const val KTLINT_GRADLE = "org.jlleitschuh.gradle.ktlint"
@@ -16,9 +8,4 @@ object GradlePluginId {
     const val KOTLIN_ANDROID = "org.jetbrains.kotlin.android"
     const val KOTLIN_ANDROID_EXTENSIONS = "org.jetbrains.kotlin.android.extensions"
     const val SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
-}
-
-object GradleOldWayPlugins {
-    const val ANDROID_GRADLE = "com.android.tools.build:gradle:${GradlePluginVersion.ANDROID_GRADLE}"
-    const val SAFE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${GradlePluginVersion.SAFE_ARGS}"
 }

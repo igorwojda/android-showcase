@@ -56,5 +56,6 @@ dependencies {
     // More: https://github.com/android/app-bundle-samples/issues/42
     androidTestImplementation(project(":feature_favourite"))
 
-    addTestDependencies()
+    testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
+    testImplementation(libs.bundles.test)
 }
