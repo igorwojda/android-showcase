@@ -137,8 +137,8 @@ dependencyResolutionManagement {
             version("kluent", "1.65")
             alias("kluent-core").to("org.amshove.kluent", "kluent").versionRef("kluent")
             alias("kluent-android").to("org.amshove.kluent", "kluent-android").versionRef("kluent")
-            alias("test-runner").to("com.android.support.test:runner:1.0.2")
-            alias("espresso").to("com.android.support.test.espresso:espresso-core:3.1.0")
+            alias("test-runner").to("androidx.test:runner:1.1.0")
+            alias("espresso").to("androidx.test.espresso:espresso-core:3.1.0")
             alias("mockk").to("io.mockk:mockk:1.10.5")
             alias("arch").to("androidx.arch.core:core-testing:2.1.0")
             bundle(
