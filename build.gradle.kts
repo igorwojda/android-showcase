@@ -25,7 +25,8 @@ allprojects {
 
     // Ktlint configuration for sub-projects
     ktlint {
-        version.set(CoreVersion.KTLINT)
+        // Version of ktlint cmd tool (Ktlint Gradle plugin is just a wrapper for this tool)
+        version.set("0.40.0")
         verbose.set(true)
         android.set(true)
 
