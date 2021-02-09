@@ -2,6 +2,7 @@ package com.igorwojda.showcase.base.presentation.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.igorwojda.showcase.BuildConfig
 import org.kodein.di.KodeinAware
@@ -12,7 +13,7 @@ import org.kodein.di.generic.kcontext
 /*
 See description in InjectionActivity class
  */
-abstract class InjectionFragment : Fragment(), KodeinAware {
+abstract class InjectionFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId), KodeinAware {
 
     @SuppressWarnings("LeakingThisInConstructor")
     final override val kodeinContext = kcontext<Fragment>(this)
