@@ -8,11 +8,15 @@ include(
     ":library_test_utils"
 )
 
-// Due to lack of the ability to share dependency versions we have to define single version mutliple times.
-// This affect dependencies that
-// - share version between library dependency and gradle plugin dependency (eg. kotlin, navigation)
-// - share version between implementation and test implementation of the library (eg. coroutines)
+// Gradle is missing proper build-in mechanism to share dependency versions between:
+// - library dependency and gradle plugin dependency (eg. kotlin, navigation)
+// - implementation and test implementation of the library (eg. coroutines)
 // More: https://github.com/gradle/gradle/issues/16077
+//
+// As a result some versions are defined multiple times.
+// To avoid defining dependency version multiple times dependencies are defined in the gradle.properties file and
+// retrieved using settings delegate. Unfortunately this technique cannot be applied to all versions, so some will
+// remain duplicated.
 
 pluginManagement {
     repositories {
@@ -21,9 +25,9 @@ pluginManagement {
     }
 
     plugins {
-        val kotlinVersion = "1.4.30"
-        val agpVersion = "4.1.2"
-        val navigationVersion = "2.3.3"
+        val kotlinVersion: String by settings
+        val agpVersion: String by settings
+        val navigationVersion: String by settings
 
         id("io.gitlab.arturbosch.detekt") version "1.16.0-RC1"
         id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
@@ -36,15 +40,22 @@ pluginManagement {
     }
 
     resolutionStrategy {
+        val agpCoordinates: String by settings
+        val navigationCoordinates: String by settings
+
         eachPlugin {
             when (requested.id.id) {
                 "com.android.application",
                 "com.android.library",
                 "com.android.dynamic-feature" -> {
-                    useModule("com.android.tools.build:gradle:4.1.2") // agpVersion
+                    // Version should be retrieved from "val agpVersion: String by settings" delegate, but
+                    // Gradle does not allow it.
+                    useModule(agpCoordinates) // agpVersion
                 }
                 "androidx.navigation.safeargs.kotlin" -> {
-                    useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3") // navigationVersion
+                    // Version should be retrieved from "val navigationVersion: String by settings" delegate, but
+                    // Gradle does not allow it.
+                    useModule(navigationCoordinates) // navigationVersion
                 }
             }
         }
@@ -64,7 +75,8 @@ dependencyResolutionManagement {
             // bundle is basically an alias for several dependencies
             bundle("okhttp", listOf("okhttp-okhttp", "okhttp-interceptor"))
 
-            version("kotlin", "1.4.30")
+            val kotlinVersion: String by settings
+            version("kotlin", kotlinVersion)
             //
             // alias("kotlin-stdlib").to("org.jetbrains.kotlin", "kotlin-stdlib").versionRef("kotlin")
             // Required by Android dynamic feature modules and SafeArgs
@@ -110,7 +122,8 @@ dependencyResolutionManagement {
             alias("lifecycle-common").to("androidx.lifecycle", "lifecycle-common-java8").versionRef("lifecycle")
             bundle("lifecycle", listOf("viewmodel-ktx", "livedata-ktx", "lifecycle-common"))
 
-            version("navigation", "2.3.3")
+            val navigationVersion: String by settings
+            version("navigation", navigationVersion)
             alias("navigation-fragment").to("androidx.navigation", "navigation-fragment-ktx").versionRef("navigation")
             alias("navigation-dynamic")
                 .to("androidx.navigation", "navigation-dynamic-features-fragment")
