@@ -67,6 +67,18 @@ fun Project.configureAndroid() {
     }
 }
 
+// Lock all configurations for Gradle dependency locking
+// More: https://docs.gradle.org/current/userguide/dependency_locking.html
+dependencyLocking {
+    lockAllConfigurations()
+}
+
+buildscript {
+    configurations.classpath {
+        resolutionStrategy.activateDependencyLocking()
+    }
+}
+
 // JVM target applied to all Kotlin tasks across all sub-projects
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()

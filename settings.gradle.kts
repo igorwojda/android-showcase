@@ -1,5 +1,10 @@
 rootProject.buildFileName = "build.gradle.kts"
 
+//// Set single lock file (gradle.lockfile)
+//// This preview feature should be enabled by default in Gradle 7
+//// More: https://docs.gradle.org/current/userguide/dependency_locking.html#single_lock_file_per_project
+//enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
+
 include(
     ":app",
     ":feature_album",
@@ -69,7 +74,7 @@ dependencyResolutionManagement {
         create("libs") {
             // Retrofit will use okhttp 4 (it has binary capability with okhttp 3)
             // See: https://square.github.io/okhttp/upgrading_to_okhttp_4/
-            version("okhttp", "4.9.1")
+            version("okhttp", "*")
             alias("okhttp-okhttp").to("com.squareup.okhttp3", "okhttp").versionRef("okhttp")
             alias("okhttp-interceptor").to("com.squareup.okhttp3", "logging-interceptor").versionRef("okhttp")
             // bundle is basically an alias for several dependencies
