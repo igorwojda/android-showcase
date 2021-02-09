@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.igorwojda.showcase.R
-import com.igorwojda.showcase.base.extension.viewBinding
 import com.igorwojda.showcase.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.base.presentation.navigation.NavManager
 import com.igorwojda.showcase.databinding.ActivityNavHostBinding
@@ -12,7 +11,10 @@ import org.kodein.di.generic.instance
 
 class NavHostActivity : BaseActivity() {
 
-    private val binding by viewBinding(ActivityNavHostBinding::inflate)
+    private var _binding: ActivityNavHostBinding? = null
+
+    // This property is only valid between onCreateView and onDestroyView.
+    private val binding get() = _binding!!
 
     private val navController get() = findNavController(this, R.id.navHostFragment)
 
@@ -20,6 +22,7 @@ class NavHostActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        _binding = ActivityNavHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initBottomNavigation()
