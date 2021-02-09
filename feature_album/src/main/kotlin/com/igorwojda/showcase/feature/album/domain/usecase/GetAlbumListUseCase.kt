@@ -18,9 +18,7 @@ internal class GetAlbumListUseCase(
         val phrase = "sd"
 
         return try {
-            Result.Success(albumRepository.searchAlbum(phrase)
-                .filter { it.getDefaultImageUrl() != null }
-            )
+            Result.Success(albumRepository.searchAlbum(phrase).filter { it.getDefaultImageUrl() != null })
         } catch (e: IOException) {
             Result.Error(e)
         }
