@@ -13,6 +13,18 @@ plugins {
     id(GradlePluginId.SAFE_ARGS) apply false
 }
 
+buildscript {
+    // Gradle dependency locking - lock all configurations (build scripts)
+    // More: https://docs.gradle.org/current/userguide/dependency_locking.html
+    dependencyLocking {
+        lockAllConfigurations()
+    }
+}
+
+dependencyLocking {
+    lockAllConfigurations()
+}
+
 // all projects = root project + sub projects
 allprojects {
     repositories {
@@ -39,6 +51,12 @@ allprojects {
         filter {
             exclude { element -> element.file.path.contains("generated/") }
         }
+    }
+
+    // Gradle dependency locking - lock all configurations
+    // More: https://docs.gradle.org/current/userguide/dependency_locking.html
+    dependencyLocking {
+        lockAllConfigurations()
     }
 }
 
@@ -67,21 +85,22 @@ fun Project.configureAndroid() {
     }
 }
 
-// Lock all configurations for Gradle dependency locking
-// More: https://docs.gradle.org/current/userguide/dependency_locking.html
-dependencyLocking {
-    lockAllConfigurations()
-}
-
-buildscript {
-    configurations.classpath {
-        resolutionStrategy.activateDependencyLocking()
-    }
-}
-
 // JVM target applied to all Kotlin tasks across all sub-projects
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+}
+
+// Needed?
+tasks.register("resolveAndLockAll") {
+    doFirst {
+        require(gradle.startParameter.isWriteDependencyLocks)
+    }
+    doLast {
+        configurations.filter {
+            // Add any custom filtering on the configurations to be resolved
+            it.isCanBeResolved
+        }.forEach { it.resolve() }
+    }
 }
 
 task("staticCheck") {
