@@ -27,34 +27,35 @@ This project takes advantage of best practices, many popular libraries and tools
     * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
     * [Retrofit](https://square.github.io/retrofit/) - networking
     * [Jetpack](https://developer.android.com/jetpack)
-        * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - deal with whole in-app navigation
+        * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
         * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
         * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when lifecycle state changes
         * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data in a lifecycle conscious way
     * [Kodein](https://kodein.org/Kodein-DI/) - dependency injection
-    * [Coil](https://github.com/coil-kt/coil) - image loading library with Kotlin idiomatic API
+    * [Coil](https://github.com/coil-kt/coil) - image loading library
     * [Lottie](http://airbnb.io/lottie) - animation library
-    * [Stetho](http://facebook.github.io/stetho/) - application debugging tool
-    * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
+    * [Stetho](http://facebook.github.io/stetho/) - application debugging
 * Modern Architecture
     * Clean Architecture (at feature module level)
     * Single activity architecture ( with[Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))
     * MVVM + MVI (presentation layer)
     * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
+    * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
 * CI 
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters and 3rd online tools
 * Testing
     * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
-    * [Mockk](https://mockk.io/)
-    * [Kluent](https://github.com/MarkusAmshove/Kluent)
+    * [UT Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
+    * [Mockk](https://mockk.io/) - mocking framework
+    * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
 * UI
     * [Material design](https://material.io/design)
-    *  Reactive UI
+    * Reactive UI
 * Static analysis tools
-    * [Ktlint](https://github.com/pinterest/ktlint)
-    * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
+    * [Ktlint](https://github.com/pinterest/ktlint) - validate code formating
+    * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify complexity look for and code smell
 * Gradle
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     * Custom tasks
