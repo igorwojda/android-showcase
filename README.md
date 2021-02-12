@@ -179,7 +179,7 @@ Unfortunately this technique cannot be applied to older Gradle plugins (usingadd
 
 CI Pipeline is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in the [.github/workflows](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) folder.
 
-Series of workflows runs (in parallel) for every opened PR and after merging PR to `master` branch:
+Series of workflows runs (in parallel) for every opened PR and after merging PR to the `master` branch:
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detekt` - runs detekt
 * `./gradlew ktlintCheck` - runs ktlint
