@@ -150,7 +150,8 @@ This project utilizes multiple mechanics to eaisly share the same versions of de
 
 External dependencies (libraries) are defined using [versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html) feature in the [settings.gradle](./settings.gradle) file. These dynamic library versions are locked using Gradle [docking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
 
-To update lock files run `gw :app:assembleDebug --write-locks` command and commit updated `gradle.lockfile` files to repository.
+To update lock files run `./gradlew :app:assembleDebug --write-locks` command and commit updated `gradle.lockfile`Ż
+files to repository.
 
 Each feature module depends on the `app` module, so dependencies are shared without need to add them explicitly in each feature module.
 
@@ -165,7 +166,7 @@ Gradle is missing proper build-in mechanism to share dependency versions between
 
 To enable sharing all versions that are used for both plugins and librares are defined in [gradle.properties](./gradle.properties).
   
-Unfortunately this technique cannot be applied to older Gradle plugins (usingadded by `classpath`, not by `pluginManagament`), so some version in the [gradle.properties](./gradle.properties) are still duplicated.
+Unfortunately this technique cannot be applied to older Gradle plugins (added by `classpath`, not by `pluginManagement`), so some version in the [gradle.properties](./gradle.properties) are still duplicated.
 ## Ci pipeline
 
 CI Pipeline is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in the [.github/workflows](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) folder.
