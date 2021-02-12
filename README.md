@@ -154,20 +154,14 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ## Dependency management
 
-This project utilizes multiple mechanics to eaisly share the same versions of dependencies.
-
-
-
-
-manage dependencies and use the same dependency version across all modules. Because each feature module depends on the `app` module
-we can easily share all core dependencies without redefining them in each feature module.
-
-
+This project utilizes multiple mechanics to eaisly share the same versions of dependencies. 
 ### App library dependencies
 
 External dependencies (libraries) are defined using [versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html) feature in the [settings.gradle](./settings.gradle) file. These dynamic library versions are locked using Gradle [docking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
 
 To update lock files run `gw :app:assembleDebug --write-locks` command and commit updated `gradle.lockfile` files to repository.
+
+Each feature module depends on the `app` module, so dependencies are shared without need to add them explicitly in each feature module.
 
 ### Gradle plugin dependencies
 
