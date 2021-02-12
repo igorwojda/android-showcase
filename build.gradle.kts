@@ -13,14 +13,6 @@ plugins {
     id(GradlePluginId.SAFE_ARGS) apply false
 }
 
-buildscript {
-    // Gradle dependency locking - lock all configurations (build scripts)
-    // More: https://docs.gradle.org/current/userguide/dependency_locking.html
-    dependencyLocking {
-        lockAllConfigurations()
-    }
-}
-
 dependencyLocking {
     lockAllConfigurations()
 }
@@ -53,7 +45,7 @@ allprojects {
         }
     }
 
-    // Gradle dependency locking - lock all configurations
+    // Gradle dependency locking - lock all configurations of the app
     // More: https://docs.gradle.org/current/userguide/dependency_locking.html
     dependencyLocking {
         lockAllConfigurations()
@@ -88,19 +80,6 @@ fun Project.configureAndroid() {
 // JVM target applied to all Kotlin tasks across all sub-projects
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
-}
-
-// Needed?
-tasks.register("resolveAndLockAll") {
-    doFirst {
-        require(gradle.startParameter.isWriteDependencyLocks)
-    }
-    doLast {
-        configurations.filter {
-            // Add any custom filtering on the configurations to be resolved
-            it.isCanBeResolved
-        }.forEach { it.resolve() }
-    }
 }
 
 /*
