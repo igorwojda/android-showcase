@@ -73,7 +73,6 @@ dependencyResolutionManagement {
 
             val kotlinVersion: String by settings
             version("kotlin", kotlinVersion)
-            // alias("kotlin-stdlib").to("org.jetbrains.kotlin", "kotlin-stdlib").versionRef("kotlin")
             // Required by Android dynamic feature modules and SafeArgs
             alias("kotlin-reflect").to("org.jetbrains.kotlin", "kotlin-reflect").versionRef("kotlin")
             version("coroutines", "1.+")
