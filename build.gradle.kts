@@ -13,6 +13,10 @@ plugins {
     id(GradlePluginId.SAFE_ARGS) apply false
 }
 
+dependencyLocking {
+    lockAllConfigurations()
+}
+
 // all projects = root project + sub projects
 allprojects {
     repositories {
@@ -40,6 +44,12 @@ allprojects {
         filter {
             exclude { element -> element.file.path.contains("generated/") }
         }
+    }
+
+    // Gradle dependency locking - lock all configurations of the app
+    // More: https://docs.gradle.org/current/userguide/dependency_locking.html
+    dependencyLocking {
+        lockAllConfigurations()
     }
 }
 
@@ -73,13 +83,12 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
+/*
+Mimics all static checks that run on CI.
+Note that this task is intended to run locally (not on CI), because on CI we prefer to have parallel execution
+and separate reports for each of the checks (multiple statuses eg. on github PR page).
+ */
 task("staticCheck") {
-    description =
-        """Mimics all static checks that run on CI.
-        Note that this task is intended to run locally (not on CI), because on CI we prefer to have parallel execution
-        and separate reports for each check (multiple statuses eg. on github PR page).
-        """.trimMargin()
-
     group = "verification"
     afterEvaluate {
         // Filter modules with "lintDebug" task (non-Android modules do not have lintDebug task)
