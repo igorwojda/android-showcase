@@ -17,60 +17,50 @@ but it has all of these small details that will set the rock-solid foundation fo
 and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
 This project is being maintained to match current industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
-
-## Project characteristics
-
-This project brings to table set of best practices, tools, and solutions:
-
-* 100% [Kotlin](https://kotlinlang.org/)
-* Modern architecture (dynamic feature modules, Clean Architecture, Model-View-ViewModel, Model-View-Intent)
-* [Android Jetpack](https://developer.android.com/jetpack)
-* A single-activity architecture ([Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))
-* Reactive UI
-* CI pipeline ([GitHub Actions](https://github.com/features/actions))
-* Testing (Unit, UI)
-* Static analysis tools
-* Dependency Injection
-* Material design
-* Gradle
-  * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
-  * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
-
-## Tech-stack
+## Project characteristics and tech-stack
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
-Min API level is set to [`21`](https://android-arsenal.com/api?level=21), so the presented approach is suitable for over
-[85% of devices](https://developer.android.com/about/dashboards) running Android. This project takes advantage of many
-popular libraries and tools of the Android ecosystem. Most of the libraries are in the stable version unless there is a
-good reason to use non-stable dependency.
+This project takes advantage of best practices, many popular libraries and tools in the the Android ecosystem. Most of the libraries are in the stable version unless there is a good reason to use non-stable dependency.
 
 * Tech-stack
-    * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
-    * [Kodein](https://kodein.org/Kodein-DI/) - dependency injection
+    * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
     * [Retrofit](https://square.github.io/retrofit/) - networking
     * [Jetpack](https://developer.android.com/jetpack)
         * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - deal with whole in-app navigation
         * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
         * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when lifecycle state changes
         * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data in a lifecycle conscious way
-  *   [Coil](https://github.com/coil-kt/coil) - image loading library with Kotlin idiomatic API
-  *   [Lottie](http://airbnb.io/lottie) - animation library
+    * [Kodein](https://kodein.org/Kodein-DI/) - dependency injection
+    * [Coil](https://github.com/coil-kt/coil) - image loading library with Kotlin idiomatic API
+    * [Lottie](http://airbnb.io/lottie) - animation library
     * [Stetho](http://facebook.github.io/stetho/) - application debugging tool
     * [and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
-* Architecture
-    * Clean Architecture (at module level)
+* Modern Architecture
+    * Clean Architecture (at feature module level)
+    * Single activity architecture ( with[Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))
     * MVVM + MVI (presentation layer)
     * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
-    * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation), [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) plugin)
-* Tests
+    * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
+* CI 
+  * [GitHub Actions](https://github.com/features/actions)
+  * Automatic PR verification including tests, linters and 3rd online tools
+* Testing
     * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
     * [Mockk](https://mockk.io/)
     * [Kluent](https://github.com/MarkusAmshove/Kluent)
+* UI
+    * [Material design](https://material.io/design)
+    *  Reactive UI
+* Static analysis tools
+    * [Ktlint](https://github.com/pinterest/ktlint)
+    * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
 * Gradle
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     * Custom tasks
-    * Plugins ([Ktlint](https://github.com/JLLeitschuh/ktlint-gradle), [Detekt](https://github.com/arturbosch/detekt#with-gradle), [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args))
+    * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args))
+    * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
+    * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
 
 ## Architecture
 
