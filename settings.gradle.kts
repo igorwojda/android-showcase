@@ -13,16 +13,6 @@ include(
     ":library_test_utils"
 )
 
-// Gradle is missing proper build-in mechanism to share dependency versions between:
-// - library dependency and gradle plugin dependency (eg. kotlin, navigation)
-// - implementation and test implementation of the library (eg. coroutines)
-// More: https://github.com/gradle/gradle/issues/16077
-//
-// As a result some versions are defined multiple times.
-// To avoid defining dependency version multiple times dependencies are defined in the gradle.properties file and
-// retrieved using settings delegate. Unfortunately this technique cannot be applied to all versions, so some will
-// remain duplicated.
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -30,10 +20,8 @@ pluginManagement {
     }
 
     plugins {
-        // Dynamic versions are not supported for Gradle plugins, so versions of some libraries & plugins have to
-        // be hardcoded. Best place to hardcode these versions is gradle.properties file, because these hardcoded
-        // versions can be easily retrieved using delegate and shared between plugins and library dependencies.
-        // e.g: navigation library is using safeargs Gradle plugin where plugin and library versions must match.
+        // See Dependency management section in README.md
+        // https://github.com/igorwojda/android-showcase#dependency-management
 
         val kotlinVersion: String by settings
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
@@ -77,11 +65,8 @@ pluginManagement {
     }
 }
 
-// Version catalogs is the new Gradle 7 way for sharing dependency versions across projects.
-// https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html
-//
-// Library versions are locked using Gradle docking dependency mechanism
-// https://docs.gradle.org/current/userguide/dependency_locking.html
+// See Dependency management section in README.md
+// https://github.com/igorwojda/android-showcase#dependency-management
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {

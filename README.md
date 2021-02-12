@@ -32,6 +32,9 @@ This project brings to table set of best practices, tools, and solutions:
 * Static analysis tools
 * Dependency Injection
 * Material design
+* Gradle
+  * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
+  * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
 
 ## Tech-stack
 
@@ -149,27 +152,46 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/master/misc/image/app_data_flow.png?raw=true)
 
-## External dependencies
+## Dependency management
 
-All the external dependencies (external libraries) are defined in the single place - Gradle `buildSrc` folder. This approach allows to easily
+This project utilizes multiple mechanics to eaisly share the same versions of dependencies.
+
+
+
+
 manage dependencies and use the same dependency version across all modules. Because each feature module depends on the `app` module
 we can easily share all core dependencies without redefining them in each feature module.
 
-[and more...](https://github.com/igorwojda/android-showcase/blob/master/buildSrc/src/main/kotlin/LibraryDependency.kt)
 
+### App library dependencies
+
+External dependencies (libraries) are defined using [versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html) feature in the [settings.gradle](./settings.gradle) file. These dynamic library versions are locked using Gradle [docking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
+
+To update lock files run `gw :app:assembleDebug --write-locks` command and commit updated `gradle.lockfile` files to repository.
+
+### Gradle plugin dependencies
+
+External dependencies (external libraries) are defined using [pluginManagement](https://docs.gradle.org/current/userguide/plugins.html#sec:plugin_management). Dependency definitions are stored in the [settings.gradle](./settings.gradle) file. 
+
+Dynamic versions aren't supported for Gradle plugins, so [docking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism can't be used (like for app library dependencies), and thus versions of some libraries & plugins have to be hardcoded in the [gradle.properties](./gradle.properties) file.
+### Shared dependencies
+
+Gradle is missing proper build-in mechanism to share dependency versions between app library dependency and Gradle plugin dependency eg. [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) library uses [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) Gradle plugin with the same version. 
+
+To enable sharing all versions that are used for both plugins and librares are defined in [gradle.properties](./gradle.properties).
+  
+Unfortunately this technique cannot be applied to older Gradle plugins (usingadded by `classpath`, not by `pluginManagament`), so some version in the [gradle.properties](./gradle.properties) are still duplicated.
 ## Ci pipeline
 
-[CI pipeline](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) verifies project correctness which each PR.
-All of the tasks run in parallel:
+CI Pipeline is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in the [.github/workflows](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) folder.
 
-These are all of the Gradle tasks that are [GitHub Actions](https://github.com/features/actions):
+Series of workflows runs (in parallel) for every opened PR and after merging PR to `master` branch:
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detekt` - runs detekt
 * `./gradlew ktlintCheck` - runs ktlint
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
-
 ### Design decisions
 
 Read related articles to have a better understanding of underlying design decisions and various trade-offs.
@@ -228,6 +250,7 @@ Other high-quality projects will help you to find solutions that work for your p
 * [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
 * [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
+* Gradle dependencies can't be eaisly shared between app librares and Gradle plugins https://github.com/gradle/gradle/issues/16077
 
 ## Known issues
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is partially fixed in AS 4.2 (see [527](https://github.com/pinterest/ktlint/issues/527) and [KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
