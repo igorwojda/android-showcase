@@ -13,12 +13,14 @@ include(
     ":library_test_utils"
 )
 
+// Gradle plugins are added via plugin management, not the classpath
 pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
     }
 
+    // Using the plugins  DSL allows generating type-safe accessors for Kotlin DSL
     plugins {
         // See Dependency management section in README.md
         // https://github.com/igorwojda/android-showcase#dependency-management
@@ -43,22 +45,22 @@ pluginManagement {
     }
 
     resolutionStrategy {
-        val agpCoordinates: String by settings
-        val navigationCoordinates: String by settings
-
         eachPlugin {
+
             when (requested.id.id) {
                 "com.android.application",
                 "com.android.library",
                 "com.android.dynamic-feature" -> {
-                    // Version should be retrieved from "val agpVersion: String by settings" delegate, but
-                    // Gradle does not allow it.
-                    useModule(agpCoordinates) // agpVersion
+                    val agpCoordinates: String by settings
+                    useModule(agpCoordinates)
                 }
                 "androidx.navigation.safeargs.kotlin" -> {
-                    // Version should be retrieved from "val navigationVersion: String by settings" delegate, but
-                    // Gradle does not allow it.
-                    useModule(navigationCoordinates) // navigationVersion
+                    val navigationCoordinates: String by settings
+                    useModule(navigationCoordinates)
+                }
+                "de.mannodermaus.android-junit5" -> {
+                    val androidJnit5Coordinates: String by settings
+                    useModule(androidJnit5Coordinates) // navigationVersion
                 }
             }
         }
