@@ -62,8 +62,18 @@ subprojects {
     apply(plugin = GradlePluginId.DETEKT)
 
     detekt {
-        config = files("${project.rootDir}/detekt.yml")
+        config = files("$rootDir/detekt.yml")
+
         parallel = true
+
+        // BY default
+        input = files(
+            "$rootDir/buildSrc",
+            "$rootDir/build.gradle.kts",
+            "$rootDir/settings.gradle.kts",
+            "src/main/kotlin",
+            "src/test/kotlin"
+        )
     }
 
     afterEvaluate {
