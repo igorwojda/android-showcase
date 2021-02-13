@@ -46,7 +46,8 @@ This project takes advantage of best practices, many popular libraries and tools
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters and 3rd online tools
 * Testing
-    * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
+    * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
+    [android-junit5](https://github.com/mannodermaus/android-junit5))
     * [UT Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
     * [Mockk](https://mockk.io/) - mocking framework
     * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
@@ -59,7 +60,8 @@ This project takes advantage of best practices, many popular libraries and tools
 * Gradle
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     * Custom tasks
-    * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args))
+    * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
+    [android-junit5](https://github.com/mannodermaus/android-junit5)
     * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
     * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
 
