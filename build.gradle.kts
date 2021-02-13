@@ -73,8 +73,6 @@ subprojects {
         )
     }
 
-//    apply(plugin = GradlePluginId.ANDROID_JUNIT_5)
-
     afterEvaluate {
         configureAndroid()
     }

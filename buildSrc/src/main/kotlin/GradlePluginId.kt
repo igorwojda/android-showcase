@@ -4,5 +4,5 @@ object GradlePluginId {
     const val ANDROID_LIBRARY = "com.android.library"
     const val KOTLIN_ANDROID = "org.jetbrains.kotlin.android"
     const val SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
-    const val ANDROID_JUNIT_5 = "de.mannodermaus.gradle.plugins"
+    const val ANDROID_JUNIT_5 = "de.mannodermaus.android-junit5"
 }

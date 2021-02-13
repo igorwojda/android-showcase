@@ -46,6 +46,7 @@ pluginManagement {
 
     resolutionStrategy {
         eachPlugin {
+
             when (requested.id.id) {
                 "com.android.application",
                 "com.android.library",
@@ -59,13 +60,7 @@ pluginManagement {
                 }
                 "de.mannodermaus.android-junit5" -> {
                     val androidJnit5Coordinates: String by settings
-                    useModule(androidJnit5Coordinates)
-                }
-                "de.mannodermaus.gradle.plugins" -> {
-                    // Version should be retrieved from "val navigationVersion: String by settings" delegate, but
-                    // Gradle does not allow it.
-                    // ToDo: gradle.properties
-                    useModule("de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1") // navigationVersion
+                    useModule(androidJnit5Coordinates) // navigationVersion
                 }
             }
         }
