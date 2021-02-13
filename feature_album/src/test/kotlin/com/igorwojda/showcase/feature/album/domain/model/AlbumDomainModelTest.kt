@@ -2,11 +2,8 @@ package com.igorwojda.showcase.feature.album.domain.model
 
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.Test
 
-@RunWith(JUnit4::class)
 class AlbumDomainModelTest {
 
     private lateinit var cut: AlbumDomainModel

@@ -7,13 +7,10 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
 
-@RunWith(JUnit4::class)
 class GetAlbumListUseCaseTest {
 
     @MockK
@@ -21,7 +18,7 @@ class GetAlbumListUseCaseTest {
 
     private lateinit var cut: GetAlbumListUseCase
 
-    @Before
+    @BeforeEach
     fun setUp() {
         MockKAnnotations.init(this)
 

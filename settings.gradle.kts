@@ -136,7 +136,7 @@ dependencyResolutionManagement {
             bundle("navigation", listOf("navigation-fragment", "navigation-dynamic", "navigation-ui-ktx"))
 
             // Test dependencies
-            alias("junit").to("junit:junit:4.+")
+//            alias("junit").to("junit:junit:4.+")
             alias("test-coroutines").to("org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("coroutines")
 
             version("kluent", "1.+")
@@ -147,19 +147,26 @@ dependencyResolutionManagement {
             alias("espresso").to("androidx.test.espresso:espresso-core:3.+")
             alias("mockk").to("io.mockk:mockk:1.+")
             alias("arch").to("androidx.arch.core:core-testing:2.+")
+
+            version("junit", "5.+")
+            alias("junit-jupiter-api").to("org.junit.jupiter", "junit-jupiter-api").versionRef("junit")
+
             bundle(
                 "test",
                 listOf(
-                    "junit",
+//                    "junit",
                     "test-coroutines",
                     "kluent-core",
                     "kluent-android",
                     "test-runner",
                     "espresso",
                     "mockk",
-                    "arch"
+                    "arch",
+                    "junit-jupiter-api"
                 )
             )
+
+            alias("junit-jupiter-engine").to("org.junit.jupiter", "junit-jupiter-engine").versionRef("junit")
         }
     }
 }

@@ -425,8 +425,8 @@ style:
     active: true
     values: 'TODO:,FIXME:,STOPSHIP:'
   ForbiddenImport:
-    active: false
-    imports: ''
+    active: true
+    imports: 'org.junit.runners.JUnit4'
   ForbiddenVoid:
     active: true
     ignoreOverridden: false

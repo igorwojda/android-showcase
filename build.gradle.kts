@@ -91,11 +91,12 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
-// Target version of the generated JVM bytecode. It is used for type resolution.
 tasks.withType<Detekt> {
+    // Target version of the generated JVM bytecode. It is used for type resolution.
     this.jvmTarget = "1.8"
 }
 
+// Target version of the generated JVM bytecode. It is used for type resolution.
 /*
 Mimics all static checks that run on CI.
 Note that this task is intended to run locally (not on CI), because on CI we prefer to have parallel execution

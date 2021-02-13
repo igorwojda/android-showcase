@@ -5,25 +5,24 @@ import com.igorwojda.showcase.base.presentation.navigation.NavManager
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.ViewState
-import com.igorwojda.showcase.library.testutils.CoroutineRule
+import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.RegisterExtension
 
-@RunWith(JUnit4::class)
 class AlbumListViewModelTest {
 
     @ExperimentalCoroutinesApi
-    @get:Rule
-    var coroutinesTestRule = CoroutineRule()
+    @JvmField
+    @RegisterExtension
+    val coroutinesTestExtension = CoroutinesTestExtension()
 
     @get:Rule
     var rule = InstantTaskExecutorRule()
@@ -36,7 +35,7 @@ class AlbumListViewModelTest {
 
     private lateinit var cut: AlbumListViewModel
 
-    @Before
+    @BeforeEach
     fun setUp() {
         MockKAnnotations.init(this)
 
@@ -58,8 +57,8 @@ class AlbumListViewModelTest {
     @Test
     fun `navigate to album details`() {
         // given
-        val artistName = "artistName"
-        val albumName = "albumName"
+        val artistName = "Michael Jackson"
+        val albumName = "Thriller"
         val mbId = "mbId"
 
         val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(

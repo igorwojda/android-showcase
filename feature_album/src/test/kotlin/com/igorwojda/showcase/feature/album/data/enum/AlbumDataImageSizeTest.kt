@@ -1,10 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.enum
 
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.Test
 
-@RunWith(JUnit4::class)
 class AlbumDataImageSizeTest {
 
     @Test

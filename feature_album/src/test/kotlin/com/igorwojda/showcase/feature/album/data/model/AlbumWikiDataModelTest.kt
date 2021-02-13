@@ -3,11 +3,8 @@ package com.igorwojda.showcase.feature.album.data.model
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.domain.model.AlbumWikiDomainModel
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.Test
 
-@RunWith(JUnit4::class)
 class AlbumWikiDataModelTest {
 
     @Test

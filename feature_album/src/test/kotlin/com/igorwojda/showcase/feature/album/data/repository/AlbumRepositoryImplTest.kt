@@ -12,8 +12,8 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 class AlbumRepositoryImplTest {
 
@@ -22,10 +22,10 @@ class AlbumRepositoryImplTest {
 
     private lateinit var cut: AlbumRepositoryImpl
 
-    private val artistName = "artistName"
-    private val albumName = "albumName"
+    private val artistName = "Michael Jackson"
+    private val albumName = "Thriller"
 
-    @Before
+    @BeforeEach
     fun setUp() {
         MockKAnnotations.init(this)
 

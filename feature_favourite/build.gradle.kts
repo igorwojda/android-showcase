@@ -2,6 +2,7 @@ plugins {
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.SAFE_ARGS)
+    id(GradlePluginId.ANDROID_JUNIT_5)
 }
 
 android {
@@ -55,4 +56,6 @@ dependencies {
 
     testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
     testImplementation(libs.bundles.test)
+
+    runtimeOnly(libs.junit.jupiter.engine)
 }
