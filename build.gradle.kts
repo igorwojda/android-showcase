@@ -1,5 +1,6 @@
 
 import com.android.build.gradle.BaseExtension
+import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -81,6 +82,11 @@ fun Project.configureAndroid() {
 // JVM target applied to all Kotlin tasks across all sub-projects
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+}
+
+// Target version of the generated JVM bytecode. It is used for type resolution.
+tasks.withType<Detekt> {
+    this.jvmTarget = "1.8"
 }
 
 /*
