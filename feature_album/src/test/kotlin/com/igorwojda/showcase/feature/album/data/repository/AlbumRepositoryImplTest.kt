@@ -37,7 +37,7 @@ class AlbumRepositoryImplTest {
         // given
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, null)
-        } returns GetAlbumInfoResponse(DataFixtures.getAlbum().copy())
+        } returns GetAlbumInfoResponse(DataFixtures.getAlbum())
 
         // when
         val result = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
