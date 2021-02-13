@@ -136,7 +136,6 @@ dependencyResolutionManagement {
             bundle("navigation", listOf("navigation-fragment", "navigation-dynamic", "navigation-ui-ktx"))
 
             // Test dependencies
-//            alias("junit").to("junit:junit:4.+")
             alias("test-coroutines").to("org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("coroutines")
 
             version("kluent", "1.+")
@@ -154,7 +153,6 @@ dependencyResolutionManagement {
             bundle(
                 "test",
                 listOf(
-//                    "junit",
                     "test-coroutines",
                     "kluent-core",
                     "kluent-android",

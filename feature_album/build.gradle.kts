@@ -48,18 +48,7 @@ android {
     // Removes the need to mock need to mock classes that may be irrelevant from test perspective
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
-
-        junitPlatform {
-            // Using local dependency instead of Maven coordinates
-            instrumentationTests.integrityCheckEnabled = false
-        }
-
-        unitTests.apply {
-            isReturnDefaultValues = true
-        }
     }
-
-
 }
 
 dependencies {
