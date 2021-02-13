@@ -13,9 +13,6 @@ plugins {
     id(GradlePluginId.SAFE_ARGS) apply false
 }
 
-dependencyLocking {
-    lockAllConfigurations()
-}
 
 // all projects = root project + sub projects
 allprojects {
