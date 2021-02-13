@@ -46,7 +46,6 @@ pluginManagement {
 
     resolutionStrategy {
         eachPlugin {
-
             when (requested.id.id) {
                 "com.android.application",
                 "com.android.library",
@@ -60,7 +59,7 @@ pluginManagement {
                 }
                 "de.mannodermaus.android-junit5" -> {
                     val androidJnit5Coordinates: String by settings
-                    useModule(androidJnit5Coordinates) // navigationVersion
+                    useModule(androidJnit5Coordinates)
                 }
             }
         }
