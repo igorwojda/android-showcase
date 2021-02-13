@@ -2,6 +2,7 @@ package com.igorwojda.showcase.feature.album.domain.model
 
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.Assert
 import org.junit.jupiter.api.Test
 
 class AlbumDomainModelTest {
@@ -18,6 +19,8 @@ class AlbumDomainModelTest {
 
         // then
         cut.getDefaultImageUrl() shouldBeEqualTo image.url
+
+        Assert.fail()
     }
 
     @Test

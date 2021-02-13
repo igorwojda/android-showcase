@@ -3,6 +3,7 @@ package com.igorwojda.showcase.feature.album.data.model
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.domain.model.AlbumWikiDomainModel
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.Assert
 import org.junit.jupiter.api.Test
 
 class AlbumWikiDataModelTest {
@@ -19,5 +20,7 @@ class AlbumWikiDataModelTest {
 
         // then
         domainModel shouldBeEqualTo AlbumWikiDomainModel(published, summary)
+
+        Assert.fail()
     }
 }

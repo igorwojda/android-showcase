@@ -12,6 +12,7 @@ import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -52,6 +53,8 @@ class AlbumListViewModelTest {
 
         // then
         coVerify { mockGetAlbumListUseCase.execute() }
+
+        Assert.fail()
     }
 
     @Test

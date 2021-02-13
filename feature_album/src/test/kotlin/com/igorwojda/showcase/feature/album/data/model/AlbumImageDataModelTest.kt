@@ -6,6 +6,7 @@ import com.igorwojda.showcase.feature.album.data.enum.toDomainEnum
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImageDomainModel
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow
+import org.junit.Assert
 import org.junit.jupiter.api.Test
 
 class AlbumImageDataModelTest {
@@ -22,6 +23,8 @@ class AlbumImageDataModelTest {
 
         // then
         domainModel shouldBeEqualTo AlbumImageDomainModel(url, size.toDomainEnum())
+
+        Assert.fail()
     }
 
     @Test

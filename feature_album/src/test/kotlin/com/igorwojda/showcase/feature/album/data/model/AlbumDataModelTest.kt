@@ -5,6 +5,7 @@ import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.Assert
 import org.junit.jupiter.api.Test
 
 class AlbumDataModelTest {
@@ -25,6 +26,8 @@ class AlbumDataModelTest {
             cut.wiki!!.toDomainModel(),
             cut.mbId!!
         )
+
+        Assert.fail()
     }
 
     @Test

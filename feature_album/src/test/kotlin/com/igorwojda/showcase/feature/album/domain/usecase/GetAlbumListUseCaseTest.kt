@@ -7,6 +7,7 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
@@ -36,6 +37,8 @@ class GetAlbumListUseCaseTest {
 
         // then
         result shouldBeEqualTo GetAlbumListUseCase.Result.Success(albums)
+
+        Assert.fail()
     }
 
     @Test
