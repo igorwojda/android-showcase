@@ -258,6 +258,7 @@ Other high-quality projects will help you to find solutions that work for your p
 - Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the library ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
 - Android lint complains about exceeding access rights to ArchTaskExecutor [Issue 79189568]((https://issuetracker
 .google .com/u/0/issues/79189568))
+- JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
 
 ## Contribute
 
