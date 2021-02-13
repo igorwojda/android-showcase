@@ -12,7 +12,6 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -45,8 +44,6 @@ class AlbumRepositoryImplTest {
 
         // then
         result shouldBeEqualTo DataFixtures.getAlbum().toDomainModel()
-
-        Assert.fail()
     }
 
     @Test

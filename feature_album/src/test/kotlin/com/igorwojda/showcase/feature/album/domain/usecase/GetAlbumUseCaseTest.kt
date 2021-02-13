@@ -8,7 +8,6 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
@@ -41,8 +40,6 @@ class GetAlbumUseCaseTest {
 
         // then
         coVerify { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) }
-
-        Assert.fail()
     }
 
     @Test

@@ -1,6 +1,5 @@
 package com.igorwojda.showcase.feature.album.data.enum
 
-import org.junit.Assert
 import org.junit.jupiter.api.Test
 
 class AlbumDataImageSizeTest {
@@ -16,7 +15,5 @@ class AlbumDataImageSizeTest {
         // then
         // no explicit check is required, because test will crash if any of
         // the consts in the enums can't be mapped to a domain enum
-
-        Assert.fail()
     }
 }

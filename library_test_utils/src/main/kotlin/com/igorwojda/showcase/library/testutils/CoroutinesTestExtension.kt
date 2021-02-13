@@ -16,6 +16,11 @@ import org.junit.jupiter.api.extension.ExtensionContext
 * @RegisterExtension
 * val coroutinesTestExtension = CoroutinesTestExtension()
 */
+
+/*
+* A JUnit Test Extension that swaps the coroutine dispatcher one which executes each task synchronously.
+* You can use this rule for your host side tests that use Kotlin Coroutines.
+*/
 @ExperimentalCoroutinesApi
 class CoroutinesTestExtension(
     private val testCoroutineDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()

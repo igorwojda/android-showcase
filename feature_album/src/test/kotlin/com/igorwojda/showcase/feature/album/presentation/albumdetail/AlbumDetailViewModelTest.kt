@@ -2,25 +2,17 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.ViewState
-import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 
 class AlbumDetailViewModelTest {
-
-    @ExperimentalCoroutinesApi
-    @JvmField
-    @RegisterExtension
-    val coroutinesTestExtension = CoroutinesTestExtension()
 
     @JvmField
     @RegisterExtension
@@ -69,7 +61,5 @@ class AlbumDetailViewModelTest {
             albumName = "",
             coverImageUrl = ""
         )
-
-        Assert.fail()
     }
 }

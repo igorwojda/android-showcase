@@ -2,6 +2,7 @@ plugins {
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.SAFE_ARGS)
+    id(GradlePluginId.ANDROID_JUNIT_5)
 }
 
 android {
@@ -47,7 +48,18 @@ android {
     // Removes the need to mock need to mock classes that may be irrelevant from test perspective
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
+
+        junitPlatform {
+            // Using local dependency instead of Maven coordinates
+            instrumentationTests.integrityCheckEnabled = false
+        }
+
+        unitTests.apply {
+            isReturnDefaultValues = true
+        }
     }
+
+
 }
 
 dependencies {
