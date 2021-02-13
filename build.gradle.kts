@@ -66,7 +66,7 @@ subprojects {
 
         parallel = true
 
-        // BY default
+        // By default detekt does not check test source set and gradle specific files, so hey have to be added manually
         input = files(
             "$rootDir/buildSrc",
             "$rootDir/build.gradle.kts",
