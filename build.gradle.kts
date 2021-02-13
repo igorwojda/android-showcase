@@ -7,7 +7,6 @@ plugins {
     id(GradlePluginId.DETEKT)
     id(GradlePluginId.KTLINT_GRADLE)
     id(GradlePluginId.ANDROID_JUNIT_5) apply false
-    id(GradlePluginId.KOTLIN_JVM) apply false
     id(GradlePluginId.KOTLIN_ANDROID) apply false
     id(GradlePluginId.ANDROID_APPLICATION) apply false
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE) apply false
