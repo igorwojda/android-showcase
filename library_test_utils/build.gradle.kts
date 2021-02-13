@@ -49,5 +49,5 @@ dependencies {
     implementation(libs.bundles.kotlin)
     implementation(libs.bundles.test)
 
-    runtimeOnly(libs.junit.jupiter.engine)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }

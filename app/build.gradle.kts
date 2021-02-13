@@ -93,8 +93,7 @@ dependencies {
 
     testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
     testImplementation(libs.bundles.test)
-
-    runtimeOnly(libs.junit.jupiter.engine)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 /*
