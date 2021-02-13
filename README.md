@@ -164,21 +164,31 @@ Dynamic versions aren't supported for Gradle plugins, so [docking dependency](ht
 
 Gradle is missing proper build-in mechanism to share dependency versions between app library dependency and Gradle plugin dependency eg. [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) library uses [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) Gradle plugin with the same version. 
 
-To enable sharing all versions that are used for both plugins and librares are defined in [gradle.properties](./gradle.properties).
+To enable sharing all versions that are used for both plugins and libraries are defined in [gradle.properties](./gradle.properties).
   
 Unfortunately this technique cannot be applied to older Gradle plugins (added by `classpath`, not by `pluginManagement`), so some version in the [gradle.properties](./gradle.properties) are still duplicated.
-## Ci pipeline
+## CI pipeline
 
-CI Pipeline is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in the [.github/workflows](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) folder.
+CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in the [.github/workflows](https://github.com/igorwojda/android-showcase/tree/master/.github/workflows) folder.
 
-Series of workflows runs (in parallel) for every opened PR and after merging PR to the `master` branch:
+### PR Verification
+
+Series of workflows runs (in parallel) for every opened PR and after merging PR to `master` branch:
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detekt` - runs detekt
 * `./gradlew ktlintCheck` - runs ktlint
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
-### Design decisions
+
+### Dependency updates
+
+The [update-dependencies](.github/workflows/update-dependencies.yml) task run periodically and creates a pull request
+containing dependency
+updates
+(updated gradle .lockfile files used by Gradle’s [dependency locking](https://docs.gradle.org/current/userguide/dependency_locking.html)).
+
+## Design decisions
 
 Read related articles to have a better understanding of underlying design decisions and various trade-offs.
 
