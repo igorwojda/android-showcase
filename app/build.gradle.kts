@@ -24,7 +24,7 @@ android {
         buildConfigFieldFromGradleProperty("apiBaseUrl")
         buildConfigFieldFromGradleProperty("apiToken")
 
-        buildConfigField("FEATURE_MODULE_NAMES", getDynamicFeatureModuleNames())
+        buildConfigField("FEATURE_MODULE_NAMES", getFeatureNames())
     }
 
     buildTypes {
@@ -48,7 +48,7 @@ android {
     }
 
     // Each feature module that is included in settings.gradle.kts is added here as dynamic feature
-    dynamicFeatures = ModuleDependency.getDynamicFeatureModules().toMutableSet()
+    dynamicFeatures = ModuleDependency.getFeatureModules().toMutableSet()
 
     lintOptions {
         // By default lint does not check test sources, but setting this option means that lint will not even parse them
@@ -68,7 +68,6 @@ android {
 }
 
 dependencies {
-
     // Gradle 7 introduces version catalogs - a new way for sharing dependency versions across projects.
     // Dependencies are defined in gradle.settings.kts file.
     // False positive cannot access class (fixed in InteliJ IDEA 2021.1 EAP 1 afair)
@@ -95,6 +94,9 @@ dependencies {
     testImplementation(libs.bundles.test)
 }
 
+/*
+Takes value from Gradle project property and sets it as build config property
+ */
 fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
     val propertyValue = project.properties[gradlePropertyName] as? String
     checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
@@ -103,14 +105,20 @@ fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
     buildConfigField("String", androidResourceName, propertyValue)
 }
 
-fun getDynamicFeatureModuleNames() = ModuleDependency.getDynamicFeatureModules()
+/*
+Return names of the features
+ */
+fun getFeatureNames() = ModuleDependency.getFeatureModules()
     .map { it.replace(":feature_", "") }
     .toSet()
 
 fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }
 
+/*
+Adds a new field to the generated BuildConfig class
+ */
 fun DefaultConfig.buildConfigField(name: String, value: Set<String>) {
-    // Generates String that holds Java String Array code
+    // Create String that holds Java String Array code
     val strValue = value.joinToString(prefix = "{", separator = ",", postfix = "}", transform = { "\"$it\"" })
     buildConfigField("String[]", name, strValue)
 }
