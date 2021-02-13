@@ -6,7 +6,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id(GradlePluginId.DETEKT)
     id(GradlePluginId.KTLINT_GRADLE)
-    id(GradlePluginId.KOTLIN_JVM) apply false
     id(GradlePluginId.KOTLIN_ANDROID) apply false
     id(GradlePluginId.ANDROID_APPLICATION) apply false
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE) apply false
