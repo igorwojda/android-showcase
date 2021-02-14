@@ -85,7 +85,7 @@ subprojects {
                     .any { Regex("(?i).*[.-]$it[.\\d-]*").matches(candidate.version) }
 
                 if (rejected) {
-                    reject("Release candidate")do
+                    reject("Release candidate")
                 }
             }
         }
