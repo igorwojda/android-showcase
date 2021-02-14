@@ -1,4 +1,3 @@
-
 import com.android.build.gradle.BaseExtension
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile

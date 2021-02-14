@@ -152,8 +152,8 @@ This project utilizes multiple mechanics to eaisly share the same versions of de
 
 External dependencies (libraries) are defined using [versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html) feature in the [settings.gradle](./settings.gradle) file. These dynamic library versions are locked using Gradle [docking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
 
-To update lock files run `./gradlew :app:assembleDebug --write-locks` command and commit updated `gradle.lockfile`Ż
-files to repository.
+To update lock files run `./gradlew test --write-locks` command and commit updated `gradle.lockfile` files to
+repository.
 
 Each feature module depends on the `app` module, so dependencies are shared without need to add them explicitly in each feature module.
 
