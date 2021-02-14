@@ -13,7 +13,6 @@ plugins {
     id(GradlePluginId.SAFE_ARGS) apply false
 }
 
-
 // all projects = root project + sub projects
 allprojects {
     repositories {
