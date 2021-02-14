@@ -3,10 +3,9 @@ package com.igorwojda.showcase.feature.album.data
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.igorwojda.showcase.feature.album.MODULE_NAME
-import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
-import com.igorwojda.showcase.feature.album.data.retrofit.service.AlbumRetrofitService
-import com.igorwojda.showcase.feature.album.data.room.AlbumDao
-import com.igorwojda.showcase.feature.album.data.room.AlbumDatabase
+import com.igorwojda.showcase.feature.album.data.network.retrofit.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.database.AlbumDao
+import com.igorwojda.showcase.feature.album.data.database.AlbumDatabase
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind

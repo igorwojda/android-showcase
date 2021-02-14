@@ -1,13 +1,14 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
+import com.igorwojda.showcase.feature.album.data.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.data.model.network.AlbumListNetworkDataModel
-import com.igorwojda.showcase.feature.album.data.model.network.AlbumSearchResultNetworkDataModel
-import com.igorwojda.showcase.feature.album.data.model.network.toDomainModel
-import com.igorwojda.showcase.feature.album.data.retrofit.response.GetAlbumInfoResponse
-import com.igorwojda.showcase.feature.album.data.retrofit.response.SearchAlbumResponse
-import com.igorwojda.showcase.feature.album.data.retrofit.service.AlbumRetrofitService
-import com.igorwojda.showcase.feature.album.data.room.AlbumDao
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumListNetworkDataModel
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumSearchResultNetworkDataModel
+import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
+import com.igorwojda.showcase.feature.album.data.network.retrofit.response.GetAlbumInfoResponse
+import com.igorwojda.showcase.feature.album.data.network.retrofit.response.SearchAlbumResponse
+import com.igorwojda.showcase.feature.album.data.network.retrofit.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.database.AlbumDao
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
