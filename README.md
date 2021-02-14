@@ -159,9 +159,12 @@ Each feature module depends on the `app` module, so dependencies are shared with
 
 ### Gradle plugin dependencies
 
-External dependencies (external libraries) are defined using [pluginManagement](https://docs.gradle.org/current/userguide/plugins.html#sec:plugin_management). Dependency definitions are stored in the [settings.gradle](./settings.gradle) file. 
+Gradle plugins are defined in [pluginManagement](https://docs.gradle.org/current/userguide/plugins.html#sec:plugin_management) block ([settings.gradle](./settings.gradle) file). 
 
 Dynamic versions aren't supported for Gradle plugins, so [docking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism can't be used (like for app library dependencies), and thus versions of some libraries & plugins have to be hardcoded in the [gradle.properties](./gradle.properties) file.
+
+There is no easy way to share id between `pluginManagement` block and `buildSrc` folder, so plugin ids (also used within build scripts), have to be duplicated in the [GradlePluginId](./buildSrc/java/GradlePluginId/kt) file. 
+
 ### Shared dependencies
 
 Gradle is missing proper build-in mechanism to share dependency versions between app library dependency and Gradle plugin dependency eg. [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) library uses [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) Gradle plugin with the same version. 
