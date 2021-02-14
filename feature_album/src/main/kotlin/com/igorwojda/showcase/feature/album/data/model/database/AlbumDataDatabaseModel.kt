@@ -1,0 +1,24 @@
+package com.igorwojda.showcase.feature.album.data.model.database
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.igorwojda.showcase.feature.album.data.room.entity.AlbumImageDataEntityTypeConverter
+import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+
+@Entity(tableName = "albums")
+@TypeConverters(AlbumImageDataEntityTypeConverter::class)
+data class AlbumDataEntity(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val mbId: String,
+    val name: String,
+    val artist: String,
+    val images: List<AlbumImageDataEntity> = listOf()
+)
+
+internal fun AlbumDataEntity.toDomainModel() =
+    AlbumDomainModel(
+        this.name, this.artist,
+        this.images.mapNotNull { it.toDomainModel() },
+        null, this.mbId
+    )

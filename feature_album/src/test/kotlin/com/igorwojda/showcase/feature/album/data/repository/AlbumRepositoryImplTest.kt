@@ -1,9 +1,9 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.data.model.AlbumListDataModel
-import com.igorwojda.showcase.feature.album.data.model.AlbumSearchResultDataModel
-import com.igorwojda.showcase.feature.album.data.model.toDomainModel
+import com.igorwojda.showcase.feature.album.data.model.network.AlbumListNetworkDataModel
+import com.igorwojda.showcase.feature.album.data.model.network.AlbumSearchResultNetworkDataModel
+import com.igorwojda.showcase.feature.album.data.model.network.toDomainModel
 import com.igorwojda.showcase.feature.album.data.retrofit.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.retrofit.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.retrofit.service.AlbumRetrofitService
@@ -69,8 +69,8 @@ class AlbumRepositoryImplTest {
         // given
         val phrase = "phrase"
         coEvery { mockService.searchAlbumAsync(phrase) } returns SearchAlbumResponse(
-            AlbumSearchResultDataModel(
-                AlbumListDataModel(listOf(DataFixtures.getAlbum()))
+            AlbumSearchResultNetworkDataModel(
+                AlbumListNetworkDataModel(listOf(DataFixtures.getAlbum()))
             )
         )
 

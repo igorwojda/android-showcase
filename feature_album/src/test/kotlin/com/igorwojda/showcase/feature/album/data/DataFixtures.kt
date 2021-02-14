@@ -1,9 +1,9 @@
 package com.igorwojda.showcase.feature.album.data
 
 import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
-import com.igorwojda.showcase.feature.album.data.model.AlbumDataModel
-import com.igorwojda.showcase.feature.album.data.model.AlbumImageDataModel
-import com.igorwojda.showcase.feature.album.data.model.AlbumWikiDataModel
+import com.igorwojda.showcase.feature.album.data.model.network.AlbumDataModel
+import com.igorwojda.showcase.feature.album.data.model.network.AlbumImageDataModel
+import com.igorwojda.showcase.feature.album.data.model.network.AlbumWikiDataModel
 
 object DataFixtures {
 

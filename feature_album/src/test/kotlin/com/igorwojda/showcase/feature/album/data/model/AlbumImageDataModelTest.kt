@@ -3,6 +3,7 @@ package com.igorwojda.showcase.feature.album.data.model
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.data.enum.toDomainEnum
+import com.igorwojda.showcase.feature.album.data.model.network.toDomainModel
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImageDomainModel
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow

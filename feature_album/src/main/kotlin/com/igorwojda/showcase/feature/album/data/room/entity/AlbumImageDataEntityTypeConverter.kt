@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.room.entity
 
 import androidx.room.TypeConverter
+import com.igorwojda.showcase.feature.album.data.model.database.AlbumImageDataEntity
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types

@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.enum
 
-import com.igorwojda.showcase.feature.album.data.room.entity.AlbumDataImageSizeEntity
+import com.igorwojda.showcase.feature.album.data.model.database.AlbumDataImageSizeEntity
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.squareup.moshi.Json
 

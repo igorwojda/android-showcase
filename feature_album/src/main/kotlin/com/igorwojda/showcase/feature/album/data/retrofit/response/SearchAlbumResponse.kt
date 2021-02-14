@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.retrofit.response
 
-import com.igorwojda.showcase.feature.album.data.model.AlbumSearchResultDataModel
+import com.igorwojda.showcase.feature.album.data.model.network.AlbumSearchResultNetworkDataModel
 
 internal data class SearchAlbumResponse(
-    val results: AlbumSearchResultDataModel
+    val results: AlbumSearchResultNetworkDataModel
 )

@@ -1,9 +1,10 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
-import com.igorwojda.showcase.feature.album.data.model.toDomainModel
-import com.igorwojda.showcase.feature.album.data.model.toEntity
+import com.igorwojda.showcase.feature.album.data.model.network.toDomainModel
+import com.igorwojda.showcase.feature.album.data.model.network.toEntity
 import com.igorwojda.showcase.feature.album.data.retrofit.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.data.room.AlbumDao
+import com.igorwojda.showcase.feature.album.data.model.database.toDomainModel
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 
@@ -18,8 +19,7 @@ internal class AlbumRepositoryImpl(
                 ?.album
                 ?.toDomainModel()
         } catch (e: java.net.UnknownHostException) {
-            albumDao
-                .getAlbum(artistName, albumName, mbId).toDomainModel()
+            albumDao.getAlbum(artistName, albumName, mbId).toDomainModel()
         }
     }
 
@@ -28,7 +28,7 @@ internal class AlbumRepositoryImpl(
             val albumsListResponse =
                 albumRetrofitService.searchAlbumAsync(phrase)
                     .results
-                    .albumMatches
+                    .albumMatchesNetwork
                     .album
 
             albumsListResponse
