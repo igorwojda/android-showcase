@@ -6,6 +6,7 @@ plugins {
     id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
     id(GradlePluginId.KTLINT_GRADLE)
     id(GradlePluginId.SAFE_ARGS)
+    id(GradlePluginId.ANDROID_JUNIT_5)
 }
 
 android {
@@ -92,6 +93,8 @@ dependencies {
 
     testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
     testImplementation(libs.bundles.test)
+
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 /*

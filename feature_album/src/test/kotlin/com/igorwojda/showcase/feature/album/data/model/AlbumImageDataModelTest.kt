@@ -6,11 +6,8 @@ import com.igorwojda.showcase.feature.album.data.enum.toDomainEnum
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImageDomainModel
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.Test
 
-@RunWith(JUnit4::class)
 class AlbumImageDataModelTest {
 
     @Test

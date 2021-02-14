@@ -46,7 +46,8 @@ This project takes advantage of best practices, many popular libraries and tools
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters and 3rd online tools
 * Testing
-    * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
+    * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
+    [android-junit5](https://github.com/mannodermaus/android-junit5))
     * [UT Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
     * [Mockk](https://mockk.io/) - mocking framework
     * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
@@ -59,7 +60,8 @@ This project takes advantage of best practices, many popular libraries and tools
 * Gradle
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     * Custom tasks
-    * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args))
+    * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
+    [android-junit5](https://github.com/mannodermaus/android-junit5)
     * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
     * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
 
@@ -254,6 +256,9 @@ Other high-quality projects will help you to find solutions that work for your p
 - False positive "Function can be private" ([Issue KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
 - False positive cannot access class ([Issue 16077](https://youtrack.jetbrains.com/issue/KT-44797)). This is fixed in InteliJ IDEA 2021.1 EAP 1 afair.
 - Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the library ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
+- Android lint complains about exceeding access rights to ArchTaskExecutor [Issue 79189568]((https://issuetracker
+.google .com/u/0/issues/79189568))
+- JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
 
 ## Contribute
 

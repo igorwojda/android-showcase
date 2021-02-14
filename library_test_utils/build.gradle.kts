@@ -1,6 +1,7 @@
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
     id(GradlePluginId.KOTLIN_ANDROID)
+    id(GradlePluginId.ANDROID_JUNIT_5)
 }
 
 android {
@@ -46,6 +47,7 @@ dependencies {
     // testImplementation dependency inside other modules. Using implementation allows to write tests for test
     // utilities.
     implementation(libs.bundles.kotlin)
-    implementation(libs.junit)
-    implementation(libs.test.coroutines)
+    implementation(libs.bundles.test)
+
+    runtimeOnly(libs.junit.jupiter.engine)
 }

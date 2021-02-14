@@ -5,11 +5,8 @@ import com.igorwojda.showcase.feature.album.data.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.Test
 
-@RunWith(JUnit4::class)
 class AlbumDataModelTest {
 
     @Test

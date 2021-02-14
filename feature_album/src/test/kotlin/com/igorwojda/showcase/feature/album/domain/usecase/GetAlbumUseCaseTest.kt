@@ -8,13 +8,10 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
 
-@RunWith(JUnit4::class)
 class GetAlbumUseCaseTest {
 
     @MockK
@@ -22,7 +19,7 @@ class GetAlbumUseCaseTest {
 
     private lateinit var cut: GetAlbumUseCase
 
-    @Before
+    @BeforeEach
     fun setUp() {
         MockKAnnotations.init(this)
 
@@ -32,8 +29,8 @@ class GetAlbumUseCaseTest {
     @Test
     fun `when execute then getAlbum`() {
         // given
-        val albumName = "albumName"
-        val artistName = "artistName"
+        val albumName = "Thriller"
+        val artistName = "Michael Jackson"
         val mbId = "123"
 
         coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } answers { mockk() }
@@ -48,8 +45,8 @@ class GetAlbumUseCaseTest {
     @Test
     fun `when execute then getAlbum throw exception`() {
         // given
-        val albumName = "albumName"
-        val artistName = "artistName"
+        val albumName = "Thriller"
+        val artistName = "Michael Jackson"
         val mbId = "123"
         val exception = UnknownHostException()
 
