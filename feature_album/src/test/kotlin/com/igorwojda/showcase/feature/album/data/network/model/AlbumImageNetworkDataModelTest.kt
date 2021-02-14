@@ -1,15 +1,14 @@
-package com.igorwojda.showcase.feature.album.data.database.model
+package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.data.network.enum.toDomainEnum
-import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImageDomainModel
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow
 import org.junit.jupiter.api.Test
 
-class AlbumImageDataModelTest {
+class AlbumImageNetworkDataModelTest {
 
     @Test
     fun `maps to AlbumWikiDomainModel`() {
