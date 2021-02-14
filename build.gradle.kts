@@ -74,6 +74,22 @@ subprojects {
     afterEvaluate {
         configureAndroid()
     }
+
+    // While writing versions locks pre-release version of dependencies will be ignored
+    configurations.all {
+        resolutionStrategy.componentSelection {
+            // Accept the highest version matching the requested version that isn't...
+            all {
+                // Do reject pre-release version
+                val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview")
+                    .any { Regex("(?i).*[.-]$it[.\\d-]*").matches(candidate.version) }
+
+                if (rejected) {
+                    reject("Release candidate")do
+                }
+            }
+        }
+    }
 }
 
 fun Project.configureAndroid() {

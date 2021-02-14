@@ -97,7 +97,7 @@ dependencyResolutionManagement {
             // bundle is basically an alias for several dependencies
             bundle("okhttp", listOf("okhttp-okhttp", "okhttp-interceptor"))
 
-            version("stetho", "1.5.0") // 1.5.1 has critical bug
+            version("stetho", "1.5.0") // 1.5.1 has critical bug and newer version is unlikely to be release
             alias("stetho-core").to("com.facebook.stetho", "stetho").versionRef("stetho")
             alias("stetho-okhttp3").to("com.facebook.stetho", "stetho-okhttp3").versionRef("stetho")
             bundle("stetho", listOf("stetho-core", "stetho-okhttp3"))
