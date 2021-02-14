@@ -1,3 +1,5 @@
+// See Dependency management section in README.md
+// https://github.com/igorwojda/android-showcase#dependency-management
 object GradlePluginId {
     const val ANDROID_APPLICATION = "com.android.application"
     const val ANDROID_DYNAMIC_FEATURE = "com.android.dynamic-feature"
