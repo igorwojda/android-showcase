@@ -8,15 +8,14 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a7ef0746703e4c81b0e4af2c46e2885e)](https://app.codacy.com/app/igorwojda/android-showcase?utm_source=github.com&utm_medium=referral&utm_content=igorwojda/android-showcase&utm_campaign=Badge_Grade_Dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
-Showcase is a sample project that presents a modern, 2021 approach to
-[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development with up to date tech-stack.
+Showcase is a sample project that presents a modern, 2021 approach to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development.
 
-The goal of the project is to demonstrate best practices by using up to date tech-stack and presenting mod  ern Android application
-[Architecture](#architecture) that is modular, scalable, maintainable, and testable. This application may look quite simple,
-but it has all of these small details that will set the rock-solid foundation for the larger app suitable for bigger teams
+The goal of the project is to combine popular libraries/tools and demonstrate best developement practices by utilizing up to date tech-stack and presenting modern Android application [Architecture](#architecture) that is modular, scalable, maintainable, and testable. This application may look simple,
+but it has all the pieces that will provide the rock-solid foundation for the larger app suitable for bigger teams
 and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
-This project is being maintained to match current industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
+This project is being maintained to match industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
+
 ## Project characteristics and tech-stack
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
