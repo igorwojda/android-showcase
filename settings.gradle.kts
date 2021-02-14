@@ -24,15 +24,14 @@ pluginManagement {
     plugins {
         // See Dependency management section in README.md
         // https://github.com/igorwojda/android-showcase#dependency-management
-
-        val kotlinVersion: String by settings
-        id("org.jetbrains.kotlin.jvm") version kotlinVersion
-        id("org.jetbrains.kotlin.android") version kotlinVersion
-
         val agpVersion: String by settings
         id("com.android.application") version agpVersion
         id("com.android.library") version agpVersion
         id("com.android.dynamic-feature") version agpVersion
+
+        val kotlinVersion: String by settings
+        id("org.jetbrains.kotlin.jvm") version kotlinVersion
+        id("org.jetbrains.kotlin.android") version kotlinVersion
 
         val navigationVersion: String by settings
         id("androidx.navigation.safeargs.kotlin") version navigationVersion
@@ -42,6 +41,9 @@ pluginManagement {
 
         val ktlintVersion: String by settings
         id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
+
+        val androidJUnit5Version: String by settings
+        id("de.mannodermaus.android-junit5") version androidJUnit5Version
     }
 
     resolutionStrategy {
