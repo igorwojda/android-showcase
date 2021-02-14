@@ -22,8 +22,8 @@ class AlbumDataModelTest {
             cut.name,
             cut.artist,
             cut.images?.map { it.toDomainModel() } ?: listOf(),
-            cut.wiki!!.toDomainModel(),
-            cut.mbId!!
+            cut.wiki?.toDomainModel(),
+            cut.mbId
         )
     }
 
