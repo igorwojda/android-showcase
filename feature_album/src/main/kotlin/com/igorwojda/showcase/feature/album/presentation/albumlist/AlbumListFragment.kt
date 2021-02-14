@@ -49,7 +49,5 @@ class AlbumListFragment : InjectionFragment(R.layout.fragment_album_list) {
         }
 
         observe(viewModel.stateLiveData, stateObserver)
-
-        viewModel.loadData()
     }
 }

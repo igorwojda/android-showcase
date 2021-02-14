@@ -40,7 +40,5 @@ internal class AlbumDetailFragment : InjectionFragment(R.layout.fragment_album_d
         super.onViewCreated(view, savedInstanceState)
 
         observe(viewModel.stateLiveData, stateObserver)
-
-        viewModel.loadData()
     }
 }

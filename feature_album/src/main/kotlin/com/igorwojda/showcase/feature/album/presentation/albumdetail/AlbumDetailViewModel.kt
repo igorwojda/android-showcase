@@ -17,18 +17,16 @@ internal class AlbumDetailViewModel(
     private val args: AlbumDetailFragmentArgs
 ) : BaseViewModel<ViewState, Action>(ViewState()) {
 
-    override fun onLoadData() {
+    init {
         getAlbum()
     }
 
     private fun getAlbum() {
         viewModelScope.launch {
             getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
-                when {
-                    it is GetAlbumUseCase.Result.Success ->
-                        sendAction(AlbumLoadSuccess(it.data))
-                    it is GetAlbumUseCase.Result.Error ->
-                        sendAction(AlbumLoadFailure)
+                when (it) {
+                    is GetAlbumUseCase.Result.Success -> sendAction(AlbumLoadSuccess(it.data))
+                    is GetAlbumUseCase.Result.Error -> sendAction(AlbumLoadFailure)
                 }
             }
         }

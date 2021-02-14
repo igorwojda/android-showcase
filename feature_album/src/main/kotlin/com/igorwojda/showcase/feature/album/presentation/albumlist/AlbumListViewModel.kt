@@ -14,7 +14,7 @@ internal class AlbumListViewModel(
     private val getAlbumListUseCase: GetAlbumListUseCase
 ) : BaseViewModel<AlbumListViewModel.ViewState, AlbumListViewModel.Action>(ViewState()) {
 
-    override fun onLoadData() {
+    init {
         getAlbumList()
     }
 
@@ -33,13 +33,13 @@ internal class AlbumListViewModel(
 
     private fun getAlbumList() {
         viewModelScope.launch {
-            getAlbumListUseCase.execute().also { result ->
-                val action = when (result) {
+            getAlbumListUseCase.execute().also {
+                val action = when (it) {
                     is GetAlbumListUseCase.Result.Success ->
-                        if (result.data.isEmpty()) {
+                        if (it.data.isEmpty()) {
                             Action.AlbumListLoadingFailure
                         } else {
-                            Action.AlbumListLoadingSuccess(result.data)
+                            Action.AlbumListLoadingSuccess(it.data)
                         }
 
                     is GetAlbumListUseCase.Result.Error ->
