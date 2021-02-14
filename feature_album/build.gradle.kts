@@ -39,12 +39,6 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    // This "test" source set is a fix for SafeArgs classes not being available when running Unit tests from cmd
-    // See: https://issuetracker.google.com/issues/139242292
-    sourceSets {
-        getByName("test").java.srcDir("${project.rootDir}/app/build/generated/source/navigation-args/debug")
-    }
-
     // Removes the need to mock need to mock classes that may be irrelevant from test perspective
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
