@@ -85,16 +85,17 @@ subprojects {
                     "io.gitlab.arturbosch.detekt",
                     "com.fasterxml.jackson",
                     "com.fasterxml.jackson.core",
-                    "com.fasterxml.jackson:")
+                    "com.fasterxml.jackson"
+                )
 
-                if(detektExceptions.any { it == candidate.group }) {
+                if (detektExceptions.any { it == candidate.group }) {
                     return@all
                 }
 
                 // android lint is using pre-release dependencies
                 val androidLintExceptions = listOf("com.android.tools.build")
 
-                if(androidLintExceptions.any { it == candidate.group }) {
+                if (androidLintExceptions.any { it == candidate.group }) {
                     return@all
                 }
 
