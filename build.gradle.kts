@@ -74,6 +74,41 @@ subprojects {
     afterEvaluate {
         configureAndroid()
     }
+
+    // While writing versions locks pre-release version of dependencies will be ignored
+    configurations.all {
+        resolutionStrategy.componentSelection {
+            // Accept the highest version matching the requested version that isn't...
+            all {
+                // detekt is using pre-release dependencies
+                val detektExceptions = listOf(
+                    "io.gitlab.arturbosch.detekt",
+                    "com.fasterxml.jackson",
+                    "com.fasterxml.jackson.core",
+                    "com.fasterxml.jackson"
+                )
+
+                if (detektExceptions.any { it == candidate.group }) {
+                    return@all
+                }
+
+                // android lint is using pre-release dependencies
+                val androidLintExceptions = listOf("com.android.tools.build")
+
+                if (androidLintExceptions.any { it == candidate.group }) {
+                    return@all
+                }
+
+                // Do reject pre-release version
+                val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview")
+                    .any { Regex("(?i).*[.-]$it[.\\d-]*").matches(candidate.version) }
+
+                if (rejected) {
+                    reject("Release candidate")
+                }
+            }
+        }
+    }
 }
 
 fun Project.configureAndroid() {
