@@ -1,4 +1,4 @@
-name: ktlint
+name: run detekt
 
 on:
   push:
@@ -21,10 +21,10 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: ktlint
-        run: ./gradlew ktlintCheck
+      - name: detekt
+        run: ./gradlew detekt
 
       - uses: actions/upload-artifact@v2
         with:
-          name: ktlint-report
-          path: ./**/build/reports/ktlint/
+          name: detekt-report
+          path: ./**/build/reports/detekt/detekt.*

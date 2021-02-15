@@ -1,4 +1,4 @@
-name: unit test
+name: run ktlint
 
 on:
   push:
@@ -21,10 +21,10 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: unitTest
-        run: ./gradlew test
+      - name: ktlint
+        run: ./gradlew ktlintCheck
 
       - uses: actions/upload-artifact@v2
         with:
-          name: unit-test-report
-          path: ./**/build/reports/tests/
+          name: ktlint-report
+          path: ./**/build/reports/ktlint/

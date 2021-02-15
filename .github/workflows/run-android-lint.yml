@@ -1,4 +1,4 @@
-name: detekt
+name: run android lint
 
 on:
   push:
@@ -21,10 +21,15 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: detekt
-        run: ./gradlew detekt
+      - name: lintDebug
+        run: ./gradlew lint
 
       - uses: actions/upload-artifact@v2
         with:
-          name: detekt-report
-          path: ./**/build/reports/detekt/detekt.*
+          name: android-lint-report
+          path: ~/app/build/reports/lint-results.html
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: android-lint-report
+          path: ./**/build/reports/lint-results.xml
