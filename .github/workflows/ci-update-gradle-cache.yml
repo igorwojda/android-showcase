@@ -26,7 +26,7 @@ jobs:
 
       - name: Generate Gradle checksums
         run: |
-          find buildSrc -name "*.kt" -type f | sort | xargs shasum  > gradle-checksums.txt
+          find "." -name "gradle.lockfile" -type f | sort | xargs shasum  > gradle-checksums.txt
           cat gradle-checksums.txt
 
       - uses: actions/cache@v2
