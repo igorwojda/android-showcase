@@ -22,7 +22,7 @@ jobs:
           java-version: 1.8
 
       - name: Build App
-        run: ./gradlew :app:assembleDebug
+        run: ./gradlew :app:assembleDebug --no-build-cache
 
       - uses: actions/upload-artifact@v2
         with:
