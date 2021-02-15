@@ -21,18 +21,6 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Generate Gradle checksums
-        run: |
-          find buildSrc -name "*.kt" -type f | sort | xargs shasum  > gradle-checksums.txt
-          cat gradle-checksums.txt
-
-      - uses: actions/cache@v2
-        with:
-          path: ~/.gradle
-          key: gradle-${{ hashFiles('gradle-checksums.txt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
-          restore-keys: |
-            gradle-${{ hashFiles('gradle-checksums.txt') }}-
-
       - name: lintDebug
         run: ./gradlew lint
 
