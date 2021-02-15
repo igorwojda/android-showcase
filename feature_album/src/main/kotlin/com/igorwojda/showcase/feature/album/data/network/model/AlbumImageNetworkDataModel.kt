@@ -3,7 +3,6 @@ package com.igorwojda.showcase.feature.album.data.network.model
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.data.network.enum.toDomainEnum
 import com.igorwojda.showcase.feature.album.data.network.enum.toEntityEnum
-import com.igorwojda.showcase.feature.album.data.database.AlbumImageDataEntity
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImageDomainModel
 import com.squareup.moshi.Json
 

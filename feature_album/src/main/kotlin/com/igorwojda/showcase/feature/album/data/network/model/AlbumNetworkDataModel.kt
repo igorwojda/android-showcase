@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
-import com.igorwojda.showcase.feature.album.data.database.AlbumDataEntity
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.squareup.moshi.Json
 
@@ -15,7 +14,9 @@ internal data class AlbumDataModel(
 
 internal fun AlbumDataModel.toEntity() =
     AlbumDataEntity(
-        mbId = this.mbId!!, name = this.name, artist = this.artist,
+        mbId = this.mbId!!,
+        name = this.name,
+        artist = this.artist,
         images = this.images?.mapNotNull { it.toEntity() } ?: listOf()
     )
 internal fun AlbumDataModel.toDomainModel(): AlbumDomainModel {

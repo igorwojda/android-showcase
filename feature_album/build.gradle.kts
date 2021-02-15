@@ -48,7 +48,8 @@ android {
 
 dependencies {
     implementation(project(ModuleDependency.APP))
-    kapt(LibraryDependency.ROOM_COMPILER)
+
+    kapt(libs.room.compiler)
 
     testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
     testImplementation(libs.bundles.test)
