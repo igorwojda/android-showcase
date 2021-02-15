@@ -16,7 +16,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Perform dependency resolution and write new lockfiles
-        run: ./gradlew :app:assembleDebug --write-locks
+        run: ./gradlew test --write-
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
