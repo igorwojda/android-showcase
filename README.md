@@ -60,7 +60,7 @@ This project takes advantage of best practices, many popular libraries and tools
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     * Custom tasks
     * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
-    [android-junit5](https://github.com/mannodermaus/android-junit5)
+    [android-junit5](https://github.com/mannodermaus/android-junit5))
     * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
     * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
 
