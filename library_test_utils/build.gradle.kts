@@ -1,6 +1,6 @@
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
-    id(GradlePluginId.KOTLIN_ANDROID)
+    id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
     id(GradlePluginId.ANDROID_JUNIT_5)
 }
 

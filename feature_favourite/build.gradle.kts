@@ -1,6 +1,7 @@
 plugins {
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
-    id(GradlePluginId.KOTLIN_ANDROID)
+    id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
+    id(GradlePluginId.KOTLIN_KAPT) // or kotlin("kapt")
     id(GradlePluginId.SAFE_ARGS)
     id(GradlePluginId.ANDROID_JUNIT_5)
 }
