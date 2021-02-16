@@ -6,6 +6,7 @@ import com.igorwojda.showcase.feature.album.data.network.model.toEntity
 import com.igorwojda.showcase.feature.album.data.network.retrofit.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
+import java.net.UnknownHostException
 
 internal class AlbumRepositoryImpl(
     private val albumRetrofitService: AlbumRetrofitService,
@@ -17,7 +18,7 @@ internal class AlbumRepositoryImpl(
             albumRetrofitService.getAlbumInfoAsync(artistName, albumName, mbId)
                 ?.album
                 ?.toDomainModel()
-        } catch (e: java.net.UnknownHostException) {
+        } catch (e: UnknownHostException) {
             albumDao.getAlbum(artistName, albumName, mbId).toDomainModel()
         }
     }
@@ -33,7 +34,7 @@ internal class AlbumRepositoryImpl(
 
             albumList.map { it.toDomainModel() }
 
-        } catch (e: java.net.UnknownHostException) {
+        } catch (e: UnknownHostException) {
             albumDao.getAll()
                 .map { it.toDomainModel() }
         }
