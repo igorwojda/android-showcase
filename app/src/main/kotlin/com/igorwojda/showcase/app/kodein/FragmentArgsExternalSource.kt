@@ -16,7 +16,9 @@ class FragmentArgsExternalSource : ExternalSource {
         val fragment = kodein.context as? Fragment
 
         if (fragment != null) {
-            val deductedArgsClassName = fragment.javaClass.canonicalName + "Args"
+            val canonicalName = fragment.javaClass.canonicalName ?: return null
+
+            val deductedArgsClassName = canonicalName + "Args"
 
             if (deductedArgsClassName == key.type.jvmType.fullErasedName()) {
 
