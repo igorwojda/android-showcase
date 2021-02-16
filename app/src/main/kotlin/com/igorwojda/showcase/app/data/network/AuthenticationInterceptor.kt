@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.app.data.retrofit
+package com.igorwojda.showcase.app.data.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
