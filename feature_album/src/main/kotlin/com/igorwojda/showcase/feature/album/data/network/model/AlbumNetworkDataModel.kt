@@ -5,7 +5,7 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
 import com.squareup.moshi.Json
 
 internal data class AlbumDataModel(
-    @field:Json(name = "mbid") val mbId: String?,
+    @field:Json(name = "mbid") val mbId: String,
     val name: String,
     val artist: String,
     val wiki: AlbumWikiDataModel?,
@@ -14,7 +14,7 @@ internal data class AlbumDataModel(
 
 internal fun AlbumDataModel.toEntity() =
     AlbumDataEntity(
-        mbId = this.mbId!!,
+        mbId = this.mbId,
         name = this.name,
         artist = this.artist,
         images = this.images?.mapNotNull { it.toEntity() } ?: listOf()

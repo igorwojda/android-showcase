@@ -14,8 +14,8 @@ internal class GetAlbumListUseCase(
     }
 
     suspend fun execute(): Result {
-        // Due to API limitations we have to perform search with custom phrase to get albums
-        val phrase = "sd"
+        // Due to API limitations search with custom phrase have to be performed to get albums
+        val phrase = "Jackson"
 
         return try {
             Result.Success(albumRepository.searchAlbum(phrase).filter { it.getDefaultImageUrl() != null })

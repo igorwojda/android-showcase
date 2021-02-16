@@ -8,7 +8,7 @@ import com.igorwojda.showcase.feature.album.data.network.model.AlbumWikiDataMode
 object DataFixtures {
 
     internal fun getAlbum(
-        mbId: String? = "mbId",
+        mbId: String = "mbId",
         name: String = "albumName",
         artist: String = "artistName",
         wiki: AlbumWikiDataModel? = getAlbumWikiDataModel(),
@@ -19,7 +19,7 @@ object DataFixtures {
         getAlbum(
             name = "name",
             artist = "artist",
-            mbId = null,
+            mbId = "mbId",
             wiki = null,
             images = null
         )

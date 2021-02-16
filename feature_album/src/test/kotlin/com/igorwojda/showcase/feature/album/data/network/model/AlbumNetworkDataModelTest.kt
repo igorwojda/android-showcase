@@ -28,7 +28,7 @@ class AlbumNetworkDataModelTest {
     }
 
     @Test
-    fun `data model with missing data maps to AlbumDomainModel`() {
+    fun `data model with missing data maps to AlbumDomain§Model`() {
         // given
         val cut = DataFixtures.getMinimalAlbum()
 
@@ -37,7 +37,7 @@ class AlbumNetworkDataModelTest {
 
         // then
         domainModel shouldBeEqualTo AlbumDomainModel(
-            name = "name", artist = "artist", images = emptyList(), wiki = null, mbId = null
+            name = "name", artist = "artist", images = emptyList(), wiki = null, mbId = "mbId"
         )
     }
 

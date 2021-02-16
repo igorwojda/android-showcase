@@ -24,18 +24,15 @@ internal class AlbumRepositoryImpl(
 
     override suspend fun searchAlbum(phrase: String): List<AlbumDomainModel> {
         return try {
-            val albumsListResponse =
-                albumRetrofitService.searchAlbumAsync(phrase)
-                    .results
-                    .albumMatchesNetwork
-                    .album
+            val searchAlbumResponse = albumRetrofitService.searchAlbumAsync(phrase)
+            val albumList = searchAlbumResponse.results.albumMatchesNetwork.album
 
-            albumsListResponse
+            albumList
                 .map { it.toEntity() }
                 .let { albumDao.insertAlbums(it) }
 
-            albumsListResponse
-                .map { it.toDomainModel() }
+            albumList.map { it.toDomainModel() }
+
         } catch (e: java.net.UnknownHostException) {
             albumDao.getAll()
                 .map { it.toDomainModel() }
