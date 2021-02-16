@@ -19,6 +19,7 @@ internal fun AlbumDataModel.toEntity() =
         artist = this.artist,
         images = this.images?.mapNotNull { it.toEntity() } ?: listOf()
     )
+
 internal fun AlbumDataModel.toDomainModel(): AlbumDomainModel {
     val images = this.images
         ?.filterNot { it.size == AlbumDataImageSize.UNKNOWN || it.url.isBlank() }
