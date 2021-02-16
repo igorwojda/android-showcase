@@ -23,7 +23,7 @@ We love pull requests from everyone:
 1. [Fork](https://help.github.com/en/enterprise/2.13/user/articles/fork-a-repo) tthis repository:
 1. Clone forked repository `git clone git@github.com:YOUR-USERNAME/android-showcase.git`
 
-All changes should be based from the `master` branch. Push to your fork and [submit a pull request](https://github.com/igorwojda/android-showcase/compare) against the `master` branch.
+All changes should be based on the `main` branch. Push to your fork and [submit a pull request](https://github.com/igorwojda/android-showcase/compare) against the `main` branch.
 
 At this point you're waiting on us. We like to at least comment on pull requests
 within few days. We may suggest some changes or improvements or alternatives.
