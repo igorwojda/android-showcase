@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.app.kodein
 
+import android.os.Bundle
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavArgs
@@ -11,22 +12,25 @@ import org.kodein.di.fullErasedName
 import org.kodein.di.jvmType
 import kotlin.reflect.KClass
 
+@Suppress("detekt.ReturnCount")
 class FragmentArgsExternalSource : ExternalSource {
     override fun getFactory(kodein: BindingKodein<*>, key: Kodein.Key<*, *, *>): ((Any?) -> Any)? {
-        val fragment = kodein.context as? Fragment
 
-        if (fragment != null) {
-            val canonicalName = fragment.javaClass.canonicalName ?: return null
+        val fragment = kodein.context as? Fragment ?: return null
+        val arguments = fragment.arguments ?: return null
+        val fragmentClassCanonicalName = fragment.javaClass.canonicalName ?: return null
 
-            val deductedArgsClassName = canonicalName + "Args"
+        // SafeArgs plugin adds "Agrs" suffix to the fragment class eg.
+        // If com.abc.MyFragment class has arguments defined in nav_graph.xml then
+        // class com.abc.MyFragmentArgs will be generated.
+        val argsClassName = fragmentClassCanonicalName + "Args"
 
-            if (deductedArgsClassName == key.type.jvmType.fullErasedName()) {
+        if (argsClassName == key.type.jvmType.fullErasedName()) {
 
-                val navArgsInstance = getNavArgsInstance(fragment)
+            val navArgsInstance = getNavArgsInstance(argsClassName, arguments)
 
-                if (navArgsInstance != null) {
-                    return { navArgsInstance }
-                }
+            if (navArgsInstance != null) {
+                return { navArgsInstance }
             }
         }
 
@@ -36,19 +40,12 @@ class FragmentArgsExternalSource : ExternalSource {
     // This function provides appropriate [NavArgs] instance using reflection to derive
     // Args class name from fragment class name.
     @MainThread
-    private fun getNavArgsInstance(fragment: Fragment): NavArgs? {
-        val arguments = fragment.arguments ?: return null
-
-        // SafeArgs plugin adds "Agrs" suffix to the fragment class eg.
-        // If com.abc.MyFragment class has arguments defined in nav_graph.xml then
-        // class com.abc.MyFragmentArgs will be generated.
-        val safeArgsClassSuffix = "Args"
-        val className = "${fragment::class.java.canonicalName}$safeArgsClassSuffix"
+    private fun getNavArgsInstance(argsClassName: String, arguments: Bundle): NavArgs? {
 
         @Suppress("UNCHECKED_CAST")
-        val navArgsClass = requireNotNull(getArgNavClass(className)) {
+        val navArgsClass = requireNotNull(getArgNavClass(argsClassName)) {
             // This may happen when nav graph resource does not define arguments for particular fragment
-            "Fragment $className has arguments, but corresponding navArgs class $className does not exist."
+            "Fragment $argsClassName has arguments, but corresponding navArgs class $argsClassName does not exist."
         }
 
         // Let's check if Args class actually exists
