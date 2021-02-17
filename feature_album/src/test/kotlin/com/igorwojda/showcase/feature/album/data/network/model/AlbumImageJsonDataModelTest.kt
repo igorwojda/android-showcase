@@ -2,7 +2,7 @@ package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumImageSizeJson
-import com.igorwojda.showcase.feature.album.data.network.enum.toDomainEnum
+import com.igorwojda.showcase.feature.album.data.network.enum.toDomainModel
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow
@@ -21,7 +21,7 @@ class AlbumImageJsonDataModelTest {
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel shouldBeEqualTo AlbumImage(url, size.toDomainEnum())
+        domainModel shouldBeEqualTo AlbumImage(url, size.toDomainModel())
     }
 
     @Test

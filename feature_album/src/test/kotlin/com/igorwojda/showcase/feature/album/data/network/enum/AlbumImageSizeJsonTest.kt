@@ -10,7 +10,7 @@ class AlbumImageSizeJsonTest {
         val dataEnums = AlbumImageSizeJson.values().filterNot { it == AlbumImageSizeJson.UNKNOWN }
 
         // when
-        dataEnums.forEach { it.toDomainEnum() }
+        dataEnums.forEach { it.toDomainModel() }
 
         // then
         // no explicit check is required, because test will crash if any of
