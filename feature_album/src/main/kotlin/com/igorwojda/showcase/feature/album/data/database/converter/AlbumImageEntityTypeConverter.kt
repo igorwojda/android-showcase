@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 
-class AlbumImageDataEntityTypeConverter {
+class AlbumImageEntityTypeConverter {
 
     private val type = Types.newParameterizedType(List::class.java, AlbumImageEntity::class.java)
     private val adapter: JsonAdapter<List<AlbumImageEntity>> = Moshi.Builder().build().adapter(type)
