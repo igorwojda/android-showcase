@@ -3,6 +3,7 @@ package com.igorwojda.showcase.feature.album.data
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageEntity
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageSizeEntity
+import com.igorwojda.showcase.feature.album.data.network.enum.AlbumImageSizeJson
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageJson
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumJson
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumWikiJson
@@ -16,6 +17,10 @@ object DataFixtures {
         wiki: AlbumWikiJson? = getAlbumWikiDataModel(),
         images: List<AlbumImageJson>? = listOf(getAlbumImage())
     ): AlbumJson = AlbumJson(mbId, name, artist, wiki, images)
+
+    internal fun getAlbums() = listOf(
+        getAlbum(mbId = "1")
+    )
 
     internal fun getMinimalAlbum(): AlbumJson =
         getAlbum(

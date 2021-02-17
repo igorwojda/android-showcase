@@ -4,6 +4,7 @@ import com.igorwojda.showcase.feature.album.data.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumListJson
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumSearchJson
 import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
+import com.igorwojda.showcase.feature.album.data.network.model.toEntity
 import com.igorwojda.showcase.feature.album.data.network.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.network.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.network.service.AlbumRetrofitService
@@ -14,6 +15,7 @@ import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import java.net.UnknownHostException
 
 class AlbumRepositoryImplTest {
 
@@ -21,7 +23,7 @@ class AlbumRepositoryImplTest {
     internal lateinit var mockService: AlbumRetrofitService
 
     @MockK
-    internal lateinit var albumDao: AlbumDao
+    internal lateinit var mockAlbumDao: AlbumDao
 
     private lateinit var cut: AlbumRepositoryImpl
 
@@ -32,7 +34,7 @@ class AlbumRepositoryImplTest {
     fun setUp() {
         MockKAnnotations.init(this)
 
-        cut = AlbumRepositoryImpl(mockService, albumDao)
+        cut = AlbumRepositoryImpl(mockService, mockAlbumDao)
     }
 
     @Test
@@ -74,7 +76,7 @@ class AlbumRepositoryImplTest {
         )
 
         coEvery {
-            albumDao.insertAlbums(any())
+            mockAlbumDao.insertAlbums(any())
         } returns Unit
 
         // when
@@ -82,5 +84,23 @@ class AlbumRepositoryImplTest {
 
         // then
         result shouldBeEqualTo listOf(DataFixtures.getAlbum().toDomainModel())
+    }
+
+    @Test
+    fun `searchAlbum return data from database if offline`() {
+        // given
+        val phrase = "phrase"
+        val albumsJson = DataFixtures.getAlbums()
+        val albumEntities = albumsJson.map { it.toEntity() }
+        val albums = albumsJson.map { it.copy(wiki = null) }.map { it.toDomainModel() }
+
+        coEvery { mockService.searchAlbumAsync(phrase) } throws UnknownHostException()
+        coEvery { mockAlbumDao.getAll() } returns albumEntities
+
+        // when
+        val result = runBlocking { cut.searchAlbum(phrase) }
+
+        // then
+        result shouldBeEqualTo albums
     }
 }
