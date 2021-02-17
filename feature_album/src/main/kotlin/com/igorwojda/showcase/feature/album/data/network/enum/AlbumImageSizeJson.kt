@@ -4,7 +4,7 @@ import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageSizeEn
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.squareup.moshi.Json
 
-internal enum class AlbumDataImageSize {
+internal enum class AlbumImageSizeJson {
 
     @field:Json(name = "medium")
     MEDIUM,
@@ -20,7 +20,7 @@ internal enum class AlbumDataImageSize {
     UNKNOWN
 }
 
-internal fun AlbumDataImageSize.toDomainEnum() = AlbumDomainImageSize.valueOf(this.name)
+internal fun AlbumImageSizeJson.toDomainEnum() = AlbumDomainImageSize.valueOf(this.name)
 
-internal fun AlbumDataImageSize.toEntityEnum() =
+internal fun AlbumImageSizeJson.toEntityEnum() =
     AlbumImageSizeEntity.values().firstOrNull { it.ordinal == this.ordinal }

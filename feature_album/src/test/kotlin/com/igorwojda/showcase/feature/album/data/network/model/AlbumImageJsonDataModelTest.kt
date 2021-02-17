@@ -1,20 +1,20 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
+import com.igorwojda.showcase.feature.album.data.network.enum.AlbumImageSizeJson
 import com.igorwojda.showcase.feature.album.data.network.enum.toDomainEnum
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow
 import org.junit.jupiter.api.Test
 
-class AlbumImageNetworkDataModelTest {
+class AlbumImageJsonDataModelTest {
 
     @Test
     fun `maps to AlbumWikiDomainModel`() {
         // given
         val url = "url"
-        val size = AlbumDataImageSize.EXTRA_LARGE
+        val size = AlbumImageSizeJson.EXTRA_LARGE
         val cut = DataFixtures.getAlbumImage(url, size)
 
         // when
@@ -28,7 +28,7 @@ class AlbumImageNetworkDataModelTest {
     fun `crash when mapping unknown AlbumWikiDomainModel`() {
         // given
         val url = "url"
-        val size = AlbumDataImageSize.UNKNOWN
+        val size = AlbumImageSizeJson.UNKNOWN
         val cut = DataFixtures.getAlbumImage(url, size)
 
         // when

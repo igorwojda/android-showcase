@@ -1,19 +1,19 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
-import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
+import com.igorwojda.showcase.feature.album.data.network.enum.AlbumImageSizeJson
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.squareup.moshi.Json
 
-internal data class AlbumNetwork(
+internal data class AlbumJson(
     @field:Json(name = "mbid") val mbId: String,
     val name: String,
     val artist: String,
-    val wiki: AlbumWikiDataModel?,
-    @field:Json(name = "image") val images: List<AlbumImageNetwork>?
+    val wiki: AlbumWikiJson?,
+    @field:Json(name = "image") val images: List<AlbumImageJson>?
 )
 
-internal fun AlbumNetwork.toEntity() =
+internal fun AlbumJson.toEntity() =
     AlbumEntity(
         mbId = this.mbId,
         name = this.name,
@@ -21,9 +21,9 @@ internal fun AlbumNetwork.toEntity() =
         images = this.images?.mapNotNull { it.toEntity() } ?: listOf()
     )
 
-internal fun AlbumNetwork.toDomainModel(): Album {
+internal fun AlbumJson.toDomainModel(): Album {
     val images = this.images
-        ?.filterNot { it.size == AlbumDataImageSize.UNKNOWN || it.url.isBlank() }
+        ?.filterNot { it.size == AlbumImageSizeJson.UNKNOWN || it.url.isBlank() }
         ?.map { it.toDomainModel() }
 
     return Album(

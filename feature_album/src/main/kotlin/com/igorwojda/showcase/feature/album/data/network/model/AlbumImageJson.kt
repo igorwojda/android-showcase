@@ -1,21 +1,21 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageEntity
-import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
+import com.igorwojda.showcase.feature.album.data.network.enum.AlbumImageSizeJson
 import com.igorwojda.showcase.feature.album.data.network.enum.toDomainEnum
 import com.igorwojda.showcase.feature.album.data.network.enum.toEntityEnum
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
 import com.squareup.moshi.Json
 
-internal data class AlbumImageNetwork(
+internal data class AlbumImageJson(
     @field:Json(name = "#text") val url: String,
-    val size: AlbumDataImageSize
+    val size: AlbumImageSizeJson
 )
 
-internal fun AlbumImageNetwork.toDomainModel() = AlbumImage(
+internal fun AlbumImageJson.toDomainModel() = AlbumImage(
     url = this.url,
     size = this.size.toDomainEnum()
 )
 
-internal fun AlbumImageNetwork.toEntity() =
+internal fun AlbumImageJson.toEntity() =
     this.size.toEntityEnum()?.let { AlbumImageEntity(this.url, it) }

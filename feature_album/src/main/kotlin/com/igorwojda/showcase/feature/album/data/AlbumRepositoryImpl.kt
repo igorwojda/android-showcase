@@ -27,7 +27,7 @@ internal class AlbumRepositoryImpl(
     override suspend fun searchAlbum(phrase: String): List<Album> {
         return try {
             val searchAlbumResponse = albumRetrofitService.searchAlbumAsync(phrase)
-            val albumList = searchAlbumResponse.results.albumMatchesNetwork.album
+            val albumList = searchAlbumResponse.results.albumMatchesJson.album
 
             albumList
                 .map { it.toEntity() }

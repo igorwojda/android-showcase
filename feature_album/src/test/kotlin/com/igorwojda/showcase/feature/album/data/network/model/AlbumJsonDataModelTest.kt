@@ -1,13 +1,13 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
+import com.igorwojda.showcase.feature.album.data.network.enum.AlbumImageSizeJson
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-class AlbumNetworkDataModelTest {
+class AlbumJsonDataModelTest {
 
     @Test
     fun `data model with full data maps to AlbumDomainModel`() {
@@ -44,7 +44,7 @@ class AlbumNetworkDataModelTest {
     @Test
     fun `mapping filters out unknown size`() {
         // given
-        val albumDataImages = listOf(AlbumDataImageSize.EXTRA_LARGE, AlbumDataImageSize.UNKNOWN)
+        val albumDataImages = listOf(AlbumImageSizeJson.EXTRA_LARGE, AlbumImageSizeJson.UNKNOWN)
             .map { DataFixtures.getAlbumImage(size = it) }
         val cut = DataFixtures.getAlbum(images = albumDataImages)
 

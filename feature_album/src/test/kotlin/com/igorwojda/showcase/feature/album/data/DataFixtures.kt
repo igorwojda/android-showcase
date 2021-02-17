@@ -3,10 +3,9 @@ package com.igorwojda.showcase.feature.album.data
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageEntity
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageSizeEntity
-import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumNetwork
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageNetwork
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumWikiDataModel
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageJson
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumJson
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumWikiJson
 
 object DataFixtures {
 
@@ -14,11 +13,11 @@ object DataFixtures {
         mbId: String = "mbId",
         name: String = "albumName",
         artist: String = "artistName",
-        wiki: AlbumWikiDataModel? = getAlbumWikiDataModel(),
-        images: List<AlbumImageNetwork>? = listOf(getAlbumImage())
-    ): AlbumNetwork = AlbumNetwork(mbId, name, artist, wiki, images)
+        wiki: AlbumWikiJson? = getAlbumWikiDataModel(),
+        images: List<AlbumImageJson>? = listOf(getAlbumImage())
+    ): AlbumJson = AlbumJson(mbId, name, artist, wiki, images)
 
-    internal fun getMinimalAlbum(): AlbumNetwork =
+    internal fun getMinimalAlbum(): AlbumJson =
         getAlbum(
             name = "name",
             artist = "artist",
@@ -28,14 +27,14 @@ object DataFixtures {
         )
 
     internal fun getAlbumImage(
-        url: String = "url_${AlbumDataImageSize.EXTRA_LARGE}",
-        size: AlbumDataImageSize = AlbumDataImageSize.EXTRA_LARGE
-    ) = AlbumImageNetwork(url, size)
+        url: String = "url_${AlbumImageSizeJson.EXTRA_LARGE}",
+        size: AlbumImageSizeJson = AlbumImageSizeJson.EXTRA_LARGE
+    ) = AlbumImageJson(url, size)
 
     internal fun getAlbumWikiDataModel(
         published: String = "published",
         summary: String = "summary"
-    ) = AlbumWikiDataModel(published, summary)
+    ) = AlbumWikiJson(published, summary)
 
     internal fun getAlbumEntity(
         id: Int = 0,
@@ -46,7 +45,7 @@ object DataFixtures {
     ): AlbumEntity = AlbumEntity(id, mbId, name, artist, images)
 
     internal fun getAlbumImageEntity(
-        url: String = "url_${AlbumDataImageSize.EXTRA_LARGE}",
+        url: String = "url_${AlbumImageSizeJson.EXTRA_LARGE}",
         size: AlbumImageSizeEntity = AlbumImageSizeEntity.EXTRA_LARGE
     ) = AlbumImageEntity(url, size)
 }

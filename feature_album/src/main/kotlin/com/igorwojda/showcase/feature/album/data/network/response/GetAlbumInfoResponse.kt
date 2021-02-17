@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.network.response
 
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumNetwork
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumJson
 
 internal data class GetAlbumInfoResponse(
-    val album: AlbumNetwork
+    val album: AlbumJson
 )

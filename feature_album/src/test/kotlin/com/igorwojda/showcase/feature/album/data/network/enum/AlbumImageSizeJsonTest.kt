@@ -2,12 +2,12 @@ package com.igorwojda.showcase.feature.album.data.network.enum
 
 import org.junit.jupiter.api.Test
 
-class AlbumDataImageSizeTest {
+class AlbumImageSizeJsonTest {
 
     @Test
     fun `maps to AlbumDomainImageSize`() {
         // given
-        val dataEnums = AlbumDataImageSize.values().filterNot { it == AlbumDataImageSize.UNKNOWN }
+        val dataEnums = AlbumImageSizeJson.values().filterNot { it == AlbumImageSizeJson.UNKNOWN }
 
         // when
         dataEnums.forEach { it.toDomainEnum() }
