@@ -21,6 +21,13 @@ jobs:
         with:
           java-version: 1.8
 
+      - uses: actions/cache@v2
+        with:
+          path: ~/.gradle
+          key: gradle-${{ hashFiles('gradle-checksums.txt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ hashFiles('gradle-checksums.txt') }}-
+
       - name: unitTest
         run: ./gradlew test
 
