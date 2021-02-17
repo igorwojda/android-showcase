@@ -4,9 +4,9 @@ import com.igorwojda.showcase.feature.album.domain.DomainFixtures
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-class AlbumDomainModelTest {
+class AlbumTest {
 
-    private lateinit var cut: AlbumDomainModel
+    private lateinit var cut: Album
 
     @Test
     fun `model has default image url`() {

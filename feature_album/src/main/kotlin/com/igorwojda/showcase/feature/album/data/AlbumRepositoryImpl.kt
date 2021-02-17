@@ -4,7 +4,7 @@ import com.igorwojda.showcase.feature.album.data.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.network.model.toEntity
 import com.igorwojda.showcase.feature.album.data.network.retrofit.service.AlbumRetrofitService
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 import java.net.UnknownHostException
 
@@ -13,7 +13,7 @@ internal class AlbumRepositoryImpl(
     private val albumDao: AlbumDao
 ) : AlbumRepository {
 
-    override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): AlbumDomainModel? {
+    override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): Album? {
         return try {
             albumRetrofitService.getAlbumInfoAsync(artistName, albumName, mbId)
                 ?.album
@@ -23,7 +23,7 @@ internal class AlbumRepositoryImpl(
         }
     }
 
-    override suspend fun searchAlbum(phrase: String): List<AlbumDomainModel> {
+    override suspend fun searchAlbum(phrase: String): List<Album> {
         return try {
             val searchAlbumResponse = albumRetrofitService.searchAlbumAsync(phrase)
             val albumList = searchAlbumResponse.results.albumMatchesNetwork.album

@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.squareup.moshi.Json
 
 internal data class AlbumDataModel(
@@ -20,12 +20,12 @@ internal fun AlbumDataModel.toEntity() =
         images = this.images?.mapNotNull { it.toEntity() } ?: listOf()
     )
 
-internal fun AlbumDataModel.toDomainModel(): AlbumDomainModel {
+internal fun AlbumDataModel.toDomainModel(): Album {
     val images = this.images
         ?.filterNot { it.size == AlbumDataImageSize.UNKNOWN || it.url.isBlank() }
         ?.map { it.toDomainModel() }
 
-    return AlbumDomainModel(
+    return Album(
         mbId = this.mbId,
         name = this.name,
         artist = this.artist,

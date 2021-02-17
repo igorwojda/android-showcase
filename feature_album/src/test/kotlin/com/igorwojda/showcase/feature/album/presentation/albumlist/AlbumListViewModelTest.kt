@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist
 
 import com.igorwojda.showcase.base.presentation.navigation.NavManager
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.ViewState
 import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
@@ -93,7 +93,7 @@ class AlbumListViewModelTest {
     @Test
     fun `verify state when GetAlbumListUseCase returns non-empty list`() {
         // given
-        val album = AlbumDomainModel("albumName", "artistName", listOf())
+        val album = Album("albumName", "artistName", listOf())
         val albums = listOf(album)
         coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(albums)
 

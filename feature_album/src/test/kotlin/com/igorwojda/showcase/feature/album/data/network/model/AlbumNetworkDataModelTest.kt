@@ -3,7 +3,7 @@ package com.igorwojda.showcase.feature.album.data.network.model
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.showcase.feature.album.domain.model.Album
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
@@ -18,7 +18,7 @@ class AlbumNetworkDataModelTest {
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel shouldBeEqualTo AlbumDomainModel(
+        domainModel shouldBeEqualTo Album(
             cut.name,
             cut.artist,
             cut.images?.map { it.toDomainModel() } ?: listOf(),
@@ -36,7 +36,7 @@ class AlbumNetworkDataModelTest {
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel shouldBeEqualTo AlbumDomainModel(
+        domainModel shouldBeEqualTo Album(
             name = "name", artist = "artist", images = emptyList(), wiki = null, mbId = "mbId"
         )
     }

@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.domain.model.AlbumWikiDomainModel
+import com.igorwojda.showcase.feature.album.domain.model.AlbumWiki
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
@@ -18,6 +18,6 @@ class AlbumWikiNetworkDataModelTest {
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel shouldBeEqualTo AlbumWikiDomainModel(published, summary)
+        domainModel shouldBeEqualTo AlbumWiki(published, summary)
     }
 }
