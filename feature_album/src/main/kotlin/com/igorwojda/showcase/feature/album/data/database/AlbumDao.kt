@@ -7,7 +7,7 @@ import androidx.room.Query
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
 
 @Dao
-interface AlbumDao {
+internal interface AlbumDao {
 
     @Query("SELECT * FROM albums")
     suspend fun getAll(): List<AlbumEntity>

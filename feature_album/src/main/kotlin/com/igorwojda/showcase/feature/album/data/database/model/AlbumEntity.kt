@@ -11,7 +11,7 @@ import com.squareup.moshi.Types
 
 @Entity(tableName = "albums")
 @TypeConverters(AlbumImageEntityTypeConverter::class)
-data class AlbumEntity(
+internal data class AlbumEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val mbId: String,
     val name: String,
@@ -26,7 +26,7 @@ internal fun AlbumEntity.toDomainModel() =
         null, this.mbId
     )
 
-class AlbumImageEntityTypeConverter {
+internal class AlbumImageEntityTypeConverter {
     private val type = Types.newParameterizedType(List::class.java, AlbumImageEntity::class.java)
     private val adapter: JsonAdapter<List<AlbumImageEntity>> = Moshi.Builder().build().adapter(type)
 

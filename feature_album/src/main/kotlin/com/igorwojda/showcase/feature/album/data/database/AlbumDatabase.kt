@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
 
 @Database(entities = [AlbumEntity::class], version = 1, exportSchema = false)
-abstract class AlbumDatabase : RoomDatabase() {
+internal abstract class AlbumDatabase : RoomDatabase() {
 
     abstract fun albums(): AlbumDao
 }
