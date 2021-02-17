@@ -11,15 +11,15 @@ import com.igorwojda.showcase.base.presentation.extension.setOnDebouncedClickLis
 import com.igorwojda.showcase.base.presentation.extension.show
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumListItemBinding
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.showcase.feature.album.domain.model.Album
 
 internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
-    var albums: List<AlbumDomainModel> by observer(listOf()) {
+    var albums: List<Album> by observer(listOf()) {
         notifyDataSetChanged()
     }
 
-    private var onDebouncedClickListener: ((album: AlbumDomainModel) -> Unit)? = null
+    private var onDebouncedClickListener: ((album: Album) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -34,7 +34,7 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = albums.size
 
-    fun setOnDebouncedClickListener(listener: (album: AlbumDomainModel) -> Unit) {
+    fun setOnDebouncedClickListener(listener: (album: Album) -> Unit) {
         this.onDebouncedClickListener = listener
     }
 
@@ -55,9 +55,9 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
             }
         }
 
-        fun bind(albumDomainModel: AlbumDomainModel) {
-            itemView.setOnDebouncedClickListener { onDebouncedClickListener?.invoke(albumDomainModel) }
-            url = albumDomainModel.getDefaultImageUrl()
+        fun bind(album: Album) {
+            itemView.setOnDebouncedClickListener { onDebouncedClickListener?.invoke(album) }
+            url = album.getDefaultImageUrl()
         }
 
         private fun setDefaultImage() {

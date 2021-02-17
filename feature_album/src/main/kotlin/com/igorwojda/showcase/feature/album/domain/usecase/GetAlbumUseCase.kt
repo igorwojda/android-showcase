@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 import java.io.IOException
 
@@ -9,7 +9,7 @@ internal class GetAlbumUseCase(
 ) {
 
     sealed class Result {
-        data class Success(val data: AlbumDomainModel) : Result()
+        data class Success(val data: Album) : Result()
         data class Error(val e: Throwable) : Result()
     }
 

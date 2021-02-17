@@ -137,6 +137,13 @@ dependencyResolutionManagement {
             alias("navigation-ui-ktx").to("androidx.navigation", "navigation-ui-ktx").versionRef("navigation")
             bundle("navigation", listOf("navigation-fragment", "navigation-dynamic", "navigation-ui-ktx"))
 
+            version("room", "2.+")
+            alias("room-ktx").to("androidx.room", "room-ktx").versionRef("room")
+            alias("room-runtime").to("androidx.room", "room-runtime").versionRef("room")
+            bundle("room", listOf("room-ktx", "room-runtime"))
+
+            alias("room.compiler").to("androidx.room", "room-compiler").versionRef("room")
+
             // Test dependencies
             alias("test-coroutines").to("org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("coroutines")
 

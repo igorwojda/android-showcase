@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewState
-import com.igorwojda.showcase.feature.album.domain.model.AlbumDomainModel
+import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadFailure
@@ -38,9 +38,9 @@ internal class AlbumDetailViewModel(
         is AlbumLoadSuccess -> state.copy(
             isLoading = false,
             isError = false,
-            artistName = viewAction.albumDomainModel.artist,
-            albumName = viewAction.albumDomainModel.name,
-            coverImageUrl = viewAction.albumDomainModel.getDefaultImageUrl() ?: ""
+            artistName = viewAction.album.artist,
+            albumName = viewAction.album.name,
+            coverImageUrl = viewAction.album.getDefaultImageUrl() ?: ""
         )
         is AlbumLoadFailure -> state.copy(
             isLoading = false,
@@ -61,7 +61,7 @@ internal class AlbumDetailViewModel(
     ) : BaseViewState
 
     internal sealed class Action : BaseAction {
-        class AlbumLoadSuccess(val albumDomainModel: AlbumDomainModel) : Action()
+        class AlbumLoadSuccess(val album: Album) : Action()
         object AlbumLoadFailure : Action()
     }
 }

@@ -79,6 +79,10 @@ dependencies {
     api(libs.bundles.okhttp)
     api(libs.bundles.kodein)
     api(libs.play.core)
+    api(libs.bundles.ktx)
+    api(libs.bundles.navigation)
+    api(libs.bundles.lifecycle)
+    api(libs.bundles.room)
     api(libs.timber)
     api(libs.coil)
     api(libs.constraintlayout)
@@ -88,9 +92,8 @@ dependencies {
     api(libs.material)
     api(libs.coroutines)
     api(libs.lottie)
-    api(libs.bundles.ktx)
-    api(libs.bundles.navigation)
-    api(libs.bundles.lifecycle)
+
+    kapt(libs.room.compiler)
 
     testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
     testImplementation(libs.bundles.test)

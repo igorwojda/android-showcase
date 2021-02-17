@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
-import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
+import com.igorwojda.showcase.feature.album.data.AlbumRepositoryImpl
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
