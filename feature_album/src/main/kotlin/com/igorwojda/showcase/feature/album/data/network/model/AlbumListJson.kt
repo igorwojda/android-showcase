@@ -1,5 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
+import com.squareup.moshi.Json
+
 internal data class AlbumListJson(
-    val album: List<AlbumJson>
+    @field:Json(name = "album") val album: List<AlbumJson>
 )

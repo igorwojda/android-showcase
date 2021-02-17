@@ -7,9 +7,9 @@ import com.squareup.moshi.Json
 
 internal data class AlbumJson(
     @field:Json(name = "mbid") val mbId: String,
-    val name: String,
-    val artist: String,
-    val wiki: AlbumWikiJson?,
+    @field:Json(name = "name") val name: String,
+    @field:Json(name = "artist") val artist: String,
+    @field:Json(name = "wiki") val wiki: AlbumWikiJson?,
     @field:Json(name = "image") val images: List<AlbumImageJson>?
 )
 

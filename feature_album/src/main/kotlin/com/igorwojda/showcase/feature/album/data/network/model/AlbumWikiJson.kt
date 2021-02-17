@@ -1,10 +1,11 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.domain.model.AlbumWiki
+import com.squareup.moshi.Json
 
 internal data class AlbumWikiJson(
-    val published: String,
-    val summary: String
+    @field:Json(name = "published") val published: String,
+    @field:Json(name = "summary") val summary: String
 )
 
 internal fun AlbumWikiJson.toDomainModel() = AlbumWiki(

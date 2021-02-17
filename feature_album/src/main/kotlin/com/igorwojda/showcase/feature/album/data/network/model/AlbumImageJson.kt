@@ -9,7 +9,7 @@ import com.squareup.moshi.Json
 
 internal data class AlbumImageJson(
     @field:Json(name = "#text") val url: String,
-    val size: AlbumImageSizeJson
+    @field:Json(name = "size") val size: AlbumImageSizeJson
 )
 
 internal fun AlbumImageJson.toDomainModel() = AlbumImage(
