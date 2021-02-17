@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.network.enum
 
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumDataImageSizeEntity
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageSizeEntity
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.squareup.moshi.Json
 
@@ -23,4 +23,4 @@ internal enum class AlbumDataImageSize {
 internal fun AlbumDataImageSize.toDomainEnum() = AlbumDomainImageSize.valueOf(this.name)
 
 internal fun AlbumDataImageSize.toEntityEnum() =
-    AlbumDataImageSizeEntity.values().firstOrNull { it.ordinal == this.ordinal }
+    AlbumImageSizeEntity.values().firstOrNull { it.ordinal == this.ordinal }

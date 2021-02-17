@@ -2,7 +2,9 @@ package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 
-data class AlbumImageDataEntity(val url: String, val size: AlbumDataImageSizeEntity)
+enum class AlbumImageSizeEntity {
+    MEDIUM, SMALL, LARGE, EXTRA_LARGE, MEGA;
+}
 
-internal fun AlbumDataImageSizeEntity.toDomainEnum() =
+internal fun AlbumImageSizeEntity.toDomainEnum() =
     AlbumDomainImageSize.values().firstOrNull { it.ordinal == this.ordinal }

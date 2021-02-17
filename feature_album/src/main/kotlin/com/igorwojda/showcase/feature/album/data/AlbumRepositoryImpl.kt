@@ -3,7 +3,7 @@ package com.igorwojda.showcase.feature.album.data
 import com.igorwojda.showcase.feature.album.data.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.network.model.toEntity
-import com.igorwojda.showcase.feature.album.data.network.retrofit.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.network.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 import java.net.UnknownHostException

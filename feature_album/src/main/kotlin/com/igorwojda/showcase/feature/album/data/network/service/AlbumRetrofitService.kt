@@ -1,7 +1,7 @@
-package com.igorwojda.showcase.feature.album.data.network.retrofit.service
+package com.igorwojda.showcase.feature.album.data.network.service
 
-import com.igorwojda.showcase.feature.album.data.network.retrofit.response.GetAlbumInfoResponse
-import com.igorwojda.showcase.feature.album.data.network.retrofit.response.SearchAlbumResponse
+import com.igorwojda.showcase.feature.album.data.network.response.GetAlbumInfoResponse
+import com.igorwojda.showcase.feature.album.data.network.response.SearchAlbumResponse
 import retrofit2.http.POST
 import retrofit2.http.Query
 

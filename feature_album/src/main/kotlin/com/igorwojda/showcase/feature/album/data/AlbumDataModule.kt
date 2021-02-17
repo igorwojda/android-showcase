@@ -3,7 +3,7 @@ package com.igorwojda.showcase.feature.album.data
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.igorwojda.showcase.feature.album.MODULE_NAME
-import com.igorwojda.showcase.feature.album.data.network.retrofit.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.network.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.data.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.database.AlbumDatabase
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository

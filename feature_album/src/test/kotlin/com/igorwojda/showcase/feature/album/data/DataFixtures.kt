@@ -1,11 +1,11 @@
 package com.igorwojda.showcase.feature.album.data
 
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumDataEntity
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumDataImageSizeEntity
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumDataModel
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageDataEntity
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageDataModel
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumEntity
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageSizeEntity
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumNetwork
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageEntity
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageNetwork
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumWikiDataModel
 
 object DataFixtures {
@@ -15,10 +15,10 @@ object DataFixtures {
         name: String = "albumName",
         artist: String = "artistName",
         wiki: AlbumWikiDataModel? = getAlbumWikiDataModel(),
-        images: List<AlbumImageDataModel>? = listOf(getAlbumImage())
-    ): AlbumDataModel = AlbumDataModel(mbId, name, artist, wiki, images)
+        images: List<AlbumImageNetwork>? = listOf(getAlbumImage())
+    ): AlbumNetwork = AlbumNetwork(mbId, name, artist, wiki, images)
 
-    internal fun getMinimalAlbum(): AlbumDataModel =
+    internal fun getMinimalAlbum(): AlbumNetwork =
         getAlbum(
             name = "name",
             artist = "artist",
@@ -30,7 +30,7 @@ object DataFixtures {
     internal fun getAlbumImage(
         url: String = "url_${AlbumDataImageSize.EXTRA_LARGE}",
         size: AlbumDataImageSize = AlbumDataImageSize.EXTRA_LARGE
-    ) = AlbumImageDataModel(url, size)
+    ) = AlbumImageNetwork(url, size)
 
     internal fun getAlbumWikiDataModel(
         published: String = "published",
@@ -42,11 +42,11 @@ object DataFixtures {
         mbId: String = "mbId",
         name: String = "albumName",
         artist: String = "artistName",
-        images: List<AlbumImageDataEntity> = listOf(getAlbumImageEntity())
-    ): AlbumDataEntity = AlbumDataEntity(id, mbId, name, artist, images)
+        images: List<AlbumImageEntity> = listOf(getAlbumImageEntity())
+    ): AlbumEntity = AlbumEntity(id, mbId, name, artist, images)
 
     internal fun getAlbumImageEntity(
         url: String = "url_${AlbumDataImageSize.EXTRA_LARGE}",
-        size: AlbumDataImageSizeEntity = AlbumDataImageSizeEntity.EXTRA_LARGE
-    ) = AlbumImageDataEntity(url, size)
+        size: AlbumImageSizeEntity = AlbumImageSizeEntity.EXTRA_LARGE
+    ) = AlbumImageEntity(url, size)
 }

@@ -1,12 +1,12 @@
 package com.igorwojda.showcase.feature.album.data
 
 import com.igorwojda.showcase.feature.album.data.database.AlbumDao
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumListNetworkDataModel
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumSearchResultNetworkDataModel
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumListNetwork
+import com.igorwojda.showcase.feature.album.data.network.model.AlbumSearchNetwork
 import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
-import com.igorwojda.showcase.feature.album.data.network.retrofit.response.GetAlbumInfoResponse
-import com.igorwojda.showcase.feature.album.data.network.retrofit.response.SearchAlbumResponse
-import com.igorwojda.showcase.feature.album.data.network.retrofit.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.network.response.GetAlbumInfoResponse
+import com.igorwojda.showcase.feature.album.data.network.response.SearchAlbumResponse
+import com.igorwojda.showcase.feature.album.data.network.service.AlbumRetrofitService
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -68,8 +68,8 @@ class AlbumRepositoryImplTest {
         // given
         val phrase = "phrase"
         coEvery { mockService.searchAlbumAsync(phrase) } returns SearchAlbumResponse(
-            AlbumSearchResultNetworkDataModel(
-                AlbumListNetworkDataModel(listOf(DataFixtures.getAlbum()))
+            AlbumSearchNetwork(
+                AlbumListNetwork(listOf(DataFixtures.getAlbum()))
             )
         )
 

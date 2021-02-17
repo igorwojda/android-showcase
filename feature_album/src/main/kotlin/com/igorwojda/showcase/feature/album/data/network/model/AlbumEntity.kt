@@ -8,15 +8,15 @@ import com.igorwojda.showcase.feature.album.domain.model.Album
 
 @Entity(tableName = "albums")
 @TypeConverters(AlbumImageDataEntityTypeConverter::class)
-data class AlbumDataEntity(
+data class AlbumEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val mbId: String,
     val name: String,
     val artist: String,
-    val images: List<AlbumImageDataEntity> = listOf()
+    val images: List<AlbumImageEntity> = listOf()
 )
 
-internal fun AlbumDataEntity.toDomainModel() =
+internal fun AlbumEntity.toDomainModel() =
     Album(
         this.name, this.artist,
         this.images.mapNotNull { it.toDomainModel() },
