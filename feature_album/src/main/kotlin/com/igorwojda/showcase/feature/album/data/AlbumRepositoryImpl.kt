@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.data
 
 import com.igorwojda.showcase.feature.album.data.database.AlbumDao
+import com.igorwojda.showcase.feature.album.data.database.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.network.model.toEntity
 import com.igorwojda.showcase.feature.album.data.network.service.AlbumRetrofitService

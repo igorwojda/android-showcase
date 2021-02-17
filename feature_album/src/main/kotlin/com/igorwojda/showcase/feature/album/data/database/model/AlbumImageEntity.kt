@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.data.network.model
+package com.igorwojda.showcase.feature.album.data.database.model
 
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
 

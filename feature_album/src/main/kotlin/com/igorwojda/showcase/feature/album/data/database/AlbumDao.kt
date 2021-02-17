@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumEntity
+import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
 
 @Dao
 interface AlbumDao {

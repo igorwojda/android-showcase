@@ -1,10 +1,10 @@
 package com.igorwojda.showcase.feature.album.data
 
+import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
+import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageEntity
+import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageSizeEntity
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumDataImageSize
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumEntity
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageSizeEntity
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumNetwork
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageEntity
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageNetwork
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumWikiDataModel
 
