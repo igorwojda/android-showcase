@@ -136,6 +136,7 @@ and separate reports for each of the checks (multiple statuses eg. on github PR 
  */
 task("staticCheck") {
     group = "verification"
+
     afterEvaluate {
         // Filter modules with "lintDebug" task (non-Android modules do not have lintDebug task)
         val lintTasks = subprojects.mapNotNull { "${it.name}:lintDebug" }
