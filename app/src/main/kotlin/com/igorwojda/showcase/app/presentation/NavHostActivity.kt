@@ -29,8 +29,6 @@ class NavHostActivity : BaseActivity() {
     private fun initBottomNavigation() {
         binding.bottomNav.setupWithNavController(navController)
 
-        val aa = 2
-
         // Disables reselection of bottom menu item, so fragments are not recreated when clicking on the same menu item
         binding.bottomNav.setOnNavigationItemReselectedListener { }
     }
