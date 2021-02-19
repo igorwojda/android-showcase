@@ -229,6 +229,7 @@ additional resources.
 
 ### Cheat sheet
 
+* [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
 * [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+ most important tools
 * [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) - most popular coroutine usages
 
