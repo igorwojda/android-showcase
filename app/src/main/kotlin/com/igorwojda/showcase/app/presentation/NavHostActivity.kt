@@ -1,12 +1,7 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavDirections
-import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.base.extension.navigateSafe
@@ -15,8 +10,6 @@ import com.igorwojda.showcase.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.base.presentation.navigation.NavManager
 import com.igorwojda.showcase.databinding.ActivityNavHostBinding
 import org.kodein.di.generic.instance
-import timber.log.Timber
-import java.sql.Time
 
 class NavHostActivity : BaseActivity() {
 

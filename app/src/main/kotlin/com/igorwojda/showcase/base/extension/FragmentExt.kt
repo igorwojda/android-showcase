@@ -1,6 +1,5 @@
 package com.igorwojda.showcase.base.extension
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
