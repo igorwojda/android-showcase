@@ -32,7 +32,8 @@ fun Fragment.navigateSafe(directions: NavDirections, navOptions: NavOptions? = n
 }
 
 /**
- * Returns true if the navigation controller is still pointing at 'this' fragment, or false if it already navigated away.
+ * Returns true if the navigation controller is still pointing at 'this' fragment, or false
+ * if it already navigated away.
  */
 fun Fragment.canNavigate(): Boolean {
     val navController = findNavController()
