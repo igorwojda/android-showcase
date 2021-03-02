@@ -7,7 +7,7 @@ import com.igorwojda.showcase.feature.profile.databinding.FragmentProfileBinding
 
 class ProfileFragment : InjectionFragment(R.layout.fragment_profile) {
 
-    private val binding by viewBinding(FragmentProfileBinding::bind)
+    private val binding: FragmentProfileBinding by viewBinding()
 
     override fun onResume() {
         super.onResume()
