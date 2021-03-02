@@ -7,7 +7,7 @@ import com.igorwojda.showcase.feature.favourite.databinding.FragmentFavouritesBi
 
 class FavouriteFragment : InjectionFragment(R.layout.fragment_favourites) {
 
-    private val binding by viewBinding(FragmentFavouritesBinding::bind)
+    private val binding: FragmentFavouritesBinding by viewBinding()
 
     override fun onResume() {
         super.onResume()

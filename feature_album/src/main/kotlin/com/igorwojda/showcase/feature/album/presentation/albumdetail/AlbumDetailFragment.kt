@@ -14,7 +14,7 @@ import org.kodein.di.generic.instance
 
 internal class AlbumDetailFragment : InjectionFragment(R.layout.fragment_album_detail) {
 
-    private val binding by viewBinding(FragmentAlbumDetailBinding::bind)
+    private val binding: FragmentAlbumDetailBinding by viewBinding()
 
     private val viewModel: AlbumDetailViewModel by instance()
 
