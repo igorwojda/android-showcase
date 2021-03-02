@@ -38,16 +38,16 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
         this.onDebouncedClickListener = listener
     }
 
-    internal inner class ViewHolder(private val itemBinding: FragmentAlbumListItemBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
+    internal inner class ViewHolder(private val binding: FragmentAlbumListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         private var url by observer<String?>(null) {
-            itemBinding.coverErrorImageView.hide()
+            binding.coverErrorImageView.hide()
 
             if (it == null) {
                 setDefaultImage()
             } else {
-                itemBinding.coverImageView.load(it) {
+                binding.coverImageView.load(it) {
                     crossfade(true)
                     error(R.drawable.ic_image)
                     transformations(RoundedCornersTransformation(10F))
@@ -61,7 +61,7 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
         }
 
         private fun setDefaultImage() {
-            itemBinding.coverErrorImageView.show()
+            binding.coverErrorImageView.show()
         }
     }
 }
