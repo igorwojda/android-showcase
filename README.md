@@ -146,7 +146,7 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ## Dependency management
 
-This project utilizes multiple mechanics to eaisly share the same versions of dependencies. 
+This project utilizes multiple mechanics to easily share the same versions of dependencies. 
 ### App library dependencies
 
 External dependencies (libraries) are defined using [versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html) feature in the [settings.gradle](./settings.gradle) file. These dynamic library versions are locked using Gradle [docking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
@@ -251,7 +251,7 @@ Other high-quality projects will help you to find solutions that work for your p
 * [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
 * [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
-* Gradle dependencies can't be eaisly shared between app librares and Gradle plugins https://github.com/gradle/gradle/issues/16077
+* Gradle dependencies can't be easily shared between app librares and Gradle plugins https://github.com/gradle/gradle/issues/16077
 
 ## Known issues
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527) and [Issue KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
