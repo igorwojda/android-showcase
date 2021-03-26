@@ -229,29 +229,28 @@ additional resources.
 
 ### Cheat sheet
 
-* [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
-* [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+ most important tools
-* [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) - most popular coroutine usages
+- [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
+- [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+ most important tools
+- [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) - most popular coroutine usages
 
 ### Android projects
 
 Other high-quality projects will help you to find solutions that work for your project:
 
-* [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
-* [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various
+- [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
+- [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various
   Android architecture approaches
-* [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
+- [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
   libraries
-* [GithubBrowserSample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
+- [GithubBrowserSample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
   demonstrating usage of Android Architecture Components
-* [Plaid](https://github.com/android/plaid) - a showcase of Android material design
-* [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
+- [Plaid](https://github.com/android/plaid) - a showcase of Android material design
+- [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
   diagrams of Clean Architecture layers
-* [Android samples](https://github.com/android) - official Android samples repository
-* [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
+- [Android samples](https://github.com/android) - official Android samples repository
+- [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
-* [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
-* Gradle dependencies can't be eaisly shared between app libraries and Gradle plugins https://github.com/gradle/gradle/issues/16077
+- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
 
 
 ## Known issues
@@ -263,6 +262,7 @@ Other high-quality projects will help you to find solutions that work for your p
 - Android lint complains about exceeding access rights to ArchTaskExecutor [Issue 79189568]((https://issuetracker
 .google .com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+- Gradle dependencies can't be eaisly shared between app libraries and Gradle plugins https://github.com/gradle/gradle/issues/16077
 
 ## Contribute
 
