@@ -19,7 +19,7 @@ This project is being maintained to match industry standards. Please check [CONT
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
-This project takes advantage of best practices, many popular libraries and tools in the the Android ecosystem. Most of the libraries are in the stable version unless there is a good reason to use non-stable dependency.
+This project takes advantage of best practices, many popular libraries and tools in the Android ecosystem. Most of the libraries are in the stable version unless there is a good reason to use non-stable dependency.
 
 * Tech-stack
     * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
@@ -215,7 +215,7 @@ There are a few ways to open this project.
 ### Android Studio
 
 1. `Android Studio` -> `File` -> `New` -> `From Version control` -> `Git`
-2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field an press `Clone` nutton
+2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field an press `Clone` button
 
 ### Command-line + Android Studio
 
@@ -251,7 +251,8 @@ Other high-quality projects will help you to find solutions that work for your p
 * [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
 * [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds. 
-* Gradle dependencies can't be easily shared between app librares and Gradle plugins https://github.com/gradle/gradle/issues/16077
+* Gradle dependencies can't be eaisly shared between app libraries and Gradle plugins https://github.com/gradle/gradle/issues/16077
+
 
 ## Known issues
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527) and [Issue KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
