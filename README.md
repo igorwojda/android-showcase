@@ -70,7 +70,7 @@ Feature related code is placed inside one of the feature modules.
 We can think about each feature as the equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private library.
 
 The modularized code-base approach provides few benefits:
-- better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API., Feature related classes life in different modules and can't be referenced without explicit module dependency.
+- better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API., Feature related classes live in different modules and can't be referenced without explicit module dependency.
 - features can be developed in parallel eg. by different teams
 - each feature can be developed in isolation, independently from other features
 - faster compile time
