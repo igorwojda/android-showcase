@@ -17,7 +17,7 @@ plugins {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     // We want to apply ktlint at all project level because it also checks Gradle config files (*.kts)
