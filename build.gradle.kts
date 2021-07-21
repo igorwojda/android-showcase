@@ -13,6 +13,12 @@ plugins {
     id(GradlePluginId.SAFE_ARGS) apply false
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 // all projects = root project + sub projects
 allprojects {
     repositories {
