@@ -1,5 +1,7 @@
 rootProject.buildFileName = "build.gradle.kts"
 
+enableFeaturePreview("VERSION_CATALOGS")
+
 // Set single lock file (gradle.lockfile)
 // This preview feature should be enabled by default in Gradle 7
 // More: https://docs.gradle.org/current/userguide/dependency_locking.html#single_lock_file_per_project
