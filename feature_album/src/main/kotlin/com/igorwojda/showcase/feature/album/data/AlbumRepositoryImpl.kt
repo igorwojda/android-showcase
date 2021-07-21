@@ -1,14 +1,17 @@
 package com.igorwojda.showcase.feature.album.data
 
+import com.igorwojda.showcase.feature.album.data.database.AlbumDao
+import com.igorwojda.showcase.feature.album.data.database.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
-//import com.igorwojda.showcase.feature.album.data.network.model.toEntity
+import com.igorwojda.showcase.feature.album.data.network.model.toEntity
 import com.igorwojda.showcase.feature.album.data.network.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 import java.net.UnknownHostException
 
 internal class AlbumRepositoryImpl(
-    private val albumRetrofitService: AlbumRetrofitService
+    private val albumRetrofitService: AlbumRetrofitService,
+    private val albumDao: AlbumDao
 ) : AlbumRepository {
 
     override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): Album? {
@@ -17,10 +20,7 @@ internal class AlbumRepositoryImpl(
                 ?.album
                 ?.toDomainModel()
         } catch (e: UnknownHostException) {
-            null
-//            albumDao
-//                .getAlbum(artistName, albumName, mbId)
-//                .toDomainModel()
+            albumDao.getAlbum(artistName, albumName, mbId).toDomainModel()
         }
     }
 
@@ -29,16 +29,14 @@ internal class AlbumRepositoryImpl(
             val searchAlbumResponse = albumRetrofitService.searchAlbumAsync(phrase)
             val albumList = searchAlbumResponse.results.albumMatches.album
 
-//            albumList
-//                .map { it.toEntity() }
-//                .let { albumDao.insertAlbums(it) }
+            albumList
+                .map { it.toEntity() }
+                .let { albumDao.insertAlbums(it) }
 
             albumList.map { it.toDomainModel() }
         } catch (e: UnknownHostException) {
-            listOf()
-//            albumDao
-//                .getAll()
-//                .map { it.toDomainModel() }
+            albumDao.getAll()
+                .map { it.toDomainModel() }
         }
     }
 }

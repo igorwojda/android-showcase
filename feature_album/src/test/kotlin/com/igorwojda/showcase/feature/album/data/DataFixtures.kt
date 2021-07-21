@@ -1,8 +1,8 @@
 package com.igorwojda.showcase.feature.album.data
 
-//import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
-//import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageEntity
-//import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageSizeEntity
+import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
+import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageEntity
+import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageSizeEntity
 import com.igorwojda.showcase.feature.album.data.network.enum.AlbumImageSizeJson
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageJson
 import com.igorwojda.showcase.feature.album.data.network.model.AlbumJson
@@ -41,16 +41,16 @@ object DataFixtures {
         summary: String = "summary"
     ) = AlbumWikiJson(published, summary)
 
-//    internal fun getAlbumEntity(
-//        id: Int = 0,
-//        mbId: String = "mbId",
-//        name: String = "albumName",
-//        artist: String = "artistName",
-//        images: List<AlbumImageEntity> = listOf(getAlbumImageEntity())
-//    ): AlbumEntity = AlbumEntity(id, mbId, name, artist, images)
-//
-//    internal fun getAlbumImageEntity(
-//        url: String = "url_${AlbumImageSizeJson.EXTRA_LARGE}",
-//        size: AlbumImageSizeEntity = AlbumImageSizeEntity.EXTRA_LARGE
-//    ) = AlbumImageEntity(url, size)
+    internal fun getAlbumEntity(
+        id: Int = 0,
+        mbId: String = "mbId",
+        name: String = "albumName",
+        artist: String = "artistName",
+        images: List<AlbumImageEntity> = listOf(getAlbumImageEntity())
+    ): AlbumEntity = AlbumEntity(id, mbId, name, artist, images)
+
+    internal fun getAlbumImageEntity(
+        url: String = "url_${AlbumImageSizeJson.EXTRA_LARGE}",
+        size: AlbumImageSizeEntity = AlbumImageSizeEntity.EXTRA_LARGE
+    ) = AlbumImageEntity(url, size)
 }
