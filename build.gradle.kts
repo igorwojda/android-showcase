@@ -104,14 +104,6 @@ subprojects {
                 if (androidLintExceptions.any { it == candidate.group }) {
                     return@all
                 }
-
-                // Do reject pre-release version
-                val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview")
-                    .any { Regex("(?i).*[.-]$it[.\\d-]*").matches(candidate.version) }
-
-                if (rejected) {
-                    reject("Release candidate")
-                }
             }
         }
     }
