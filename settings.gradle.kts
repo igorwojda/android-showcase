@@ -41,8 +41,8 @@ pluginManagement {
         val detektVersion: String by settings
         id("io.gitlab.arturbosch.detekt") version detektVersion
 
-        val ktlintVersion: String by settings
-        id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
+        val ktlintGradleVersion: String by settings
+        id("org.jlleitschuh.gradle.ktlint") version ktlintGradleVersion
 
         val androidJUnit5Version: String by settings
         id("de.mannodermaus.android-junit5") version androidJUnit5Version
