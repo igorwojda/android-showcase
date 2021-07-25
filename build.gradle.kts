@@ -42,6 +42,13 @@ allprojects {
         }
     }
 
+    configurations.all {
+        resolutionStrategy {
+            // objenesis: 3.1 used in mockk 1.12.0 is causing ui tests crash
+            force("org.objenesis:objenesis:2.6")
+        }
+    }
+
     // Gradle dependency locking - lock all configurations of the app
     // More: https://docs.gradle.org/current/userguide/dependency_locking.html
     dependencyLocking {
