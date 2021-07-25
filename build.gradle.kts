@@ -1,6 +1,5 @@
 import com.android.build.gradle.BaseExtension
 import io.gitlab.arturbosch.detekt.Detekt
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id(GradlePluginId.DETEKT)
@@ -25,8 +24,6 @@ allprojects {
 
     // Ktlint configuration for sub-projects
     ktlint {
-        // Version of ktlint cmd tool (Ktlint Gradle plugin is just a wrapper for this tool)
-        version.set("0.40.0")
         verbose.set(true)
         android.set(true)
 
