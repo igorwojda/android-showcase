@@ -14,6 +14,7 @@ class GridAutofitLayoutManager : GridLayoutManager {
         const val INITIAL_SPAN_COUNT = 1
     }
 
+    @Suppress("detekt.MagicNumber")
     private val defaultColumnWidth by lazy {
         fun dpToPx(dp: Int) = (dp * Resources.getSystem().displayMetrics.density).toInt()
         dpToPx(48)

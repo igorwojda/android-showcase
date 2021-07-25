@@ -17,6 +17,7 @@ inline fun <reified T : AppCompatActivity> Context.startActivity(
 ) {
     val extras = params.map { it.first.name to it.second }.toTypedArray()
     val intent = Intent(this, T::class.java)
+    @Suppress("detekt.SpreadOperator")
     intent.putExtras(bundleOf(*extras))
     startActivity(intent)
 }

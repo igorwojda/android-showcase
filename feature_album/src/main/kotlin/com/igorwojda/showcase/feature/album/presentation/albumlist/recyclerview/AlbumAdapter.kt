@@ -50,6 +50,7 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
                 binding.coverImageView.load(it) {
                     crossfade(true)
                     error(R.drawable.ic_image)
+                    @Suppress("detekt.MagicNumber")
                     transformations(RoundedCornersTransformation(10F))
                 }
             }

@@ -261,8 +261,7 @@ Other high-quality projects will help you to find solutions that work for your p
 - False positive "Function can be private" ([Issue KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
 - False positive cannot access class ([Issue 16077](https://youtrack.jetbrains.com/issue/KT-44797)). This is fixed in InteliJ IDEA 2021.1 EAP 1 afair.
 - Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the library ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
-- Android lint complains about exceeding access rights to ArchTaskExecutor [Issue 79189568]((https://issuetracker
-.google .com/u/0/issues/79189568))
+- Android lint complains about exceeding access rights to ArchTaskExecutor [Issue 79189568]((https://issuetracker.google.com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
 - Gradle dependencies can't be easily shared between app libraries and Gradle plugins https://github.com/gradle/gradle/issues/16077
 

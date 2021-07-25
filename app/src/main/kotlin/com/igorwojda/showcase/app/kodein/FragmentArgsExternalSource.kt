@@ -53,6 +53,7 @@ class FragmentArgsExternalSource : ExternalSource {
         return navArgs
     }
 
+    @Suppress("detekt.SwallowedException")
     private fun getArgNavClass(className: String): KClass<NavArgs>? = try {
         @Suppress("UNCHECKED_CAST")
         Class.forName(className).kotlin as KClass<NavArgs>

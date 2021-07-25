@@ -29,8 +29,6 @@ internal class AlbumDetailFragment : InjectionFragment(R.layout.fragment_album_d
 
         binding.errorAnimation.visible = it.isError
 
-        val imageSize = 800
-
         binding.coverImageView.load(it.coverImageUrl) {
             size(imageSize, imageSize)
         }
