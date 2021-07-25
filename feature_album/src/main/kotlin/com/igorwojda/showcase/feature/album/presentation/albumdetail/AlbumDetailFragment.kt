@@ -14,6 +14,10 @@ import org.kodein.di.generic.instance
 
 internal class AlbumDetailFragment : InjectionFragment(R.layout.fragment_album_detail) {
 
+    companion object {
+        const val imageSize = 800
+    }
+
     private val binding: FragmentAlbumDetailBinding by viewBinding()
 
     private val viewModel: AlbumDetailViewModel by instance()
