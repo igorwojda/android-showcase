@@ -72,7 +72,7 @@ android {
 dependencies {
     // Gradle 7 introduces version catalogs - a new way for sharing dependency versions across projects.
     // Dependencies are defined in gradle.settings.kts file.
-    // False positive cannot access class (fixed in InteliJ IDEA 2021.1 EAP 1 afair)
+    // Code completion problem is fixed in InteliJ IDEA 2021.2 EAP 1 https://youtrack.jetbrains.com/issue/IDEA-266509
     api(libs.bundles.kotlin)
     api(libs.bundles.stetho)
     api(libs.bundles.retrofit)
@@ -115,16 +115,17 @@ fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
 /*
 Return names of the features
  */
-fun getFeatureNames() = ModuleDependency.getFeatureModules()
+fun getFeatureNames() = ModuleDependency
+    .getFeatureModules()
     .map { it.replace(":feature_", "") }
-    .toSet()
+    .toTypedArray()
 
 fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }
 
 /*
 Adds a new field to the generated BuildConfig class
  */
-fun DefaultConfig.buildConfigField(name: String, value: Set<String>) {
+fun DefaultConfig.buildConfigField(name: String, value: Array<String>) {
     // Create String that holds Java String Array code
     val strValue = value.joinToString(prefix = "{", separator = ",", postfix = "}", transform = { "\"$it\"" })
     buildConfigField("String[]", name, strValue)

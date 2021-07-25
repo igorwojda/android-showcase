@@ -1,6 +1,6 @@
 # Android showcase
 
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.4-blue.svg)](https://kotlinlang.org)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.5.20-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AGP-4-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-7-blue?style=flat)](https://gradle.org)
 
@@ -151,7 +151,7 @@ This project utilizes multiple mechanics to easily share the same versions of de
 
 External dependencies (libraries) are defined using [versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html) feature in the [settings.gradle](./settings.gradle) file. These dynamic library versions are locked using Gradle [docking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
 
-To update lock files run `./gradlew test --write-locks` command and commit updated `gradle.lockfile` files to
+To update lock files run `./gradlew test lint s --write-locks` command and commit updated `gradle.lockfile` files to
 repository.
 
 Each feature module depends on the `app` module, so dependencies are shared without need to add them explicitly in each feature module.
@@ -254,15 +254,16 @@ Other high-quality projects will help you to find solutions that work for your p
 
 
 ## Known issues
+
+- Gradle 7.1.1 is not compatible with GradleJDK 16 (build is failing, so JDK 15 must be used) 
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527) and [Issue KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file ([Issue 27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([Issue KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
 - False positive cannot access class ([Issue 16077](https://youtrack.jetbrains.com/issue/KT-44797)). This is fixed in InteliJ IDEA 2021.1 EAP 1 afair.
 - Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the library ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
-- Android lint complains about exceeding access rights to ArchTaskExecutor [Issue 79189568]((https://issuetracker
-.google .com/u/0/issues/79189568))
+- Android lint complains about exceeding access rights to ArchTaskExecutor [Issue 79189568]((https://issuetracker.google.com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
-- Gradle dependencies can't be eaisly shared between app libraries and Gradle plugins https://github.com/gradle/gradle/issues/16077
+- Gradle dependencies can't be easily shared between app libraries and Gradle plugins https://github.com/gradle/gradle/issues/16077
 
 ## Contribute
 

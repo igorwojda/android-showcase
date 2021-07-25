@@ -1,5 +1,7 @@
 rootProject.buildFileName = "build.gradle.kts"
 
+enableFeaturePreview("VERSION_CATALOGS")
+
 // Set single lock file (gradle.lockfile)
 // This preview feature should be enabled by default in Gradle 7
 // More: https://docs.gradle.org/current/userguide/dependency_locking.html#single_lock_file_per_project
@@ -39,8 +41,8 @@ pluginManagement {
         val detektVersion: String by settings
         id("io.gitlab.arturbosch.detekt") version detektVersion
 
-        val ktlintVersion: String by settings
-        id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
+        val ktlintGradleVersion: String by settings
+        id("org.jlleitschuh.gradle.ktlint") version ktlintGradleVersion
 
         val androidJUnit5Version: String by settings
         id("de.mannodermaus.android-junit5") version androidJUnit5Version
@@ -48,7 +50,6 @@ pluginManagement {
 
     resolutionStrategy {
         eachPlugin {
-
             when (requested.id.id) {
                 "com.android.application",
                 "com.android.library",
@@ -148,7 +149,6 @@ dependencyResolutionManagement {
             alias("test-coroutines").to("org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("coroutines")
 
             version("kluent", "1.+")
-            alias("kluent-core").to("org.amshove.kluent", "kluent").versionRef("kluent")
             alias("kluent-android").to("org.amshove.kluent", "kluent-android").versionRef("kluent")
 
             alias("test-runner").to("androidx.test:runner:1.+")
@@ -163,7 +163,6 @@ dependencyResolutionManagement {
                 "test",
                 listOf(
                     "test-coroutines",
-                    "kluent-core",
                     "kluent-android",
                     "test-runner",
                     "espresso",

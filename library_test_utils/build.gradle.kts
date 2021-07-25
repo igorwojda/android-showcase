@@ -36,8 +36,9 @@ android {
     }
 
     packagingOptions {
-        // May not be needed after updating to AGP 4.x - check
         exclude("META-INF/AL2.0")
+        exclude("META-INF/licenses/**")
+        exclude("**/attach_hotspot_windows.dll")
         exclude("META-INF/LGPL2.1")
     }
 }

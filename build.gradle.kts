@@ -17,7 +17,7 @@ plugins {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     // We want to apply ktlint at all project level because it also checks Gradle config files (*.kts)
@@ -39,6 +39,15 @@ allprojects {
 
         filter {
             exclude { element -> element.file.path.contains("generated/") }
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            // objenesis: 3.1 used in mockk 1.12.0 is causing UI tests crash
+            // (gradlew :library_test_utils:mergeExtDexDebugAndroidTest), so older version has to be used
+            // https://github.com/mockk/mockk/issues/281
+            force("org.objenesis:objenesis:2.6")
         }
     }
 
@@ -97,14 +106,6 @@ subprojects {
 
                 if (androidLintExceptions.any { it == candidate.group }) {
                     return@all
-                }
-
-                // Do reject pre-release version
-                val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview")
-                    .any { Regex("(?i).*[.-]$it[.\\d-]*").matches(candidate.version) }
-
-                if (rejected) {
-                    reject("Release candidate")
                 }
             }
         }

@@ -10,6 +10,7 @@ object FeatureManager {
 
     private const val featurePackagePrefix = "com.igorwojda.showcase.feature"
 
+    @Suppress("detekt.SwallowedException")
     val kodeinModules = BuildConfig.FEATURE_MODULE_NAMES
         .map { "$featurePackagePrefix.$it.FeatureKodeinModule" }
         .map {
