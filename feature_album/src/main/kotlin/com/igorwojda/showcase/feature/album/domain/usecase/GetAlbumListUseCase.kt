@@ -8,9 +8,9 @@ internal class GetAlbumListUseCase(
     private val albumRepository: AlbumRepository
 ) {
 
-    sealed class Result {
-        data class Success(val data: List<Album>) : Result()
-        data class Error(val e: Throwable) : Result()
+    sealed interface Result {
+        data class Success(val data: List<Album>) : Result
+        data class Error(val e: Throwable) : Result
     }
 
     suspend fun execute(): Result {

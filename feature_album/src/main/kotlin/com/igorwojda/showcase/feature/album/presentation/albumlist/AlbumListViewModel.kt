@@ -61,8 +61,8 @@ internal class AlbumListViewModel(
         val albums: List<Album> = listOf()
     ) : BaseViewState
 
-    internal sealed class Action : BaseAction {
-        class AlbumListLoadingSuccess(val albums: List<Album>) : Action()
-        object AlbumListLoadingFailure : Action()
+    internal sealed interface Action : BaseAction {
+        class AlbumListLoadingSuccess(val albums: List<Album>) : Action
+        object AlbumListLoadingFailure : Action
     }
 }
