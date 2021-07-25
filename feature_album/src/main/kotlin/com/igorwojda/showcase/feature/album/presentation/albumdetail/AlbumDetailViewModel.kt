@@ -60,8 +60,8 @@ internal class AlbumDetailViewModel(
         val coverImageUrl: String = ""
     ) : BaseViewState
 
-    internal sealed class Action : BaseAction {
-        class AlbumLoadSuccess(val album: Album) : Action()
-        object AlbumLoadFailure : Action()
+    internal sealed interface Action : BaseAction {
+        class AlbumLoadSuccess(val album: Album) : Action
+        object AlbumLoadFailure : Action
     }
 }
