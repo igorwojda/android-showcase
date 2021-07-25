@@ -44,7 +44,9 @@ allprojects {
 
     configurations.all {
         resolutionStrategy {
-            // objenesis: 3.1 used in mockk 1.12.0 is causing ui tests crash
+            // objenesis: 3.1 used in mockk 1.12.0 is causing UI tests crash
+            // (gradlew :library_test_utils:mergeExtDexDebugAndroidTest), so older version has to be used
+            // https://github.com/mockk/mockk/issues/281
             force("org.objenesis:objenesis:2.6")
         }
     }
