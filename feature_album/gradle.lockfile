@@ -180,7 +180,6 @@ net.sf.kxml:kxml2:2.3.0=lintClassPath
 org.abego.treelayout:org.abego.treelayout.core:1.0.3=kapt
 org.amshove.kluent:kluent-android:1.68=debugUnitTestCompileClasspath,debugUnitTestRuntimeClasspath,releaseUnitTestCompileClasspath,releaseUnitTestRuntimeClasspath
 org.amshove.kluent:kluent-common:1.68=debugUnitTestCompileClasspath,debugUnitTestRuntimeClasspath,releaseUnitTestCompileClasspath,releaseUnitTestRuntimeClasspath
-org.amshove.kluent:kluent:1.68=debugUnitTestCompileClasspath,debugUnitTestRuntimeClasspath,releaseUnitTestCompileClasspath,releaseUnitTestRuntimeClasspath
 org.antlr:ST4:4.0.8=kapt
 org.antlr:antlr-runtime:3.5.2=kapt
 org.antlr:antlr4-runtime:4.7.1=kapt

@@ -149,7 +149,6 @@ dependencyResolutionManagement {
             alias("test-coroutines").to("org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("coroutines")
 
             version("kluent", "1.+")
-            alias("kluent-core").to("org.amshove.kluent", "kluent").versionRef("kluent")
             alias("kluent-android").to("org.amshove.kluent", "kluent-android").versionRef("kluent")
 
             alias("test-runner").to("androidx.test:runner:1.+")
@@ -164,7 +163,6 @@ dependencyResolutionManagement {
                 "test",
                 listOf(
                     "test-coroutines",
-                    "kluent-core",
                     "kluent-android",
                     "test-runner",
                     "espresso",
