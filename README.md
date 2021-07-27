@@ -36,7 +36,7 @@ This project takes advantage of best practices, many popular libraries and tools
     * [Stetho](http://facebook.github.io/stetho/) - application debugging
 * Modern Architecture
     * Clean Architecture (at feature module level)
-    * Single activity architecture ( with[Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))
+    * Single activity architecture using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
     * MVVM + MVI (presentation layer)
     * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
