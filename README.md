@@ -77,7 +77,7 @@ The modularized code-base approach provides few benefits:
 
 ### Module types and module dependencies
 
-This diagram present dependencies between project modules (Gradle sub-projects).
+This diagram presents dependencies between project modules (Gradle sub-projects).
 
 ![module_dependencies](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies.png?raw=true)
 
