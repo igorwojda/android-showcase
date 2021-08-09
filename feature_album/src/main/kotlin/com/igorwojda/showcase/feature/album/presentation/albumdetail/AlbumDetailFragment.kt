@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import coil.load
 import com.igorwojda.showcase.base.delegate.viewBinding
-import com.igorwojda.showcase.base.presentation.extension.observe
+import com.igorwojda.showcase.base.extension.observe
 import com.igorwojda.showcase.base.presentation.extension.visible
 import com.igorwojda.showcase.base.presentation.fragment.InjectionFragment
 import com.igorwojda.showcase.feature.album.R
