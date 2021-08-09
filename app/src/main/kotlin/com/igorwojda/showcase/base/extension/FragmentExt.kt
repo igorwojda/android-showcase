@@ -1,6 +1,9 @@
 package com.igorwojda.showcase.base.extension
 
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
@@ -50,4 +53,8 @@ fun Fragment.canNavigate(): Boolean {
         Timber.d("May not navigate: current destination is not the current fragment.")
         false
     }
+}
+
+fun <T> Fragment.observe(liveData: LiveData<T>, observer: Observer<T>) {
+    liveData.observe(viewLifecycleOwner, observer)
 }
