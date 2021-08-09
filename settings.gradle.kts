@@ -110,8 +110,8 @@ dependencyResolutionManagement {
             bundle("kodein", listOf("kodein-core", "kodein-android-x"))
 
             alias("timber").to("com.jakewharton.timber:timber:4.+")
-            alias("constraintlayout").to("androidx.constraintlayout:constraintlayout:2.+")
-            alias("coordinatorlayout").to("androidx.coordinatorlayout:coordinatorlayout:1.+")
+            alias("constraintLayout").to("androidx.constraintlayout:constraintlayout:2.+")
+            alias("coordinatorLayout").to("androidx.coordinatorlayout:coordinatorlayout:1.+")
             alias("appcompat").to("androidx.appcompat:appcompat:1.+")
             alias("recyclerview").to("androidx.recyclerview:recyclerview:1.+")
             alias("material").to("com.google.android.material:material:1.+")
