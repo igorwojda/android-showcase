@@ -1,8 +1,8 @@
 package com.igorwojda.showcase
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.igorwojda.showcase.app.data.retrofit.AuthenticationInterceptor
-import com.igorwojda.showcase.app.data.retrofit.UserAgentInterceptor
+import com.igorwojda.showcase.app.data.network.AuthenticationInterceptor
+import com.igorwojda.showcase.app.data.network.UserAgentInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein

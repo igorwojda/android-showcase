@@ -1,8 +1,9 @@
 plugins {
     id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
-    id(GradlePluginId.KOTLIN_ANDROID)
-    id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
+    id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
+    id(GradlePluginId.KOTLIN_KAPT) // or kotlin("kapt")
     id(GradlePluginId.SAFE_ARGS)
+    id(GradlePluginId.ANDROID_JUNIT_5)
 }
 
 android {
@@ -28,19 +29,11 @@ android {
         }
     }
 
+    buildFeatures.viewBinding = true
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
-    // This "test" source set is a fix for SafeArgs classes not being available when running Unit tests from cmd
-    // See: https://issuetracker.google.com/issues/139242292
-    sourceSets {
-        getByName("test").java.srcDir("${project.rootDir}/app/build/generated/source/navigation-args/debug")
     }
 
     // Removes the need to mock need to mock classes that may be irrelevant from test perspective
@@ -52,9 +45,8 @@ android {
 dependencies {
     implementation(project(ModuleDependency.APP))
 
-    // Fix running instrumentation tests from feature module (this fix will be redundant after updating AGP to 4.x)
-    // More: https://github.com/android/app-bundle-samples/issues/42
-    androidTestImplementation(project(":feature_album"))
+    testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
+    testImplementation(libs.bundles.test)
 
-    addTestDependencies()
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }

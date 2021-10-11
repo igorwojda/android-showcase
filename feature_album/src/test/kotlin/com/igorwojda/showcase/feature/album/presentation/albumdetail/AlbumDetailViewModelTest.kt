@@ -1,30 +1,22 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.ViewState
-import com.igorwojda.showcase.library.testutils.CoroutineRule
+import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.RegisterExtension
 
-@RunWith(JUnit4::class)
 class AlbumDetailViewModelTest {
 
-    @ExperimentalCoroutinesApi
-    @get:Rule
-    var coroutinesTestRule = CoroutineRule()
-
-    @get:Rule
-    var rule = InstantTaskExecutorRule()
+    @JvmField
+    @RegisterExtension
+    val instantTaskExecutorExtension = InstantTaskExecutorExtension()
 
     @MockK
     internal lateinit var mockGetAlbumUseCase: GetAlbumUseCase
@@ -34,7 +26,7 @@ class AlbumDetailViewModelTest {
 
     private lateinit var cut: AlbumDetailViewModel
 
-    @Before
+    @BeforeEach
     fun setUp() {
         MockKAnnotations.init(this)
 
@@ -47,8 +39,8 @@ class AlbumDetailViewModelTest {
     @Test
     fun `verify state when GetAlbumUseCase return null`() {
         // given
-        val albumName = "albumName"
-        val artistName = "artistName"
+        val albumName = "Thriller"
+        val artistName = "Michael Jackson"
         val mbId = "123"
 
         every { mockAlbumDetailFragmentArgs.albumName } returns albumName

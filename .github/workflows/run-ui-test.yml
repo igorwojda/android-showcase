@@ -1,0 +1,43 @@
+name: run ui test
+
+on:
+  push:
+    branches: [main] # Just in case main was not up to date while merging PR
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  run:
+    continue-on-error: true
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.gradle
+          key: gradle-${{ hashFiles('gradle-checksums.txt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ hashFiles('gradle-checksums.txt') }}-
+      - name: run ui tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          target: default
+          arch: x86
+          profile: Nexus 6
+          disable-animations: true
+          script: ./gradlew connectedCheck
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ui-test-report
+          path: ./**/build/reports/ui-tests/

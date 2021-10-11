@@ -1,0 +1,29 @@
+name: update dependencies
+on:
+  schedule:
+    - cron:  '0 1 * * 1'
+jobs:
+  update-dep:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Perform dependency resolution and write new lockfiles
+        run: ./gradlew test --write-
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: Update dependencies
+          title: Update dependencies
+          body: |
+            Auto-generated.
+          branch: update-dependencies

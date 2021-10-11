@@ -1,7 +1,7 @@
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
-    id(GradlePluginId.KOTLIN_ANDROID)
-    id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
+    id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
+    id(GradlePluginId.ANDROID_JUNIT_5)
 }
 
 android {
@@ -27,26 +27,24 @@ android {
         }
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
     }
 
     packagingOptions {
-        // May not be needed after updating to AGP 4.x - check
         exclude("META-INF/AL2.0")
+        exclude("META-INF/licenses/**")
+        exclude("**/attach_hotspot_windows.dll")
         exclude("META-INF/LGPL2.1")
     }
 }
 
 dependencies {
-    // We use implementation here instead of testImplementation because we will add this library as
-    // testImplementation dependency to other modules. Using implementation allows us to write tests
-    // for test utilities.
-    implementation(LibraryDependency.KOTLIN)
-    implementation(TestLibraryDependency.JUNIT)
-    implementation(TestLibraryDependency.COROUTINES_TEST)
+    // implementation configuration is used here (instead of testImplementation) because this module is added as
+    // testImplementation dependency inside other modules. Using implementation allows to write tests for test
+    // utilities.
+    implementation(libs.bundles.kotlin)
+    implementation(libs.bundles.test)
+
+    runtimeOnly(libs.junit.jupiter.engine)
 }

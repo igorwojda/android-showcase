@@ -3,32 +3,37 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetail
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import coil.api.load
+import coil.load
+import com.igorwojda.showcase.base.delegate.viewBinding
+import com.igorwojda.showcase.base.presentation.extension.observe
+import com.igorwojda.showcase.base.presentation.extension.visible
+import com.igorwojda.showcase.base.presentation.fragment.InjectionFragment
 import com.igorwojda.showcase.feature.album.R
-import com.igorwojda.showcase.library.base.presentation.extension.observe
-import com.igorwojda.showcase.library.base.presentation.fragment.InjectionFragment
-import com.pawegio.kandroid.visible
-import kotlinx.android.synthetic.main.fragment_album_detail.*
+import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumDetailBinding
 import org.kodein.di.generic.instance
 
 internal class AlbumDetailFragment : InjectionFragment(R.layout.fragment_album_detail) {
 
+    companion object {
+        const val imageSize = 800
+    }
+
+    private val binding: FragmentAlbumDetailBinding by viewBinding()
+
     private val viewModel: AlbumDetailViewModel by instance()
 
     private val stateObserver = Observer<AlbumDetailViewModel.ViewState> {
-        progressBar.visible = it.isLoading
+        binding.progressBar.visible = it.isLoading
 
-        nameTextView.text = it.albumName
-        nameTextView.visible = it.albumName.isNotBlank()
+        binding.nameTextView.text = it.albumName
+        binding.nameTextView.visible = it.albumName.isNotBlank()
 
-        artistTextView.text = it.artistName
-        artistTextView.visible = it.artistName.isNotBlank()
+        binding.artistTextView.text = it.artistName
+        binding.artistTextView.visible = it.artistName.isNotBlank()
 
-        errorAnimation.visible = it.isError
+        binding.errorAnimation.visible = it.isError
 
-        val imageSize = 800
-
-        coverImageView.load(it.coverImageUrl) {
+        binding.coverImageView.load(it.coverImageUrl) {
             size(imageSize, imageSize)
         }
     }
@@ -37,6 +42,7 @@ internal class AlbumDetailFragment : InjectionFragment(R.layout.fragment_album_d
         super.onViewCreated(view, savedInstanceState)
 
         observe(viewModel.stateLiveData, stateObserver)
+
         viewModel.loadData()
     }
 }
