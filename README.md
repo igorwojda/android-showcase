@@ -185,7 +185,7 @@ Series of workflows runs (in parallel) for every opened PR and after merging PR 
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
 
-### Dependency updates
+## Dependency updates
 
 The [update-dependencies](.github/workflows/update-dependencies.yml) task run periodically and creates a pull request
 containing dependency
@@ -198,6 +198,10 @@ Read related articles to have a better understanding of underlying design decisi
 
 * [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
 * More coming soon
+
+## Gradle update
+
+`./gradlew wrapper --gradle-version=1.2.3`
 
 ## What this project does not cover?
 
