@@ -115,7 +115,7 @@ dependencyResolutionManagement {
             alias("appcompat").to("androidx.appcompat:appcompat:1.+")
             alias("recyclerview").to("androidx.recyclerview:recyclerview:1.+")
             alias("material").to("com.google.android.material:material:1.+")
-            alias("lottie").to("com.airbnb.android:lottie:2.+")
+            alias("lottie").to("com.airbnb.android:lottie:5.+")
             alias("coil").to("io.coil-kt:coil:1.+")
             alias("play-core").to("com.google.android.play:core:1.+")
 
