@@ -123,7 +123,7 @@ In other words, changes in other layers will have no effect on `domain` layer eg
 
 Components:
 - **UseCase** - contains business logic
-- **DomainModel** - defies the core structure of the data that will be used within the application. This is the source of truth for application data.
+- **DomainModel** - defines the core structure of the data that will be used within the application. This is the source of truth for application data.
 - **Repository interface** - required to keep the `domain` layer independent from the `data layer` ([Dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)).
 
 #### Data layer
