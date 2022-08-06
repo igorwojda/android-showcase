@@ -9,7 +9,7 @@
 
 Showcase is a sample project that presents a modern approach to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development.
 
-The goal of the project is to combine popular libraries/tools and demonstrate best developement practices by utilizing up to date tech-stack and presenting modern Android application [Architecture](#architecture) that is modular, scalable, maintainable, and testable. This application may look simple,
+The goal of the project is to combine popular libraries/tools and demonstrate best development practices by utilizing an up-to-date tech-stack and presenting a modern Android application [Architecture](#architecture) that is modular, scalable, maintainable, and testable. This application may look simple,
 but it has all the pieces that will provide the rock-solid foundation for the larger app suitable for bigger teams
 and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
@@ -19,7 +19,7 @@ This project is being maintained to match industry standards. Please check [CONT
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
-This project takes advantage of best practices, many popular libraries and tools in the Android ecosystem. Most of the libraries are in the stable version unless there is a good reason to use non-stable dependency.
+This project takes advantage of best practices, and many popular libraries and tools in the Android ecosystem. Most of the libraries are in the stable version unless there is a good reason to use non-stable dependency.
 
 * Tech-stack
     * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
