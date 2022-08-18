@@ -35,7 +35,7 @@ internal class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
     override fun getItemCount(): Int = albums.size
 
     fun setOnDebouncedClickListener(listener: (album: Album) -> Unit) {
-        this.onDebouncedClickListener = listener
+        onDebouncedClickListener = listener
     }
 
     internal inner class ViewHolder(private val binding: ItemAlbumListBinding) :
