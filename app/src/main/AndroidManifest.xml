@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        package="com.example.starter">
+        package="com.igorwojda.showcase">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            android:name=".base.StarterApplication"
-            android:allowBackup="true"
-            android:dataExtractionRules="@xml/data_extraction_rules"
-            android:fullBackupContent="@xml/backup_rules"
+            android:name=".app.ShowcaseApplication"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/Theme.Androidstarterproject"
-            tools:targetApi="31">
-        <activity
-                android:name=".presentation.NavHostActivity"
-                android:exported="true">
+            android:theme="@style/AppTheme">
+
+        <activity android:name="com.igorwojda.showcase.app.presentation.NavHostActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

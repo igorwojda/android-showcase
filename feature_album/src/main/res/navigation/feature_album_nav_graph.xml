@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:moduleName="feature_album"
+    app:startDestination="@id/albumListFragment">
+    <fragment
+        android:id="@+id/albumListFragment"
+        android:name="com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListFragment"
+        android:label="AlbumListFragment"
+        app:moduleName="feature_album">
+        <action
+            android:id="@+id/actionAlbumListToAlbumDetail"
+            app:destination="@id/albumDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailFragment"
+        android:label="AlbumDetailFragment"
+        app:moduleName="feature_album">
+        <argument
+            android:name="artistName"
+            app:argType="string"/>
+        <argument
+            android:name="albumName"
+            app:argType="string"/>
+        <argument
+            android:name="mbId"
+            app:argType="string"
+            app:nullable="true"/>
+    </fragment>
+</navigation>

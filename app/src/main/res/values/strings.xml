@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">android-starter-project</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">showcase</string>
+
+    <!--Dynamic module titles-->
+    <string name="feature_album">feature album</string>
+    <string name="feature_favourite">feature favourite</string>
+    <string name="feature_profile">feature profile</string>
+
+    <!--Bottom menu-->
+    <string name="albums">Albums</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
 </resources>

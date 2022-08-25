@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/featureAlbumNavGraph"
+        android:title="@string/albums"
+        android:icon="@drawable/ic_round_dashboard"/>
+    <item
+        android:id="@+id/featureFavouriteNavGraph"
+        android:title="@string/favorites"
+        android:icon="@drawable/ic_round_favorite"/>
+    <item
+        android:id="@+id/featureProfileNavGraph"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_round_person"/>
+</menu>
