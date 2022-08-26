@@ -18,7 +18,7 @@ val appModule = module {
 
     single {
         HttpLoggingInterceptor { message ->
-            Timber.d("HttpLog: $message")
+            Timber.d("Http: $message")
         }.apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
