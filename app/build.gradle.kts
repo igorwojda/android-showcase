@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ApplicationDefaultConfig
+
 plugins {
     id("com.android.application")
     id("com.google.devtools.ksp")
@@ -54,13 +56,13 @@ dependencies {
     implementation(project(":feature_album"))
     implementation(project(":feature_profile"))
     implementation(project(":feature_favourite"))
-
 }
 
 /*
-Takes value from Gradle project property and sets it as build config property
+Takes value from Gradle project property and sets it as Android build config property eg.
+apiToken variable present in the settings.gradle file will be accessible as BuildConfig.GRADLE_API_TOKEN in the app.
  */
-fun com.android.build.api.dsl.ApplicationDefaultConfig.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
+fun ApplicationDefaultConfig.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
     val propertyValue = project.properties[gradlePropertyName] as? String
     checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
 
