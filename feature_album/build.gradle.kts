@@ -1,6 +1,7 @@
 plugins {
-    id("com.android.dynamic-feature")
+    id("com.android.library")
     kotlin("android")
+    id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")
     id("de.mannodermaus.android-junit5")
 }
@@ -17,7 +18,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":app"))
+    implementation(project(":feature_base"))
+
+    //TODO unresolved reference
+    ksp(libs.room.compiler)
 
     testImplementation(project(":library_test_utils"))
     testImplementation(libs.bundles.test)

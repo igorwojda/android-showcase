@@ -7,9 +7,9 @@
         tools:context=".app.presentation.NavHostActivity"
         android:orientation="vertical">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
             android:id="@+id/navHostFragment"
-            android:name="androidx.navigation.dynamicfeatures.fragment.DynamicNavHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -35,5 +35,3 @@
             app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

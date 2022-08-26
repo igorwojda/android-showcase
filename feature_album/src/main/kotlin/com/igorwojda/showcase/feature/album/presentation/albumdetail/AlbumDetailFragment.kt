@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
-import com.igorwojda.showcase.base.delegate.viewBinding
 import com.igorwojda.showcase.base.presentation.extension.observe
 import com.igorwojda.showcase.base.presentation.extension.visible
 import com.igorwojda.showcase.feature.album.R

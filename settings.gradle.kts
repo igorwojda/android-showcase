@@ -7,17 +7,16 @@ pluginManagement {
 
     // Using the plugins DSL allows generating type-safe accessors for Kotlin DSL
     plugins {
-        // Variables retreived by settings delegate are defined in gradle.properties file
+        // Variables retrieved by settings delegate are defined in gradle.properties file
         // See dependency management section in README.md
         // https://github.com/igorwojda/android-showcase#dependency-management
         val agpVersion: String by settings
         id("com.android.application") version agpVersion
         id("com.android.library") version agpVersion
-        id("com.android.dynamic-feature") version agpVersion
 
         val kotlinVersion: String by settings
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
-        id("org.jetbrains.kotlin.android") version kotlinVersion
+        kotlin("android") version kotlinVersion
 
         val kspVersion: String by settings
         id("com.google.devtools.ksp") version kspVersion
@@ -51,6 +50,7 @@ include(
     ":feature_album",
     ":feature_profile",
     ":feature_favourite",
+    ":feature_base",
     ":library_test_utils"
 )
 
@@ -86,6 +86,8 @@ dependencyResolutionManagement {
             library("koin-android", "io.insert-koin", "koin-android").versionRef("koin")
             bundle("koin", listOf("koin-android"))
 
+            library("viewbindingpropertydelegate", "com.github.kirich1409:viewbindingpropertydelegate:1.+")
+
             library("timber", "com.jakewharton.timber:timber:4.+")
             library("constraintLayout", "androidx.constraintlayout:constraintlayout:2.+")
             library("coordinatorLayout", "androidx.coordinatorlayout:coordinatorlayout:1.+")
@@ -95,6 +97,7 @@ dependencyResolutionManagement {
             library("lottie", "com.airbnb.android:lottie:+")
             library("coil", "io.coil-kt:coil:+")
             library("play-core", "com.google.android.play:core:1.+")
+
             library("core-ktx", "androidx.core:core-ktx:1.+")
             library("fragment-ktx", "androidx.fragment:fragment-ktx:1.+")
             bundle("ktx", listOf("core-ktx", "fragment-ktx"))

@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.igorwojda.showcase.R
+import com.igorwojda.showcase.base.R
 import timber.log.Timber
 
 /**
@@ -39,7 +39,7 @@ fun Fragment.canNavigate(): Boolean {
     val navController = findNavController()
     val destinationIdInNavController = navController.currentDestination?.id
 
-    // add tag_navigation_destination_id to your res\values\ids.xml so that it's unique:
+    // add unique tag_navigation_destination_id to the res\values\ids.xml:
     val destinationIdOfThisFragment = view?.getTag(R.id.tag_navigation_destination_id) ?: destinationIdInNavController
 
     // check that the navigation graph is still in 'this' fragment, if not then the app already navigated:

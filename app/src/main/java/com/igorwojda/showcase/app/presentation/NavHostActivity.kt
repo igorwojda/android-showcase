@@ -1,17 +1,18 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.igorwojda.showcase.R
-import com.igorwojda.showcase.base.delegate.viewBinding
 import com.igorwojda.showcase.base.extension.navigateSafe
 import com.igorwojda.showcase.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.base.presentation.navigation.NavManager
 import com.igorwojda.showcase.databinding.ActivityNavHostBinding
 import org.koin.android.ext.android.inject
 
-class NavHostActivity : BaseActivity() {
+class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
 
     private val binding: ActivityNavHostBinding by viewBinding()
 
@@ -23,8 +24,12 @@ class NavHostActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        initBottomNavigation()
         initNavManager()
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onPostCreate(savedInstanceState, persistentState)
+        initBottomNavigation()
     }
 
     private fun initBottomNavigation() {

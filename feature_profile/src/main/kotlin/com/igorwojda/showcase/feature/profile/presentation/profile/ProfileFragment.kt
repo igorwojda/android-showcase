@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.profile.presentation.profile
 
 import androidx.fragment.app.Fragment
-import com.igorwojda.showcase.base.delegate.viewBinding
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.igorwojda.showcase.feature.profile.R
 import com.igorwojda.showcase.feature.profile.databinding.FragmentProfileBinding
 

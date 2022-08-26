@@ -1,20 +1,18 @@
 package com.igorwojda.showcase.app
 
-import com.google.android.play.core.splitcompat.SplitCompatApplication
+import android.app.Application
 import com.igorwojda.showcase.BuildConfig
-import com.igorwojda.showcase.app.feature.FeatureManager
 import com.igorwojda.showcase.appModule
 import com.igorwojda.showcase.base.baseModule
+import com.igorwojda.showcase.feature.album.featureAlbumModules
+import com.igorwojda.showcase.feature.favourite.featureFavouriteModules
+import com.igorwojda.showcase.feature.profile.featureProfilesModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext
 import timber.log.Timber
 
-/*
-False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file:
-https://youtrack.jetbrains.net/issue/KT-27971
-*/
-class ShowcaseApplication : SplitCompatApplication() {
+class ShowcaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -24,12 +22,16 @@ class ShowcaseApplication : SplitCompatApplication() {
     }
 
     private fun initKoin() {
+        
         GlobalContext.startKoin {
             androidLogger()
             androidContext(this@ShowcaseApplication)
+
             modules(appModule)
             modules(baseModule)
-            modules(FeatureManager.koinModules)
+            modules(featureFavouriteModules)
+            modules(featureAlbumModules)
+            modules(featureProfilesModules)
         }
     }
 

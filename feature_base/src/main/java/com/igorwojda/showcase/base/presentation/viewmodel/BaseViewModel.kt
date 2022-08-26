@@ -2,7 +2,7 @@ package com.igorwojda.showcase.base.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.igorwojda.showcase.BuildConfig
+import com.igorwojda.showcase.base.BuildConfig
 import com.igorwojda.showcase.base.presentation.extension.asLiveData
 import kotlin.properties.Delegates
 
