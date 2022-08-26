@@ -15,14 +15,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class AlbumDetailFragment : Fragment(R.layout.fragment_album_detail) {
 
-    companion object {
-        const val imageSize = 800
-    }
-
     private val binding: FragmentAlbumDetailBinding by viewBinding()
+
     private val args: AlbumDetailFragmentArgs by navArgs()
     private val model: AlbumDetailViewModel by viewModel()
-
     private val stateObserver = Observer<AlbumDetailViewModel.State> {
         binding.progressBar.visible = it.isLoading
 
@@ -45,5 +41,9 @@ internal class AlbumDetailFragment : Fragment(R.layout.fragment_album_detail) {
         observe(model.stateLiveData, stateObserver)
 
         model.onEnter(args)
+    }
+
+    companion object {
+        const val imageSize = 800
     }
 }

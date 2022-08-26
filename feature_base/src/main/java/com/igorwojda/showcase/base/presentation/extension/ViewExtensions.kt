@@ -22,10 +22,6 @@ fun View.removeOnDebouncedClickListener() {
 
 private class ActionDebouncer(private val action: () -> Unit) {
 
-    companion object {
-        const val DEBOUNCE_INTERVAL_MILLISECONDS = 600L
-    }
-
     private var lastActionTime = 0L
 
     fun notifyAction() {
@@ -38,6 +34,10 @@ private class ActionDebouncer(private val action: () -> Unit) {
         if (actionAllowed) {
             action.invoke()
         }
+    }
+
+    companion object {
+        const val DEBOUNCE_INTERVAL_MILLISECONDS = 600L
     }
 }
 
