@@ -6,9 +6,13 @@
 
     <application
             android:name=".app.ShowcaseApplication"
+            android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true">
 
         <activity android:name="com.igorwojda.showcase.app.presentation.NavHostActivity">
             <intent-filter>
