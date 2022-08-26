@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import com.igorwojda.showcase.base.presentation.extension.observe
 import com.igorwojda.showcase.base.presentation.extension.visible
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumDetailBinding
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class AlbumDetailFragment : Fragment(R.layout.fragment_album_detail) {
 
@@ -19,8 +20,8 @@ internal class AlbumDetailFragment : Fragment(R.layout.fragment_album_detail) {
     }
 
     private val binding: FragmentAlbumDetailBinding by viewBinding()
-
-    private val viewModel: AlbumDetailViewModel by inject()
+    private val args: AlbumDetailFragmentArgs by navArgs()
+    private val model: AlbumDetailViewModel by viewModel()
 
     private val stateObserver = Observer<AlbumDetailViewModel.State> {
         binding.progressBar.visible = it.isLoading
@@ -41,8 +42,8 @@ internal class AlbumDetailFragment : Fragment(R.layout.fragment_album_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observe(viewModel.stateLiveData, stateObserver)
+        observe(model.stateLiveData, stateObserver)
 
-        viewModel.onEnter()
+        model.onEnter(args)
     }
 }

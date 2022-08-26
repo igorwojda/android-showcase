@@ -10,7 +10,6 @@ import org.koin.dsl.module
 internal val presentationModule = module {
 
     // AlbumList
-
     viewModelOf(::AlbumListViewModel)
 
     single { AlbumAdapter() }

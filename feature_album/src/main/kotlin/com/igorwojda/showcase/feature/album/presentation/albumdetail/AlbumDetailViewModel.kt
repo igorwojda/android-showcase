@@ -14,21 +14,18 @@ import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
-    private val args: AlbumDetailFragmentArgs,
 ) : BaseViewModel<State, Action>(State()) {
 
-    fun onEnter() {
-        getAlbum()
+    fun onEnter(args: AlbumDetailFragmentArgs) {
+        getAlbum(args)
     }
 
-    private fun getAlbum() {
+    private fun getAlbum(args: AlbumDetailFragmentArgs) {
         viewModelScope.launch {
             getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
-                when {
-                    it is GetAlbumUseCase.Result.Success ->
-                        sendAction(AlbumLoadSuccess(it.data))
-                    it is GetAlbumUseCase.Result.Error ->
-                        sendAction(AlbumLoadFailure)
+                when (it) {
+                    is GetAlbumUseCase.Result.Success -> sendAction(AlbumLoadSuccess(it.data))
+                    is GetAlbumUseCase.Result.Error -> sendAction(AlbumLoadFailure)
                 }
             }
         }

@@ -12,13 +12,12 @@ import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumListBinding
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
 
     private val binding: FragmentAlbumListBinding by viewBinding()
-
-    private val viewModel: AlbumListViewModel by inject()
-
+    private val model: AlbumListViewModel by viewModel()
     private val albumAdapter: AlbumAdapter by inject()
 
     private val stateObserver = Observer<AlbumListViewModel.State> {
@@ -34,7 +33,7 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
         val context = requireContext()
 
         albumAdapter.setOnDebouncedClickListener {
-            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
+            model.navigateToAlbumDetails(it.artist, it.name, it.mbId)
         }
 
         binding.recyclerView.apply {
@@ -48,8 +47,8 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
             adapter = albumAdapter
         }
 
-        observe(viewModel.stateLiveData, stateObserver)
+        observe(model.stateLiveData, stateObserver)
 
-        viewModel.onEnter()
+        model.onEnter()
     }
 }
