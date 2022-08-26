@@ -10,8 +10,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
 
-internal const val MODULE_NAME = "App"
-
 val appModule = module {
 
     single { AuthenticationInterceptor(BuildConfig.GRADLE_API_TOKEN) }
@@ -22,7 +20,7 @@ val appModule = module {
         HttpLoggingInterceptor { message ->
             Timber.d("HttpLog: $message")
         }.apply {
-            level = HttpLoggingInterceptor.Level.NONE
+            level = HttpLoggingInterceptor.Level.BODY
         }
     }
 
@@ -33,8 +31,6 @@ val appModule = module {
             .addInterceptor(get<UserAgentInterceptor>())
             .build()
     }
-
-
 
     single {
         Retrofit.Builder()
