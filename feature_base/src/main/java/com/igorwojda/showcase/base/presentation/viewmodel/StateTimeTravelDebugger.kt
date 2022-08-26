@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.base.presentation.viewmodel
 
-import kotlin.reflect.full.memberProperties
 import timber.log.Timber
+import kotlin.reflect.full.memberProperties
 
 // Class logs ViewState transitions to facilitate debugging.
 class StateTimeTravelDebugger(private val viewClassName: String) {
@@ -13,7 +13,7 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
         lastViewAction = viewAction
     }
 
-    fun addStateTransition(oldState: BaseViewState, newState: BaseViewState) {
+    fun addStateTransition(oldState: BaseState, newState: BaseState) {
         val lastViewAction =
             checkNotNull(lastViewAction) { "lastViewAction is null. Please log action before logging state transition" }
         stateTimeline.add(StateTransition(oldState, lastViewAction, newState))
@@ -50,7 +50,7 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
         Timber.d(getMessage(states))
     }
 
-    private fun getLogLine(oldState: BaseViewState, newState: BaseViewState, propertyName: String): String {
+    private fun getLogLine(oldState: BaseState, newState: BaseState, propertyName: String): String {
         val oldValue = getPropertyValue(oldState, propertyName)
         val newValue = getPropertyValue(newState, propertyName)
         val indent = "\t"
@@ -67,10 +67,10 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
         stateTimeline.first().oldState.javaClass.kotlin.memberProperties.map { it.name }
     }
 
-    private fun getPropertyValue(baseViewState: BaseViewState, propertyName: String): String {
-        baseViewState::class.memberProperties.forEach {
+    private fun getPropertyValue(baseState: BaseState, propertyName: String): String {
+        baseState::class.memberProperties.forEach {
             if (propertyName == it.name) {
-                var value = it.getter.call(baseViewState).toString()
+                var value = it.getter.call(baseState).toString()
 
                 if (value.isBlank()) {
                     value = "\"\""
@@ -83,8 +83,8 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
     }
 
     private data class StateTransition(
-        val oldState: BaseViewState,
+        val oldState: BaseState,
         val action: BaseAction,
-        val newState: BaseViewState
+        val newState: BaseState,
     )
 }

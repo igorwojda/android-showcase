@@ -3,7 +3,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 import com.igorwojda.showcase.base.presentation.navigation.NavManager
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.ViewState
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.State
 import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.MockKAnnotations
@@ -83,7 +83,7 @@ class AlbumListViewModelTest {
         cut.loadData()
 
         // then
-        cut.stateLiveData.value shouldBeEqualTo ViewState(
+        cut.stateLiveData.value shouldBeEqualTo State(
             isLoading = false,
             isError = true,
             albums = listOf()
@@ -101,7 +101,7 @@ class AlbumListViewModelTest {
         cut.loadData()
 
         // then
-        cut.stateLiveData.value shouldBeEqualTo ViewState(
+        cut.stateLiveData.value shouldBeEqualTo State(
             isLoading = false,
             isError = false,
             albums = albums

@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.ViewState
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.State
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -54,7 +54,7 @@ class AlbumDetailViewModelTest {
         cut.loadData()
 
         // then
-        cut.stateLiveData.value shouldBeEqualTo ViewState(
+        cut.stateLiveData.value shouldBeEqualTo State(
             isLoading = false,
             isError = true,
             artistName = "",

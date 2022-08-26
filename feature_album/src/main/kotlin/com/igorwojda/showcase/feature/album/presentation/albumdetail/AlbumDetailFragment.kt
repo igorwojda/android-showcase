@@ -22,7 +22,7 @@ internal class AlbumDetailFragment : Fragment(R.layout.fragment_album_detail) {
 
     private val viewModel: AlbumDetailViewModel by inject()
 
-    private val stateObserver = Observer<AlbumDetailViewModel.ViewState> {
+    private val stateObserver = Observer<AlbumDetailViewModel.State> {
         binding.progressBar.visible = it.isLoading
 
         binding.nameTextView.text = it.albumName

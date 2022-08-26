@@ -21,7 +21,7 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
 
     private val albumAdapter: AlbumAdapter by inject()
 
-    private val stateObserver = Observer<AlbumListViewModel.ViewState> {
+    private val stateObserver = Observer<AlbumListViewModel.State> {
         albumAdapter.albums = it.albums
 
         binding.progressBar.visible = it.isLoading

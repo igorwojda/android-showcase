@@ -6,10 +6,10 @@ import com.igorwojda.showcase.base.BuildConfig
 import com.igorwojda.showcase.base.presentation.extension.asLiveData
 import kotlin.properties.Delegates
 
-abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>(initialState: ViewState) :
+abstract class BaseViewModel<State : BaseState, Action : BaseAction>(initialState: State) :
     ViewModel() {
 
-    private val stateMutableLiveData = MutableLiveData<ViewState>()
+    private val stateMutableLiveData = MutableLiveData<State>()
     val stateLiveData = stateMutableLiveData.asLiveData()
 
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
@@ -33,10 +33,10 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         }
     }
 
-    fun sendAction(viewAction: ViewAction) {
-        stateTimeTravelDebugger?.addAction(viewAction)
-        state = onReduceState(viewAction)
+    fun sendAction(action: Action) {
+        stateTimeTravelDebugger?.addAction(action)
+        state = onReduceState(action)
     }
 
-    protected abstract fun onReduceState(viewAction: ViewAction): ViewState
+    protected abstract fun onReduceState(action: Action): State
 }
