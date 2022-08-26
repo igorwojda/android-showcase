@@ -43,6 +43,6 @@ internal class AlbumDetailFragment : Fragment(R.layout.fragment_album_detail) {
 
         observe(viewModel.stateLiveData, stateObserver)
 
-        viewModel.loadData()
+        viewModel.onEnter()
     }
 }

@@ -50,6 +50,6 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
 
         observe(viewModel.stateLiveData, stateObserver)
 
-        viewModel.loadData()
+        viewModel.onEnter()
     }
 }

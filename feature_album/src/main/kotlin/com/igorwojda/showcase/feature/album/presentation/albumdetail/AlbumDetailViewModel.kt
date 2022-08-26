@@ -17,7 +17,7 @@ internal class AlbumDetailViewModel(
     private val args: AlbumDetailFragmentArgs
 ) : BaseViewModel<ViewState, Action>(ViewState()) {
 
-    override fun onLoadData() {
+    fun onEnter() {
         getAlbum()
     }
 
