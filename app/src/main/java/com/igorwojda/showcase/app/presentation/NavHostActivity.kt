@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -15,24 +14,17 @@ import org.koin.android.ext.android.inject
 class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
 
     private val binding: ActivityNavHostBinding by viewBinding()
-
-    private val navController get() = findNavController(this, R.id.navHostFragment)
-
     private val navManager: NavManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
 
         initNavManager()
-    }
-
-    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onPostCreate(savedInstanceState, persistentState)
         initBottomNavigation()
     }
 
     private fun initBottomNavigation() {
+        val navController = findNavController(this, R.id.navHostFragment)
         binding.bottomNav.setupWithNavController(navController)
 
         // TODO

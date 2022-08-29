@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- For navigation to work id must match id present in the nav graph-->
     <item
-        android:id="@+id/featureAlbumNavGraph"
-        android:title="@string/albums"
-        android:icon="@drawable/ic_round_dashboard"/>
+            android:id="@+id/albumListFragment"
+            android:icon="@drawable/ic_round_dashboard"
+            android:title="@string/albums" />
     <item
-        android:id="@+id/featureFavouriteNavGraph"
-        android:title="@string/favorites"
-        android:icon="@drawable/ic_round_favorite"/>
+            android:id="@+id/favouriteFragment"
+            android:icon="@drawable/ic_round_favorite"
+            android:title="@string/favorites" />
     <item
-        android:id="@+id/featureProfileNavGraph"
-        android:title="@string/profile"
-        android:icon="@drawable/ic_round_person"/>
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_round_person"
+            android:title="@string/profile" />
 </menu>
