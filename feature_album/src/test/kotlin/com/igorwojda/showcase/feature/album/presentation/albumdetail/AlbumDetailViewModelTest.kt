@@ -6,6 +6,8 @@ import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
@@ -27,22 +29,24 @@ class AlbumDetailViewModelTest {
     )
 
     @Test
-    fun `verify state when GetAlbumUseCase return null`() {
+    fun `verify state when GetAlbumUseCase return null`() = runTest {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
-        val mbId2 = "123"
+        val mbId = "123"
 
-        val mockAlbumDetailFragmentArgs = AlbumDetailFragmentArgs(albumName, artistName, mbId2)
+        val mockAlbumDetailFragmentArgs = AlbumDetailFragmentArgs(albumName, artistName, mbId)
 
         coEvery {
-            mockGetAlbumUseCase.execute(artistName, albumName, mbId2)
+            mockGetAlbumUseCase.execute(artistName, albumName, mbId)
         } returns GetAlbumUseCase.Result.Error(Exception())
 
         // when
         cut.onEnter(mockAlbumDetailFragmentArgs)
 
         // then
+        advanceUntilIdle()
+
         cut.stateLiveData.value shouldBeEqualTo State(
             isLoading = false,
             isError = true,

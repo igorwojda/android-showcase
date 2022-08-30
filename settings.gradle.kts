@@ -133,7 +133,8 @@ dependencyResolutionManagement {
             library("test-runner", "androidx.test:runner:1.+")
             library("espresso", "androidx.test.espresso:espresso-core:3.+")
             library("mockk", "io.mockk:mockk:1.+")
-            library("arch", "androidx.arch.core:core-testing:2.+")
+            library("core-testing", "androidx.arch.core:core-testing:2.+")
+            library("livedata-testing", "com.jraska.livedata:testing-ktx:1.+")
 
             version("junit", "5.+")
             library("junit-jupiter-api", "org.junit.jupiter", "junit-jupiter-api").versionRef("junit")
@@ -146,8 +147,9 @@ dependencyResolutionManagement {
                     "test-runner",
                     "espresso",
                     "mockk",
-                    "arch",
-                    "junit-jupiter-api"
+                    "core-testing",
+                    "junit-jupiter-api",
+                    "livedata-testing"
                 )
             )
 
