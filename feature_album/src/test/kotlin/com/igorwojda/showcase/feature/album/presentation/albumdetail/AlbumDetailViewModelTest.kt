@@ -9,18 +9,11 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.RegisterExtension
+import org.junit.jupiter.api.extension.ExtendWith
 
 @OptIn(ExperimentalCoroutinesApi::class)
+@ExtendWith(InstantTaskExecutorExtension::class, CoroutinesTestDispatcherExtension::class)
 class AlbumDetailViewModelTest {
-
-    @JvmField
-    @RegisterExtension
-    val instantTaskExecutorExtension = InstantTaskExecutorExtension()
-
-    @JvmField
-    @RegisterExtension
-    val coroutinesTestDispatcherExtension = CoroutinesTestDispatcherExtension()
 
     private val mockGetAlbumUseCase: GetAlbumUseCase = mockk()
 
