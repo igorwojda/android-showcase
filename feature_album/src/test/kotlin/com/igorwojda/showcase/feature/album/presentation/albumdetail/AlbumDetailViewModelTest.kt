@@ -2,12 +2,10 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.State
-import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
+import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension2
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
@@ -20,7 +18,7 @@ class AlbumDetailViewModelTest {
 
     @JvmField
     @RegisterExtension
-    val coroutinesTestExtension = CoroutinesTestExtension()
+    val coroutinesTestExtension = CoroutinesTestExtension2()
 
     private val mockGetAlbumUseCase: GetAlbumUseCase = mockk()
 
@@ -29,7 +27,7 @@ class AlbumDetailViewModelTest {
     )
 
     @Test
-    fun `verify state when GetAlbumUseCase return null`() = runTest {
+    fun `verify state when GetAlbumUseCase return null`() {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
@@ -45,7 +43,7 @@ class AlbumDetailViewModelTest {
         cut.onEnter(mockAlbumDetailFragmentArgs)
 
         // then
-        advanceUntilIdle()
+        coroutinesTestExtension.scheduler.advanceUntilIdle()
 
         cut.stateLiveData.value shouldBeEqualTo State(
             isLoading = false,
