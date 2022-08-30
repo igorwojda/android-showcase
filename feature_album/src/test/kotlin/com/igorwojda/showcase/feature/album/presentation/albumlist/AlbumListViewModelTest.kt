@@ -31,16 +31,6 @@ class AlbumListViewModelTest {
     )
 
     @Test
-    fun `onEnter executes GetAlbumUseCase`() = runTest {
-        // when
-        cut.onEnter()
-
-        // then
-        advanceUntilIdle()
-        coVerify { mockGetAlbumListUseCase.execute() }
-    }
-
-    @Test
     fun `onEnter album list is empty`() = runTest {
         // given
         coEvery { mockGetAlbumListUseCase.execute() } returns Result.Success(emptyList())
