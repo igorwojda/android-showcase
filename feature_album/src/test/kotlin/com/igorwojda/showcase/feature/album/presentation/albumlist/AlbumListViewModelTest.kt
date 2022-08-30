@@ -6,13 +6,12 @@ import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.State
 import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 
@@ -27,28 +26,20 @@ class AlbumListViewModelTest {
     @RegisterExtension
     var instantTaskExecutorExtension = InstantTaskExecutorExtension()
 
-    @MockK
-    internal lateinit var mockGetAlbumListUseCase: GetAlbumListUseCase
+    private val mockGetAlbumListUseCase: GetAlbumListUseCase = mockk()
 
     @MockK(relaxed = true)
-    internal lateinit var mockNavManager: NavManager
+    private val mockNavManager: NavManager = mockk(relaxed = true)
 
-    private lateinit var cut: AlbumListViewModel
-
-    @BeforeEach
-    fun setUp() {
-        MockKAnnotations.init(this)
-
-        cut = AlbumListViewModel(
-            mockNavManager,
-            mockGetAlbumListUseCase
-        )
-    }
+    private val cut = AlbumListViewModel(
+        mockNavManager,
+        mockGetAlbumListUseCase
+    )
 
     @Test
     fun `execute getAlbumUseCase`() {
         // when
-        cut.loadData()
+        cut.onEnter()
 
         // then
         coVerify { mockGetAlbumListUseCase.execute() }
@@ -80,7 +71,7 @@ class AlbumListViewModelTest {
         coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(emptyList())
 
         // when
-        cut.loadData()
+        cut.onEnter()
 
         // then
         cut.stateLiveData.value shouldBeEqualTo State(
@@ -98,7 +89,7 @@ class AlbumListViewModelTest {
         coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(albums)
 
         // when
-        cut.loadData()
+        cut.onEnter()
 
         // then
         cut.stateLiveData.value shouldBeEqualTo State(
