@@ -2,7 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.State
-import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
+import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -20,7 +20,7 @@ class AlbumDetailViewModelTest {
 
     @JvmField
     @RegisterExtension
-    val coroutinesTestExtension = CoroutinesTestExtension()
+    val coroutinesTestDispatcherExtension = CoroutinesTestDispatcherExtension()
 
     private val mockGetAlbumUseCase: GetAlbumUseCase = mockk()
 

@@ -5,7 +5,7 @@ import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase.Result
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.State
-import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
+import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -23,7 +23,7 @@ class AlbumListViewModelTest {
     @ExperimentalCoroutinesApi
     @JvmField
     @RegisterExtension
-    val coroutinesTestExtension = CoroutinesTestExtension()
+    val coroutinesTestDispatcherExtension = CoroutinesTestDispatcherExtension()
 
     @JvmField
     @RegisterExtension
