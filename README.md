@@ -334,6 +334,9 @@ Other high-quality projects will help you to find solutions that work for your p
   modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
 - Gradle dependencies can't be easily shared between app libraries and Gradle
   plugins https://github.com/gradle/gradle/issues/16077
+- `Fragment` is used instead of `FragmentContainerView` as
+  `NavHostFragment` ([Stackoverflow 59275009](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller
+  /59275182#59275182))
 
 ## Contribute
 

@@ -4,19 +4,23 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".app.presentation.NavHostActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".app.presentation.NavHostActivity">
 
+    <!--
+    Fragment is used instead of FragmentContainerView.
+    See: https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182#59275182
+    -->
     <fragment
             android:id="@+id/navHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNav"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNav"
-            app:defaultNavHost="true"
             app:navGraph="@navigation/app_nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,13 +29,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/colorPrimary"
-            app:labelVisibilityMode="labeled"
             app:itemIconTint="@drawable/bottom_nav_colors"
             app:itemTextColor="@drawable/bottom_nav_colors"
-            app:layout_constraintTop_toBottomOf="@id/navHostFragment"
+            app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navHostFragment"
             app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
