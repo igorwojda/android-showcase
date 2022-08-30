@@ -28,23 +28,3 @@ class CoroutinesTestExtension : BeforeEachCallback, AfterEachCallback {
         Dispatchers.resetMain()
     }
 }
-
-//ToDo
-//@ExperimentalCoroutinesApi
-//class CoroutinesTestExtension2 : BeforeEachCallback, AfterEachCallback {
-//
-//    lateinit var scheduler: TestCoroutineScheduler
-//        private set
-//    lateinit var dispatcher: TestDispatcher
-//        private set
-//
-//    override fun beforeEach(context: ExtensionContext?) {
-//        scheduler = TestCoroutineScheduler()
-//        dispatcher = StandardTestDispatcher(scheduler)
-//        Dispatchers.setMain(dispatcher)
-//    }
-//
-//    override fun afterEach(context: ExtensionContext?) {
-//        Dispatchers.resetMain()
-//    }
-//}

@@ -3,12 +3,12 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 import com.igorwojda.showcase.base.presentation.navigation.NavManager
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
+import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase.Result
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.State
 import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -31,7 +31,6 @@ class AlbumListViewModelTest {
 
     private val mockGetAlbumListUseCase: GetAlbumListUseCase = mockk()
 
-    @MockK(relaxed = true)
     private val mockNavManager: NavManager = mockk(relaxed = true)
 
     private val cut = AlbumListViewModel(
@@ -52,7 +51,7 @@ class AlbumListViewModelTest {
     @Test
     fun `onEnter album list is empty`() = runTest {
         // given
-        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(emptyList())
+        coEvery { mockGetAlbumListUseCase.execute() } returns Result.Success(emptyList())
 
         // when
         cut.onEnter()
@@ -71,7 +70,7 @@ class AlbumListViewModelTest {
         // given
         val album = Album("albumName", "artistName", listOf())
         val albums = listOf(album)
-        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(albums)
+        coEvery { mockGetAlbumListUseCase.execute() } returns Result.Success(albums)
 
         // when
         cut.onEnter()

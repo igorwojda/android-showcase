@@ -2,28 +2,18 @@ package com.igorwojda.showcase.feature.album.domain.usecase
 
 import com.igorwojda.showcase.feature.album.data.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
 
 class GetAlbumListUseCaseTest {
 
-    @MockK
-    internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
+    private val mockAlbumRepository: AlbumRepositoryImpl = mockk()
 
-    private lateinit var cut: GetAlbumListUseCase
-
-    @BeforeEach
-    fun setUp() {
-        MockKAnnotations.init(this)
-
-        cut = GetAlbumListUseCase(mockAlbumRepository)
-    }
+    private val cut = GetAlbumListUseCase(mockAlbumRepository)
 
     @Test
     fun `return list of albums`() {
@@ -32,10 +22,10 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns albums
 
         // when
-        val result = runBlocking { cut.execute() }
+        val actual = runBlocking { cut.execute() }
 
         // then
-        result shouldBeEqualTo GetAlbumListUseCase.Result.Success(albums)
+        actual shouldBeEqualTo GetAlbumListUseCase.Result.Success(albums)
     }
 
     @Test
@@ -47,10 +37,10 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns albums
 
         // when
-        val result = runBlocking { cut.execute() }
+        val actual = runBlocking { cut.execute() }
 
         // then
-        result shouldBeEqualTo GetAlbumListUseCase.Result.Success(listOf(albumWithImage))
+        actual shouldBeEqualTo GetAlbumListUseCase.Result.Success(listOf(albumWithImage))
     }
 
     @Test
@@ -60,9 +50,9 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } throws exception
 
         // when
-        val result = runBlocking { cut.execute() }
+        val actual = runBlocking { cut.execute() }
 
         // then
-        result shouldBeEqualTo GetAlbumListUseCase.Result.Error(exception)
+        actual shouldBeEqualTo GetAlbumListUseCase.Result.Error(exception)
     }
 }

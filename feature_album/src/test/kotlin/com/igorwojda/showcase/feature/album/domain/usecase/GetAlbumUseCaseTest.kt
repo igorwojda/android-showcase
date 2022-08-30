@@ -1,49 +1,42 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
 import com.igorwojda.showcase.feature.album.data.AlbumRepositoryImpl
-import io.mockk.MockKAnnotations
+import com.igorwojda.showcase.feature.album.domain.model.Album
+import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase.Result.Error
+import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase.Result.Success
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
 
 class GetAlbumUseCaseTest {
 
-    @MockK
-    internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
+    private val mockAlbumRepository: AlbumRepositoryImpl = mockk()
 
-    private lateinit var cut: GetAlbumUseCase
-
-    @BeforeEach
-    fun setUp() {
-        MockKAnnotations.init(this)
-
-        cut = GetAlbumUseCase(mockAlbumRepository)
-    }
+    private val cut = GetAlbumUseCase(mockAlbumRepository)
 
     @Test
-    fun `when execute then getAlbum`() {
+    fun `when execute then return album`() {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
         val mbId = "123"
 
-        coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } answers { mockk() }
+        val album = mockk<Album>()
+        coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } answers { album }
 
         // when
-        runBlocking { cut.execute(artistName, albumName, mbId) }
+        val actual = runBlocking { cut.execute(artistName, albumName, mbId) }
 
         // then
-        coVerify { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) }
+        actual shouldBeEqualTo Success(album)
     }
 
     @Test
-    fun `when execute then getAlbum throw exception`() {
+    fun `when execute then return error`() {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
@@ -53,10 +46,10 @@ class GetAlbumUseCaseTest {
         coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } throws exception
 
         // when
-        val result = runBlocking { cut.execute(artistName, albumName, mbId) }
+        val actual = runBlocking { cut.execute(artistName, albumName, mbId) }
 
         // then
         coVerify { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) }
-        result shouldBeEqualTo GetAlbumUseCase.Result.Error(exception)
+        actual shouldBeEqualTo Error(exception)
     }
 }

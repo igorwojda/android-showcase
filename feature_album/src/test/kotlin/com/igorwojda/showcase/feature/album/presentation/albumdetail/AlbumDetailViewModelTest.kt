@@ -7,8 +7,6 @@ import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
@@ -31,7 +29,7 @@ class AlbumDetailViewModelTest {
     )
 
     @Test
-    fun `onEnter GetAlbumUseCase returns error`() = runTest {
+    fun `onEnter GetAlbumUseCase returns error`() {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
@@ -47,8 +45,6 @@ class AlbumDetailViewModelTest {
         cut.onEnter(mockAlbumDetailFragmentArgs)
 
         // then
-        advanceUntilIdle()
-
         cut.stateLiveData.value shouldBeEqualTo State(
             isLoading = false,
             isError = true,
@@ -57,6 +53,4 @@ class AlbumDetailViewModelTest {
             coverImageUrl = ""
         )
     }
-
-    //TODO onEnter return success
 }

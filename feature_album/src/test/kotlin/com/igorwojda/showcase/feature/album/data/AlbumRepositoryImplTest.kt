@@ -8,61 +8,52 @@ import com.igorwojda.showcase.feature.album.data.network.model.toEntity
 import com.igorwojda.showcase.feature.album.data.network.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.network.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.network.service.AlbumRetrofitService
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
 
 class AlbumRepositoryImplTest {
 
-    @MockK
-    internal lateinit var mockService: AlbumRetrofitService
+    private val mockService: AlbumRetrofitService = mockk()
+    private val mockAlbumDao: AlbumDao = mockk()
 
-    @MockK
-    internal lateinit var mockAlbumDao: AlbumDao
-
-    private lateinit var cut: AlbumRepositoryImpl
-
-    private val artistName = "Michael Jackson"
-    private val albumName = "Thriller"
-
-    @BeforeEach
-    fun setUp() {
-        MockKAnnotations.init(this)
-
-        cut = AlbumRepositoryImpl(mockService, mockAlbumDao)
-    }
+    private val cut = AlbumRepositoryImpl(mockService, mockAlbumDao)
 
     @Test
     fun `getAlbumInfo fetches AlbumInfo and maps to Model`() {
         // given
+        val artistName = "Michael Jackson"
+        val albumName = "Thriller"
+
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, null)
         } returns GetAlbumInfoResponse(DataFixtures.getAlbum())
 
         // when
-        val result = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
+        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
 
         // then
-        result shouldBeEqualTo DataFixtures.getAlbum().toDomainModel()
+        actual shouldBeEqualTo DataFixtures.getAlbum().toDomainModel()
     }
 
     @Test
     fun `getAlbumInfo returns null if response is null`() {
         // given
+        val artistName = "Michael Jackson"
+        val albumName = "Thriller"
+
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, null)
         } returns null
 
         // when
-        val result = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
+        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
 
         // then
-        result shouldBeEqualTo null
+        actual shouldBeEqualTo null
     }
 
     @Test
@@ -80,10 +71,10 @@ class AlbumRepositoryImplTest {
         } returns Unit
 
         // when
-        val result = runBlocking { cut.searchAlbum(phrase) }
+        val actual = runBlocking { cut.searchAlbum(phrase) }
 
         // then
-        result shouldBeEqualTo listOf(DataFixtures.getAlbum().toDomainModel())
+        actual shouldBeEqualTo listOf(DataFixtures.getAlbum().toDomainModel())
     }
 
     @Test
@@ -98,9 +89,9 @@ class AlbumRepositoryImplTest {
         coEvery { mockAlbumDao.getAll() } returns albumEntities
 
         // when
-        val result = runBlocking { cut.searchAlbum(phrase) }
+        val actual = runBlocking { cut.searchAlbum(phrase) }
 
         // then
-        result shouldBeEqualTo albums
+        actual shouldBeEqualTo albums
     }
 }
