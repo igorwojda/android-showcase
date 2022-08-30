@@ -3,7 +3,7 @@ package com.igorwojda.showcase.base.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.igorwojda.showcase.base.BuildConfig
-import com.igorwojda.showcase.base.presentation.extension.asLiveData
+import com.igorwojda.showcase.base.presentation.ext.asLiveData
 import kotlin.properties.Delegates
 
 abstract class BaseViewModel<State : BaseState, Action : BaseAction>(initialState: State) :

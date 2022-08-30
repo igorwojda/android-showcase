@@ -7,8 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
-import com.igorwojda.showcase.base.presentation.extension.observe
-import com.igorwojda.showcase.base.presentation.extension.visible
+import com.igorwojda.showcase.base.presentation.ext.observe
+import com.igorwojda.showcase.base.presentation.ext.visible
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

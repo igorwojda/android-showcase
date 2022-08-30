@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.igorwojda.showcase.base.delegate.observer
-import com.igorwojda.showcase.base.presentation.extension.hide
-import com.igorwojda.showcase.base.presentation.extension.setOnDebouncedClickListener
-import com.igorwojda.showcase.base.presentation.extension.show
+import com.igorwojda.showcase.base.presentation.ext.hide
+import com.igorwojda.showcase.base.presentation.ext.setOnDebouncedClickListener
+import com.igorwojda.showcase.base.presentation.ext.show
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.databinding.ItemAlbumListBinding
 import com.igorwojda.showcase.feature.album.domain.model.Album

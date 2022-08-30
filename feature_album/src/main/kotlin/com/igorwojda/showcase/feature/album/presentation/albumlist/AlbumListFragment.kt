@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.igorwojda.showcase.base.presentation.extension.observe
-import com.igorwojda.showcase.base.presentation.extension.visible
+import com.igorwojda.showcase.base.presentation.ext.observe
+import com.igorwojda.showcase.base.presentation.ext.visible
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumListBinding
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
