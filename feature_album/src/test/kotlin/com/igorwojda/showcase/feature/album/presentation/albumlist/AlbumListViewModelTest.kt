@@ -11,10 +11,13 @@ import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class AlbumListViewModelTest {
 
     @ExperimentalCoroutinesApi
@@ -37,12 +40,49 @@ class AlbumListViewModelTest {
     )
 
     @Test
-    fun `execute getAlbumUseCase`() {
+    fun `onEnter executes GetAlbumUseCase`() = runTest {
         // when
         cut.onEnter()
 
         // then
+        advanceUntilIdle()
         coVerify { mockGetAlbumListUseCase.execute() }
+    }
+
+    @Test
+    fun `onEnter album list is empty`() = runTest {
+        // given
+        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(emptyList())
+
+        // when
+        cut.onEnter()
+
+        // then
+        advanceUntilIdle()
+        cut.stateLiveData.value shouldBeEqualTo State(
+            isLoading = false,
+            isError = true,
+            albums = listOf()
+        )
+    }
+
+    @Test
+    fun `onEnter album list is non-empty`() = runTest {
+        // given
+        val album = Album("albumName", "artistName", listOf())
+        val albums = listOf(album)
+        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(albums)
+
+        // when
+        cut.onEnter()
+
+        // then
+        advanceUntilIdle()
+        cut.stateLiveData.value shouldBeEqualTo State(
+            isLoading = false,
+            isError = false,
+            albums = albums
+        )
     }
 
     @Test
@@ -63,39 +103,5 @@ class AlbumListViewModelTest {
 
         // then
         coVerify { mockNavManager.navigate(navDirections) }
-    }
-
-    @Test
-    fun `verify state when GetAlbumListUseCase returns empty list`() {
-        // given
-        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(emptyList())
-
-        // when
-        cut.onEnter()
-
-        // then
-        cut.stateLiveData.value shouldBeEqualTo State(
-            isLoading = false,
-            isError = true,
-            albums = listOf()
-        )
-    }
-
-    @Test
-    fun `verify state when GetAlbumListUseCase returns non-empty list`() {
-        // given
-        val album = Album("albumName", "artistName", listOf())
-        val albums = listOf(album)
-        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(albums)
-
-        // when
-        cut.onEnter()
-
-        // then
-        cut.stateLiveData.value shouldBeEqualTo State(
-            isLoading = false,
-            isError = false,
-            albums = albums
-        )
     }
 }

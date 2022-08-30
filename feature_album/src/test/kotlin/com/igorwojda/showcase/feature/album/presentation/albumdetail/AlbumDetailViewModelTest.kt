@@ -2,14 +2,18 @@ package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.State
-import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension2
+import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class AlbumDetailViewModelTest {
 
     @JvmField
@@ -18,7 +22,7 @@ class AlbumDetailViewModelTest {
 
     @JvmField
     @RegisterExtension
-    val coroutinesTestExtension = CoroutinesTestExtension2()
+    val coroutinesTestExtension = CoroutinesTestExtension()
 
     private val mockGetAlbumUseCase: GetAlbumUseCase = mockk()
 
@@ -27,7 +31,7 @@ class AlbumDetailViewModelTest {
     )
 
     @Test
-    fun `verify state when GetAlbumUseCase return null`() {
+    fun `onEnter GetAlbumUseCase returns error`() = runTest {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
@@ -43,7 +47,7 @@ class AlbumDetailViewModelTest {
         cut.onEnter(mockAlbumDetailFragmentArgs)
 
         // then
-        coroutinesTestExtension.scheduler.advanceUntilIdle()
+        advanceUntilIdle()
 
         cut.stateLiveData.value shouldBeEqualTo State(
             isLoading = false,
@@ -53,4 +57,6 @@ class AlbumDetailViewModelTest {
             coverImageUrl = ""
         )
     }
+
+    //TODO onEnter return success
 }
