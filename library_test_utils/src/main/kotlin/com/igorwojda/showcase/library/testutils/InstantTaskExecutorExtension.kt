@@ -11,10 +11,10 @@ import org.junit.jupiter.api.extension.ExtensionContext
  * A JUnit Test Extension that swaps the background executor used by the Architecture Components with a
  * different one which executes each task synchronously.
  * <p>
- * You can use this rule for your host side tests that use Architecture Components.
+ * Extension can be used for your host side tests that use Architecture Components.
  */
 // Android lint complains about exceeding access rights to ArchTaskExecutor
-// More: Suppress info https://issuetracker.google.com/u/0/issues/79189568
+// More: https://issuetracker.google.com/u/0/issues/79189568
 @SuppressLint("RestrictedApi")
 class InstantTaskExecutorExtension : BeforeEachCallback, AfterEachCallback {
 
@@ -28,9 +28,7 @@ class InstantTaskExecutorExtension : BeforeEachCallback, AfterEachCallback {
                 runnable.run()
             }
 
-            override fun isMainThread(): Boolean {
-                return true
-            }
+            override fun isMainThread() = true
         })
     }
 
