@@ -320,23 +320,22 @@ Other high-quality projects will help you to find solutions that work for your p
 - Gradle 7.1.1 is not compatible with GradleJDK 16 (build is failing, so JDK 15 must be used)
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
   . This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527)
-  and [Issue KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
+  and [KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml
-  file ([Issue 27971](https://youtrack.jetbrains.net/issue/KT-27971))
-- False positive "Function can be private" ([Issue KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
-- False positive cannot access class ([Issue 16077](https://youtrack.jetbrains.com/issue/KT-44797)). This is fixed in
+  file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
+- False positive "Function can be private" ([KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
+- False positive cannot access class ([KT-16077](https://youtrack.jetbrains.com/issue/KT-44797)). This is fixed in
   InteliJ IDEA 2021.1 EAP 1 afair.
 - Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the
-  library ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
+  library ([16077](https://github.com/gradle/gradle/issues/16077))
 - Android lint complains about exceeding access rights to
-  ArchTaskExecutor [Issue 79189568]((https://issuetracker.google.com/u/0/issues/79189568))
-- JUnit 5 does not support tests with suspended
-  modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+  ArchTaskExecutor [79189568]((https://issuetracker.google.com/u/0/issues/79189568))
+- JUnit 5 does not support tests with suspended modifier ([1914](https://github.com/junit-team/junit5/issues/1914))
 - Gradle dependencies can't be easily shared between app libraries and Gradle
   plugins https://github.com/gradle/gradle/issues/16077
 - `Fragment` is used instead of `FragmentContainerView` as
-  `NavHostFragment` ([Stackoverflow 59275009](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller
-  /59275182#59275182))
+  `NavHostFragment` ([142847973](https://issuetracker.google.com/issues/142847973),
+- [Stackoverflow 59275009](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182#59275182))
 
 ## Contribute
 
