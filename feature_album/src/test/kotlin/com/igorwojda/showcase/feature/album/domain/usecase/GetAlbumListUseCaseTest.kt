@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
+import com.igorwojda.showcase.base.common.Result
 import com.igorwojda.showcase.feature.album.data.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
 import io.mockk.coEvery
@@ -25,7 +26,7 @@ class GetAlbumListUseCaseTest {
         val actual = runBlocking { cut.execute() }
 
         // then
-        actual shouldBeEqualTo GetAlbumListUseCase.Result.Success(albums)
+        actual shouldBeEqualTo Result.Success(albums)
     }
 
     @Test
@@ -40,7 +41,7 @@ class GetAlbumListUseCaseTest {
         val actual = runBlocking { cut.execute() }
 
         // then
-        actual shouldBeEqualTo GetAlbumListUseCase.Result.Success(listOf(albumWithImage))
+        actual shouldBeEqualTo Result.Success(listOf(albumWithImage))
     }
 
     @Test
@@ -53,6 +54,6 @@ class GetAlbumListUseCaseTest {
         val actual = runBlocking { cut.execute() }
 
         // then
-        actual shouldBeEqualTo GetAlbumListUseCase.Result.Error(exception)
+        actual shouldBeEqualTo Result.Failure(exception)
     }
 }

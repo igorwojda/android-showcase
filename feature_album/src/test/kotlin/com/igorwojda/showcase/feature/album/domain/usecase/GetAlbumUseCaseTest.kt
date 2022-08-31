@@ -1,9 +1,8 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
+import com.igorwojda.showcase.base.common.Result
 import com.igorwojda.showcase.feature.album.data.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.domain.model.Album
-import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase.Result.Error
-import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase.Result.Success
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -32,7 +31,7 @@ class GetAlbumUseCaseTest {
         val actual = runBlocking { cut.execute(artistName, albumName, mbId) }
 
         // then
-        actual shouldBeEqualTo Success(album)
+        actual shouldBeEqualTo Result.Success(album)
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
+import com.igorwojda.showcase.base.common.Result
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.State
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
@@ -32,7 +33,7 @@ class AlbumDetailViewModelTest {
 
         coEvery {
             mockGetAlbumUseCase.execute(artistName, albumName, mbId)
-        } returns GetAlbumUseCase.Result.Error(Exception())
+        } returns Result.Failure(Exception())
 
         // when
         cut.onEnter(mockAlbumDetailFragmentArgs)
