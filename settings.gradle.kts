@@ -34,6 +34,7 @@ pluginManagement {
         id("de.mannodermaus.android-junit5") version androidJUnit5Version
     }
 }
+
 dependencyResolutionManagement {
     // TODO
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
