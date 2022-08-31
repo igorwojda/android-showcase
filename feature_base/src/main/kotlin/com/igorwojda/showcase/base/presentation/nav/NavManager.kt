@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.navigation
+package com.igorwojda.showcase.base.presentation.nav
 
 import androidx.navigation.NavDirections
 
