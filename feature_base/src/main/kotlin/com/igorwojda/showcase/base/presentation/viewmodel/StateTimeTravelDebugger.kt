@@ -4,7 +4,7 @@ import timber.log.Timber
 import kotlin.reflect.full.memberProperties
 
 /**
- * Logs actions and view state transitions.
+ * Logs actions and view state transitions to facilitate debugging.
  */
 class StateTimeTravelDebugger(private val viewClassName: String) {
 
