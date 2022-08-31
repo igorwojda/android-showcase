@@ -27,7 +27,7 @@ class AlbumJsonDataModelTest {
     }
 
     @Test
-    fun `data model with missing data maps to AlbumDomain§Model`() {
+    fun `data model with missing data maps to AlbumDomainModel`() {
         // given
         val cut = DataFixtures.getMinimalAlbum()
 

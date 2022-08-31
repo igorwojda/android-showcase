@@ -22,7 +22,7 @@ class AlbumDetailViewModelTest {
     )
 
     @Test
-    fun `onEnter GetAlbumUseCase returns error`() {
+    fun `onEnter album is not found`() {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"

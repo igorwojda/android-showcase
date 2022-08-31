@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 class AlbumWikiNetworkDataModelTest {
 
     @Test
-    fun `maps to AlbumWikiDomainModel`() {
+    fun `map to AlbumWikiDomainModel`() {
         // given
         val published = "published"
         val summary = "summary"

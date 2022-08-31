@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 class AlbumImageJsonDataModelTest {
 
     @Test
-    fun `maps to AlbumWikiDomainModel`() {
+    fun `map to AlbumWikiDomainModel`() {
         // given
         val url = "url"
         val size = AlbumImageSizeJson.EXTRA_LARGE
