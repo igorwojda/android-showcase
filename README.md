@@ -22,7 +22,12 @@ want to help.
 ## Application scope
 
 The `android-showcase` is a simple application that displays information about music albums. The data is loaded from
-the [Last.fm Music Discovery API](https://www.last.fm/api).
+the [Last.fm Music Discovery API](https://www.last.fm/api). The app has few screens located in multiple feature modules:
+
+- Album list screen - display list of albums
+- Album detail screen - display information about selected album
+- Profile screen - empty
+- Favourites screen - empty
 
 ## Project characteristics and tech-stack
 
