@@ -19,6 +19,11 @@ long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle
 This project is being maintained to match industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you
 want to help.
 
+## Application scope
+
+The `android-showcase` is a simple application that displays information about music albums. The data is loaded from
+the [Last.fm Music Discovery API](https://www.last.fm/api).
+
 ## Project characteristics and tech-stack
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
@@ -65,7 +70,7 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Material design](https://material.io/design)
   * Reactive UI
 * Static analysis tools
-  * [Ktlint](https://github.com/pinterest/ktlint) - validate code formating
+  * [Ktlint](https://github.com/pinterest/ktlint) - validate code formatting
   * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify complexity look for and code smell
 * Gradle
   * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
@@ -82,7 +87,7 @@ component, equivalent of [microservice](https://en.wikipedia.org/wiki/Microservi
 
 The modularized code-base approach provides few benefits:
 
-- better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API.,
+- better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API.
   Feature related classes live in different modules and can't be referenced without explicit module dependency.
 - features can be developed in parallel eg. by different teams
 - each feature can be developed in isolation, independently from other features
@@ -186,7 +191,7 @@ This project utilizes multiple mechanics to easily share the same versions of de
 
 External dependencies (libraries) are defined
 using [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) feature in
-the [settings.gradle](./settings.gradle) file. These dynamic library versions are locked using
+the [settings.gradle](./settings.gradle.kts) file. These dynamic library versions are locked using
 Gradle [locking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete
 dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
 
@@ -200,7 +205,7 @@ feature module.
 
 Gradle plugins are defined
 in [pluginManagement](https://docs.gradle.org/current/userguide/plugins.html#sec:plugin_management)
-block ([settings.gradle](./settings.gradle) file).
+block ([settings.gradle](./settings.gradle.kts) file).
 
 Dynamic versions aren't supported for Gradle plugins,
 so [locking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism can't be used (like
