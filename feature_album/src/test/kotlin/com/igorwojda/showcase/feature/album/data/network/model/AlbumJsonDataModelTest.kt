@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.data.network.enum.AlbumImageSizeJson
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import org.amshove.kluent.shouldBeEqualTo
