@@ -67,7 +67,7 @@ class AlbumListViewModelTest {
     }
 
     @Test
-    fun `navigate to album details`() {
+    fun `onAlbumClick navigate to album detail`() {
         // given
         val artistName = "Michael Jackson"
         val albumName = "Thriller"
@@ -80,7 +80,7 @@ class AlbumListViewModelTest {
         )
 
         // when
-        cut.navigateToAlbumDetails(artistName, albumName, mbId)
+        cut.onAlbumClick(artistName, albumName, mbId)
 
         // then
         coVerify { mockNavManager.navigate(navDirections) }

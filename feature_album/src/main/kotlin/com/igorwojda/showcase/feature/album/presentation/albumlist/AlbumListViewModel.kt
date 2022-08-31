@@ -50,7 +50,7 @@ internal class AlbumListViewModel(
         }
     }
 
-    fun navigateToAlbumDetails(artistName: String, albumName: String, mbId: String?) {
+    fun onAlbumClick(artistName: String, albumName: String, mbId: String?) {
         val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(artistName, albumName, mbId)
         navManager.navigate(navDirections)
     }
