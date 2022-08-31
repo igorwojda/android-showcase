@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
-import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.igorwojda.showcase.R
@@ -24,7 +24,11 @@ class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
     }
 
     private fun initBottomNavigation() {
-        val navController = findNavController(this, R.id.navHostFragment)
+        // When using FragmentContainerView, NavController has to be retrieved by using findFragmentById() rather than
+        // by using findNavController(). More:
+        // https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182#59275182
+        val navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
+
         binding.bottomNav.setupWithNavController(navController)
 
         // TODO
