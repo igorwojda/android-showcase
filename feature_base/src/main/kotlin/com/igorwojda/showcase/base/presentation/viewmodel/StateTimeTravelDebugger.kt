@@ -3,7 +3,9 @@ package com.igorwojda.showcase.base.presentation.viewmodel
 import timber.log.Timber
 import kotlin.reflect.full.memberProperties
 
-// Class logs ViewState transitions to facilitate debugging.
+/**
+ * Logs actions and view state transitions.
+ */
 class StateTimeTravelDebugger(private val viewClassName: String) {
 
     private val stateTimeline = mutableListOf<StateTransition>()
