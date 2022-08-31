@@ -17,6 +17,7 @@ pluginManagement {
         val kotlinVersion: String by settings
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
         kotlin("android") version kotlinVersion
+        kotlin("plugin.serialization") version kotlinVersion
 
         val kspVersion: String by settings
         id("com.google.devtools.ksp") version kspVersion
@@ -74,8 +75,10 @@ dependencyResolutionManagement {
 
             version("retrofit", "2.+")
             library("retrofit-core", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
-            library("converter-moshi", "com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
-            bundle("retrofit", listOf("retrofit-core", "converter-moshi"))
+            library("kotlinx-serialization-converter",
+                "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:+")
+            library("serialization-json", "org.jetbrains.kotlinx:kotlinx-serialization-json:+")
+            bundle("retrofit", listOf("retrofit-core", "kotlinx-serialization-converter", "serialization-json"))
 
             // Retrofit will use okhttp 4 (it has binary capability with okhttp 3)
             // See: https://square.github.io/okhttp/upgrading_to_okhttp_4/

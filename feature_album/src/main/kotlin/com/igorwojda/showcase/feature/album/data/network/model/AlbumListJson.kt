@@ -1,7 +1,9 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 internal data class AlbumListJson(
-    @field:Json(name = "album") val album: List<AlbumJson>
+    @SerialName("album") val album: List<AlbumJson>,
 )

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("plugin.serialization")
     id("com.google.devtools.ksp")
     id("org.jlleitschuh.gradle.ktlint")
     id("androidx.navigation.safeargs.kotlin")

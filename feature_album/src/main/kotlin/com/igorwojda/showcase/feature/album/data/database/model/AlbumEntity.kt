@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.igorwojda.showcase.feature.album.domain.model.Album
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Entity(tableName = "albums")
 @TypeConverters(AlbumImageEntityTypeConverter::class)
@@ -27,14 +27,11 @@ internal fun AlbumEntity.toDomainModel() =
     )
 
 internal class AlbumImageEntityTypeConverter {
-    private val type = Types.newParameterizedType(List::class.java, AlbumImageEntity::class.java)
-    private val adapter: JsonAdapter<List<AlbumImageEntity>> = Moshi.Builder().build().adapter(type)
-
     @TypeConverter
     fun stringToList(data: String?) =
-        data?.let { adapter.fromJson(it) } ?: listOf()
+        data?.let { Json.decodeFromString<List<AlbumImageEntity>>(it) } ?: listOf()
 
     @TypeConverter
     fun listToString(someObjects: List<AlbumImageEntity>): String =
-        adapter.toJson(someObjects)
+        Json.encodeToString(someObjects)
 }

@@ -1,11 +1,13 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
 import com.igorwojda.showcase.feature.album.domain.model.AlbumWiki
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 internal data class AlbumWikiJson(
-    @field:Json(name = "published") val published: String,
-    @field:Json(name = "summary") val summary: String
+    @SerialName("published") val published: String,
+    @SerialName("summary") val summary: String,
 )
 
 internal fun AlbumWikiJson.toDomainModel() = AlbumWiki(

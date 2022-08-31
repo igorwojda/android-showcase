@@ -2,21 +2,28 @@ package com.igorwojda.showcase.feature.album.data.network.enum
 
 import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageSizeEntity
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 internal enum class AlbumImageSizeJson {
 
-    @field:Json(name = "medium")
+    @SerialName("medium")
     MEDIUM,
-    @field:Json(name = "small")
+
+    @SerialName("small")
     SMALL,
-    @field:Json(name = "large")
+
+    @SerialName("large")
     LARGE,
-    @field:Json(name = "extralarge")
+
+    @SerialName("extralarge")
     EXTRA_LARGE,
-    @field:Json(name = "mega")
+
+    @SerialName("mega")
     MEGA,
-    @field:Json(name = "")
+
+    @SerialName("")
     UNKNOWN
 }
 

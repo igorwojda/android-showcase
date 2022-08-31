@@ -2,12 +2,14 @@ package com.igorwojda.showcase
 
 import com.igorwojda.showcase.app.data.network.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.network.UserAgentInterceptor
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.ExperimentalSerializationApi
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
 
 val appModule = module {
@@ -33,10 +35,19 @@ val appModule = module {
     }
 
     single {
+        val contentType = "application/json".toMediaType()
+
+        val json = kotlinx.serialization.json.Json {
+            // By default Kotlin serialization will serialize all of the keys present in JSON object and throw an
+            // exception if given key is not present in the Kotlin class. This flag allows to ignore JSON fields
+            ignoreUnknownKeys = true
+        }
+
+        @OptIn(ExperimentalSerializationApi::class)
         Retrofit.Builder()
             .baseUrl(BuildConfig.GRADLE_API_BASE_URL)
             .client(get())
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(json.asConverterFactory(contentType))
             .build()
     }
 }

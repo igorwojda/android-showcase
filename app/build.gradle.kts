@@ -2,8 +2,9 @@ import com.android.build.api.dsl.ApplicationDefaultConfig
 
 plugins {
     id("com.android.application")
-    id("com.google.devtools.ksp")
     kotlin("android")
+    kotlin("plugin.serialization")
+    id("com.google.devtools.ksp")
     id("org.jlleitschuh.gradle.ktlint")
     id("androidx.navigation.safeargs.kotlin")
     id("de.mannodermaus.android-junit5")

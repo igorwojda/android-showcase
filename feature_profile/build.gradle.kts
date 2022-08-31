@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("plugin.serialization")
     id("androidx.navigation.safeargs.kotlin")
     id("de.mannodermaus.android-junit5")
 }

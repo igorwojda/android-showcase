@@ -1,7 +1,9 @@
 package com.igorwojda.showcase.feature.album.data.network.model
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 internal data class AlbumSearchJson(
-    @field:Json(name = "albummatches") val albumMatches: AlbumListJson
+    @SerialName("albummatches") val albumMatches: AlbumListJson,
 )
