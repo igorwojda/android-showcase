@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.igorwojda.showcase.base.delegate.observer
+import com.igorwojda.showcase.base.common.delegate.observer
 import com.igorwojda.showcase.base.presentation.ext.hide
 import com.igorwojda.showcase.base.presentation.ext.setOnDebouncedClickListener
 import com.igorwojda.showcase.base.presentation.ext.show

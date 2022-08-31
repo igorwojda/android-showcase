@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist
 
 import androidx.lifecycle.viewModelScope
+import com.igorwojda.showcase.base.common.Result
 import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseState
@@ -35,14 +36,14 @@ internal class AlbumListViewModel(
         viewModelScope.launch {
             getAlbumListUseCase.execute().also { result ->
                 val action = when (result) {
-                    is GetAlbumListUseCase.Result.Success ->
-                        if (result.data.isEmpty()) {
+                    is Result.Success ->
+                        if (result.value.isEmpty()) {
                             Action.AlbumListLoadingFailure
                         } else {
-                            Action.AlbumListLoadingSuccess(result.data)
+                            Action.AlbumListLoadingSuccess(result.value)
                         }
 
-                    is GetAlbumListUseCase.Result.Error ->
+                    is Result.Failure ->
                         Action.AlbumListLoadingFailure
                 }
                 sendAction(action)

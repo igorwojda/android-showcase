@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import androidx.lifecycle.viewModelScope
+import com.igorwojda.showcase.base.common.Result
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseState
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
@@ -24,8 +25,8 @@ internal class AlbumDetailViewModel(
         viewModelScope.launch {
             getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
                 when (it) {
-                    is GetAlbumUseCase.Result.Success -> sendAction(AlbumLoadSuccess(it.data))
-                    is GetAlbumUseCase.Result.Error -> sendAction(AlbumLoadFailure)
+                    is Result.Success -> sendAction(AlbumLoadSuccess(it.value))
+                    is Result.Failure -> sendAction(AlbumLoadFailure)
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.delegate
+package com.igorwojda.showcase.base.common.delegate
 
 import kotlin.properties.ObservableProperty
 import kotlin.properties.ReadWriteProperty
