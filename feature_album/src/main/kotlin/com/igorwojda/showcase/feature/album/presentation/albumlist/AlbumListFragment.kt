@@ -33,7 +33,7 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
         val context = requireContext()
 
         albumAdapter.setOnDebouncedClickListener {
-            model.onAlbumClick(it.artist, it.name, it.mbId)
+            model.onAlbumClick(it)
         }
 
         binding.recyclerView.apply {

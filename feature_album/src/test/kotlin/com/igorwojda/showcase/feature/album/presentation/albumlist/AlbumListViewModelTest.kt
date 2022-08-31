@@ -73,6 +73,12 @@ class AlbumListViewModelTest {
         val albumName = "Thriller"
         val mbId = "mbId"
 
+        val album = Album(
+            artist = artistName,
+            name = albumName,
+            mbId = mbId
+        )
+
         val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(
             artistName,
             albumName,
@@ -80,7 +86,7 @@ class AlbumListViewModelTest {
         )
 
         // when
-        cut.onAlbumClick(artistName, albumName, mbId)
+        cut.onAlbumClick(album)
 
         // then
         coVerify { mockNavManager.navigate(navDirections) }
