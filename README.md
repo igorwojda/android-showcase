@@ -327,6 +327,8 @@ Other high-quality projects will help you to find solutions that work for your p
 
 ## Known issues
 
+- Delegate import is not provided when variable has the same name as
+  Delegate([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403)).
 - Gradle 7.1.1 is not compatible with GradleJDK 16 (build is failing, so JDK 15 must be used)
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
   . This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527)
@@ -339,10 +341,10 @@ Other high-quality projects will help you to find solutions that work for your p
 - Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the
   library ([16077](https://github.com/gradle/gradle/issues/16077))
 - Android lint complains about exceeding access rights to
-  ArchTaskExecutor [79189568]((https://issuetracker.google.com/u/0/issues/79189568))
+  ArchTaskExecutor ([79189568](https://issuetracker.google.com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended modifier ([1914](https://github.com/junit-team/junit5/issues/1914))
 - Gradle dependencies can't be easily shared between app libraries and Gradle
-  plugins https://github.com/gradle/gradle/issues/16077
+  plugins ([16077](https://github.com/gradle/gradle/issues/16077))
 
 ## Contribute
 
