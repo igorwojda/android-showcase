@@ -1,7 +1,7 @@
 package com.igorwojda.showcase
 
-import com.igorwojda.showcase.app.data.network.AuthenticationInterceptor
-import com.igorwojda.showcase.app.data.network.UserAgentInterceptor
+import com.igorwojda.showcase.app.data.api.AuthenticationInterceptor
+import com.igorwojda.showcase.app.data.api.UserAgentInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.MediaType.Companion.toMediaType

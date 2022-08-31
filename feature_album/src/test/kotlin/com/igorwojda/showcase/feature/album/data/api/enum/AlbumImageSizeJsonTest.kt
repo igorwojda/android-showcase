@@ -1,7 +1,7 @@
-package com.igorwojda.showcase.feature.album.data.network.enum
+package com.igorwojda.showcase.feature.album.data.api.enum
 
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumImageSizeJson
-import com.igorwojda.showcase.feature.album.data.network.model.toDomainModel
+import com.igorwojda.showcase.feature.album.data.api.model.AlbumImageSizeJson
+import com.igorwojda.showcase.feature.album.data.api.model.toDomainModel
 import org.junit.jupiter.api.Test
 
 class AlbumImageSizeJsonTest {

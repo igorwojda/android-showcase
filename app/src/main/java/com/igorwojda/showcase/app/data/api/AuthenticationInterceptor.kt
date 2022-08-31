@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.app.data.network
+package com.igorwojda.showcase.app.data.api
 
 import okhttp3.Interceptor
 import okhttp3.Response

@@ -1,11 +1,11 @@
-package com.igorwojda.showcase.feature.album.data.network.model
+package com.igorwojda.showcase.feature.album.data.api.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.domain.model.AlbumWiki
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-class AlbumWikiNetworkDataModelTest {
+class AlbumWikiDataModelTest {
 
     @Test
     fun `map to AlbumWikiDomainModel`() {

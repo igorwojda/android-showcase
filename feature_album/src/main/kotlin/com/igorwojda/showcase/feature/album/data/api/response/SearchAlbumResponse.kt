@@ -1,6 +1,6 @@
-package com.igorwojda.showcase.feature.album.data.network.response
+package com.igorwojda.showcase.feature.album.data.api.response
 
-import com.igorwojda.showcase.feature.album.data.network.model.AlbumSearchJson
+import com.igorwojda.showcase.feature.album.data.api.model.AlbumSearchJson
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
