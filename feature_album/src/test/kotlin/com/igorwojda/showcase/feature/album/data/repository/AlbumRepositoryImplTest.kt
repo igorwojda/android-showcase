@@ -68,7 +68,7 @@ class AlbumRepositoryImplTest {
         )
 
         coEvery {
-            mockAlbumDao.insertAlbums(any())
+            mockAlbumDao.insertAlbum(any())
         } returns Unit
 
         // when

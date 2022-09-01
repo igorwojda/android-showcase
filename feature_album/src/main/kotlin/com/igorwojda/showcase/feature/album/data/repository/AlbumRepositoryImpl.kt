@@ -31,7 +31,7 @@ internal class AlbumRepositoryImpl(
 
             albumList
                 .map { it.toEntity() }
-                .let { albumDao.insertAlbums(it) }
+                .let { albumDao.insertAlbum(it) }
 
             albumList.map { it.toDomainModel() }
         } catch (e: UnknownHostException) {
