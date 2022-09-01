@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntity
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
@@ -15,7 +16,7 @@ internal class AlbumRepositoryImpl(
 ) : AlbumRepository {
 
     override suspend fun searchAlbum(phrase: String): List<Album> =
-        when (albumRetrofitService.searchAlbumAsync(phrase)) {
+        when (val result = albumRetrofitService.searchAlbumAsync(phrase)) {
 //            is NetworkResult.NetworkError -> {
 //                Timber.d("NetworkResult.NetworkError")
 //                emptyList()
@@ -28,7 +29,15 @@ internal class AlbumRepositoryImpl(
 //                Timber.d("NetworkResult.NetworkSuccess")
 //                emptyList()
 //            }
-            is Result.Success -> emptyList()
+            is Result.Success -> {
+                result
+                    .data
+                    .results
+                    .albumMatches
+                    .album
+                    .map { it.toEntity() }
+                    .map { it.toDomainModel() }
+            }
             is Result.Error -> emptyList()
             is Result.Exception -> emptyList()
         }
