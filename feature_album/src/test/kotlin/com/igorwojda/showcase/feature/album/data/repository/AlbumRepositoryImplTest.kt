@@ -24,23 +24,6 @@ class AlbumRepositoryImplTest {
     private val cut = AlbumRepositoryImpl(mockService, mockAlbumDao)
 
     @Test
-    fun `getAlbumInfo fetches AlbumInfo and maps to Model`() {
-        // given
-        val artistName = "Michael Jackson"
-        val albumName = "Thriller"
-
-        coEvery {
-            mockService.getAlbumInfoAsync(artistName, albumName, null)
-        } returns GetAlbumInfoResponse(DataFixtures.getAlbum())
-
-        // when
-        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
-
-        // then
-        actual shouldBeEqualTo DataFixtures.getAlbum().toDomainModel()
-    }
-
-    @Test
     fun `getAlbumInfo returns null if response is null`() {
         // given
         val artistName = "Michael Jackson"
@@ -94,5 +77,22 @@ class AlbumRepositoryImplTest {
 
         // then
         actual shouldBeEqualTo albums
+    }
+
+    @Test
+    fun `getAlbumInfo fetches AlbumInfo and maps to Model`() {
+        // given
+        val artistName = "Michael Jackson"
+        val albumName = "Thriller"
+
+        coEvery {
+            mockService.getAlbumInfoAsync(artistName, albumName, null)
+        } returns GetAlbumInfoResponse(DataFixtures.getAlbum())
+
+        // when
+        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
+
+        // then
+        actual shouldBeEqualTo DataFixtures.getAlbum().toDomainModel()
     }
 }

@@ -14,16 +14,6 @@ internal class AlbumRepositoryImpl(
     private val albumDao: AlbumDao
 ) : AlbumRepository {
 
-    override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): Album? {
-        return try {
-            albumRetrofitService.getAlbumInfoAsync(artistName, albumName, mbId)
-                ?.album
-                ?.toDomainModel()
-        } catch (e: UnknownHostException) {
-            albumDao.getAlbum(artistName, albumName, mbId).toDomainModel()
-        }
-    }
-
     override suspend fun searchAlbum(phrase: String): List<Album> {
         return try {
             val searchAlbumResponse = albumRetrofitService.searchAlbumAsync(phrase)
@@ -37,6 +27,16 @@ internal class AlbumRepositoryImpl(
         } catch (e: UnknownHostException) {
             albumDao.getAll()
                 .map { it.toDomainModel() }
+        }
+    }
+
+    override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): Album? {
+        return try {
+            albumRetrofitService.getAlbumInfoAsync(artistName, albumName, mbId)
+                ?.album
+                ?.toDomainModel()
+        } catch (e: UnknownHostException) {
+            albumDao.getAlbum(artistName, albumName, mbId).toDomainModel()
         }
     }
 }
