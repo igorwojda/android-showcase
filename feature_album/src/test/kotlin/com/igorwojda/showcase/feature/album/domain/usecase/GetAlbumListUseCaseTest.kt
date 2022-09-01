@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
 import com.igorwojda.showcase.base.common.Result
-import com.igorwojda.showcase.feature.album.data.AlbumRepositoryImpl
+import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
 import io.mockk.coEvery
 import io.mockk.mockk

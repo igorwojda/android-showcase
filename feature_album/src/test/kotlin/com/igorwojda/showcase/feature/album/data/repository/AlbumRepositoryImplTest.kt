@@ -1,13 +1,14 @@
-package com.igorwojda.showcase.feature.album.data
+package com.igorwojda.showcase.feature.album.data.repository
 
-import com.igorwojda.showcase.feature.album.data.api.model.AlbumListJson
-import com.igorwojda.showcase.feature.album.data.api.model.AlbumSearchJson
-import com.igorwojda.showcase.feature.album.data.api.model.toDomainModel
-import com.igorwojda.showcase.feature.album.data.api.model.toEntity
-import com.igorwojda.showcase.feature.album.data.api.response.GetAlbumInfoResponse
-import com.igorwojda.showcase.feature.album.data.api.response.SearchAlbumResponse
-import com.igorwojda.showcase.feature.album.data.api.service.AlbumRetrofitService
-import com.igorwojda.showcase.feature.album.data.database.AlbumDao
+import com.igorwojda.showcase.feature.album.data.DataFixtures
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumListJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumSearchJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntity
+import com.igorwojda.showcase.feature.album.data.datasource.api.response.GetAlbumInfoResponse
+import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchAlbumResponse
+import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking

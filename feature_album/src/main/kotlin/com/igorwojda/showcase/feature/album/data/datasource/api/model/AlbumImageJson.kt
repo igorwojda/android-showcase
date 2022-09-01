@@ -1,6 +1,6 @@
-package com.igorwojda.showcase.feature.album.data.api.model
+package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
-import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageEntity
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntity
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

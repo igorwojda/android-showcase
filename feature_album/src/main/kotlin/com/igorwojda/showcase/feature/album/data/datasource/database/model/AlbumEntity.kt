@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.data.database.model
+package com.igorwojda.showcase.feature.album.data.datasource.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

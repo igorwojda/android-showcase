@@ -1,8 +1,9 @@
 package com.igorwojda.showcase.feature.album.data
 
 import androidx.room.Room
-import com.igorwojda.showcase.feature.album.data.api.service.AlbumRetrofitService
-import com.igorwojda.showcase.feature.album.data.database.AlbumDatabase
+import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDatabase
+import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 import org.koin.dsl.module
 import retrofit2.Retrofit

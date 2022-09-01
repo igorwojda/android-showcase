@@ -1,10 +1,10 @@
-package com.igorwojda.showcase.feature.album.data.database
+package com.igorwojda.showcase.feature.album.data.datasource.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntity
 
 @Dao
 internal interface AlbumDao {

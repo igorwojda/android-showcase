@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.data.database.model
+package com.igorwojda.showcase.feature.album.data.datasource.database.model
 
 import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 

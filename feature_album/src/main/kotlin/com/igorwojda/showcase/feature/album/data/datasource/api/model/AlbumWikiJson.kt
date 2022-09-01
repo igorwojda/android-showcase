@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.data.api.model
+package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
 import com.igorwojda.showcase.feature.album.domain.model.AlbumWiki
 import kotlinx.serialization.SerialName

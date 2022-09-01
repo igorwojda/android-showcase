@@ -1,12 +1,12 @@
 package com.igorwojda.showcase.feature.album.data
 
-import com.igorwojda.showcase.feature.album.data.api.model.AlbumImageJson
-import com.igorwojda.showcase.feature.album.data.api.model.AlbumImageSizeJson
-import com.igorwojda.showcase.feature.album.data.api.model.AlbumJson
-import com.igorwojda.showcase.feature.album.data.api.model.AlbumWikiJson
-import com.igorwojda.showcase.feature.album.data.database.model.AlbumEntity
-import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageEntity
-import com.igorwojda.showcase.feature.album.data.database.model.AlbumImageSizeEntity
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumWikiJson
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntity
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntity
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageSizeEntity
 
 object DataFixtures {
 
