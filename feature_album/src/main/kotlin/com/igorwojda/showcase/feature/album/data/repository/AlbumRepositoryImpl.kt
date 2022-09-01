@@ -17,18 +17,6 @@ internal class AlbumRepositoryImpl(
 
     override suspend fun searchAlbum(phrase: String): List<Album> =
         when (val result = albumRetrofitService.searchAlbumAsync(phrase)) {
-//            is NetworkResult.NetworkError -> {
-//                Timber.d("NetworkResult.NetworkError")
-//                emptyList()
-//            }
-//            is NetworkResult.NetworkException -> {
-//                Timber.d("NetworkResult.NetworkException")
-//                emptyList()
-//            }
-//            is NetworkResult.NetworkSuccess -> {
-//                Timber.d("NetworkResult.NetworkSuccess")
-//                emptyList()
-//            }
             is Result.Success -> {
                 result
                     .data
@@ -39,23 +27,15 @@ internal class AlbumRepositoryImpl(
                     .also { albumDao.insertAlbums(it) }
                     .map { it.toDomainModel() }
             }
-            is Result.Error -> emptyList()
-            is Result.Exception -> emptyList()
+            is Result.Error -> {
+                emptyList()
+            }
+            is Result.Exception -> {
+                albumDao
+                    .getAll()
+                    .map { it.toDomainModel() }
+            }
         }
-
-//        return try {
-//            val searchAlbumResponse = albumRetrofitService.searchAlbumAsync(phrase)
-//            val albumList = searchAlbumResponse.results.albumMatches.album
-//
-//            albumList
-//                .map { it.toEntity() }
-//                .let { albumDao.insertAlbum(it) }
-//
-//            albumList.map { it.toDomainModel() }
-//        } catch (e: UnknownHostException) {
-//            albumDao.getAll()
-//                .map { it.toDomainModel() }
-//        }
 
     override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): Album? {
         return try {
