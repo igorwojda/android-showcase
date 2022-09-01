@@ -1,12 +1,9 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumListJson
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumSearchJson
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntity
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.GetAlbumInfoResponse
-import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import io.mockk.coEvery
@@ -44,11 +41,11 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum fetches AlbumInfo and maps to Model`() {
         // given
         val phrase = "phrase"
-        coEvery { mockService.searchAlbumAsync(phrase) } returns SearchAlbumResponse(
-            AlbumSearchJson(
-                AlbumListJson(listOf(DataFixtures.getAlbum()))
-            )
-        )
+//        coEvery { mockService.searchAlbumAsync(phrase) } returns SearchAlbumResponse(
+//            AlbumSearchJson(
+//                AlbumListJson(listOf(DataFixtures.getAlbum()))
+//            )
+//        )
 
         coEvery {
             mockAlbumDao.insertAlbum(any())

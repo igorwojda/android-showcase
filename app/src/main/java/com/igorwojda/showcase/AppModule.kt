@@ -1,5 +1,6 @@
 package com.igorwojda.showcase
 
+import com.example.data.network.retrofit.factory.ResponseAdapterFactory
 import com.igorwojda.showcase.app.data.api.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.api.UserAgentInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -48,6 +49,7 @@ val appModule = module {
             .baseUrl(BuildConfig.GRADLE_API_BASE_URL)
             .client(get())
             .addConverterFactory(json.asConverterFactory(contentType))
+            .addCallAdapterFactory(ResponseAdapterFactory())
             .build()
     }
 }
