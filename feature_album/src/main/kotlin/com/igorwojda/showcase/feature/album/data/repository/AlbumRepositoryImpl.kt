@@ -3,9 +3,9 @@ package com.igorwojda.showcase.feature.album.data.repository
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntity
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
+import com.igorwojda.showcase.feature.album.data.datasource.apiresponse.ApiResult
 import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
-import com.igorwojda.showcase.feature.album.data.datasource.factory.status.Result
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 import java.net.UnknownHostException
@@ -17,7 +17,7 @@ internal class AlbumRepositoryImpl(
 
     override suspend fun searchAlbum(phrase: String): List<Album> =
         when (val result = albumRetrofitService.searchAlbumAsync(phrase)) {
-            is Result.Success -> {
+            is ApiResult.Success -> {
                 result
                     .data
                     .results
@@ -27,10 +27,10 @@ internal class AlbumRepositoryImpl(
                     .also { albumDao.insertAlbums(it) }
                     .map { it.toDomainModel() }
             }
-            is Result.Error -> {
+            is ApiResult.Error -> {
                 emptyList()
             }
-            is Result.Exception -> {
+            is ApiResult.Exception -> {
                 albumDao
                     .getAll()
                     .map { it.toDomainModel() }

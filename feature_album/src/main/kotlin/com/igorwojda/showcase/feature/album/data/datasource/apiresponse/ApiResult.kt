@@ -1,20 +1,20 @@
-package com.igorwojda.showcase.feature.album.data.datasource.factory.status
+package com.igorwojda.showcase.feature.album.data.datasource.apiresponse
 
-sealed interface Result<T> {
+sealed interface ApiResult<T> {
 
     /**
      * Represents a network result that successfully received a response containing body data.
      */
-    class Success<T>(val data: T) : Result<T>
+    class Success<T>(val data: T) : ApiResult<T>
 
     /**
      * Represents a network result that successfully received a response containing an error message.
      */
-    class Error<T>(val code: Int, val message: String?) : Result<T>
+    class Error<T>(val code: Int, val message: String?) : ApiResult<T>
 
     /**
      * Represents a network result that faced an unexpected exception before getting a response
      * from the network such as IOException and UnKnownHostException.
      */
-    class Exception<T>(val e: Throwable) : Result<T>
+    class Exception<T>(val e: Throwable) : ApiResult<T>
 }
