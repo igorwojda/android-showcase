@@ -16,8 +16,8 @@ internal class AlbumRepositoryImpl(
     private val albumDao: AlbumDao,
 ) : AlbumRepository {
 
-    override suspend fun searchAlbum(phrase: String): Result<List<Album>> {
-        val result = when (val apiResult = albumRetrofitService.searchAlbumAsync(phrase)) {
+    override suspend fun searchAlbum(phrase: String): Result<List<Album>> =
+        when (val apiResult = albumRetrofitService.searchAlbumAsync(phrase)) {
             is ApiResult.Success -> {
                 val albums = apiResult
                     .data
@@ -41,9 +41,6 @@ internal class AlbumRepositoryImpl(
                 Result.Success(albums)
             }
         }
-
-        return result
-    }
 
     override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): Album? {
         return try {
