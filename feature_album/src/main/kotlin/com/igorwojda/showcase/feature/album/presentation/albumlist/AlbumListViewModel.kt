@@ -36,15 +36,16 @@ internal class AlbumListViewModel(
         viewModelScope.launch {
             getAlbumListUseCase.execute().also { result ->
                 val action = when (result) {
-                    is Result.Success ->
+                    is Result.Success -> {
                         if (result.value.isEmpty()) {
                             Action.AlbumListLoadingFailure
                         } else {
                             Action.AlbumListLoadingSuccess(result.value)
                         }
-
-                    is Result.Failure ->
+                    }
+                    is Result.Failure -> {
                         Action.AlbumListLoadingFailure
+                    }
                 }
                 sendAction(action)
             }
