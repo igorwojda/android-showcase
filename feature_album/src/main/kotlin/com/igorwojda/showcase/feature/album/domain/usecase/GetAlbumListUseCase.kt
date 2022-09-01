@@ -10,11 +10,14 @@ internal class GetAlbumListUseCase(
 ) {
 
     suspend fun execute(): Result<List<Album>> {
-        // Due to API limitations search with custom phrase have to be performed to get albums
         val phrase = "Jackson"
 
         return try {
-            Result.Success(albumRepository.searchAlbum(phrase).filter { it.getDefaultImageUrl() != null })
+            val albums = albumRepository
+                .searchAlbum(phrase)
+                .filter { it.getDefaultImageUrl() != null }
+            
+            Result.Success(albums)
         } catch (e: IOException) {
             Result.Failure(e)
         }
