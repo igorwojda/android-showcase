@@ -3,9 +3,8 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.igorwojda.showcase.base.presentation.ext.observe
 import com.igorwojda.showcase.base.presentation.ext.visible
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumListBinding
@@ -19,13 +18,6 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
     private val binding: FragmentAlbumListBinding by viewBinding()
     private val model: AlbumListViewModel by viewModel()
     private val albumAdapter: AlbumAdapter by inject()
-
-    private val stateObserver = Observer<AlbumListViewModel.State> {
-        albumAdapter.albums = it.albums
-
-        binding.progressBar.visible = it.isLoading
-        binding.errorAnimation.visible = it.isError
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +39,14 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
             adapter = albumAdapter
         }
 
-        observe(model.stateLiveData, stateObserver)
-
         model.onEnter()
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            model.stateFlow.collect {
+                albumAdapter.albums = it.albums
+                binding.progressBar.visible = it.isLoading
+                binding.errorAnimation.visible = it.isError
+            }
+        }
     }
 }

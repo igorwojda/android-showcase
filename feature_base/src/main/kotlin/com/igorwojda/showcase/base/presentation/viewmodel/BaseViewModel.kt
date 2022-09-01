@@ -1,16 +1,18 @@
 package com.igorwojda.showcase.base.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.igorwojda.showcase.base.BuildConfig
-import com.igorwojda.showcase.base.presentation.ext.asLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 abstract class BaseViewModel<State : BaseState, Action : BaseAction>(initialState: State) :
     ViewModel() {
 
-    private val _stateLiveData = MutableLiveData<State>()
-    val stateLiveData = _stateLiveData.asLiveData()
+    private val _stateFlow = MutableStateFlow(initialState)
+    val stateFlow = _stateFlow.asStateFlow()
 
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
 
@@ -23,7 +25,9 @@ abstract class BaseViewModel<State : BaseState, Action : BaseAction>(initialStat
     // Delegate handles state event deduplication (multiple states of the same type holding the same data
     // will not be dispatched multiple times to LiveData stream)
     protected var state by Delegates.observable(initialState) { _, old, new ->
-        _stateLiveData.postValue(new)
+        viewModelScope.launch {
+            _stateFlow.emit(new)
+        }
 
         // TODO needed?
         if (new != old) {

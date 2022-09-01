@@ -8,6 +8,8 @@ import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -23,7 +25,7 @@ class AlbumDetailViewModelTest {
     )
 
     @Test
-    fun `onEnter album is not found`() {
+    fun `onEnter album is not found`() = runTest {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
@@ -39,7 +41,7 @@ class AlbumDetailViewModelTest {
         cut.onEnter(mockAlbumDetailFragmentArgs)
 
         // then
-        cut.stateLiveData.value shouldBeEqualTo State(
+        cut.stateFlow.collect() shouldBeEqualTo State(
             isLoading = false,
             isError = true,
             artistName = "",
