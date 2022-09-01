@@ -36,6 +36,7 @@ internal class AlbumRepositoryImpl(
                     .albumMatches
                     .album
                     .map { it.toEntity() }
+                    .also { albumDao.insertAlbums(it) }
                     .map { it.toDomainModel() }
             }
             is Result.Error -> emptyList()
