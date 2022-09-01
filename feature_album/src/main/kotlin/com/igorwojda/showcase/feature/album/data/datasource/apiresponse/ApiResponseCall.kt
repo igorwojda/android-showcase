@@ -26,8 +26,8 @@ internal class ApiResponseCall<T> constructor(
             } ?: callback.onResponse(this@ApiResponseCall, Response.success(ApiResult.Error(123, "message")))
         }
 
-        override fun onFailure(call: Call<T>, t: Throwable) {
-            callback.onResponse(this@ApiResponseCall, Response.success(ApiResult.Exception(t)))
+        override fun onFailure(call: Call<T>, throwable: Throwable) {
+            callback.onResponse(this@ApiResponseCall, Response.success(ApiResult.Exception(throwable)))
             call.cancel()
         }
     })

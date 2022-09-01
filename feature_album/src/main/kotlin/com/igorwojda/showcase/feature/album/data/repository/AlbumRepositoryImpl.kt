@@ -9,7 +9,6 @@ import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
-import java.net.UnknownHostException
 
 internal class AlbumRepositoryImpl(
     private val albumRetrofitService: AlbumRetrofitService,
@@ -42,13 +41,25 @@ internal class AlbumRepositoryImpl(
             }
         }
 
-    override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): Album? {
-        return try {
-            albumRetrofitService.getAlbumInfoAsync(artistName, albumName, mbId)
-                ?.album
-                ?.toDomainModel()
-        } catch (e: UnknownHostException) {
-            albumDao.getAlbum(artistName, albumName, mbId).toDomainModel()
+    override suspend fun getAlbumInfo(artistName: String, albumName: String, mbId: String?): Result<Album> =
+        when (val apiResult = albumRetrofitService.getAlbumInfoAsync(artistName, albumName, mbId)) {
+            is ApiResult.Success -> {
+                val album = apiResult
+                    .data
+                    .album
+                    .toDomainModel()
+
+                Result.Success(album)
+            }
+            is ApiResult.Error -> {
+                Result.Failure()
+            }
+            is ApiResult.Exception -> {
+                val album = albumDao
+                    .getAlbum(artistName, albumName, mbId)
+                    .toDomainModel()
+
+                Result.Success(album)
+            }
         }
-    }
 }

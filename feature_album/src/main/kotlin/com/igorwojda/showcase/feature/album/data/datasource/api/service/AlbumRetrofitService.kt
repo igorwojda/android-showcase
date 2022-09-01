@@ -18,6 +18,6 @@ internal interface AlbumRetrofitService {
     suspend fun getAlbumInfoAsync(
         @Query("artist") artistName: String,
         @Query("album") albumName: String,
-        @Query("mbid") mbId: String?
-    ): GetAlbumInfoResponse?
+        @Query("mbid") mbId: String?,
+    ): ApiResult<GetAlbumInfoResponse>
 }

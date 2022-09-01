@@ -16,5 +16,5 @@ sealed interface ApiResult<T> {
      * Represents a network result that faced an unexpected exception before getting a response
      * from the network such as IOException and UnKnownHostException.
      */
-    class Exception<T>(val e: Throwable) : ApiResult<T>
+    class Exception<T>(val throwable: Throwable) : ApiResult<T>
 }
