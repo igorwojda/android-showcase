@@ -6,12 +6,12 @@ import com.igorwojda.showcase.feature.album.domain.model.Album
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-class AlbumApiTest {
+class AlbumApiModelTest {
 
     @Test
     fun `data model with full data maps to AlbumDomainModel`() {
         // given
-        val cut = DataFixtures.getAlbumApi()
+        val cut = DataFixtures.getAlbumApiModel()
 
         // when
         val domainModel = cut.toDomainModel()
@@ -43,9 +43,9 @@ class AlbumApiTest {
     @Test
     fun `mapping filters out unknown size`() {
         // given
-        val albumDataImages = listOf(AlbumImageSizeApi.EXTRA_LARGE, AlbumImageSizeApi.UNKNOWN)
-            .map { DataFixtures.getAlbumImage(size = it) }
-        val cut = DataFixtures.getAlbumApi(images = albumDataImages)
+        val albumDataImages = listOf(AlbumImageSizeApiModel.EXTRA_LARGE, AlbumImageSizeApiModel.UNKNOWN)
+            .map { DataFixtures.getAlbumImageApiModel(size = it) }
+        val cut = DataFixtures.getAlbumApiModel(images = albumDataImages)
 
         // when
         val domainModel = cut.toDomainModel()
@@ -58,9 +58,9 @@ class AlbumApiTest {
     fun `mapping filters out blank url`() {
         // given
         val albumDataImages = listOf("", "url")
-            .map { DataFixtures.getAlbumImage(url = it) }
+            .map { DataFixtures.getAlbumImageApiModel(url = it) }
 
-        val cut = DataFixtures.getAlbumApi(images = albumDataImages)
+        val cut = DataFixtures.getAlbumApiModel(images = albumDataImages)
 
         // when
         val domainModel = cut.toDomainModel()

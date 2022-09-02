@@ -4,7 +4,7 @@ import com.igorwojda.showcase.base.data.retrofit.ApiResult
 import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntity
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
@@ -29,7 +29,7 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api success and returns albums`() {
         // given
         val phrase = "phrase"
-        val albums = DataFixtures.getAlbumsApi()
+        val albums = DataFixtures.getAlbumsApiModel()
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
             DataFixtures.getSearchAlbumResponse()
@@ -47,7 +47,7 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api success and saves album in database`() {
         // given
         val phrase = "phrase"
-        val albums = listOf(DataFixtures.getAlbumApi())
+        val albums = listOf(DataFixtures.getAlbumApiModel())
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
             DataFixtures.getSearchAlbumResponse()
         )
@@ -63,8 +63,8 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api exception and fallbacks to database`() {
         // given
         val phrase = "phrase"
-        val albumsApi = DataFixtures.getAlbumsApi()
-        val albumEntities = albumsApi.map { it.toEntity() }
+        val albumsApi = DataFixtures.getAlbumsApiModel()
+        val albumEntities = albumsApi.map { it.toEntityModel() }
         val albums = albumsApi.map { it.copy(wiki = null) }.map { it.toDomainModel() }
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Exception(UnknownHostException())
@@ -97,7 +97,7 @@ class AlbumRepositoryImplTest {
         val artistName = "Michael Jackson"
         val albumName = "Thriller"
         val mbId = "123"
-        val album = DataFixtures.getAlbumApi(mbId, albumName, artistName)
+        val album = DataFixtures.getAlbumApiModel(mbId, albumName, artistName)
 
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, mbId)

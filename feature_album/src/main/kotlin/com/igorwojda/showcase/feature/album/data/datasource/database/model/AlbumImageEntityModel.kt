@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class AlbumImageEntity(
     val url: String,
-    val size: AlbumImageSizeEntity,
+    val size: AlbumImageSizeEntityModel,
 )
 
 internal fun AlbumImageEntity.toDomainModel() =

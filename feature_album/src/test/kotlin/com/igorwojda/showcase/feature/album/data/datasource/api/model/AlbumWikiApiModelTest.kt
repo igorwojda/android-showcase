@@ -5,14 +5,14 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumWiki
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-class AlbumWikiApiTest {
+class AlbumWikiApiModelTest {
 
     @Test
     fun `map to AlbumWikiDomainModel`() {
         // given
         val published = "published"
         val summary = "summary"
-        val cut = DataFixtures.getAlbumWikiDataModel(published, summary)
+        val cut = DataFixtures.getAlbumWikiApiModel(published, summary)
 
         // when
         val domainModel = cut.toDomainModel()

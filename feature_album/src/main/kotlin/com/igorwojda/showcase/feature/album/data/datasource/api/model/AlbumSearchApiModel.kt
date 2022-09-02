@@ -4,6 +4,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumListApi(
-    @SerialName("album") val album: List<AlbumApi>,
+internal data class AlbumSearchApiModel(
+    @SerialName("albummatches") val albumMatches: AlbumListApiModel,
 )

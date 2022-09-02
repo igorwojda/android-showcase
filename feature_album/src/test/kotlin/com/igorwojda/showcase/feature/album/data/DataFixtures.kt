@@ -1,34 +1,33 @@
 package com.igorwojda.showcase.feature.album.data
 
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumApi
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageApi
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeApi
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumListApi
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumSearchApi
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumWikiApi
-import com.igorwojda.showcase.feature.album.data.datasource.api.response.GetAlbumInfoResponse
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumListApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumSearchApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumWikiApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntity
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntity
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageSizeEntity
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageSizeEntityModel
 
 object DataFixtures {
 
-    internal fun getAlbumApi(
+    internal fun getAlbumApiModel(
         mbId: String = "mbId",
         name: String = "albumName",
         artist: String = "artistName",
-        wiki: AlbumWikiApi? = getAlbumWikiDataModel(),
-        images: List<AlbumImageApi>? = listOf(getAlbumImage()),
-    ): AlbumApi = AlbumApi(mbId, name, artist, wiki, images)
+        wiki: AlbumWikiApiModel? = getAlbumWikiApiModel(),
+        images: List<AlbumImageApiModel>? = listOf(getAlbumImageApiModel()),
+    ): AlbumApiModel = AlbumApiModel(mbId, name, artist, wiki, images)
 
-    internal fun getAlbumsApi() = listOf(
-        getAlbumApi(mbId = "mbid1", "albumName1", "artist1"),
-        getAlbumApi(mbId = "mbid2", "albumName2", "artist2")
+    internal fun getAlbumsApiModel() = listOf(
+        getAlbumApiModel(mbId = "mbid1", "albumName1", "artist1"),
+        getAlbumApiModel(mbId = "mbid2", "albumName2", "artist2")
     )
 
-    internal fun getMinimalAlbumApi(): AlbumApi =
-        getAlbumApi(
+    internal fun getMinimalAlbumApi(): AlbumApiModel =
+        getAlbumApiModel(
             name = "name",
             artist = "artist",
             mbId = "mbId",
@@ -36,17 +35,17 @@ object DataFixtures {
             images = null
         )
 
-    internal fun getAlbumImage(
-        url: String = "url_${AlbumImageSizeApi.EXTRA_LARGE}",
-        size: AlbumImageSizeApi = AlbumImageSizeApi.EXTRA_LARGE,
-    ) = AlbumImageApi(url, size)
+    internal fun getAlbumImageApiModel(
+        url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
+        size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE,
+    ) = AlbumImageApiModel(url, size)
 
-    internal fun getAlbumWikiDataModel(
+    internal fun getAlbumWikiApiModel(
         published: String = "published",
         summary: String = "summary",
-    ) = AlbumWikiApi(published, summary)
+    ) = AlbumWikiApiModel(published, summary)
 
-    // TODO unused
+    // TODO unused?
     internal fun getAlbumEntity(
         id: Int = 0,
         mbId: String = "mbId",
@@ -56,17 +55,13 @@ object DataFixtures {
     ): AlbumEntity = AlbumEntity(id, mbId, name, artist, images)
 
     internal fun getAlbumImageEntity(
-        url: String = "url_${AlbumImageSizeApi.EXTRA_LARGE}",
-        size: AlbumImageSizeEntity = AlbumImageSizeEntity.EXTRA_LARGE,
+        url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
+        size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE,
     ) = AlbumImageEntity(url, size)
 
     internal fun getSearchAlbumResponse() = SearchAlbumResponse(
-        AlbumSearchApi(
-            AlbumListApi(getAlbumsApi())
+        AlbumSearchApiModel(
+            AlbumListApiModel(getAlbumsApiModel())
         )
     )
-
-    internal fun getGetAlbumInfoResponse(
-        album: AlbumApi,
-    ) = GetAlbumInfoResponse(album)
 }

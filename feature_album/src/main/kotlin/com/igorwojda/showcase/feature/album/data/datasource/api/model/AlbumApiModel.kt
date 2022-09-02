@@ -6,25 +6,25 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumApi(
+internal data class AlbumApiModel(
     @SerialName("mbid") val mbId: String? = null,
     @SerialName("name") val name: String,
     @SerialName("artist") val artist: String,
-    @SerialName("wiki") val wiki: AlbumWikiApi? = null,
-    @SerialName("image") val images: List<AlbumImageApi>? = null,
+    @SerialName("wiki") val wiki: AlbumWikiApiModel? = null,
+    @SerialName("image") val images: List<AlbumImageApiModel>? = null,
 )
 
-internal fun AlbumApi.toEntity() =
+internal fun AlbumApiModel.toEntityModel() =
     AlbumEntity(
         mbId = this.mbId ?: "",
         name = this.name,
         artist = this.artist,
-        images = this.images?.mapNotNull { it.toEntity() } ?: listOf()
+        images = this.images?.mapNotNull { it.toEntityModel() } ?: listOf()
     )
 
-internal fun AlbumApi.toDomainModel(): Album {
+internal fun AlbumApiModel.toDomainModel(): Album {
     val images = this.images
-        ?.filterNot { it.size == AlbumImageSizeApi.UNKNOWN || it.url.isBlank() }
+        ?.filterNot { it.size == AlbumImageSizeApiModel.UNKNOWN || it.url.isBlank() }
         ?.map { it.toDomainModel() }
 
     return Album(

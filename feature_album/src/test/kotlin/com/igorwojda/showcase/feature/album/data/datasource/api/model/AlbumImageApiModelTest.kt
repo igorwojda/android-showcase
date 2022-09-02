@@ -6,14 +6,14 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow
 import org.junit.jupiter.api.Test
 
-class AlbumImageApiTest {
+class AlbumImageApiModelTest {
 
     @Test
     fun `map to AlbumWikiDomainModel`() {
         // given
         val url = "url"
-        val size = AlbumImageSizeApi.EXTRA_LARGE
-        val cut = DataFixtures.getAlbumImage(url, size)
+        val size = AlbumImageSizeApiModel.EXTRA_LARGE
+        val cut = DataFixtures.getAlbumImageApiModel(url, size)
 
         // when
         val domainModel = cut.toDomainModel()
@@ -26,8 +26,8 @@ class AlbumImageApiTest {
     fun `crash when mapping unknown AlbumWikiDomainModel`() {
         // given
         val url = "url"
-        val size = AlbumImageSizeApi.UNKNOWN
-        val cut = DataFixtures.getAlbumImage(url, size)
+        val size = AlbumImageSizeApiModel.UNKNOWN
+        val cut = DataFixtures.getAlbumImageApiModel(url, size)
 
         // when
         val func = { cut.toDomainModel() }

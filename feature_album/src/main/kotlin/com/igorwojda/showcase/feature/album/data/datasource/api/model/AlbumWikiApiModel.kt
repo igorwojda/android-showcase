@@ -5,12 +5,12 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumWikiApi(
+internal data class AlbumWikiApiModel(
     @SerialName("published") val published: String,
     @SerialName("summary") val summary: String,
 )
 
-internal fun AlbumWikiApi.toDomainModel() = AlbumWiki(
+internal fun AlbumWikiApiModel.toDomainModel() = AlbumWiki(
     published = this.published,
     summary = this.summary
 )
