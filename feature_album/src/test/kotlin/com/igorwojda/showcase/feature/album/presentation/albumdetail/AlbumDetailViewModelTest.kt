@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
-import com.igorwojda.showcase.base.common.Result
+import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.State
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension

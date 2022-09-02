@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist
 
-import com.igorwojda.showcase.base.common.Result
+import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase

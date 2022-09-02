@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.common
+package com.igorwojda.showcase.base.domain.result
 
 sealed interface Result<out T> {
     data class Success<T>(val value: T) : Result<T>

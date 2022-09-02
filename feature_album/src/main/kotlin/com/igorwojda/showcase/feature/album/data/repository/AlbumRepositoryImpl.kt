@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
-import com.igorwojda.showcase.base.common.Result
 import com.igorwojda.showcase.base.data.retrofit.ApiResult
+import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntity
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService

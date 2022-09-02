@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
 import androidx.lifecycle.viewModelScope
-import com.igorwojda.showcase.base.common.Result
+import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseState
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel

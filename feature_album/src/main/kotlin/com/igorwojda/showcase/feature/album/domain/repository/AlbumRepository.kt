@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.domain.repository
 
-import com.igorwojda.showcase.base.common.Result
+import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.feature.album.domain.model.Album
 
 internal interface AlbumRepository {
