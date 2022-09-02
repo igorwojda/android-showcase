@@ -1,10 +1,10 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
 import com.igorwojda.showcase.base.common.Result
+import com.igorwojda.showcase.base.data.retrofit.ApiResult
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntity
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
-import com.igorwojda.showcase.feature.album.data.datasource.apiresponse.ApiResult
 import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
 import com.igorwojda.showcase.feature.album.domain.model.Album

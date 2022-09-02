@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.data.datasource.apiresponse
+package com.igorwojda.showcase.base.data.retrofit
 
 sealed interface ApiResult<T> {
 

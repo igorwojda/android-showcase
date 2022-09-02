@@ -1,13 +1,13 @@
 package com.example.data.network.retrofit.factory
 
-import com.igorwojda.showcase.feature.album.data.datasource.apiresponse.ApiResult
+import com.igorwojda.showcase.base.data.retrofit.ApiResult
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-class ApiResponseAdapterFactory : CallAdapter.Factory() {
+class ApiResultAdapterFactory : CallAdapter.Factory() {
     override fun get(returnType: Type, annotations: Array<out Annotation>, retrofit: Retrofit): CallAdapter<*, *>? {
 
         if (Call::class.java != getRawType(returnType)) return null
@@ -19,6 +19,6 @@ class ApiResponseAdapterFactory : CallAdapter.Factory() {
 
         val successType = getParameterUpperBound(0, responseType)
 
-        return ApiResponseCallAdapter<Any>(successType)
+        return ApiResultCallAdapter<Any>(successType)
     }
 }
