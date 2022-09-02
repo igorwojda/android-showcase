@@ -12,6 +12,7 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
@@ -39,11 +40,11 @@ class AlbumListViewModelTest {
         // then
         advanceUntilIdle()
 
-//        cut.stateFlow.collect() shouldBeEqualTo AlbumListViewModel.State(
-//            isLoading = false,
-//            isError = true,
-//            albums = listOf()
-//        )
+        cut.stateFlow.value shouldBeEqualTo AlbumListViewModel.State(
+            isLoading = false,
+            isError = true,
+            albums = listOf()
+        )
     }
 
     @Test
@@ -58,11 +59,12 @@ class AlbumListViewModelTest {
 
         // then
         advanceUntilIdle()
-//        cut.stateFlow.collect() shouldBeEqualTo AlbumListViewModel.State(
-//            isLoading = false,
-//            isError = false,
-//            albums = albums
-//        )
+        
+        cut.stateFlow.value shouldBeEqualTo AlbumListViewModel.State(
+            isLoading = false,
+            isError = false,
+            albums = albums
+        )
     }
 
     @Test

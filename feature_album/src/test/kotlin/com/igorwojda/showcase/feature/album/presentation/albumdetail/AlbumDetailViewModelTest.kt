@@ -16,7 +16,7 @@ class AlbumDetailViewModelTest {
     private val cut = AlbumDetailViewModel(
         mockGetAlbumUseCase
     )
-//
+
 //    @Test
 //    fun `onEnter album is not found`() = runTest {
 //        // given
@@ -34,7 +34,7 @@ class AlbumDetailViewModelTest {
 //        cut.onEnter(mockAlbumDetailFragmentArgs)
 //
 //        // then
-//        cut.stateFlow.collect() shouldBeEqualTo State(
+//        cut.stateFlow.value shouldBeEqualTo AlbumDetailViewModel.State(
 //            isLoading = false,
 //            isError = true,
 //            artistName = "",
