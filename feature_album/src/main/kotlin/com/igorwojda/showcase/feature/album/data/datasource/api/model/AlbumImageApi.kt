@@ -6,15 +6,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumImageJson(
+internal data class AlbumImageApi(
     @SerialName("#text") val url: String,
     @SerialName("size") val size: AlbumImageSizeApi,
 )
 
-internal fun AlbumImageJson.toDomainModel() = AlbumImage(
+internal fun AlbumImageApi.toDomainModel() = AlbumImage(
     url = this.url,
     size = this.size.toDomainModel()
 )
 
-internal fun AlbumImageJson.toEntity() =
+internal fun AlbumImageApi.toEntity() =
     this.size.toEntityEnum()?.let { AlbumImageEntity(this.url, it) }

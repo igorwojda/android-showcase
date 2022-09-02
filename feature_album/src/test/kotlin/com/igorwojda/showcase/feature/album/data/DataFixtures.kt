@@ -1,9 +1,9 @@
 package com.igorwojda.showcase.feature.album.data
 
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumApi
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageApi
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeApi
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumJson
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumWikiJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumWikiApi
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntity
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntity
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageSizeEntity
@@ -14,16 +14,16 @@ object DataFixtures {
         mbId: String = "mbId",
         name: String = "albumName",
         artist: String = "artistName",
-        wiki: AlbumWikiJson? = getAlbumWikiDataModel(),
-        images: List<AlbumImageJson>? = listOf(getAlbumImage()),
-    ): AlbumJson = AlbumJson(mbId, name, artist, wiki, images)
+        wiki: AlbumWikiApi? = getAlbumWikiDataModel(),
+        images: List<AlbumImageApi>? = listOf(getAlbumImage()),
+    ): AlbumApi = AlbumApi(mbId, name, artist, wiki, images)
 
     internal fun getAlbums() = listOf(
         getAlbum(mbId = "mbid1", "albumName1", "artist1"),
         getAlbum(mbId = "mbid2", "albumName2", "artist2")
     )
 
-    internal fun getMinimalAlbum(): AlbumJson =
+    internal fun getMinimalAlbum(): AlbumApi =
         getAlbum(
             name = "name",
             artist = "artist",
@@ -35,12 +35,12 @@ object DataFixtures {
     internal fun getAlbumImage(
         url: String = "url_${AlbumImageSizeApi.EXTRA_LARGE}",
         size: AlbumImageSizeApi = AlbumImageSizeApi.EXTRA_LARGE,
-    ) = AlbumImageJson(url, size)
+    ) = AlbumImageApi(url, size)
 
     internal fun getAlbumWikiDataModel(
         published: String = "published",
-        summary: String = "summary"
-    ) = AlbumWikiJson(published, summary)
+        summary: String = "summary",
+    ) = AlbumWikiApi(published, summary)
 
     internal fun getAlbumEntity(
         id: Int = 0,

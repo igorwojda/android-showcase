@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class AlbumListApi(
-    @SerialName("album") val album: List<AlbumJson>,
+    @SerialName("album") val album: List<AlbumApi>,
 )

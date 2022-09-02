@@ -73,9 +73,9 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api exception and fallbacks to database`() {
         // given
         val phrase = "phrase"
-        val albumsJson = DataFixtures.getAlbums()
-        val albumEntities = albumsJson.map { it.toEntity() }
-        val albums = albumsJson.map { it.copy(wiki = null) }.map { it.toDomainModel() }
+        val albumsApi = DataFixtures.getAlbums()
+        val albumEntities = albumsApi.map { it.toEntity() }
+        val albums = albumsApi.map { it.copy(wiki = null) }.map { it.toDomainModel() }
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Exception(UnknownHostException())
         coEvery { mockAlbumDao.getAll() } returns albumEntities
