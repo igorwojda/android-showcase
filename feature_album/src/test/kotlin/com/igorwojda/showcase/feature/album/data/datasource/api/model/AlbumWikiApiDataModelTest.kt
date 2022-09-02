@@ -5,7 +5,7 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumWiki
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-class AlbumWikiDataModelTest {
+class AlbumWikiApiDataModelTest {
 
     @Test
     fun `map to AlbumWikiDomainModel`() {

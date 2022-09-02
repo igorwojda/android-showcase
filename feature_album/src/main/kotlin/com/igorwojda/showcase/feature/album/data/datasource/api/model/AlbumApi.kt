@@ -24,7 +24,7 @@ internal fun AlbumJson.toEntity() =
 
 internal fun AlbumJson.toDomainModel(): Album {
     val images = this.images
-        ?.filterNot { it.size == AlbumImageSizeJson.UNKNOWN || it.url.isBlank() }
+        ?.filterNot { it.size == AlbumImageSizeApi.UNKNOWN || it.url.isBlank() }
         ?.map { it.toDomainModel() }
 
     return Album(

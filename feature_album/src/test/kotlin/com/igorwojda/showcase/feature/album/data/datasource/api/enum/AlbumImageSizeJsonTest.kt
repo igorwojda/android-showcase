@@ -1,15 +1,15 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.enum
 
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeApi
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
 import org.junit.jupiter.api.Test
 
-class AlbumImageSizeJsonTest {
+class AlbumImageSizeApiTest {
 
     @Test
     fun `maps to AlbumDomainImageSize`() {
         // given
-        val dataEnums = AlbumImageSizeJson.values().filterNot { it == AlbumImageSizeJson.UNKNOWN }
+        val dataEnums = AlbumImageSizeApi.values().filterNot { it == AlbumImageSizeApi.UNKNOWN }
 
         // when
         dataEnums.forEach { it.toDomainModel() }

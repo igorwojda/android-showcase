@@ -3,8 +3,8 @@ package com.igorwojda.showcase.feature.album.data.repository
 import com.igorwojda.showcase.base.data.retrofit.ApiResult
 import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumListJson
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumSearchJson
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumListApi
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumSearchApi
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntity
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.GetAlbumInfoResponse
@@ -34,8 +34,8 @@ class AlbumRepositoryImplTest {
         val albums = listOf(DataFixtures.getAlbum())
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
             SearchAlbumResponse(
-                AlbumSearchJson(
-                    AlbumListJson(albums)
+                AlbumSearchApi(
+                    AlbumListApi(albums)
                 )
             )
         )
@@ -55,8 +55,8 @@ class AlbumRepositoryImplTest {
         val albums = listOf(DataFixtures.getAlbum())
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
             SearchAlbumResponse(
-                AlbumSearchJson(
-                    AlbumListJson(albums)
+                AlbumSearchApi(
+                    AlbumListApi(albums)
                 )
             )
         )

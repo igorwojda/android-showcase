@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class AlbumImageJson(
     @SerialName("#text") val url: String,
-    @SerialName("size") val size: AlbumImageSizeJson,
+    @SerialName("size") val size: AlbumImageSizeApi,
 )
 
 internal fun AlbumImageJson.toDomainModel() = AlbumImage(

@@ -6,7 +6,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal enum class AlbumImageSizeJson {
+internal enum class AlbumImageSizeApi {
 
     @SerialName("medium")
     MEDIUM,
@@ -27,7 +27,7 @@ internal enum class AlbumImageSizeJson {
     UNKNOWN
 }
 
-internal fun AlbumImageSizeJson.toDomainModel() = AlbumDomainImageSize.valueOf(this.name)
+internal fun AlbumImageSizeApi.toDomainModel() = AlbumDomainImageSize.valueOf(this.name)
 
-internal fun AlbumImageSizeJson.toEntityEnum() =
+internal fun AlbumImageSizeApi.toEntityEnum() =
     AlbumImageSizeEntity.values().firstOrNull { it.ordinal == this.ordinal }
