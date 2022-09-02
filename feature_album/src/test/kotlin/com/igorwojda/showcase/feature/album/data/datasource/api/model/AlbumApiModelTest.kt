@@ -64,10 +64,10 @@ class AlbumApiModelTest {
     @Test
     fun `mapping filters out blank url`() {
         // given
-        val albumDataImages = listOf("", "url")
+        val images = listOf("", "url")
             .map { DataFixtures.ApiModel.getAlbumImage(url = it) }
 
-        val cut = DataFixtures.ApiModel.getAlbum(images = albumDataImages)
+        val cut = DataFixtures.ApiModel.getAlbum(images = images)
 
         // when
         val domainModel = cut.toDomainModel()

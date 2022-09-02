@@ -49,7 +49,7 @@ class AlbumListViewModelTest {
     @Test
     fun `onEnter album list is non-empty`() = runTest {
         // given
-        val album = Album("albumName", "artistName", listOf())
+        val album = Album("albumName", "artistName")
         val albums = listOf(album)
         coEvery { mockGetAlbumListUseCase.execute() } returns Result.Success(albums)
 
