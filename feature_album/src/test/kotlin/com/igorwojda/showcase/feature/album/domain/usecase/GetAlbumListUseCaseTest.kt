@@ -8,7 +8,6 @@ import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
-import java.net.UnknownHostException
 
 class GetAlbumListUseCaseTest {
 
@@ -20,7 +19,7 @@ class GetAlbumListUseCaseTest {
     fun `return list of albums`() {
         // given
         val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())
-        coEvery { mockAlbumRepository.searchAlbum(any()) } returns albums
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
         val actual = runBlocking { cut.execute() }
@@ -30,12 +29,12 @@ class GetAlbumListUseCaseTest {
     }
 
     @Test
-    fun `filter albums without default image`() {
+    fun `filter albums with default image`() {
         // given
         val albumWithImage = DomainFixtures.getAlbum()
         val albumWithoutImage = DomainFixtures.getAlbum(images = listOf())
         val albums = listOf(albumWithImage, albumWithoutImage)
-        coEvery { mockAlbumRepository.searchAlbum(any()) } returns albums
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
         val actual = runBlocking { cut.execute() }
@@ -47,13 +46,13 @@ class GetAlbumListUseCaseTest {
     @Test
     fun `return error when repository throws an exception`() {
         // given
-        val exception = UnknownHostException()
-        coEvery { mockAlbumRepository.searchAlbum(any()) } throws exception
+        val resultFailure = mockk<Result.Failure>()
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns resultFailure
 
         // when
         val actual = runBlocking { cut.execute() }
 
         // then
-        actual shouldBeEqualTo Result.Failure(exception)
+        actual shouldBeEqualTo resultFailure
     }
 }

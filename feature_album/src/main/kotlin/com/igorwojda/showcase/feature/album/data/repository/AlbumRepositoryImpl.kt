@@ -23,8 +23,10 @@ internal class AlbumRepositoryImpl(
                     .results
                     .albumMatches
                     .album
-                    .map { it.toEntity() }
-                    .also { albumDao.insertAlbums(it) }
+                    .also {
+                        val albums = it.map { it.toEntity() }
+                        albumDao.insertAlbums(albums)
+                    }
                     .map { it.toDomainModel() }
 
                 Result.Success(albums)

@@ -15,7 +15,7 @@ object DataFixtures {
         name: String = "albumName",
         artist: String = "artistName",
         wiki: AlbumWikiJson? = getAlbumWikiDataModel(),
-        images: List<AlbumImageJson>? = listOf(getAlbumImage())
+        images: List<AlbumImageJson>? = listOf(getAlbumImage()),
     ): AlbumJson = AlbumJson(mbId, name, artist, wiki, images)
 
     internal fun getAlbums() = listOf(

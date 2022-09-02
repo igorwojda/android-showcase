@@ -9,7 +9,6 @@ import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
-import java.net.UnknownHostException
 
 class GetAlbumUseCaseTest {
 
@@ -18,14 +17,14 @@ class GetAlbumUseCaseTest {
     private val cut = GetAlbumUseCase(mockAlbumRepository)
 
     @Test
-    fun `when execute then return album`() {
+    fun `return album`() {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
         val mbId = "123"
 
         val album = mockk<Album>()
-        coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } answers { album }
+        coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } answers { Result.Success(album) }
 
         // when
         val actual = runBlocking { cut.execute(artistName, albumName, mbId) }
@@ -35,20 +34,21 @@ class GetAlbumUseCaseTest {
     }
 
     @Test
-    fun `when execute then return error`() {
+    fun `return error`() {
         // given
         val albumName = "Thriller"
         val artistName = "Michael Jackson"
         val mbId = "123"
-        val exception = UnknownHostException()
+        val resultFailure = mockk<Result.Failure>()
 
-        coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } throws exception
+        coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } returns
+            resultFailure
 
         // when
         val actual = runBlocking { cut.execute(artistName, albumName, mbId) }
 
         // then
         coVerify { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) }
-        actual shouldBeEqualTo Error(exception)
+        actual shouldBeEqualTo resultFailure
     }
 }
