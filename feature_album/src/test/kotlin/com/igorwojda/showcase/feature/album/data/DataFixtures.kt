@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.feature.album.data
 
+import com.igorwojda.showcase.feature.album.data.DataFixtures.ApiModel.getAlbums
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeApiModel
@@ -13,55 +14,50 @@ import com.igorwojda.showcase.feature.album.data.datasource.database.model.Album
 
 object DataFixtures {
 
-    internal fun getAlbumApiModel(
-        mbId: String = "mbId",
-        name: String = "albumName",
-        artist: String = "artistName",
-        wiki: AlbumWikiApiModel? = getAlbumWikiApiModel(),
-        images: List<AlbumImageApiModel>? = listOf(getAlbumImageApiModel()),
-    ): AlbumApiModel = AlbumApiModel(mbId, name, artist, wiki, images)
+    object ApiModel {
+        internal fun getAlbum(
+            mbId: String = "mbId",
+            name: String = "album",
+            artist: String = "artist",
+            wiki: AlbumWikiApiModel? = getAlbumWiki(),
+            images: List<AlbumImageApiModel>? = listOf(getAlbumImage()),
+        ): AlbumApiModel = AlbumApiModel(mbId, name, artist, wiki, images)
 
-    internal fun getAlbumsApiModel() = listOf(
-        getAlbumApiModel(mbId = "mbid1", "albumName1", "artist1"),
-        getAlbumApiModel(mbId = "mbid2", "albumName2", "artist2")
-    )
-
-    internal fun getMinimalAlbumApi(): AlbumApiModel =
-        getAlbumApiModel(
-            name = "name",
-            artist = "artist",
-            mbId = "mbId",
-            wiki = null,
-            images = null
+        internal fun getAlbums() = listOf(
+            getAlbum(mbId = "mbid1", "album1", "artist1"),
+            getAlbum(mbId = "mbid2", "album2", "artist2")
         )
 
-    internal fun getAlbumImageApiModel(
-        url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
-        size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE,
-    ) = AlbumImageApiModel(url, size)
+        internal fun getAlbumImage(
+            url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
+            size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE,
+        ) = AlbumImageApiModel(url, size)
 
-    internal fun getAlbumWikiApiModel(
-        published: String = "published",
-        summary: String = "summary",
-    ) = AlbumWikiApiModel(published, summary)
+        internal fun getAlbumWiki(
+            published: String = "published",
+            summary: String = "summary",
+        ) = AlbumWikiApiModel(published, summary)
 
-    // TODO unused?
-    internal fun getAlbumEntity(
-        id: Int = 0,
-        mbId: String = "mbId",
-        name: String = "albumName",
-        artist: String = "artistName",
-        images: List<AlbumImageEntity> = listOf(getAlbumImageEntity()),
-    ): AlbumEntity = AlbumEntity(id, mbId, name, artist, images)
+        // TODO unused? why? not needed in tests?
+        internal fun getAlbumEntity(
+            id: Int = 0,
+            mbId: String = "mbId",
+            name: String = "album",
+            artist: String = "artist",
+            images: List<AlbumImageEntity> = listOf(getAlbumImageEntity()),
+        ): AlbumEntity = AlbumEntity(id, mbId, name, artist, images)
 
-    internal fun getAlbumImageEntity(
-        url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
-        size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE,
-    ) = AlbumImageEntity(url, size)
+        internal fun getAlbumImageEntity(
+            url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
+            size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE,
+        ) = AlbumImageEntity(url, size)
+    }
 
-    internal fun getSearchAlbumResponse() = SearchAlbumResponse(
-        AlbumSearchApiModel(
-            AlbumListApiModel(getAlbumsApiModel())
+    object ApiResponse {
+        internal fun getSearchAlbum() = SearchAlbumResponse(
+            AlbumSearchApiModel(
+                AlbumListApiModel(getAlbums())
+            )
         )
-    )
+    }
 }

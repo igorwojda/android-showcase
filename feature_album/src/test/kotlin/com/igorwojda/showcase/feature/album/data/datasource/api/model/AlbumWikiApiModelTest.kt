@@ -12,7 +12,7 @@ class AlbumWikiApiModelTest {
         // given
         val published = "published"
         val summary = "summary"
-        val cut = DataFixtures.getAlbumWikiApiModel(published, summary)
+        val cut = DataFixtures.ApiModel.getAlbumWiki(published, summary)
 
         // when
         val domainModel = cut.toDomainModel()

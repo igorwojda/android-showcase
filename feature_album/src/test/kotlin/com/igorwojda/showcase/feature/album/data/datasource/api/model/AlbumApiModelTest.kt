@@ -11,7 +11,7 @@ class AlbumApiModelTest {
     @Test
     fun `data model with full data maps to AlbumDomainModel`() {
         // given
-        val cut = DataFixtures.getAlbumApiModel()
+        val cut = DataFixtures.ApiModel.getAlbum()
 
         // when
         val domainModel = cut.toDomainModel()
@@ -29,14 +29,21 @@ class AlbumApiModelTest {
     @Test
     fun `data model with missing data maps to AlbumDomainModel`() {
         // given
-        val cut = DataFixtures.getMinimalAlbumApi()
+        val cut = DataFixtures.ApiModel.getAlbum(
+            wiki = null,
+            images = emptyList()
+        )
 
         // when
         val domainModel = cut.toDomainModel()
 
         // then
         domainModel shouldBeEqualTo Album(
-            name = "name", artist = "artist", images = emptyList(), wiki = null, mbId = "mbId"
+            mbId = "mbId",
+            name = "album",
+            artist = "artist",
+            images = emptyList(),
+            wiki = null,
         )
     }
 
@@ -44,8 +51,8 @@ class AlbumApiModelTest {
     fun `mapping filters out unknown size`() {
         // given
         val albumDataImages = listOf(AlbumImageSizeApiModel.EXTRA_LARGE, AlbumImageSizeApiModel.UNKNOWN)
-            .map { DataFixtures.getAlbumImageApiModel(size = it) }
-        val cut = DataFixtures.getAlbumApiModel(images = albumDataImages)
+            .map { DataFixtures.ApiModel.getAlbumImage(size = it) }
+        val cut = DataFixtures.ApiModel.getAlbum(images = albumDataImages)
 
         // when
         val domainModel = cut.toDomainModel()
@@ -58,9 +65,9 @@ class AlbumApiModelTest {
     fun `mapping filters out blank url`() {
         // given
         val albumDataImages = listOf("", "url")
-            .map { DataFixtures.getAlbumImageApiModel(url = it) }
+            .map { DataFixtures.ApiModel.getAlbumImage(url = it) }
 
-        val cut = DataFixtures.getAlbumApiModel(images = albumDataImages)
+        val cut = DataFixtures.ApiModel.getAlbum(images = albumDataImages)
 
         // when
         val domainModel = cut.toDomainModel()
