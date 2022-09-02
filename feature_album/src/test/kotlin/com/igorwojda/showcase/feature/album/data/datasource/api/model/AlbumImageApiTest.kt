@@ -6,7 +6,7 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldThrow
 import org.junit.jupiter.api.Test
 
-class AlbumImageApiDataModelTest {
+class AlbumImageApiTest {
 
     @Test
     fun `map to AlbumWikiDomainModel`() {
