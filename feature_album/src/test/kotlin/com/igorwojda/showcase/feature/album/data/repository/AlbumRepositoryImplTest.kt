@@ -31,7 +31,8 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api success and returns albums`() {
         // given
         val phrase = "phrase"
-        val albums = listOf(DataFixtures.getAlbum())
+        val albums = DataFixtures.getAlbums()
+
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
             SearchAlbumResponse(
                 AlbumSearchApi(
@@ -105,20 +106,22 @@ class AlbumRepositoryImplTest {
         // given
         val artistName = "Michael Jackson"
         val albumName = "Thriller"
+        val mbId = "123"
+        val album = DataFixtures.getAlbum(mbId, albumName, artistName)
 
         coEvery {
-            mockService.getAlbumInfoAsync(artistName, albumName, null)
+            mockService.getAlbumInfoAsync(artistName, albumName, mbId)
         } returns ApiResult.Success(
             GetAlbumInfoResponse(
-                DataFixtures.getAlbum()
+                album
             )
         )
 
         // when
-        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
+        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
-        actual shouldBeEqualTo DataFixtures.getAlbum().toDomainModel()
+        actual shouldBeEqualTo Result.Success(album.toDomainModel())
     }
 
     @Test
@@ -129,11 +132,11 @@ class AlbumRepositoryImplTest {
         val mbId = "123"
 
         coEvery {
-            mockService.getAlbumInfoAsync(artistName, albumName, null)
+            mockService.getAlbumInfoAsync(artistName, albumName, mbId)
         } returns ApiResult.Exception(UnknownHostException())
 
         // when
-        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
+        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
         coVerify { mockAlbumDao.getAlbum(artistName, albumName, mbId) }
@@ -147,13 +150,13 @@ class AlbumRepositoryImplTest {
         val mbId = "123"
 
         coEvery {
-            mockService.getAlbumInfoAsync(artistName, albumName, null)
+            mockService.getAlbumInfoAsync(artistName, albumName, mbId)
         } returns mockk<ApiResult.Error<GetAlbumInfoResponse>>()
 
         // when
-        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, null) }
+        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
-        coVerify { mockAlbumDao.getAlbum(artistName, albumName, mbId) }
+        actual shouldBeEqualTo Result.Failure()
     }
 }
