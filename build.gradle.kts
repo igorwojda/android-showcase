@@ -3,6 +3,5 @@
 // plugins and dependencies are defined in the settings.gradle file
 // utilising Gradle dependency management
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+
+

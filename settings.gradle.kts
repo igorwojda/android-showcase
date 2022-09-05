@@ -98,7 +98,7 @@ dependencyResolutionManagement {
             library("coordinatorLayout", "androidx.coordinatorlayout:coordinatorlayout:1.+")
             library("appcompat", "androidx.appcompat:appcompat:1.+")
             library("recyclerview", "androidx.recyclerview:recyclerview:1.+")
-            library("material", "com.google.android.material:material:1.+")
+            library("material", "androidx.compose.material3:material3:1.+")
             library("lottie", "com.airbnb.android:lottie:+")
             library("coil", "io.coil-kt:coil:+")
             library("play-core", "com.google.android.play:core:1.+")
