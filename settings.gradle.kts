@@ -1,3 +1,5 @@
+rootProject.name = "android-showcase"
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -45,8 +47,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
-rootProject.name = "android-showcase"
 
 include(
     ":app",
