@@ -11,6 +11,10 @@ plugins {
 }
 
 subprojects {
+    tasks.withType<Test> {
+        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+    }
+
     apply {
         plugin("io.gitlab.arturbosch.detekt")
     }
