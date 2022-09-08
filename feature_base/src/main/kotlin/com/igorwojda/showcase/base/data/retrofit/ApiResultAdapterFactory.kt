@@ -1,6 +1,5 @@
-package com.example.data.network.retrofit.factory
+package com.igorwojda.showcase.base.data.retrofit
 
-import com.igorwojda.showcase.base.data.retrofit.ApiResult
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Retrofit

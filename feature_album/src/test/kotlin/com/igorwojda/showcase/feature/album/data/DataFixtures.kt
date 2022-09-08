@@ -8,8 +8,8 @@ import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumListA
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumSearchApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumWikiApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchAlbumResponse
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntity
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntity
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageSizeEntityModel
 
 object DataFixtures {
@@ -44,13 +44,13 @@ object DataFixtures {
             mbId: String = "mbId",
             name: String = "album",
             artist: String = "artist",
-            images: List<AlbumImageEntity> = listOf(getAlbumImageEntity()),
-        ): AlbumEntity = AlbumEntity(id, mbId, name, artist, images)
+            images: List<AlbumImageEntityModel> = listOf(getAlbumImageEntity()),
+        ): AlbumEntityModel = AlbumEntityModel(id, mbId, name, artist, images)
 
         internal fun getAlbumImageEntity(
             url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
             size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE,
-        ) = AlbumImageEntity(url, size)
+        ) = AlbumImageEntityModel(url, size)
     }
 
     object ApiResponse {

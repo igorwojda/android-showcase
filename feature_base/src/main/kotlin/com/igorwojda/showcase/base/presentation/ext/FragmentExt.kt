@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.extension
+package com.igorwojda.showcase.base.presentation.ext
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections

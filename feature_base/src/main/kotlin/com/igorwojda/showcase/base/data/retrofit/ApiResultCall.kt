@@ -1,6 +1,5 @@
-package com.example.data.network.retrofit.factory
+package com.igorwojda.showcase.base.data.retrofit
 
-import com.igorwojda.showcase.base.data.retrofit.ApiResult
 import okhttp3.Request
 import okio.Timeout
 import retrofit2.Call
@@ -11,6 +10,7 @@ internal class ApiResultCall<T> constructor(
     private val callDelegate: Call<T>,
 ) : Call<ApiResult<T>> {
 
+    @Suppress("detekt.MagicNumber")
     override fun enqueue(callback: Callback<ApiResult<T>>) = callDelegate.enqueue(object : Callback<T> {
         override fun onResponse(call: Call<T>, response: Response<T>) {
             response.body()?.let {

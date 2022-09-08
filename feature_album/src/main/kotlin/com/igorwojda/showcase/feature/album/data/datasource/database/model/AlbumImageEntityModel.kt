@@ -4,10 +4,10 @@ import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumImageEntity(
+internal data class AlbumImageEntityModel(
     val url: String,
     val size: AlbumImageSizeEntityModel,
 )
 
-internal fun AlbumImageEntity.toDomainModel() =
+internal fun AlbumImageEntityModel.toDomainModel() =
     this.size.toDomainModel()?.let { AlbumImage(this.url, it) }

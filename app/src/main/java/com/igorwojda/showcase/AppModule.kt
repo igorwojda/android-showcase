@@ -1,8 +1,8 @@
 package com.igorwojda.showcase
 
-import com.example.data.network.retrofit.factory.ApiResultAdapterFactory
 import com.igorwojda.showcase.app.data.api.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.api.UserAgentInterceptor
+import com.igorwojda.showcase.base.data.retrofit.ApiResultAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.MediaType.Companion.toMediaType

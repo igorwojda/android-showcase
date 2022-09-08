@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntity
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntityModel
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -15,7 +15,7 @@ internal data class AlbumApiModel(
 )
 
 internal fun AlbumApiModel.toEntityModel() =
-    AlbumEntity(
+    AlbumEntityModel(
         mbId = this.mbId ?: "",
         name = this.name,
         artist = this.artist,

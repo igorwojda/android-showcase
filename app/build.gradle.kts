@@ -5,7 +5,6 @@ plugins {
     kotlin("android")
     kotlin("plugin.serialization")
     id("com.google.devtools.ksp")
-    id("org.jlleitschuh.gradle.ktlint")
     id("androidx.navigation.safeargs.kotlin")
     id("de.mannodermaus.android-junit5")
 }
