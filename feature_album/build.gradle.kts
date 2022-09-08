@@ -23,12 +23,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature_base"))
+    implementation(projects.featureBase)
 
     //TODO unresolved reference
     ksp(libs.room.compiler)
 
-    testImplementation(project(":library_test_utils"))
+    testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)
 
     testRuntimeOnly(libs.junit.jupiter.engine)

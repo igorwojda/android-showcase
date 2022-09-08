@@ -19,9 +19,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature_base"))
-    
-    testImplementation(project(":library_test_utils"))
+    implementation(projects.featureBase)
+
+    testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)
 
     testRuntimeOnly(libs.junit.jupiter.engine)

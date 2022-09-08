@@ -48,6 +48,11 @@ dependencyResolutionManagement {
     }
 }
 
+// Allows to use type safe accessors (and autocompletion) when referring to other projects and libraries eg.
+// Before: implementation(project(":feature_album"))
+// After: implementation(projects.featureAlbum)
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(
     ":app",
     ":feature_album",
