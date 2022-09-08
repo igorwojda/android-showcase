@@ -22,6 +22,10 @@ android {
 
         multiDexEnabled = true
 
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+
         buildConfigFieldFromGradleProperty("apiBaseUrl")
         buildConfigFieldFromGradleProperty("apiToken")
     }
