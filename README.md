@@ -190,9 +190,9 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ## Dependency management
 
-Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used to
-centralize dependency management - share third-party dependency coordinates (group, artifact, version) across all gradle
-projects (app modules).
+Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used as a
+centralized dependency management -third-party dependency coordinates (group, artifact, version) are shared across all
+gradle projects (app modules).
 
 All of the dependencies are stored in the [libs.versions.toml](./gradle/libs.versions.toml) file (default location).
 The [TOML](https://toml.io/en/) file consists of 4 major sections:
