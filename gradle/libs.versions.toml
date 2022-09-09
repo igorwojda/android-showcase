@@ -72,12 +72,9 @@ roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 # TODO: nie jako plugins?
 androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlinSerializationPlugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 kotlinSymbolProcessingPlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "kotlinSymbolProcessing" }
 safeArgsPlugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 junit5AndroidPlugin = { module = "de.mannodermaus.android-junit5:de.mannodermaus.android-junit5.gradle.plugin", version.ref = "junit5Android" }
-detektPlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 
 
 # Test dependencies
@@ -98,8 +95,9 @@ room = ["roomKtx", "roomRuntime"]
 test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTesting", "junitJupiterApi", "junitJupiterEngine"]
 
 [plugins]
-kgp = { id = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinGradle = { id = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 navigation = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 androidJUnit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradle" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
