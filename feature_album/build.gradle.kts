@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
-    kotlin("android")
-    kotlin("plugin.serialization")
+    id("org.jetbrains.kotlin.android") //or kotlin("android")
+    id("org.jetbrains.kotlin.plugin.serialization") // or kotlin("plugin.serialization")
     id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")
     id("de.mannodermaus.android-junit5")
@@ -31,11 +31,10 @@ android {
 dependencies {
     implementation(projects.featureBase)
 
-    //TODO unresolved reference
-    ksp(libs.room.compiler)
+    ksp(libs.roomCompiler)
 
     testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)
 
-    testRuntimeOnly(libs.junit.jupiter.engine)
+    testRuntimeOnly(libs.junitJupiterEngine)
 }

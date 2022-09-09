@@ -190,48 +190,12 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ## Dependency management
 
-This project utilizes multiple mechanics to easily share the same versions of dependencies.
+External dependencies (libraries and plugins) are defined in the [libs.versions.toml](./gradle/libs.versions.toml)
+file. This file contains
+[Gradle versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) configuration.
 
-### App library dependencies
-
-External dependencies (libraries) are defined
-using [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) feature in
-the [settings.gradle](./settings.gradle.kts) file. These dynamic library versions are locked using
-Gradle [locking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete
-dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
-
-To update lock files run `./gradlew test lint s --write-locks` command and commit updated `gradle.lockfile` files to
-repository.
-
-Each feature module depends on the `app` module, so dependencies are shared without need to add them explicitly in each
-feature module.
-
-### Gradle plugin dependencies
-
-Gradle plugins are defined
-in [pluginManagement](https://docs.gradle.org/current/userguide/plugins.html#sec:plugin_management)
-block ([settings.gradle](./settings.gradle.kts) file).
-
-Dynamic versions aren't supported for Gradle plugins,
-so [locking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism can't be used (like
-for app library dependencies), and thus versions of some libraries & plugins have to be hardcoded in
-the [gradle.properties](./gradle.properties) file.
-
-There is no easy way to share id between `pluginManagement` block and `buildSrc` folder, so plugin ids (also used within
-build scripts), have to be duplicated in the [GradlePluginId](./buildSrc/java/GradlePluginId/kt) file.
-
-### Shared dependencies
-
-Gradle is missing proper built-in mechanism to share dependency versions between app library dependency and Gradle
-plugin dependency eg. [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
-library uses [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) Gradle plugin
-with the same version.
-
-To enable sharing all versions that are used for both plugins and libraries are defined
-in [gradle.properties](./gradle.properties).
-
-Unfortunately this technique cannot be applied to older Gradle plugins (added by `classpath`, not by `pluginManagement`)
-, so some version in the [gradle.properties](./gradle.properties) are still duplicated.
+Each feature module depends on the `feature_base` module, so dependencies are shared without need to add them explicitly
+in each feature module.
 
 ## CI pipeline
 

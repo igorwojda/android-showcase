@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
-    kotlin("android")
-    kotlin("plugin.serialization")
+    id("org.jetbrains.kotlin.android") //or kotlin("android")
+    id("org.jetbrains.kotlin.plugin.serialization") // or kotlin("plugin.serialization")
     id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")
     id("de.mannodermaus.android-junit5")
@@ -44,24 +44,24 @@ android {
 }
 
 dependencies {
-    // Gradle 7 introduces version catalogs - a new way for sharing dependency versions across projects.
-    // Dependencies are defined in gradle.settings.kts file.
-    api(libs.bundles.kotlin)
-    api(libs.bundles.koin)
+    // See Dependency management section in the README.md
+    // https://github.com/igorwojda/android-showcase#dependency-management
+    api(libs.kotlin)
+    api(libs.koin)
     api(libs.bundles.retrofit)
-    api(libs.bundles.okhttp)
-    api(libs.play.core)
-    api(libs.bundles.ktx)
+    api(libs.playCore)
+    api(libs.coreKtx)
+    api(libs.fragmentKtx)
     api(libs.bundles.navigation)
     api(libs.bundles.lifecycle)
     api(libs.bundles.room)
-    api(libs.viewbindingpropertydelegate)
+    api(libs.viewBindingPropertyDelegate)
     api(libs.timber)
     api(libs.coil)
     api(libs.constraintLayout)
     api(libs.coordinatorLayout)
-    api(libs.appcompat)
-    api(libs.recyclerview)
+    api(libs.appCompat)
+    api(libs.recyclerView)
     api(libs.material)
     api(libs.coroutines)
     api(libs.lottie)
@@ -69,5 +69,5 @@ dependencies {
     testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)
 
-    testRuntimeOnly(libs.junit.jupiter.engine)
+    testRuntimeOnly(libs.junitJupiterEngine)
 }

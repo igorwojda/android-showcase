@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
-    kotlin("android")
-    kotlin("plugin.serialization")
+    id("org.jetbrains.kotlin.android") //or kotlin("android")
+    id("org.jetbrains.kotlin.plugin.serialization") // or kotlin("plugin.serialization")
     id("de.mannodermaus.android-junit5")
 }
 
@@ -20,10 +20,9 @@ android {
 
 dependencies {
     // implementation configuration is used here (instead of testImplementation) because this module is added as
-    // testImplementation dependency inside other modules. Using implementation allows to write tests for test
-    // utilities.
-    implementation(libs.bundles.kotlin)
+    // testImplementation dependency inside other modules. Using implementation allows to write tests for test utilities.
+    implementation(libs.kotlin)
     implementation(libs.bundles.test)
 
-    runtimeOnly(libs.junit.jupiter.engine)
+    runtimeOnly(libs.junitJupiterEngine)
 }
