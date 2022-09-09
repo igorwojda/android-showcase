@@ -13,6 +13,7 @@ dependencies {
     implementation(libs.kotlinSymbolProcessingPlugin)
     implementation(libs.safeArgsPlugin)
     implementation(libs.junit5Android)
+    implementation(libs.detektPlugin)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {

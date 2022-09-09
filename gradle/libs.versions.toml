@@ -77,6 +77,7 @@ kotlinSerializationPlugin = { module = "org.jetbrains.kotlin:kotlin-serializatio
 kotlinSymbolProcessingPlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "kotlinSymbolProcessing" }
 safeArgsPlugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 junit5Android = { module = "de.mannodermaus.android-junit5:de.mannodermaus.android-junit5.gradle.plugin", version.ref = "junit5Android" }
+detektPlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 
 
 # Test dependencies
