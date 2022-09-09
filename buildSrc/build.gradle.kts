@@ -9,7 +9,6 @@ repositories {
 dependencies {
     implementation(libs.androidGradlePlugin)
     implementation(libs.kotlinSymbolProcessingPlugin)
-    implementation(libs.safeArgsPlugin)
     implementation(libs.junit5AndroidPlugin)
 }
 

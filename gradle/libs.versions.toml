@@ -73,7 +73,6 @@ roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 # TODO: nie jako plugins?
 androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kotlinSymbolProcessingPlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "kotlinSymbolProcessing" }
-safeArgsPlugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 junit5AndroidPlugin = { module = "de.mannodermaus.android-junit5:de.mannodermaus.android-junit5.gradle.plugin", version.ref = "junit5Android" }
 
 
@@ -96,7 +95,7 @@ test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTest
 
 [plugins]
 kotlinGradle = { id = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-navigation = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
+safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 androidJUnit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradle" }
