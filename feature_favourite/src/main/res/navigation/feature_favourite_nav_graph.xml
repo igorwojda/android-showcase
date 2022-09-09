@@ -7,6 +7,5 @@
     <fragment
             android:id="@+id/favouriteFragment"
             android:name="com.igorwojda.showcase.feature.favourite.presentation.favourite.FavouriteFragment"
-            android:label="FavouriteFragment"
-            app:moduleName="feature_favourite" />
+            android:label="FavouriteFragment" />
 </navigation>

@@ -7,6 +7,5 @@
     <fragment
             android:id="@+id/profileFragment"
             android:name="com.igorwojda.showcase.feature.profile.presentation.profile.ProfileFragment"
-            android:label="ProfileFragment"
-            app:moduleName="feature_profile" />
+            android:label="ProfileFragment" />
 </navigation>

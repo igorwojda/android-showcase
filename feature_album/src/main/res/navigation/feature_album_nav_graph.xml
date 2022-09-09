@@ -7,8 +7,7 @@
     <fragment
             android:id="@+id/albumListFragment"
             android:name="com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListFragment"
-            android:label="AlbumListFragment"
-            app:moduleName="feature_album">
+            android:label="AlbumListFragment">
         <action
                 android:id="@+id/actionAlbumListToAlbumDetail"
                 app:destination="@id/albumDetailFragment" />
@@ -17,8 +16,7 @@
     <fragment
             android:id="@+id/albumDetailFragment"
             android:name="com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailFragment"
-            android:label="AlbumDetailFragment"
-            app:moduleName="feature_album">
+            android:label="AlbumDetailFragment">
         <argument
                 android:name="artistName"
                 app:argType="string" />
