@@ -47,13 +47,12 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api success and saves album in database`() {
         // given
         val phrase = "phrase"
-        val albums = listOf(DataFixtures.ApiModel.getAlbum())
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
             DataFixtures.ApiResponse.getSearchAlbum()
         )
 
         // when
-        val actual = runBlocking { cut.searchAlbum(phrase) }
+        runBlocking { cut.searchAlbum(phrase) }
 
         // then
         coVerify { mockAlbumDao.insertAlbums(any()) }
@@ -124,7 +123,7 @@ class AlbumRepositoryImplTest {
         } returns ApiResult.Exception(UnknownHostException())
 
         // when
-        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
+        runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
         coVerify { mockAlbumDao.getAlbum(artistName, albumName, mbId) }
