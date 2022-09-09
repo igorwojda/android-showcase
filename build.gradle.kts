@@ -5,6 +5,7 @@ plugins {
     id("com.android.library") apply false
     id("org.jetbrains.kotlin.android") apply false // or kotlin("android")
     id("com.google.devtools.ksp") apply false
+
     alias(libs.plugins.safeArgs) apply false
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.detekt)
@@ -17,6 +18,8 @@ subprojects {
 
     apply {
         plugin("io.gitlab.arturbosch.detekt")
+        plugin("org.jetbrains.kotlin.android") //or kotlin("android")
+        plugin("org.jetbrains.kotlin.plugin.serialization") // or kotlin("plugin.serialization")
     }
 
     detekt {

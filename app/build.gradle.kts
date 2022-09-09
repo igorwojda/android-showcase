@@ -2,10 +2,8 @@ import com.android.build.api.dsl.ApplicationDefaultConfig
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android") //or kotlin("android")
-    id("org.jetbrains.kotlin.plugin.serialization") // or kotlin("plugin.serialization")
-    id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
     id("de.mannodermaus.android-junit5")
 }
 

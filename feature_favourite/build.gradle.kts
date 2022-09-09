@@ -1,6 +1,5 @@
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android") //or kotlin("android")
     id("org.jetbrains.kotlin.plugin.serialization") // or kotlin("plugin.serialization")
     id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")

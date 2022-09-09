@@ -96,7 +96,7 @@ test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTest
 [plugins]
 kotlinGradle = { id = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
-androidJUnit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
+jUnit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradle" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
