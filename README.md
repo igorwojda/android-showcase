@@ -190,9 +190,17 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ## Dependency management
 
-External dependencies (libraries and plugins) are defined in the [libs.versions.toml](./gradle/libs.versions.toml)
-file. This file contains
-[Gradle versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) configuration.
+Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used to
+centralize dependency management - share third-party dependency coordinates (group, artifact, version) across all gradle
+projects (app modules).
+
+All of the dependencies are stored in the [libs.versions.toml](./gradle/libs.versions.toml) file (default location).
+The [TOML](https://toml.io/en/) file consists of 4 major sections:
+
+- `[versions]` - declare versions which can be referenced by dependencies
+- `[libraries]` - declare the aliases to library coordinates
+- `[bundles]` - declare dependency bundles (groups)
+- `[libraries]` - declare the aliases to Gradle plugin coordinates
 
 Each feature module depends on the `feature_base` module, so dependencies are shared without need to add them explicitly
 in each feature module.
