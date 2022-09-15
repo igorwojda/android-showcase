@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.safeArgs) apply false
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.detekt)
+    alias(libs.plugins.testLogger)
 }
 
 subprojects {
