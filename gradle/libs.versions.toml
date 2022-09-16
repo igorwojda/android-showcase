@@ -71,6 +71,8 @@ navigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.re
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+
 # TODO: nie jako plugins?
 androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kotlinSymbolProcessingPlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "kotlinSymbolProcessing" }

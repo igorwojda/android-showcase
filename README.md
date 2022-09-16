@@ -76,7 +76,7 @@ the libraries are in the stable version unless there is a good reason to use non
   * Reactive UI
 * Static analysis tools
   * [Ktlint](https://github.com/pinterest/ktlint) - validate code formatting
-  * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify complexity look for and code smell
+  * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify complexity look for and code smells
 * Gradle
   * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
   * Custom tasks
@@ -215,8 +215,7 @@ the [.github/workflows](.github/workflows) folder.
 Series of workflows runs (in parallel) for every opened PR and after merging PR to `main` branch:
 
 * `./gradlew lintDebug` - runs Android lint
-* `./gradlew detekt` - runs detekt
-* `./gradlew ktlintCheck` - runs ktlint
+* `./gradlew detektCheck` - runs detekt and ktlint
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
