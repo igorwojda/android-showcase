@@ -1,5 +1,7 @@
 plugins {
     id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.devtools.ksp")
     id("de.mannodermaus.android-junit5")
 }
@@ -12,7 +14,7 @@ android {
             "META-INF/AL2.0",
             "META-INF/licenses/**",
             "**/attach_hotspot_windows.dll",
-            "META-INF/LGPL2.1",
+            "META-INF/LGPL2.1"
         )
     }
 }

@@ -7,9 +7,9 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.androidGradlePlugin)
-    implementation(libs.kotlinSymbolProcessingPlugin)
-    implementation(libs.junit5AndroidPlugin)
+//    implementation(libs.androidGradlePlugin)
+//    implementation(libs.kotlinSymbolProcessingPlugin)
+//    implementation(libs.junit5AndroidPlugin)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {

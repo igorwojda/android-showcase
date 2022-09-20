@@ -1,5 +1,7 @@
 plugins {
     id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")
     id("de.mannodermaus.android-junit5")

@@ -10,21 +10,12 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.detekt)
     alias(libs.plugins.testLogger)
-//    alias(libs.plugins.detekt)
+    alias(libs.plugins.detekt)
 }
 
 subprojects {
     tasks.withType<Test> {
         maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
-    }
-
-    apply {
-        plugin("org.jetbrains.kotlin.android") // or kotlin("android")
-        plugin("org.jetbrains.kotlin.plugin.serialization") // or kotlin("plugin.serialization")
-    }
-
-    detekt {
-        config = rootProject.files("detekt.yml")
     }
 }
 
