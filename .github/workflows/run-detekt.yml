@@ -30,7 +30,7 @@ jobs:
             gradle-${{ hashFiles('gradle-checksums.txt') }}-
 
       - name: detekt
-        run: ./gradlew detekt
+        run: ./gradlew detektCheck
 
       - uses: actions/upload-artifact@v3
         with:
