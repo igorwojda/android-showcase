@@ -16,7 +16,7 @@ android {
         applicationId = "com.igorwojda.showcase"
 
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.0.1" // SemVer (Major.Minor.Patch)
         minSdk = 28
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
