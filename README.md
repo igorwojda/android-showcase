@@ -193,11 +193,11 @@ Below diagram presents application data flow when a user interacts with `album l
 
 Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used as a
 centralized dependency management -third-party dependency coordinates (group, artifact, version) are shared across all
-gradle projects (app modules).
+modules (gradle projects and gradle subprojects).
 
 All of the dependencies are stored in the [libs.versions.toml](./gradle/libs.versions.toml) file (default location).
-The [TOML](https://toml.io/en/) file consists of 4 major sections:
 
+The [TOML](https://toml.io/en/) file consists of 4 major sections:
 - `[versions]` - declare versions which can be referenced by dependencies
 - `[libraries]` - declare the aliases to library coordinates
 - `[bundles]` - declare dependency bundles (groups)
