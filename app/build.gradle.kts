@@ -14,6 +14,13 @@ android {
     compileSdk = 33
 
     defaultConfig {
+        minSdk = 26
+        targetSdk = 32
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    defaultConfig {
         applicationId = "com.igorwojda.showcase"
 
         versionCode = 1

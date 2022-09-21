@@ -11,6 +11,14 @@ plugins {
 android {
     compileSdk = 33
 
+    defaultConfig {
+        minSdk = 26
+        targetSdk = 32
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
     packagingOptions {
         resources.excludes += setOf(
             "META-INF/AL2.0",
