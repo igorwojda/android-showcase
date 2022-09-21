@@ -1,7 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 // Android-Junit5 plugin does not support Gradle plugins DSL https://github.com/mannodermaus/android-junit5/issues/283
-
 buildscript {
     dependencies {
         classpath(libs.junit5AndroidPlugin)
