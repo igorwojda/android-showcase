@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.kotlin.symbolProcessing)
     alias(libs.plugins.safeArgs) apply false
+    alias(libs.plugins.junit5Android) apply false
     alias(libs.plugins.detekt)
     alias(libs.plugins.testLogger)
 }

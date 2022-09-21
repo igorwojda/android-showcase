@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.symbolProcessing)
     alias(libs.plugins.safeArgs)
     alias(libs.plugins.testLogger)
-    id("de.mannodermaus.android-junit5")
+    alias(libs.plugins.junit5Android)
 }
 
 android {
