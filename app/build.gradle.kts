@@ -36,10 +36,6 @@ android {
             isMinifyEnabled = false
             proguardFiles("proguard-android.txt", "proguard-rules.pro")
         }
-
-        testOptions {
-            unitTests.isReturnDefaultValues = true
-        }
     }
 
     buildFeatures {
