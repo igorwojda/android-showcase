@@ -7,17 +7,17 @@
 [![codebeat badge](https://codebeat.co/badges/e9f1a825-b5bd-4c7a-aadc-7c8d0cf59310)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-main)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
-Showcase is a sample project that presents a modern approach
-to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development.
+Showcase project presents a up-to-date approach to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application 
+development by providing a fully functional Android application.
 
-The goal of the project is to combine popular libraries/tools and demonstrate best development practices by utilizing an
-up-to-date tech-stack and presenting a modern Android application [Architecture](#architecture) that is modular,
-scalable, maintainable, and testable. This application may look simple, but it has all the pieces that will provide the
-rock-solid foundation for the larger app suitable for bigger teams and
-long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
+Project is utilizing leading tech-stack (libraries, plugins, tools) to demonstrates the best development practices. 
 
-This project is being maintained to match industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you
-want to help.
+Project presents modern Android application [Architecture](#architecture) that is modular,
+scalable, maintainable, and testable. This application may look simple, but it has all the pieces that will provide 
+the rock-solid foundation for the larger app suitable for bigger teams and long 
+[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
+
+This project is being maintained to match industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
 ## Application scope
 
@@ -57,7 +57,6 @@ the libraries are in the stable version unless there is a good reason to use non
   * Single activity architecture
     using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
   * MVVM + MVI (presentation layer)
-  * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
   * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
     , [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
     , [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
@@ -68,21 +67,22 @@ the libraries are in the stable version unless there is a good reason to use non
 * Testing
   * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
     [android-junit5](https://github.com/mannodermaus/android-junit5))
-  * [UT Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
+  * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
   * [Mockk](https://mockk.io/) - mocking framework
   * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
 * UI
   * [Material design](https://material.io/design)
   * Reactive UI
 * Static analysis tools
-  * [Ktlint](https://github.com/pinterest/ktlint) - validate code formatting
-  * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify complexity look for and code smells
+  * [Ktlint](https://github.com/pinterest/ktlint) - verify code formatting
+  * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify code complexity and code smells
+  * [Androd Lint](http://tools.android.com/tips/lint) - verify Andorid platform usage
 * Gradle
-  * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+  * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_ dsl.html)
   * Custom tasks
   * [Gradle Plugins](https://plugins.gradle.org/)
     * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
-    * [android-junit5](https://github.com/mannodermaus/android-junit5)
+    * [Android-junit5](https://github.com/mannodermaus/android-junit5)
   * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
 
@@ -168,8 +168,8 @@ Components:
 
 #### Data layer
 
-Manages application data and exposes these data sources as repositories to the `domain` layer. Typical responsibilities
-of this layer would be to retrieve data from the internet and optionally cache this data locally.
+Manages application data. Connect to data sources and provide data through repository to the `domain` layer eg. retrieve 
+data from the internet and cache the data in memory cache (when device is offline).
 
 Components:
 
@@ -279,11 +279,12 @@ additional resources.
 
 ### Android projects
 
-Other high-quality projects will help you to find solutions that work for your project:
+Other high-quality projects will help you to find solutions that work for your project (random order):
 
 - [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
 - [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various
   Android architecture approaches
+- [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and Jetpack Compose
 - [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
   libraries
 - [GithubBrowserSample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
@@ -294,38 +295,37 @@ Other high-quality projects will help you to find solutions that work for your p
 - [Android samples](https://github.com/android) - official Android samples repository
 - [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
-- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an
-  Android/Kotlin project and be up and running in a few seconds.
+- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create preconfigured Android Kotlin project in a few seconds.
+- [whatsApp-clone-compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack Compose and Stream Chat SDK for Compose
+- [compose-samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio projects to help you learn about Compose in Android
 
 ## Known issues
 
+- [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM yet.
 - Delegate import is not provided when variable has the same name as
   Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - Android-Junit5 plugin does not support Gradle plugins DSL
   ([ISSUE-283](ttps://github.com/mannodermaus/android-junit5/issues/283))
 - Correct code is marked as error in build.gradle.kts files when using `libs` from the Gradle Version Catalog
-  ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370/Good-code-red-in-buildSrcbuildgradlekts-when-using-libs-from-the-new-VersionCatalog-support),
+  ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
   [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
-- Gradle 7.1.1 is not compatible with GradleJDK 16 (build is failing, so JDK 15 must be used)
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
-  . This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527)
-  and [KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
+  . This is partially fixed in AS 4.2 ([Issue 527](https://github.com/pinterest/ktlint/issues/527)
+  and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
-- False positive "Function can be private" ([KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
-- False positive cannot access class ([KT-16077](https://youtrack.jetbrains.com/issue/KT-44797)). This is fixed in
-  InteliJ IDEA 2021.1 EAP 1 afair.
-- Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the
-  library ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
 - Android lint complains about exceeding access rights to
   ArchTaskExecutor ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
-- Gradle dependencies can't be easily shared between app libraries and Gradle
-  plugins ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
+
+* 
+
+
+* [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
 
 ## Contribute
 
-Want to contribute? Check our [Contributing](CONTRIBUTING.md) docs.
+Want to contribute? Check the [Contributing](CONTRIBUTING.md) docs.
 
 ## Author
 
