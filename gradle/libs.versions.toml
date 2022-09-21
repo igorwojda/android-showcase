@@ -23,7 +23,7 @@ material = "1.0.0-beta02"
 lottie = "5.2.0"
 playCore = "1.10.3"
 coreKtx = "1.9.0"
-fragmentKtx = "1.5.2"
+fragmentKtx = "1.5.3"
 
 detekt = "1.21.0"
 androidGradlePlugin = "7.2.2"
