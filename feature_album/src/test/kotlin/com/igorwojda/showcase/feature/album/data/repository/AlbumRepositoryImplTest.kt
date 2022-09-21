@@ -86,7 +86,7 @@ class AlbumRepositoryImplTest {
         // when
         val actual = runBlocking { cut.searchAlbum(phrase) }
 
-        //then
+        // then
         actual shouldBeEqualTo Result.Failure()
     }
 

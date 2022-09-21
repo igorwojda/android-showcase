@@ -59,7 +59,7 @@ class AlbumListViewModelTest {
 
         // then
         advanceUntilIdle()
-        
+
         cut.stateFlow.value shouldBeEqualTo AlbumListViewModel.State(
             isLoading = false,
             isError = false,

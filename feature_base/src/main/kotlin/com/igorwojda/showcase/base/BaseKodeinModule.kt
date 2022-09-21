@@ -7,4 +7,3 @@ val baseModule = module {
 
     single { NavManager() }
 }
-

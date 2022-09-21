@@ -19,8 +19,10 @@ internal class ApiResultCall<T> constructor(
                         callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Success(it)))
                     }
                     in 400..409 -> {
-                        callback.onResponse(this@ApiResultCall,
-                            Response.success(ApiResult.Error(response.code(), response.message())))
+                        callback.onResponse(
+                            this@ApiResultCall,
+                            Response.success(ApiResult.Error(response.code(), response.message()))
+                        )
                     }
                 }
             } ?: callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Error(123, "message")))

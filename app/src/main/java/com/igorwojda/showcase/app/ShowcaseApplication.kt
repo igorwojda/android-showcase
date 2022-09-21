@@ -22,7 +22,7 @@ class ShowcaseApplication : Application() {
     }
 
     private fun initKoin() {
-        
+
         GlobalContext.startKoin {
             androidLogger()
             androidContext(this@ShowcaseApplication)
