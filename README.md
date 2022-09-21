@@ -300,7 +300,9 @@ Other high-quality projects will help you to find solutions that work for your p
 ## Known issues
 
 - Delegate import is not provided when variable has the same name as
-  Delegate([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403)).
+  Delegate([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
+- Android-Junit5 plugin does not support Gradle plugins DSL
+  [ISSUE-283](ttps://github.com/mannodermaus/android-junit5/issues/283)
 - Gradle 7.1.1 is not compatible with GradleJDK 16 (build is failing, so JDK 15 must be used)
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
   . This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527)

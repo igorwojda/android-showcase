@@ -70,7 +70,9 @@ navigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.re
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+
 detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+junit5AndroidPlugin = { module = "de.mannodermaus.android-junit5:de.mannodermaus.android-junit5.gradle.plugin", version.ref = "junit5Android" }
 
 # Test dependencies
 testCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }

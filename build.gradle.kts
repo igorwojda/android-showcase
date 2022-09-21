@@ -1,8 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+// Android-Junit5 plugin does not support Gradle plugins DSL https://github.com/mannodermaus/android-junit5/issues/283
+
 buildscript {
     dependencies {
-        classpath("de.mannodermaus.gradle.plugins:android-junit5:1.8.2.1")
+        classpath(libs.junit5AndroidPlugin)
     }
 }
 
@@ -14,7 +16,6 @@ plugins {
     alias(libs.plugins.kotlin.symbolProcessing)
     alias(libs.plugins.safeArgs) apply false
     alias(libs.plugins.detekt)
-//    alias(libs.plugins.jUnit5Android)
     alias(libs.plugins.testLogger)
 }
 
