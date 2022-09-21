@@ -83,8 +83,8 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Gradle Plugins](https://plugins.gradle.org/)
     * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
     * [android-junit5](https://github.com/mannodermaus/android-junit5)
-    * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
-    * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)
+  * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)
+  * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
 
 ## Architecture
 
@@ -300,28 +300,28 @@ Other high-quality projects will help you to find solutions that work for your p
 ## Known issues
 
 - Delegate import is not provided when variable has the same name as
-  Delegate([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
+  Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - Android-Junit5 plugin does not support Gradle plugins DSL
-  [ISSUE-283](ttps://github.com/mannodermaus/android-junit5/issues/283)
+  ([ISSUE-283](ttps://github.com/mannodermaus/android-junit5/issues/283))
 - Correct code is marked as error in build.gradle.kts files when using `libs` from the Gradle Version Catalog
-  [KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370/Good-code-red-in-buildSrcbuildgradlekts-when-using-libs-from-the-new-VersionCatalog-support)
+  ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370/Good-code-red-in-buildSrcbuildgradlekts-when-using-libs-from-the-new-VersionCatalog-support),
+  [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
 - Gradle 7.1.1 is not compatible with GradleJDK 16 (build is failing, so JDK 15 must be used)
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
   . This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527)
   and [KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
--
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
 - False positive cannot access class ([KT-16077](https://youtrack.jetbrains.com/issue/KT-44797)). This is fixed in
   InteliJ IDEA 2021.1 EAP 1 afair.
 - Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the
-  library ([16077](https://github.com/gradle/gradle/issues/16077))
+  library ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
 - Android lint complains about exceeding access rights to
-  ArchTaskExecutor ([79189568](https://issuetracker.google.com/u/0/issues/79189568))
-- JUnit 5 does not support tests with suspended modifier ([1914](https://github.com/junit-team/junit5/issues/1914))
+  ArchTaskExecutor ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
+- JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
 - Gradle dependencies can't be easily shared between app libraries and Gradle
-  plugins ([16077](https://github.com/gradle/gradle/issues/16077))
+  plugins ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
 
 ## Contribute
 
