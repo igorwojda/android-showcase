@@ -98,9 +98,10 @@ test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTest
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-symbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
-jUnit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
+junit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
 testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
