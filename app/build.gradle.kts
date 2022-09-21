@@ -2,10 +2,10 @@ import com.android.build.api.dsl.ApplicationDefaultConfig
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.symbolProcessing)
     alias(libs.plugins.safeArgs)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.testLogger)
     alias(libs.plugins.junit5Android)
 }

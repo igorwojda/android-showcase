@@ -1,10 +1,11 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android") // or kotlin("android")
-    id("org.jetbrains.kotlin.plugin.serialization") // or kotlin("plugin.serialization")
-    id("com.google.devtools.ksp")
-    id("androidx.navigation.safeargs.kotlin")
-    id("de.mannodermaus.android-junit5")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.symbolProcessing)
+    alias(libs.plugins.safeArgs)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.testLogger)
+    alias(libs.plugins.junit5Android)
 }
 
 android {
