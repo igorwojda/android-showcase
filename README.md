@@ -80,10 +80,11 @@ the libraries are in the stable version unless there is a good reason to use non
 * Gradle
   * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
   * Custom tasks
-  * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
-    [android-junit5](https://github.com/mannodermaus/android-junit5))
-  * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
-  * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)
+  * [Gradle Plugins](https://plugins.gradle.org/)
+    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
+    * [android-junit5](https://github.com/mannodermaus/android-junit5)
+    * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
+    * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)
 
 ## Architecture
 
