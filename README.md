@@ -303,10 +303,13 @@ Other high-quality projects will help you to find solutions that work for your p
   Delegate([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - Android-Junit5 plugin does not support Gradle plugins DSL
   [ISSUE-283](ttps://github.com/mannodermaus/android-junit5/issues/283)
+- Correct code is marked as error in build.gradle.kts files when using `libs` from the Gradle Version Catalog
+  [KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370/Good-code-red-in-buildSrcbuildgradlekts-when-using-libs-from-the-new-VersionCatalog-support)
 - Gradle 7.1.1 is not compatible with GradleJDK 16 (build is failing, so JDK 15 must be used)
 - `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
   . This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527)
   and [KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
+-
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
