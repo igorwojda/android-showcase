@@ -8,7 +8,7 @@ on:
 
 jobs:
   run:
-    continue-on-error: true
+    continue-on-error: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -16,7 +16,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - name: Set up JDK 1.8
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: 17
@@ -35,9 +35,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: android-lint-report
-          path: ~/app/build/reports/lint-results.html
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: android-lint-report
-          path: ./**/build/reports/lint-results.xml
+          path: ~/**/build/reports/lint-results*.html

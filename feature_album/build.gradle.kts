@@ -13,12 +13,12 @@ android {
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 32
+        targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
-    
+
     buildFeatures {
         viewBinding = true
     }
