@@ -26,7 +26,7 @@ coreKtx = "1.9.0"
 fragmentKtx = "1.5.2"
 
 detekt = "1.21.0"
-androidGradlePlugin = "7.2.2"
+androidGradlePlugin = "7.3.0"
 kotlinSymbolProcessing = "1.7.10-1.0.6"
 
 # Test versions
