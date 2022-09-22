@@ -44,6 +44,8 @@ the libraries are in the stable version unless there is a good reason to use non
   * [100% Kotlin](https://kotlinlang.org/)
     + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
     + [Kotlin Flow](https://kotlinlang.org/docs/flow.html) - data flow across all app layers, including views
+    + [Kotlin Symbol Processing](https://kotlinlang.org/docs/ksp-overview.html) - enable compiler plugins
+    + [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html) - parse [JSON](https://www.json.org/json-en.html)
   * [Retrofit](https://square.github.io/retrofit/) - networking
   * [Jetpack](https://developer.android.com/jetpack)
     * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
@@ -82,14 +84,17 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify code complexity and code smells
   * [Androd Lint](http://tools.android.com/tips/lint) - verify Android platform usage
 * Gradle
-  * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_ dsl.html)
+  * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - define build scripts
   * Custom tasks
   * [Gradle Plugins](https://plugins.gradle.org/)
-    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
-    * [Android-junit5](https://github.com/mannodermaus/android-junit5)
-  * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)
+    * [Android Gradle](https://developer.android.com/studio/releases/gradle-plugin) - standard Android Plugins
+    * [Test Logger](https://github.com/radarsh/gradle-test-logger-plugin) - format test logs
+    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) - pass data between navigation destinations
+    * [Android-junit5](https://github.com/mannodermaus/android-junit5) - use [JUnit 5](https://junit.org/junit5/) with Android
+  * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) - define dependencies
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
-* [Revonate](https://github.com/renovatebot/renovate) - dependency update boot
+* GitHub Apps
+  * [Revonate](https://github.com/renovatebot/renovate) - dependency update boot
 
 ## Architecture
 
