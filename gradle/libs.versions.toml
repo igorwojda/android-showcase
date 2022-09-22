@@ -30,7 +30,7 @@ androidGradlePlugin = "7.3.0"
 kotlinSymbolProcessing = "1.7.10-1.0.6"
 
 # Test versions
-junit = "5.9.0"
+junit = "5.9.1"
 kluent = "1.68"
 testRunner = "1.4.0"
 mockk = "1.12.8"
