@@ -109,7 +109,7 @@ dependencyResolutionManagement {
             alias("kodein-android-x").to("org.kodein.di", "kodein-di-framework-android-x").versionRef("kodein")
             bundle("kodein", listOf("kodein-core", "kodein-android-x"))
 
-            alias("timber").to("com.jakewharton.timber:timber:4.+")
+            alias("timber").to("com.jakewharton.timber:timber:5.+")
             alias("constraintLayout").to("androidx.constraintlayout:constraintlayout:2.+")
             alias("coordinatorLayout").to("androidx.coordinatorlayout:coordinatorlayout:1.+")
             alias("appcompat").to("androidx.appcompat:appcompat:1.+")
