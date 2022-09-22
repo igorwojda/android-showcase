@@ -3,5 +3,10 @@
   "extends": [
     "config:base"
   ],
-  "automergeType": "pr"
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "automergeType": "pr",
+    "platformAutomerge": true
+  }
 }
