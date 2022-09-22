@@ -35,9 +35,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: android-lint-report
-          path: ~/app/build/reports/lint-results.html
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: android-lint-report
-          path: ./**/build/reports/lint-results.xml
+          path: ~/**/build/reports/lint-results*.html
