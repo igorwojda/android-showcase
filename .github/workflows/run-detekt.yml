@@ -11,7 +11,7 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      fail-fast: true
     steps:
       - name: checkout
         uses: actions/checkout@v3
