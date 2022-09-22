@@ -13,7 +13,7 @@ class AlbumImageApiModelTest {
         // given
         val url = "url"
         val size = AlbumImageSizeApiModel.EXTRA_LARGE
-        val cut = DataFixtures.ApiModel.getAlbumImageModel(url, size)
+        val cut = DataFixtures.getAlbumImageModel(url, size)
 
         // when
         val domainModel = cut.toDomainModel()
@@ -27,7 +27,7 @@ class AlbumImageApiModelTest {
         // given
         val url = "url"
         val size = AlbumImageSizeApiModel.UNKNOWN
-        val cut = DataFixtures.ApiModel.getAlbumImageModel(url, size)
+        val cut = DataFixtures.getAlbumImageModel(url, size)
 
         // when
         val func = { cut.toDomainModel() }

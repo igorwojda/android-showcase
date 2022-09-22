@@ -14,6 +14,6 @@ class AlbumImageSizeApiModelTest {
 
         // then
         // no explicit check is required, because test will crash if any of
-        // the consts in the enums can't be mapped to a domain enum
+        // the costs in the enums can't be mapped to a domain enum
     }
 }

@@ -11,7 +11,7 @@ class AlbumApiModelTest {
     @Test
     fun `data model with full data maps to AlbumDomainModel`() {
         // given
-        val cut = DataFixtures.ApiModel.getAlbumApiModel()
+        val cut = DataFixtures.getAlbumApiModel()
 
         // when
         val domainModel = cut.toDomainModel()
@@ -29,7 +29,7 @@ class AlbumApiModelTest {
     @Test
     fun `data model with missing data maps to AlbumDomainModel`() {
         // given
-        val cut = DataFixtures.ApiModel.getAlbumApiModel(
+        val cut = DataFixtures.getAlbumApiModel(
             wiki = null,
             images = emptyList()
         )
@@ -51,8 +51,8 @@ class AlbumApiModelTest {
     fun `mapping filters out unknown size`() {
         // given
         val albumDataImages = listOf(AlbumImageSizeApiModel.EXTRA_LARGE, AlbumImageSizeApiModel.UNKNOWN)
-            .map { DataFixtures.ApiModel.getAlbumImageModel(size = it) }
-        val cut = DataFixtures.ApiModel.getAlbumApiModel(images = albumDataImages)
+            .map { DataFixtures.getAlbumImageModel(size = it) }
+        val cut = DataFixtures.getAlbumApiModel(images = albumDataImages)
 
         // when
         val domainModel = cut.toDomainModel()
@@ -65,9 +65,9 @@ class AlbumApiModelTest {
     fun `mapping filters out blank url`() {
         // given
         val images = listOf("", "url")
-            .map { DataFixtures.ApiModel.getAlbumImageModel(url = it) }
+            .map { DataFixtures.getAlbumImageModel(url = it) }
 
-        val cut = DataFixtures.ApiModel.getAlbumApiModel(images = images)
+        val cut = DataFixtures.getAlbumApiModel(images = images)
 
         // when
         val domainModel = cut.toDomainModel()
