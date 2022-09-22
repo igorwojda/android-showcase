@@ -32,10 +32,11 @@ The app has a few screens located in multiple feature modules:
 - Album detail screen - display information about the selected album
 - Profile screen - empty (WiP)
 - Favourites screen - empty (WiP)
+<br/><br/>
+<img src="misc/image/application_anim.gif" width="336" hspace="20">
+<br/><br/>
 
 ## Tech-Stack
-
-<img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
 This project takes advantage of best practices, and many popular libraries and tools in the Android ecosystem. Most of
 the libraries are in the stable version unless there is a good reason to use non-stable dependency.
