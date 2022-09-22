@@ -1,4 +1,4 @@
-# Android Showcase 2.0
+# 💎 Android Showcase 2.0
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.7.x-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AGP-7.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
