@@ -7,29 +7,33 @@
 [![codebeat badge](https://codebeat.co/badges/e9f1a825-b5bd-4c7a-aadc-7c8d0cf59310)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-main)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
-Showcase project presents a up-to-date approach to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application 
-development by providing a fully functional Android application.
+Android Showcase project presents a modern approach to
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development. It is a complete sample of
+a fully functional Android application.
 
-Project is utilizing leading tech-stack (libraries, plugins, tools) to demonstrates the best development practices. 
+Project is utilizing modular, scalable, and testable [architecture](#architecture),leading
+[tech-stack](Tech-stack) and demonstrates the best development practices.
 
-Project presents modern Android application [Architecture](#architecture) that is modular,
-scalable, maintainable, and testable. This application may look simple, but it has all the pieces that will provide 
-the rock-solid foundation for the larger app suitable for bigger teams and long 
+This application may look simple, but it has all the pieces that will provide the rock-solid foundation for the larger
+application suitable for bigger teams during extended
 [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
-This project is being maintained to match industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
+This project is being maintained to stay up to date with leading industry standards. Please check
+the [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
 ## Application scope
 
-The `android-showcase` is a simple application that displays information about music albums. The data is loaded from
-the [Last.fm Music Discovery API](https://www.last.fm/api). The app has few screens located in multiple feature modules.
+The `android-showcase` displays information about music albums. The data is loaded from
+the [Last.fm Music Discovery API](https://www.last.fm/api).
 
-- Album list screen - display list of albums
-- Album detail screen - display information about selected album
+The app has a few screens located in multiple feature modules:
+
+- Album list screen - displays list of albums
+- Album detail screen - display information about the selected album
 - Profile screen - empty (WiP)
 - Favourites screen - empty (WiP)
 
-## Project characteristics and tech-stack
+## Tech-stack
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
@@ -47,7 +51,7 @@ the libraries are in the stable version unless there is a good reason to use non
     * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when
       lifecycle state changes
     * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related
-      data in a lifecycle conscious way
+      data in a lifecycle-aware way
     * [Room](https://developer.android.com/jetpack/androidx/releases/room) - store offline cache
   * [Koin](https://insert-koin.io/) - dependency injection (dependency retrieval)
   * [Coil](https://github.com/coil-kt/coil) - image loading library
@@ -63,7 +67,7 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
 * CI
   * [GitHub Actions](https://github.com/features/actions)
-  * Automatic PR verification including tests, linters and 3rd online tools
+  * Automatic PR verification including tests, linters, and 3rd online tools
 * Testing
   * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
     [android-junit5](https://github.com/mannodermaus/android-junit5))
@@ -76,7 +80,7 @@ the libraries are in the stable version unless there is a good reason to use non
 * Static analysis tools
   * [Ktlint](https://github.com/pinterest/ktlint) - verify code formatting
   * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify code complexity and code smells
-  * [Androd Lint](http://tools.android.com/tips/lint) - verify Andorid platform usage
+  * [Androd Lint](http://tools.android.com/tips/lint) - verify Android platform usage
 * Gradle
   * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_ dsl.html)
   * Custom tasks
@@ -88,13 +92,13 @@ the libraries are in the stable version unless there is a good reason to use non
 
 ## Architecture
 
-Feature related code is placed inside one of the feature modules. We can think about each feature as the reusable
+Feature-related code is placed inside one of the feature modules. We can think about each feature as the reusable
 component, equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private library.
 
-The modularized code-base approach provides few benefits:
+The modularized code-base approach provides a few benefits:
 
 - better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API.
-  Feature related classes live in different modules and can't be referenced without explicit module dependency.
+  Feature-related classes live in different modules and can't be referenced without explicit module dependency.
 - features can be developed in parallel eg. by different teams
 - each feature can be developed in isolation, independently from other features
 - faster compile time
@@ -111,19 +115,19 @@ We have three kinds of modules in the application:
   setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required
   permissions setup, custom application class, etc.).
 - application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to
-  share some assets or code only between few feature modules (currently app has no such modules)
+  share some assets or code only between a few feature modules (currently app has no such modules)
 - feature modules - the most common type of module containing all code related to a given feature.
 
 ### Feature module structure
 
-`Clean architecture` is the "core architecture" of the application, so each `feature module` contains own set of Clean
-architecture layers:
+`Clean architecture` is the "core architecture" of the application, so each `feature module` contains its own set of
+Clean architecture layers:
 
 ![module_dependencies_layers](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies_layers.png?raw=true)
 
-> Notice that `app` module and `library_x` modules structure differs a bit from feature module structure.
+> Notice that the `app` module and `library_x` modules structure differs a bit from the feature module structure.
 
-Each feature module contains non-layer components and 3 layers with distinct set of responsibilities.
+Each feature module contains non-layer components and 3 layers with a distinct set of responsibilities.
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/main/misc/image/feature_structure.png?raw=true)
 
@@ -131,7 +135,7 @@ Each feature module contains non-layer components and 3 layers with distinct set
 
 This layer is closest to what the user sees on the screen. The `presentation` layer is a mix of `MVVM` (
 Jetpack `ViewModel` used to preserve data across activity restart) and
-`MVI` (`actions` modify the `common state` of the view and then new state is edited to a view via `LiveData` to be
+`MVI` (`actions` modify the `common state` of the view and then a new state is edited to a view via `LiveData` to be
 rendered).
 
 > `common state` (for each view) approach derives from
@@ -140,8 +144,8 @@ rendered).
 
 Components:
 
-- **View (Fragment)** - presents data on the screen and pass user interactions to View Model. Views are hard to test, so
-  they should be as simple as possible.
+- **View (Fragment)** - presents data on the screen and passes user interactions to View Model. Views are hard to test,
+  so they should be as simple as possible.
 - **ViewModel** - dispatches (through `LiveData`) state changes to the view and deals with user interactions (these view
   models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
 - **ViewState** - common state for a single view
@@ -151,9 +155,9 @@ Components:
 #### Domain layer
 
 This is the core layer of the application. Notice that the `domain` layer is independent of any other layers. This
-allows to make domain models and business logic independent from other layers. In other words, changes in other layers
-will have no effect on `domain` layer eg. changing database (`data` layer) or screen UI (`presentation` layer) ideally
-will not result in any code change withing `domain` layer.
+allows making domain models and business logic independent from other layers. In other words, changes in other layers
+will not affect `domain` layer eg. changing the database (`data` layer) or screen UI (`presentation` layer) ideally will
+not result in any code change withing the `domain` layer.
 
 Components:
 
@@ -165,13 +169,13 @@ Components:
 
 #### Data layer
 
-Manages application data. Connect to data sources and provide data through repository to the `domain` layer eg. retrieve 
+Manages application data. Connect to data sources and provide data through repository to the `domain` layer eg. retrieve
 data from the internet and cache the data in memory cache (when device is offline).
 
 Components:
 
-- **Repository** is exposing data to the `domain` layer. Depending on application structure and quality of the external
-  APIs repository can also merge, filter, and transform the data. The intention of these operations is to create
+- **Repository** is exposing data to the `domain` layer. Depending on the application structure and quality of the
+  external APIs repository can also merge, filter, and transform the data. These operations intend to create
   high-quality data source for the `domain` layer, not to perform any business logic (`domain` layer `use case`
   responsibility).
 
@@ -182,26 +186,27 @@ Components:
 
 ### Data flow
 
-Below diagram presents application data flow when a user interacts with `album list screen`:
+The below diagram presents application data flow when a user interacts with the `album list screen`:
 
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/main/misc/image/app_data_flow.png?raw=true)
 
 ## Dependency management
 
 Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used as a
-centralized dependency management -third-party dependency coordinates (group, artifact, version) are shared across all
-modules (gradle projects and gradle subprojects).
+centralized dependency management -third-party dependency coordinates (group, artifact, version) is shared across all
+modules (Gradle projects and subprojects).
 
 All of the dependencies are stored in the [libs.versions.toml](./gradle/libs.versions.toml) file (default location).
 
 The [TOML](https://toml.io/en/) file consists of 4 major sections:
-- `[versions]` - declare versions which can be referenced by dependencies
+
+- `[versions]` - declare versions that can be referenced by dependencies
 - `[libraries]` - declare the aliases to library coordinates
 - `[bundles]` - declare dependency bundles (groups)
 - `[libraries]` - declare the aliases to Gradle plugin coordinates
 
-Each feature module depends on the `feature_base` module, so dependencies are shared without need to add them explicitly
-in each feature module.
+Each feature module depends on the `feature_base` module, so dependencies are shared without the need to add them
+explicitly in each feature module.
 
 ## CI pipeline
 
@@ -210,20 +215,13 @@ the [.github/workflows](.github/workflows) folder.
 
 ### PR Verification
 
-Series of workflows runs (in parallel) for every opened PR and after merging PR to `main` branch:
+Series of workflows run (in parallel) for every opened PR and after merging PR to the `main` branch:
 
 * `./gradlew lintDebug` - runs Android lint
 * `./gradlew detektCheck` - runs detekt and ktlint
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
-
-## Dependency updates
-
-The [update-dependencies](.github/workflows/update-dependencies.yml) task run periodically and creates a pull request
-containing dependency updates
-(updated gradle .lockfile files used by
-Gradle’s [dependency locking](https://docs.gradle.org/current/userguide/dependency_locking.html)).
 
 ## Design decisions
 
@@ -254,11 +252,11 @@ There are a few ways to open this project.
 ### Android Studio
 
 1. `Android Studio` -> `File` -> `New` -> `From Version control` -> `Git`
-2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field an press `Clone` button
+2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field and press `Clone` button
 
 ### Command-line + Android Studio
 
-1. Run `git clone https://github.com/igorwojda/android-showcase.git` command to clone project
+1. Run `git clone https://github.com/igorwojda/android-showcase.git` command to clone the project
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
 
 ## Inspiration
@@ -266,7 +264,7 @@ There are a few ways to open this project.
 This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at
 additional resources.
 
-### Cheat sheet
+### Cheatsheet
 
 - [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
 - [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+
@@ -290,35 +288,34 @@ Other high-quality projects will help you to find solutions that work for your p
 - [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
   diagrams of Clean Architecture layers
 - [Android samples](https://github.com/android) - official Android samples repository
-- [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
+- [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together with very good
   documentation
-- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create preconfigured Android Kotlin project in a few seconds.
-- [whatsApp-clone-compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack Compose and Stream Chat SDK for Compose
-- [compose-samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio projects to help you learn about Compose in Android
+- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
+  preconfigured Android Kotlin project in a few seconds.
+- [whatsApp-clone-compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack
+  Compose and Stream Chat SDK for Compose
+- [compose-samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio
+  projects to help you learn about Compose in Android
 
 ## Known issues
 
-- [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM yet.
-- Delegate import is not provided when variable has the same name as
+- [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
+  ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM yet.
+- Delegate import is not provided when a variable has the same name as
   Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - Android-Junit5 plugin does not support Gradle plugins DSL
   ([ISSUE-283](ttps://github.com/mannodermaus/android-junit5/issues/283))
-- Correct code is marked as error in build.gradle.kts files when using `libs` from the Gradle Version Catalog
+- Correct code is marked as an error in `build.gradle.kts` files when using `libs` from the Gradle Version Catalog
   ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
   [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
-- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
-  . This is partially fixed in AS 4.2 ([Issue 527](https://github.com/pinterest/ktlint/issues/527)
+- [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
+  rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig).
   and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - Android lint complains about exceeding access rights to
   ArchTaskExecutor ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
-
-* 
-
-
-* [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
 
 ## Contribute
 
@@ -355,7 +352,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Animations License
 
-Flowing animations and are distributed under `Creative Commons License 2.0`:
+Flowing animations are distributed under `Creative Commons License 2.0`:
 
 - [Error screen](https://lottiefiles.com/8049-error-screen) by Chetan Potnuru
 - [Building Screen](https://lottiefiles.com/1271-building-screen) by Carolina Cajazeira
