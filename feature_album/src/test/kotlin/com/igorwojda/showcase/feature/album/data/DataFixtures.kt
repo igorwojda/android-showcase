@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data
 
-import com.igorwojda.showcase.feature.album.data.DataFixtures.ApiModel.getAlbums
+import com.igorwojda.showcase.feature.album.data.DataFixtures.ApiModel.getAlbumsApiModels
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeApiModel
@@ -15,48 +15,51 @@ import com.igorwojda.showcase.feature.album.data.datasource.database.model.Album
 object DataFixtures {
 
     object ApiModel {
-        internal fun getAlbum(
+        internal fun getAlbumApiModel(
             mbId: String = "mbId",
             name: String = "album",
             artist: String = "artist",
             wiki: AlbumWikiApiModel? = getAlbumWiki(),
-            images: List<AlbumImageApiModel>? = listOf(getAlbumImage()),
+            images: List<AlbumImageApiModel>? = listOf(getAlbumImageModel())
         ): AlbumApiModel = AlbumApiModel(mbId, name, artist, wiki, images)
 
-        internal fun getAlbums() = listOf(
-            getAlbum(mbId = "mbid1", "album1", "artist1"),
-            getAlbum(mbId = "mbid2", "album2", "artist2")
+        internal fun getAlbumsApiModels() = listOf(
+            getAlbumApiModel("mbid1", "album1", "artist1")
         )
 
-        internal fun getAlbumImage(
+        internal fun getAlbumsEntityModels() = listOf(
+            getAlbumEntityModel(1, "mbid1", "album1", "artist1"),
+            getAlbumEntityModel(2, "mbid2", "album2", "artist2")
+        )
+
+        internal fun getAlbumImageModel(
             url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
-            size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE,
+            size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE
         ) = AlbumImageApiModel(url, size)
 
         internal fun getAlbumWiki(
             published: String = "published",
-            summary: String = "summary",
+            summary: String = "summary"
         ) = AlbumWikiApiModel(published, summary)
 
-        // TODO unused? why? not needed in tests?
-        internal fun getAlbumEntity(
+        private fun getAlbumEntityModel(
             id: Int = 0,
             mbId: String = "mbId",
             name: String = "album",
             artist: String = "artist",
-            images: List<AlbumImageEntityModel> = listOf(getAlbumImageEntity()),
+            images: List<AlbumImageEntityModel> = listOf(getAlbumImageEntityModel())
         ): AlbumEntityModel = AlbumEntityModel(id, mbId, name, artist, images)
 
-        internal fun getAlbumImageEntity(
+        private fun getAlbumImageEntityModel(
             url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
-            size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE,
+            size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE
         ) = AlbumImageEntityModel(url, size)
     }
 
     object ApiResponse {
         internal fun getSearchAlbum() = SearchAlbumResponse(
             AlbumSearchApiModel(
-                AlbumListApiModel(getAlbums())
+                AlbumListApiModel(getAlbumsApiModels())
             )
         )
     }

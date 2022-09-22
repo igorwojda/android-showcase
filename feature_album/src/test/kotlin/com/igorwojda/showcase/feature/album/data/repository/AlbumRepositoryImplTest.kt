@@ -4,11 +4,11 @@ import com.igorwojda.showcase.base.data.retrofit.ApiResult
 import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -29,7 +29,7 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api success and returns albums`() {
         // given
         val phrase = "phrase"
-        val albums = DataFixtures.ApiModel.getAlbums()
+        val albums = DataFixtures.ApiModel.getAlbumsApiModels()
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
             DataFixtures.ApiResponse.getSearchAlbum()
@@ -62,9 +62,8 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api exception and fallbacks to database`() {
         // given
         val phrase = "phrase"
-        val albumsApi = DataFixtures.ApiModel.getAlbums()
-        val albumEntities = albumsApi.map { it.toEntityModel() }
-        val albums = albumsApi.map { it.copy(wiki = null) }.map { it.toDomainModel() }
+        val albumEntities = DataFixtures.ApiModel.getAlbumsEntityModels()
+        val albums = albumEntities.map { it.toDomainModel() }
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Exception(UnknownHostException())
         coEvery { mockAlbumDao.getAll() } returns albumEntities
@@ -96,7 +95,7 @@ class AlbumRepositoryImplTest {
         val artistName = "Michael Jackson"
         val albumName = "Thriller"
         val mbId = "123"
-        val album = DataFixtures.ApiModel.getAlbum(mbId, albumName, artistName)
+        val album = DataFixtures.ApiModel.getAlbumApiModel(mbId, albumName, artistName)
 
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, mbId)
