@@ -1,3 +1,5 @@
 package com.igorwojda.showcase.base.presentation.viewmodel
 
-interface BaseAction
+interface BaseAction<State> {
+    fun reduceState(state: State): State
+}

@@ -12,24 +12,11 @@ import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(
     private val navManager: NavManager,
-    private val getAlbumListUseCase: GetAlbumListUseCase,
+    private val getAlbumListUseCase: GetAlbumListUseCase
 ) : BaseViewModel<AlbumListViewModel.State, AlbumListViewModel.Action>(State()) {
 
     fun onEnter() {
         getAlbumList()
-    }
-
-    override fun onReduceState(action: Action) = when (action) {
-        is Action.AlbumListLoadingSuccess -> state.copy(
-            isLoading = false,
-            isError = false,
-            albums = action.albums
-        )
-        is Action.AlbumListLoadingFailure -> state.copy(
-            isLoading = false,
-            isError = true,
-            albums = listOf()
-        )
     }
 
     private fun getAlbumList() {
@@ -55,17 +42,31 @@ internal class AlbumListViewModel(
     fun onAlbumClick(album: Album) {
         val navDirections =
             AlbumListFragmentDirections.actionAlbumListToAlbumDetail(album.artist, album.name, album.mbId)
+
         navManager.navigate(navDirections)
     }
 
     internal data class State(
         val isLoading: Boolean = true,
         val isError: Boolean = false,
-        val albums: List<Album> = listOf(),
+        val albums: List<Album> = listOf()
     ) : BaseState
 
-    internal sealed interface Action : BaseAction {
-        class AlbumListLoadingSuccess(val albums: List<Album>) : Action
-        object AlbumListLoadingFailure : Action
+    internal sealed interface Action : BaseAction<State> {
+        class AlbumListLoadingSuccess(private val albums: List<Album>) : Action {
+            override fun reduceState(state: State) = state.copy(
+                isLoading = false,
+                isError = false,
+                albums = albums
+            )
+        }
+
+        object AlbumListLoadingFailure : Action {
+            override fun reduceState(state: State) = state.copy(
+                isLoading = false,
+                isError = true,
+                albums = listOf()
+            )
+        }
     }
 }
