@@ -19,7 +19,7 @@ constraintLayout = "2.1.4"
 coordinatorLayout = "1.2.0"
 appCompat = "1.5.1"
 recyclerView = "1.2.1"
-material = "1.6.1"
+material = "1.0.0-beta02"
 lottie = "5.2.0"
 playCore = "1.10.3"
 coreKtx = "1.9.0"
@@ -56,7 +56,7 @@ constraintLayout = { module = "androidx.constraintlayout:constraintlayout", vers
 coordinatorLayout = { module = "androidx.coordinatorlayout:coordinatorlayout", version.ref = "coordinatorLayout" }
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 recyclerView = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerView" }
-material = { module = "com.google.android.material:material", version.ref = "material" }
+material = { module = "androidx.compose.material3:material3", version.ref = "material" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 playCore = { module = "com.google.android.play:core", version.ref = "playCore" }
