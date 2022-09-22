@@ -1,4 +1,4 @@
-# Android showcase 2.0
+# Android Showcase 2.0
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.7.x-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AGP-7.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
@@ -11,7 +11,7 @@ Android Showcase project presents a modern approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development. It is a complete sample of
 a fully functional Android application.
 
-Project is utilizing modular, scalable, and testable [architecture](#architecture),leading
+Project is utilizing modular, scalable, maintainable, and testable [architecture](#architecture), leading
 [tech-stack](Tech-stack) and demonstrates the best development practices.
 
 This application may look simple, but it has all the pieces that will provide the rock-solid foundation for the larger
@@ -21,7 +21,7 @@ application suitable for bigger teams during extended
 This project is being maintained to stay up to date with leading industry standards. Please check
 the [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
-## Application scope
+## Application Scope
 
 The `android-showcase` displays information about music albums. The data is loaded from
 the [Last.fm Music Discovery API](https://www.last.fm/api).
@@ -33,7 +33,7 @@ The app has a few screens located in multiple feature modules:
 - Profile screen - empty (WiP)
 - Favourites screen - empty (WiP)
 
-## Tech-stack
+## Tech-Stack
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
@@ -43,11 +43,10 @@ the libraries are in the stable version unless there is a good reason to use non
 * Tech-stack
   * [100% Kotlin](https://kotlinlang.org/)
     + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
+    + [Kotlin Flow](https://kotlinlang.org/docs/flow.html) - data flow across all app layers, including views
   * [Retrofit](https://square.github.io/retrofit/) - networking
   * [Jetpack](https://developer.android.com/jetpack)
     * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
-    * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database
-      change
     * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when
       lifecycle state changes
     * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related
@@ -61,8 +60,9 @@ the libraries are in the stable version unless there is a good reason to use non
   * Single activity architecture
     using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
   * MVVM + MVI (presentation layer)
-  * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-    , [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+  * [Android Architecture components](https://developer.android.com/topic/libraries/architecture)
+    ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+    , [Kotlin Flow](https://kotlinlang.org/docs/flow.html)
     , [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
   * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
 * CI
@@ -92,18 +92,23 @@ the libraries are in the stable version unless there is a good reason to use non
 
 ## Architecture
 
-Feature-related code is placed inside one of the feature modules. We can think about each feature as the reusable
-component, equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private library.
+By dividing a problem into smaller and easier to solve sub-problems, we can reduce the complexity of designing and
+maintaining a large system. Each module is independent build-block serving a clear purpose. We can think about each
+feature as the reusable component, equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private
+library.
 
 The modularized code-base approach provides a few benefits:
 
-- better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API.
-  Feature-related classes live in different modules and can't be referenced without explicit module dependency.
+- reusability - enable code sharing and building multiple apps from the same foundation. Apps should be a sum of their
+- features where the features are organized as separate modules.
+- [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) - each module has a clear API.
+  Feature-related classes live in different modules and can't be referenced without explicit module dependency. We
+  strictly control what is exposed to other parts of your codebase.
 - features can be developed in parallel eg. by different teams
 - each feature can be developed in isolation, independently from other features
-- faster compile time
+- faster build time
 
-### Module types and module dependencies
+### Module Types And Module Dependencies
 
 This diagram presents dependencies between project modules (Gradle sub-projects).
 
@@ -118,7 +123,7 @@ We have three kinds of modules in the application:
   share some assets or code only between a few feature modules (currently app has no such modules)
 - feature modules - the most common type of module containing all code related to a given feature.
 
-### Feature module structure
+### Feature Module Structure
 
 `Clean architecture` is the "core architecture" of the application, so each `feature module` contains its own set of
 Clean architecture layers:
@@ -131,7 +136,7 @@ Each feature module contains non-layer components and 3 layers with a distinct s
 
 ![feature_structure](https://github.com/igorwojda/android-showcase/blob/main/misc/image/feature_structure.png?raw=true)
 
-#### Presentation layer
+#### Presentation Layer
 
 This layer is closest to what the user sees on the screen. The `presentation` layer is a mix of `MVVM` (
 Jetpack `ViewModel` used to preserve data across activity restart) and
@@ -146,13 +151,14 @@ Components:
 
 - **View (Fragment)** - presents data on the screen and passes user interactions to View Model. Views are hard to test,
   so they should be as simple as possible.
-- **ViewModel** - dispatches (through `LiveData`) state changes to the view and deals with user interactions (these view
-  models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
+- **ViewModel** - dispatches (through [Kotlin Flow](https://kotlinlang.org/docs/flow.html)) state changes to the view
+  and deals with user interactions (these view models are not simply
+  [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
 - **ViewState** - common state for a single view
 - **NavManager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of
   separately, inside each view)
 
-#### Domain layer
+#### Domain Layer
 
 This is the core layer of the application. Notice that the `domain` layer is independent of any other layers. This
 allows making domain models and business logic independent from other layers. In other words, changes in other layers
@@ -167,7 +173,7 @@ Components:
 - **Repository interface** - required to keep the `domain` layer independent from
   the `data layer` ([Dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)).
 
-#### Data layer
+#### Data Layer
 
 Manages application data. Connect to data sources and provide data through repository to the `domain` layer eg. retrieve
 data from the internet and cache the data in memory cache (when device is offline).
@@ -184,31 +190,41 @@ Components:
 - **DataModel** - defines the structure of the data retrieved from the network and contains annotations, so Retrofit (
   Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
 
-### Data flow
+### Data Flow
 
 The below diagram presents application data flow when a user interacts with the `album list screen`:
 
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/main/misc/image/app_data_flow.png?raw=true)
 
-## Dependency management
+## Dependency Management
 
 Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used as a
-centralized dependency management -third-party dependency coordinates (group, artifact, version) is shared across all
+centralized dependency management third-party dependency coordinates (group, artifact, version) are shared across all
 modules (Gradle projects and subprojects).
 
 All of the dependencies are stored in the [libs.versions.toml](./gradle/libs.versions.toml) file (default location).
+The [TOML](https://toml.io/en/) file consists of a few major sections:
 
-The [TOML](https://toml.io/en/) file consists of 4 major sections:
-
-- `[versions]` - declare versions that can be referenced by dependencies
+- `[versions]` - declare versions that can be referenced by all dependencies
 - `[libraries]` - declare the aliases to library coordinates
 - `[bundles]` - declare dependency bundles (groups)
-- `[libraries]` - declare the aliases to Gradle plugin coordinates
+- `[plugins]` - declare Gradle plugin dependencies
 
 Each feature module depends on the `feature_base` module, so dependencies are shared without the need to add them
 explicitly in each feature module.
 
-## CI pipeline
+Project enables the `TYPESAFE_PROJECT_ACCESSORS` experimental Gradle feature to generate type safe accessors to refer
+other projects.
+
+```kotlin
+// Before
+implementation(project(":feature_album"))
+
+// After
+implementation(projects.featureAlbum)
+```
+
+## CI Pipeline
 
 CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in
 the [.github/workflows](.github/workflows) folder.
@@ -223,29 +239,29 @@ Series of workflows run (in parallel) for every opened PR and after merging PR t
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
 
-## Design decisions
+## Design Decisions
 
 Read related articles to have a better understanding of underlying design decisions and various trade-offs.
 
 * [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
 * More coming soon
 
-## Gradle update
+## Gradle Update
 
 `./gradlew wrapper --gradle-version=1.2.3`
 
-## What this project does not cover?
+## What This Project Does Not Cover?
 
 The interface of the app utilizes some of the modern material design components, however, is deliberately kept simple to
-focus on application architecture.
+focus on application architecture and project config.
 
-## Upcoming improvements
+## Upcoming Improvements
 
 Checklist of all
 upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement)
 .
 
-## Getting started
+## Getting Started
 
 There are a few ways to open this project.
 
@@ -261,8 +277,7 @@ There are a few ways to open this project.
 
 ## Inspiration
 
-This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at
-additional resources.
+Here are few additional resources.
 
 ### Cheatsheet
 
