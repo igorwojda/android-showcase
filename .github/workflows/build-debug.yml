@@ -8,7 +8,7 @@ on:
 
 jobs:
   run:
-    continue-on-error: true
+    continue-on-error: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
