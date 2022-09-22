@@ -89,6 +89,7 @@ the libraries are in the stable version unless there is a good reason to use non
     * [Android-junit5](https://github.com/mannodermaus/android-junit5)
   * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
+* [Revonate](https://github.com/renovatebot/renovate) - dependency update boot
 
 ## Architecture
 
