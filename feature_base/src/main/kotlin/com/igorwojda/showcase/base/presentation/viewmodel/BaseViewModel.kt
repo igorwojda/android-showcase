@@ -39,6 +39,6 @@ abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(init
 
     protected fun sendAction(action: Action) {
         stateTimeTravelDebugger?.addAction(action)
-        state = action.reduceState(state)
+        state = action.reduce(state)
     }
 }

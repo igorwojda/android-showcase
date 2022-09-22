@@ -54,7 +54,7 @@ internal class AlbumListViewModel(
 
     internal sealed interface Action : BaseAction<State> {
         class AlbumListLoadingSuccess(private val albums: List<Album>) : Action {
-            override fun reduceState(state: State) = state.copy(
+            override fun reduce(state: State) = state.copy(
                 isLoading = false,
                 isError = false,
                 albums = albums
@@ -62,7 +62,7 @@ internal class AlbumListViewModel(
         }
 
         object AlbumListLoadingFailure : Action {
-            override fun reduceState(state: State) = state.copy(
+            override fun reduce(state: State) = state.copy(
                 isLoading = false,
                 isError = true,
                 albums = listOf()

@@ -42,7 +42,7 @@ internal class AlbumDetailViewModel(
 
     internal sealed interface Action : BaseAction<State> {
         class AlbumLoadSuccess(private val album: Album) : Action {
-            override fun reduceState(state: State) = state.copy(
+            override fun reduce(state: State) = state.copy(
                 isLoading = false,
                 isError = false,
                 artistName = album.artist,
@@ -52,7 +52,7 @@ internal class AlbumDetailViewModel(
         }
 
         object AlbumLoadFailure : Action {
-            override fun reduceState(state: State) = state.copy(
+            override fun reduce(state: State) = state.copy(
                 isLoading = false,
                 isError = true,
                 artistName = "",
