@@ -33,7 +33,6 @@ tasks.register("detektCheck", io.gitlab.arturbosch.detekt.Detekt::class) {
     parallel = true
     ignoreFailures = false
     autoCorrect = autoCorrectParam
-    buildUponDefaultConfig = true
     setSource(file(projectDir))
     config.setFrom("$projectDir/detekt.yml")
     include("**/*.kt", "**/*.kts")
