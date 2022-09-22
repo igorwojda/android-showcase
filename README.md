@@ -266,8 +266,7 @@ focus on application architecture and project config.
 ## Upcoming Improvements
 
 Checklist of all
-upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement)
-.
+upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement).
 
 ## Getting Started
 
@@ -295,31 +294,6 @@ Here are few additional resources.
 - [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) -
   most popular coroutine usages
 
-### Android projects
-
-Other high-quality projects will help you to find solutions that work for your project (random order):
-
-- [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
-- [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various
-  Android architecture approaches
-- [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and Jetpack Compose
-- [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
-  libraries
-- [GithubBrowserSample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
-  demonstrating usage of Android Architecture Components
-- [Plaid](https://github.com/android/plaid) - a showcase of Android material design
-- [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
-  diagrams of Clean Architecture layers
-- [Android samples](https://github.com/android) - official Android samples repository
-- [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together with very good
-  documentation
-- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
-  preconfigured Android Kotlin project in a few seconds.
-- [whatsApp-clone-compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack
-  Compose and Stream Chat SDK for Compose
-- [compose-samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio
-  projects to help you learn about Compose in Android
-
 ## Known issues
 
 - [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
@@ -339,6 +313,32 @@ Other high-quality projects will help you to find solutions that work for your p
 - Android lint complains about exceeding access rights to
   ArchTaskExecutor ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+
+### Other Android Projects
+
+Other high-quality projects will help you to find solutions that work for your project (random order):
+
+- [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019 and 2021
+- [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various
+  Android architecture approaches to developing Android apps
+- [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and Jetpack Compose
+- [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
+  libraries
+- [Github Browser Sample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
+  demonstrating usage of Android Architecture Components
+- [Plaid](https://github.com/android/plaid) - a showcase of Android material design
+- [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
+  diagrams of Clean Architecture layers
+- [Android samples](https://github.com/android) - official Android samples repository
+- [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together with very good
+  documentation
+- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
+  preconfigured Android Kotlin project in a few seconds.
+- [whatsApp-clone-compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack
+  Compose and Stream Chat SDK for Compose
+- [Compose-samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio
+  projects to help you learn about Compose in Android
+- [JetChat](https://github.com/android/compose-samples/tree/main/Jetchat) - sample chat app built with Jetpack Compose
 
 ## Contribute
 
