@@ -48,6 +48,7 @@ the libraries are in the stable version unless there is a good reason to use non
     + [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html) - parse [JSON](https://www.json.org/json-en.html)
   * [Retrofit](https://square.github.io/retrofit/) - networking
   * [Jetpack](https://developer.android.com/jetpack)
+    * [Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit 
     * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
     * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when
       lifecycle state changes
@@ -67,6 +68,10 @@ the libraries are in the stable version unless there is a good reason to use non
     , [Kotlin Flow](https://kotlinlang.org/docs/flow.html)
     , [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
   * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
+* UI
+  * [JetPack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
+  * [Material design](https://material.io/design)
+  * Reactive UI
 * CI
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters, and 3rd online tools
@@ -76,9 +81,6 @@ the libraries are in the stable version unless there is a good reason to use non
   * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
   * [Mockk](https://mockk.io/) - mocking framework
   * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
-* UI
-  * [Material design](https://material.io/design)
-  * Reactive UI
 * Static analysis tools
   * [Ktlint](https://github.com/pinterest/ktlint) - verify code formatting
   * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify code complexity and code smells
