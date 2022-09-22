@@ -60,7 +60,6 @@ dependencies {
     api(libs.timber)
     api(libs.coil)
     api(libs.constraintLayout)
-    api(libs.coordinatorLayout)
     api(libs.appCompat)
     api(libs.recyclerView)
     api(libs.material)
