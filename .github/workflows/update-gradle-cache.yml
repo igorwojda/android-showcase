@@ -30,7 +30,7 @@ jobs:
           find "." -name "gradle.lockfile" -type f | sort | xargs shasum  > gradle-checksums.txt
           cat gradle-checksums.txt
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ~/.gradle
           key: gradle-${{ hashFiles('gradle-checksums.txt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
