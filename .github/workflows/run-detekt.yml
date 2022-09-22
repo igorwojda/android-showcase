@@ -8,10 +8,10 @@ on:
 
 jobs:
   run:
-    continue-on-error: true
+    continue-on-error: false
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
+      fail-fast: false
     steps:
       - name: checkout
         uses: actions/checkout@v3
