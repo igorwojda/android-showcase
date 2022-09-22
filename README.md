@@ -34,7 +34,6 @@ The app has a few screens located in multiple feature modules:
 - Favourites screen - empty (WiP)
 <br/><br/>
 <img src="misc/image/application_anim.gif" width="336" hspace="20">
-<br/><br/>
 
 ## Tech-Stack
 
