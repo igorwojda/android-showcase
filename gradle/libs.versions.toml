@@ -1,6 +1,5 @@
 [versions]
 kotlin = "1.7.10"
-# Review versions here https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
 navigation = "2.5.2"
 androidJUnit5 = "1.8.2.1"
 testLogger = "3.2.0"
@@ -16,7 +15,6 @@ kotlinxSerializationConverter = "0.8.0"
 viewBindingPropertyDelegate = "1.5.6"
 timber = "5.0.1"
 constraintLayout = "2.1.4"
-coordinatorLayout = "1.2.0"
 appCompat = "1.5.1"
 recyclerView = "1.2.1"
 material = "1.0.0-beta02"
@@ -27,6 +25,7 @@ fragmentKtx = "1.5.2"
 
 detekt = "1.21.0"
 androidGradlePlugin = "7.3.0"
+# Find version here https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
 kotlinSymbolProcessing = "1.7.10-1.0.6"
 
 # Test versions
@@ -53,7 +52,6 @@ koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate", version.ref = "viewBindingPropertyDelegate" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayout" }
-coordinatorLayout = { module = "androidx.coordinatorlayout:coordinatorlayout", version.ref = "coordinatorLayout" }
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 recyclerView = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerView" }
 material = { module = "androidx.compose.material3:material3", version.ref = "material" }
