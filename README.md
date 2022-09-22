@@ -177,7 +177,7 @@ Components:
 #### Data Layer
 
 Manages application data. Connect to data sources and provide data through repository to the `domain` layer eg. retrieve
-data from the internet and cache the data in memory cache (when device is offline).
+data from the internet and cache the data in disk cache (when device is offline).
 
 Components:
 
