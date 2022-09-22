@@ -1,68 +1,58 @@
 package com.igorwojda.showcase.feature.album.domain.usecase
 
-import com.igorwojda.showcase.feature.album.data.AlbumRepositoryImpl
+import com.igorwojda.showcase.base.domain.result.Result
+import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import java.net.UnknownHostException
 
 class GetAlbumListUseCaseTest {
 
-    @MockK
-    internal lateinit var mockAlbumRepository: AlbumRepositoryImpl
+    private val mockAlbumRepository: AlbumRepositoryImpl = mockk()
 
-    private lateinit var cut: GetAlbumListUseCase
-
-    @BeforeEach
-    fun setUp() {
-        MockKAnnotations.init(this)
-
-        cut = GetAlbumListUseCase(mockAlbumRepository)
-    }
+    private val cut = GetAlbumListUseCase(mockAlbumRepository)
 
     @Test
     fun `return list of albums`() {
         // given
         val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())
-        coEvery { mockAlbumRepository.searchAlbum(any()) } returns albums
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
-        val result = runBlocking { cut.execute() }
+        val actual = runBlocking { cut.execute() }
 
         // then
-        result shouldBeEqualTo GetAlbumListUseCase.Result.Success(albums)
+        actual shouldBeEqualTo Result.Success(albums)
     }
 
     @Test
-    fun `filter albums without default image`() {
+    fun `filter albums with default image`() {
         // given
         val albumWithImage = DomainFixtures.getAlbum()
         val albumWithoutImage = DomainFixtures.getAlbum(images = listOf())
         val albums = listOf(albumWithImage, albumWithoutImage)
-        coEvery { mockAlbumRepository.searchAlbum(any()) } returns albums
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
-        val result = runBlocking { cut.execute() }
+        val actual = runBlocking { cut.execute() }
 
         // then
-        result shouldBeEqualTo GetAlbumListUseCase.Result.Success(listOf(albumWithImage))
+        actual shouldBeEqualTo Result.Success(listOf(albumWithImage))
     }
 
     @Test
     fun `return error when repository throws an exception`() {
         // given
-        val exception = UnknownHostException()
-        coEvery { mockAlbumRepository.searchAlbum(any()) } throws exception
+        val resultFailure = mockk<Result.Failure>()
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns resultFailure
 
         // when
-        val result = runBlocking { cut.execute() }
+        val actual = runBlocking { cut.execute() }
 
         // then
-        result shouldBeEqualTo GetAlbumListUseCase.Result.Error(exception)
+        actual shouldBeEqualTo resultFailure
     }
 }

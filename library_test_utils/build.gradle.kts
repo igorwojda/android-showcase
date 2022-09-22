@@ -1,50 +1,39 @@
 plugins {
-    id(GradlePluginId.ANDROID_LIBRARY)
-    id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
-    id(GradlePluginId.ANDROID_JUNIT_5)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.symbolProcessing)
+    alias(libs.plugins.safeArgs)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.testLogger)
+    alias(libs.plugins.junit5Android)
 }
 
 android {
-    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
+    compileSdk = 33
 
     defaultConfig {
-        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
+        minSdk = 26
+        targetSdk = 32
 
-        versionCode = AndroidConfig.VERSION_CODE
-        versionName = AndroidConfig.VERSION_NAME
-        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
-    }
-
-    buildTypes {
-        getByName(BuildType.RELEASE) {
-            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
-            proguardFiles("proguard-android.txt", "proguard-rules.pro")
-        }
-
-        getByName(BuildType.DEBUG) {
-            isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
-        }
-    }
-
-    testOptions {
-        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/licenses/**")
-        exclude("**/attach_hotspot_windows.dll")
-        exclude("META-INF/LGPL2.1")
+        resources.excludes += setOf(
+            "META-INF/AL2.0",
+            "META-INF/licenses/**",
+            "**/attach_hotspot_windows.dll",
+            "META-INF/LGPL2.1"
+        )
     }
 }
 
 dependencies {
     // implementation configuration is used here (instead of testImplementation) because this module is added as
-    // testImplementation dependency inside other modules. Using implementation allows to write tests for test
-    // utilities.
-    implementation(libs.bundles.kotlin)
+    // testImplementation dependency inside other modules. Using implementation allows to write tests for test utilities.
+    implementation(libs.kotlin)
     implementation(libs.bundles.test)
 
-    runtimeOnly(libs.junit.jupiter.engine)
+    runtimeOnly(libs.junitJupiterEngine)
 }

@@ -9,11 +9,6 @@ import kotlin.math.max
 
 class GridAutofitLayoutManager : GridLayoutManager {
 
-    companion object {
-        // spanCount is set during class initialisation. It will be automatically changed later
-        const val INITIAL_SPAN_COUNT = 1
-    }
-
     @Suppress("detekt.MagicNumber")
     private val defaultColumnWidth by lazy {
         fun dpToPx(dp: Int) = (dp * Resources.getSystem().displayMetrics.density).toInt()
@@ -32,9 +27,9 @@ class GridAutofitLayoutManager : GridLayoutManager {
         }
 
     private var columnWidthChanged = true
+
     private var lastWidth = 0
     private var lastHeight = 0
-
     constructor(context: Context, columnWidth: Int) : super(context, INITIAL_SPAN_COUNT) {
         this.columnWidth = columnWidth
     }
@@ -70,5 +65,10 @@ class GridAutofitLayoutManager : GridLayoutManager {
         lastWidth = width
         lastHeight = height
         super.onLayoutChildren(recycler, state)
+    }
+
+    companion object {
+        // spanCount is set during class initialisation. It will be automatically changed later
+        const val INITIAL_SPAN_COUNT = 1
     }
 }

@@ -2,31 +2,22 @@ package com.igorwojda.showcase.feature.album.presentation.albumlist
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
-import com.igorwojda.showcase.base.delegate.viewBinding
-import com.igorwojda.showcase.base.presentation.extension.observe
-import com.igorwojda.showcase.base.presentation.extension.visible
-import com.igorwojda.showcase.base.presentation.fragment.InjectionFragment
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.igorwojda.showcase.base.presentation.ext.visible
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.databinding.FragmentAlbumListBinding
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
-import org.kodein.di.generic.instance
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AlbumListFragment : InjectionFragment(R.layout.fragment_album_list) {
+class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
 
     private val binding: FragmentAlbumListBinding by viewBinding()
-
-    private val viewModel: AlbumListViewModel by instance()
-
-    private val albumAdapter: AlbumAdapter by instance()
-
-    private val stateObserver = Observer<AlbumListViewModel.ViewState> {
-        albumAdapter.albums = it.albums
-
-        binding.progressBar.visible = it.isLoading
-        binding.errorAnimation.visible = it.isError
-    }
+    private val model: AlbumListViewModel by viewModel()
+    private val albumAdapter: AlbumAdapter by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +25,7 @@ class AlbumListFragment : InjectionFragment(R.layout.fragment_album_list) {
         val context = requireContext()
 
         albumAdapter.setOnDebouncedClickListener {
-            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
+            model.onAlbumClick(it)
         }
 
         binding.recyclerView.apply {
@@ -48,8 +39,14 @@ class AlbumListFragment : InjectionFragment(R.layout.fragment_album_list) {
             adapter = albumAdapter
         }
 
-        observe(viewModel.stateLiveData, stateObserver)
+        model.onEnter()
 
-        viewModel.loadData()
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            model.stateFlow.collect {
+                albumAdapter.albums = it.albums
+                binding.progressBar.visible = it.isLoading
+                binding.errorAnimation.visible = it.isError
+            }
+        }
     }
 }

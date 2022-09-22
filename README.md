@@ -1,76 +1,100 @@
-# Android showcase
+# Android showcase 2.0
 
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.5.20-blue.svg)](https://kotlinlang.org)
-[![AGP](https://img.shields.io/badge/AGP-4-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
-[![Gradle](https://img.shields.io/badge/Gradle-7-blue?style=flat)](https://gradle.org)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.7.x-blue.svg)](https://kotlinlang.org)
+[![AGP](https://img.shields.io/badge/AGP-7.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Gradle](https://img.shields.io/badge/Gradle-7.x-blue?style=flat)](https://gradle.org)
 
 [![codebeat badge](https://codebeat.co/badges/e9f1a825-b5bd-4c7a-aadc-7c8d0cf59310)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-main)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
-Showcase is a sample project that presents a modern approach to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development.
+Showcase project presents a up-to-date approach to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application 
+development by providing a fully functional Android application.
 
-The goal of the project is to combine popular libraries/tools and demonstrate best development practices by utilizing an up-to-date tech-stack and presenting a modern Android application [Architecture](#architecture) that is modular, scalable, maintainable, and testable. This application may look simple,
-but it has all the pieces that will provide the rock-solid foundation for the larger app suitable for bigger teams
-and long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
+Project is utilizing leading tech-stack (libraries, plugins, tools) to demonstrates the best development practices. 
+
+Project presents modern Android application [Architecture](#architecture) that is modular,
+scalable, maintainable, and testable. This application may look simple, but it has all the pieces that will provide 
+the rock-solid foundation for the larger app suitable for bigger teams and long 
+[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
 This project is being maintained to match industry standards. Please check [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
+
+## Application scope
+
+The `android-showcase` is a simple application that displays information about music albums. The data is loaded from
+the [Last.fm Music Discovery API](https://www.last.fm/api). The app has few screens located in multiple feature modules.
+
+- Album list screen - display list of albums
+- Album detail screen - display information about selected album
+- Profile screen - empty (WiP)
+- Favourites screen - empty (WiP)
 
 ## Project characteristics and tech-stack
 
 <img src="misc/image/application_anim.gif" width="336" align="right" hspace="20">
 
-This project takes advantage of best practices, and many popular libraries and tools in the Android ecosystem. Most of the libraries are in the stable version unless there is a good reason to use non-stable dependency.
+This project takes advantage of best practices, and many popular libraries and tools in the Android ecosystem. Most of
+the libraries are in the stable version unless there is a good reason to use non-stable dependency.
 
 * Tech-stack
-    * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
-    * [Retrofit](https://square.github.io/retrofit/) - networking
-    * [Jetpack](https://developer.android.com/jetpack)
-        * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
-        * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
-        * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when lifecycle state changes
-        * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data in a lifecycle conscious way
-        * [Room](https://developer.android.com/jetpack/androidx/releases/room) - store offline cache
-    * [Kodein](https://docs.kodein.org/) - dependency injection
-    * [Coil](https://github.com/coil-kt/coil) - image loading library
-    * [Lottie](http://airbnb.io/lottie) - animation library
-    * [Stetho](http://facebook.github.io/stetho/) - application debugging
+  * [100% Kotlin](https://kotlinlang.org/)
+    + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
+  * [Retrofit](https://square.github.io/retrofit/) - networking
+  * [Jetpack](https://developer.android.com/jetpack)
+    * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
+    * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database
+      change
+    * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when
+      lifecycle state changes
+    * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related
+      data in a lifecycle conscious way
+    * [Room](https://developer.android.com/jetpack/androidx/releases/room) - store offline cache
+  * [Koin](https://insert-koin.io/) - dependency injection (dependency retrieval)
+  * [Coil](https://github.com/coil-kt/coil) - image loading library
+  * [Lottie](http://airbnb.io/lottie) - animation library
 * Modern Architecture
-    * Clean Architecture (at feature module level)
-    * Single activity architecture using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
-    * MVVM + MVI (presentation layer)
-    * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
-    * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
-    * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
+  * Clean Architecture (at feature module level)
+  * Single activity architecture
+    using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
+  * MVVM + MVI (presentation layer)
+  * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+    , [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+    , [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
+  * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
 * CI
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters and 3rd online tools
 * Testing
-    * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
+  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
     [android-junit5](https://github.com/mannodermaus/android-junit5))
-    * [UT Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
-    * [Mockk](https://mockk.io/) - mocking framework
-    * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
+  * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
+  * [Mockk](https://mockk.io/) - mocking framework
+  * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
 * UI
-    * [Material design](https://material.io/design)
-    * Reactive UI
+  * [Material design](https://material.io/design)
+  * Reactive UI
 * Static analysis tools
-    * [Ktlint](https://github.com/pinterest/ktlint) - validate code formating
-    * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify complexity look for and code smell
+  * [Ktlint](https://github.com/pinterest/ktlint) - verify code formatting
+  * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify code complexity and code smells
+  * [Androd Lint](http://tools.android.com/tips/lint) - verify Andorid platform usage
 * Gradle
-    * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
-    * Custom tasks
-    * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
-    [android-junit5](https://github.com/mannodermaus/android-junit5))
-    * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
-    * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
+  * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_ dsl.html)
+  * Custom tasks
+  * [Gradle Plugins](https://plugins.gradle.org/)
+    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
+    * [Android-junit5](https://github.com/mannodermaus/android-junit5)
+  * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)
+  * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
 
 ## Architecture
 
-Feature related code is placed inside one of the feature modules.
-We can think about each feature as the reusable component, equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private library.
+Feature related code is placed inside one of the feature modules. We can think about each feature as the reusable
+component, equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private library.
 
 The modularized code-base approach provides few benefits:
-- better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API., Feature related classes live in different modules and can't be referenced without explicit module dependency.
+
+- better [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). Each module has a clear API.
+  Feature related classes live in different modules and can't be referenced without explicit module dependency.
 - features can be developed in parallel eg. by different teams
 - each feature can be developed in isolation, independently from other features
 - faster compile time
@@ -81,17 +105,19 @@ This diagram presents dependencies between project modules (Gradle sub-projects)
 
 ![module_dependencies](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies.png?raw=true)
 
-Note that due usage of Android `dynamic-feature` module dependencies are reversed (feature modules are depending on `app` module, not another way around).
-
 We have three kinds of modules in the application:
 
-- `app` module - this is the main module. It contains code that wires multiple modules together (dependency injection setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required permissions setup, custom application class, etc.).
-- application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to share some assets or code only between few feature modules (currently app has no such modules)
+- `app` module - this is the main module. It contains code that wires multiple modules together (dependency injection
+  setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required
+  permissions setup, custom application class, etc.).
+- application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to
+  share some assets or code only between few feature modules (currently app has no such modules)
 - feature modules - the most common type of module containing all code related to a given feature.
 
 ### Feature module structure
 
-`Clean architecture` is the "core architecture" of the application, so each `feature module` contains own set of Clean architecture layers:
+`Clean architecture` is the "core architecture" of the application, so each `feature module` contains own set of Clean
+architecture layers:
 
 ![module_dependencies_layers](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies_layers.png?raw=true)
 
@@ -103,40 +129,56 @@ Each feature module contains non-layer components and 3 layers with distinct set
 
 #### Presentation layer
 
-This layer is closest to what the user sees on the screen. The `presentation` layer is a mix of `MVVM` (Jetpack `ViewModel` used to preserve data across activity restart) and
-`MVI` (`actions` modify the `common state` of the view and then new state is edited to a view via `LiveData` to be rendered).
+This layer is closest to what the user sees on the screen. The `presentation` layer is a mix of `MVVM` (
+Jetpack `ViewModel` used to preserve data across activity restart) and
+`MVI` (`actions` modify the `common state` of the view and then new state is edited to a view via `LiveData` to be
+rendered).
 
 > `common state` (for each view) approach derives from
 > [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
 > principles](https://redux.js.org/introduction/three-principles).
 
 Components:
-- **View (Fragment)** - presents data on the screen and pass user interactions to View Model. Views are hard to test, so they should be as simple as possible.
-- **ViewModel** - dispatches (through `LiveData`) state changes to the view and deals with user interactions (these view models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
+
+- **View (Fragment)** - presents data on the screen and pass user interactions to View Model. Views are hard to test, so
+  they should be as simple as possible.
+- **ViewModel** - dispatches (through `LiveData`) state changes to the view and deals with user interactions (these view
+  models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
 - **ViewState** - common state for a single view
-- **NavManager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of separately, inside each view)
+- **NavManager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of
+  separately, inside each view)
 
 #### Domain layer
 
-This is the core layer of the application. Notice that the `domain` layer is independent of any other layers. This allows to make domain models and business logic independent from other layers.
-In other words, changes in other layers will have no effect on `domain` layer eg. changing database (`data` layer) or screen UI (`presentation` layer) ideally will not result in any code change withing `domain` layer.
+This is the core layer of the application. Notice that the `domain` layer is independent of any other layers. This
+allows to make domain models and business logic independent from other layers. In other words, changes in other layers
+will have no effect on `domain` layer eg. changing database (`data` layer) or screen UI (`presentation` layer) ideally
+will not result in any code change withing `domain` layer.
 
 Components:
+
 - **UseCase** - contains business logic
-- **DomainModel** - defines the core structure of the data that will be used within the application. This is the source of truth for application data.
-- **Repository interface** - required to keep the `domain` layer independent from the `data layer` ([Dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)).
+- **DomainModel** - defines the core structure of the data that will be used within the application. This is the source
+  of truth for application data.
+- **Repository interface** - required to keep the `domain` layer independent from
+  the `data layer` ([Dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)).
 
 #### Data layer
 
-Manages application data and exposes these data sources as repositories to the `domain` layer. Typical responsibilities of this layer would be to retrieve data from the internet and optionally cache this data locally.
+Manages application data. Connect to data sources and provide data through repository to the `domain` layer eg. retrieve 
+data from the internet and cache the data in memory cache (when device is offline).
 
 Components:
-- **Repository** is exposing data to the `domain` layer. Depending on application structure and quality of the external APIs repository can also merge, filter, and transform the data. The intention of
-these operations is to create high-quality data source for the `domain` layer, not to perform any business logic (`domain` layer `use case` responsibility).
+
+- **Repository** is exposing data to the `domain` layer. Depending on application structure and quality of the external
+  APIs repository can also merge, filter, and transform the data. The intention of these operations is to create
+  high-quality data source for the `domain` layer, not to perform any business logic (`domain` layer `use case`
+  responsibility).
 
 - **Mapper** - maps `data model` to `domain model` (to keep `domain` layer independent from the `data` layer).
 - **RetrofitService** - defines a set of API endpoints.
-- **DataModel** - defines the structure of the data retrieved from the network and contains annotations, so Retrofit (Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
+- **DataModel** - defines the structure of the data retrieved from the network and contains annotations, so Retrofit (
+  Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
 
 ### Data flow
 
@@ -146,41 +188,32 @@ Below diagram presents application data flow when a user interacts with `album l
 
 ## Dependency management
 
-This project utilizes multiple mechanics to easily share the same versions of dependencies.
-### App library dependencies
+Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used as a
+centralized dependency management -third-party dependency coordinates (group, artifact, version) are shared across all
+modules (gradle projects and gradle subprojects).
 
-External dependencies (libraries) are defined using [versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html) feature in the [settings.gradle](./settings.gradle) file. These dynamic library versions are locked using Gradle [locking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism - concrete dependency versions are stored in `MODULE_NAME/gradle.lockfile` files.
+All of the dependencies are stored in the [libs.versions.toml](./gradle/libs.versions.toml) file (default location).
 
-To update lock files run `./gradlew test lint s --write-locks` command and commit updated `gradle.lockfile` files to
-repository.
+The [TOML](https://toml.io/en/) file consists of 4 major sections:
+- `[versions]` - declare versions which can be referenced by dependencies
+- `[libraries]` - declare the aliases to library coordinates
+- `[bundles]` - declare dependency bundles (groups)
+- `[libraries]` - declare the aliases to Gradle plugin coordinates
 
-Each feature module depends on the `app` module, so dependencies are shared without need to add them explicitly in each feature module.
+Each feature module depends on the `feature_base` module, so dependencies are shared without need to add them explicitly
+in each feature module.
 
-### Gradle plugin dependencies
-
-Gradle plugins are defined in [pluginManagement](https://docs.gradle.org/current/userguide/plugins.html#sec:plugin_management) block ([settings.gradle](./settings.gradle) file).
-
-Dynamic versions aren't supported for Gradle plugins, so [locking dependency](https://docs.gradle.org/current/userguide/dependency_locking.html) mechanism can't be used (like for app library dependencies), and thus versions of some libraries & plugins have to be hardcoded in the [gradle.properties](./gradle.properties) file.
-
-There is no easy way to share id between `pluginManagement` block and `buildSrc` folder, so plugin ids (also used within build scripts), have to be duplicated in the [GradlePluginId](./buildSrc/java/GradlePluginId/kt) file.
-
-### Shared dependencies
-
-Gradle is missing proper built-in mechanism to share dependency versions between app library dependency and Gradle plugin dependency eg. [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) library uses [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) Gradle plugin with the same version.
-
-To enable sharing all versions that are used for both plugins and libraries are defined in [gradle.properties](./gradle.properties).
-
-Unfortunately this technique cannot be applied to older Gradle plugins (added by `classpath`, not by `pluginManagement`), so some version in the [gradle.properties](./gradle.properties) are still duplicated.
 ## CI pipeline
 
-CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in the [.github/workflows](.github/workflows) folder.
+CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in
+the [.github/workflows](.github/workflows) folder.
 
 ### PR Verification
 
 Series of workflows runs (in parallel) for every opened PR and after merging PR to `main` branch:
+
 * `./gradlew lintDebug` - runs Android lint
-* `./gradlew detekt` - runs detekt
-* `./gradlew ktlintCheck` - runs ktlint
+* `./gradlew detektCheck` - runs detekt and ktlint
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
@@ -188,9 +221,9 @@ Series of workflows runs (in parallel) for every opened PR and after merging PR 
 ## Dependency updates
 
 The [update-dependencies](.github/workflows/update-dependencies.yml) task run periodically and creates a pull request
-containing dependency
-updates
-(updated gradle .lockfile files used by Gradle’s [dependency locking](https://docs.gradle.org/current/userguide/dependency_locking.html)).
+containing dependency updates
+(updated gradle .lockfile files used by
+Gradle’s [dependency locking](https://docs.gradle.org/current/userguide/dependency_locking.html)).
 
 ## Design decisions
 
@@ -210,7 +243,9 @@ focus on application architecture.
 
 ## Upcoming improvements
 
-Checklist of all upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement).
+Checklist of all
+upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement)
+.
 
 ## Getting started
 
@@ -234,16 +269,19 @@ additional resources.
 ### Cheat sheet
 
 - [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
-- [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+ most important tools
-- [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) - most popular coroutine usages
+- [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+
+  most important tools
+- [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) -
+  most popular coroutine usages
 
 ### Android projects
 
-Other high-quality projects will help you to find solutions that work for your project:
+Other high-quality projects will help you to find solutions that work for your project (random order):
 
 - [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
 - [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various
   Android architecture approaches
+- [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and Jetpack Compose
 - [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
   libraries
 - [GithubBrowserSample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
@@ -254,24 +292,37 @@ Other high-quality projects will help you to find solutions that work for your p
 - [Android samples](https://github.com/android) - official Android samples repository
 - [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
-- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds.
-
+- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create preconfigured Android Kotlin project in a few seconds.
+- [whatsApp-clone-compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack Compose and Stream Chat SDK for Compose
+- [compose-samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio projects to help you learn about Compose in Android
 
 ## Known issues
 
-- Gradle 7.1.1 is not compatible with GradleJDK 16 (build is failing, so JDK 15 must be used) 
-- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig). This is partially fixed in AS 4.2 (see [Issue 527](https://github.com/pinterest/ktlint/issues/527) and [Issue KT-10974](https://youtrack.jetbrains.com/issue/KT-10974))
-- False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file ([Issue 27971](https://youtrack.jetbrains.net/issue/KT-27971))
-- False positive "Function can be private" ([Issue KT-33610](https://youtrack.jetbrains.com/issue/KT-33610))
-- False positive cannot access class ([Issue 16077](https://youtrack.jetbrains.com/issue/KT-44797)). This is fixed in InteliJ IDEA 2021.1 EAP 1 afair.
-- Gradle has no way to share dependency versions between library and Gradle plugin or prod and test version of the library ([Issue 16077](https://github.com/gradle/gradle/issues/16077))
-- Android lint complains about exceeding access rights to ArchTaskExecutor [Issue 79189568]((https://issuetracker.google.com/u/0/issues/79189568))
+- [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM yet.
+- Delegate import is not provided when variable has the same name as
+  Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
+- Android-Junit5 plugin does not support Gradle plugins DSL
+  ([ISSUE-283](ttps://github.com/mannodermaus/android-junit5/issues/283))
+- Correct code is marked as error in build.gradle.kts files when using `libs` from the Gradle Version Catalog
+  ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
+  [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
+- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
+  . This is partially fixed in AS 4.2 ([Issue 527](https://github.com/pinterest/ktlint/issues/527)
+  and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
+- False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml
+  file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
+- Android lint complains about exceeding access rights to
+  ArchTaskExecutor ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
-- Gradle dependencies can't be easily shared between app libraries and Gradle plugins https://github.com/gradle/gradle/issues/16077
+
+* 
+
+
+* [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
 
 ## Contribute
 
-Want to contribute? Check our [Contributing](CONTRIBUTING.md) docs.
+Want to contribute? Check the [Contributing](CONTRIBUTING.md) docs.
 
 ## Author
 
@@ -280,6 +331,7 @@ Want to contribute? Check our [Contributing](CONTRIBUTING.md) docs.
 [![Follow me](https://img.shields.io/twitter/follow/igorwojda?style=social)](https://twitter.com/igorwojda)
 
 ## License
+
 ```
 MIT License
 
@@ -302,6 +354,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
 ## Animations License
+
 Flowing animations and are distributed under `Creative Commons License 2.0`:
+
 - [Error screen](https://lottiefiles.com/8049-error-screen) by Chetan Potnuru
 - [Building Screen](https://lottiefiles.com/1271-building-screen) by Carolina Cajazeira

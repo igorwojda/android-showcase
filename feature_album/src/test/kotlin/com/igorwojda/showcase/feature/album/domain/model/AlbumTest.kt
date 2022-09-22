@@ -9,7 +9,7 @@ class AlbumTest {
     private lateinit var cut: Album
 
     @Test
-    fun `model has default image url`() {
+    fun `get default image url`() {
         // given
         val image = DomainFixtures.getAlbumImage()
 
@@ -21,7 +21,7 @@ class AlbumTest {
     }
 
     @Test
-    fun `model has null image url`() {
+    fun `get null default image url`() {
         // given
         cut = DomainFixtures.getAlbum(images = listOf())
 

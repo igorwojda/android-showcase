@@ -1,65 +1,84 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist
 
-import com.igorwojda.showcase.base.presentation.navigation.NavManager
+import com.igorwojda.showcase.base.domain.result.Result
+import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.ViewState
-import com.igorwojda.showcase.library.testutils.CoroutinesTestExtension
+import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.RegisterExtension
+import org.junit.jupiter.api.extension.ExtendWith
 
+@OptIn(ExperimentalCoroutinesApi::class)
+@ExtendWith(InstantTaskExecutorExtension::class, CoroutinesTestDispatcherExtension::class)
 class AlbumListViewModelTest {
 
-    @ExperimentalCoroutinesApi
-    @JvmField
-    @RegisterExtension
-    val coroutinesTestExtension = CoroutinesTestExtension()
+    private val mockGetAlbumListUseCase: GetAlbumListUseCase = mockk()
 
-    @JvmField
-    @RegisterExtension
-    var instantTaskExecutorExtension = InstantTaskExecutorExtension()
+    private val mockNavManager: NavManager = mockk(relaxed = true)
 
-    @MockK
-    internal lateinit var mockGetAlbumListUseCase: GetAlbumListUseCase
+    private val cut = AlbumListViewModel(
+        mockNavManager,
+        mockGetAlbumListUseCase
+    )
 
-    @MockK(relaxed = true)
-    internal lateinit var mockNavManager: NavManager
+    @Test
+    fun `onEnter album list is empty`() = runTest {
+        // given
+        coEvery { mockGetAlbumListUseCase.execute() } returns Result.Success(emptyList())
 
-    private lateinit var cut: AlbumListViewModel
+        // when
+        cut.onEnter()
 
-    @BeforeEach
-    fun setUp() {
-        MockKAnnotations.init(this)
+        // then
+        advanceUntilIdle()
 
-        cut = AlbumListViewModel(
-            mockNavManager,
-            mockGetAlbumListUseCase
+        cut.stateFlow.value shouldBeEqualTo AlbumListViewModel.State(
+            isLoading = false,
+            isError = true,
+            albums = listOf()
         )
     }
 
     @Test
-    fun `execute getAlbumUseCase`() {
+    fun `onEnter album list is non-empty`() = runTest {
+        // given
+        val album = Album("albumName", "artistName")
+        val albums = listOf(album)
+        coEvery { mockGetAlbumListUseCase.execute() } returns Result.Success(albums)
+
         // when
-        cut.loadData()
+        cut.onEnter()
 
         // then
-        coVerify { mockGetAlbumListUseCase.execute() }
+        advanceUntilIdle()
+
+        cut.stateFlow.value shouldBeEqualTo AlbumListViewModel.State(
+            isLoading = false,
+            isError = false,
+            albums = albums
+        )
     }
 
     @Test
-    fun `navigate to album details`() {
+    fun `onAlbumClick navigate to album detail`() {
         // given
         val artistName = "Michael Jackson"
         val albumName = "Thriller"
         val mbId = "mbId"
+
+        val album = Album(
+            artist = artistName,
+            name = albumName,
+            mbId = mbId
+        )
 
         val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(
             artistName,
@@ -68,43 +87,9 @@ class AlbumListViewModelTest {
         )
 
         // when
-        cut.navigateToAlbumDetails(artistName, albumName, mbId)
+        cut.onAlbumClick(album)
 
         // then
         coVerify { mockNavManager.navigate(navDirections) }
-    }
-
-    @Test
-    fun `verify state when GetAlbumListUseCase returns empty list`() {
-        // given
-        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(emptyList())
-
-        // when
-        cut.loadData()
-
-        // then
-        cut.stateLiveData.value shouldBeEqualTo ViewState(
-            isLoading = false,
-            isError = true,
-            albums = listOf()
-        )
-    }
-
-    @Test
-    fun `verify state when GetAlbumListUseCase returns non-empty list`() {
-        // given
-        val album = Album("albumName", "artistName", listOf())
-        val albums = listOf(album)
-        coEvery { mockGetAlbumListUseCase.execute() } returns GetAlbumListUseCase.Result.Success(albums)
-
-        // when
-        cut.loadData()
-
-        // then
-        cut.stateLiveData.value shouldBeEqualTo ViewState(
-            isLoading = false,
-            isError = false,
-            albums = albums
-        )
     }
 }

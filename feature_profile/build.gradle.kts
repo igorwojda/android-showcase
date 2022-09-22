@@ -1,52 +1,47 @@
 plugins {
-    id(GradlePluginId.ANDROID_DYNAMIC_FEATURE)
-    id(GradlePluginId.KOTLIN_ANDROID) // or kotlin("android") or id 'kotlin-android'
-    id(GradlePluginId.KOTLIN_KAPT) // or kotlin("kapt")
-    id(GradlePluginId.SAFE_ARGS)
-    id(GradlePluginId.ANDROID_JUNIT_5)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.symbolProcessing)
+    alias(libs.plugins.safeArgs)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.testLogger)
+    alias(libs.plugins.junit5Android)
 }
 
 android {
-    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
+    compileSdk = 33
 
     defaultConfig {
-        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
+        minSdk = 26
+        targetSdk = 32
 
-        versionCode = AndroidConfig.VERSION_CODE
-        versionName = AndroidConfig.VERSION_NAME
-        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        getByName(BuildType.RELEASE) {
-            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
-            proguardFiles("proguard-android.txt", "proguard-rules.pro")
-        }
-
-        getByName(BuildType.DEBUG) {
-            isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
-        }
+    buildFeatures {
+        viewBinding = true
     }
-
-    buildFeatures.viewBinding = true
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
-    // Removes the need to mock need to mock classes that may be irrelevant from test perspective
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
     testOptions {
-        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
+        unitTests.isReturnDefaultValues = true
     }
 }
 
 dependencies {
-    implementation(project(ModuleDependency.APP))
+    implementation(projects.featureBase)
 
-    testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
+    testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)
 
-    testRuntimeOnly(libs.junit.jupiter.engine)
+    testRuntimeOnly(libs.junitJupiterEngine)
 }

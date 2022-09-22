@@ -1,11 +1,11 @@
 package com.igorwojda.showcase.feature.favourite.presentation.favourite
 
-import com.igorwojda.showcase.base.delegate.viewBinding
-import com.igorwojda.showcase.base.presentation.fragment.InjectionFragment
+import androidx.fragment.app.Fragment
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.igorwojda.showcase.feature.favourite.R
 import com.igorwojda.showcase.feature.favourite.databinding.FragmentFavouritesBinding
 
-class FavouriteFragment : InjectionFragment(R.layout.fragment_favourites) {
+class FavouriteFragment : Fragment(R.layout.fragment_favourites) {
 
     private val binding: FragmentFavouritesBinding by viewBinding()
 
