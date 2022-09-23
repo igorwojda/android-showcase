@@ -27,17 +27,17 @@ object DataFixtures {
         name: String = "album",
         artist: String = "artist",
         wiki: AlbumWikiApiModel? = getAlbumWiki(),
-        images: List<AlbumImageApiModel>? = listOf(getAlbumImageModel())
+        images: List<AlbumImageApiModel>? = listOf(getAlbumImageModel()),
     ): AlbumApiModel = AlbumApiModel(mbId, name, artist, wiki, images)
 
     internal fun getAlbumImageModel(
         url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
-        size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE
+        size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE,
     ) = AlbumImageApiModel(url, size)
 
     internal fun getAlbumWiki(
         published: String = "published",
-        summary: String = "summary"
+        summary: String = "summary",
     ) = AlbumWikiApiModel(published, summary)
 
     private fun getAlbumEntityModel(
@@ -45,12 +45,12 @@ object DataFixtures {
         mbId: String = "mbId",
         name: String = "album",
         artist: String = "artist",
-        images: List<AlbumImageEntityModel> = listOf(getAlbumImageEntityModel())
+        images: List<AlbumImageEntityModel> = listOf(getAlbumImageEntityModel()),
     ): AlbumEntityModel = AlbumEntityModel(id, mbId, name, artist, images)
 
     private fun getAlbumImageEntityModel(
         url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
-        size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE
+        size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE,
     ) = AlbumImageEntityModel(url, size)
 
     object ApiResponse {

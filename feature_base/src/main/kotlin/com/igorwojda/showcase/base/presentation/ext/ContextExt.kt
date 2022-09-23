@@ -13,7 +13,7 @@ fun Context.toast(@StringRes resId: Int, length: Int = Toast.LENGTH_SHORT) {
 }
 
 inline fun <reified T : AppCompatActivity> Context.startActivity(
-    vararg params: Pair<KProperty1<out Any?, Any?>, Any?>
+    vararg params: Pair<KProperty1<out Any?, Any?>, Any?>,
 ) {
     val extras = params.map { it.first.name to it.second }.toTypedArray()
     val intent = Intent(this, T::class.java)

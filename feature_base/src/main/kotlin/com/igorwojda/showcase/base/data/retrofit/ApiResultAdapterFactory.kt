@@ -8,7 +8,6 @@ import java.lang.reflect.Type
 
 class ApiResultAdapterFactory : CallAdapter.Factory() {
     override fun get(returnType: Type, annotations: Array<out Annotation>, retrofit: Retrofit): CallAdapter<*, *>? {
-
         if (Call::class.java != getRawType(returnType)) return null
         check(returnType is ParameterizedType)
 

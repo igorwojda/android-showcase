@@ -35,6 +35,11 @@ tasks.register("detektCheck", io.gitlab.arturbosch.detekt.Detekt::class) {
     autoCorrect = autoCorrectParam
     buildUponDefaultConfig = true
     setSource(file(projectDir))
+    // Detekt config is composed of two configs:
+    // 1. detekt default config rules
+    // https://github.com/detekt/detekt/blob/main/detekt-core/src/main/resources/default-detekt-config.yml
+    // 2. detekt-formatting rules
+    // https://github.com/detekt/detekt/blob/main/detekt-formatting/src/main/resources/config/config.yml
     config.setFrom("$projectDir/detekt.yml")
     include("**/*.kt", "**/*.kts")
     exclude("**/resources/**", "**/build/**", "**/generated/**")
@@ -45,7 +50,7 @@ tasks.register("detektCheck", io.gitlab.arturbosch.detekt.Detekt::class) {
     }
 
     dependencies {
-        // detekt wrapper for rules implemented by ktlint
+        // detekt wrapper for rules implemented by ktlint https://detekt.dev/docs/rules/formatting
         detektPlugins(libs.detektFormatting)
     }
 }

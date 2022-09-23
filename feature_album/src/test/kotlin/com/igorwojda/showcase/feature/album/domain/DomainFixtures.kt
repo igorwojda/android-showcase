@@ -12,16 +12,16 @@ object DomainFixtures {
         artist: String = "artistName",
         images: List<AlbumImage> = listOf(getAlbumImage()),
         wiki: AlbumWiki? = getAlbumWikiDomainModel(),
-        mbId: String? = "mbId"
+        mbId: String? = "mbId",
     ): Album = Album(name, artist, images, wiki, mbId)
 
     internal fun getAlbumImage(
         url: String = "url_${AlbumDomainImageSize.EXTRA_LARGE}",
-        size: AlbumDomainImageSize = AlbumDomainImageSize.EXTRA_LARGE
+        size: AlbumDomainImageSize = AlbumDomainImageSize.EXTRA_LARGE,
     ) = AlbumImage(url, size)
 
     private fun getAlbumWikiDomainModel(
         published: String = "published",
-        summary: String = "summary"
+        summary: String = "summary",
     ) = AlbumWiki(published, summary)
 }

@@ -4,5 +4,5 @@ import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 
 internal data class AlbumImage(
     val url: String,
-    val size: AlbumDomainImageSize
+    val size: AlbumDomainImageSize,
 )

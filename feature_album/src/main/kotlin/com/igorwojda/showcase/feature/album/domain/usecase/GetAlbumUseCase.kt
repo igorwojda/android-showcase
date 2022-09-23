@@ -5,7 +5,7 @@ import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 
 internal class GetAlbumUseCase(
-    private val albumRepository: AlbumRepository
+    private val albumRepository: AlbumRepository,
 ) {
 
     suspend fun execute(

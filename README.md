@@ -322,6 +322,8 @@ Other high-quality projects will help you to find solutions that work for your p
 
 - [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
   ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM yet.
+- ktlint `FileName` rule has to be disabled, becasue it is not compatible with fie containg a single extension 
+  [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)  
 - Delegate import is not provided when a variable has the same name as
   Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - Android-Junit5 plugin does not support Gradle plugins DSL

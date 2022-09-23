@@ -38,9 +38,12 @@ class GridAutofitLayoutManager : GridLayoutManager {
         context: Context,
         columnWidth: Int,
         orientation: Int,
-        reverseLayout: Boolean
+        reverseLayout: Boolean,
     ) : super(
-        context, INITIAL_SPAN_COUNT, orientation, reverseLayout
+        context,
+        INITIAL_SPAN_COUNT,
+        orientation,
+        reverseLayout
     ) {
         this.columnWidth = columnWidth
     }

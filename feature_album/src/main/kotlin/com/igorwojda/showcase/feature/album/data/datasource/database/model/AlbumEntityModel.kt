@@ -21,9 +21,11 @@ internal data class AlbumEntityModel(
 
 internal fun AlbumEntityModel.toDomainModel() =
     Album(
-        this.name, this.artist,
+        this.name,
+        this.artist,
         this.images.mapNotNull { it.toDomainModel() },
-        null, this.mbId
+        null,
+        this.mbId
     )
 
 internal class AlbumImageEntityTypeConverter {

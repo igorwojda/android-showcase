@@ -23,7 +23,7 @@ playCore = "1.10.3"
 coreKtx = "1.9.0"
 fragmentKtx = "1.5.2"
 
-detekt = "1.21.0"
+detekt = "1.22.0-RC1"
 androidGradlePlugin = "7.3.0"
 # Find version here https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
 kotlinSymbolProcessing = "1.7.10-1.0.6"
