@@ -296,9 +296,12 @@ Here are few additional resources.
 
 ## Known issues
 
+- When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
+  using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
+  [STACKOVERFLOW-59275182](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182))
 - [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
-  ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM yet.
-- ktlint `FileName` rule has to be disabled, becasue it is not compatible with fie containg a single extension 
+  `ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM` yet.
+- ktlint `FileName` rule has to be disabled, because it is not compatible with fie contain a single extension 
   [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)  
 - Delegate import is not provided when a variable has the same name as
   Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
@@ -308,11 +311,12 @@ Here are few additional resources.
 - [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
   rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig).
   and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
-- False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml
+- False positive "Unused symbol" for a custom Android application class referenced in `AndroidManifest.xml`
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - Android lint complains about exceeding access rights to
-  ArchTaskExecutor ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
-- JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+  `ArchTaskExecutor` ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
+- JUnit 5 does not support tests with suspended
+  modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
 
 ### Other Android Projects
 
