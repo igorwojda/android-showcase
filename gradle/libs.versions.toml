@@ -11,7 +11,9 @@ retrofit = "2.9.0"
 okhttp = "4.10.0"
 koin = "3.2.2"
 coil = "2.2.2"
-lifecycle = "2.5.1"
+# verison 2.6.0-alpha01 has collectAsStateWithLifecycle
+# https://issuetracker.google.com/issues/230557927?hl=id
+lifecycle = "2.6.0-alpha02"
 room = "2.4.3"
 serializationJson = "1.4.0"
 kotlinxSerializationConverter = "0.8.0"
@@ -67,6 +69,7 @@ coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 fragmentKtx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 livedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+livedataRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
 navigationFragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
@@ -87,7 +90,7 @@ junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", versio
 
 [bundles]
 retrofit = ["retrofitCore", "kotlinxSerializationConverter", "serializationJson", "okhttp", "okhttpInterceptor"]
-lifecycle = ["viewmodelKtx", "livedataKtx"]
+lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
 navigation = ["navigationFragment", "navigationUiKtx"]
 room = ["roomKtx", "roomRuntime"]
 test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTesting", "junitJupiterApi", "junitJupiterEngine"]
