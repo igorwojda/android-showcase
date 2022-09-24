@@ -14,7 +14,7 @@ import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetail
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(
-    private val getAlbumUseCase: GetAlbumUseCase
+    private val getAlbumUseCase: GetAlbumUseCase,
 ) : BaseViewModel<State, Action>(State()) {
 
     fun onEnter(args: AlbumDetailFragmentArgs) {
@@ -37,7 +37,7 @@ internal class AlbumDetailViewModel(
         val isError: Boolean = false,
         val albumName: String = "",
         val artistName: String = "",
-        val coverImageUrl: String = ""
+        val coverImageUrl: String = "",
     ) : BaseState
 
     internal sealed interface Action : BaseAction<State> {

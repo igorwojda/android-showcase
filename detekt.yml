@@ -741,7 +741,7 @@ formatting:
     active: true
     autoCorrect: true
     indentSize: 4
-    maxLineLength: 120
+    maxLineLength: 140
   BlockCommentInitialStarAlignment:
     active: false
     autoCorrect: true
@@ -778,7 +778,7 @@ formatting:
     autoCorrect: true
     forceMultilineWhenParameterCountGreaterOrEqualThan: 2147483647
     functionBodyExpressionWrapping: 'default'
-    maxLineLength: 120
+    maxLineLength: 140
     indentSize: 4
   FunctionStartOfBodySpacing:
     active: false
@@ -800,7 +800,7 @@ formatting:
     indentSize: 4
   MaximumLineLength:
     active: true
-    maxLineLength: 120
+    maxLineLength: 140
     ignoreBackTickedIdentifier: false
   ModifierListSpacing:
     active: false
@@ -862,7 +862,7 @@ formatting:
   ParameterListWrapping:
     active: true
     autoCorrect: true
-    maxLineLength: 120
+    maxLineLength: 140
   SpacingAroundAngleBrackets:
     active: true
     autoCorrect: true
