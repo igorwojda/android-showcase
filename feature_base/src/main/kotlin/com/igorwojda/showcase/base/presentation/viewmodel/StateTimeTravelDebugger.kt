@@ -86,6 +86,6 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
     private data class StateTransition(
         val oldState: BaseState,
         val action: BaseAction<*>,
-        val newState: BaseState,
+        val newState: BaseState
     )
 }

@@ -61,6 +61,7 @@ dependencies {
     api(libs.bundles.navigation)
     api(libs.bundles.lifecycle)
     api(libs.bundles.room)
+    api(libs.bundles.compose)
     api(libs.viewBindingPropertyDelegate)
     api(libs.timber)
     api(libs.coil)

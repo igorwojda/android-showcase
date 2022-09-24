@@ -11,6 +11,7 @@ retrofit = "2.9.0"
 okhttp = "4.10.0"
 koin = "3.2.2"
 coil = "2.2.2"
+compose = "1.2.1"
 # verison 2.6.0-alpha01 has collectAsStateWithLifecycle
 # https://issuetracker.google.com/issues/230557927?hl=id
 lifecycle = "2.6.0-alpha02"
@@ -63,12 +64,14 @@ appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat"
 recyclerView = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerView" }
 material = { module = "androidx.compose.material3:material3", version.ref = "material" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
-coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 playCore = { module = "com.google.android.play:core", version.ref = "playCore" }
 coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 fragmentKtx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 livedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+composeUI = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 livedataRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
 navigationFragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
@@ -90,6 +93,7 @@ junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", versio
 
 [bundles]
 retrofit = ["retrofitCore", "kotlinxSerializationConverter", "serializationJson", "okhttp", "okhttpInterceptor"]
+compose = ["composeUI", "toolingPreview"]
 lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
 navigation = ["navigationFragment", "navigationUiKtx"]
 room = ["roomKtx", "roomRuntime"]
