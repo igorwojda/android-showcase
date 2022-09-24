@@ -18,6 +18,34 @@ This application may look simple, but it has all the pieces that will provide th
 application suitable for bigger teams during extended
 [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
+- [💎 Android Showcase 2.0](#-android-showcase-20)
+  - [Application Scope](#application-scope)
+  - [Tech-Stack](#tech-stack)
+  - [Architecture](#architecture)
+    - [Module Types And Module Dependencies](#module-types-and-module-dependencies)
+    - [Feature Module Structure](#feature-module-structure)
+      - [Presentation Layer](#presentation-layer)
+      - [Domain Layer](#domain-layer)
+      - [Data Layer](#data-layer)
+    - [Data Flow](#data-flow)
+  - [Dependency Management](#dependency-management)
+  - [CI Pipeline](#ci-pipeline)
+    - [Pull Request Verification](#pull-request-verification)
+  - [Design Decisions](#design-decisions)
+  - [What This Project Does Not Cover?](#what-this-project-does-not-cover)
+  - [Upcoming Improvements](#upcoming-improvements)
+  - [Getting Started](#getting-started)
+    - [Android Studio](#android-studio)
+    - [Command-line And Android Studio](#command-line-and-android-studio)
+  - [Inspiration](#inspiration)
+    - [Cheatsheet](#cheatsheet)
+  - [Known Issues](#known-issues)
+    - [Other Android Projects](#other-android-projects)
+  - [Contribute](#contribute)
+  - [Author](#author)
+  - [License](#license)
+  - [Animations License](#animations-license)
+
 ## Application Scope
 
 The `android-showcase` displays information about music albums. The data is loaded from
@@ -143,23 +171,27 @@ Each feature module contains non-layer components and 3 layers with a distinct s
 
 #### Presentation Layer
 
-This layer is closest to what the user sees on the screen. The `presentation` layer is a mix of `MVVM` (
-Jetpack `ViewModel` used to preserve data across activity restart) and
-`MVI` (`actions` modify the `common state` of the view and then a new state is edited to a view via `LiveData` to be
-rendered).
+This layer is closest to what the user sees on the screen.
 
-> `common state` (for each view) approach derives from
+The `presentation` layer mixes `MVVM` and `MVI` patterns:
+
+- `MVVM` - Jetpack `ViewModel` is used to encapsulate `common UI state`. It exposes the `state` via observable state holder (`Kotlin Flow`)
+- `MVI` - `action` modifies the `common UI state` and emits a new state to a view via `Kotlin Flow` (state is rendered using Jetpack Compose)
+
+> `common state` is a single source of truth for each view. This approach derives from
 > [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
 > principles](https://redux.js.org/introduction/three-principles).
 
+This approach facilitates creation of consistent states.
+
 Components:
 
-- **View (Fragment)** - presents data on the screen and passes user interactions to View Model. Views are hard to test,
-  so they should be as simple as possible.
-- **ViewModel** - dispatches (through [Kotlin Flow](https://kotlinlang.org/docs/flow.html)) state changes to the view
-  and deals with user interactions (these view models are not simply
-  [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
+- **View (Fragment)** - observes (and consumes) common view state (through `Kotlin Flow`) and passes user interactions to `ViewModel`. Views 
+  are hard to test, so they should be as simple as possible.
+- **ViewModel** - emmits (through `Kotlin Flow`) view state changes to the view and deals with user interactions (these view models are not 
+  simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
 - **ViewState** - common state for a single view
+- **StateTimeTravelDebugger** - logs actions and view state transitions to facilitate debugging.
 - **NavManager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of
   separately, inside each view)
 
@@ -234,7 +266,7 @@ implementation(projects.featureAlbum)
 CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in
 the [.github/workflows](.github/workflows) folder.
 
-### PR Verification
+### Pull Request Verification
 
 Series of workflows run (in parallel) for every opened PR and after merging PR to the `main` branch:
 
@@ -250,10 +282,6 @@ Read related articles to have a better understanding of underlying design decisi
 
 * [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
 * More coming soon
-
-## Gradle Update
-
-`./gradlew wrapper --gradle-version=1.2.3`
 
 ## What This Project Does Not Cover?
 
@@ -274,7 +302,7 @@ There are a few ways to open this project.
 1. `Android Studio` -> `File` -> `New` -> `From Version control` -> `Git`
 2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field and press `Clone` button
 
-### Command-line + Android Studio
+### Command-line And Android Studio
 
 1. Run `git clone https://github.com/igorwojda/android-showcase.git` command to clone the project
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
@@ -291,7 +319,7 @@ Here are few additional resources.
 - [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) -
   most popular coroutine usages
 
-## Known issues
+## Known Issues
 
 - When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
   using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
