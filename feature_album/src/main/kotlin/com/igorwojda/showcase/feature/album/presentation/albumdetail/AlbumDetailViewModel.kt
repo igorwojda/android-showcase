@@ -14,7 +14,7 @@ import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetail
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(
-    private val getAlbumUseCase: GetAlbumUseCase,
+    private val getAlbumUseCase: GetAlbumUseCase
 ) : BaseViewModel<State, Action>(State()) {
 
     fun onEnter(args: AlbumDetailFragmentArgs) {
@@ -32,33 +32,33 @@ internal class AlbumDetailViewModel(
         }
     }
 
-    override fun onReduceState(action: Action) = when (action) {
-        is AlbumLoadSuccess -> state.copy(
-            isLoading = false,
-            isError = false,
-            artistName = action.album.artist,
-            albumName = action.album.name,
-            coverImageUrl = action.album.getDefaultImageUrl() ?: ""
-        )
-        is AlbumLoadFailure -> state.copy(
-            isLoading = false,
-            isError = true,
-            artistName = "",
-            albumName = "",
-            coverImageUrl = ""
-        )
-    }
-
     internal data class State(
         val isLoading: Boolean = true,
         val isError: Boolean = false,
         val albumName: String = "",
         val artistName: String = "",
-        val coverImageUrl: String = "",
+        val coverImageUrl: String = ""
     ) : BaseState
 
-    internal sealed interface Action : BaseAction {
-        class AlbumLoadSuccess(val album: Album) : Action
-        object AlbumLoadFailure : Action
+    internal sealed interface Action : BaseAction<State> {
+        class AlbumLoadSuccess(private val album: Album) : Action {
+            override fun reduce(state: State) = state.copy(
+                isLoading = false,
+                isError = false,
+                artistName = album.artist,
+                albumName = album.name,
+                coverImageUrl = album.getDefaultImageUrl() ?: ""
+            )
+        }
+
+        object AlbumLoadFailure : Action {
+            override fun reduce(state: State) = state.copy(
+                isLoading = false,
+                isError = true,
+                artistName = "",
+                albumName = "",
+                coverImageUrl = ""
+            )
+        }
     }
 }
