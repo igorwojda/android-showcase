@@ -326,8 +326,6 @@ Other high-quality projects will help you to find solutions that work for your p
   [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)  
 - Delegate import is not provided when a variable has the same name as
   Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
-- Android-Junit5 plugin does not support Gradle plugins DSL
-  ([ISSUE-283](https://github.com/mannodermaus/android-junit5/issues/283))
 - Correct code is marked as an error in `build.gradle.kts` files when using `libs` from the Gradle Version Catalog
   ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
   [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))

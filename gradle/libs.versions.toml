@@ -1,7 +1,6 @@
 [versions]
 kotlin = "1.7.10"
 navigation = "2.5.2"
-androidJUnit5 = "1.8.2.1"
 testLogger = "3.2.0"
 coroutines = "1.6.4"
 retrofit = "2.9.0"
@@ -28,14 +27,15 @@ androidGradlePlugin = "7.3.0"
 # Find version here https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
 kotlinSymbolProcessing = "1.7.10-1.0.6"
 
-# Test versions
+# Test versionsandroid-junit5-plugin-dsl
+
 junit = "5.9.1"
+androidJUnit5 = "1.8.2.1"
 kluent = "1.68"
 testRunner = "1.4.0"
 mockk = "1.12.8"
 espresso = "3.4.0"
 coreTesting = "2.1.0"
-junit5Android = "1.8.2.1"
 
 [libraries]
 kotlin = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
@@ -69,9 +69,6 @@ roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
 detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
-
-# Android-Junit5 plugin does not support Gradle plugins DSL https://github.com/mannodermaus/android-junit5/issues/283
-junit5AndroidPlugin = { module = "de.mannodermaus.android-junit5:de.mannodermaus.android-junit5.gradle.plugin", version.ref = "junit5Android" }
 
 # Test dependencies
 testCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
