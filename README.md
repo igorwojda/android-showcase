@@ -18,9 +18,6 @@ This application may look simple, but it has all the pieces that will provide th
 application suitable for bigger teams during extended
 [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
-This project is being maintained to stay up to date with leading industry standards. Please check
-the [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
-
 ## Application Scope
 
 The `android-showcase` displays information about music albums. The data is loaded from
@@ -69,7 +66,7 @@ the libraries are in the stable version unless there is a good reason to use non
     , [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
   * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
 * UI
-  * [JetPack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
+  * [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
   * [Material design](https://material.io/design)
   * Reactive UI
 * CI
@@ -317,6 +314,7 @@ Here are few additional resources.
   `ArchTaskExecutor` ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
 - JUnit 5 does not support tests with suspended
   modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+- Custom detekt config is hard to update [Issue 4517](https://github.com/detekt/detekt/issues/4517)
 
 ### Other Android Projects
 
@@ -338,7 +336,8 @@ Other high-quality projects will help you to find solutions that work for your p
 
 ## Contribute
 
-Want to contribute? Check the [Contributing](CONTRIBUTING.md) docs.
+This project is being maintained to stay up to date with leading industry standards. Please check
+the [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
 ## Author
 
