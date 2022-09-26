@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(
     private val navManager: NavManager,
-    private val getAlbumListUseCase: GetAlbumListUseCase,
+    private val getAlbumListUseCase: GetAlbumListUseCase
 ) : BaseViewModel<AlbumListViewModel.State, AlbumListViewModel.Action>(State()) {
 
     fun onEnter() {
@@ -49,7 +49,7 @@ internal class AlbumListViewModel(
     internal data class State(
         val isLoading: Boolean = true,
         val isError: Boolean = false,
-        val albums: List<Album> = listOf(),
+        val albums: List<Album> = listOf()
     ) : BaseState
 
     internal sealed interface Action : BaseAction<State> {

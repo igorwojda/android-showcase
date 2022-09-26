@@ -32,7 +32,7 @@ class AlbumDetailViewModelTest {
 //        cut.onEnter(mockAlbumDetailFragmentArgs)
 //
 //        // then
-//        cut.stateFlow.value shouldBeEqualTo AlbumDetailViewModel.State(
+//        cut.uiStateFlow.value shouldBeEqualTo AlbumDetailViewModel.State(
 //            isLoading = false,
 //            isError = true,
 //            artistName = "",

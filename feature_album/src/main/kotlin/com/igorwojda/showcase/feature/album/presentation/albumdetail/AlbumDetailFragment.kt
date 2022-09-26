@@ -31,7 +31,7 @@ internal class AlbumDetailFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
-                AlbumDetailScreen(stateFlow = model.uiStateFlow)
+                AlbumDetailScreen(uiStateFlow = model.uiStateFlow)
             }
         }
     }
@@ -39,18 +39,18 @@ internal class AlbumDetailFragment : Fragment() {
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-internal fun AlbumDetailScreen(stateFlow: StateFlow<State>) {
+internal fun AlbumDetailScreen(uiStateFlow: StateFlow<State>) {
     // Collecting flows in a lifecycle-aware manner
     // collectAsStateWithLifecycle does not waste resources when collecting flows from the UI layer
     // More: https://medium.com/androiddevelopers/consuming-flows-safely-in-jetpack-compose-cde014d0d5a3
-    val state: State by stateFlow.collectAsStateWithLifecycle()
+    val state: State by uiStateFlow.collectAsStateWithLifecycle()
 
     Column {
         Text(text = state.albumName)
         Text(text = state.artistName)
         AsyncImage(
             model = state.coverImageUrl,
-            contentDescription = "Cover Image"
+            contentDescription = "Album Cover"
         )
     }
 }
