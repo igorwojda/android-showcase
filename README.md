@@ -353,14 +353,19 @@ Here are few additional resources.
 Other high-quality projects will help you to find solutions that work for your project (random order):
 
 - [Compose Samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio
-- [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and Jetpack Compose
-- [WhatsApp Clone Compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack Compose and Stream Chat SDK for Compose projects to help you learn about Compose in Android
+- [Jetpack Compose Playground](https://github.com/Foso/Jetpack-Compose-Playground) - This is an Jetpack Compose example
+  project
+- [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and
+  Jetpack Compose
+- [WhatsApp Clone Compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack
+  Compose and Stream Chat SDK for Compose projects to help you learn about Compose in Android
 - [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019 and 2021
 - [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various
   Android architecture approaches to developing Android apps
 - [Github Browser Sample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
   demonstrating usage of Android Architecture Components
-- [Clean Architecture Boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - clean architecture for Android
+- [Clean Architecture Boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - clean
+  architecture for Android
 - [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together with very good
   documentation
 - [Kotlin Android Template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
