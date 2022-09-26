@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="album_cover_content_description">Album Cover</string>
+    <string name="album_image_content_description">Album Image</string>
     <string name="data_not_found">Data not found</string>
 </resources>

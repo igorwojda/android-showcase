@@ -13,12 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.igorwojda.showcase.base.presentation.compose.ShowcaseTheme
+import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.State
 import kotlinx.coroutines.flow.StateFlow
@@ -62,7 +64,7 @@ internal fun PhotoGrid(albums: List<Album>) {
 
                 AsyncImage(
                     model = album.getDefaultImageUrl(),
-                    contentDescription = "Album image"
+                    contentDescription = stringResource(id = R.string.album_image_content_description)
                 )
             }
         }
