@@ -31,7 +31,7 @@ internal class AlbumDetailFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
-                AlbumDetailScreen(stateFlow = model.stateFlow)
+                AlbumDetailScreen(stateFlow = model.uiStateFlow)
             }
         }
     }

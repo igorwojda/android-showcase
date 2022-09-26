@@ -40,7 +40,7 @@ class AlbumListViewModelTest {
         // then
         advanceUntilIdle()
 
-        cut.stateFlow.value shouldBeEqualTo AlbumListViewModel.State(
+        cut.uiStateFlow.value shouldBeEqualTo AlbumListViewModel.State(
             isLoading = false,
             isError = true,
             albums = listOf()
@@ -60,7 +60,7 @@ class AlbumListViewModelTest {
         // then
         advanceUntilIdle()
 
-        cut.stateFlow.value shouldBeEqualTo AlbumListViewModel.State(
+        cut.uiStateFlow.value shouldBeEqualTo AlbumListViewModel.State(
             isLoading = false,
             isError = false,
             albums = albums

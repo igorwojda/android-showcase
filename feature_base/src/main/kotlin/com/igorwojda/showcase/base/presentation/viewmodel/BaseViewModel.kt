@@ -11,8 +11,8 @@ import kotlin.properties.Delegates
 abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(initialState: State) :
     ViewModel() {
 
-    private val _stateFlow = MutableStateFlow(initialState)
-    val stateFlow = _stateFlow.asStateFlow()
+    private val _uiStateFlow = MutableStateFlow(initialState)
+    val uiStateFlow = _uiStateFlow.asStateFlow()
 
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
 
@@ -27,7 +27,7 @@ abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(init
     private var state by Delegates.observable(initialState) { _, old, new ->
         if (old != new) {
             viewModelScope.launch {
-                _stateFlow.emit(new)
+                _uiStateFlow.emit(new)
             }
 
             stateTimeTravelDebugger?.apply {
