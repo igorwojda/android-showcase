@@ -68,6 +68,7 @@ dependencies {
     api(libs.appCompat)
     api(libs.recyclerView)
     api(libs.coroutines)
+    api(libs.material)
     api(libs.composeMaterial)
 
     testImplementation(projects.libraryTestUtils)
