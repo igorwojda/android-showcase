@@ -1,10 +1,6 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
-        <!-- Customize your theme here. -->
-        <item name="android:windowBackground">@color/shark</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
+    <style name="Theme.Showcase" parent="Theme.Material3.DayNight"></style>
 
 </resources>

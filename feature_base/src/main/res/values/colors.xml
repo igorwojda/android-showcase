@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">@color/outer_space</color>
-    <color name="colorPrimaryDark">@color/shark</color>
-    <color name="colorAccent">@color/red_orange</color>
-
-    <color name="iconColor">@color/white</color>
-    <color name="textColor">@color/white</color>
-</resources>
