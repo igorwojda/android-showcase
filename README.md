@@ -95,11 +95,14 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
 * UI
   * Reactive UI
-  * [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
-  * [Material design](https://material.io/design)
-  * Theme seletion
-     * [Dark theme](https://material.io/develop/android/theming/dark) - dark theme for the app (Android 10+)
-     * [Dynamic Color](https://m3.material.io/styles/color/dynamic-color/overview) - app UI adopts to user wallpaper (Android 12+)
+  * [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit (used for Fragments)
+  * [View Binding](https://developer.android.com/topic/libraries/view-binding) - retrieve xml view ids
+    (used for [NavHostActivity](app/src/main/java/com/igorwojda/showcase/app/presentation/NavHostActivity.kt) only)
+  * [Material Design 3](https://m3.material.io/) - application design system providing UI components
+  * Theme selection
+    * [Dark theme](https://material.io/develop/android/theming/dark) - dark theme for the app (Android 10+)
+    * [Dynamic Color](https://m3.material.io/styles/color/dynamic-color/overview) - app UI adopts to user wallpaper (
+      Android 12+)
 * CI
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters, and 3rd online tools
@@ -124,7 +127,7 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) - define dependencies
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
 * GitHub Apps
-  * [Revonate](https://github.com/renovatebot/renovate) - dependency update boot
+  * [Renovate](https://github.com/renovatebot/renovate) - dependency update boot
 
 ## Architecture
 
@@ -152,9 +155,9 @@ This diagram presents dependencies between project modules (Gradle sub-projects)
 
 We have three kinds of modules in the application:
 
-- `app` module - this is the main module. It contains code that wires multiple modules together (dependency injection
-  setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required
-  permissions setup, custom application class, etc.).
+- `app` module - this is the main module. It contains code that wires multiple modules together (class, dependency
+  injection setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required
+  permissions setup, custom `Application` class, etc.).
 - application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to
   share some assets or code only between a few feature modules (currently app has no such modules)
 - feature modules - the most common type of module containing all code related to a given feature.
@@ -189,9 +192,9 @@ This approach facilitates creation of consistent states.
 
 Components:
 
-- **View (Fragment)** - observes common view state (through `Kotlin Flow`). Compose transform state (emitted by Kotlin Flow) into application UI
-  Consumes the state and transforms it into applicartion UI (via `Jetpack Compose`). Pass user interactions to `ViewModel`.
-  Views are hard to test, so they should be as simple as possible.
+- **View (Fragment)** - observes common view state (through `Kotlin Flow`). Compose transform state (emitted by Kotlin
+  Flow) into application UI Consumes the state and transforms it into application UI (via `Jetpack Compose`). Pass user
+  interactions to `ViewModel`. Views are hard to test, so they should be as simple as possible.
 - **ViewModel** - emmits (through `Kotlin Flow`) view state changes to the view and deals with user interactions (these view models are not 
   simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
 - **ViewState** - common state for a single view
