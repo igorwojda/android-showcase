@@ -8,14 +8,15 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 Android Showcase project presents a modern approach to
-[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development. It is a complete sample of
-a fully functional Android application.
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development. This project utilizes
+popular tools, libraries, linters, Gradle plugins, testing frameworks, and CI setup. It is a complete sample of a fully
+functional Android application.
 
-Project is utilizing modular, scalable, maintainable, and testable [architecture](#architecture), leading
-[tech-stack](Tech-stack) and demonstrates the best development practices.
+Project is focusing on modular, scalable, maintainable, and testable [architecture](#architecture), leading
+[tech-stack](#tech-stack) and demonstrates the best development practices.
 
-This application may look simple, but it has all the pieces that will provide the rock-solid foundation for the larger
-application suitable for bigger teams during extended
+This application may look simple, but it has all of the pieces that will provide the rock-solid foundation for the
+larger application suitable for bigger teams and extended
 [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
 - [💎 Android Showcase 2.0](#-android-showcase-20)
@@ -48,8 +49,8 @@ application suitable for bigger teams during extended
 
 ## Application Scope
 
-The `android-showcase` displays information about music albums. The data is loaded from
-the [Last.fm Music Discovery API](https://www.last.fm/api).
+The `android-showcase` displays information about music albums. The data is loaded from the
+[Last.fm Music Discovery API](https://www.last.fm/api).
 
 The app has a few screens located in multiple feature modules:
 
@@ -84,7 +85,7 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Coil](https://github.com/coil-kt/coil) - image loading library
   * [Lottie](http://airbnb.io/lottie) - animation library
 * Modern Architecture
-  * Clean Architecture (at feature module level)
+  * [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
   * Single activity architecture
     using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
   * MVVM + MVI (presentation layer)
@@ -100,9 +101,9 @@ the libraries are in the stable version unless there is a good reason to use non
     (used for [NavHostActivity](app/src/main/java/com/igorwojda/showcase/app/presentation/NavHostActivity.kt) only)
   * [Material Design 3](https://m3.material.io/) - application design system providing UI components
   * Theme selection
-    * [Dark theme](https://material.io/develop/android/theming/dark) - dark theme for the app (Android 10+)
-    * [Dynamic Color](https://m3.material.io/styles/color/dynamic-color/overview) - app UI adopts to user wallpaper (
-      Android 12+)
+    * [Dark Theme](https://material.io/develop/android/theming/dark) - dark theme for the app (Android 10+)
+    * [Dynamic Theming](https://m3.material.io/styles/color/dynamic-color/overview) - use generated, wallpaper-based
+      theme (Android 12+)
 * CI
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters, and 3rd online tools
@@ -112,17 +113,18 @@ the libraries are in the stable version unless there is a good reason to use non
   * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
   * [Mockk](https://mockk.io/) - mocking framework
   * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
-* Static analysis tools
+* Static analysis tools (linters)
   * [Ktlint](https://github.com/pinterest/ktlint) - verify code formatting
   * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify code complexity and code smells
-  * [Androd Lint](http://tools.android.com/tips/lint) - verify Android platform usage
+  * [Android Lint](http://tools.android.com/tips/lint) - verify Android platform usage
 * Gradle
   * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - define build scripts
   * Custom tasks
   * [Gradle Plugins](https://plugins.gradle.org/)
     * [Android Gradle](https://developer.android.com/studio/releases/gradle-plugin) - standard Android Plugins
     * [Test Logger](https://github.com/radarsh/gradle-test-logger-plugin) - format test logs
-    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) - pass data between navigation destinations
+    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) - pass data between
+      navigation destinations
     * [Android-junit5](https://github.com/mannodermaus/android-junit5) - use [JUnit 5](https://junit.org/junit5/) with Android
   * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) - define dependencies
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
@@ -320,36 +322,13 @@ Here are few additional resources.
 
 ### Cheatsheet
 
+- [Material Theme Builder](https://m3.material.io/theme-builder#/dynamic) - generate dynamic material theme and see it
+  in action
 - [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
 - [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+
   most important tools
 - [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) -
   most popular coroutine usages
-
-## Known Issues
-
-- When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
-  using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
-  [STACKOVERFLOW-59275182](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182))
-- [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
-  `ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM` yet.
-- ktlint `FileName` rule has to be disabled, because it is not compatible with fie contain a single extension 
-  [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)  
-- Delegate import is not provided when a variable has the same name as
-  Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
-- Correct code is marked as an error in `build.gradle.kts` files when using `libs` from the Gradle Version Catalog
-  ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
-  [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
-- [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
-  rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig).
-  and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
-- False positive "Unused symbol" for a custom Android application class referenced in `AndroidManifest.xml`
-  file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
-- Android lint complains about exceeding access rights to
-  `ArchTaskExecutor` ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
-- JUnit 5 does not support tests with suspended
-  modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
-- Custom detekt config is hard to update [Issue 4517](https://github.com/detekt/detekt/issues/4517)
 
 ### Other Android Projects
 
@@ -373,6 +352,31 @@ Other high-quality projects will help you to find solutions that work for your p
   documentation
 - [Kotlin Android Template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
   preconfigured Android Kotlin project in a few seconds
+
+## Known Issues
+
+- When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
+  using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
+  [STACKOVERFLOW-59275182](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182))
+- [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
+  `ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM` yet.
+- ktlint `FileName` rule has to be disabled, because it is not compatible with fie contain a single extension
+  [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)
+- Delegate import is not provided when a variable has the same name as
+  Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
+- Correct code is marked as an error in `build.gradle.kts` files when using `libs` from the Gradle Version Catalog
+  ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
+  [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
+- [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
+  rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig).
+  and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
+- False positive "Unused symbol" for a custom Android application class referenced in `AndroidManifest.xml`
+  file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
+- Android lint complains about exceeding access rights to
+  `ArchTaskExecutor` ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
+- JUnit 5 does not support tests with suspended
+  modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+- Custom detekt config is hard to update [Issue 4517](https://github.com/detekt/detekt/issues/4517)
 
 ## Contribute
 
