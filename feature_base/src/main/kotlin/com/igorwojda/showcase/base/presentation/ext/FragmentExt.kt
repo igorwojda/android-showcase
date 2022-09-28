@@ -20,7 +20,7 @@ import timber.log.Timber
  *
  * Crash happens when a second request to navigate from fragment A comes in at exactly this moment (usually
  *  due to extremely fast clicking or multitouch), and it uses a destination that is not included in B’s graph.
- * More: https://medium.com/@ffvanderlaan/fixing-the-dreaded-is-unknown-to-this-navcontroller-68c4003824ce
+ * See https://medium.com/@ffvanderlaan/fixing-the-dreaded-is-unknown-to-this-navcontroller-68c4003824ce
  *
  * This method navigates only if this is safely possible; when this Fragment is still the current destination.
  */

@@ -44,7 +44,7 @@ internal class AlbumDetailFragment : Fragment() {
 internal fun AlbumDetailScreen(uiStateFlow: StateFlow<State>) {
     // Collecting flows in a lifecycle-aware manner
     // collectAsStateWithLifecycle does not waste resources when collecting flows from the UI layer
-    // More: https://medium.com/androiddevelopers/consuming-flows-safely-in-jetpack-compose-cde014d0d5a3
+    // See https://medium.com/androiddevelopers/consuming-flows-safely-in-jetpack-compose-cde014d0d5a3
     val state: State by uiStateFlow.collectAsStateWithLifecycle()
 
     Column {

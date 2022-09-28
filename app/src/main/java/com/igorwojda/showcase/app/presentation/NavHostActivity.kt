@@ -25,9 +25,9 @@ class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
 
     private fun initBottomNavigation() {
         // When using FragmentContainerView, NavController fragment can't be retrieved by using `findNavController()`
-        // More:
-        // https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182#59275182
-        // https://issuetracker.google.com/issues/142847973
+        //
+        // See https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182#59275182
+        // See https://issuetracker.google.com/issues/142847973
         val navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
 
         binding.bottomNav.setupWithNavController(navController)
