@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
 import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.base.presentation.nav.NavManager
@@ -8,12 +9,17 @@ import com.igorwojda.showcase.base.presentation.viewmodel.BaseState
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.Action
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Content
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Error
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Loading
 import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(
     private val navManager: NavManager,
     private val getAlbumListUseCase: GetAlbumListUseCase
-) : BaseViewModel<AlbumListViewModel.State, AlbumListViewModel.Action>(State()) {
+) : BaseViewModel<UiState, Action>(Loading) {
 
     fun onEnter() {
         getAlbumList()
@@ -25,13 +31,13 @@ internal class AlbumListViewModel(
                 val action = when (result) {
                     is Result.Success -> {
                         if (result.value.isEmpty()) {
-                            Action.AlbumListLoadingFailure
+                            Action.AlbumListLoadFailure
                         } else {
-                            Action.AlbumListLoadingSuccess(result.value)
+                            Action.AlbumListLoadSuccess(result.value)
                         }
                     }
                     is Result.Failure -> {
-                        Action.AlbumListLoadingFailure
+                        Action.AlbumListLoadFailure
                     }
                 }
                 sendAction(action)
@@ -46,27 +52,20 @@ internal class AlbumListViewModel(
         navManager.navigate(navDirections)
     }
 
-    internal data class State(
-        val isLoading: Boolean = true,
-        val isError: Boolean = false,
-        val albums: List<Album> = listOf()
-    ) : BaseState
-
-    internal sealed interface Action : BaseAction<State> {
-        class AlbumListLoadingSuccess(private val albums: List<Album>) : Action {
-            override fun reduce(state: State) = state.copy(
-                isLoading = false,
-                isError = false,
-                albums = albums
-            )
+    internal sealed interface Action : BaseAction<UiState> {
+        class AlbumListLoadSuccess(private val albums: List<Album>) : Action {
+            override fun reduce(state: UiState) = Content(albums)
         }
 
-        object AlbumListLoadingFailure : Action {
-            override fun reduce(state: State) = state.copy(
-                isLoading = false,
-                isError = true,
-                albums = listOf()
-            )
+        object AlbumListLoadFailure : Action {
+            override fun reduce(state: UiState) = Error
         }
+    }
+
+    @Immutable
+    internal sealed interface UiState : BaseState {
+        data class Content(val albums: List<Album>) : UiState
+        object Loading : UiState
+        object Error : UiState
     }
 }

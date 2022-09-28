@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.compose
+package com.igorwojda.showcase.base.presentation.compose.theme
 
 import android.annotation.SuppressLint
 import android.os.Build

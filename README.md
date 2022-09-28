@@ -40,8 +40,8 @@ larger application suitable for bigger teams and extended
     - [Command-line And Android Studio](#command-line-and-android-studio)
   - [Inspiration](#inspiration)
     - [Cheatsheet](#cheatsheet)
-  - [Known Issues](#known-issues)
     - [Other Android Projects](#other-android-projects)
+  - [Known Issues](#known-issues)
   - [Contribute](#contribute)
   - [Author](#author)
   - [License](#license)
@@ -183,22 +183,28 @@ This layer is closest to what the user sees on the screen.
 
 The `presentation` layer mixes `MVVM` and `MVI` patterns:
 
-- `MVVM` - Jetpack `ViewModel` is used to encapsulate `common UI state`. It exposes the `state` via observable state holder (`Kotlin Flow`)
+- `MVVM` - Jetpack `ViewModel` is used to encapsulate `common UI state`. It exposes the `state` via observable state
+  holder (`Kotlin Flow`)
 - `MVI` - `action` modifies the `common UI state` and emits a new state to a view via `Kotlin Flow`
 
-> `common state` is a single source of truth for each view. This approach derives from
+> `common state` is a single source of truth for each view. This solution derives from
 > [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
 > principles](https://redux.js.org/introduction/three-principles).
 
-This approach facilitates creation of consistent states.
+This approach facilitates creation of consistent states. State is collected via `collectAsUiStateWithLifecycle`
+method. Flows collection happens in a lifecycle-aware manner, so
+[no resources are wasted](https://medium.com/androiddevelopers/consuming-flows-safely-in-jetpack-compose-cde014d0d5a3).
+
+Stated is annotated with [Immutable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Immutable)
+annotation that is used by Jetpack compose to enable composition optimizations.
 
 Components:
 
 - **View (Fragment)** - observes common view state (through `Kotlin Flow`). Compose transform state (emitted by Kotlin
   Flow) into application UI Consumes the state and transforms it into application UI (via `Jetpack Compose`). Pass user
   interactions to `ViewModel`. Views are hard to test, so they should be as simple as possible.
-- **ViewModel** - emmits (through `Kotlin Flow`) view state changes to the view and deals with user interactions (these view models are not 
-  simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
+- **ViewModel** - emits (through `Kotlin Flow`) view state changes to the view and deals with user interactions (these
+  view models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
 - **ViewState** - common state for a single view
 - **StateTimeTravelDebugger** - logs actions and view state transitions to facilitate debugging.
 - **NavManager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of

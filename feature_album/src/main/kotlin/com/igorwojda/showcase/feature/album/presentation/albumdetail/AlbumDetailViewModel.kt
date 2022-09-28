@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation.albumdetail
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
 import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
@@ -10,12 +11,14 @@ import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadFailure
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadSuccess
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.State
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Content
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Loading
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(
-    private val getAlbumUseCase: GetAlbumUseCase,
-) : BaseViewModel<State, Action>(State()) {
+    private val getAlbumUseCase: GetAlbumUseCase
+) : BaseViewModel<UiState, Action>(Loading) {
 
     fun onEnter(args: AlbumDetailFragmentArgs) {
         getAlbum(args)
@@ -32,19 +35,9 @@ internal class AlbumDetailViewModel(
         }
     }
 
-    internal data class State(
-        val isLoading: Boolean = true,
-        val isError: Boolean = false,
-        val albumName: String = "",
-        val artistName: String = "",
-        val coverImageUrl: String = "",
-    ) : BaseState
-
-    internal sealed interface Action : BaseAction<State> {
+    internal sealed interface Action : BaseAction<UiState> {
         class AlbumLoadSuccess(private val album: Album) : Action {
-            override fun reduce(state: State) = state.copy(
-                isLoading = false,
-                isError = false,
+            override fun reduce(state: UiState) = Content(
                 artistName = album.artist,
                 albumName = album.name,
                 coverImageUrl = album.getDefaultImageUrl() ?: ""
@@ -52,13 +45,19 @@ internal class AlbumDetailViewModel(
         }
 
         object AlbumLoadFailure : Action {
-            override fun reduce(state: State) = state.copy(
-                isLoading = false,
-                isError = true,
-                artistName = "",
-                albumName = "",
-                coverImageUrl = ""
-            )
+            override fun reduce(state: UiState) = UiState.Error
         }
+    }
+
+    @Immutable
+    internal sealed interface UiState : BaseState {
+        data class Content(
+            val albumName: String = "",
+            val artistName: String = "",
+            val coverImageUrl: String = ""
+        ) : UiState
+
+        object Loading : UiState
+        object Error : UiState
     }
 }

@@ -31,9 +31,6 @@ class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
         val navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
 
         binding.bottomNav.setupWithNavController(navController)
-
-        // Disables reselection of bottom menu item, so fragments are not recreated when clicking on the same menu item
-        binding.bottomNav.setOnNavigationItemReselectedListener { }
     }
 
     private fun initNavManager() {
