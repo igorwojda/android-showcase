@@ -64,8 +64,9 @@ internal fun AlbumListScreen(uiStateFlow: StateFlow<UiState>) {
 
 @Composable
 internal fun PhotoGrid(albums: List<Album>) {
+    val count = 3
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
+        columns = GridCells.Fixed(count),
         contentPadding = PaddingValues(8.dp)
     ) {
         items(albums.size) { index ->

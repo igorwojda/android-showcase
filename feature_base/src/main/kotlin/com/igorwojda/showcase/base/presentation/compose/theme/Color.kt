@@ -1,3 +1,5 @@
+@file:Suppress("detekt.MagicNumber")
+
 package com.igorwojda.showcase.base.presentation.compose.theme
 
 import androidx.compose.ui.graphics.Color

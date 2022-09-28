@@ -32,7 +32,7 @@ internal class AlbumDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         model.onEnter(args)
 

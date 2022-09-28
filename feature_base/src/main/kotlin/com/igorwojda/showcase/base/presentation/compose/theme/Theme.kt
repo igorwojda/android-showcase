@@ -76,7 +76,7 @@ private val DarkColors = darkColorScheme(
 fun ShowcaseTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val localDynamicColor = dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 

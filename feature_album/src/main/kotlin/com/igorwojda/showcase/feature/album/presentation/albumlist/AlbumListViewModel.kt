@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(
     private val navManager: NavManager,
-    private val getAlbumListUseCase: GetAlbumListUseCase
+    private val getAlbumListUseCase: GetAlbumListUseCase,
 ) : BaseViewModel<UiState, Action>(Loading) {
 
     fun onEnter() {
