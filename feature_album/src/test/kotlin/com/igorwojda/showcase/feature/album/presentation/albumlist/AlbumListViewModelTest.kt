@@ -4,6 +4,7 @@ import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
+import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
@@ -30,7 +31,7 @@ class AlbumListViewModelTest {
     )
 
     @Test
-    fun `onEnter album list is empty`() = runTest {
+    fun `onEnter emits state error`() = runTest {
         // given
         coEvery { mockGetAlbumListUseCase.execute() } returns Result.Success(emptyList())
 
@@ -40,15 +41,11 @@ class AlbumListViewModelTest {
         // then
         advanceUntilIdle()
 
-        cut.uiStateFlow.value shouldBeEqualTo AlbumListViewModel.State(
-            isLoading = false,
-            isError = true,
-            albums = listOf()
-        )
+        cut.uiStateFlow.value shouldBeEqualTo UiState.Error
     }
 
     @Test
-    fun `onEnter album list is non-empty`() = runTest {
+    fun `onEnter emits state success`() = runTest {
         // given
         val album = Album("albumName", "artistName")
         val albums = listOf(album)
@@ -60,9 +57,7 @@ class AlbumListViewModelTest {
         // then
         advanceUntilIdle()
 
-        cut.uiStateFlow.value shouldBeEqualTo AlbumListViewModel.State(
-            isLoading = false,
-            isError = false,
+        cut.uiStateFlow.value shouldBeEqualTo UiState.Content(
             albums = albums
         )
     }
