@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,6 +16,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.navArgs
 import coil.compose.AsyncImage
 import com.igorwojda.showcase.base.presentation.compose.DataNotFoundAnim
+import com.igorwojda.showcase.base.presentation.compose.ProgressIndicator
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Content
@@ -52,7 +52,7 @@ internal fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
     uiState.let {
         when (it) {
             Error -> DataNotFoundAnim()
-            Loading -> CircularProgressIndicator()
+            Loading -> ProgressIndicator()
             is Content -> PhotoDetails(it)
         }
     }

@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -21,6 +20,7 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.igorwojda.showcase.base.presentation.compose.DataNotFoundAnim
+import com.igorwojda.showcase.base.presentation.compose.ProgressIndicator
 import com.igorwojda.showcase.base.presentation.compose.theme.ShowcaseTheme
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
@@ -56,7 +56,7 @@ internal fun AlbumListScreen(uiStateFlow: StateFlow<UiState>) {
     uiState.let {
         when (it) {
             Error -> DataNotFoundAnim()
-            Loading -> CircularProgressIndicator()
+            Loading -> ProgressIndicator()
             is Content -> PhotoGrid(albums = it.albums)
         }
     }
