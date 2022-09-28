@@ -160,14 +160,13 @@ We have three kinds of modules in the application:
 - `app` module - this is the main module. It contains code that wires multiple modules together (class, dependency
   injection setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required
   permissions setup, custom `Application` class, etc.).
-- application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to
-  share some assets or code only between a few feature modules (currently app has no such modules)
-- feature modules - the most common type of module containing all code related to a given feature.
+- `feature_x` modules - the most common type of module containing all code related to a given feature.
+  share some assets or code only between `feature` modules (currently app has no such modules)
+- `feature_base` modules that features modules depend on to share a common code.
 
 ### Feature Module Structure
 
-`Clean architecture` is the "core architecture" of the application, so each `feature module` contains its own set of
-Clean architecture layers:
+`Clean Architecture` is implemented at module level - each module contains its own set of Clean Architecture layers:
 
 ![module_dependencies_layers](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies_layers.png?raw=true)
 
