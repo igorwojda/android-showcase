@@ -233,13 +233,22 @@ Components:
 
 - **Repository** is exposing data to the `domain` layer. Depending on the application structure and quality of the
   external APIs repository can also merge, filter, and transform the data. These operations intend to create
-  high-quality data source for the `domain` layer, not to perform any business logic (`domain` layer `use case`
-  responsibility).
-
+  high-quality data source for the `domain` layer.
 - **Mapper** - maps `data model` to `domain model` (to keep `domain` layer independent from the `data` layer).
-- **RetrofitService** - defines a set of API endpoints.
-- **DataModel** - defines the structure of the data retrieved from the network and contains annotations, so Retrofit (
-  Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
+
+Data layer contains implicit layer called `Data source` containing all components involved with data manipulation of a
+given data source. Application has two data sources - `Retrofit` (network) and `Room` (local storage):
+
+- **Retrofit Service** - defines a set of API endpoints
+- **Retrofit Response Model** - definition of the network objects for given endpoint (top-level model for the data
+  consists of `ApiModels`)
+- **Retrofit Api Data Model** - defines the network objects (sub-objects of the `Response Model`)
+- **Room Database** - persistence database to store app data
+- **Room DAO** - interact with the stored data
+- **Room Entity** - definition of the stored objects
+
+Both `Retrofit API Data Models` and `Room Entities` contain annotations, so given framework understands how to parse the
+data into objects.
 
 ### Data Flow
 
