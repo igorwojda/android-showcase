@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Card
@@ -64,14 +65,15 @@ internal fun AlbumListScreen(uiStateFlow: StateFlow<UiState>) {
 
 @Composable
 internal fun PhotoGrid(albums: List<Album>) {
-    val count = 3
     LazyVerticalGrid(
-        columns = GridCells.Fixed(count),
+        columns = GridCells.Adaptive(140.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
         items(albums.size) { index ->
             Card(
-                modifier = Modifier.padding(4.dp)
+                modifier = Modifier
+                    .padding(4.dp)
+                    .wrapContentSize()
             ) {
                 val album = albums[index]
 
