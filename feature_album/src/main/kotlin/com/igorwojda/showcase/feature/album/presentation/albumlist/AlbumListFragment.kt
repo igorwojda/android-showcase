@@ -24,7 +24,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.base.presentation.compose.DataNotFoundAnim
 import com.igorwojda.showcase.base.presentation.compose.PlaceholderImage
 import com.igorwojda.showcase.base.presentation.compose.ProgressIndicator
-import com.igorwojda.showcase.base.presentation.compose.theme.ShowcaseTheme
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState
@@ -43,9 +42,7 @@ class AlbumListFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
-                ShowcaseTheme {
-                    AlbumListScreen(model.uiStateFlow)
-                }
+                AlbumListScreen(model.uiStateFlow)
             }
         }
     }

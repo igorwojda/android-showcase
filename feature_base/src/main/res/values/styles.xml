@@ -1,6 +1,5 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="Theme.Showcase" parent="Theme.Material3.DayNight" />
+    <style name="Theme.Showcase" parent="Theme.Material3.DynamicColors.DayNight" />
 
 </resources>
