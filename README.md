@@ -384,6 +384,8 @@ Other high-quality projects will help you to find solutions that work for your p
   [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)
 - Delegate import is not provided when a variable has the same name as
   Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
+- `androidx.compose.runtime.getValue` and `androidx.compose.runtime.setValue` imports are can't be resolved
+  automatically - they had to be added manually [KTIJ-23200](https://youtrack.jetbrains.com/issue/KTIJ-23200)
 - Correct code is marked as an error in `build.gradle.kts` files when using `libs` from the Gradle Version Catalog
   ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
   [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
