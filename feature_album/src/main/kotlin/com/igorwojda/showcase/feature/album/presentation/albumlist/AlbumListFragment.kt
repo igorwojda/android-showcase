@@ -79,7 +79,7 @@ internal fun PhotoGrid(albums: List<Album>) {
                 val album = albums[index]
 
                 PlaceholderImage(
-                    model = album.getDefaultImageUrl(),
+                    url = album.getDefaultImageUrl(),
                     contentDescription = stringResource(id = R.string.album_image_content_description),
                     modifier = Modifier.size(imageSize)
                 )
