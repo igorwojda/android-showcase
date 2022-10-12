@@ -3,9 +3,10 @@ package com.igorwojda.showcase.base.presentation.compose
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,14 +21,19 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
 fun LabeledAnimation(@StringRes label: Int, @RawRes assetResId: Int) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Card(
         modifier = Modifier
-            .wrapContentHeight()
-            .wrapContentWidth()
+            .wrapContentSize()
     ) {
-        Text(text = stringResource(label), fontSize = 18.sp)
-        LottieAssetLoader(assetResId)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .wrapContentSize()
+                .padding(30.dp)
+        ) {
+            Text(text = stringResource(label), fontSize = 18.sp)
+            LottieAssetLoader(assetResId)
+        }
     }
 }
 
