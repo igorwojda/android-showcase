@@ -390,7 +390,7 @@ Other high-quality projects will help you to find solutions that work for your p
   ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
   [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
 - [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
-  rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig).
+  rule conflicts with IDE default formatting rule, so it have to be [.editorconfig](.editorconfig) file.
   and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
 - False positive "Unused symbol" for a custom Android application class referenced in `AndroidManifest.xml`
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
