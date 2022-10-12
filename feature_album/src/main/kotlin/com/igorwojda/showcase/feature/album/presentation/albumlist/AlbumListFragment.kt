@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -30,7 +31,6 @@ import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListView
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Content
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Error
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Loading
-import kotlinx.coroutines.flow.StateFlow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumListFragment : Fragment() {
@@ -42,7 +42,7 @@ class AlbumListFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
-                AlbumListScreen(model.uiStateFlow)
+                AlbumListScreen(model)
             }
         }
     }
@@ -50,20 +50,21 @@ class AlbumListFragment : Fragment() {
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-private fun AlbumListScreen(uiStateFlow: StateFlow<UiState>) {
-    val uiState: UiState by uiStateFlow.collectAsStateWithLifecycle()
+private fun AlbumListScreen(viewModel: AlbumListViewModel) {
+    val uiState: UiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     uiState.let {
         when (it) {
             Error -> DataNotFoundAnim()
             Loading -> ProgressIndicator()
-            is Content -> PhotoGrid(albums = it.albums)
+            is Content -> PhotoGrid(albums = it.albums, viewModel)
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PhotoGrid(albums: List<Album>) {
+private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
     val imageSize = dimensionResource(id = R.dimen.image_size)
 
     LazyVerticalGrid(
@@ -71,12 +72,14 @@ private fun PhotoGrid(albums: List<Album>) {
         contentPadding = PaddingValues(8.dp)
     ) {
         items(albums.size) { index ->
+            val album = albums[index]
+
             Card(
                 modifier = Modifier
                     .padding(4.dp)
-                    .wrapContentSize()
+                    .wrapContentSize(),
+                onClick = { viewModel.onAlbumClick(album) }
             ) {
-                val album = albums[index]
 
                 PlaceholderImage(
                     url = album.getDefaultImageUrl(),
