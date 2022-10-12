@@ -10,6 +10,7 @@ import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchA
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageSizeEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumTrackEntityModel
 
 object DataFixtures {
 
@@ -28,17 +29,29 @@ object DataFixtures {
         artist: String = "artist",
         wiki: AlbumWikiApiModel? = getAlbumWiki(),
         images: List<AlbumImageApiModel>? = listOf(getAlbumImageModel()),
-    ): AlbumApiModel = AlbumApiModel(mbId, name, artist, wiki, images)
+    ): AlbumApiModel = AlbumApiModel(
+        mbId,
+        name,
+        artist,
+        wiki,
+        images
+    )
 
     internal fun getAlbumImageModel(
         url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
         size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE,
-    ) = AlbumImageApiModel(url, size)
+    ) = AlbumImageApiModel(
+        url,
+        size
+    )
 
     internal fun getAlbumWiki(
         published: String = "published",
         summary: String = "summary",
-    ) = AlbumWikiApiModel(published, summary)
+    ) = AlbumWikiApiModel(
+        published,
+        summary
+    )
 
     private fun getAlbumEntityModel(
         id: Int = 0,
@@ -46,12 +59,31 @@ object DataFixtures {
         name: String = "album",
         artist: String = "artist",
         images: List<AlbumImageEntityModel> = listOf(getAlbumImageEntityModel()),
-    ): AlbumEntityModel = AlbumEntityModel(id, mbId, name, artist, images)
+        tracks: List<AlbumTrackEntityModel> = listOf(getAlbumTrackEntityModel()),
+    ): AlbumEntityModel = AlbumEntityModel(
+        id,
+        mbId,
+        name,
+        artist,
+        images,
+        tracks
+    )
 
     private fun getAlbumImageEntityModel(
         url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
         size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE,
-    ) = AlbumImageEntityModel(url, size)
+    ) = AlbumImageEntityModel(
+        url,
+        size
+    )
+
+    private fun getAlbumTrackEntityModel(
+        name: String = "track",
+        duration: Int = 12,
+    ) = AlbumTrackEntityModel(
+        name,
+        duration
+    )
 
     object ApiResponse {
         internal fun getSearchAlbum() = SearchAlbumResponse(

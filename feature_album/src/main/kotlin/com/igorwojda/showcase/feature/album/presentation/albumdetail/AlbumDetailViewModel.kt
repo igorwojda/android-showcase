@@ -28,7 +28,9 @@ internal class AlbumDetailViewModel(
         viewModelScope.launch {
             getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
                 when (it) {
-                    is Result.Success -> sendAction(AlbumLoadSuccess(it.value))
+                    is Result.Success -> {
+                        sendAction(AlbumLoadSuccess(it.value))
+                    }
                     is Result.Failure -> sendAction(AlbumLoadFailure)
                 }
             }

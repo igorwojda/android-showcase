@@ -20,9 +20,9 @@ class AlbumApiModelTest {
         domainModel shouldBeEqualTo Album(
             cut.name,
             cut.artist,
-            cut.images?.map { it.toDomainModel() } ?: listOf(),
             cut.wiki?.toDomainModel(),
-            cut.mbId
+            cut.mbId,
+            cut.images?.map { it.toDomainModel() } ?: listOf(),
         )
     }
 
