@@ -130,6 +130,8 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
 * GitHub Apps
   * [Renovate](https://github.com/renovatebot/renovate) - dependency update boot
+* Other Tools
+  * Charles Proxy - enabled network traffic sniffing in `debug` builds.
 
 ## Architecture
 
