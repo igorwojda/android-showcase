@@ -50,7 +50,7 @@ class AlbumListFragment : Fragment() {
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-internal fun AlbumListScreen(uiStateFlow: StateFlow<UiState>) {
+private fun AlbumListScreen(uiStateFlow: StateFlow<UiState>) {
     val uiState: UiState by uiStateFlow.collectAsStateWithLifecycle()
 
     uiState.let {
@@ -63,7 +63,7 @@ internal fun AlbumListScreen(uiStateFlow: StateFlow<UiState>) {
 }
 
 @Composable
-internal fun PhotoGrid(albums: List<Album>) {
+private fun PhotoGrid(albums: List<Album>) {
     val imageSize = dimensionResource(id = R.dimen.image_size)
 
     LazyVerticalGrid(

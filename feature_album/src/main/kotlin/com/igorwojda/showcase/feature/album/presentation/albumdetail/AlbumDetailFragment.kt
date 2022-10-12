@@ -46,7 +46,7 @@ internal class AlbumDetailFragment : Fragment() {
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-internal fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
+private fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
     val uiState: UiState by uiStateFlow.collectAsStateWithLifecycle()
 
     uiState.let {
@@ -59,7 +59,7 @@ internal fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
 }
 
 @Composable
-internal fun PhotoDetails(content: Content) {
+private fun PhotoDetails(content: Content) {
     Column {
         Text(text = content.albumName)
         Text(text = content.artistName)

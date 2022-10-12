@@ -28,6 +28,6 @@ class FavouriteFragment : Fragment() {
 
 @Preview
 @Composable
-internal fun FavouriteScreen() {
+private fun FavouriteScreen() {
     UnderConstructionAnim()
 }

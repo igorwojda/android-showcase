@@ -23,6 +23,6 @@ class ProfileFragment : Fragment() {
 
 @Preview
 @Composable
-internal fun ProfileScreen() {
+private fun ProfileScreen() {
     UnderConstructionAnim()
 }
