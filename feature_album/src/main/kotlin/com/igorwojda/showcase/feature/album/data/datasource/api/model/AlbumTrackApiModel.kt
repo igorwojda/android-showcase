@@ -8,12 +8,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class AlbumTrackApiModel(
     @SerialName("name") val name: String,
-    @SerialName("duration") val duration: Int,
+    @SerialName("duration") val duration: Int? = null,
 )
 
 internal fun AlbumTrackApiModel.toDomainModel() = AlbumTrack(
     name = this.name,
-    duration = this.duration,
+    duration = this.duration
 )
 
 internal fun AlbumTrackApiModel.toEntityModel() = AlbumTrackEntityModel(

@@ -13,6 +13,7 @@ internal data class AlbumApiModel(
     @SerialName("wiki") val wiki: AlbumWikiApiModel? = null,
     @SerialName("image") val images: List<AlbumImageApiModel>? = null,
     @SerialName("tracks") val tracks: AlbumTrackListApiModel? = null,
+    @SerialName("tags") val tags: AlbumTagListApiModel? = null,
 )
 
 internal fun AlbumApiModel.toEntityModel() =
@@ -21,7 +22,8 @@ internal fun AlbumApiModel.toEntityModel() =
         name = this.name,
         artist = this.artist,
         images = this.images?.mapNotNull { it.toEntityModel() } ?: listOf(),
-        tracks = this.tracks?.track?.map { it.toEntityModel() }
+        tracks = this.tracks?.track?.map { it.toEntityModel() },
+        tags = this.tags?.tag?.map { it.toEntityModel() }
     )
 
 internal fun AlbumApiModel.toDomainModel(): Album {
@@ -35,6 +37,7 @@ internal fun AlbumApiModel.toDomainModel(): Album {
         artist = this.artist,
         wiki = this.wiki?.toDomainModel(),
         images = images ?: listOf(),
-        tracks = this.tracks?.track?.map { it.toDomainModel() }
+        tracks = this.tracks?.track?.map { it.toDomainModel() },
+        tags = this.tags?.tag?.map { it.toDomainModel() }
     )
 }

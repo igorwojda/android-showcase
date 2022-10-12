@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class AlbumTrackEntityModel(
     val name: String,
-    val duration: Int,
+    val duration: Int? = null,
 )
 
 internal fun AlbumTrackEntityModel.toDomainModel() = AlbumTrack(

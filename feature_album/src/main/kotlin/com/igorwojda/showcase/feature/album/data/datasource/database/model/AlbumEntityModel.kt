@@ -12,7 +12,8 @@ import kotlinx.serialization.json.Json
 @Entity(tableName = "albums")
 @TypeConverters(
     AlbumImageEntityTypeConverter::class,
-    AlbumTrackEntityTypeConverter::class
+    AlbumTrackEntityTypeConverter::class,
+    AlbumTagEntityTypeConverter::class
 )
 internal data class AlbumEntityModel(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
@@ -21,6 +22,7 @@ internal data class AlbumEntityModel(
     val artist: String,
     val images: List<AlbumImageEntityModel> = listOf(),
     val tracks: List<AlbumTrackEntityModel>?,
+    val tags: List<AlbumTagEntityModel>?,
 )
 
 internal fun AlbumEntityModel.toDomainModel() =
@@ -30,7 +32,8 @@ internal fun AlbumEntityModel.toDomainModel() =
         null,
         this.mbId,
         this.images.mapNotNull { it.toDomainModel() },
-        this.tracks?.map { it.toDomainModel() }
+        this.tracks?.map { it.toDomainModel() },
+        this.tags?.map { it.toDomainModel() }
     )
 
 internal class AlbumImageEntityTypeConverter {
@@ -50,5 +53,15 @@ internal class AlbumTrackEntityTypeConverter {
 
     @TypeConverter
     fun listToString(someObjects: List<AlbumTrackEntityModel>): String =
+        Json.encodeToString(someObjects)
+}
+
+internal class AlbumTagEntityTypeConverter {
+    @TypeConverter
+    fun stringToList(data: String?) =
+        data?.let { Json.decodeFromString<List<AlbumTagEntityModel>>(it) } ?: listOf()
+
+    @TypeConverter
+    fun listToString(someObjects: List<AlbumTagEntityModel>): String =
         Json.encodeToString(someObjects)
 }

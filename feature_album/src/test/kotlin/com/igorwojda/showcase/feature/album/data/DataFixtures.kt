@@ -10,6 +10,7 @@ import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchA
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageSizeEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumTagEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumTrackEntityModel
 
 object DataFixtures {
@@ -60,13 +61,15 @@ object DataFixtures {
         artist: String = "artist",
         images: List<AlbumImageEntityModel> = listOf(getAlbumImageEntityModel()),
         tracks: List<AlbumTrackEntityModel> = listOf(getAlbumTrackEntityModel()),
+        tags: List<AlbumTagEntityModel> = listOf(getAlbumTagEntityModel()),
     ): AlbumEntityModel = AlbumEntityModel(
         id,
         mbId,
         name,
         artist,
         images,
-        tracks
+        tracks,
+        tags
     )
 
     private fun getAlbumImageEntityModel(
@@ -83,6 +86,12 @@ object DataFixtures {
     ) = AlbumTrackEntityModel(
         name,
         duration
+    )
+
+    private fun getAlbumTagEntityModel(
+        name: String = "tag",
+    ) = AlbumTagEntityModel(
+        name
     )
 
     object ApiResponse {
