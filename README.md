@@ -315,8 +315,11 @@ focus on application architecture and project config.
 
 ## Upcoming Improvements
 
-Checklist of all
-upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement).
+This project is under active development and it is being occasionally refined.
+
+Check the list of all upcoming
+[enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement)
+.
 
 ## Getting Started
 
