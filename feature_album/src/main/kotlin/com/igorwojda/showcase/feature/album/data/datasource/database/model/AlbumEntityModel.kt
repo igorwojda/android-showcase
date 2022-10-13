@@ -29,7 +29,6 @@ internal fun AlbumEntityModel.toDomainModel() =
     Album(
         this.name,
         this.artist,
-        null,
         this.mbId,
         this.images.mapNotNull { it.toDomainModel() },
         this.tracks?.map { it.toDomainModel() },

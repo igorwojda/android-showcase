@@ -7,7 +7,6 @@ import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
 internal data class Album(
     val name: String,
     val artist: String,
-    val wiki: AlbumWiki? = null,
     val mbId: String? = null,
     val images: List<AlbumImage> = emptyList(),
     val tracks: List<AlbumTrack>? = null,

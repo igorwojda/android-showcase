@@ -10,7 +10,6 @@ internal data class AlbumApiModel(
     @SerialName("mbid") val mbId: String? = null,
     @SerialName("name") val name: String,
     @SerialName("artist") val artist: String,
-    @SerialName("wiki") val wiki: AlbumWikiApiModel? = null,
     @SerialName("image") val images: List<AlbumImageApiModel>? = null,
     @SerialName("tracks") val tracks: AlbumTrackListApiModel? = null,
     @SerialName("tags") val tags: AlbumTagListApiModel? = null,
@@ -35,7 +34,6 @@ internal fun AlbumApiModel.toDomainModel(): Album {
         mbId = this.mbId,
         name = this.name,
         artist = this.artist,
-        wiki = this.wiki?.toDomainModel(),
         images = images ?: listOf(),
         tracks = this.tracks?.track?.map { it.toDomainModel() },
         tags = this.tags?.tag?.map { it.toDomainModel() }
