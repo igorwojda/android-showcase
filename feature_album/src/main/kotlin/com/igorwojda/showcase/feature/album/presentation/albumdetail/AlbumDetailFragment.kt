@@ -6,20 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.navArgs
-import coil.compose.AsyncImage
+import com.igorwojda.showcase.base.common.res.Dimen
 import com.igorwojda.showcase.base.presentation.compose.DataNotFoundAnim
+import com.igorwojda.showcase.base.presentation.compose.PlaceholderImage
 import com.igorwojda.showcase.base.presentation.compose.ProgressIndicator
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState
@@ -64,17 +72,35 @@ private fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
 
 @Composable
 private fun PhotoDetails(content: Content) {
-    Column {
-        Text(text = content.albumName)
+    Column(
+        modifier = Modifier.padding(Dimen.screenContentPadding)
+    ) {
+        ElevatedCard(
+            modifier = Modifier
+                .padding(Dimen.spaceM)
+                .wrapContentSize()
+                .size(320.dp)
+                .align(CenterHorizontally),
+        ) {
+            PlaceholderImage(
+                url = content.coverImageUrl,
+                contentDescription = stringResource(id = R.string.album_cover_content_description),
+                modifier = Modifier
+                    .fillMaxWidth()
+            )
+        }
+
+        Header(text = content.albumName)
         Text(text = content.artistName)
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(Dimen.spaceL))
         Text(text = content.tracks.toString())
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(Dimen.spaceL))
         Text(text = content.tags.toString())
-        Spacer(modifier = Modifier.height(10.dp))
-        AsyncImage(
-            model = content.coverImageUrl,
-            contentDescription = stringResource(id = R.string.album_cover_content_description)
-        )
+        Spacer(modifier = Modifier.height(Dimen.spaceL))
     }
+}
+
+@Composable
+fun Header(text: String) {
+    Text(text = text, fontSize = 30.sp)
 }

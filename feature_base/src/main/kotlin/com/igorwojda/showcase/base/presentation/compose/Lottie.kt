@@ -13,11 +13,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.igorwojda.showcase.base.common.res.Dimen
 
 @Composable
 fun LabeledAnimation(@StringRes label: Int, @RawRes assetResId: Int) {
@@ -29,7 +29,7 @@ fun LabeledAnimation(@StringRes label: Int, @RawRes assetResId: Int) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .wrapContentSize()
-                .padding(30.dp)
+                .padding(Dimen.spaceXL)
         ) {
             Text(text = stringResource(label), fontSize = 18.sp)
             LottieAssetLoader(assetResId)
@@ -40,8 +40,9 @@ fun LabeledAnimation(@StringRes label: Int, @RawRes assetResId: Int) {
 @Composable
 fun LottieAssetLoader(@RawRes assetResId: Int) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(assetResId))
+
     LottieAnimation(
         composition,
-        modifier = Modifier.requiredSize(150.dp)
+        modifier = Modifier.requiredSize(Dimen.imageSize)
     )
 }

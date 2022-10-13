@@ -10,18 +10,17 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.Card
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.igorwojda.showcase.base.common.res.Dimen
 import com.igorwojda.showcase.base.presentation.compose.DataNotFoundAnim
 import com.igorwojda.showcase.base.presentation.compose.PlaceholderImage
 import com.igorwojda.showcase.base.presentation.compose.ProgressIndicator
@@ -65,26 +64,24 @@ private fun AlbumListScreen(viewModel: AlbumListViewModel) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
-    val imageSize = dimensionResource(id = R.dimen.image_size)
-
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(imageSize),
-        contentPadding = PaddingValues(8.dp)
+        columns = GridCells.Adaptive(Dimen.imageSize),
+        contentPadding = PaddingValues(Dimen.screenContentPadding)
     ) {
         items(albums.size) { index ->
             val album = albums[index]
 
-            Card(
+            ElevatedCard(
                 modifier = Modifier
-                    .padding(4.dp)
+                    .padding(Dimen.spaceS)
                     .wrapContentSize(),
-                onClick = { viewModel.onAlbumClick(album) }
+                onClick = { viewModel.onAlbumClick(album) },
             ) {
 
                 PlaceholderImage(
                     url = album.getDefaultImageUrl(),
                     contentDescription = stringResource(id = R.string.album_image_content_description),
-                    modifier = Modifier.size(imageSize)
+                    modifier = Modifier.size(Dimen.imageSize)
                 )
             }
         }
