@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ElevatedSuggestionChip
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -70,6 +73,7 @@ private fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PhotoDetails(content: Content) {
     Column(
@@ -90,17 +94,34 @@ private fun PhotoDetails(content: Content) {
             )
         }
 
-        Header(text = content.albumName)
-        Text(text = content.artistName)
+        Header1(text = content.albumName)
+        Header2(text = content.artistName)
+
         Spacer(modifier = Modifier.height(Dimen.spaceL))
+
+        Row {
+            content.tags?.forEach {
+                ElevatedSuggestionChip(
+                    label = { Text(it.name) },
+                    onClick = { },
+                    modifier = Modifier.padding(Dimen.spaceS)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(Dimen.spaceL))
+
         Text(text = content.tracks.toString())
-        Spacer(modifier = Modifier.height(Dimen.spaceL))
-        Text(text = content.tags.toString())
         Spacer(modifier = Modifier.height(Dimen.spaceL))
     }
 }
 
 @Composable
-fun Header(text: String) {
+fun Header1(text: String) {
     Text(text = text, fontSize = 30.sp)
+}
+
+@Composable
+fun Header2(text: String) {
+    Text(text = text, fontSize = 20.sp)
 }

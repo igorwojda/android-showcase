@@ -3,6 +3,7 @@ package com.igorwojda.showcase.base.common.res
 import androidx.compose.ui.unit.dp
 
 object Dimen {
+    val spaceXS = 2.dp
     val spaceS = 4.dp
     val spaceM = 8.dp
     val spaceL = 16.dp
