@@ -20,7 +20,6 @@ class AlbumApiModelTest {
         domainModel shouldBeEqualTo Album(
             cut.name,
             cut.artist,
-            cut.wiki?.toDomainModel(),
             cut.mbId,
             cut.images?.map { it.toDomainModel() } ?: listOf(),
         )
@@ -30,7 +29,6 @@ class AlbumApiModelTest {
     fun `data model with missing data maps to AlbumDomainModel`() {
         // given
         val cut = DataFixtures.getAlbumApiModel(
-            wiki = null,
             images = emptyList()
         )
 
@@ -43,7 +41,6 @@ class AlbumApiModelTest {
             name = "album",
             artist = "artist",
             images = emptyList(),
-            wiki = null
         )
     }
 
