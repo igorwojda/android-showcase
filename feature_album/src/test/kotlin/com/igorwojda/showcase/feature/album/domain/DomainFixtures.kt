@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.domain
 
-import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
+import com.igorwojda.showcase.feature.album.domain.enum.ImageSize
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
 import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
@@ -18,8 +18,8 @@ object DomainFixtures {
     ): Album = Album(name, artist, mbId, images, tracks, tags)
 
     internal fun getAlbumImage(
-        url: String = "url_${AlbumDomainImageSize.EXTRA_LARGE}",
-        size: AlbumDomainImageSize = AlbumDomainImageSize.EXTRA_LARGE,
+        url: String = "url_${ImageSize.EXTRA_LARGE}",
+        size: ImageSize = ImageSize.EXTRA_LARGE,
     ) = AlbumImage(url, size)
 
     private fun getAlbumTrack(
