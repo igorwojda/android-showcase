@@ -3,6 +3,8 @@ package com.igorwojda.showcase.feature.album.data.datasource.api.model
 import com.igorwojda.showcase.feature.album.data.DataFixtures
 import com.igorwojda.showcase.feature.album.domain.enum.ImageSize
 import com.igorwojda.showcase.feature.album.domain.model.Album
+import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
+import com.igorwojda.showcase.feature.album.domain.model.AlbumTrack
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
@@ -22,6 +24,8 @@ class AlbumApiModelTest {
             cut.artist,
             cut.mbId,
             cut.images?.map { it.toDomainModel() } ?: listOf(),
+            cut.tracks?.track?.map { it.toDomainModel() },
+            cut.tags?.tag?.map { it.toDomainModel() },
         )
     }
 
@@ -41,6 +45,8 @@ class AlbumApiModelTest {
             name = "album",
             artist = "artist",
             images = emptyList(),
+            tracks = listOf(AlbumTrack("track", 12)),
+            tags = listOf(AlbumTag("tag"))
         )
     }
 
