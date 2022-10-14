@@ -17,10 +17,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.base.common.res.Dimen
+import com.igorwojda.showcase.base.presentation.activity.BaseFragment
 import com.igorwojda.showcase.base.presentation.compose.composable.DataNotFoundAnim
 import com.igorwojda.showcase.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndicator
@@ -32,7 +32,7 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumL
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Loading
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AlbumListFragment : Fragment() {
+class AlbumListFragment : BaseFragment() {
 
     private val model: AlbumListViewModel by viewModel()
 

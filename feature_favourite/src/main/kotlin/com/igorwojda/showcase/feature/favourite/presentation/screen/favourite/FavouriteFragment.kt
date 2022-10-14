@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.fragment.app.Fragment
+import com.igorwojda.showcase.base.presentation.activity.BaseFragment
 import com.igorwojda.showcase.base.presentation.compose.composable.UnderConstructionAnim
 
-class FavouriteFragment : Fragment() {
+class FavouriteFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return ComposeView(requireContext()).apply {

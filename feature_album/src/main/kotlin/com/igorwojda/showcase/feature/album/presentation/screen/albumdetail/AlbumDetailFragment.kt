@@ -29,11 +29,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.navArgs
 import com.igorwojda.showcase.base.common.res.Dimen
+import com.igorwojda.showcase.base.presentation.activity.BaseFragment
 import com.igorwojda.showcase.base.presentation.compose.composable.DataNotFoundAnim
 import com.igorwojda.showcase.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndicator
@@ -50,7 +50,7 @@ import com.igorwojda.showcase.feature.album.presentation.util.formatTime
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-internal class AlbumDetailFragment : Fragment() {
+internal class AlbumDetailFragment : BaseFragment() {
     private val args: AlbumDetailFragmentArgs by navArgs()
     private val model: AlbumDetailViewModel by viewModel()
 
