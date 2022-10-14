@@ -3,7 +3,6 @@ package com.igorwojda.showcase.base.presentation.compose.composable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,8 +25,7 @@ fun ProgressIndicator() {
         CircularProgressIndicator(
             modifier = Modifier
                 .align(Alignment.Center)
-                .size(Dimen.spaceXXL),
-            color = MaterialTheme.colorScheme.primary
+                .size(Dimen.spaceXXL)
         )
     }
 }
