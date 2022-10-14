@@ -17,7 +17,9 @@ Project is focusing on modular, scalable, maintainable, and testable [architectu
 
 This application may look simple, but it has all of the pieces that will provide the rock-solid foundation for the
 larger application suitable for bigger teams and extended
-[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
+[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). 
+
+If you want to jump to project in Android Studio um to the [Getting Started](#getting-started) section to open project.
 
 - [💎 Android Showcase 2.0](#-android-showcase-20)
   - [Application Scope](#application-scope)
@@ -30,15 +32,16 @@ larger application suitable for bigger teams and extended
       - [Data Layer](#data-layer)
     - [Data Flow](#data-flow)
   - [Dependency Management](#dependency-management)
+  - [Logcat debuggins](#logcat-debuggins)
   - [CI Pipeline](#ci-pipeline)
     - [Pull Request Verification](#pull-request-verification)
   - [Design Decisions](#design-decisions)
   - [What This Project Does Not Cover?](#what-this-project-does-not-cover)
-  - [Upcoming Improvements](#upcoming-improvements)
   - [Getting Started](#getting-started)
     - [Android Studio](#android-studio)
     - [Command-line And Android Studio](#command-line-and-android-studio)
     - [Plugins](#plugins)
+  - [Upcoming Improvements](#upcoming-improvements)
   - [Inspiration](#inspiration)
     - [Cheatsheet](#cheatsheet)
     - [Other Android Projects](#other-android-projects)
@@ -287,6 +290,13 @@ implementation(project(":feature_album"))
 implementation(projects.featureAlbum)
 ```
 
+## Logcat debuggins
+
+To facilicate debuging project contains loggs. You can filter logs  understand app flow. Keywords:
+- `onCreate` see what `Activities` and `Fragements` have been created
+- `Action` - filter all actions performed on the screens to update the UI
+- `Http` - debug network requests and responces
+
 ## CI Pipeline
 
 CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in
@@ -307,20 +317,12 @@ Series of workflows run (in parallel) for every opened PR and after merging PR t
 Read related articles to have a better understanding of underlying design decisions and various trade-offs.
 
 * [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
-* More coming soon
+* ...
 
 ## What This Project Does Not Cover?
 
 The interface of the app utilizes some of the modern material design components, however, is deliberately kept simple to
 focus on application architecture and project config.
-
-## Upcoming Improvements
-
-This project is under active development and it is being occasionally refined.
-
-Check the list of all upcoming
-[enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement)
-.
 
 ## Getting Started
 
@@ -340,6 +342,13 @@ There are a few ways to open this project.
 
 It us recommended to install [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure plugin open 
 Android Studio preferences, open `Tools`, open `Detekt` and add [detekty.yml](detekty.yml) configuration file.
+
+## Upcoming Improvements
+
+This project is under active development and it is being occasionally refined.
+
+Check the list of all upcoming
+[enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement).
 
 ## Inspiration
 
