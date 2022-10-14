@@ -17,6 +17,6 @@ abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : AppCompatActivity
         // hidden under virtual keyboard)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
 
-        Timber.v("onCreate ${javaClass.simpleName}")
+        Timber.d("onCreate ${javaClass.simpleName}")
     }
 }
