@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.compose
+package com.igorwojda.showcase.base.presentation.compose.composable
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size

@@ -23,15 +23,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.navArgs
 import com.igorwojda.showcase.base.common.res.Dimen
-import com.igorwojda.showcase.base.presentation.compose.DataNotFoundAnim
-import com.igorwojda.showcase.base.presentation.compose.PlaceholderImage
-import com.igorwojda.showcase.base.presentation.compose.ProgressIndicator
+import com.igorwojda.showcase.base.presentation.compose.composable.DataNotFoundAnim
+import com.igorwojda.showcase.base.presentation.compose.composable.Header1
+import com.igorwojda.showcase.base.presentation.compose.composable.Header2
+import com.igorwojda.showcase.base.presentation.compose.composable.PlaceholderImage
+import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndicator
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Content
@@ -114,14 +115,4 @@ private fun PhotoDetails(content: Content) {
         Text(text = content.tracks.toString())
         Spacer(modifier = Modifier.height(Dimen.spaceL))
     }
-}
-
-@Composable
-fun Header1(text: String) {
-    Text(text = text, fontSize = 30.sp)
-}
-
-@Composable
-fun Header2(text: String) {
-    Text(text = text, fontSize = 20.sp)
 }

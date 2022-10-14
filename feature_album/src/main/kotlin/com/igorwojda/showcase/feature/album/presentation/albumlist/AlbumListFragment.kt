@@ -21,9 +21,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.base.common.res.Dimen
-import com.igorwojda.showcase.base.presentation.compose.DataNotFoundAnim
-import com.igorwojda.showcase.base.presentation.compose.PlaceholderImage
-import com.igorwojda.showcase.base.presentation.compose.ProgressIndicator
+import com.igorwojda.showcase.base.presentation.compose.composable.DataNotFoundAnim
+import com.igorwojda.showcase.base.presentation.compose.composable.PlaceholderImage
+import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndicator
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState

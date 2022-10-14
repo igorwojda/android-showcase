@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.Fragment
-import com.igorwojda.showcase.base.presentation.compose.UnderConstructionAnim
+import com.igorwojda.showcase.base.presentation.compose.composable.UnderConstructionAnim
 
 class ProfileFragment : Fragment() {
 

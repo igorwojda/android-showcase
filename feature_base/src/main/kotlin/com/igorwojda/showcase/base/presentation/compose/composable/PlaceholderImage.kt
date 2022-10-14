@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.base.presentation.compose
+package com.igorwojda.showcase.base.presentation.compose.composable
 
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
