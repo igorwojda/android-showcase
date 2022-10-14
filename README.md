@@ -38,6 +38,7 @@ larger application suitable for bigger teams and extended
   - [Getting Started](#getting-started)
     - [Android Studio](#android-studio)
     - [Command-line And Android Studio](#command-line-and-android-studio)
+    - [Plugins](#plugins)
   - [Inspiration](#inspiration)
     - [Cheatsheet](#cheatsheet)
     - [Other Android Projects](#other-android-projects)
@@ -334,6 +335,11 @@ There are a few ways to open this project.
 
 1. Run `git clone https://github.com/igorwojda/android-showcase.git` command to clone the project
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
+
+### Plugins
+
+It us recommended to install [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure plugin open 
+Android Studio preferences, open `Tools`, open `Detekt` and add [detekty.yml](detekty.yml) configuration file.
 
 ## Inspiration
 
