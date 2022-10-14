@@ -133,7 +133,7 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) - define dependencies
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
 * GitHub Apps
-  * [Renovate](https://github.com/renovatebot/renovate) - dependency update boot
+  * [Renovate](https://github.com/renovatebot/renovate) - automated dependency updates
 * Other Tools
   * Charles Proxy - enabled network traffic sniffing in `debug` builds.
 
