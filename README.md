@@ -343,6 +343,8 @@ Here are few additional resources.
 
 - [Material Theme Builder](https://m3.material.io/theme-builder#/dynamic) - generate dynamic material theme and see it
   in action
+- [Compose Material 3 Components](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary)
+\- list containing material components
 - [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
 - [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+
   most important tools

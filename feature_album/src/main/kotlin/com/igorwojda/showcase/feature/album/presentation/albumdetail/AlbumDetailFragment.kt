@@ -11,10 +11,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ElevatedSuggestionChip
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,15 +35,18 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.navArgs
 import com.igorwojda.showcase.base.common.res.Dimen
 import com.igorwojda.showcase.base.presentation.compose.composable.DataNotFoundAnim
-import com.igorwojda.showcase.base.presentation.compose.composable.Header1
-import com.igorwojda.showcase.base.presentation.compose.composable.Header2
 import com.igorwojda.showcase.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndicator
+import com.igorwojda.showcase.base.presentation.compose.composable.TextHeadlineLarge
+import com.igorwojda.showcase.base.presentation.compose.composable.TextHeadlineMedium
 import com.igorwojda.showcase.feature.album.R
+import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
+import com.igorwojda.showcase.feature.album.domain.model.AlbumTrack
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Content
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Error
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Loading
+import com.igorwojda.showcase.feature.album.presentation.util.formatTime
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -74,11 +83,13 @@ private fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PhotoDetails(content: Content) {
     Column(
-        modifier = Modifier.padding(Dimen.screenContentPadding)
+        modifier = Modifier
+            .padding(Dimen.screenContentPadding)
+            .verticalScroll(rememberScrollState())
+
     ) {
         ElevatedCard(
             modifier = Modifier
@@ -94,25 +105,55 @@ private fun PhotoDetails(content: Content) {
                     .fillMaxWidth()
             )
         }
-
-        Header1(text = content.albumName)
-        Header2(text = content.artistName)
-
+        Spacer(modifier = Modifier.height(Dimen.spaceL))
+        TextHeadlineLarge(text = content.albumName)
+        TextHeadlineMedium(text = content.artistName)
         Spacer(modifier = Modifier.height(Dimen.spaceL))
 
-        Row {
-            content.tags?.forEach {
-                ElevatedSuggestionChip(
-                    label = { Text(it.name) },
-                    onClick = { },
-                    modifier = Modifier.padding(Dimen.spaceS)
-                )
-            }
+        if (content.tags?.isNotEmpty() == true) {
+            Tags(content.tags)
+            Spacer(modifier = Modifier.height(Dimen.spaceL))
         }
 
-        Spacer(modifier = Modifier.height(Dimen.spaceL))
+        if (content.tracks?.isNotEmpty() == true) {
+            TextHeadlineMedium(text = stringResource(id = R.string.tracks))
+            Spacer(modifier = Modifier.height(Dimen.spaceS))
+            Tracks(content.tracks)
+        }
+    }
+}
 
-        Text(text = content.tracks.toString())
-        Spacer(modifier = Modifier.height(Dimen.spaceL))
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun Tags(tags: List<AlbumTag>?) {
+    Row {
+        tags?.forEach {
+            ElevatedSuggestionChip(
+                label = { Text(it.name) },
+                onClick = { },
+                modifier = Modifier.padding(Dimen.spaceS)
+            )
+        }
+    }
+}
+
+@Composable
+internal fun Tracks(tracks: List<AlbumTrack>?) {
+    tracks?.forEach {
+        Track(it)
+    }
+}
+
+@Composable
+internal fun Track(track: AlbumTrack) {
+    Row {
+        Icon(Icons.Outlined.Star, null)
+        Spacer(modifier = Modifier.width(Dimen.spaceS))
+        Text(text = track.name)
+        Spacer(modifier = Modifier.width(Dimen.spaceS))
+
+        track.duration?.let {
+            Text(text = formatTime(track.duration))
+        }
     }
 }

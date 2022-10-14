@@ -80,7 +80,7 @@ private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
 
                 PlaceholderImage(
                     url = album.getDefaultImageUrl(),
-                    contentDescription = stringResource(id = R.string.album_image_content_description),
+                    contentDescription = stringResource(id = R.string.album_cover_content_description),
                     modifier = Modifier.size(Dimen.imageSize)
                 )
             }
