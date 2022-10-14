@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.presentation.albumlist
+package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,10 +26,10 @@ import com.igorwojda.showcase.base.presentation.compose.composable.PlaceholderIm
 import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndicator
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Content
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Error
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Loading
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Content
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Error
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Loading
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumListFragment : Fragment() {

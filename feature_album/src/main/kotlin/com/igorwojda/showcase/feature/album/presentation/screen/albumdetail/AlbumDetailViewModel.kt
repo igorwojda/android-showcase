@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.presentation.albumdetail
+package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
@@ -10,12 +10,12 @@ import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
 import com.igorwojda.showcase.feature.album.domain.model.AlbumTrack
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadFailure
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.Action.AlbumLoadSuccess
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Content
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Loading
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.Action
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.Action.AlbumLoadFailure
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.Action.AlbumLoadSuccess
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(

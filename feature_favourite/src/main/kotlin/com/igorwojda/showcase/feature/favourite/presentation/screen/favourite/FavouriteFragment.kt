@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.profile.presentation.profile
+package com.igorwojda.showcase.feature.favourite.presentation.screen.favourite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.Fragment
 import com.igorwojda.showcase.base.presentation.compose.composable.UnderConstructionAnim
 
-class ProfileFragment : Fragment() {
+class FavouriteFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return ComposeView(requireContext()).apply {
             setContent {
-                ProfileScreen()
+                FavouriteScreen()
             }
         }
     }
@@ -23,6 +23,6 @@ class ProfileFragment : Fragment() {
 
 @Preview
 @Composable
-private fun ProfileScreen() {
+private fun FavouriteScreen() {
     UnderConstructionAnim()
 }

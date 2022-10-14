@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.presentation.albumlist
+package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
@@ -9,11 +9,11 @@ import com.igorwojda.showcase.base.presentation.viewmodel.BaseState
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.Action
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Content
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Error
-import com.igorwojda.showcase.feature.album.presentation.albumlist.AlbumListViewModel.UiState.Loading
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.Action
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Content
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Error
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Loading
 import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(

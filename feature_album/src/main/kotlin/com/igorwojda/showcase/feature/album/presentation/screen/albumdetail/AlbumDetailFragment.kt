@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.album.presentation.albumdetail
+package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -42,10 +42,10 @@ import com.igorwojda.showcase.base.presentation.compose.composable.TextHeadlineM
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
 import com.igorwojda.showcase.feature.album.domain.model.AlbumTrack
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Content
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Error
-import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailViewModel.UiState.Loading
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Error
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
 import com.igorwojda.showcase.feature.album.presentation.util.formatTime
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.androidx.viewmodel.ext.android.viewModel
