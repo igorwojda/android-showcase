@@ -17,9 +17,7 @@ Project is focusing on modular, scalable, maintainable, and testable [architectu
 
 This application may look simple, but it has all of the pieces that will provide the rock-solid foundation for the
 larger application suitable for bigger teams and extended
-[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). 
-
-If you want to jump to project in Android Studio um to the [Getting Started](#getting-started) section to open project.
+[application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
 - [💎 Android Showcase 2.0](#-android-showcase-20)
   - [Application Scope](#application-scope)
