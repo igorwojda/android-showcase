@@ -60,8 +60,13 @@ The app has a few screens located in multiple feature modules:
 - Album detail screen - display information about the selected album
 - Profile screen - empty (WiP)
 - Favourites screen - empty (WiP)
-<br/><br/>
-<img src="misc/image/application_anim.gif" width="336" hspace="20">
+  <br/><br/>
+
+<p float="left">
+  <img src="misc/image/screen_album_list.webp" width="200" />
+  <img src="misc/image/screen_album_detail.webp" width="200" />
+  <img src="misc/image/screen_favorites.webp" width="200" />
+</p>
 
 ## Tech-Stack
 
