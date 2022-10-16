@@ -7,8 +7,8 @@ import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseState
 import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.feature.album.domain.model.Album
-import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
-import com.igorwojda.showcase.feature.album.domain.model.AlbumTrack
+import com.igorwojda.showcase.feature.album.domain.model.Tag
+import com.igorwojda.showcase.feature.album.domain.model.Track
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.Action
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.Action.AlbumLoadFailure
@@ -61,8 +61,8 @@ internal class AlbumDetailViewModel(
             val albumName: String = "",
             val artistName: String = "",
             val coverImageUrl: String = "",
-            val tracks: List<AlbumTrack>? = emptyList(),
-            val tags: List<AlbumTag>? = emptyList(),
+            val tracks: List<Track>? = emptyList(),
+            val tags: List<Tag>? = emptyList(),
         ) : UiState
 
         object Loading : UiState

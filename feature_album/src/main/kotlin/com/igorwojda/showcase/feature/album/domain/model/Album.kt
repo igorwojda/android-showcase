@@ -8,9 +8,9 @@ internal data class Album(
     val name: String,
     val artist: String,
     val mbId: String? = null,
-    val images: List<AlbumImage> = emptyList(),
-    val tracks: List<AlbumTrack>? = null,
-    val tags: List<AlbumTag>? = null,
+    val images: List<Image> = emptyList(),
+    val tracks: List<Track>? = null,
+    val tags: List<Tag>? = null,
 ) {
     fun getDefaultImageUrl() = images.firstOrNull { it.size == ImageSize.EXTRA_LARGE }?.url
 }

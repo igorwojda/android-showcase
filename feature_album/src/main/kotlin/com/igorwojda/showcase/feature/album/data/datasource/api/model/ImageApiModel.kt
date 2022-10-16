@@ -1,20 +1,20 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntityModel
-import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
+import com.igorwojda.showcase.feature.album.domain.model.Image
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumImageApiModel(
+internal data class ImageApiModel(
     @SerialName("#text") val url: String,
-    @SerialName("size") val size: AlbumImageSizeApiModel,
+    @SerialName("size") val size: ImageSizeApiModel,
 )
 
-internal fun AlbumImageApiModel.toDomainModel() = AlbumImage(
+internal fun ImageApiModel.toDomainModel() = Image(
     url = this.url,
     size = this.size.toDomainModel()
 )
 
-internal fun AlbumImageApiModel.toEntityModel() =
+internal fun ImageApiModel.toEntityModel() =
     this.size.toEntityModel()?.let { AlbumImageEntityModel(this.url, it) }

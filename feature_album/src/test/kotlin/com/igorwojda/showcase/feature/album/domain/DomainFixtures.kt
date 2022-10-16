@@ -2,9 +2,9 @@ package com.igorwojda.showcase.feature.album.domain
 
 import com.igorwojda.showcase.feature.album.domain.enum.ImageSize
 import com.igorwojda.showcase.feature.album.domain.model.Album
-import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
-import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
-import com.igorwojda.showcase.feature.album.domain.model.AlbumTrack
+import com.igorwojda.showcase.feature.album.domain.model.Image
+import com.igorwojda.showcase.feature.album.domain.model.Tag
+import com.igorwojda.showcase.feature.album.domain.model.Track
 
 object DomainFixtures {
 
@@ -12,22 +12,22 @@ object DomainFixtures {
         name: String = "albumName",
         artist: String = "artistName",
         mbId: String? = "mbId",
-        images: List<AlbumImage> = listOf(getAlbumImage()),
-        tracks: List<AlbumTrack> = listOf(getAlbumTrack()),
-        tags: List<AlbumTag> = listOf(getAlbumTag()),
+        images: List<Image> = listOf(getImage()),
+        tracks: List<Track> = listOf(getTrack()),
+        tags: List<Tag> = listOf(getTag()),
     ): Album = Album(name, artist, mbId, images, tracks, tags)
 
-    internal fun getAlbumImage(
+    internal fun getImage(
         url: String = "url_${ImageSize.EXTRA_LARGE}",
         size: ImageSize = ImageSize.EXTRA_LARGE,
-    ) = AlbumImage(url, size)
+    ) = Image(url, size)
 
-    private fun getAlbumTrack(
+    private fun getTrack(
         name: String = "track",
         duration: Int = 12,
-    ) = AlbumTrack(name, duration)
+    ) = Track(name, duration)
 
-    private fun getAlbumTag(
+    private fun getTag(
         name: String = "tag",
-    ) = AlbumTag(name)
+    ) = Tag(name)
 }

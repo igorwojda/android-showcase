@@ -2,12 +2,12 @@ package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
 import org.junit.jupiter.api.Test
 
-class AlbumImageSizeApiModelTest {
+class ImageSizeApiModelTest {
 
     @Test
     fun `maps to AlbumDomainImageSize`() {
         // given
-        val dataEnums = AlbumImageSizeApiModel.values().filterNot { it == AlbumImageSizeApiModel.UNKNOWN }
+        val dataEnums = ImageSizeApiModel.values().filterNot { it == ImageSizeApiModel.UNKNOWN }
 
         // when
         dataEnums.forEach { it.toDomainModel() }

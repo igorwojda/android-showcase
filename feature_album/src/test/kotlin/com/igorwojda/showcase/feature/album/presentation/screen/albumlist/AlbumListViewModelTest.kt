@@ -1,10 +1,9 @@
-package com.igorwojda.showcase.feature.album.presentation.albumlist
+package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 
 import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension

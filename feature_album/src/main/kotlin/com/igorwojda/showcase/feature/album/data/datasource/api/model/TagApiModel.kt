@@ -1,19 +1,19 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumTagEntityModel
-import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
+import com.igorwojda.showcase.feature.album.domain.model.Tag
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumTagApiModel(
+internal data class TagApiModel(
     @SerialName("name") val name: String,
 )
 
-internal fun AlbumTagApiModel.toDomainModel() = AlbumTag(
+internal fun TagApiModel.toDomainModel() = Tag(
     name = this.name
 )
 
-internal fun AlbumTagApiModel.toEntityModel() = AlbumTagEntityModel(
+internal fun TagApiModel.toEntityModel() = AlbumTagEntityModel(
     name = this.name
 )

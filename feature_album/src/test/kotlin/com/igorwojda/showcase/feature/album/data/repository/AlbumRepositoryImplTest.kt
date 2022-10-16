@@ -29,7 +29,7 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api success and returns albums`() {
         // given
         val phrase = "phrase"
-        val albums = DataFixtures.getAlbumsApiModels()
+        val albums = DataFixtures.getAlbumsApiModel()
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
             DataFixtures.ApiResponse.getSearchAlbum()

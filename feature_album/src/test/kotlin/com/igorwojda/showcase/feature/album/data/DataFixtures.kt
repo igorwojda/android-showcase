@@ -1,14 +1,14 @@
 package com.igorwojda.showcase.feature.album.data
 
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumApiModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageApiModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumImageSizeApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumListApiModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumSearchApiModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumTagApiModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumTagListApiModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumTrackApiModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.AlbumTrackListApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.ImageApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.ImageSizeApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.SearchAlbumResultsApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.TagApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.TagListApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.TrackApiModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.TrackListApiModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntityModel
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumImageEntityModel
@@ -18,7 +18,7 @@ import com.igorwojda.showcase.feature.album.data.datasource.database.model.Album
 
 object DataFixtures {
 
-    internal fun getAlbumsApiModels() = listOf(
+    internal fun getAlbumsApiModel() = listOf(
         getAlbumApiModel("mbid1", "album1", "artist1")
     )
 
@@ -31,9 +31,9 @@ object DataFixtures {
         mbId: String = "mbId",
         name: String = "album",
         artist: String = "artist",
-        images: List<AlbumImageApiModel>? = listOf(getAlbumImageModel()),
-        tracks: AlbumTrackListApiModel = AlbumTrackListApiModel(getAlbumTrackModel()),
-        tags: AlbumTagListApiModel = AlbumTagListApiModel(getAlbumTagModel()),
+        images: List<ImageApiModel>? = listOf(getImageModelApiModel()),
+        tracks: TrackListApiModel = TrackListApiModel(getTrackModelApiModel()),
+        tags: TagListApiModel = TagListApiModel(getTagModelApiModel()),
     ): AlbumApiModel = AlbumApiModel(
         mbId,
         name,
@@ -43,28 +43,28 @@ object DataFixtures {
         tags
     )
 
-    internal fun getAlbumImageModel(
-        url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
-        size: AlbumImageSizeApiModel = AlbumImageSizeApiModel.EXTRA_LARGE,
-    ) = AlbumImageApiModel(url, size)
+    internal fun getImageModelApiModel(
+        url: String = "url_${ImageSizeApiModel.EXTRA_LARGE}",
+        size: ImageSizeApiModel = ImageSizeApiModel.EXTRA_LARGE,
+    ) = ImageApiModel(url, size)
 
-    private fun getAlbumTrackModel(
+    private fun getTrackModelApiModel(
         name: String = "track",
         duration: Int? = 12,
-    ) = listOf(AlbumTrackApiModel(name, duration))
+    ) = listOf(TrackApiModel(name, duration))
 
-    private fun getAlbumTagModel(
+    private fun getTagModelApiModel(
         name: String = "tag",
-    ) = listOf(AlbumTagApiModel(name))
+    ) = listOf(TagApiModel(name))
 
     private fun getAlbumEntityModel(
         id: Int = 0,
         mbId: String = "mbId",
         name: String = "album",
         artist: String = "artist",
-        images: List<AlbumImageEntityModel> = listOf(getAlbumImageEntityModel()),
-        tracks: List<AlbumTrackEntityModel> = listOf(getAlbumTrackEntityModel()),
-        tags: List<AlbumTagEntityModel> = listOf(getAlbumTagEntityModel()),
+        images: List<AlbumImageEntityModel> = listOf(getImageEntityModel()),
+        tracks: List<AlbumTrackEntityModel> = listOf(getTrackEntityModel()),
+        tags: List<AlbumTagEntityModel> = listOf(getTagEntityModel()),
     ): AlbumEntityModel = AlbumEntityModel(
         id,
         mbId,
@@ -75,24 +75,24 @@ object DataFixtures {
         tags
     )
 
-    private fun getAlbumImageEntityModel(
-        url: String = "url_${AlbumImageSizeApiModel.EXTRA_LARGE}",
+    private fun getImageEntityModel(
+        url: String = "url_${ImageSizeApiModel.EXTRA_LARGE}",
         size: AlbumImageSizeEntityModel = AlbumImageSizeEntityModel.EXTRA_LARGE,
     ) = AlbumImageEntityModel(url, size)
 
-    private fun getAlbumTrackEntityModel(
+    private fun getTrackEntityModel(
         name: String = "track",
         duration: Int = 12,
     ) = AlbumTrackEntityModel(name, duration)
 
-    private fun getAlbumTagEntityModel(
+    private fun getTagEntityModel(
         name: String = "tag",
     ) = AlbumTagEntityModel(name)
 
     object ApiResponse {
         internal fun getSearchAlbum() = SearchAlbumResponse(
-            AlbumSearchApiModel(
-                AlbumListApiModel(getAlbumsApiModels())
+            SearchAlbumResultsApiModel(
+                AlbumListApiModel(getAlbumsApiModel())
             )
         )
     }

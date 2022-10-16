@@ -1,7 +1,6 @@
-package com.igorwojda.showcase.feature.album.presentation.albumdetail
+package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.mockk

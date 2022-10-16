@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.datasource.database.model
 
-import com.igorwojda.showcase.feature.album.domain.model.AlbumImage
+import com.igorwojda.showcase.feature.album.domain.model.Image
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -10,4 +10,4 @@ internal data class AlbumImageEntityModel(
 )
 
 internal fun AlbumImageEntityModel.toDomainModel() =
-    this.size.toDomainModel()?.let { AlbumImage(this.url, it) }
+    this.size.toDomainModel()?.let { Image(this.url, it) }

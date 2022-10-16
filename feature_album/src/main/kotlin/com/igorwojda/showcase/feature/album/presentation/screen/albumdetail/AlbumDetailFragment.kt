@@ -40,8 +40,8 @@ import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndic
 import com.igorwojda.showcase.base.presentation.compose.composable.TextHeadlineLarge
 import com.igorwojda.showcase.base.presentation.compose.composable.TextHeadlineMedium
 import com.igorwojda.showcase.feature.album.R
-import com.igorwojda.showcase.feature.album.domain.model.AlbumTag
-import com.igorwojda.showcase.feature.album.domain.model.AlbumTrack
+import com.igorwojda.showcase.feature.album.domain.model.Tag
+import com.igorwojda.showcase.feature.album.domain.model.Track
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Error
@@ -125,7 +125,7 @@ private fun PhotoDetails(content: Content) {
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-private fun Tags(tags: List<AlbumTag>?) {
+private fun Tags(tags: List<Tag>?) {
     Row {
         tags?.forEach {
             ElevatedSuggestionChip(
@@ -138,14 +138,14 @@ private fun Tags(tags: List<AlbumTag>?) {
 }
 
 @Composable
-internal fun Tracks(tracks: List<AlbumTrack>?) {
+internal fun Tracks(tracks: List<Track>?) {
     tracks?.forEach {
         Track(it)
     }
 }
 
 @Composable
-internal fun Track(track: AlbumTrack) {
+internal fun Track(track: Track) {
     Row {
         Icon(Icons.Outlined.Star, null)
         Spacer(modifier = Modifier.width(Dimen.spaceS))

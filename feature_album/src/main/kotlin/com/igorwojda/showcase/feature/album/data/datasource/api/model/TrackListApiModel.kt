@@ -4,6 +4,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumTrackListApiModel(
-    @SerialName("track") val track: List<AlbumTrackApiModel>,
+internal data class TrackListApiModel(
+    @SerialName("track") val track: List<TrackApiModel>,
 )

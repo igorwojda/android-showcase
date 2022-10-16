@@ -11,7 +11,7 @@ class AlbumTest {
     @Test
     fun `get default image url`() {
         // given
-        val image = DomainFixtures.getAlbumImage()
+        val image = DomainFixtures.getImage()
 
         // when
         cut = DomainFixtures.getAlbum(images = listOf(image))
