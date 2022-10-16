@@ -75,9 +75,8 @@ private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
                 modifier = Modifier
                     .padding(Dimen.spaceS)
                     .wrapContentSize(),
-                onClick = { viewModel.onAlbumClick(album) },
+                onClick = { viewModel.onAlbumClick(album) }
             ) {
-
                 PlaceholderImage(
                     url = album.getDefaultImageUrl(),
                     contentDescription = stringResource(id = R.string.album_cover_content_description),

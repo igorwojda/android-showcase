@@ -6,6 +6,10 @@ object TimeUtil {
      * @return `seconds` in mm:ss format
      */
     internal fun formatTime(seconds: Int): String {
-        return String.format("%02d:%02d", seconds % 3600 / 60, seconds % 60)
+        val secondsInMinute = 60
+        val secondsInHour = 3600
+
+        @Suppress("detekt.ImplicitDefaultLocale")
+        return String.format("%02d:%02d", seconds % secondsInHour / secondsInMinute, seconds % secondsInMinute)
     }
 }

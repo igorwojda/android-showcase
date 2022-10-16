@@ -4,12 +4,12 @@ import com.igorwojda.showcase.feature.album.domain.model.Track
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class AlbumTrackEntityModel(
+internal data class TrackEntityModel(
     val name: String,
     val duration: Int? = null,
 )
 
-internal fun AlbumTrackEntityModel.toDomainModel() = Track(
+internal fun TrackEntityModel.toDomainModel() = Track(
     name = this.name,
     duration = this.duration
 )

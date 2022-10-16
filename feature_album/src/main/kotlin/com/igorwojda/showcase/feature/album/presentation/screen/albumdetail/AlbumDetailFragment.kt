@@ -97,7 +97,7 @@ private fun PhotoDetails(content: Content) {
                 .padding(Dimen.spaceM)
                 .wrapContentSize()
                 .size(320.dp)
-                .align(CenterHorizontally),
+                .align(CenterHorizontally)
         ) {
             PlaceholderImage(
                 url = content.coverImageUrl,
@@ -131,7 +131,7 @@ private fun Tags(tags: List<Tag>?) {
         tags?.forEach {
             ElevatedSuggestionChip(
                 label = { Text(it.name) },
-                onClick = { },
+                onClick = { }
             )
         }
     }

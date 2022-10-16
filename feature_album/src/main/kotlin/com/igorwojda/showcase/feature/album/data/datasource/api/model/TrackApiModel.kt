@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumTrackEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.TrackEntityModel
 import com.igorwojda.showcase.feature.album.domain.model.Track
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -16,7 +16,7 @@ internal fun TrackApiModel.toDomainModel() = Track(
     duration = this.duration
 )
 
-internal fun TrackApiModel.toEntityModel() = AlbumTrackEntityModel(
+internal fun TrackApiModel.toEntityModel() = TrackEntityModel(
     name = this.name,
     duration = this.duration
 )

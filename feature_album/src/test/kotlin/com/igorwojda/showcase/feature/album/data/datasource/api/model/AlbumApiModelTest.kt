@@ -25,7 +25,7 @@ class AlbumApiModelTest {
             cut.mbId,
             cut.images?.map { it.toDomainModel() } ?: listOf(),
             cut.tracks?.track?.map { it.toDomainModel() },
-            cut.tags?.tag?.map { it.toDomainModel() },
+            cut.tags?.tag?.map { it.toDomainModel() }
         )
     }
 
