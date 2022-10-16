@@ -37,7 +37,7 @@ detekt = "1.22.0-RC2"
 androidGradlePlugin = "7.3.1"
 
 # Find version here https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-kotlinSymbolProcessing = "1.7.10-1.0.6"
+kotlinSymbolProcessing = "1.7.20-1.0.7"
 
 # Test versionsandroid-junit5-plugin-dsl
 
