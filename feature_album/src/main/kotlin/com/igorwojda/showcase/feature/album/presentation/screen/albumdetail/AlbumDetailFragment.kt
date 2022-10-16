@@ -38,8 +38,8 @@ import com.igorwojda.showcase.base.presentation.activity.BaseFragment
 import com.igorwojda.showcase.base.presentation.compose.composable.DataNotFoundAnim
 import com.igorwojda.showcase.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndicator
-import com.igorwojda.showcase.base.presentation.compose.composable.TextHeadlineLarge
-import com.igorwojda.showcase.base.presentation.compose.composable.TextHeadlineMedium
+import com.igorwojda.showcase.base.presentation.compose.composable.TextTitleLarge
+import com.igorwojda.showcase.base.presentation.compose.composable.TextTitleMedium
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Tag
 import com.igorwojda.showcase.feature.album.domain.model.Track
@@ -107,8 +107,8 @@ private fun PhotoDetails(content: Content) {
             )
         }
         Spacer(modifier = Modifier.height(Dimen.spaceL))
-        TextHeadlineLarge(text = content.albumName)
-        TextHeadlineMedium(text = content.artistName)
+        TextTitleLarge(text = content.albumName)
+        TextTitleMedium(text = content.artistName)
         Spacer(modifier = Modifier.height(Dimen.spaceL))
 
         if (content.tags?.isNotEmpty() == true) {
@@ -117,7 +117,7 @@ private fun PhotoDetails(content: Content) {
         }
 
         if (content.tracks?.isNotEmpty() == true) {
-            TextHeadlineMedium(text = stringResource(id = R.string.tracks))
+            TextTitleMedium(text = stringResource(id = R.string.tracks))
             Spacer(modifier = Modifier.height(Dimen.spaceS))
             Tracks(content.tracks)
         }

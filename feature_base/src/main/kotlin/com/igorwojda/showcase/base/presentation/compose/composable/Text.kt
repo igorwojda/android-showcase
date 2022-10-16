@@ -6,25 +6,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun TextHeadlineLarge(
+fun TextTitleLarge(
     text: String,
     modifier: Modifier = Modifier,
 ) {
     Text(
         text = text,
         modifier = modifier,
-        style = MaterialTheme.typography.headlineLarge,
+        style = MaterialTheme.typography.titleLarge,
     )
 }
 
 @Composable
-fun TextHeadlineMedium(
+fun TextTitleMedium(
     text: String,
     modifier: Modifier = Modifier,
 ) {
     Text(
         text = text,
         modifier = modifier,
-        style = MaterialTheme.typography.headlineMedium,
+        style = MaterialTheme.typography.titleMedium,
     )
 }
