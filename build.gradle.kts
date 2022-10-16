@@ -32,7 +32,13 @@ tasks.register("detektCheck", io.gitlab.arturbosch.detekt.Detekt::class) {
     // https://github.com/detekt/detekt/blob/main/detekt-core/src/main/resources/default-detekt-config.yml
     // 2. detekt-formatting rules
     // https://github.com/detekt/detekt/blob/main/detekt-formatting/src/main/resources/config/config.yml
+
+    // Custom detekt config
     config.setFrom("$projectDir/detekt.yml")
+
+    // Use default configuration on top of custom config (new detect rules will work out of the box after upgrading detekt version)
+    buildUponDefaultConfig = true
+
     include("**/*.kt", "**/*.kts")
     exclude("**/resources/**", "**/build/**", "**/generated/**")
 
