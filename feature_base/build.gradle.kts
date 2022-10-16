@@ -28,6 +28,11 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
 
     compileOptions {
@@ -56,15 +61,16 @@ dependencies {
     api(libs.bundles.navigation)
     api(libs.bundles.lifecycle)
     api(libs.bundles.room)
+    api(libs.bundles.compose)
     api(libs.viewBindingPropertyDelegate)
     api(libs.timber)
-    api(libs.coil)
     api(libs.constraintLayout)
     api(libs.appCompat)
     api(libs.recyclerView)
-    api(libs.material)
     api(libs.coroutines)
-    api(libs.lottie)
+    api(libs.material)
+    api(libs.composeMaterial)
+    api(libs.accompanistFlowLayout)
 
     testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)

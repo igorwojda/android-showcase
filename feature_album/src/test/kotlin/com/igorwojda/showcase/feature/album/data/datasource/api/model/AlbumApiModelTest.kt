@@ -1,8 +1,10 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.domain.enum.AlbumDomainImageSize
+import com.igorwojda.showcase.feature.album.domain.enum.ImageSize
 import com.igorwojda.showcase.feature.album.domain.model.Album
+import com.igorwojda.showcase.feature.album.domain.model.Tag
+import com.igorwojda.showcase.feature.album.domain.model.Track
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
@@ -20,9 +22,10 @@ class AlbumApiModelTest {
         domainModel shouldBeEqualTo Album(
             cut.name,
             cut.artist,
+            cut.mbId,
             cut.images?.map { it.toDomainModel() } ?: listOf(),
-            cut.wiki?.toDomainModel(),
-            cut.mbId
+            cut.tracks?.track?.map { it.toDomainModel() },
+            cut.tags?.tag?.map { it.toDomainModel() }
         )
     }
 
@@ -30,7 +33,6 @@ class AlbumApiModelTest {
     fun `data model with missing data maps to AlbumDomainModel`() {
         // given
         val cut = DataFixtures.getAlbumApiModel(
-            wiki = null,
             images = emptyList()
         )
 
@@ -43,29 +45,30 @@ class AlbumApiModelTest {
             name = "album",
             artist = "artist",
             images = emptyList(),
-            wiki = null
+            tracks = listOf(Track("track", 12)),
+            tags = listOf(Tag("tag"))
         )
     }
 
     @Test
     fun `mapping filters out unknown size`() {
         // given
-        val albumDataImages = listOf(AlbumImageSizeApiModel.EXTRA_LARGE, AlbumImageSizeApiModel.UNKNOWN)
-            .map { DataFixtures.getAlbumImageModel(size = it) }
+        val albumDataImages = listOf(ImageSizeApiModel.EXTRA_LARGE, ImageSizeApiModel.UNKNOWN)
+            .map { DataFixtures.getImageModelApiModel(size = it) }
         val cut = DataFixtures.getAlbumApiModel(images = albumDataImages)
 
         // when
         val domainModel = cut.toDomainModel()
 
         // then
-        domainModel.images.single { it.size == AlbumDomainImageSize.EXTRA_LARGE }
+        domainModel.images.single { it.size == ImageSize.EXTRA_LARGE }
     }
 
     @Test
     fun `mapping filters out blank url`() {
         // given
         val images = listOf("", "url")
-            .map { DataFixtures.getAlbumImageModel(url = it) }
+            .map { DataFixtures.getImageModelApiModel(url = it) }
 
         val cut = DataFixtures.getAlbumApiModel(images = images)
 

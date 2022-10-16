@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="data_not_found">Data not found</string>
+    <string name="album_cover_content_description">Album Cover</string>
+    <string name="tracks">Tracks</string>
 </resources>

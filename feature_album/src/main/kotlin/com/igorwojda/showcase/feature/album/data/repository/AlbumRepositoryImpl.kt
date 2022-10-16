@@ -9,6 +9,7 @@ import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
+import timber.log.Timber
 
 internal class AlbumRepositoryImpl(
     private val albumRetrofitService: AlbumRetrofitService,
@@ -23,9 +24,9 @@ internal class AlbumRepositoryImpl(
                     .results
                     .albumMatches
                     .album
-                    .also {
-                        val albums = it.map { it.toEntityModel() }
-                        albumDao.insertAlbums(albums)
+                    .also { albumsApiModels ->
+                        val albumsEntityModels = albumsApiModels.map { it.toEntityModel() }
+                        albumDao.insertAlbums(albumsEntityModels)
                     }
                     .map { it.toDomainModel() }
 
@@ -35,6 +36,8 @@ internal class AlbumRepositoryImpl(
                 Result.Failure()
             }
             is ApiResult.Exception -> {
+                Timber.e(apiResult.throwable)
+
                 val albums = albumDao
                     .getAll()
                     .map { it.toDomainModel() }
@@ -51,12 +54,18 @@ internal class AlbumRepositoryImpl(
                     .album
                     .toDomainModel()
 
+                Timber.d("AAA Album info Tracks ${apiResult.data.album.tracks?.track?.size} ${album.tracks?.size}")
+                Timber.d("AAA Album info Tags ${apiResult.data.album.tags?.tag?.size} ${album.tags?.size}")
+                Timber.d("AAA ----------")
+
                 Result.Success(album)
             }
             is ApiResult.Error -> {
                 Result.Failure()
             }
             is ApiResult.Exception -> {
+                Timber.e(apiResult.throwable)
+
                 val album = albumDao
                     .getAlbum(artistName, albumName, mbId)
                     .toDomainModel()

@@ -24,15 +24,13 @@ class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
     }
 
     private fun initBottomNavigation() {
-        // When using FragmentContainerView, NavController has to be retrieved by using findFragmentById() rather than
-        // by using findNavController(). More:
-        // https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182#59275182
+        // When using FragmentContainerView, NavController fragment can't be retrieved by using `findNavController()`
+        //
+        // See https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182#59275182
+        // See https://issuetracker.google.com/issues/142847973
         val navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
 
         binding.bottomNav.setupWithNavController(navController)
-
-        // Disables reselection of bottom menu item, so fragments are not recreated when clicking on the same menu item
-        binding.bottomNav.setOnNavigationItemReselectedListener { }
     }
 
     private fun initNavManager() {

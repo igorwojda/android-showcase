@@ -4,27 +4,55 @@
 [![AGP](https://img.shields.io/badge/AGP-7.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-7.x-blue?style=flat)](https://gradle.org)
 
-[![codebeat badge](https://codebeat.co/badges/e9f1a825-b5bd-4c7a-aadc-7c8d0cf59310)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-main)
+[![Codebeat Badge](https://codebeat.co/badges/e9f1a825-b5bd-4c7a-aadc-7c8d0cf59310)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-main)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 Android Showcase project presents a modern approach to
-[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development. It is a complete sample of
-a fully functional Android application.
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development. This project utilizes
+popular tools, libraries, linters, Gradle plugins, testing frameworks, and CI setup. It is a complete sample of a fully
+functional Android application.
 
-Project is utilizing modular, scalable, maintainable, and testable [architecture](#architecture), leading
-[tech-stack](Tech-stack) and demonstrates the best development practices.
+Project is focusing on modular, scalable, maintainable, and testable [architecture](#architecture), leading
+[tech-stack](#tech-stack) and demonstrates the best development practices.
 
-This application may look simple, but it has all the pieces that will provide the rock-solid foundation for the larger
-application suitable for bigger teams during extended
+This application may look simple, but it has all of the pieces that will provide the rock-solid foundation for the
+larger application suitable for bigger teams and extended
 [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management).
 
-This project is being maintained to stay up to date with leading industry standards. Please check
-the [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
+- [💎 Android Showcase 2.0](#-android-showcase-20)
+  - [Application Scope](#application-scope)
+  - [Tech-Stack](#tech-stack)
+  - [Architecture](#architecture)
+    - [Module Types And Module Dependencies](#module-types-and-module-dependencies)
+    - [Feature Module Structure](#feature-module-structure)
+      - [Presentation Layer](#presentation-layer)
+      - [Domain Layer](#domain-layer)
+      - [Data Layer](#data-layer)
+    - [Data Flow](#data-flow)
+  - [Dependency Management](#dependency-management)
+  - [Logcat debuggins](#logcat-debuggins)
+  - [CI Pipeline](#ci-pipeline)
+    - [Pull Request Verification](#pull-request-verification)
+  - [Design Decisions](#design-decisions)
+  - [What This Project Does Not Cover?](#what-this-project-does-not-cover)
+  - [Getting Started](#getting-started)
+    - [Android Studio](#android-studio)
+    - [Command-line And Android Studio](#command-line-and-android-studio)
+    - [Plugins](#plugins)
+  - [Upcoming Improvements](#upcoming-improvements)
+  - [Inspiration](#inspiration)
+    - [Cheatsheet](#cheatsheet)
+    - [Other Android Projects](#other-android-projects)
+  - [Known Issues](#known-issues)
+  - [Contribute](#contribute)
+  - [Author](#author)
+  - [License](#license)
+  - [Animations License](#animations-license)
 
 ## Application Scope
 
-The `android-showcase` displays information about music albums. The data is loaded from
-the [Last.fm Music Discovery API](https://www.last.fm/api).
+The `android-showcase` displays information about music albums. The data is loaded from the
+[Last.fm Music Discovery API](https://www.last.fm/api).
 
 The app has a few screens located in multiple feature modules:
 
@@ -32,8 +60,13 @@ The app has a few screens located in multiple feature modules:
 - Album detail screen - display information about the selected album
 - Profile screen - empty (WiP)
 - Favourites screen - empty (WiP)
-<br/><br/>
-<img src="misc/image/application_anim.gif" width="336" hspace="20">
+  <br/><br/>
+
+<p float="left">
+  <img src="misc/image/screen_album_list.webp" width="200" />
+  <img src="misc/image/screen_album_detail.webp" width="200" />
+  <img src="misc/image/screen_favorites.webp" width="200" />
+</p>
 
 ## Tech-Stack
 
@@ -48,6 +81,7 @@ the libraries are in the stable version unless there is a good reason to use non
     + [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html) - parse [JSON](https://www.json.org/json-en.html)
   * [Retrofit](https://square.github.io/retrofit/) - networking
   * [Jetpack](https://developer.android.com/jetpack)
+    * [Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit 
     * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
     * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when
       lifecycle state changes
@@ -58,7 +92,7 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Coil](https://github.com/coil-kt/coil) - image loading library
   * [Lottie](http://airbnb.io/lottie) - animation library
 * Modern Architecture
-  * Clean Architecture (at feature module level)
+  * [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
   * Single activity architecture
     using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
   * MVVM + MVI (presentation layer)
@@ -67,34 +101,45 @@ the libraries are in the stable version unless there is a good reason to use non
     , [Kotlin Flow](https://kotlinlang.org/docs/flow.html)
     , [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
   * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
+* UI
+  * Reactive UI
+  * [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit (used for Fragments)
+  * [View Binding](https://developer.android.com/topic/libraries/view-binding) - retrieve xml view ids
+    (used for [NavHostActivity](app/src/main/java/com/igorwojda/showcase/app/presentation/NavHostActivity.kt) only)
+  * [Material Design 3](https://m3.material.io/) - application design system providing UI components
+  * Theme selection
+    * [Dark Theme](https://material.io/develop/android/theming/dark) - dark theme for the app (Android 10+)
+    * [Dynamic Theming](https://m3.material.io/styles/color/dynamic-color/overview) - use generated, wallpaper-based
+      theme (Android 12+)
 * CI
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters, and 3rd online tools
 * Testing
   * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
-    [android-junit5](https://github.com/mannodermaus/android-junit5))
-  * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
+    [android-junit5](https://github.com/mannodermaus/android-junit5)) - test individual classes
+  * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso)) - test user interface (WiP)
   * [Mockk](https://mockk.io/) - mocking framework
   * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
-* UI
-  * [Material design](https://material.io/design)
-  * Reactive UI
-* Static analysis tools
+* Static analysis tools (linters)
   * [Ktlint](https://github.com/pinterest/ktlint) - verify code formatting
   * [Detekt](https://github.com/arturbosch/detekt#with-gradle) - verify code complexity and code smells
-  * [Androd Lint](http://tools.android.com/tips/lint) - verify Android platform usage
+  * [Android Lint](http://tools.android.com/tips/lint) - verify Android platform usage
 * Gradle
   * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - define build scripts
   * Custom tasks
   * [Gradle Plugins](https://plugins.gradle.org/)
     * [Android Gradle](https://developer.android.com/studio/releases/gradle-plugin) - standard Android Plugins
     * [Test Logger](https://github.com/radarsh/gradle-test-logger-plugin) - format test logs
-    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) - pass data between navigation destinations
+    * [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) - pass data between
+      navigation destinations
     * [Android-junit5](https://github.com/mannodermaus/android-junit5) - use [JUnit 5](https://junit.org/junit5/) with Android
   * [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) - define dependencies
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
-* GitHub Apps
-  * [Revonate](https://github.com/renovatebot/renovate) - dependency update boot
+* GitHub Boots
+  * [Renovate](https://github.com/renovatebot/renovate) - automatically update dependencies
+  * [Stale](https://github.com/marketplace/stale) - automatically close stale Issues and Pull Requests that tend to accumulate during a project
+* Other Tools
+  * Charles Proxy - enabled network traffic sniffing in `debug` builds.
 
 ## Architecture
 
@@ -122,17 +167,16 @@ This diagram presents dependencies between project modules (Gradle sub-projects)
 
 We have three kinds of modules in the application:
 
-- `app` module - this is the main module. It contains code that wires multiple modules together (dependency injection
-  setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required
-  permissions setup, custom application class, etc.).
-- application-specific `library_x` modules that some of the features could depend on. This is helpful if you want to
-  share some assets or code only between a few feature modules (currently app has no such modules)
-- feature modules - the most common type of module containing all code related to a given feature.
+- `app` module - this is the main module. It contains code that wires multiple modules together (class, dependency
+  injection setup, `NavHostActivity`, etc.) and fundamental application configuration (retrofit configuration, required
+  permissions setup, custom `Application` class, etc.).
+- `feature_x` modules - the most common type of module containing all code related to a given feature.
+  share some assets or code only between `feature` modules (currently app has no such modules)
+- `feature_base` modules that features modules depend on to share a common code.
 
 ### Feature Module Structure
 
-`Clean architecture` is the "core architecture" of the application, so each `feature module` contains its own set of
-Clean architecture layers:
+`Clean Architecture` is implemented at module level - each module contains its own set of Clean Architecture layers:
 
 ![module_dependencies_layers](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies_layers.png?raw=true)
 
@@ -144,23 +188,34 @@ Each feature module contains non-layer components and 3 layers with a distinct s
 
 #### Presentation Layer
 
-This layer is closest to what the user sees on the screen. The `presentation` layer is a mix of `MVVM` (
-Jetpack `ViewModel` used to preserve data across activity restart) and
-`MVI` (`actions` modify the `common state` of the view and then a new state is edited to a view via `LiveData` to be
-rendered).
+This layer is closest to what the user sees on the screen.
 
-> `common state` (for each view) approach derives from
+The `presentation` layer mixes `MVVM` and `MVI` patterns:
+
+- `MVVM` - Jetpack `ViewModel` is used to encapsulate `common UI state`. It exposes the `state` via observable state
+  holder (`Kotlin Flow`)
+- `MVI` - `action` modifies the `common UI state` and emits a new state to a view via `Kotlin Flow`
+
+> `common state` is a single source of truth for each view. This solution derives from
 > [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
 > principles](https://redux.js.org/introduction/three-principles).
 
+This approach facilitates creation of consistent states. State is collected via `collectAsUiStateWithLifecycle`
+method. Flows collection happens in a lifecycle-aware manner, so
+[no resources are wasted](https://medium.com/androiddevelopers/consuming-flows-safely-in-jetpack-compose-cde014d0d5a3).
+
+Stated is annotated with [Immutable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Immutable)
+annotation that is used by Jetpack compose to enable composition optimizations.
+
 Components:
 
-- **View (Fragment)** - presents data on the screen and passes user interactions to View Model. Views are hard to test,
-  so they should be as simple as possible.
-- **ViewModel** - dispatches (through [Kotlin Flow](https://kotlinlang.org/docs/flow.html)) state changes to the view
-  and deals with user interactions (these view models are not simply
-  [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
+- **View (Fragment)** - observes common view state (through `Kotlin Flow`). Compose transform state (emitted by Kotlin
+  Flow) into application UI Consumes the state and transforms it into application UI (via `Jetpack Compose`). Pass user
+  interactions to `ViewModel`. Views are hard to test, so they should be as simple as possible.
+- **ViewModel** - emits (through `Kotlin Flow`) view state changes to the view and deals with user interactions (these
+  view models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
 - **ViewState** - common state for a single view
+- **StateTimeTravelDebugger** - logs actions and view state transitions to facilitate debugging.
 - **NavManager** - singleton that facilitates handling all navigation events inside `NavHostActivity` (instead of
   separately, inside each view)
 
@@ -188,13 +243,22 @@ Components:
 
 - **Repository** is exposing data to the `domain` layer. Depending on the application structure and quality of the
   external APIs repository can also merge, filter, and transform the data. These operations intend to create
-  high-quality data source for the `domain` layer, not to perform any business logic (`domain` layer `use case`
-  responsibility).
-
+  high-quality data source for the `domain` layer.
 - **Mapper** - maps `data model` to `domain model` (to keep `domain` layer independent from the `data` layer).
-- **RetrofitService** - defines a set of API endpoints.
-- **DataModel** - defines the structure of the data retrieved from the network and contains annotations, so Retrofit (
-  Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
+
+Data layer contains implicit layer called `Data source` containing all components involved with data manipulation of a
+given data source. Application has two data sources - `Retrofit` (network) and `Room` (local storage):
+
+- **Retrofit Service** - defines a set of API endpoints
+- **Retrofit Response Model** - definition of the network objects for given endpoint (top-level model for the data
+  consists of `ApiModels`)
+- **Retrofit Api Data Model** - defines the network objects (sub-objects of the `Response Model`)
+- **Room Database** - persistence database to store app data
+- **Room DAO** - interact with the stored data
+- **Room Entity** - definition of the stored objects
+
+Both `Retrofit API Data Models` and `Room Entities` contain annotations, so given framework understands how to parse the
+data into objects.
 
 ### Data Flow
 
@@ -230,12 +294,19 @@ implementation(project(":feature_album"))
 implementation(projects.featureAlbum)
 ```
 
+## Logcat debuggins
+
+To facilitate debuting project contains logs. You can filter logs understand app flow. Keywords:
+- `onCreate` see what `Activities` and `Fragements` have been created
+- `Action` - filter all actions performed on the screens to update the UI
+- `Http` - debug network requests and responses
+
 ## CI Pipeline
 
 CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in
 the [.github/workflows](.github/workflows) folder.
 
-### PR Verification
+### Pull Request Verification
 
 Series of workflows run (in parallel) for every opened PR and after merging PR to the `main` branch:
 
@@ -250,22 +321,12 @@ Series of workflows run (in parallel) for every opened PR and after merging PR t
 Read related articles to have a better understanding of underlying design decisions and various trade-offs.
 
 * [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
-* More coming soon
-
-## Gradle Update
-
-`./gradlew wrapper --gradle-version=1.2.3`
+* ...
 
 ## What This Project Does Not Cover?
 
 The interface of the app utilizes some of the modern material design components, however, is deliberately kept simple to
 focus on application architecture and project config.
-
-## Upcoming Improvements
-
-Checklist of all
-upcoming [enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement)
-.
 
 ## Getting Started
 
@@ -276,10 +337,22 @@ There are a few ways to open this project.
 1. `Android Studio` -> `File` -> `New` -> `From Version control` -> `Git`
 2. Enter `https://github.com/igorwojda/android-showcase.git` into URL field and press `Clone` button
 
-### Command-line + Android Studio
+### Command-line And Android Studio
 
 1. Run `git clone https://github.com/igorwojda/android-showcase.git` command to clone the project
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
+
+### Plugins
+
+It us recommended to install [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure plugin open 
+Android Studio preferences, open `Tools`, open `Detekt` and add [detekty.yml](detekty.yml) configuration file.
+
+## Upcoming Improvements
+
+This project is under active development and it is being occasionally refined.
+
+Check the list of all upcoming
+[enhancements](https://github.com/igorwojda/android-showcase/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement).
 
 ## Inspiration
 
@@ -287,60 +360,77 @@ Here are few additional resources.
 
 ### Cheatsheet
 
+- [Material Theme Builder](https://m3.material.io/theme-builder#/dynamic) - generate dynamic material theme and see it
+  in action
+- [Compose Material 3 Components](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary)
+\- list containing material components
 - [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
 - [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+
   most important tools
 - [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) -
   most popular coroutine usages
 
-### Android projects
+### Other Android Projects
 
 Other high-quality projects will help you to find solutions that work for your project (random order):
 
-- [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
+- [Compose Samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio
+- [Jetpack Compose Playground](https://github.com/Foso/Jetpack-Compose-Playground) - This is an Jetpack Compose example
+  project
+- [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and
+  Jetpack Compose
+- [WhatsApp Clone Compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack
+  Compose and Stream Chat SDK for Compose projects to help you learn about Compose in Android
+- [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019 and 2021
 - [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various
-  Android architecture approaches
-- [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and Jetpack Compose
-- [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
-  libraries
-- [GithubBrowserSample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
+  Android architecture approaches to developing Android apps
+- [Github Browser Sample](https://github.com/googlesamples/android-architecture-components) - multiple small projects
   demonstrating usage of Android Architecture Components
-- [Plaid](https://github.com/android/plaid) - a showcase of Android material design
-- [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
-  diagrams of Clean Architecture layers
-- [Android samples](https://github.com/android) - official Android samples repository
+- [Clean Architecture Boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - clean
+  architecture for Android
 - [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together with very good
   documentation
-- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
-  preconfigured Android Kotlin project in a few seconds.
-- [whatsApp-clone-compose](https://github.com/getStream/whatsApp-clone-compose/) - WhatsApp clone app built with Jetpack
-  Compose and Stream Chat SDK for Compose
-- [compose-samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio
-  projects to help you learn about Compose in Android
+- [Kotlin Android Template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
+  preconfigured Android Kotlin project in a few seconds
 
-## Known issues
+## Known Issues
 
+- When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
+  using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
+  [STACKOVERFLOW-59275182](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182))
+- Jetpack compose depends on concrete Kotlin version. Kotlin upgrade is blocked until compose catches up
+  (error: This version (x.x.x) of the Compose Compiler requires Kotlin version x.x.x but you appear to be using Kotlin
+  version y.y.y which is not known to be compatible)
+- `Mockk` can;t find an answer for suspended function, so test in the `AlbumDetailViewModelTest` was disabled
+- KSP depends on concrete Kotlin version. It must be upgraded together with Kotlin.
 - [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
-  ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM yet.
-- ktlint `FileName` rule has to be disabled, becasue it is not compatible with fie containg a single extension 
-  [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)  
+  `ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM` yet.
+- ktlint `FileName` rule has to be disabled, because it is not compatible with fie contain a single extension
+  [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)
 - Delegate import is not provided when a variable has the same name as
   Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
+- `androidx.compose.runtime.getValue` and `androidx.compose.runtime.setValue` imports are can't be resolved
+  automatically - they had to be added manually [KTIJ-23200](https://youtrack.jetbrains.com/issue/KTIJ-23200)
 - Correct code is marked as an error in `build.gradle.kts` files when using `libs` from the Gradle Version Catalog
   ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
   [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
 - [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
-  rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig).
+  rule conflicts with IDE default formatting rule, so it have to be [.editorconfig](.editorconfig) file.
   and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
-- False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml
+- False positive "Unused symbol" for a custom Android application class referenced in `AndroidManifest.xml`
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - Android lint complains about exceeding access rights to
-  ArchTaskExecutor ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
-- JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+  `ArchTaskExecutor` ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
+- JUnit 5 does not support tests with suspended
+  modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+- Custom detekt config is hard to update [Issue 4517](https://github.com/detekt/detekt/issues/4517)
+- Coil does not provide a way to automatically retry image load, so some images may not be loaded when connection speed
+  is low [Issue 132](https://github.com/coil-kt/coil/issues/132)
 
 ## Contribute
 
-Want to contribute? Check the [Contributing](CONTRIBUTING.md) docs.
+This project is being maintained to stay up to date with leading industry standards. Please check
+the [CONTRIBUTING](CONTRIBUTING.md) page if you want to help.
 
 ## Author
 

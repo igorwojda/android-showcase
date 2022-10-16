@@ -1,0 +1,14 @@
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">ws.audioscrobbler.com</domain>
+    </domain-config>
+    <debug-overrides>
+        <trust-anchors>
+            <!-- Trust user added CAs.
+            Enables usage of Charles Proxy to review the traffic (debug build variant only).
+            See: https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/
+            -->
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>

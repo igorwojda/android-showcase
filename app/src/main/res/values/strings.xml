@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">showcase</string>
+    <string name="app_name">Showcase</string>
 
     <!--Dynamic module titles-->
     <string name="feature_album">feature album</string>

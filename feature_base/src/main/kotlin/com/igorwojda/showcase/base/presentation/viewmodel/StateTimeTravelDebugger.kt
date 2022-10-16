@@ -63,7 +63,7 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
         }
     }
 
-    // Retrieve list of the properties from one of the ViewState instances (all have the same type)
+    // Get list of properties from  ViewState instances (all have the same type)
     private val propertyNames by lazy {
         stateTimeline.first().oldState.javaClass.kotlin.memberProperties.map { it.name }
     }

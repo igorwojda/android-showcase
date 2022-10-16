@@ -10,30 +10,57 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 @Entity(tableName = "albums")
-@TypeConverters(AlbumImageEntityTypeConverter::class)
+@TypeConverters(
+    AlbumImageEntityTypeConverter::class,
+    AlbumTrackEntityTypeConverter::class,
+    AlbumTagEntityTypeConverter::class
+)
 internal data class AlbumEntityModel(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val mbId: String,
     val name: String,
     val artist: String,
-    val images: List<AlbumImageEntityModel> = listOf(),
+    val images: List<ImageEntityModel> = listOf(),
+    val tracks: List<TrackEntityModel>?,
+    val tags: List<TagEntityModel>?,
 )
 
 internal fun AlbumEntityModel.toDomainModel() =
     Album(
         this.name,
         this.artist,
+        this.mbId,
         this.images.mapNotNull { it.toDomainModel() },
-        null,
-        this.mbId
+        this.tracks?.map { it.toDomainModel() },
+        this.tags?.map { it.toDomainModel() }
     )
 
 internal class AlbumImageEntityTypeConverter {
     @TypeConverter
     fun stringToList(data: String?) =
-        data?.let { Json.decodeFromString<List<AlbumImageEntityModel>>(it) } ?: listOf()
+        data?.let { Json.decodeFromString<List<ImageEntityModel>>(it) } ?: listOf()
 
     @TypeConverter
-    fun listToString(someObjects: List<AlbumImageEntityModel>): String =
+    fun listToString(someObjects: List<ImageEntityModel>): String =
+        Json.encodeToString(someObjects)
+}
+
+internal class AlbumTrackEntityTypeConverter {
+    @TypeConverter
+    fun stringToList(data: String?) =
+        data?.let { Json.decodeFromString<List<TrackEntityModel>>(it) } ?: listOf()
+
+    @TypeConverter
+    fun listToString(someObjects: List<TrackEntityModel>): String =
+        Json.encodeToString(someObjects)
+}
+
+internal class AlbumTagEntityTypeConverter {
+    @TypeConverter
+    fun stringToList(data: String?) =
+        data?.let { Json.decodeFromString<List<TagEntityModel>>(it) } ?: listOf()
+
+    @TypeConverter
+    fun listToString(someObjects: List<TagEntityModel>): String =
         Json.encodeToString(someObjects)
 }
