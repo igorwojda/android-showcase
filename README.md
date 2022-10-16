@@ -63,9 +63,9 @@ The app has a few screens located in multiple feature modules:
   <br/><br/>
 
 <p float="left">
-  <img src="misc/image/screen_album_list.webp" width="200" />
-  <img src="misc/image/screen_album_detail.webp" width="200" />
-  <img src="misc/image/screen_favorites.webp" width="200" />
+  <img src="misc/image/screen_album_list.webp" width="240" />
+  <img src="misc/image/screen_album_detail.webp" width="240" />
+  <img src="misc/image/screen_favorites.webp" width="240" />
 </p>
 
 ## Tech-Stack
