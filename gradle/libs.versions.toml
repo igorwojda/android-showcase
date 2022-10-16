@@ -31,7 +31,7 @@ kotlinSymbolProcessing = "1.7.20-1.0.6"
 
 junit = "5.9.1"
 androidJUnit5 = "1.8.2.1"
-kluent = "1.68"
+kluent = "1.70"
 testRunner = "1.4.0"
 mockk = "1.13.2"
 espresso = "3.4.0"
