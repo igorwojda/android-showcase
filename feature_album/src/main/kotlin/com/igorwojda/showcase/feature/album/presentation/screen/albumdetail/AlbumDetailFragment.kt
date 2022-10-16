@@ -47,7 +47,7 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.Albu
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Error
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
-import com.igorwojda.showcase.feature.album.presentation.util.formatTime
+import com.igorwojda.showcase.feature.album.presentation.util.TimeUtil
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -149,11 +149,13 @@ internal fun Track(track: Track) {
     Row {
         Icon(Icons.Outlined.Star, null)
         Spacer(modifier = Modifier.width(Dimen.spaceS))
-        Text(text = track.name)
-        Spacer(modifier = Modifier.width(Dimen.spaceS))
+
+        var text = track.name
 
         track.duration?.let {
-            Text(text = formatTime(track.duration))
+            text += " ${TimeUtil.formatTime(track.duration)}"
         }
+
+        Text(text = text)
     }
 }
