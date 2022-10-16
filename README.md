@@ -401,6 +401,7 @@ Other high-quality projects will help you to find solutions that work for your p
 - Jetpack compose depends on concrete Kotlin version. Kotlin upgrade is blocked until compose catches up
   (error: This version (x.x.x) of the Compose Compiler requires Kotlin version x.x.x but you appear to be using Kotlin
   version y.y.y which is not known to be compatible)
+- `Mockk` can;t find an answer for suspended function, so test in the `AlbumDetailViewModelTest` was disabled
 - KSP depends on concrete Kotlin version. It must be upgraded together with Kotlin.
 - [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
   `ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM` yet.

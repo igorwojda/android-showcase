@@ -13,7 +13,7 @@ fun TextTitleLarge(
     Text(
         text = text,
         modifier = modifier,
-        style = MaterialTheme.typography.titleLarge,
+        style = MaterialTheme.typography.titleLarge
     )
 }
 
@@ -25,6 +25,6 @@ fun TextTitleMedium(
     Text(
         text = text,
         modifier = modifier,
-        style = MaterialTheme.typography.titleMedium,
+        style = MaterialTheme.typography.titleMedium
     )
 }

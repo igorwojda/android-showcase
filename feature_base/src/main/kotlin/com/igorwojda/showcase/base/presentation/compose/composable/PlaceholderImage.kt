@@ -15,7 +15,7 @@ import com.igorwojda.showcase.base.R
 private val PLACEHOLDER_IMAGES = listOf(
     R.drawable.image_placeholder_1,
     R.drawable.image_placeholder_2,
-    R.drawable.image_placeholder_3,
+    R.drawable.image_placeholder_3
 )
 
 @Composable
@@ -24,17 +24,12 @@ fun PlaceholderImage(
     contentDescription: String?,
     modifier: Modifier = Modifier,
 ) {
-    Surface (
-        modifier = modifier
-    ) {
+    Surface(modifier = modifier) {
         val randomPlaceHolder by rememberSaveable {
             mutableStateOf(PLACEHOLDER_IMAGES.random())
         }
 
-        val model = ImageRequest.Builder(LocalContext.current)
-            .data(url)
-            .crossfade(true)
-            .build()
+        val model = ImageRequest.Builder(LocalContext.current).data(url).crossfade(true).build()
 
         AsyncImage(
             model = model,
