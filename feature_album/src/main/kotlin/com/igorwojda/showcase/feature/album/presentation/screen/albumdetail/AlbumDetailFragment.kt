@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.navArgs
+import com.google.accompanist.flowlayout.FlowRow
 import com.igorwojda.showcase.base.common.res.Dimen
 import com.igorwojda.showcase.base.presentation.activity.BaseFragment
 import com.igorwojda.showcase.base.presentation.compose.composable.DataNotFoundAnim
@@ -126,12 +127,11 @@ private fun PhotoDetails(content: Content) {
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 private fun Tags(tags: List<Tag>?) {
-    Row {
+    FlowRow(mainAxisSpacing = Dimen.spaceM) {
         tags?.forEach {
             ElevatedSuggestionChip(
                 label = { Text(it.name) },
                 onClick = { },
-                modifier = Modifier.padding(Dimen.spaceS)
             )
         }
     }

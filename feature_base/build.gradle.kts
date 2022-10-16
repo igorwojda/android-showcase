@@ -70,6 +70,7 @@ dependencies {
     api(libs.coroutines)
     api(libs.material)
     api(libs.composeMaterial)
+    api(libs.accompanistFlowLayout)
 
     testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)

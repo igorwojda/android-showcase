@@ -29,6 +29,9 @@ lottie = "5.2.0"
 playCore = "1.10.3"
 coreKtx = "1.9.0"
 fragmentKtx = "1.5.2"
+# Info https://google.github.io/accompanist/flowlayout/
+# Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
+accompanistFlowLayout = "0.26.6-SNAPSHOT"
 
 detekt = "1.22.0-RC1"
 androidGradlePlugin = "7.3.1"
@@ -80,6 +83,7 @@ navigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.re
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowLayout" }
 
 detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 

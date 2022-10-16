@@ -21,6 +21,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        // Accompanist snahshoots (https://github.com/google/accompanist)
+        maven("https://oss.sonatype.org/content/repositories/snapshots")
     }
 }
 
