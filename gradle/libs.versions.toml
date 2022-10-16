@@ -1,8 +1,13 @@
 [versions]
-kotlin = "1.7.10"
+kotlin = "1.7.20"
 
-# Find version here https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-kotlinCompilerExtensionVersion = "1.3.1"
+# KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin
+# https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
+kotlinSymbolProcessing = "1.7.20-1.0.7"
+
+# Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin
+# https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+kotlinCompilerExtensionVersion = "1.3.2"
 
 navigation = "2.5.2"
 testLogger = "3.2.0"
@@ -35,9 +40,6 @@ accompanistFlowLayout = "0.26.6-SNAPSHOT"
 
 detekt = "1.22.0-RC2"
 androidGradlePlugin = "7.3.1"
-
-# Find version here https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-kotlinSymbolProcessing = "1.7.10-1.0.6"
 
 # Test versionsandroid-junit5-plugin-dsl
 
