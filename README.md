@@ -4,7 +4,7 @@
 [![AGP](https://img.shields.io/badge/AGP-7.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-7.x-blue?style=flat)](https://gradle.org)
 
-[![codebeat badge](https://codebeat.co/badges/e9f1a825-b5bd-4c7a-aadc-7c8d0cf59310)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-main)
+[![Codebeat Badge](https://codebeat.co/badges/e9f1a825-b5bd-4c7a-aadc-7c8d0cf59310)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-main)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 Android Showcase project presents a modern approach to
@@ -291,10 +291,10 @@ implementation(projects.featureAlbum)
 
 ## Logcat debuggins
 
-To facilicate debuging project contains loggs. You can filter logs  understand app flow. Keywords:
+To facilitate debuting project contains logs. You can filter logs understand app flow. Keywords:
 - `onCreate` see what `Activities` and `Fragements` have been created
 - `Action` - filter all actions performed on the screens to update the UI
-- `Http` - debug network requests and responces
+- `Http` - debug network requests and responses
 
 ## CI Pipeline
 
