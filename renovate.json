@@ -18,5 +18,12 @@
       "matchCurrentVersion": "!/^0/",
       "automerge": true
     }
+  ],
+  "ignoreDeps": [
+    "org.jetbrains.kotlin:kotlin-reflect",
+    "com.google.devtools.ksp",
+    "androidx.compose.material3:material3",
+    "androidx.compose.ui:ui",
+    "androidx.compose.ui:ui-tooling-preview"
   ]
 }

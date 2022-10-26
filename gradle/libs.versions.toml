@@ -1,11 +1,11 @@
 [versions]
 kotlin = "1.7.20"
 
-# KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin
+# KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
 kotlinSymbolProcessing = "1.7.20-1.0.7"
 
-# Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin
+# Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
 kotlinCompilerExtensionVersion = "1.3.2"
 
