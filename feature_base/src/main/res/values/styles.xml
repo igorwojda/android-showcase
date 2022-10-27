@@ -1,5 +1,3 @@
 <resources>
-
-
-<style name="Theme.Showcase" parent="Theme.Material3.DynamicColors.DayNight" />
+    <style name="Theme.Showcase" parent="Theme.Material3.DynamicColors.DayNight" />
 </resources>
