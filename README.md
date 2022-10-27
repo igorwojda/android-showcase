@@ -395,11 +395,11 @@ Other high-quality projects will help you to find solutions that work for your p
 
 ## Known Issues
 
+- The `Material You Dynamic Colors` are not correctly applied to Fragment contents (only to Activity)
 - When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
   using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
   [STACKOVERFLOW-59275182](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182))
-- Jetpack compose compiler depends
-  on [specific Kotlin version](https://developer.android.com/jetpack/androidx/releases/compose-kotlin). Kotlin upgrade
+- Jetpack compose compiler depends on [specific Kotlin version](https://developer.android.com/jetpack/androidx/releases/compose-kotlin). Kotlin upgrade
   is blocked until compose catches up (error: This version (x.x.x) of the Compose Compiler requires Kotlin version x.x.x
   but you appear to be using Kotlin version y.y.y which is not known to be compatible)  (disabled in Renovate)
 - KSP depends on
@@ -410,22 +410,19 @@ Other high-quality projects will help you to find solutions that work for your p
   `ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM` yet.
 - ktlint `FileName` rule has to be disabled, because it is not compatible with fie contain a single extension
   [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)
-- Delegate import is not provided when a variable has the same name as
-  Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
+- Delegate import is not provided when a variable has the same name as Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - `androidx.compose.runtime.getValue` and `androidx.compose.runtime.setValue` imports are can't be resolved
   automatically - they had to be added manually [KTIJ-23200](https://youtrack.jetbrains.com/issue/KTIJ-23200)
 - Correct code is marked as an error in `build.gradle.kts` files when using `libs` from the Gradle Version Catalog
   ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
   [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
 - [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
-  rule conflicts with IDE default formatting rule, so it have to be [.editorconfig](.editorconfig) file.
-  and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
+  rule conflicts with IDE default formatting rule, so it have to be [.editorconfig](.editorconfig) file. and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
 - False positive "Unused symbol" for a custom Android application class referenced in `AndroidManifest.xml`
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - Android lint complains about exceeding access rights to
   `ArchTaskExecutor` ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
-- JUnit 5 does not support tests with suspended
-  modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+- JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
 - Custom detekt config is hard to update [Issue 4517](https://github.com/detekt/detekt/issues/4517)
 - Coil does not provide a way to automatically retry image load, so some images may not be loaded when connection speed
   is low [Issue 132](https://github.com/coil-kt/coil/issues/132)
