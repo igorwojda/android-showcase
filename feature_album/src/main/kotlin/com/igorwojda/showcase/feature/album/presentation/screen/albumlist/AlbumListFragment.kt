@@ -30,11 +30,11 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumL
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Content
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Error
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Loading
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.navigation.koinNavGraphViewModel
 
 class AlbumListFragment : BaseFragment() {
 
-    private val model: AlbumListViewModel by viewModel()
+    private val model: AlbumListViewModel by koinNavGraphViewModel(R.id.albumNavGraph)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         model.onEnter()

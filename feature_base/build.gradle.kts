@@ -53,15 +53,9 @@ dependencies {
     // See Dependency management section in the README.md
     // https://github.com/igorwojda/android-showcase#dependency-management
     api(libs.kotlin)
-    api(libs.koin)
-    api(libs.bundles.retrofit)
     api(libs.playCore)
     api(libs.coreKtx)
     api(libs.fragmentKtx)
-    api(libs.bundles.navigation)
-    api(libs.bundles.lifecycle)
-    api(libs.bundles.room)
-    api(libs.bundles.compose)
     api(libs.viewBindingPropertyDelegate)
     api(libs.timber)
     api(libs.constraintLayout)
@@ -71,6 +65,12 @@ dependencies {
     api(libs.material)
     api(libs.composeMaterial)
     api(libs.accompanistFlowLayout)
+    api(libs.bundles.koin)
+    api(libs.bundles.retrofit)
+    api(libs.bundles.navigation)
+    api(libs.bundles.lifecycle)
+    api(libs.bundles.room)
+    api(libs.bundles.compose)
 
     testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)

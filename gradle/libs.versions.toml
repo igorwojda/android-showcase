@@ -63,6 +63,7 @@ serializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 okhttpInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koinNavigation = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
 viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate", version.ref = "viewBindingPropertyDelegate" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayout" }
@@ -101,6 +102,7 @@ junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", versio
 
 [bundles]
 retrofit = ["retrofitCore", "kotlinxSerializationConverter", "serializationJson", "okhttp", "okhttpInterceptor"]
+koin = ["koin", "koinNavigation"]
 compose = ["composeUI", "toolingPreview", "lottie", "coil"]
 lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
 navigation = ["navigationFragment", "navigationUiKtx"]

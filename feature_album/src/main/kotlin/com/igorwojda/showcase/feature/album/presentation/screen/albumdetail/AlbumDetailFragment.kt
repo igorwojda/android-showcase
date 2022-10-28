@@ -49,11 +49,11 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.Albu
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
 import com.igorwojda.showcase.feature.album.presentation.util.TimeUtil
 import kotlinx.coroutines.flow.StateFlow
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.navigation.koinNavGraphViewModel
 
 internal class AlbumDetailFragment : BaseFragment() {
     private val args: AlbumDetailFragmentArgs by navArgs()
-    private val model: AlbumDetailViewModel by viewModel()
+    private val model: AlbumDetailViewModel by koinNavGraphViewModel(R.id.albumNavGraph)
 
     override fun onCreateView(
         inflater: LayoutInflater,
