@@ -399,7 +399,10 @@ Other high-quality projects will help you to find solutions that work for your p
 - When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
   using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
   [STACKOVERFLOW-59275182](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182))
-- Jetpack compose compiler depends on [specific Kotlin version](https://developer.android.com/jetpack/androidx/releases/compose-kotlin). Kotlin upgrade
+- Mockk is unable to mock some methods with implicit `continuation`
+  parameter in the `AlbumListViewModelTest` class ([Issue-957](https://github.com/mockk/mockk/issues/957))
+- Jetpack compose compiler depends
+  on [specific Kotlin version](https://developer.android.com/jetpack/androidx/releases/compose-kotlin). Kotlin upgrade
   is blocked until compose catches up (error: This version (x.x.x) of the Compose Compiler requires Kotlin version x.x.x
   but you appear to be using Kotlin version y.y.y which is not known to be compatible)  (disabled in Renovate)
 - KSP depends on
@@ -422,10 +425,11 @@ Other high-quality projects will help you to find solutions that work for your p
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - Android lint complains about exceeding access rights to
   `ArchTaskExecutor` ([Issue 79189568](https://issuetracker.google.com/u/0/issues/79189568))
-- JUnit 5 does not support tests with suspended modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
-- Custom detekt config is hard to update [Issue 4517](https://github.com/detekt/detekt/issues/4517)
+- JUnit 5 does not support tests with suspended
+  modifier ([Issue 1914](https://github.com/junit-team/junit5/issues/1914))
+- Custom detekt config is hard to update ([Issue 4517](https://github.com/detekt/detekt/issues/4517))
 - Coil does not provide a way to automatically retry image load, so some images may not be loaded when connection speed
-  is low [Issue 132](https://github.com/coil-kt/coil/issues/132)
+  is low ([Issue 132](https://github.com/coil-kt/coil/issues/132))
 
 ## Contribute
 

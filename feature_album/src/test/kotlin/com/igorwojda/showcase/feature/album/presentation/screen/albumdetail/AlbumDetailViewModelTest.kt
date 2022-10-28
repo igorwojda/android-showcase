@@ -25,7 +25,7 @@ class AlbumDetailViewModelTest {
     )
 
     @Test
-    @Disabled("mockk can't correctly mock this function")
+    @Disabled("mockk can't correctly mock this function https://github.com/mockk/mockk/issues/957")
     fun `onEnter album is not found`() = runTest {
         // given
         val albumName = "Thriller"
