@@ -54,10 +54,6 @@ internal class AlbumRepositoryImpl(
                     .album
                     .toDomainModel()
 
-                Timber.d("AAA Album info Tracks ${apiResult.data.album.tracks?.track?.size} ${album.tracks?.size}")
-                Timber.d("AAA Album info Tags ${apiResult.data.album.tags?.tag?.size} ${album.tags?.size}")
-                Timber.d("AAA ----------")
-
                 Result.Success(album)
             }
             is ApiResult.Error -> {
