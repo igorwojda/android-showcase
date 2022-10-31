@@ -27,7 +27,7 @@ abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(init
     private var state by Delegates.observable(initialState) { _, old, new ->
         if (old != new) {
             viewModelScope.launch {
-                _uiStateFlow.emit(new)
+                _uiStateFlow.value = new
             }
 
             stateTimeTravelDebugger?.apply {
