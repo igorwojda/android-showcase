@@ -9,7 +9,7 @@ internal class GetAlbumListUseCase(
     private val albumRepository: AlbumRepository,
 ) {
 
-    suspend fun execute(): Result<List<Album>> {
+    suspend operator fun invoke(): Result<List<Album>> {
         val phrase = "Jackson"
 
         val result = albumRepository

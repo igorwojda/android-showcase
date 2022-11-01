@@ -27,7 +27,7 @@ internal class AlbumListViewModel(
 
     private fun getAlbumList() {
         viewModelScope.launch {
-            getAlbumListUseCase.execute().also { result ->
+            getAlbumListUseCase().also { result ->
                 val action = when (result) {
                     is Result.Success -> {
                         if (result.value.isEmpty()) {

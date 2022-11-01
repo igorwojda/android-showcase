@@ -28,7 +28,7 @@ internal class AlbumDetailViewModel(
 
     private fun getAlbum(args: AlbumDetailFragmentArgs) {
         viewModelScope.launch {
-            getAlbumUseCase.execute(args.artistName, args.albumName, args.mbId).also {
+            getAlbumUseCase(args.artistName, args.albumName, args.mbId).also {
                 when (it) {
                     is Result.Success -> {
                         sendAction(AlbumLoadSuccess(it.value))
