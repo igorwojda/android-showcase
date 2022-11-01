@@ -416,11 +416,12 @@ Other high-quality projects will help you to find solutions that work for your p
 - Delegate import is not provided when a variable has the same name as Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - `androidx.compose.runtime.getValue` and `androidx.compose.runtime.setValue` imports are can't be resolved
   automatically - they had to be added manually [KTIJ-23200](https://youtrack.jetbrains.com/issue/KTIJ-23200)
-- Correct code is marked as an error in `build.gradle.kts` files when using `libs` from the Gradle Version Catalog
-  ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
+- Gradle Versions Catalog code is marked as an error in `build.gradle.kts`
+  files ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
   [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
 - [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
-  rule conflicts with IDE default formatting rule, so it have to be [.editorconfig](.editorconfig) file. and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
+  rule conflicts with IDE default formatting rule, so it have to be [.editorconfig](.editorconfig) file.
+  and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
 - False positive "Unused symbol" for a custom Android application class referenced in `AndroidManifest.xml`
   file ([KT-27971](https://youtrack.jetbrains.net/issue/KT-27971))
 - Android lint complains about exceeding access rights to

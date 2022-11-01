@@ -1,3 +1,4 @@
+@Suppress("DSL_SCOPE_VIOLATION") // Because of IDE bug https://youtrack.jetbrains.com/issue/KTIJ-19370
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
