@@ -38,7 +38,7 @@ class AlbumDetailViewModelTest {
         // Exception in thread "Test worker @coroutine#4" io.mockk.MockKException: no answer found for:
         // GetAlbumUseCase(#1).execute(Thriller, Michael Jackson, 123, continuation {})
         coEvery {
-            mockGetAlbumUseCase.execute(artistName, albumName, mbId)
+            mockGetAlbumUseCase(artistName, albumName, mbId)
         } returns Result.Failure()
 
         // when
