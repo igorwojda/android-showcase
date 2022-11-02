@@ -22,7 +22,7 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
-        val actual = runBlocking { cut.execute() }
+        val actual = runBlocking { cut() }
 
         // then
         actual shouldBeEqualTo Result.Success(albums)
@@ -37,7 +37,7 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
-        val actual = runBlocking { cut.execute() }
+        val actual = runBlocking { cut() }
 
         // then
         actual shouldBeEqualTo Result.Success(listOf(albumWithImage))
@@ -50,7 +50,7 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns resultFailure
 
         // when
-        val actual = runBlocking { cut.execute() }
+        val actual = runBlocking { cut() }
 
         // then
         actual shouldBeEqualTo resultFailure

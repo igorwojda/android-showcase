@@ -8,7 +8,7 @@ internal class GetAlbumUseCase(
     private val albumRepository: AlbumRepository,
 ) {
 
-    suspend fun execute(
+    suspend operator fun invoke(
         artistName: String,
         albumName: String,
         mbId: String?,
