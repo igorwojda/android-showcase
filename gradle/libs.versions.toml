@@ -36,7 +36,7 @@ coreKtx = "1.9.0"
 fragmentKtx = "1.5.4"
 # Info https://google.github.io/accompanist/flowlayout/
 # Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
-accompanistFlowLayout = "0.27.0"
+accompanistFlowLayout = "0.28.0"
 
 detekt = "1.22.0"
 androidGradlePlugin = "7.3.1"
