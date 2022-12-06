@@ -150,8 +150,7 @@ library.
 
 The modularized code-base approach provides a few benefits:
 
-- reusability - enable code sharing and building multiple apps from the same foundation. Apps should be a sum of their
-- features where the features are organized as separate modules.
+- reusability - enable code sharing and building multiple apps from the same foundation. Apps should be a sum of their features where the features are organized as separate modules.
 - [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) - each module has a clear API.
   Feature-related classes live in different modules and can't be referenced without explicit module dependency. We
   strictly control what is exposed to other parts of your codebase.
