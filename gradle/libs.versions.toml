@@ -14,7 +14,7 @@ testLogger = "3.2.0"
 coroutines = "1.6.4"
 retrofit = "2.9.0"
 okhttp = "4.10.0"
-koin = "3.3.0"
+koin = "3.3.1"
 coil = "2.2.2"
 # verison 2.6.0-alpha01 has collectAsStateWithLifecycle
 # https://issuetracker.google.com/issues/230557927?hl=id
