@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 
 import androidx.compose.runtime.Immutable
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.base.presentation.nav.NavManager
@@ -14,20 +15,36 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumL
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Content
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Error
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Loading
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(
+    private val state: SavedStateHandle,
     private val navManager: NavManager,
     private val getAlbumListUseCase: GetAlbumListUseCase,
 ) : BaseViewModel<UiState, Action>(Loading) {
 
-    fun onEnter() {
-        getAlbumList()
+    companion object {
+        const val DEFAULT_QUERY_NAME = "Jackson"
+        private const val SAVED_QUERY_KEY = "query"
     }
 
-    private fun getAlbumList() {
-        viewModelScope.launch {
-            getAlbumListUseCase().also { result ->
+    fun onEnter(query: String? = (state.get(SAVED_QUERY_KEY) as? String) ?: DEFAULT_QUERY_NAME) {
+        getAlbumList(query)
+    }
+
+    private var job: Job? = null
+
+    private fun getAlbumList(query: String?) {
+        if (job != null) {
+            job?.cancel()
+            job = null
+        }
+
+        state[SAVED_QUERY_KEY] = query
+
+        job = viewModelScope.launch {
+            getAlbumListUseCase(query).also { result ->
                 val action = when (result) {
                     is Result.Success -> {
                         if (result.value.isEmpty()) {
