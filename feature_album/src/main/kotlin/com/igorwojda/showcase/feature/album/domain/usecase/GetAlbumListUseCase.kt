@@ -9,7 +9,7 @@ internal class GetAlbumListUseCase(
     private val albumRepository: AlbumRepository,
 ) {
 
-    suspend fun invoke(query: String?): Result<List<Album>> {
+    suspend operator fun invoke(query: String?): Result<List<Album>> {
         val result = albumRepository
             .searchAlbum(query)
             .mapSuccess {

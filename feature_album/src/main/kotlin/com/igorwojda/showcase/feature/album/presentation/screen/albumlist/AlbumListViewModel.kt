@@ -44,7 +44,7 @@ internal class AlbumListViewModel(
         state[SAVED_QUERY_KEY] = query
 
         job = viewModelScope.launch {
-            getAlbumListUseCase.invoke(query).also { result ->
+            getAlbumListUseCase(query).also { result ->
                 val action = when (result) {
                     is Result.Success -> {
                         if (result.value.isEmpty()) {
