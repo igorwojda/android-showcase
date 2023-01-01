@@ -2,4 +2,6 @@
 <resources>
     <string name="album_cover_content_description">Album Cover</string>
     <string name="tracks">Tracks</string>
+    <string name="search_album_hint">Search Album</string>
+    <string name="album">Albums</string>
 </resources>

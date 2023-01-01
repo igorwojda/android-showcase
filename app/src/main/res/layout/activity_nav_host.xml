@@ -1,34 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".app.presentation.NavHostActivity">
+
+    <LinearLayout
+        android:id="@+id/main_appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".app.presentation.NavHostActivity">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:animateLayoutChanges="true"
+        android:background="?colorSurface"
+        android:elevation="1dp"
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"
+            android:layout_weight="1"
+            android:animateLayoutChanges="true"
+            app:logoDescription="@string/app_name">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/main_search_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/main_search_text_input_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/white"
+                    tools:visibility="visible">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/main_search_text_input_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/search_album_hint"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/main_search_item_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="8dp"
+                    android:textAppearance="?textAppearanceHeadline5"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    tools:text="456 clients"
+                    tools:visibility="visible" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/navHostFragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNav"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/app_nav_graph" />
+        android:id="@+id/navHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_appbar_layout"
+        app:navGraph="@navigation/app_nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/navHostFragment"
-            app:menu="@menu/bottom_nav_menu" />
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navHostFragment"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

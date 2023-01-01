@@ -4,6 +4,7 @@ import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.feature.album.data.repository.AlbumRepositoryImpl
 import com.igorwojda.showcase.feature.album.domain.DomainFixtures
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
@@ -22,10 +23,21 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
-        val actual = runBlocking { cut() }
+        val actual = runBlocking { cut.invoke(null) }
 
         // then
         actual shouldBeEqualTo Result.Success(albums)
+    }
+
+    @Test
+    fun `WHEN onEnter is called with no value then the default query search term is null`() = runBlocking {
+        // given
+        val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())
+        coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
+
+        cut.invoke(null)
+
+        coVerify { mockAlbumRepository.searchAlbum(null) }
     }
 
     @Test
@@ -37,7 +49,7 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
-        val actual = runBlocking { cut() }
+        val actual = runBlocking { cut.invoke(null) }
 
         // then
         actual shouldBeEqualTo Result.Success(listOf(albumWithImage))
@@ -50,7 +62,7 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns resultFailure
 
         // when
-        val actual = runBlocking { cut() }
+        val actual = runBlocking { cut.invoke(null) }
 
         // then
         actual shouldBeEqualTo resultFailure

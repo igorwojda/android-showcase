@@ -16,7 +16,7 @@ internal class AlbumRepositoryImpl(
     private val albumDao: AlbumDao,
 ) : AlbumRepository {
 
-    override suspend fun searchAlbum(phrase: String): Result<List<Album>> =
+    override suspend fun searchAlbum(phrase: String?): Result<List<Album>> =
         when (val apiResult = albumRetrofitService.searchAlbumAsync(phrase)) {
             is ApiResult.Success -> {
                 val albums = apiResult

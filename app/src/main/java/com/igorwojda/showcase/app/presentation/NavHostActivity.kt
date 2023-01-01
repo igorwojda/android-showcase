@@ -1,6 +1,9 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
+import android.view.View
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -9,9 +12,10 @@ import com.igorwojda.showcase.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.base.presentation.ext.navigateSafe
 import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.databinding.ActivityNavHostBinding
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListFragment
 import org.koin.android.ext.android.inject
 
-class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
+class NavHostActivity : BaseActivity(R.layout.activity_nav_host), NavController.OnDestinationChangedListener {
 
     private val binding: ActivityNavHostBinding by viewBinding()
     private val navManager: NavManager by inject()
@@ -19,8 +23,19 @@ class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initAppBar()
         initNavManager()
         initBottomNavigation()
+    }
+
+    private fun initAppBar() {
+        binding.apply {
+            mainAppToolbar = binding.mainToolbar
+            appBarLayout = binding.mainAppbarLayout
+            searchTextInputEditText = binding.mainSearchTextInputEditText
+            searchLayout = binding.mainSearchLayout
+            searchTextInputLayout = binding.mainSearchTextInputLayout
+        }
     }
 
     private fun initBottomNavigation() {
@@ -29,7 +44,7 @@ class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
         // See https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182#59275182
         // See https://issuetracker.google.com/issues/142847973
         val navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
-
+        navController.addOnDestinationChangedListener(this)
         binding.bottomNav.setupWithNavController(navController)
     }
 
@@ -37,8 +52,18 @@ class NavHostActivity : BaseActivity(R.layout.activity_nav_host) {
         navManager.setOnNavEvent {
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment)
             val currentFragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
-
             currentFragment?.navigateSafe(it)
+        }
+    }
+
+    override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+        when (destination.label) {
+            DESTINATION_ALBUM_LIST_LABEL -> {
+                AlbumListFragment.configureAppBar(this)
+            }
+            else -> {
+                binding.mainAppbarLayout.visibility = View.GONE
+            }
         }
     }
 }

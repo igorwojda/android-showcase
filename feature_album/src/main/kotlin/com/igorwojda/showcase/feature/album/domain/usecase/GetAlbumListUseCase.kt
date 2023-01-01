@@ -9,11 +9,9 @@ internal class GetAlbumListUseCase(
     private val albumRepository: AlbumRepository,
 ) {
 
-    suspend operator fun invoke(): Result<List<Album>> {
-        val phrase = "Jackson"
-
+    suspend fun invoke(query: String?): Result<List<Album>> {
         val result = albumRepository
-            .searchAlbum(phrase)
+            .searchAlbum(query)
             .mapSuccess {
                 val albumsWithImages = value.filter { it.getDefaultImageUrl() != null }
 

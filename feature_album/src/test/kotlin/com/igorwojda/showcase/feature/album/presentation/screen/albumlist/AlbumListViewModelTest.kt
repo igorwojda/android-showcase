@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 
+import androidx.lifecycle.SavedStateHandle
 import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.feature.album.domain.model.Album
@@ -25,7 +26,10 @@ class AlbumListViewModelTest {
 
     private val mockNavManager: NavManager = mockk(relaxed = true)
 
+    private val savedStateHandle: SavedStateHandle = mockk(relaxed = true)
+
     private val cut = AlbumListViewModel(
+        savedStateHandle,
         mockNavManager,
         mockGetAlbumListUseCase
     )
@@ -33,10 +37,10 @@ class AlbumListViewModelTest {
     @Test
     fun `onEnter emits state error`() = runTest {
         // given
-        coEvery { mockGetAlbumListUseCase() } returns Result.Success(emptyList())
+        coEvery { mockGetAlbumListUseCase.invoke(null) } returns Result.Success(emptyList())
 
         // when
-        cut.onEnter()
+        cut.onEnter(null)
 
         // then
         advanceUntilIdle()
@@ -49,10 +53,10 @@ class AlbumListViewModelTest {
         // given
         val album = Album("albumName", "artistName")
         val albums = listOf(album)
-        coEvery { mockGetAlbumListUseCase() } returns Result.Success(albums)
+        coEvery { mockGetAlbumListUseCase.invoke(null) } returns Result.Success(albums)
 
         // when
-        cut.onEnter()
+        cut.onEnter(null)
 
         // then
         advanceUntilIdle()
