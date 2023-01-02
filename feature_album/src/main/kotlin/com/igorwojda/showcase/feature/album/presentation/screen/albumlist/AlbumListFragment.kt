@@ -44,7 +44,7 @@ import org.koin.androidx.navigation.koinNavGraphViewModel
 class AlbumListFragment : BaseFragment() {
 
     companion object {
-
+    
         const val MINIMUM_PRODUCT_QUERY_SIZE = 1
         const val DELAY_BEFORE_SUBMITTING_QUERY = 500L
 
