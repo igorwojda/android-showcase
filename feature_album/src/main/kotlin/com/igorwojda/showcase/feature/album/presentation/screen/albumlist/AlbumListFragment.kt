@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
@@ -170,9 +171,7 @@ private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
         columns = GridCells.Adaptive(Dimen.imageSize),
         contentPadding = PaddingValues(Dimen.screenContentPadding)
     ) {
-        items(albums.size) { index ->
-            val album = albums[index]
-
+        items(items = albums) { album ->
             ElevatedCard(
                 modifier = Modifier
                     .padding(Dimen.spaceS)
