@@ -171,7 +171,7 @@ private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
         columns = GridCells.Adaptive(Dimen.imageSize),
         contentPadding = PaddingValues(Dimen.screenContentPadding)
     ) {
-        items(items = albums) { album ->
+        items(items = albums, key = { it.id }) { album ->
             ElevatedCard(
                 modifier = Modifier
                     .padding(Dimen.spaceS)
