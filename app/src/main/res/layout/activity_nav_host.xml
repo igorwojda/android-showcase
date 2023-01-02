@@ -43,7 +43,6 @@
                     android:layout_weight="1"
                     android:visibility="gone"
                     app:endIconMode="clear_text"
-                    app:hintTextColor="@color/white"
                     tools:visibility="visible">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -53,9 +52,7 @@
                         android:hint="@string/search_album_hint"
                         android:imeOptions="actionSearch"
                         android:inputType="text"
-                        android:maxLines="1"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +66,6 @@
                     android:gravity="center_vertical"
                     android:paddingHorizontal="8dp"
                     android:textAppearance="?textAppearanceHeadline5"
-                    android:textColor="@color/white"
                     android:visibility="gone"
                     tools:text="456 clients"
                     tools:visibility="visible" />
