@@ -43,7 +43,6 @@
                     android:layout_weight="1"
                     android:visibility="gone"
                     app:endIconMode="clear_text"
-                    app:hintTextColor="@color/white"
                     tools:visibility="visible">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -53,26 +52,9 @@
                         android:hint="@string/search_album_hint"
                         android:imeOptions="actionSearch"
                         android:inputType="text"
-                        android:maxLines="1"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/main_search_item_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_weight="0"
-                    android:gravity="center_vertical"
-                    android:paddingHorizontal="8dp"
-                    android:textAppearance="?textAppearanceHeadline5"
-                    android:textColor="@color/white"
-                    android:visibility="gone"
-                    tools:text="456 clients"
-                    tools:visibility="visible" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
