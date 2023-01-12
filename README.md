@@ -8,9 +8,9 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 Android Showcase project presents a modern approach to
-[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development. This project utilizes
-popular tools, libraries, linters, Gradle plugins, testing frameworks, and CI setup. It is a complete sample of a fully
-functional Android application.
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development and 
+provide architektural guidence. This project utilizes popular tools, libraries, linters, Gradle plugins, 
+testing frameworks, and CI setup. It is a complete sample of a fully functional Android application. 
 
 Project is focusing on modular, scalable, maintainable, and testable [architecture](#architecture), leading
 [tech-stack](#tech-stack) and demonstrates the best development practices.
