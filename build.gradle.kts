@@ -23,7 +23,7 @@ plugin in every subproject.
 tasks.register("detektCheck", Detekt::class) {
     val autoCorrectParam = project.hasProperty("detektAutoCorrect")
 
-    description = "Custom detekt for to check all modules"
+    description = "Custom detekt task to check all modules"
     parallel = true
     ignoreFailures = false
     autoCorrect = autoCorrectParam
