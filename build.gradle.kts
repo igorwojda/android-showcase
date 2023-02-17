@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 @Suppress("DSL_SCOPE_VIOLATION") // Because of IDE bug https://youtrack.jetbrains.com/issue/KTIJ-19370
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -18,7 +20,7 @@ subprojects {
 Allows to run detekt for all files in the Gradle project and all subprojects without a need to configure detekt
 plugin in every subproject.
  */
-tasks.register("detektCheck", io.gitlab.arturbosch.detekt.Detekt::class) {
+tasks.register("detektCheck", Detekt::class) {
     val autoCorrectParam = project.hasProperty("detektAutoCorrect")
 
     description = "Custom detekt for to check all modules"
