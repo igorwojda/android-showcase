@@ -53,7 +53,6 @@ coreTesting = "2.1.0"
 
 [libraries]
 kotlin = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-junit = { module = "junit:junit", version.ref = "junit" }
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 retrofitCore = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 kotlinxSerializationConverter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "kotlinxSerializationConverter" }
@@ -91,6 +90,7 @@ accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayou
 detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
 # Test dependencies
+junit = { module = "junit:junit", version.ref = "junit" }
 testCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kluent = { module = "org.amshove.kluent:kluent-android", version.ref = "kluent" }
 testRunner = { module = "androidx.test:runner", version.ref = "testRunner" }
