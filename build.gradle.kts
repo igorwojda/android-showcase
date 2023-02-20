@@ -12,9 +12,7 @@ plugins {
 
 subprojects {
     tasks.withType<Test> {
-        maxParallelForks =
-            (org.jetbrains.kotlin.cli.common.repl.ReplEvalResult.Error.Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 }
-                ?: 1
+        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
     }
 }
 
