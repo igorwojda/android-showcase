@@ -10,6 +10,5 @@ kotlinSymbolProcessing = "1.7.20-1.0.7"
 kotlinCompilerExtensionVersion = "1.3.2"
 
 [plugins]
-# Search Gradle Plugins https://plugins.gradle.org/
 # Due to Gradle bug this plugin have to be defined here - https://github.com/gradle/gradle/issues/23972
 kotlin-symbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
