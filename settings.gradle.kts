@@ -36,9 +36,6 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             version("kotlin", "1.7.20")
-            // Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
-            // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-            // version("kotlinSymbolProcessing", "1.7.20-1.0.7")
             version("kotlinCompilerExtensionVersion", "1.3.2")
             version("navigation", "2.5.3")
             version("testLogger", "3.2.0")
