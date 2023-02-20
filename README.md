@@ -309,8 +309,9 @@ the [.github/workflows](.github/workflows) folder.
 
 Series of workflows run (in parallel) for every opened PR and after merging PR to the `main` branch:
 
-* `./gradlew lintDebug` - runs Android lint
-* `./gradlew detektCheck` - runs detekt and ktlint
+* `./gradlew lintDebug` - checks that sourcecode satisfies Android lint rules
+* `./gradlew detektCheck` - checks that sourcecode satisfies detekt (and ktlint) rules
+* `./gradlew detektApply` - applies detket (and ktlint) code formatting rules to sourcecode in-place
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
