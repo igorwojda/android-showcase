@@ -7,12 +7,23 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.safeArgs) apply false
     alias(libs.plugins.junit5Android) apply false
+    alias(libs.plugins.spotless)
     alias(libs.plugins.detekt)
 }
 
 subprojects {
     tasks.withType<Test> {
         maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+    }
+}
+
+spotless {
+    kotlin {
+        target("**/*.kt", "**/*.kts")
+        ktlint()
+
+        indentWithSpaces()
+        endWithNewline()
     }
 }
 
@@ -50,11 +61,6 @@ configure(listOf(detektCheck, detektApply)) {
         reports {
             html.required.set(true)
             xml.required.set(true)
-        }
-
-        dependencies {
-            // detekt wrapper for rules implemented by ktlint https://detekt.dev/docs/rules/formatting
-            detektPlugins(libs.detektFormatting)
         }
     }
 }

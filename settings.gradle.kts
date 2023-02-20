@@ -65,6 +65,7 @@ dependencyResolutionManagement {
             // Info https://google.github.io/accompanist/flowlayout/
             // Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
             version("accompanistFlowLayout", "0.27.0")
+            version("spotless", "6.15.0")
             version("detekt", "1.22.0")
             version("androidGradlePlugin", "7.4.1")
             version("junit", "5.9.2")
@@ -81,9 +82,7 @@ dependencyResolutionManagement {
             plugin("kotlin-jvm", "org.jetbrains.kotlin.jvm").versionRef("kotlin")
             plugin("kotlin-android", "org.jetbrains.kotlin.android").versionRef("kotlin")
             plugin("kotlin-serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
-            // KSP depends on specific Kotlin versionRef, so it must be upgraded together with Kotlin (disabled in Renovate)
-            // https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-//            plugin("kotlin-symbolprocessing", "com.google.devtools.ksp").versionRef("1.7.20-1.0.7")
+            plugin("spotless", "com.diffplug.spotless").versionRef("spotless")
             plugin("detekt", "io.gitlab.arturbosch.detekt").versionRef("detekt")
             plugin("safeArgs", "androidx.navigation.safeargs.kotlin").versionRef("navigation")
             plugin("junit5Android", "de.mannodermaus.android-junit5").versionRef("androidJUnit5")
@@ -131,7 +130,6 @@ dependencyResolutionManagement {
             library("roomRuntime", "androidx.room", "room-runtime").versionRef("room")
             library("roomCompiler", "androidx.room", "room-compiler").versionRef("room")
             library("accompanistFlowLayout", "com.google.accompanist", "accompanist-flowlayout").versionRef("accompanistFlowLayout")
-            library("detektFormatting", "io.gitlab.arturbosch.detekt", "detekt-formatting").versionRef("detekt")
             library("junit", "junit", "junit").versionRef("junit")
             library("testCoroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("coroutines")
             library("kluent", "org.amshove.kluent", "kluent-android").versionRef("kluent")
