@@ -310,8 +310,10 @@ the [.github/workflows](.github/workflows) folder.
 Series of workflows run (in parallel) for every opened PR and after merging PR to the `main` branch:
 
 * `./gradlew lintDebug` - checks that sourcecode satisfies Android lint rules
-* `./gradlew detektCheck` - checks that sourcecode satisfies detekt (and ktlint) rules
-* `./gradlew detektApply` - applies detket (and ktlint) code formatting rules to sourcecode in-place
+* `./gradlew detektCheck` - checks that sourcecode satisfies detekt rules
+* `./gradlew detektApply` - applies detekt code formatting rules to sourcecode in-place
+* `./gradlew spotlessCheck` - checks that sourcecode satisfies formatting steps.
+* `./gradlew spotlessApply` - applies code formatting steps to sourcecode in-place.
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create app bundle
@@ -394,8 +396,6 @@ Other high-quality projects will help you to find solutions that work for your p
   preconfigured Android Kotlin project in a few seconds
 
 ## Known Issues
-
--
 
 The [symbol-processing-gradle-plugin](https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin)
 dependency can't be resolved in the `settings.gradle.kts`
