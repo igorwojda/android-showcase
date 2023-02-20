@@ -395,7 +395,14 @@ Other high-quality projects will help you to find solutions that work for your p
 
 ## Known Issues
 
-- No usages are found for Kotlin `invoke` operator ([KTIJ-1053](https://youtrack.jetbrains.com/issue/KTIJ-1053/Find-usages-no-convention-usages-for-suspend-invoke-operator))
+-
+
+The [symbol-processing-gradle-plugin](https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin)
+dependency can't be resolved in the `settings.gradle.kts`
+file ([ISSUE-23972](https://github.com/gradle/gradle/issues/23972).
+
+- No usages are found for Kotlin `invoke`
+  operator ([KTIJ-1053](https://youtrack.jetbrains.com/issue/KTIJ-1053/Find-usages-no-convention-usages-for-suspend-invoke-operator))
 - The `Material You Dynamic Colors` are not correctly applied to Fragment contents (only to Activity)
 - When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
   using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
