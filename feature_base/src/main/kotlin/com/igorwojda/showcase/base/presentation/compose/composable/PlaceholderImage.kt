@@ -15,7 +15,7 @@ import com.igorwojda.showcase.base.R
 private val PLACEHOLDER_IMAGES = listOf(
     R.drawable.image_placeholder_1,
     R.drawable.image_placeholder_2,
-    R.drawable.image_placeholder_3
+    R.drawable.image_placeholder_3,
 )
 
 @Composable
@@ -34,7 +34,7 @@ fun PlaceholderImage(
         AsyncImage(
             model = model,
             contentDescription = contentDescription,
-            placeholder = painterResource(randomPlaceHolder)
+            placeholder = painterResource(randomPlaceHolder),
         )
     }
 }

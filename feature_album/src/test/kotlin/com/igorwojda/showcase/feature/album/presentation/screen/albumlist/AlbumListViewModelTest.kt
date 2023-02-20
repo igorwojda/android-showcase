@@ -31,7 +31,7 @@ class AlbumListViewModelTest {
     private val cut = AlbumListViewModel(
         savedStateHandle,
         mockNavManager,
-        mockGetAlbumListUseCase
+        mockGetAlbumListUseCase,
     )
 
     @Test
@@ -62,7 +62,7 @@ class AlbumListViewModelTest {
         advanceUntilIdle()
 
         cut.uiStateFlow.value shouldBeEqualTo UiState.Content(
-            albums = albums
+            albums = albums,
         )
     }
 
@@ -76,13 +76,13 @@ class AlbumListViewModelTest {
         val album = Album(
             artist = artistName,
             name = albumName,
-            mbId = mbId
+            mbId = mbId,
         )
 
         val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(
             artistName,
             albumName,
-            mbId
+            mbId,
         )
 
         // when

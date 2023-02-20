@@ -13,10 +13,10 @@ internal data class TrackApiModel(
 
 internal fun TrackApiModel.toDomainModel() = Track(
     name = this.name,
-    duration = this.duration
+    duration = this.duration,
 )
 
 internal fun TrackApiModel.toEntityModel() = TrackEntityModel(
     name = this.name,
-    duration = this.duration
+    duration = this.duration,
 )

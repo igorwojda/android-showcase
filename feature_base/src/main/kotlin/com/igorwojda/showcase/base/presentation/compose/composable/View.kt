@@ -25,7 +25,7 @@ fun ProgressIndicator() {
         CircularProgressIndicator(
             modifier = Modifier
                 .align(Alignment.Center)
-                .size(Dimen.spaceXXL)
+                .size(Dimen.spaceXXL),
         )
     }
 }

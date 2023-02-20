@@ -11,9 +11,9 @@ internal data class TagApiModel(
 )
 
 internal fun TagApiModel.toDomainModel() = Tag(
-    name = this.name
+    name = this.name,
 )
 
 internal fun TagApiModel.toEntityModel() = TagEntityModel(
-    name = this.name
+    name = this.name,
 )

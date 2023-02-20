@@ -19,17 +19,19 @@ import org.junit.jupiter.api.extension.ExtensionContext
 class InstantTaskExecutorExtension : BeforeEachCallback, AfterEachCallback {
 
     override fun beforeEach(context: ExtensionContext) {
-        ArchTaskExecutor.getInstance().setDelegate(object : TaskExecutor() {
-            override fun executeOnDiskIO(runnable: Runnable) {
-                runnable.run()
-            }
+        ArchTaskExecutor.getInstance().setDelegate(
+            object : TaskExecutor() {
+                override fun executeOnDiskIO(runnable: Runnable) {
+                    runnable.run()
+                }
 
-            override fun postToMainThread(runnable: Runnable) {
-                runnable.run()
-            }
+                override fun postToMainThread(runnable: Runnable) {
+                    runnable.run()
+                }
 
-            override fun isMainThread() = true
-        })
+                override fun isMainThread() = true
+            },
+        )
     }
 
     override fun afterEach(context: ExtensionContext?) {

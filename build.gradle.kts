@@ -51,5 +51,10 @@ configure(listOf(detektCheck, detektApply)) {
             html.required.set(true)
             xml.required.set(true)
         }
+
+        dependencies {
+            // detekt wrapper for rules implemented by ktlint https://detekt.dev/docs/rules/formatting
+            detektPlugins(libs.detektFormatting)
+        }
     }
 }

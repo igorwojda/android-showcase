@@ -7,5 +7,5 @@ import com.igorwojda.showcase.feature.album.presentation.presentationModule
 val featureAlbumModules = listOf(
     presentationModule,
     domainModule,
-    dataModule
+    dataModule,
 )

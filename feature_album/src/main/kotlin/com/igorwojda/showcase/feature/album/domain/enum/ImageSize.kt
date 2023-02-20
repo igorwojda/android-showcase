@@ -5,5 +5,5 @@ internal enum class ImageSize {
     MEDIUM,
     LARGE,
     EXTRA_LARGE,
-    MEGA
+    MEGA,
 }

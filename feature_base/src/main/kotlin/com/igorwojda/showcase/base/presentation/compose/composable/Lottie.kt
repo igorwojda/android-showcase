@@ -21,13 +21,13 @@ import com.igorwojda.showcase.base.common.res.Dimen
 fun LabeledAnimation(@StringRes label: Int, @RawRes assetResId: Int) {
     Card(
         modifier = Modifier
-            .wrapContentSize()
+            .wrapContentSize(),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .wrapContentSize()
-                .padding(Dimen.spaceXL)
+                .padding(Dimen.spaceXL),
         ) {
             TextTitleMedium(text = stringResource(label))
             LottieAssetLoader(assetResId)
@@ -41,6 +41,6 @@ fun LottieAssetLoader(@RawRes assetResId: Int) {
 
     LottieAnimation(
         composition,
-        modifier = Modifier.requiredSize(Dimen.imageSize)
+        modifier = Modifier.requiredSize(Dimen.imageSize),
     )
 }

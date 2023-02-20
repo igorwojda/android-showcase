@@ -9,5 +9,5 @@ internal data class TagEntityModel(
 )
 
 internal fun TagEntityModel.toDomainModel() = Tag(
-    name = this.name
+    name = this.name,
 )

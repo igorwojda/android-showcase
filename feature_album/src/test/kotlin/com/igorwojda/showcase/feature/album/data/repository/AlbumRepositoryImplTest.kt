@@ -32,7 +32,7 @@ class AlbumRepositoryImplTest {
         val albums = DataFixtures.getAlbumsApiModel()
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
-            DataFixtures.ApiResponse.getSearchAlbum()
+            DataFixtures.ApiResponse.getSearchAlbum(),
         )
 
         // when
@@ -48,7 +48,7 @@ class AlbumRepositoryImplTest {
         // given
         val phrase = "phrase"
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
-            DataFixtures.ApiResponse.getSearchAlbum()
+            DataFixtures.ApiResponse.getSearchAlbum(),
         )
 
         // when
@@ -100,7 +100,7 @@ class AlbumRepositoryImplTest {
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, mbId)
         } returns ApiResult.Success(
-            GetAlbumInfoResponse(album)
+            GetAlbumInfoResponse(album),
         )
 
         // when

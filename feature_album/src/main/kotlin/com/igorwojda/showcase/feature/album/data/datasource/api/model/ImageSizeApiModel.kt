@@ -24,7 +24,7 @@ internal enum class ImageSizeApiModel {
     MEGA,
 
     @SerialName("")
-    UNKNOWN
+    UNKNOWN,
 }
 
 internal fun ImageSizeApiModel.toDomainModel() = ImageSize.valueOf(this.name)
