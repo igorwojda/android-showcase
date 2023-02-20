@@ -43,6 +43,12 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 dependencies {
     api(projects.featureBase)
 

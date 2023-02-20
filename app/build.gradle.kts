@@ -69,6 +69,12 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 dependencies {
     // Syntax utilizes Gradle TYPESAFE_PROJECT_ACCESSORS feature
     implementation(projects.featureAlbum)
