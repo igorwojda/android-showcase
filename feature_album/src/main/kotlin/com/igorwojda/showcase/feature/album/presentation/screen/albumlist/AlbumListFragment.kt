@@ -98,7 +98,7 @@ class AlbumListFragment : BaseFragment() {
                     this?.title = null
                     this?.setNavigationOnClickListener {
                         configureDefaultAppBar(
-                            baseActivity
+                            baseActivity,
                         )
                     }
                     this?.menu?.clear()
@@ -143,7 +143,7 @@ class AlbumListFragment : BaseFragment() {
                     }
                     return true
                 }
-            }
+            },
         ).also { mainActivity.searchTextInputEditText?.text?.clear() }
     }
 }
@@ -167,7 +167,7 @@ private fun AlbumListScreen(viewModel: AlbumListViewModel) {
 private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(Dimen.imageSize),
-        contentPadding = PaddingValues(Dimen.screenContentPadding)
+        contentPadding = PaddingValues(Dimen.screenContentPadding),
     ) {
         items(albums.size) { index ->
             val album = albums[index]
@@ -176,12 +176,12 @@ private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
                 modifier = Modifier
                     .padding(Dimen.spaceS)
                     .wrapContentSize(),
-                onClick = { viewModel.onAlbumClick(album) }
+                onClick = { viewModel.onAlbumClick(album) },
             ) {
                 PlaceholderImage(
                     url = album.getDefaultImageUrl(),
                     contentDescription = stringResource(id = R.string.album_cover_content_description),
-                    modifier = Modifier.size(Dimen.imageSize)
+                    modifier = Modifier.size(Dimen.imageSize),
                 )
             }
         }

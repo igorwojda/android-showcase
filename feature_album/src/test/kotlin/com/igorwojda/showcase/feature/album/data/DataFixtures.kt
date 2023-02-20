@@ -19,12 +19,12 @@ import com.igorwojda.showcase.feature.album.data.datasource.database.model.Track
 object DataFixtures {
 
     internal fun getAlbumsApiModel() = listOf(
-        getAlbumApiModel("mbid1", "album1", "artist1")
+        getAlbumApiModel("mbid1", "album1", "artist1"),
     )
 
     internal fun getAlbumsEntityModels() = listOf(
         getAlbumEntityModel(1, "mbid1", "album1", "artist1"),
-        getAlbumEntityModel(2, "mbid2", "album2", "artist2")
+        getAlbumEntityModel(2, "mbid2", "album2", "artist2"),
     )
 
     internal fun getAlbumApiModel(
@@ -40,7 +40,7 @@ object DataFixtures {
         artist,
         images,
         tracks,
-        tags
+        tags,
     )
 
     internal fun getImageModelApiModel(
@@ -72,7 +72,7 @@ object DataFixtures {
         artist,
         images,
         tracks,
-        tags
+        tags,
     )
 
     private fun getImageEntityModel(
@@ -92,8 +92,8 @@ object DataFixtures {
     object ApiResponse {
         internal fun getSearchAlbum() = SearchAlbumResponse(
             SearchAlbumResultsApiModel(
-                AlbumListApiModel(getAlbumsApiModel())
-            )
+                AlbumListApiModel(getAlbumsApiModel()),
+            ),
         )
     }
 }

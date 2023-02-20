@@ -89,7 +89,7 @@ private fun PhotoDetails(content: Content) {
     Column(
         modifier = Modifier
             .padding(Dimen.screenContentPadding)
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(rememberScrollState()),
 
     ) {
         ElevatedCard(
@@ -97,13 +97,13 @@ private fun PhotoDetails(content: Content) {
                 .padding(Dimen.spaceM)
                 .wrapContentSize()
                 .size(320.dp)
-                .align(CenterHorizontally)
+                .align(CenterHorizontally),
         ) {
             PlaceholderImage(
                 url = content.coverImageUrl,
                 contentDescription = stringResource(id = R.string.album_cover_content_description),
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
             )
         }
         Spacer(modifier = Modifier.height(Dimen.spaceL))
@@ -131,7 +131,7 @@ private fun Tags(tags: List<Tag>?) {
         tags?.forEach {
             ElevatedSuggestionChip(
                 label = { Text(it.name) },
-                onClick = { }
+                onClick = { },
             )
         }
     }

@@ -46,7 +46,7 @@ internal class AlbumDetailViewModel(
                 albumName = album.name,
                 coverImageUrl = album.getDefaultImageUrl() ?: "",
                 tracks = album.tracks,
-                tags = album.tags
+                tags = album.tags,
             )
         }
 

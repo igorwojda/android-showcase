@@ -74,7 +74,7 @@ fun EditText.initSearchBehaviour(
     scope: LifecycleCoroutineScope,
     minimumTextCount: Int,
     delayMs: Long,
-    onQueryTextChanged: SearchView.OnQueryTextListener
+    onQueryTextChanged: SearchView.OnQueryTextListener,
 ) {
     scope.launchWhenResumed {
         callbackFlow {

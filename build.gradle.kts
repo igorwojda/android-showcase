@@ -16,40 +16,45 @@ subprojects {
     }
 }
 
-/*
-Allows to run detekt for all files in the Gradle project and all subprojects without a need to configure detekt
-plugin in every subproject.
- */
-tasks.register("detektCheck", Detekt::class) {
-    val autoCorrectParam = project.hasProperty("detektAutoCorrect")
+val detektCheck by tasks.registering(Detekt::class) {
+    description = "Checks that sourcecode satisfies detekt rules."
+    autoCorrect = false
+}
 
-    description = "Custom detekt task to check all modules"
-    parallel = true
-    ignoreFailures = false
-    autoCorrect = autoCorrectParam
-    setSource(file(projectDir))
-    // Detekt config is composed of two configs:
-    // 1. detekt default config rules
-    // https://github.com/detekt/detekt/blob/main/detekt-core/src/main/resources/default-detekt-config.yml
-    // 2. detekt-formatting rules
-    // https://github.com/detekt/detekt/blob/main/detekt-formatting/src/main/resources/config/config.yml
+val detektApply by tasks.registering(Detekt::class) {
+    description = "Applies code formatting rules to sourcecode in-place."
+    autoCorrect = true
+}
 
-    // Custom detekt config
-    config.setFrom("$projectDir/detekt.yml")
+configure(listOf(detektCheck, detektApply)) {
+    configure {
+        group = "verification"
+        parallel = true
+        ignoreFailures = false
+        setSource(file(projectDir))
 
-    // Use default configuration on top of custom config (new detect rules will work out of the box after upgrading detekt version)
-    buildUponDefaultConfig = true
+        // Custom detekt config
+        config.setFrom("$projectDir/detekt.yml")
 
-    include("**/*.kt", "**/*.kts")
-    exclude("**/resources/**", "**/build/**", "**/generated/**")
+        // Use default configuration on top of custom config
+        // (new detect rules will work out of the box after upgrading detekt version)
+        buildUponDefaultConfig = true
 
-    reports {
-        html.required.set(true)
-        xml.required.set(true)
-    }
+        /*
+        Runs detekt for all files in the Gradle project and all subprojects without
+        a need to configure detekt plugin in every subproject.
+         */
+        include("**/*.kt", "**/*.kts")
+        exclude("**/resources/**", "**/build/**", "**/generated/**")
 
-    dependencies {
-        // detekt wrapper for rules implemented by ktlint https://detekt.dev/docs/rules/formatting
-        detektPlugins(libs.detektFormatting)
+        reports {
+            html.required.set(true)
+            xml.required.set(true)
+        }
+
+        dependencies {
+            // detekt wrapper for rules implemented by ktlint https://detekt.dev/docs/rules/formatting
+            detektPlugins(libs.detektFormatting)
+        }
     }
 }

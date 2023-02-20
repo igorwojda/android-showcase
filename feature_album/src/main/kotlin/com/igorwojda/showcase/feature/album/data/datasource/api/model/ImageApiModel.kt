@@ -13,7 +13,7 @@ internal data class ImageApiModel(
 
 internal fun ImageApiModel.toDomainModel() = Image(
     url = this.url,
-    size = this.size.toDomainModel()
+    size = this.size.toDomainModel(),
 )
 
 internal fun ImageApiModel.toEntityModel() =

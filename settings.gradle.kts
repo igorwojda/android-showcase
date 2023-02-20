@@ -6,7 +6,7 @@ include(
     ":feature_profile",
     ":feature_favourite",
     ":feature_base",
-    ":library_test_utils"
+    ":library_test_utils",
 )
 
 pluginManagement {

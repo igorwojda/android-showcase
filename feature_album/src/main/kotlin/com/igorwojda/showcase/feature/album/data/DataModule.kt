@@ -18,7 +18,7 @@ internal val dataModule = module {
         Room.databaseBuilder(
             get(),
             AlbumDatabase::class.java,
-            "Albums.db"
+            "Albums.db",
         ).build()
     }
 

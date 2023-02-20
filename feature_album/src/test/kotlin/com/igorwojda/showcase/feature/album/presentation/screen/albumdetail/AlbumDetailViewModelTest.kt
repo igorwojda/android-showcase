@@ -21,7 +21,7 @@ class AlbumDetailViewModelTest {
     private val mockGetAlbumUseCase: GetAlbumUseCase = mockk()
 
     private val cut = AlbumDetailViewModel(
-        mockGetAlbumUseCase
+        mockGetAlbumUseCase,
     )
 
     @Test

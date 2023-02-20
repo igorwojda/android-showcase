@@ -25,7 +25,7 @@ class AlbumApiModelTest {
             cut.mbId,
             cut.images?.map { it.toDomainModel() } ?: listOf(),
             cut.tracks?.track?.map { it.toDomainModel() },
-            cut.tags?.tag?.map { it.toDomainModel() }
+            cut.tags?.tag?.map { it.toDomainModel() },
         )
     }
 
@@ -33,7 +33,7 @@ class AlbumApiModelTest {
     fun `data model with missing data maps to AlbumDomainModel`() {
         // given
         val cut = DataFixtures.getAlbumApiModel(
-            images = emptyList()
+            images = emptyList(),
         )
 
         // when
@@ -46,7 +46,7 @@ class AlbumApiModelTest {
             artist = "artist",
             images = emptyList(),
             tracks = listOf(Track("track", 12)),
-            tags = listOf(Tag("tag"))
+            tags = listOf(Tag("tag")),
         )
     }
 

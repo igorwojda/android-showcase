@@ -11,5 +11,5 @@ internal data class TrackEntityModel(
 
 internal fun TrackEntityModel.toDomainModel() = Track(
     name = this.name,
-    duration = this.duration
+    duration = this.duration,
 )

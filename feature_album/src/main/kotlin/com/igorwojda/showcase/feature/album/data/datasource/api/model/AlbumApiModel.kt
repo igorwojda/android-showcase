@@ -22,7 +22,7 @@ internal fun AlbumApiModel.toEntityModel() =
         artist = this.artist,
         images = this.images?.mapNotNull { it.toEntityModel() } ?: listOf(),
         tracks = this.tracks?.track?.map { it.toEntityModel() },
-        tags = this.tags?.tag?.map { it.toEntityModel() }
+        tags = this.tags?.tag?.map { it.toEntityModel() },
     )
 
 internal fun AlbumApiModel.toDomainModel(): Album {
@@ -36,6 +36,6 @@ internal fun AlbumApiModel.toDomainModel(): Album {
         artist = this.artist,
         images = images ?: listOf(),
         tracks = this.tracks?.track?.map { it.toDomainModel() },
-        tags = this.tags?.tag?.map { it.toDomainModel() }
+        tags = this.tags?.tag?.map { it.toDomainModel() },
     )
 }

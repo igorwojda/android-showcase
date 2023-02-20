@@ -7,5 +7,5 @@ import com.igorwojda.showcase.feature.profile.presentation.presentationModule
 val featureProfilesModules = listOf(
     presentationModule,
     domainModule,
-    dataModule
+    dataModule,
 )

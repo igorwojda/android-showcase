@@ -13,7 +13,7 @@ import kotlinx.serialization.json.Json
 @TypeConverters(
     AlbumImageEntityTypeConverter::class,
     AlbumTrackEntityTypeConverter::class,
-    AlbumTagEntityTypeConverter::class
+    AlbumTagEntityTypeConverter::class,
 )
 internal data class AlbumEntityModel(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
@@ -32,7 +32,7 @@ internal fun AlbumEntityModel.toDomainModel() =
         this.mbId,
         this.images.mapNotNull { it.toDomainModel() },
         this.tracks?.map { it.toDomainModel() },
-        this.tags?.map { it.toDomainModel() }
+        this.tags?.map { it.toDomainModel() },
     )
 
 internal class AlbumImageEntityTypeConverter {
