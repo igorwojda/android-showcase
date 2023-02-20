@@ -92,14 +92,13 @@ dependencyResolutionManagement {
             plugin("junit5Android", "de.mannodermaus.android-junit5").versionRef("androidJUnit5")
             plugin("testLogger", "com.adarshr.test-logger").versionRef("testLogger")
 
-
             library("kotlin", "org.jetbrains.kotlin", "kotlin-reflect").versionRef("kotlin")
             library("coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-android").versionRef("coroutines")
             library("retrofitCore", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
             library(
                 "kotlinxSerializationConverter",
                 "com.jakewharton.retrofit",
-                "retrofit2-kotlinx-serialization-converter"
+                "retrofit2-kotlinx-serialization-converter",
             ).versionRef("kotlinxSerializationConverter")
             library("serializationJson", "org.jetbrains.kotlinx", "kotlinx-serialization-json").versionRef("serializationJson")
             // Retrofit will use okhttp 4 (it has binary capability with okhttp 3)
@@ -111,7 +110,7 @@ dependencyResolutionManagement {
             library(
                 "viewBindingPropertyDelegate",
                 "com.github.kirich1409",
-                "viewbindingpropertydelegate"
+                "viewbindingpropertydelegate",
             ).versionRef("viewBindingPropertyDelegate")
             library("timber", "com.jakewharton.timber", "timber").versionRef("timber")
             library("constraintLayout", "androidx.constraintlayout", "constraintlayout").versionRef("constraintLayout")
@@ -153,10 +152,17 @@ dependencyResolutionManagement {
             bundle("navigation", listOf("navigationFragment", "navigationUiKtx"))
             bundle("room", listOf("roomKtx", "roomRuntime"))
             bundle(
-                "test", listOf(
-                    "testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTesting", "junitJupiterApi",
-                    "junitJupiterEngine"
-                )
+                "test",
+                listOf(
+                    "testCoroutines",
+                    "kluent",
+                    "testRunner",
+                    "espresso",
+                    "mockk",
+                    "coreTesting",
+                    "junitJupiterApi",
+                    "junitJupiterEngine",
+                ),
             )
         }
     }
