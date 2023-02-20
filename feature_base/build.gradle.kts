@@ -50,6 +50,12 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 dependencies {
     // See Dependency management section in the README.md
     // https://github.com/igorwojda/android-showcase#dependency-management
