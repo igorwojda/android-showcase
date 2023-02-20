@@ -11,6 +11,10 @@ plugins {
     alias(libs.plugins.detekt)
 }
 
+tasks.withType<JavaCompile> {
+    targetCompatibility = "11"
+}
+
 subprojects {
     tasks.withType<Test> {
         maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1

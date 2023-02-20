@@ -35,8 +35,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("kotlin", "1.7.20")
-            version("kotlinCompilerExtensionVersion", "1.3.2")
+            version("kotlin", "1.8.10")
             version("navigation", "2.5.3")
             version("testLogger", "3.2.0")
             version("coroutines", "1.6.4")
