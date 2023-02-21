@@ -57,7 +57,7 @@ dependencyResolutionManagement {
             version("compose", "1.3.0")
             version("materialCompose", "1.0.0")
             version("material", "1.8.0")
-            version("lottie", "5.2.0")
+            version("lottie", "6.0.0")
             version("playCore", "1.10.3")
             version("coreKtx", "1.9.0")
             version("fragmentKtx", "1.5.5")
