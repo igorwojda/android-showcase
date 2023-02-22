@@ -17,13 +17,18 @@
       ],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
+    },
+    {
+      "matchPackagePatterns": [
+        "^org.jetbrains.kotlin",
+        "^org.jetbrains.kotlin:kotlin-reflect",
+        "^com.google.devtools.ksp",
+        "^androidx.compose.compiler",
+        "androidx.compose.material3:material3",
+        "androidx.compose.ui:ui",
+        "androidx.compose.ui:ui-tooling-preview"
+      ],
+      "groupName": "kotlin"
     }
-  ],
-  "ignoreDeps": [
-    "org.jetbrains.kotlin:kotlin-reflect",
-    "com.google.devtools.ksp",
-    "androidx.compose.material3:material3",
-    "androidx.compose.ui:ui",
-    "androidx.compose.ui:ui-tooling-preview"
   ]
 }
