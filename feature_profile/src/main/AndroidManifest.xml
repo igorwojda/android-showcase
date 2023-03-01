@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.igorwojda.showcase.feature.profile">
+<manifest xmlns:dist="http://schemas.android.com/apk/distribution">
 
     <dist:module
-        dist:instant="false"
-        dist:onDemand="false"
-        dist:title="@string/feature_profile">
-        <dist:fusing dist:include="false"/>
+            dist:instant="false"
+            dist:onDemand="false"
+            dist:title="@string/feature_profile">
+        <dist:fusing dist:include="false" />
     </dist:module>
 
 </manifest>

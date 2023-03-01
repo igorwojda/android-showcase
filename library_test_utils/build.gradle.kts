@@ -10,6 +10,8 @@ plugins {
 }
 
 android {
+    namespace = "com.igorwojda.showcase.library.testutils"
+
     compileSdk = 33
 
     defaultConfig {

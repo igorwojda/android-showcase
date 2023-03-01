@@ -10,6 +10,7 @@ plugins {
 }
 
 android {
+    namespace = "com.igorwojda.showcase.feature.profile"
     compileSdk = 33
 
     defaultConfig {
