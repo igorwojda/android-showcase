@@ -36,6 +36,12 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             version("kotlin", "1.8.10")
+            // KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin
+            // https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
+            version("kotlinSymbolProcessing", "1.8.10-1.0.9")
+            //# Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin
+            // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+            version("kotlinCompilerExtensionVersion", "1.4.2")
             version("navigation", "2.5.3")
             version("testLogger", "3.2.0")
             version("coroutines", "1.6.4")
@@ -86,6 +92,7 @@ dependencyResolutionManagement {
             plugin("safeArgs", "androidx.navigation.safeargs.kotlin").versionRef("navigation")
             plugin("junit5Android", "de.mannodermaus.android-junit5").versionRef("androidJUnit5")
             plugin("testLogger", "com.adarshr.test-logger").versionRef("testLogger")
+            plugin("kotlin-symbolProcessing", "com.google.devtools.ksp").versionRef("kotlinSymbolProcessing")
 
             library("kotlin", "org.jetbrains.kotlin", "kotlin-reflect").versionRef("kotlin")
             library("coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-android").versionRef("coroutines")
