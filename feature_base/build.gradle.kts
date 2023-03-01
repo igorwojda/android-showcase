@@ -11,7 +11,7 @@ plugins {
 
 android {
     namespace = "com.igorwojda.showcase.base"
-    
+
     compileSdk = 33
 
     defaultConfig {

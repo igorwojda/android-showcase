@@ -11,7 +11,7 @@ plugins {
 
 android {
     namespace = "com.igorwojda.showcase.feature.album"
-    
+
     compileSdk = 33
 
     defaultConfig {
