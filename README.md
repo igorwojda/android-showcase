@@ -271,8 +271,8 @@ Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.ht
 centralized dependency management third-party dependency coordinates (group, artifact, version) are shared across all
 modules (Gradle projects and subprojects).
 
-All of the dependencies are stored in the [libs.versions.toml](./gradle/libs.versions.toml) file (default location).
-The [TOML](https://toml.io/en/) file consists of a few major sections:
+All of the dependencies are stored in the [settings.gradle.kts](./settings.gradle.kts) file (default location).
+Gradle versions catalog consists of a few major sections:
 
 - `[versions]` - declare versions that can be referenced by all dependencies
 - `[libraries]` - declare the aliases to library coordinates
@@ -346,8 +346,9 @@ There are a few ways to open this project.
 
 ### Plugins
 
-It us recommended to install [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure plugin open 
-Android Studio preferences, open `Tools`, open `Detekt` and add [detekty.yml](detekty.yml) configuration file.
+It us recommended to install [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure
+plugin open
+Android Studio preferences, open `Tools`, open `Detekt` and add [detekt.yml](detekt.yml) configuration file.
 
 ## Upcoming Improvements
 
