@@ -73,7 +73,7 @@ dependencyResolutionManagement {
             version("testRunner", "1.5.2")
             version("mockk", "1.13.4")
             version("espresso", "3.5.1")
-            version("coreTesting", "2.1.0")
+            version("coreTesting", "2.2.0")
 
             // Gradle Plugins https://plugins.gradle.org/
             plugin("android-application", "com.android.application").versionRef("androidGradlePlugin")
