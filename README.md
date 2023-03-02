@@ -373,7 +373,7 @@ Here are few additional resources.
 - [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) -
   most popular coroutine usages
 
-### Other Android Projects
+### Android Projects
 
 Other high-quality projects will help you to find solutions that work for your project (random order):
 
@@ -395,6 +395,10 @@ Other high-quality projects will help you to find solutions that work for your p
   documentation
 - [Kotlin Android Template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
   preconfigured Android Kotlin project in a few seconds
+
+### Other
+
+- [Software Testing Fundamentals](https://softwaretestingfundamentals.com/) - great summary on application testing
 
 ## Known Issues
 
