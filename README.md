@@ -8,9 +8,9 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 Android Showcase project presents a modern approach to
-[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development and 
-provide architektural guidence. This project utilizes popular tools, libraries, linters, Gradle plugins, 
-testing frameworks, and CI setup. It is a complete sample of a fully functional Android application. 
+[Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development and
+provide architektural guidence. This project utilizes popular tools, libraries, linters, Gradle plugins,
+testing frameworks, and CI setup. It is a complete sample of a fully functional Android application.
 
 Project is focusing on modular, scalable, maintainable, and testable [architecture](#architecture), leading
 [tech-stack](#tech-stack) and demonstrates the best development practices.
@@ -42,7 +42,7 @@ larger application suitable for bigger teams and extended
   - [Upcoming Improvements](#upcoming-improvements)
   - [Inspiration](#inspiration)
     - [Cheatsheet](#cheatsheet)
-    - [Other Android Projects](#other-android-projects)
+    - [Android Projects](#android-projects)
   - [Known Issues](#known-issues)
   - [Contribute](#contribute)
   - [Author](#author)
@@ -81,7 +81,7 @@ the libraries are in the stable version unless there is a good reason to use non
     + [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html) - parse [JSON](https://www.json.org/json-en.html)
   * [Retrofit](https://square.github.io/retrofit/) - networking
   * [Jetpack](https://developer.android.com/jetpack)
-    * [Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit 
+    * [Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
     * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
     * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when
       lifecycle state changes
@@ -235,18 +235,20 @@ Components:
 
 #### Data Layer
 
-Manages application data. Connect to data sources and provide data through repository to the `domain` layer eg. retrieve
-data from the internet and cache the data in disk cache (when device is offline).
+Encapsulates application data. Provides the data to the `domain` layer eg. retrieve data from the internet and cache the
+data in disk cache (when device is offline).
 
 Components:
 
 - **Repository** is exposing data to the `domain` layer. Depending on the application structure and quality of the
   external APIs repository can also merge, filter, and transform the data. These operations intend to create
-  high-quality data source for the `domain` layer.
+  high-quality data source for the `domain` layer. It is the responsibility of Repository (one or more) to construct
+  Domain models by reading from the `Data Source` and accept Domain models to be written to the `Data Source`
 - **Mapper** - maps `data model` to `domain model` (to keep `domain` layer independent from the `data` layer).
 
-Data layer contains implicit layer called `Data source` containing all components involved with data manipulation of a
-given data source. Application has two data sources - `Retrofit` (network) and `Room` (local storage):
+This application has two `Data Sources` - `Retrofit` (used for network access) and `Room` (local storage used to access
+device persistent memory). These data sources can be treated a an implicit sub-layer.Each data source consists of
+multiple classes:
 
 - **Retrofit Service** - defines a set of API endpoints
 - **Retrofit Response Model** - definition of the network objects for given endpoint (top-level model for the data
@@ -366,7 +368,7 @@ Here are few additional resources.
 - [Material Theme Builder](https://m3.material.io/theme-builder#/dynamic) - generate dynamic material theme and see it
   in action
 - [Compose Material 3 Components](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary)
-\- list containing material components
+  \- list containing material components
 - [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
 - [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+
   most important tools
