@@ -60,7 +60,7 @@ dependencyResolutionManagement {
             version("timber", "5.0.1")
             version("constraintLayout", "2.1.4")
             version("appCompat", "1.6.1")
-            version("recyclerView", "1.2.1")
+            version("recyclerView", "1.3.0")
             version("compose", "1.3.3")
             version("materialCompose", "1.0.1")
             version("material", "1.8.0")
