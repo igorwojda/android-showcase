@@ -71,7 +71,7 @@ dependencyResolutionManagement {
             // Info https://google.github.io/accompanist/flowlayout/
             // Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
             version("accompanistFlowLayout", "0.28.0")
-            version("spotless", "6.15.0")
+            version("spotless", "6.17.0")
             version("detekt", "1.22.0")
             version("androidGradlePlugin", "7.4.2")
             version("junit", "5.9.2")
