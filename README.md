@@ -9,7 +9,7 @@
 
 Android Showcase project presents a modern approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development and
-provide architektural guidence. This project utilizes popular tools, libraries, linters, Gradle plugins,
+provides architectural guidance. This project utilizes popular tools, libraries, linters, Gradle plugins,
 testing frameworks, and CI setup. It is a complete sample of a fully functional Android application.
 
 Project is focusing on modular, scalable, maintainable, and testable [architecture](#architecture), leading
