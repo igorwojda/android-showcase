@@ -12,8 +12,8 @@ Android Showcase project presents a modern approach to
 provides architectural guidance. This project utilizes popular tools, libraries, linters, Gradle plugins,
 testing frameworks, and CI setup. It is a complete sample of a fully functional Android application.
 
-Project is focusing on modular, scalable, maintainable, and testable [architecture](#architecture), leading
-[tech-stack](#tech-stack) and demonstrates the best development practices.
+The project is focusing on modular, scalable, maintainable, and testable [architecture](#architecture), leading
+[tech-stack](#tech-stack), and demonstrating the best development practices.
 
 This application may look simple, but it has all of the pieces that will provide the rock-solid foundation for the
 larger application suitable for bigger teams and extended
@@ -30,7 +30,7 @@ larger application suitable for bigger teams and extended
       - [Data Layer](#data-layer)
     - [Data Flow](#data-flow)
   - [Dependency Management](#dependency-management)
-  - [Logcat debuggins](#logcat-debuggins)
+  - [Logcat debugging](#logcat-debugging)
   - [CI Pipeline](#ci-pipeline)
     - [Pull Request Verification](#pull-request-verification)
   - [Design Decisions](#design-decisions)
@@ -104,7 +104,7 @@ the libraries are in the stable version unless there is a good reason to use non
 * UI
   * Reactive UI
   * [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit (used for Fragments)
-  * [View Binding](https://developer.android.com/topic/libraries/view-binding) - retrieve xml view ids
+  * [View Binding](https://developer.android.com/topic/libraries/view-binding) - retrieve XML view ids
     (used for [NavHostActivity](app/src/main/java/com/igorwojda/showcase/app/presentation/NavHostActivity.kt) only)
   * [Material Design 3](https://m3.material.io/) - application design system providing UI components
   * Theme selection
@@ -143,9 +143,9 @@ the libraries are in the stable version unless there is a good reason to use non
 
 ## Architecture
 
-By dividing a problem into smaller and easier to solve sub-problems, we can reduce the complexity of designing and
-maintaining a large system. Each module is independent build-block serving a clear purpose. We can think about each
-feature as the reusable component, equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private
+By dividing a problem into smaller and easier-to-solve sub-problems, we can reduce the complexity of designing and
+maintaining a large system. Each module is an independent build block serving a clear purpose. We can think about each
+feature as a reusable component, the equivalent of [microservice](https://en.wikipedia.org/wiki/Microservices) or private
 library.
 
 The modularized code-base approach provides a few benefits:
@@ -171,11 +171,11 @@ We have three kinds of modules in the application:
   permissions setup, custom `Application` class, etc.).
 - `feature_x` modules - the most common type of module containing all code related to a given feature.
   share some assets or code only between `feature` modules (currently app has no such modules)
-- `feature_base` modules that features modules depend on to share a common code.
+- `feature_base` modules that feature modules depend on to share a common code.
 
 ### Feature Module Structure
 
-`Clean Architecture` is implemented at module level - each module contains its own set of Clean Architecture layers:
+`Clean Architecture` is implemented at the module level - each module contains its own set of Clean Architecture layers:
 
 ![module_dependencies_layers](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies_layers.png?raw=true)
 
@@ -191,15 +191,15 @@ This layer is closest to what the user sees on the screen.
 
 The `presentation` layer mixes `MVVM` and `MVI` patterns:
 
-- `MVVM` - Jetpack `ViewModel` is used to encapsulate `common UI state`. It exposes the `state` via observable state
+- `MVVM` - Jetpack `ViewModel` is used to encapsulate a `common UI state`. It exposes the `state` via observable state
   holder (`Kotlin Flow`)
 - `MVI` - `action` modifies the `common UI state` and emits a new state to a view via `Kotlin Flow`
 
-> `common state` is a single source of truth for each view. This solution derives from
+> The `common state` is a single source of truth for each view. This solution derives from
 > [Unidirectional Data Flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)) and [Redux
 > principles](https://redux.js.org/introduction/three-principles).
 
-This approach facilitates creation of consistent states. State is collected via `collectAsUiStateWithLifecycle`
+This approach facilitates the creation of consistent states. The state is collected via `collectAsUiStateWithLifecycle`
 method. Flows collection happens in a lifecycle-aware manner, so
 [no resources are wasted](https://medium.com/androiddevelopers/consuming-flows-safely-in-jetpack-compose-cde014d0d5a3).
 
@@ -222,8 +222,8 @@ Components:
 
 This is the core layer of the application. Notice that the `domain` layer is independent of any other layers. This
 allows making domain models and business logic independent from other layers. In other words, changes in other layers
-will not affect `domain` layer eg. changing the database (`data` layer) or screen UI (`presentation` layer) ideally will
-not result in any code change withing the `domain` layer.
+will not affect the `domain` layer eg. changing the database (`data` layer) or screen UI (`presentation` layer) ideally will
+not result in any code change within the `domain` layer.
 
 Components:
 
@@ -235,19 +235,19 @@ Components:
 
 #### Data Layer
 
-Encapsulates application data. Provides the data to the `domain` layer eg. retrieve data from the internet and cache the
-data in disk cache (when device is offline).
+Encapsulates application data. Provides the data to the `domain` layer eg. retrieves data from the internet and cache the
+data in disk cache (when the device is offline).
 
 Components:
 
 - **Repository** is exposing data to the `domain` layer. Depending on the application structure and quality of the
-  external APIs repository can also merge, filter, and transform the data. These operations intend to create
-  high-quality data source for the `domain` layer. It is the responsibility of Repository (one or more) to construct
-  Domain models by reading from the `Data Source` and accept Domain models to be written to the `Data Source`
+  external API repository can also merge, filter, and transform the data. These operations intend to create
+  a high-quality data source for the `domain` layer. It is the responsibility of the Repository (one or more) to construct
+  Domain models by reading from the `Data Source` and accepting Domain models to be written to the `Data Source`
 - **Mapper** - maps `data model` to `domain model` (to keep `domain` layer independent from the `data` layer).
 
 This application has two `Data Sources` - `Retrofit` (used for network access) and `Room` (local storage used to access
-device persistent memory). These data sources can be treated a an implicit sub-layer.Each data source consists of
+device persistent memory). These data sources can be treated as an implicit sub-layer. Each data source consists of
 multiple classes:
 
 - **Retrofit Service** - defines a set of API endpoints
@@ -284,8 +284,7 @@ Gradle versions catalog consists of a few major sections:
 Each feature module depends on the `feature_base` module, so dependencies are shared without the need to add them
 explicitly in each feature module.
 
-Project enables the `TYPESAFE_PROJECT_ACCESSORS` experimental Gradle feature to generate type safe accessors to refer
-other projects.
+The project enables the `TYPESAFE_PROJECT_ACCESSORS` experimental Gradle feature to generate type-safe accessors to refer other projects.
 
 ```kotlin
 // Before
@@ -295,30 +294,30 @@ implementation(project(":feature_album"))
 implementation(projects.featureAlbum)
 ```
 
-## Logcat debuggins
+## Logcat debugging
 
-To facilitate debuting project contains logs. You can filter logs understand app flow. Keywords:
-- `onCreate` see what `Activities` and `Fragements` have been created
+To facilitate debuting project contains logs. You can filter logs to understand app flow. Keywords:
+- `onCreate` see what `Activities` and `Fragments` have been created
 - `Action` - filter all actions performed on the screens to update the UI
 - `Http` - debug network requests and responses
 
 ## CI Pipeline
 
-CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in
+CI is utilizing [GitHub Actions](https://github.com/features/actions). The complete GitHub Actions config is located in
 the [.github/workflows](.github/workflows) folder.
 
 ### Pull Request Verification
 
 Series of workflows run (in parallel) for every opened PR and after merging PR to the `main` branch:
 
-* `./gradlew lintDebug` - checks that sourcecode satisfies Android lint rules
+* `./gradlew lintDebug` - checks that source code satisfies Android lint rules
 * `./gradlew detektCheck` - checks that sourcecode satisfies detekt rules
 * `./gradlew detektApply` - applies detekt code formatting rules to sourcecode in-place
-* `./gradlew spotlessCheck` - checks that sourcecode satisfies formatting steps.
-* `./gradlew spotlessApply` - applies code formatting steps to sourcecode in-place.
+* `./gradlew spotlessCheck` - checks that source code satisfies formatting steps.
+* `./gradlew spotlessApply` - applies code formatting steps to source code in-place.
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
-* `./gradlew :app:bundleDebug` - create app bundle
+* `./gradlew :app:bundleDebug` - create application bundle
 
 ## Design Decisions
 
@@ -344,13 +343,12 @@ There are a few ways to open this project.
 ### Command-line And Android Studio
 
 1. Run `git clone https://github.com/igorwojda/android-showcase.git` command to clone the project
-2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
+2. Open `Android Studio` and select `File | Open...` from the menu. Select the cloned directory and press `Open` button
 
 ### Plugins
 
-It us recommended to install [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure
-plugin open
-Android Studio preferences, open `Tools`, open `Detekt` and add [detekt.yml](detekt.yml) configuration file.
+It is recommended installing [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure
+the plugin open Android Studio preferences, open `Tools`, open `Detekt` and add [detekt.yml](detekt.yml) configuration file.
 
 ## Upcoming Improvements
 
@@ -368,7 +366,7 @@ Here are few additional resources.
 - [Material Theme Builder](https://m3.material.io/theme-builder#/dynamic) - generate dynamic material theme and see it
   in action
 - [Compose Material 3 Components](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary)
-  \- list containing material components
+  \- a list containing material components
 - [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
 - [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+
   most important tools
@@ -380,7 +378,7 @@ Here are few additional resources.
 Other high-quality projects will help you to find solutions that work for your project (random order):
 
 - [Compose Samples](https://github.com/android/compose-samples) - repository contains a set of individual Android Studio
-- [Jetpack Compose Playground](https://github.com/Foso/Jetpack-Compose-Playground) - This is an Jetpack Compose example
+- [Jetpack Compose Playground](https://github.com/Foso/Jetpack-Compose-Playground) - This is a Jetpack Compose example
   project
 - [Now Android](https://github.com/android/nowinandroid) - fully functional Android app built entirely with Kotlin and
   Jetpack Compose
@@ -393,7 +391,7 @@ Other high-quality projects will help you to find solutions that work for your p
   demonstrating usage of Android Architecture Components
 - [Clean Architecture Boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - clean
   architecture for Android
-- [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together with very good
+- [Roxie](https://github.com/ww-tech/roxie) - a solid example of a `common state` approach together with very good
   documentation
 - [Kotlin Android Template](https://github.com/cortinico/kotlin-android-template) - the template that lets you create
   preconfigured Android Kotlin project in a few seconds
@@ -404,7 +402,7 @@ Other high-quality projects will help you to find solutions that work for your p
 
 ## Known Issues
 
-- No usages are found for `suspended` Kotlin `invoke`
+- No usages are found for the `suspended` Kotlin `invoke`
   operator ([KTIJ-1053](https://youtrack.jetbrains.com/issue/KTIJ-1053/Find-usages-no-convention-usages-for-suspend-invoke-operator))
 - The `Material You Dynamic Colors` are not correctly applied to Fragment contents (only to Activity)
 - When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
