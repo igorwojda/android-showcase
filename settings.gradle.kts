@@ -78,7 +78,7 @@ dependencyResolutionManagement {
             version("androidJUnit5", "1.8.2.1")
             version("kluent", "1.72")
             version("testRunner", "1.5.2")
-            version("mockk", "1.13.4")
+            version("mockk", "1.13.5")
             version("espresso", "3.5.1")
             version("coreTesting", "2.2.0")
 
