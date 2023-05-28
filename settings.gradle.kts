@@ -66,7 +66,7 @@ dependencyResolutionManagement {
             version("material", "1.8.0")
             version("lottie", "6.0.0")
             version("playCore", "1.10.3")
-            version("coreKtx", "1.9.0")
+            version("coreKtx", "1.10.1")
             version("fragmentKtx", "1.5.5")
             // Info https://google.github.io/accompanist/flowlayout/
             // Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
