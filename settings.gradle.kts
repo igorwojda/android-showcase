@@ -63,7 +63,7 @@ dependencyResolutionManagement {
             version("recyclerView", "1.3.0")
             version("compose", "1.3.3")
             version("materialCompose", "1.0.1")
-            version("material", "1.8.0")
+            version("material", "1.9.0")
             version("lottie", "6.0.1")
             version("playCore", "1.10.3")
             version("coreKtx", "1.10.1")
