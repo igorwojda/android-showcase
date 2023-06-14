@@ -49,7 +49,7 @@ dependencyResolutionManagement {
             version("retrofit", "2.9.0")
             version("okhttp", "4.11.0")
             version("koin", "3.3.3")
-            version("coil", "2.2.2")
+            version("coil", "2.4.0")
             // verison 2.6.0-alpha01 has collectAsStateWithLifecycle
             // https://issuetracker.google.com/issues/230557927?hl=id
             version("lifecycle", "2.6.0-alpha03")
