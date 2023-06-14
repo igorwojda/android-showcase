@@ -48,7 +48,7 @@ dependencyResolutionManagement {
             version("coroutines", "1.6.4")
             version("retrofit", "2.9.0")
             version("okhttp", "4.11.0")
-            version("koin", "3.3.3")
+            version("koin", "3.4.2")
             version("coil", "2.2.2")
             // verison 2.6.0-alpha01 has collectAsStateWithLifecycle
             // https://issuetracker.google.com/issues/230557927?hl=id
