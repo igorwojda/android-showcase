@@ -76,7 +76,7 @@ dependencyResolutionManagement {
             version("androidGradlePlugin", "7.4.2")
             version("junit", "5.9.3")
             version("androidJUnit5", "1.8.2.1")
-            version("kluent", "1.72")
+            version("kluent", "1.73")
             version("testRunner", "1.5.2")
             version("mockk", "1.13.5")
             version("espresso", "3.5.1")
