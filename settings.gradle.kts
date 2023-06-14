@@ -36,13 +36,13 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("kotlin", "1.8.10")
+            version("kotlin", "1.8.21")
             // KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-            version("kotlinSymbolProcessing", "1.8.10-1.0.9")
+            version("kotlinSymbolProcessing", "1.8.22-1.0.11")
             // Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-            version("kotlinCompilerExtensionVersion", "1.4.2")
+            version("kotlinCompilerExtensionVersion", "1.4.7")
             version("navigation", "2.5.3")
             version("testLogger", "3.2.0")
             version("coroutines", "1.6.4")
