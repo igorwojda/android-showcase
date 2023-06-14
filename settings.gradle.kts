@@ -73,7 +73,7 @@ dependencyResolutionManagement {
             version("accompanistFlowLayout", "0.28.0")
             version("spotless", "6.19.0")
             version("detekt", "1.22.0")
-            version("androidGradlePlugin", "7.4.2")
+            version("androidGradlePlugin", "8.0.2")
             version("junit", "5.9.3")
             version("androidJUnit5", "1.9.3.0")
             version("kluent", "1.73")
