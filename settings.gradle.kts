@@ -52,7 +52,7 @@ dependencyResolutionManagement {
             version("coil", "2.2.2")
             // verison 2.6.0-alpha01 has collectAsStateWithLifecycle
             // https://issuetracker.google.com/issues/230557927?hl=id
-            version("lifecycle", "2.6.0-alpha03")
+            version("lifecycle", "2.6.1")
             version("room", "2.5.1")
             version("serializationJson", "1.5.0")
             version("kotlinxSerializationConverter", "0.8.0")
