@@ -47,7 +47,7 @@ dependencyResolutionManagement {
             version("testLogger", "3.2.0")
             version("coroutines", "1.6.4")
             version("retrofit", "2.9.0")
-            version("okhttp", "4.10.0")
+            version("okhttp", "4.11.0")
             version("koin", "3.3.3")
             version("coil", "2.2.2")
             // verison 2.6.0-alpha01 has collectAsStateWithLifecycle
