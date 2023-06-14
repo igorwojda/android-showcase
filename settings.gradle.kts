@@ -43,7 +43,7 @@ dependencyResolutionManagement {
             // Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
             version("kotlinCompilerExtensionVersion", "1.4.2")
-            version("navigation", "2.5.3")
+            version("navigation", "2.6.0")
             version("testLogger", "3.2.0")
             version("coroutines", "1.6.4")
             version("retrofit", "2.9.0")
