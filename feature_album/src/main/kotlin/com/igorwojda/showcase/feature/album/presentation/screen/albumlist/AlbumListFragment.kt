@@ -43,8 +43,46 @@ import org.koin.androidx.navigation.koinNavGraphViewModel
 
 class AlbumListFragment : BaseFragment() {
 
+    private val model: AlbumListViewModel by koinNavGraphViewModel(R.id.albumNavGraph)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        return ComposeView(requireContext()).apply {
+            setContent {
+                AlbumListScreen(model)
+            }
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        model.onEnter()
+
+        mainActivity.searchTextInputEditText?.initSearchBehaviour(
+            viewLifecycleOwner.lifecycleScope,
+            MINIMUM_PRODUCT_QUERY_SIZE,
+            DELAY_BEFORE_SUBMITTING_QUERY,
+            object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    mainActivity.searchTextInputEditText?.hideKeyboard()
+                    configureDefaultAppBar(mainActivity)
+                    model.onEnter(query)
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText.isNullOrBlank()) {
+                        mainActivity.searchTextInputEditText?.hideKeyboard()
+                        configureDefaultAppBar(mainActivity)
+                    }
+                    return true
+                }
+            },
+        ).also { mainActivity.searchTextInputEditText?.text?.clear() }
+    }
+
     companion object {
         const val MINIMUM_PRODUCT_QUERY_SIZE = 1
+
         const val DELAY_BEFORE_SUBMITTING_QUERY = 500L
 
         fun configureAppBar(baseActivity: BaseActivity) {
@@ -85,15 +123,16 @@ class AlbumListFragment : BaseFragment() {
                 }
             }
         }
-
         private fun configureSearchAppBar(baseActivity: BaseActivity) {
             baseActivity.apply {
                 this.searchLayout?.updateLayoutParams {
                     this.width = ViewGroup.LayoutParams.MATCH_PARENT
                 }
+
                 this.searchTextInputLayout.apply {
                     this?.isVisible = true
                 }
+
                 this.mainAppToolbar.apply {
                     this?.title = null
                     this?.setNavigationOnClickListener {
@@ -104,47 +143,14 @@ class AlbumListFragment : BaseFragment() {
                     this?.menu?.clear()
                     this?.logo = null
                 }
+
                 this.searchTextInputEditText?.post {
                     searchTextInputEditText?.requestFocus()
                 }
+
                 this.searchTextInputEditText?.showKeyboard()
             }
         }
-    }
-
-    private val model: AlbumListViewModel by koinNavGraphViewModel(R.id.albumNavGraph)
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AlbumListScreen(model)
-            }
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        model.onEnter()
-        mainActivity.searchTextInputEditText?.initSearchBehaviour(
-            viewLifecycleOwner.lifecycleScope,
-            MINIMUM_PRODUCT_QUERY_SIZE,
-            DELAY_BEFORE_SUBMITTING_QUERY,
-            object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String?): Boolean {
-                    mainActivity.searchTextInputEditText?.hideKeyboard()
-                    configureDefaultAppBar(mainActivity)
-                    model.onEnter(query)
-                    return true
-                }
-
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText.isNullOrBlank()) {
-                        mainActivity.searchTextInputEditText?.hideKeyboard()
-                        configureDefaultAppBar(mainActivity)
-                    }
-                    return true
-                }
-            },
-        ).also { mainActivity.searchTextInputEditText?.text?.clear() }
     }
 }
 
