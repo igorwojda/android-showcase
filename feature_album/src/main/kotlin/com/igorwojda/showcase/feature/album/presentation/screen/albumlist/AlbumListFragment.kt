@@ -43,76 +43,8 @@ import org.koin.androidx.navigation.koinNavGraphViewModel
 
 class AlbumListFragment : BaseFragment() {
 
-    companion object {
-        const val MINIMUM_PRODUCT_QUERY_SIZE = 1
-        const val DELAY_BEFORE_SUBMITTING_QUERY = 500L
-
-        fun configureAppBar(baseActivity: BaseActivity) {
-            baseActivity.apply {
-                appBarLayout?.apply {
-                    this.elevation = 0f
-                    this.isVisible = true
-                }
-
-                mainAppToolbar?.layoutTransition = null
-                appBarLayout?.layoutTransition = null
-
-                configureDefaultAppBar(baseActivity)
-            }
-        }
-
-        private fun configureDefaultAppBar(baseActivity: BaseActivity) {
-            baseActivity.apply {
-                this.searchTextInputEditText?.hideKeyboard()
-                this.searchLayout?.updateLayoutParams {
-                    this.width = ViewGroup.LayoutParams.WRAP_CONTENT
-                }
-                this.searchTextInputLayout.apply {
-                    this?.isVisible = false
-                }
-                this.mainAppToolbar.apply {
-                    this?.post {
-                        this.setTitle(R.string.album)
-                        this.logo = null
-                    }
-                    this?.menu?.clear()
-                    this?.inflateMenu(com.igorwojda.showcase.base.R.menu.menu_toolbar_main)
-                    this?.setOnMenuItemClickListener { _ ->
-                        configureSearchAppBar(baseActivity)
-                        true
-                    }
-                    this?.logo = null
-                }
-            }
-        }
-
-        private fun configureSearchAppBar(baseActivity: BaseActivity) {
-            baseActivity.apply {
-                this.searchLayout?.updateLayoutParams {
-                    this.width = ViewGroup.LayoutParams.MATCH_PARENT
-                }
-                this.searchTextInputLayout.apply {
-                    this?.isVisible = true
-                }
-                this.mainAppToolbar.apply {
-                    this?.title = null
-                    this?.setNavigationOnClickListener {
-                        configureDefaultAppBar(
-                            baseActivity,
-                        )
-                    }
-                    this?.menu?.clear()
-                    this?.logo = null
-                }
-                this.searchTextInputEditText?.post {
-                    searchTextInputEditText?.requestFocus()
-                }
-                this.searchTextInputEditText?.showKeyboard()
-            }
-        }
-    }
-
     private val model: AlbumListViewModel by koinNavGraphViewModel(R.id.albumNavGraph)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(requireContext()).apply {
             setContent {
@@ -124,6 +56,7 @@ class AlbumListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         model.onEnter()
+
         mainActivity.searchTextInputEditText?.initSearchBehaviour(
             viewLifecycleOwner.lifecycleScope,
             MINIMUM_PRODUCT_QUERY_SIZE,
@@ -145,6 +78,79 @@ class AlbumListFragment : BaseFragment() {
                 }
             },
         ).also { mainActivity.searchTextInputEditText?.text?.clear() }
+    }
+
+    companion object {
+        const val MINIMUM_PRODUCT_QUERY_SIZE = 1
+
+        const val DELAY_BEFORE_SUBMITTING_QUERY = 500L
+
+        fun configureAppBar(baseActivity: BaseActivity) {
+            baseActivity.apply {
+                appBarLayout?.apply {
+                    elevation = 0f
+                    isVisible = true
+                }
+
+                mainAppToolbar?.layoutTransition = null
+                appBarLayout?.layoutTransition = null
+
+                configureDefaultAppBar(baseActivity)
+            }
+        }
+
+        private fun configureDefaultAppBar(baseActivity: BaseActivity) {
+            baseActivity.apply {
+                searchTextInputEditText?.hideKeyboard()
+                searchLayout?.updateLayoutParams {
+                    width = ViewGroup.LayoutParams.WRAP_CONTENT
+                }
+                searchTextInputLayout.apply {
+                    this?.isVisible = false
+                }
+                mainAppToolbar.apply {
+                    this?.post {
+                        setTitle(R.string.album)
+                        logo = null
+                    }
+                    this?.menu?.clear()
+                    this?.inflateMenu(com.igorwojda.showcase.base.R.menu.menu_toolbar_main)
+                    this?.setOnMenuItemClickListener { _ ->
+                        configureSearchAppBar(baseActivity)
+                        true
+                    }
+                    this?.logo = null
+                }
+            }
+        }
+        private fun configureSearchAppBar(baseActivity: BaseActivity) {
+            baseActivity.apply {
+                searchLayout?.updateLayoutParams {
+                    width = ViewGroup.LayoutParams.MATCH_PARENT
+                }
+
+                searchTextInputLayout.apply {
+                    this?.isVisible = true
+                }
+
+                mainAppToolbar.apply {
+                    this?.title = null
+                    this?.setNavigationOnClickListener {
+                        configureDefaultAppBar(
+                            baseActivity,
+                        )
+                    }
+                    this?.menu?.clear()
+                    this?.logo = null
+                }
+
+                searchTextInputEditText?.post {
+                    searchTextInputEditText?.requestFocus()
+                }
+
+                searchTextInputEditText?.showKeyboard()
+            }
+        }
     }
 }
 
