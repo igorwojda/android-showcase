@@ -36,31 +36,31 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("kotlin", "1.8.21")
+            version("kotlin", "1.8.22")
             // KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-            version("kotlinSymbolProcessing", "1.8.21-1.0.11")
+            version("kotlinSymbolProcessing", "1.8.22-1.0.11")
             // Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
             version("kotlinCompilerExtensionVersion", "1.4.7")
             version("navigation", "2.5.3")
             version("testLogger", "3.2.0")
-            version("coroutines", "1.6.4")
+            version("coroutines", "1.7.1")
             version("retrofit", "2.9.0")
             version("okhttp", "4.11.0")
             version("koin", "3.4.2")
             version("coil", "2.4.0")
             version("lifecycle", "2.6.1")
             version("room", "2.5.1")
-            version("serializationJson", "1.5.0")
+            version("serializationJson", "1.5.1")
             version("kotlinxSerializationConverter", "0.8.0")
             version("viewBindingPropertyDelegate", "1.5.8")
             version("timber", "5.0.1")
             version("constraintLayout", "2.1.4")
             version("appCompat", "1.6.1")
             version("recyclerView", "1.3.0")
-            version("compose", "1.3.3")
-            version("materialCompose", "1.0.1")
+            version("compose", "1.4.3")
+            version("materialCompose", "1.1.0")
             version("material", "1.9.0")
             version("lottie", "6.0.1")
             version("playCore", "1.10.3")
