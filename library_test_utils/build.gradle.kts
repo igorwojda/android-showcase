@@ -20,7 +20,7 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    packagingOptions {
+    packaging {
         resources.excludes += setOf(
             "META-INF/AL2.0",
             "META-INF/licenses/**",
