@@ -62,7 +62,7 @@ The app has a few screens located in multiple feature modules:
 - Favourites screen - empty (WiP)
   <br/><br/>
 
-<p float="left">
+<p>
   <img src="misc/image/screen_album_list.webp" width="250" />
   <img src="misc/image/screen_album_detail.webp" width="250" />
   <img src="misc/image/screen_favorites.webp" width="250" />
