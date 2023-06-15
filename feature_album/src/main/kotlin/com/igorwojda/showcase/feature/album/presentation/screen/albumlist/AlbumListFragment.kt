@@ -20,7 +20,6 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.igorwojda.showcase.base.common.res.Dimen
@@ -148,7 +147,6 @@ class AlbumListFragment : BaseFragment() {
     }
 }
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 private fun AlbumListScreen(viewModel: AlbumListViewModel) {
     val uiState: UiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()

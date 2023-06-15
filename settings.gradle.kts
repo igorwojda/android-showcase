@@ -39,7 +39,7 @@ dependencyResolutionManagement {
             version("kotlin", "1.8.21")
             // KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-            version("kotlinSymbolProcessing", "1.8.22-1.0.11")
+            version("kotlinSymbolProcessing", "1.8.21-1.0.11")
             // Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
             version("kotlinCompilerExtensionVersion", "1.4.7")
@@ -50,9 +50,7 @@ dependencyResolutionManagement {
             version("okhttp", "4.11.0")
             version("koin", "3.3.3")
             version("coil", "2.2.2")
-            // verison 2.6.0-alpha01 has collectAsStateWithLifecycle
-            // https://issuetracker.google.com/issues/230557927?hl=id
-            version("lifecycle", "2.6.0-alpha03")
+            version("lifecycle", "2.6.1")
             version("room", "2.5.1")
             version("serializationJson", "1.5.0")
             version("kotlinxSerializationConverter", "0.8.0")
