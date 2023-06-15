@@ -1,6 +1,6 @@
 import com.android.build.api.dsl.ApplicationDefaultConfig
+import java.util.Locale
 
-@Suppress("DSL_SCOPE_VIOLATION") // Because of IDE bug https://youtrack.jetbrains.com/issue/KTIJ-19370
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -50,6 +50,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
         compose = true
     }
 
@@ -92,8 +93,8 @@ fun ApplicationDefaultConfig.buildConfigFieldFromGradleProperty(gradlePropertyNa
     val propertyValue = project.properties[gradlePropertyName] as? String
     checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
 
-    val androidResourceName = "GRADLE_${gradlePropertyName.toSnakeCase()}".toUpperCase()
+    val androidResourceName = "GRADLE_${gradlePropertyName.toSnakeCase()}".uppercase(Locale.getDefault())
     buildConfigField("String", androidResourceName, propertyValue)
 }
 
-fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.toLowerCase() }
+fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") { it.lowercase(Locale.getDefault()) }

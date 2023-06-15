@@ -29,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.navArgs
 import com.google.accompanist.flowlayout.FlowRow
@@ -70,7 +69,6 @@ internal class AlbumDetailFragment : BaseFragment() {
     }
 }
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 private fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
     val uiState: UiState by uiStateFlow.collectAsStateWithLifecycle()

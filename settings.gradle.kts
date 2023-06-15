@@ -17,8 +17,8 @@ pluginManagement {
     }
 }
 
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
-
     repositories {
         google()
         mavenCentral()
@@ -36,23 +36,21 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("kotlin", "1.8.10")
+            version("kotlin", "1.8.21")
             // KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-            version("kotlinSymbolProcessing", "1.8.10-1.0.9")
+            version("kotlinSymbolProcessing", "1.8.21-1.0.11")
             // Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin
             // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-            version("kotlinCompilerExtensionVersion", "1.4.2")
+            version("kotlinCompilerExtensionVersion", "1.4.7")
             version("navigation", "2.5.3")
             version("testLogger", "3.2.0")
             version("coroutines", "1.6.4")
             version("retrofit", "2.9.0")
             version("okhttp", "4.11.0")
-            version("koin", "3.3.3")
-            version("coil", "2.2.2")
-            // verison 2.6.0-alpha01 has collectAsStateWithLifecycle
-            // https://issuetracker.google.com/issues/230557927?hl=id
-            version("lifecycle", "2.6.0-alpha03")
+            version("koin", "3.4.2")
+            version("coil", "2.4.0")
+            version("lifecycle", "2.6.1")
             version("room", "2.5.1")
             version("serializationJson", "1.5.0")
             version("kotlinxSerializationConverter", "0.8.0")
@@ -67,13 +65,13 @@ dependencyResolutionManagement {
             version("lottie", "6.0.1")
             version("playCore", "1.10.3")
             version("coreKtx", "1.10.1")
-            version("fragmentKtx", "1.5.5")
+            version("fragmentKtx", "1.5.7")
             // Info https://google.github.io/accompanist/flowlayout/
             // Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
-            version("accompanistFlowLayout", "0.28.0")
+            version("accompanistFlowLayout", "0.30.1")
             version("spotless", "6.19.0")
-            version("detekt", "1.22.0")
-            version("androidGradlePlugin", "7.4.2")
+            version("detekt", "1.23.0")
+            version("androidGradlePlugin", "8.0.2")
             version("junit", "5.9.3")
             version("androidJUnit5", "1.9.3.0")
             version("kluent", "1.73")

@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION") // Because of IDE bug https://youtrack.jetbrains.com/issue/KTIJ-19370
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -24,12 +23,16 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+
+            @Suppress("UnstableApiUsage")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
+    @Suppress("UnstableApiUsage")
     buildFeatures {
         viewBinding = true
+        buildConfig = true
         compose = true
     }
 
@@ -46,6 +49,7 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
     }

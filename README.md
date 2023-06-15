@@ -62,7 +62,7 @@ The app has a few screens located in multiple feature modules:
 - Favourites screen - empty (WiP)
   <br/><br/>
 
-<p float="left">
+<p>
   <img src="misc/image/screen_album_list.webp" width="250" />
   <img src="misc/image/screen_album_detail.webp" width="250" />
   <img src="misc/image/screen_favorites.webp" width="250" />
@@ -425,9 +425,6 @@ Other high-quality projects will help you to find solutions that work for your p
 - Delegate import is not provided when a variable has the same name as Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - `androidx.compose.runtime.getValue` and `androidx.compose.runtime.setValue` imports are can't be resolved
   automatically - they had to be added manually [KTIJ-23200](https://youtrack.jetbrains.com/issue/KTIJ-23200)
-- Gradle Versions Catalog code is marked as an error in `build.gradle.kts`
-  files ([KTIJ-19370](https://youtrack.jetbrains.com/issue/KTIJ-19370),
-  [KTIJ-19585](https://youtrack.jetbrains.com/issue/KTIJ-19585))
 - [ktlint import-ordering](https://github.com/pinterest/ktlint/blob/master/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt)
   rule conflicts with IDE default formatting rule, so it have to be [.editorconfig](.editorconfig) file.
   and [KTIJ-16847](https://youtrack.jetbrains.com/issue/KTIJ-16847))
@@ -440,6 +437,8 @@ Other high-quality projects will help you to find solutions that work for your p
 - Custom detekt config is hard to update ([Issue 4517](https://github.com/detekt/detekt/issues/4517))
 - Coil does not provide a way to automatically retry image load, so some images may not be loaded when connection speed
   is low ([Issue 132](https://github.com/coil-kt/coil/issues/132))
+- `buildFeatures` and `testOptions` blocks are incubating and have to be marked as `@Suppress
+  ("UnstableApiUsage")`
 
 ## Contribute
 
