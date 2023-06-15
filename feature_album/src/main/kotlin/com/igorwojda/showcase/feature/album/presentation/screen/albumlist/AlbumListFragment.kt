@@ -88,8 +88,8 @@ class AlbumListFragment : BaseFragment() {
         fun configureAppBar(baseActivity: BaseActivity) {
             baseActivity.apply {
                 appBarLayout?.apply {
-                    this.elevation = 0f
-                    this.isVisible = true
+                    elevation = 0f
+                    isVisible = true
                 }
 
                 mainAppToolbar?.layoutTransition = null
@@ -101,17 +101,17 @@ class AlbumListFragment : BaseFragment() {
 
         private fun configureDefaultAppBar(baseActivity: BaseActivity) {
             baseActivity.apply {
-                this.searchTextInputEditText?.hideKeyboard()
-                this.searchLayout?.updateLayoutParams {
-                    this.width = ViewGroup.LayoutParams.WRAP_CONTENT
+                searchTextInputEditText?.hideKeyboard()
+                searchLayout?.updateLayoutParams {
+                    width = ViewGroup.LayoutParams.WRAP_CONTENT
                 }
-                this.searchTextInputLayout.apply {
+                searchTextInputLayout.apply {
                     this?.isVisible = false
                 }
-                this.mainAppToolbar.apply {
+                mainAppToolbar.apply {
                     this?.post {
-                        this.setTitle(R.string.album)
-                        this.logo = null
+                        setTitle(R.string.album)
+                        logo = null
                     }
                     this?.menu?.clear()
                     this?.inflateMenu(com.igorwojda.showcase.base.R.menu.menu_toolbar_main)
@@ -125,15 +125,15 @@ class AlbumListFragment : BaseFragment() {
         }
         private fun configureSearchAppBar(baseActivity: BaseActivity) {
             baseActivity.apply {
-                this.searchLayout?.updateLayoutParams {
-                    this.width = ViewGroup.LayoutParams.MATCH_PARENT
+                searchLayout?.updateLayoutParams {
+                    width = ViewGroup.LayoutParams.MATCH_PARENT
                 }
 
-                this.searchTextInputLayout.apply {
+                searchTextInputLayout.apply {
                     this?.isVisible = true
                 }
 
-                this.mainAppToolbar.apply {
+                mainAppToolbar.apply {
                     this?.title = null
                     this?.setNavigationOnClickListener {
                         configureDefaultAppBar(
@@ -144,11 +144,11 @@ class AlbumListFragment : BaseFragment() {
                     this?.logo = null
                 }
 
-                this.searchTextInputEditText?.post {
+                searchTextInputEditText?.post {
                     searchTextInputEditText?.requestFocus()
                 }
 
-                this.searchTextInputEditText?.showKeyboard()
+                searchTextInputEditText?.showKeyboard()
             }
         }
     }
