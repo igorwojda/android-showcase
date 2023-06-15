@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.navArgs
 import com.google.accompanist.flowlayout.FlowRow
+import com.igorwojda.showcase.R
 import com.igorwojda.showcase.base.common.res.Dimen
 import com.igorwojda.showcase.base.presentation.activity.BaseFragment
 import com.igorwojda.showcase.base.presentation.compose.composable.DataNotFoundAnim
@@ -39,7 +40,6 @@ import com.igorwojda.showcase.base.presentation.compose.composable.PlaceholderIm
 import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndicator
 import com.igorwojda.showcase.base.presentation.compose.composable.TextTitleLarge
 import com.igorwojda.showcase.base.presentation.compose.composable.TextTitleMedium
-import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Tag
 import com.igorwojda.showcase.feature.album.domain.model.Track
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState

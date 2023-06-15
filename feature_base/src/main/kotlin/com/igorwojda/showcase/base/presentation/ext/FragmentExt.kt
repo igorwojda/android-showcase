@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.igorwojda.showcase.base.R
+import com.igorwojda.showcase.feature.base.R
 import timber.log.Timber
 
 /**

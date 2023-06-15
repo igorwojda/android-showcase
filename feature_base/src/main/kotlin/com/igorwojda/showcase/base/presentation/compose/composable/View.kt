@@ -6,8 +6,8 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.igorwojda.showcase.base.R
 import com.igorwojda.showcase.base.common.res.Dimen
+import com.igorwojda.showcase.feature.base.R
 
 @Composable
 fun DataNotFoundAnim() {

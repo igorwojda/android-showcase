@@ -2,8 +2,7 @@ import com.android.build.api.dsl.ApplicationDefaultConfig
 import java.util.Locale
 
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("local.app")
     alias(libs.plugins.kotlin.symbolProcessing)
     alias(libs.plugins.safeArgs)
     alias(libs.plugins.kotlin.serialization)
@@ -69,12 +68,6 @@ android {
 
     testOptions {
         unitTests.isReturnDefaultValues = true
-    }
-}
-
-kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
     }
 }
 

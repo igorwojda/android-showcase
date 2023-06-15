@@ -23,6 +23,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.igorwojda.showcase.R
 import com.igorwojda.showcase.base.common.res.Dimen
 import com.igorwojda.showcase.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.base.presentation.activity.BaseActivity.Companion.mainActivity
@@ -33,7 +34,6 @@ import com.igorwojda.showcase.base.presentation.compose.composable.ProgressIndic
 import com.igorwojda.showcase.base.presentation.ext.hideKeyboard
 import com.igorwojda.showcase.base.presentation.ext.initSearchBehaviour
 import com.igorwojda.showcase.base.presentation.ext.showKeyboard
-import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Content
@@ -114,7 +114,7 @@ class AlbumListFragment : BaseFragment() {
                         logo = null
                     }
                     this?.menu?.clear()
-                    this?.inflateMenu(com.igorwojda.showcase.base.R.menu.menu_toolbar_main)
+                    this?.inflateMenu(R.menu.menu_toolbar_main)
                     this?.setOnMenuItemClickListener { _ ->
                         configureSearchAppBar(baseActivity)
                         true
