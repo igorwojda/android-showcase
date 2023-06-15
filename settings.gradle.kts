@@ -48,7 +48,7 @@ dependencyResolutionManagement {
             version("coroutines", "1.6.4")
             version("retrofit", "2.9.0")
             version("okhttp", "4.11.0")
-            version("koin", "3.3.3")
+            version("koin", "3.4.2")
             version("coil", "2.2.2")
             version("lifecycle", "2.6.1")
             version("room", "2.5.1")
