@@ -437,6 +437,8 @@ Other high-quality projects will help you to find solutions that work for your p
 - Custom detekt config is hard to update ([Issue 4517](https://github.com/detekt/detekt/issues/4517))
 - Coil does not provide a way to automatically retry image load, so some images may not be loaded when connection speed
   is low ([Issue 132](https://github.com/coil-kt/coil/issues/132))
+- `buildFeatures` and `testOptions` blocks are incubating and have to be marked as `@Suppress
+  ("UnstableApiUsage")`
 
 ## Contribute
 
