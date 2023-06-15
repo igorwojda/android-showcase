@@ -49,7 +49,7 @@ dependencyResolutionManagement {
             version("retrofit", "2.9.0")
             version("okhttp", "4.11.0")
             version("koin", "3.4.2")
-            version("coil", "2.2.2")
+            version("coil", "2.4.0")
             version("lifecycle", "2.6.1")
             version("room", "2.5.1")
             version("serializationJson", "1.5.0")
