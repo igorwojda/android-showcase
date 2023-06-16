@@ -24,8 +24,9 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"//TODO: libs.versions.kotlinCompilerExtensionVersion
-        // .get()
+        val catalogs = extensions.getByType<VersionCatalogsExtension>()
+        val libs = catalogs.named("libs")
+        kotlinCompilerExtensionVersion = libs.findVersion("kotlinCompilerExtensionVersion").get().toString()
     }
 
     compileOptions {

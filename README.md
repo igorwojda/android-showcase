@@ -402,6 +402,9 @@ Other high-quality projects will help you to find solutions that work for your p
 
 ## Known Issues
 
+- In Gradle 8.1 the version catalog type safe API is not available for `buildSrc` directory, so:
+  - plugins have to be retrieved using hardcoded strings
+  - `kotlinCompilerExtensionVersion` has to be retrieved using type unsafe API
 - No usages are found for the `suspended` Kotlin `invoke`
   operator ([KTIJ-1053](https://youtrack.jetbrains.com/issue/KTIJ-1053/Find-usages-no-convention-usages-for-suspend-invoke-operator))
 - The `Material You Dynamic Colors` are not correctly applied to Fragment contents (only to Activity)
