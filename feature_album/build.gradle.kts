@@ -4,6 +4,10 @@ plugins {
     alias(libs.plugins.safeArgs)
 }
 
+android {
+    namespace = "com.igorwojda.showcase.feature.album"
+}
+
 dependencies {
     implementation(projects.featureBase)
 
