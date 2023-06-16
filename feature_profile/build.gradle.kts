@@ -1,6 +1,5 @@
 plugins {
     id("local.library")
-    alias(libs.plugins.kotlin.symbolProcessing)
 }
 
 android {

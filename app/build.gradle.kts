@@ -3,7 +3,6 @@ import java.util.Locale
 
 plugins {
     id("local.app")
-    alias(libs.plugins.kotlin.symbolProcessing)
 }
 
 android {
