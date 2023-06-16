@@ -3,8 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.symbolProcessing)
     alias(libs.plugins.safeArgs)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.testLogger)
-    alias(libs.plugins.junit5Android)
 }
 
 android {
@@ -16,6 +14,7 @@ dependencies {
     // testImplementation dependency inside other modules. Using implementation allows to write tests for test utilities.
     implementation(libs.kotlin)
     implementation(libs.bundles.test)
+    implementation(libs.bundles.compose)
 
     runtimeOnly(libs.junitJupiterEngine)
 }

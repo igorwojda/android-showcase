@@ -2,15 +2,8 @@ import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
     alias(libs.plugins.safeArgs) apply false
-    alias(libs.plugins.junit5Android) apply false
     alias(libs.plugins.detekt)
     id("local.spotless")
-}
-
-subprojects {
-    tasks.withType<Test> {
-        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
-    }
 }
 
 val detektCheck by tasks.registering(Detekt::class) {

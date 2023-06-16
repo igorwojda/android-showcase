@@ -7,8 +7,9 @@ dependencies {
     implementation(plugin(libs.plugins.android.application))
     implementation(plugin(libs.plugins.android.library))
     implementation(plugin(libs.plugins.spotless))
-//    implementation(plugin(libs.plugins.testLogger))
+    implementation(plugin(libs.plugins.testLogger))
 //    implementation(plugin(libs.plugins.detekt))
+    implementation(plugin(libs.plugins.junit5Android))
 }
 
 kotlin {

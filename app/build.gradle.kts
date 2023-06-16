@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.kotlin.symbolProcessing)
     alias(libs.plugins.safeArgs)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.testLogger)
-    alias(libs.plugins.junit5Android)
 }
 
 android {
@@ -47,6 +45,7 @@ android {
         }
     }
 
+    @Suppress("UnstableApiUsage")
     buildFeatures {
         viewBinding = true
         buildConfig = true
@@ -66,6 +65,7 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
     }

@@ -3,6 +3,7 @@ import gradle.kotlin.dsl.accessors._ca04c29c3551380248d5d19915376934.kotlin
 plugins {
     id("org.jetbrains.kotlin.android")
     id("com.android.library")
+    id("local.test")
 }
 
 // TODO: duplcated in app plugin
