@@ -1,7 +1,6 @@
 plugins {
     id("local.library")
     alias(libs.plugins.kotlin.symbolProcessing)
-    alias(libs.plugins.safeArgs)
 }
 
 android {
