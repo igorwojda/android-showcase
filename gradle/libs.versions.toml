@@ -1,9 +1,9 @@
 [versions]
-kotlin = "1.8.21"
+kotlin = "1.8.22"
 
 # KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-kotlinSymbolProcessing = "1.8.21-1.0.11"
+kotlinSymbolProcessing = "1.8.22-1.0.11"
 
 # Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
@@ -11,7 +11,7 @@ kotlinCompilerExtensionVersion = "1.4.7"
 
 navigation = "2.5.3"
 testLogger = "3.2.0"
-coroutines = "1.6.4"
+coroutines = "1.7.1"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
 koin = "3.4.2"
@@ -20,15 +20,15 @@ coil = "2.4.0"
 # https://issuetracker.google.com/issues/230557927?hl=id
 lifecycle = "2.6.1"
 room = "2.5.1"
-serializationJson = "1.5.0"
+serializationJson = "1.5.1"
 kotlinxSerializationConverter = "0.8.0"
 viewBindingPropertyDelegate = "1.5.9"
 timber = "5.0.1"
 constraintLayout = "2.1.4"
 appCompat = "1.6.1"
 recyclerView = "1.3.0"
-compose = "1.3.3"
-materialCompose = "1.0.1"
+compose = "1.4.3"
+materialCompose = "1.1.0"
 material = "1.9.0"
 lottie = "6.0.1"
 playCore = "1.10.3"
