@@ -114,7 +114,7 @@ class AlbumListFragment : BaseFragment() {
                         logo = null
                     }
                     this?.menu?.clear()
-                    this?.inflateMenu(com.igorwojda.showcase.base.R.menu.menu_toolbar_main)
+                    this?.inflateMenu(R.menu.menu_toolbar_main)
                     this?.setOnMenuItemClickListener { _ ->
                         configureSearchAppBar(baseActivity)
                         true

@@ -1,48 +1,9 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.symbolProcessing)
-    alias(libs.plugins.safeArgs)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.testLogger)
-    alias(libs.plugins.junit5Android)
+    id("local.library")
 }
 
 android {
     namespace = "com.igorwojda.showcase.library.testutils"
-
-    compileSdk = 33
-
-    defaultConfig {
-        minSdk = 26
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    packaging {
-        resources.excludes += setOf(
-            "META-INF/AL2.0",
-            "META-INF/licenses/**",
-            "**/attach_hotspot_windows.dll",
-            "META-INF/LGPL2.1",
-        )
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-}
-
-kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
-    }
 }
 
 dependencies {
@@ -50,6 +11,7 @@ dependencies {
     // testImplementation dependency inside other modules. Using implementation allows to write tests for test utilities.
     implementation(libs.kotlin)
     implementation(libs.bundles.test)
+    implementation(libs.bundles.compose)
 
     runtimeOnly(libs.junitJupiterEngine)
 }

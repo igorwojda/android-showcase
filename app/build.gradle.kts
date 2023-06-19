@@ -2,13 +2,7 @@ import com.android.build.api.dsl.ApplicationDefaultConfig
 import java.util.Locale
 
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.symbolProcessing)
-    alias(libs.plugins.safeArgs)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.testLogger)
-    alias(libs.plugins.junit5Android)
+    id("local.app")
 }
 
 android {
@@ -48,6 +42,7 @@ android {
         }
     }
 
+    @Suppress("UnstableApiUsage")
     buildFeatures {
         viewBinding = true
         buildConfig = true
@@ -67,14 +62,9 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
-    }
-}
-
-kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
     }
 }
 
