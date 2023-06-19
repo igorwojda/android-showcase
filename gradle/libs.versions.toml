@@ -16,8 +16,6 @@ retrofit = "2.9.0"
 okhttp = "4.11.0"
 koin = "3.4.2"
 coil = "2.4.0"
-# verison 2.6.0-alpha01 has collectAsStateWithLifecycle
-# https://issuetracker.google.com/issues/230557927?hl=id
 lifecycle = "2.6.1"
 room = "2.5.1"
 serializationJson = "1.5.0"
@@ -115,7 +113,6 @@ test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTest
 # Search Gradle Plugins https://plugins.gradle.org/
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-symbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }

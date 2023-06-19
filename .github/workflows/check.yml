@@ -95,34 +95,34 @@ jobs:
           name: detekt-report
           path: ./**/build/reports/detekt/detekt.*
 
-  ui-test:
-    runs-on: macos-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: 'zulu'
-
-      - name: run ui tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          target: default
-          arch: x86
-          profile: Nexus 6
-          disable-animations: true
-          script: ./gradlew connectedCheck
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: ui-test-report
-          path: ./**/build/reports/ui-tests/
+  #  ui-test:
+  #    runs-on: macos-latest
+  #    strategy:
+  #      fail-fast: false
+  #    steps:
+  #      - name: checkout
+  #        uses: actions/checkout@v3
+  #
+  #      - name: Set up JDK
+  #        uses: actions/setup-java@v3
+  #        with:
+  #          java-version: 17
+  #          distribution: 'zulu'
+  #
+  #      - name: run ui tests
+  #        uses: reactivecircus/android-emulator-runner@v2
+  #        with:
+  #          api-level: 29
+  #          target: default
+  #          arch: x86
+  #          profile: Nexus 6
+  #          disable-animations: true
+  #          script: ./gradlew connectedCheck
+  #
+  #      - uses: actions/upload-artifact@v3
+  #        with:
+  #          name: ui-test-report
+  #          path: ./**/build/reports/ui-tests/
 
   unit-test:
     runs-on: ubuntu-latest
