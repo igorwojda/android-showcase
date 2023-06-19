@@ -20,7 +20,7 @@
     },
     {
       "matchPackagePatterns": [
-        "^org.jetbrains.kotlin",
+        "^org.jetbrains.kotlin.android",
         "^org.jetbrains.kotlin:kotlin-reflect",
         "^com.google.devtools.ksp",
         "^androidx.compose.compiler",
