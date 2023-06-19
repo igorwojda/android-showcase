@@ -4,6 +4,8 @@ plugins {
 
 spotless {
     kotlin {
+        target("**/*.kt", "**/*.kts")
+        targetExclude("**/buildSrc/build/**/*.*")
         ktlint()
 
         indentWithSpaces()
