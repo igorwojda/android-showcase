@@ -20,15 +20,17 @@
     },
     {
       "matchPackagePatterns": [
-        "^org.jetbrains.kotlin.android",
-        "^org.jetbrains.kotlin:kotlin-reflect",
-        "^com.google.devtools.ksp",
-        "^androidx.compose.compiler",
-        "androidx.compose.material3:material3",
         "androidx.compose.ui:ui",
         "androidx.compose.ui:ui-tooling-preview"
       ],
-      "groupName": "kotlin"
+      "groupName": "androidx compose ui updates"
+    },
+    {
+      "matchPackageNames": [
+        "org.jetbrains.kotlin.*",
+        "com.google.devtools.ksp"
+      ],
+      "enabled": false
     }
   ]
 }
