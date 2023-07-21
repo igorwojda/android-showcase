@@ -2,6 +2,7 @@ package com.igorwojda.showcase.base.presentation.ext
 
 import android.content.Context
 import android.os.SystemClock
+import android.view.KeyEvent
 import android.view.View
 import android.view.View.GONE
 import android.view.View.INVISIBLE
@@ -95,8 +96,8 @@ fun EditText.initSearchBehaviour(
             }
         }
     }
-    this.setOnEditorActionListener { _, keyCode, _ ->
-        return@setOnEditorActionListener if (keyCode == EditorInfo.IME_ACTION_SEARCH) {
+    this.setOnEditorActionListener { _, keyCode, keyEvent ->
+        return@setOnEditorActionListener if (keyCode == EditorInfo.IME_ACTION_SEARCH || keyEvent.keyCode == KeyEvent.KEYCODE_ENTER) {
             onQueryTextChanged.onQueryTextSubmit(this.text?.toString())
             true
         } else {
