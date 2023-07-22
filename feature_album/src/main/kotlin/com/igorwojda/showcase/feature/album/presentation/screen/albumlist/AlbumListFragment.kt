@@ -57,27 +57,29 @@ class AlbumListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         model.onEnter()
 
-        mainActivity.searchTextInputEditText?.initSearchBehaviour(
-            viewLifecycleOwner.lifecycleScope,
-            MINIMUM_PRODUCT_QUERY_SIZE,
-            DELAY_BEFORE_SUBMITTING_QUERY,
-            object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String?): Boolean {
-                    mainActivity.searchTextInputEditText?.hideKeyboard()
-                    configureDefaultAppBar(mainActivity)
-                    model.onEnter(query)
-                    return true
-                }
-
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText.isNullOrBlank()) {
-                        mainActivity.searchTextInputEditText?.hideKeyboard()
+        mainActivity.searchTextInputEditText?.let { editText ->
+            editText.initSearchBehaviour(
+                viewLifecycleOwner.lifecycleScope,
+                MINIMUM_PRODUCT_QUERY_SIZE,
+                DELAY_BEFORE_SUBMITTING_QUERY,
+                object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        editText.hideKeyboard()
                         configureDefaultAppBar(mainActivity)
+                        model.onEnter(query)
+                        return true
                     }
-                    return true
-                }
-            },
-        ).also { mainActivity.searchTextInputEditText?.text?.clear() }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        if (newText.isNullOrBlank()) {
+                            editText.hideKeyboard()
+                            configureDefaultAppBar(mainActivity)
+                        }
+                        return true
+                    }
+                },
+            ).also { editText.text?.clear() }
+        }
     }
 
     companion object {
@@ -105,21 +107,21 @@ class AlbumListFragment : BaseFragment() {
                 searchLayout?.updateLayoutParams {
                     width = ViewGroup.LayoutParams.WRAP_CONTENT
                 }
-                searchTextInputLayout.apply {
-                    this?.isVisible = false
+                searchTextInputLayout?.apply {
+                    isVisible = false
                 }
-                mainAppToolbar.apply {
-                    this?.post {
+                mainAppToolbar?.apply {
+                    post {
                         setTitle(R.string.album)
                         logo = null
                     }
-                    this?.menu?.clear()
-                    this?.inflateMenu(R.menu.menu_toolbar_main)
-                    this?.setOnMenuItemClickListener { _ ->
+                    menu?.clear()
+                    inflateMenu(R.menu.menu_toolbar_main)
+                    setOnMenuItemClickListener { _ ->
                         configureSearchAppBar(baseActivity)
                         true
                     }
-                    this?.logo = null
+                    logo = null
                 }
             }
         }
@@ -144,11 +146,12 @@ class AlbumListFragment : BaseFragment() {
                     this?.logo = null
                 }
 
-                searchTextInputEditText?.post {
-                    searchTextInputEditText?.requestFocus()
+                searchTextInputEditText?.let {
+                    it.post {
+                        it.requestFocus()
+                        it.showKeyboard()
+                    }
                 }
-
-                searchTextInputEditText?.showKeyboard()
             }
         }
     }
