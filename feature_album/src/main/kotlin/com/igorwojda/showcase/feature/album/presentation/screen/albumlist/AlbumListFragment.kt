@@ -107,21 +107,21 @@ class AlbumListFragment : BaseFragment() {
                 searchLayout?.updateLayoutParams {
                     width = ViewGroup.LayoutParams.WRAP_CONTENT
                 }
-                searchTextInputLayout.apply {
-                    this?.isVisible = false
+                searchTextInputLayout?.apply {
+                    isVisible = false
                 }
-                mainAppToolbar.apply {
-                    this?.post {
+                mainAppToolbar?.apply {
+                    post {
                         setTitle(R.string.album)
                         logo = null
                     }
-                    this?.menu?.clear()
-                    this?.inflateMenu(R.menu.menu_toolbar_main)
-                    this?.setOnMenuItemClickListener { _ ->
+                    menu?.clear()
+                    inflateMenu(R.menu.menu_toolbar_main)
+                    setOnMenuItemClickListener { _ ->
                         configureSearchAppBar(baseActivity)
                         true
                     }
-                    this?.logo = null
+                    logo = null
                 }
             }
         }
