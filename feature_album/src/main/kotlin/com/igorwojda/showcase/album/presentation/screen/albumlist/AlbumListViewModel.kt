@@ -19,7 +19,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(
-    private val state: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle,
     private val navManager: NavManager,
     private val getAlbumListUseCase: GetAlbumListUseCase,
 ) : BaseViewModel<UiState, Action>(Loading) {
@@ -29,7 +29,7 @@ internal class AlbumListViewModel(
         private const val SAVED_QUERY_KEY = "query"
     }
 
-    fun onEnter(query: String? = (state.get(SAVED_QUERY_KEY) as? String) ?: DEFAULT_QUERY_NAME) {
+    fun onEnter(query: String? = (savedStateHandle.get(SAVED_QUERY_KEY) as? String) ?: DEFAULT_QUERY_NAME) {
         getAlbumList(query)
     }
 
@@ -41,7 +41,7 @@ internal class AlbumListViewModel(
             job = null
         }
 
-        state[SAVED_QUERY_KEY] = query
+        savedStateHandle[SAVED_QUERY_KEY] = query
 
         job = viewModelScope.launch {
             getAlbumListUseCase(query).also { result ->
