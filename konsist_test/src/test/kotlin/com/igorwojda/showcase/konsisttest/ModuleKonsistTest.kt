@@ -5,9 +5,8 @@ import com.lemonappdev.konsist.api.verify.assert
 import org.junit.jupiter.api.Test
 
 // Check architecture coding rules.
-class ArchitectureKonsistTest {
+class ModuleKonsistTest {
 
-    // TODO: Add architecture test
     @Test
     fun `every file in module reside in module specific package`() {
         Konsist.scopeFromProject()
