@@ -1,10 +1,10 @@
 package com.igorwojda.showcase.album.presentation.screen.albumdetail
 
-import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
-import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
-import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
+import com.igorwojda.showcase.base.domain.result.Result
+import com.igorwojda.showcase.testutils.CoroutinesTestDispatcherExtension
+import com.igorwojda.showcase.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.library.testutils
+package com.igorwojda.showcase.testutils
 
 import android.annotation.SuppressLint
 import androidx.arch.core.executor.ArchTaskExecutor

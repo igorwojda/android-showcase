@@ -9,13 +9,19 @@ class ArchitectureKonsistTest {
 
     // TODO: Add architecture test
     @Test
-    fun `every file in the feature module reside in feature specific package`() {
+    fun `every file in module reside in module specific package`() {
         Konsist.scopeFromProject()
             .files
             .assert {
                 // com.igorwojda.showcase.album.presentation.screen.albumdetail
-                val packageName = it.moduleName.lowercase().replace("_", "")
-                val fullyQualifiedPackageName = "com.igorwojda.showcase.${packageName}"
+                val modulePackageName = it.moduleName
+                    .lowercase()
+                    .replace("feature_", "")
+                    .replace("library_", "")
+                    .replace("_", "")
+
+                val fullyQualifiedPackageName = "com.igorwojda.showcase.${modulePackageName}"
+
                 it.packagee?.fullyQualifiedName?.startsWith(fullyQualifiedPackageName)
             }
     }

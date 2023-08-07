@@ -1,13 +1,13 @@
 package com.igorwojda.showcase.album.presentation.screen.albumlist
 
 import androidx.lifecycle.SavedStateHandle
-import com.igorwojda.showcase.base.domain.result.Result
-import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.album.domain.model.Album
 import com.igorwojda.showcase.album.domain.usecase.GetAlbumListUseCase
 import com.igorwojda.showcase.album.presentation.screen.albumlist.AlbumListViewModel.UiState
-import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
-import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
+import com.igorwojda.showcase.base.domain.result.Result
+import com.igorwojda.showcase.base.presentation.nav.NavManager
+import com.igorwojda.showcase.testutils.CoroutinesTestDispatcherExtension
+import com.igorwojda.showcase.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
