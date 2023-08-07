@@ -108,7 +108,7 @@ lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
 navigation = ["navigationFragment", "navigationUiKtx"]
 room = ["roomKtx", "roomRuntime"]
 test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTesting", "junitJupiterApi",
-    "junitJupiterEngine", "konsist"]
+    "junitJupiterEngine"]
 
 [plugins]
 # Search Gradle Plugins https://plugins.gradle.org/
