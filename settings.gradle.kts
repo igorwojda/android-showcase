@@ -7,6 +7,7 @@ include(
     ":feature_favourite",
     ":feature_base",
     ":library_test_utils",
+    ":konsist_test"
 )
 
 pluginManagement {
@@ -21,6 +22,8 @@ pluginManagement {
 dependencyResolutionManagement {
     repositories {
         google()
+        // Added for testing local Konsist artifacts
+        mavenLocal()
         mavenCentral()
     }
 }

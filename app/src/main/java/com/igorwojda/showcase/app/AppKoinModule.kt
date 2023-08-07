@@ -1,5 +1,6 @@
-package com.igorwojda.showcase
+package com.igorwojda.showcase.app
 
+import com.igorwojda.showcase.BuildConfig
 import com.igorwojda.showcase.app.data.api.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.api.UserAgentInterceptor
 import com.igorwojda.showcase.base.data.retrofit.ApiResultAdapterFactory

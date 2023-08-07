@@ -3,7 +3,6 @@ package com.igorwojda.showcase.app
 import android.app.Application
 import com.google.android.material.color.DynamicColors
 import com.igorwojda.showcase.BuildConfig
-import com.igorwojda.showcase.appModule
 import com.igorwojda.showcase.base.baseModule
 import com.igorwojda.showcase.feature.album.featureAlbumModules
 import com.igorwojda.showcase.feature.favourite.featureFavouriteModules
