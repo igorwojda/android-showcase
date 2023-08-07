@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.igorwojda.showcase.feature.konsistTest"
+    namespace = "com.igorwojda.showcase.konsistTest"
 }
 
 dependencies {

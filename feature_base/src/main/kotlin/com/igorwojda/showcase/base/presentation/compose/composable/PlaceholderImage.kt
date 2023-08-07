@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.igorwojda.showcase.feature.base.R
+import com.igorwojda.showcase.base.R
 
 private val PLACEHOLDER_IMAGES = listOf(
     R.drawable.image_placeholder_1,

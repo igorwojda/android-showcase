@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.igorwojda.showcase.feature.album"
+    namespace = "com.igorwojda.showcase.album"
 }
 
 dependencies {

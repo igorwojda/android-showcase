@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.igorwojda.showcase.feature.favourite"
+    namespace = "com.igorwojda.showcase.favourite"
 }
 
 dependencies {

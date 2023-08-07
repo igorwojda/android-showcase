@@ -13,9 +13,9 @@ class ArchitectureKonsistTest {
         Konsist.scopeFromProject()
             .files
             .assert {
-                // com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
+                // com.igorwojda.showcase.album.presentation.screen.albumdetail
                 val packageName = it.moduleName.lowercase().replace("_", "")
-                val fullyQualifiedPackageName = "com.igorwojda.showcase.feature.${packageName}"
+                val fullyQualifiedPackageName = "com.igorwojda.showcase.${packageName}"
                 it.packagee?.fullyQualifiedName?.startsWith(fullyQualifiedPackageName)
             }
     }

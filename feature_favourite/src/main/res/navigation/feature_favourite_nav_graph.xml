@@ -6,6 +6,6 @@
         app:startDestination="@id/favouriteFragment">
     <fragment
             android:id="@+id/favouriteFragment"
-            android:name="com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteFragment"
+            android:name="com.igorwojda.showcase.favourite.presentation.screen.favourite.FavouriteFragment"
             android:label="FavouriteFragment" />
 </navigation>

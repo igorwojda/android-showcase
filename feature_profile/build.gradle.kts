@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.igorwojda.showcase.feature.profle"
+    namespace = "com.igorwojda.showcase.profle"
 }
 
 dependencies {
