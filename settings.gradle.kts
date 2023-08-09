@@ -7,7 +7,7 @@ include(
     ":feature_favourite",
     ":feature_base",
     ":library_test_utils",
-    ":konsist_test"
+    ":konsist_test",
 )
 
 pluginManagement {

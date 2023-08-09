@@ -14,7 +14,7 @@ class GeneralKonsistTest {
             .packages
             .assert { it.hasMatchingPath }
     }
-    
+
     @Test
     fun `no field should have 'm' prefix`() {
         Konsist.scopeFromProject()

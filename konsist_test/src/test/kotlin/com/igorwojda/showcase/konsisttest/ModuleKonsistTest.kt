@@ -19,7 +19,7 @@ class ModuleKonsistTest {
                     .replace("library_", "")
                     .replace("_", "")
 
-                val fullyQualifiedPackageName = "com.igorwojda.showcase.${modulePackageName}"
+                val fullyQualifiedPackageName = "com.igorwojda.showcase.$modulePackageName"
 
                 it.packagee?.fullyQualifiedName?.startsWith(fullyQualifiedPackageName)
             }

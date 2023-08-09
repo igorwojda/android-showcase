@@ -1,8 +1,8 @@
 package com.igorwojda.showcase.album.domain.usecase
 
-import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.album.data.repository.AlbumRepositoryImpl
 import com.igorwojda.showcase.album.domain.model.Album
+import com.igorwojda.showcase.base.domain.result.Result
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

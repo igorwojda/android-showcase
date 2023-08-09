@@ -1,14 +1,14 @@
 package com.igorwojda.showcase.album.data.repository
 
 import com.igorwojda.showcase.album.data.DataFixtures
-import com.igorwojda.showcase.base.data.retrofit.ApiResult
-import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.album.data.datasource.api.model.toDomainModel
 import com.igorwojda.showcase.album.data.datasource.api.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.album.data.datasource.api.response.SearchAlbumResponse
 import com.igorwojda.showcase.album.data.datasource.api.service.AlbumRetrofitService
 import com.igorwojda.showcase.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.album.data.datasource.database.model.toDomainModel
+import com.igorwojda.showcase.base.data.retrofit.ApiResult
+import com.igorwojda.showcase.base.domain.result.Result
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
