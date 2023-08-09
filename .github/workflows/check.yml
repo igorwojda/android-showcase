@@ -145,26 +145,3 @@ jobs:
         with:
           name: unit-test-report
           path: ./**/build/reports/tests/
-
-
-#  konsist-test:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      fail-fast: false
-#    steps:
-#      - name: checkout
-#        uses: actions/checkout@v3
-#
-#      - name: Set up JDK
-#        uses: actions/setup-java@v3
-#        with:
-#          java-version: 17
-#          distribution: 'zulu'
-#
-#      - name: konsistTest
-#        run: ./gradlew konsist_test:test
-#
-#      - uses: actions/upload-artifact@v3
-#        with:
-#          name: konsist-test-report
-#          path: ./konsist_test/build/reports/tests/
