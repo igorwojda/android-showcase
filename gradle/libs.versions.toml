@@ -9,7 +9,7 @@ kotlinSymbolProcessing = "1.8.22-1.0.11"
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
 kotlinCompilerExtensionVersion = "1.4.8"
 
-navigation = "2.5.3"
+navigation = "2.7.0"
 testLogger = "3.2.0"
 coroutines = "1.7.3"
 retrofit = "2.9.0"
