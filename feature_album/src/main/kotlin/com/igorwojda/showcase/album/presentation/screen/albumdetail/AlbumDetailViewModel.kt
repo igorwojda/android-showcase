@@ -2,10 +2,6 @@ package com.igorwojda.showcase.album.presentation.screen.albumdetail
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
-import com.igorwojda.showcase.base.domain.result.Result
-import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
-import com.igorwojda.showcase.base.presentation.viewmodel.BaseState
-import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
 import com.igorwojda.showcase.album.domain.model.Album
 import com.igorwojda.showcase.album.domain.model.Tag
 import com.igorwojda.showcase.album.domain.model.Track
@@ -16,6 +12,10 @@ import com.igorwojda.showcase.album.presentation.screen.albumdetail.AlbumDetailV
 import com.igorwojda.showcase.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
 import com.igorwojda.showcase.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
+import com.igorwojda.showcase.base.domain.result.Result
+import com.igorwojda.showcase.base.presentation.viewmodel.BaseAction
+import com.igorwojda.showcase.base.presentation.viewmodel.BaseState
+import com.igorwojda.showcase.base.presentation.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
 
 internal class AlbumDetailViewModel(

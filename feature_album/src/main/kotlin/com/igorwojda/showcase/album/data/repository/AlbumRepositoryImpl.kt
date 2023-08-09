@@ -1,7 +1,5 @@
 package com.igorwojda.showcase.album.data.repository
 
-import com.igorwojda.showcase.base.data.retrofit.ApiResult
-import com.igorwojda.showcase.base.domain.result.Result
 import com.igorwojda.showcase.album.data.datasource.api.model.toDomainModel
 import com.igorwojda.showcase.album.data.datasource.api.model.toEntityModel
 import com.igorwojda.showcase.album.data.datasource.api.service.AlbumRetrofitService
@@ -9,6 +7,8 @@ import com.igorwojda.showcase.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.album.data.datasource.database.model.toDomainModel
 import com.igorwojda.showcase.album.domain.model.Album
 import com.igorwojda.showcase.album.domain.repository.AlbumRepository
+import com.igorwojda.showcase.base.data.retrofit.ApiResult
+import com.igorwojda.showcase.base.domain.result.Result
 import timber.log.Timber
 
 internal class AlbumRepositoryImpl(
