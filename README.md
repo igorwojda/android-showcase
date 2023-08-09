@@ -110,7 +110,9 @@ the libraries are in the stable version unless there is a good reason to use non
 * Testing
   * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
     [android-junit5](https://github.com/mannodermaus/android-junit5)) - test individual classes
-  * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso)) - test user interface (WiP)
+  * [Konsist](https://docs.konsist.lemonappdev.com/) - test code conventions and architectural rules
+  * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso)) -
+    test user interface (WiP)
   * [Mockk](https://mockk.io/) - mocking framework
   * [Kluent](https://github.com/MarkusAmshove/Kluent) - assertion framework
 * Static analysis tools (linters)
