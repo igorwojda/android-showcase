@@ -42,9 +42,13 @@ class UseCaseKonsistTest {
         Konsist.scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assert {
-                val function = it.functions().first()
-                it.numDeclarations() == 1 && function.name == "invoke" && function.hasPublicOrDefaultModifier
+            .assert { it ->
+                val containsPublicInvokeFunction = it.containsFunction { function ->
+                    function.name == "invoke" && function.hasPublicOrDefaultModifier
+                }
+                
+                containsPublicInvokeFunction && it.numPublicOrDefaultDeclarations() == 1
+
             }
     }
 
