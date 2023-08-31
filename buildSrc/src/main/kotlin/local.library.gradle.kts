@@ -7,12 +7,14 @@ plugins {
 }
 
 android {
-    namespace = "com.igorwojda.showcase"
+    val catalogs = extensions.getByType<VersionCatalogsExtension>()
+    val libs = catalogs.named("libs")
 
-    compileSdk = 33
+    namespace = "com.igorwojda.showcase"
+    compileSdk = libs.findVersion("compileSdk").get().toString().toInt()
 
     defaultConfig {
-        minSdk = 26
+        minSdk = libs.findVersion("minSdk").get().toString().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -26,8 +28,6 @@ android {
     }
 
     composeOptions {
-        val catalogs = extensions.getByType<VersionCatalogsExtension>()
-        val libs = catalogs.named("libs")
         kotlinCompilerExtensionVersion = libs.findVersion("kotlinCompilerExtensionVersion").get().toString()
     }
 

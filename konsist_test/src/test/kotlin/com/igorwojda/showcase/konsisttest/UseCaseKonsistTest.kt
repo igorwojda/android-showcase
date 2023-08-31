@@ -44,7 +44,7 @@ class UseCaseKonsistTest {
             .withNameEndingWith("UseCase")
             .assert {
                 val function = it.functions().first()
-                it.numDeclarations() == 1 && function.name == "invoke" && function.isPublicOrDefault
+                it.numDeclarations() == 1 && function.name == "invoke" && function.hasPublicOrDefaultModifier
             }
     }
 

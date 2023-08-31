@@ -1,13 +1,16 @@
 [versions]
-kotlin = "1.8.22"
+kotlin = "1.9.10"
 
 # KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-kotlinSymbolProcessing = "1.8.22-1.0.11"
+kotlinSymbolProcessing = "1.9.10-1.0.13"
 
 # Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-kotlinCompilerExtensionVersion = "1.4.8"
+kotlinCompilerExtensionVersion = "1.5.3"
+
+compileSdk = "34"
+minSdk = "26"
 
 navigation = "2.7.1"
 testLogger = "3.2.0"
@@ -87,7 +90,7 @@ roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowLayout" }
 detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
-konsist = "com.lemonappdev:konsist:0.9.0"
+konsist = "com.lemonappdev:konsist:0.10.0"
 
 # Test dependencies
 junit = { module = "junit:junit", version.ref = "junit" }
