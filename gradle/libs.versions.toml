@@ -37,7 +37,7 @@ coreKtx = "1.10.1"
 fragmentKtx = "1.6.1"
 # Info https://google.github.io/accompanist/flowlayout/
 # Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
-accompanistFlowLayout = "0.30.1"
+accompanistFlowLayout = "0.32.0"
 
 spotless = "6.21.0"
 
