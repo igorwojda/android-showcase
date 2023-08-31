@@ -6,13 +6,15 @@ plugins {
 }
 
 android {
+    val catalogs = extensions.getByType<VersionCatalogsExtension>()
+    val libs = catalogs.named("libs")
+
     namespace = "com.igorwojda.showcase"
 
-    compileSdk = 33
+    compileSdk = libs.findVersion("compileSdk").get().toString().toInt()
 
     defaultConfig {
-        minSdk = 26
-        targetSdk = 33
+        minSdk = libs.findVersion("minSdk").get().toString().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -50,7 +52,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
+        kotlinCompilerExtensionVersion = libs.findVersion("kotlinCompilerExtensionVersion").get().toString()
     }
 
     compileOptions {
