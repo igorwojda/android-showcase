@@ -38,16 +38,16 @@ class UseCaseKonsistTest {
     }
 
     @Test
-    fun `classes with 'UseCase' suffix should have single public method named 'invoke'`() {
+    fun `classes with 'UseCase' suffix should have single public operator method named 'invoke'`() {
         Konsist.scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
             .assert { it ->
-                val containsPublicInvokeFunction = it.containsFunction { function ->
-                    function.name == "invoke" && function.hasPublicOrDefaultModifier
+                val hasSingleInvokeOperatorMethod = it.containsFunction { function ->
+                    function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
                 }
-                
-                containsPublicInvokeFunction && it.numPublicOrDefaultDeclarations() == 1
+
+                hasSingleInvokeOperatorMethod && it.numPublicOrDefaultDeclarations() == 1
 
             }
     }
