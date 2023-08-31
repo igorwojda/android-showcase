@@ -9,8 +9,6 @@ on:
 jobs:
   build-debug:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -31,8 +29,6 @@ jobs:
 
   android-lint:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -53,8 +49,6 @@ jobs:
 
   detekt:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -75,8 +69,6 @@ jobs:
 
   spotless:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -97,8 +89,6 @@ jobs:
 
   #  ui-test:
   #    runs-on: macos-latest
-  #    strategy:
-  #      fail-fast: false
   #    steps:
   #      - name: checkout
   #        uses: actions/checkout@v3
@@ -126,8 +116,6 @@ jobs:
 
   unit-test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
       - name: checkout
         uses: actions/checkout@v3
