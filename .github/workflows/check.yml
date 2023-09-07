@@ -147,7 +147,7 @@ jobs:
           distribution: 'zulu'
 
       - name: unitTest
-        run: ./gradlew test
+        run: ./gradlew test -x konsist_test:test
 
       - uses: actions/upload-artifact@v3
         with:
