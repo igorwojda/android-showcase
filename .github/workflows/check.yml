@@ -67,6 +67,26 @@ jobs:
           name: detekt-report
           path: ./**/build/reports/detekt/detekt.*
 
+  konsist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu'
+
+      - name: konsist
+        run: ./gradlew konsist_test:test
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: konsist-report
+          path: ./konsist_test/build/reports/*
+
   spotless:
     runs-on: ubuntu-latest
     steps:
