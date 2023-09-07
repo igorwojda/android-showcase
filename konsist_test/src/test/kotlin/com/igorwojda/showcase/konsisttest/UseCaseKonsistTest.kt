@@ -42,13 +42,12 @@ class UseCaseKonsistTest {
         Konsist.scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assert { it ->
+            .assert {
                 val hasSingleInvokeOperatorMethod = it.containsFunction { function ->
                     function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
                 }
 
                 hasSingleInvokeOperatorMethod && it.numPublicOrDefaultDeclarations() == 1
-
             }
     }
 
