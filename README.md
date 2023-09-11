@@ -63,7 +63,7 @@ The app has a few screens located in multiple feature modules:
 
 ## Tech-Stack
 
-This project takes advantage of best practices, and many popular libraries and tools in the Android ecosystem. Most of
+This project takes advantage of best practices and many popular libraries and tools in the Android ecosystem. Most of
 the libraries are in the stable version unless there is a good reason to use non-stable dependency.
 
 * Tech-stack
@@ -132,7 +132,7 @@ the libraries are in the stable version unless there is a good reason to use non
   * [Type safe accessors](https://docs.gradle.org/7.0/release-notes.html)
 * GitHub Boots
   * [Renovate](https://github.com/renovatebot/renovate) - automatically update dependencies
-  * [Stale](https://github.com/marketplace/stale) - automatically close stale Issues and Pull Requests that tend to accumulate during a project
+  * [Stale](https://github.com/marketplace/stale) - automatically closes stale Issues and Pull Requests that tend to accumulate during a project
 * Other Tools
   * Charles Proxy - enabled network traffic sniffing in `debug` builds.
 
@@ -246,14 +246,14 @@ device persistent memory). These data sources can be treated as an implicit sub-
 multiple classes:
 
 - **Retrofit Service** - defines a set of API endpoints
-- **Retrofit Response Model** - definition of the network objects for given endpoint (top-level model for the data
+- **Retrofit Response Model** - definition of the network objects for a given endpoint (top-level model for the data
   consists of `ApiModels`)
 - **Retrofit Api Data Model** - defines the network objects (sub-objects of the `Response Model`)
 - **Room Database** - persistence database to store app data
 - **Room DAO** - interact with the stored data
 - **Room Entity** - definition of the stored objects
 
-Both `Retrofit API Data Models` and `Room Entities` contain annotations, so given framework understands how to parse the
+Both `Retrofit API Data Models` and `Room Entities` contain annotations, so the given framework understands how to parse the
 data into objects.
 
 ### Data Flow
@@ -309,10 +309,10 @@ Series of workflows run (in parallel) for every opened PR and after merging PR t
 * `./gradlew detektCheck` - checks that sourcecode satisfies detekt rules
 * `./gradlew detektApply` - applies detekt code formatting rules to sourcecode in-place
 * `./gradlew spotlessCheck` - checks that source code satisfies formatting steps.
-* `./gradlew spotlessApply` - applies code formatting steps to source code in-place.
+* `./gradlew spotlessApply` - applies code formatting steps to the source code in place.
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
-* `./gradlew :app:bundleDebug` - create application bundle
+* `./gradlew :app:bundleDebug` - create an application bundle
 
 ## Design Decisions
 
@@ -342,7 +342,7 @@ There are a few ways to open this project.
 
 ### Plugins
 
-It is recommended installing [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure
+It is recommended to install [Detekt](https://plugins.jetbrains.com/plugin/10761-detekt) to Android Studio. To configure
 the plugin open Android Studio preferences, open `Tools`, open `Detekt` and add [detekt.yml](detekt.yml) configuration file.
 
 ## Upcoming Improvements
@@ -354,7 +354,7 @@ Check the list of all upcoming
 
 ## Inspiration
 
-Here are few additional resources.
+Here are a few additional resources.
 
 ### Cheatsheet
 
