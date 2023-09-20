@@ -1,5 +1,7 @@
+import com.adarshr.gradle.testlogger.theme.ThemeType
+
 plugins {
-    id("de.mannodermaus.android-junit5")
+    id("org.gradle.jvm-test-suite")
     id("com.adarshr.test-logger")
 }
 
@@ -11,6 +13,8 @@ tasks.withType<Test> {
         "junit.jupiter.execution.parallel.enabled" to "true",
         "junit.jupiter.execution.parallel.mode.default " to "concurrent",
     )
+}
 
-    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+testlogger {
+    theme = ThemeType.MOCHA
 }
