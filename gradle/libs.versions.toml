@@ -7,7 +7,7 @@ kotlinSymbolProcessing = "1.9.20-RC2-1.0.13"
 
 # Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-kotlinCompilerExtensionVersion = "1.5.3"
+kotlinCompilerExtensionVersion = "1.5.4"
 
 compileSdk = "34"
 minSdk = "26"
