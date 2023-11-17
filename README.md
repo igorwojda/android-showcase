@@ -303,16 +303,19 @@ the [.github/workflows](.github/workflows) folder.
 
 ### Pull Request Verification
 
-Series of workflows run (in parallel) for every opened PR and after merging PR to the `main` branch:
+Series of workflows run (in parallel) for every opened PR, and after merging PR to the `main` branch:
 
+* `./gradlew konsist_test:test --rerun-tasks` - checks that source code satisfies Konsist rules
 * `./gradlew lintDebug` - checks that source code satisfies Android lint rules
 * `./gradlew detektCheck` - checks that sourcecode satisfies detekt rules
-* `./gradlew detektApply` - applies detekt code formatting rules to sourcecode in-place
 * `./gradlew spotlessCheck` - checks that source code satisfies formatting steps.
-* `./gradlew spotlessApply` - applies code formatting steps to the source code in place.
 * `./gradlew testDebugUnitTest` - run unit tests
 * `./gradlew connectedCheck` - run UI tests
 * `./gradlew :app:bundleDebug` - create an application bundle
+
+The following tasks cab be executed locally to make codebase compliant with the rules:
+* `./gradlew detektApply` - applies detekt code formatting rules to sourcecode in-place
+* `./gradlew spotlessApply` - applies code formatting steps to the source code in place.
 
 ## Design Decisions
 

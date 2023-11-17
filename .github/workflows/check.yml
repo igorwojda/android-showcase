@@ -80,7 +80,7 @@ jobs:
           distribution: 'zulu'
 
       - name: konsist
-        run: ./gradlew konsist_test:test
+        run: ./gradlew konsist_test:test --rerun-tasks
 
       - uses: actions/upload-artifact@v3
         with:
