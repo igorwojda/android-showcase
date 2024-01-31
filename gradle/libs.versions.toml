@@ -41,7 +41,7 @@ accompanistFlowLayout = "0.32.0"
 
 spotless = "6.25.0"
 
-detekt = "1.23.4"
+detekt = "1.23.5"
 androidGradlePlugin = "8.2.2"
 
 # Test versionsandroid-junit5-plugin-dsl
