@@ -13,7 +13,7 @@ compileSdk = "34"
 minSdk = "26"
 
 navigation = "2.7.7"
-testLogger = "3.2.0"
+testLogger = "4.0.0"
 coroutines = "1.8.1"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
