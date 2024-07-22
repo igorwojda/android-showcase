@@ -90,7 +90,7 @@ roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowLayout" }
 detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
-konsist = "com.lemonappdev:konsist:0.11.0"
+konsist = "com.lemonappdev:konsist:0.15.1"
 
 # Test dependencies
 junit = { module = "junit:junit", version.ref = "junit" }
