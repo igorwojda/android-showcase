@@ -3,7 +3,7 @@ kotlin = "1.9.25"
 
 # KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-kotlinSymbolProcessing = "1.9.20-RC2-1.0.13"
+kotlinSymbolProcessing = "1.9.25-1.0.20"
 
 # Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
