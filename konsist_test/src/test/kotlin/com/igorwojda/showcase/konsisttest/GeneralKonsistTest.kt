@@ -33,6 +33,7 @@ class GeneralKonsistTest {
             .assertNot { it.hasImports("android.util.Log") }
     }
 
+    @Test
     fun `no empty files allowed`() {
         Konsist.scopeFromProject()
             .files
