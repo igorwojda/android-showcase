@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.konsisttest
 
 import com.lemonappdev.konsist.api.Konsist
-import com.lemonappdev.konsist.api.verify.assert
+import com.lemonappdev.konsist.api.verify.assertTrue
 import org.junit.jupiter.api.Test
 
 // Check architecture coding rules.
@@ -11,7 +11,7 @@ class ModuleKonsistTest {
     fun `every file in module reside in module specific package`() {
         Konsist.scopeFromProject()
             .files
-            .assert {
+            .assertTrue {
                 // com.igorwojda.showcase.album.presentation.screen.albumdetail
                 val modulePackageName = it.moduleName
                     .lowercase()
@@ -21,7 +21,7 @@ class ModuleKonsistTest {
 
                 val fullyQualifiedPackageName = "com.igorwojda.showcase.$modulePackageName"
 
-                it.packagee?.fullyQualifiedName?.startsWith(fullyQualifiedPackageName)
+                it.packagee?.name?.startsWith(fullyQualifiedPackageName)
             }
     }
 }

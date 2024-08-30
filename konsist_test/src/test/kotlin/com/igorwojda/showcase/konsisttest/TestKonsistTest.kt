@@ -2,7 +2,7 @@ package com.igorwojda.showcase.konsisttest
 
 import com.lemonappdev.konsist.api.Konsist
 import com.lemonappdev.konsist.api.ext.list.functions
-import com.lemonappdev.konsist.api.verify.assertNot
+import com.lemonappdev.konsist.api.verify.assertFalse
 import org.junit.jupiter.api.Test
 
 // Check test coding rules.
@@ -13,6 +13,6 @@ class TestKonsistTest {
         Konsist.scopeFromProject()
             .classes()
             .functions()
-            .assertNot { it.hasAnnotations("org.junit.Test") } // should be only org.junit.jupiter.api.Test
+            .assertFalse { it.hasAnnotationsWithAllNames("org.junit.Test") } // should be only org.junit.jupiter.api.Test
     }
 }

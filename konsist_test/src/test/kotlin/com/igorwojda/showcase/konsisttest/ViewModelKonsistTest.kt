@@ -6,7 +6,7 @@ import com.lemonappdev.konsist.api.Konsist
 import com.lemonappdev.konsist.api.ext.list.modifierprovider.withoutAllModifiers
 import com.lemonappdev.konsist.api.ext.list.withNameEndingWith
 import com.lemonappdev.konsist.api.ext.list.withParentClassOf
-import com.lemonappdev.konsist.api.verify.assert
+import com.lemonappdev.konsist.api.verify.assertTrue
 import org.junit.jupiter.api.Test
 import java.util.Locale
 
@@ -17,7 +17,7 @@ class ViewModelKonsistTest {
         Konsist.scopeFromProduction()
             .classes()
             .withParentClassOf(BaseViewModel::class)
-            .assert { it.hasTest() }
+            .assertTrue { it.hasTestClasses(testPropertyName = "cut") }
     }
 
     @Test
@@ -28,7 +28,7 @@ class ViewModelKonsistTest {
             .withoutAllModifiers(KoModifier.ABSTRACT)
             .flatMap { it.constructors }
             .flatMap { it.parameters }
-            .assert {
+            .assertTrue {
                 val nameTitleCase = it.name.replaceFirstChar { char -> char.titlecase(Locale.getDefault()) }
                 nameTitleCase == it.type.sourceType
             }
