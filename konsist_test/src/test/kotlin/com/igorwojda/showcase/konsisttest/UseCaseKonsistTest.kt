@@ -2,7 +2,7 @@ package com.igorwojda.showcase.konsisttest
 
 import com.lemonappdev.konsist.api.Konsist
 import com.lemonappdev.konsist.api.ext.list.withNameEndingWith
-import com.lemonappdev.konsist.api.verify.assert
+import com.lemonappdev.konsist.api.verify.assertTrue
 import org.junit.jupiter.api.Test
 import java.util.Locale
 
@@ -13,7 +13,7 @@ class UseCaseKonsistTest {
         Konsist.scopeFromProduction()
             .classes()
             .withNameEndingWith("UseCase")
-            .assert { it.hasTest() }
+            .assertTrue { it.hasTestClasses(testPropertyName = "cut") }
     }
 
     @Test
@@ -22,7 +22,7 @@ class UseCaseKonsistTest {
             .classes()
             .withNameEndingWith("UseCase")
             .flatMap { it.constructors }
-            .assert {
+            .assertTrue {
                 val names = it.parameters.map { parameter -> parameter.name }
                 val sortedNames = names.sorted()
                 names == sortedNames
@@ -34,7 +34,7 @@ class UseCaseKonsistTest {
         Konsist.scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assert { it.resideInPackage("..domain..usecase..") }
+            .assertTrue { it.resideInPackage("..domain..usecase..") }
     }
 
     @Test
@@ -42,8 +42,8 @@ class UseCaseKonsistTest {
         Konsist.scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assert {
-                val hasSingleInvokeOperatorMethod = it.containsFunction { function ->
+            .assertTrue {
+                val hasSingleInvokeOperatorMethod = it.hasFunction { function ->
                     function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
                 }
 
@@ -58,7 +58,7 @@ class UseCaseKonsistTest {
             .withNameEndingWith("UseCase")
             .flatMap { it.constructors }
             .flatMap { it.parameters }
-            .assert {
+            .assertTrue {
                 val nameTitleCase = it.name.replaceFirstChar { char -> char.titlecase(Locale.getDefault()) }
                 nameTitleCase == it.type.sourceType
             }
