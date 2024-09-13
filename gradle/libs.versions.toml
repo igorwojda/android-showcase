@@ -14,7 +14,7 @@ minSdk = "26"
 
 navigation = "2.8.0"
 testLogger = "3.2.0"
-coroutines = "1.8.1"
+coroutines = "1.9.0"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
 koin = "3.5.6"
