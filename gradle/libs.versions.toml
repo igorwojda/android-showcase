@@ -12,7 +12,7 @@ kotlinCompilerExtensionVersion = "1.5.4"
 compileSdk = "34"
 minSdk = "26"
 
-navigation = "2.8.0"
+navigation = "2.8.1"
 testLogger = "3.2.0"
 coroutines = "1.9.0"
 retrofit = "2.11.0"
