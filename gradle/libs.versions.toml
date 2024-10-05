@@ -47,7 +47,7 @@ androidGradlePlugin = "8.7.0"
 # Test versionsandroid-junit5-plugin-dsl
 
 junit = "5.11.2"
-androidJUnit5 = "1.11.0.0"
+androidJUnit5 = "1.11.2.0"
 kluent = "1.73"
 testRunner = "1.6.2"
 mockk = "1.13.12"
