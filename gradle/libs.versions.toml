@@ -43,7 +43,7 @@ androidStartUp = "1.2.0"
 spotless = "6.25.0"
 
 detekt = "1.23.7"
-androidGradlePlugin = "8.2.2"
+androidGradlePlugin = "8.7.1"
 
 # Test versionsandroid-junit5-plugin-dsl
 
