@@ -38,11 +38,12 @@ fragmentKtx = "1.8.4"
 # Info https://google.github.io/accompanist/flowlayout/
 # Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
 accompanistFlowLayout = "0.32.0"
+androidStartUp = "1.2.0"
 
 spotless = "6.25.0"
 
 detekt = "1.23.7"
-androidGradlePlugin = "8.7.1"
+androidGradlePlugin = "8.2.2"
 
 # Test versionsandroid-junit5-plugin-dsl
 
@@ -91,6 +92,7 @@ roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowLayout" }
 detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 konsist = "com.lemonappdev:konsist:0.16.0"
+androidStartUp = { module = "androidx.startup:startup-runtime", version.ref = "androidStartUp" }
 
 # Test dependencies
 junit = { module = "junit:junit", version.ref = "junit" }
