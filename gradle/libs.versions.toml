@@ -54,6 +54,19 @@ mockk = "1.13.16"
 espresso = "3.6.1"
 coreTesting = "2.2.0"
 
+[plugins]
+# Search Gradle Plugins https://plugins.gradle.org/
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-symbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
+junit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
+testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
+
 [libraries]
 kotlin = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
@@ -112,16 +125,3 @@ navigation = ["navigationFragment", "navigationUiKtx"]
 room = ["roomKtx", "roomRuntime"]
 test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTesting", "junitJupiterApi",
     "junitJupiterEngine", "konsist"]
-
-[plugins]
-# Search Gradle Plugins https://plugins.gradle.org/
-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlin-symbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
-safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
-junit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
-testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
