@@ -64,7 +64,7 @@ The app has a few screens located in multiple feature modules:
 ## Tech-Stack
 
 This project takes advantage of best practices and many popular libraries and tools in the Android ecosystem. Most of
-the libraries are in the stable version unless there is a good reason to use non-stable dependency.
+the libraries are in the stable version unless there is a good reason to use non-stable version of the dependency.
 
 * Tech-stack
   * [100% Kotlin](https://kotlinlang.org/)
