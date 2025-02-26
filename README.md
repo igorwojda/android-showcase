@@ -108,7 +108,8 @@ the libraries are in the stable version unless there is a good reason to use non
   * [GitHub Actions](https://github.com/features/actions)
   * Automatic PR verification including tests, linters, and 3rd online tools
 * Testing
-  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via
+  * [Konsist](https://docs.konsist.lemonappdev.com/) via ([JUnit 5](https://junit.org/junit5/)
+  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) via ([JUnit 5](https://junit.org/junit5/)
     [android-junit5](https://github.com/mannodermaus/android-junit5)) - test individual classes
   * [Konsist](https://docs.konsist.lemonappdev.com/) - test code conventions and architectural rules
   * [UI Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso)) -
