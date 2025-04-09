@@ -50,7 +50,7 @@ junit = "5.12.1"
 androidJUnit5 = "1.12.0.0"
 kluent = "1.73"
 testRunner = "1.6.2"
-mockk = "1.13.17"
+mockk = "1.14.0"
 espresso = "3.6.1"
 coreTesting = "2.2.0"
 
