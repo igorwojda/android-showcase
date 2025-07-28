@@ -99,11 +99,9 @@ roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowLayout" }
-detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 konsist = "com.lemonappdev:konsist:0.16.0"
 
 # Test dependencies
-junit = { module = "junit:junit", version.ref = "junitJupiter" }
 testCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kluent = { module = "org.amshove.kluent:kluent-android", version.ref = "kluent" }
 testRunner = { module = "androidx.test:runner", version.ref = "testRunner" }
