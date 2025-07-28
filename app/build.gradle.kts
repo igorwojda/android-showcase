@@ -27,23 +27,27 @@ android {
                 .get()
                 .toString()
                 .toInt()
+
         targetSdk =
             libs
                 .findVersion("targetSdk")
                 .get()
                 .toString()
                 .toInt()
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         versionCode = 1
         versionName = "0.0.1" // SemVer (Major.Minor.Patch)
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
         multiDexEnabled = true
 
         vectorDrawables {
             useSupportLibrary = true
+        }
+
+        lint {
+            baseline = file("android-lint-baseline.xml")
         }
 
         buildConfigFieldFromGradleProperty("apiBaseUrl")
