@@ -10,7 +10,6 @@ dependencies {
     // See Dependency management section in the README.md
     // https://github.com/igorwojda/android-showcase#dependency-management
     api(libs.kotlin)
-    api(libs.playCore)
     api(libs.coreKtx)
     api(libs.fragmentKtx)
     api(libs.viewBindingPropertyDelegate)
