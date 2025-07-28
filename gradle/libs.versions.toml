@@ -15,7 +15,7 @@ testLogger = "4.0.0"
 coroutines = "1.10.2"
 retrofit = "3.0.0"
 okhttp = "4.12.0"
-koin = "4.0.4"
+koin = "4.1.0"
 coil = "2.7.0"
 lifecycle = "2.9.2"
 room = "2.7.2"
@@ -34,14 +34,14 @@ coreKtx = "1.16.0"
 fragmentKtx = "1.8.8"
 # Info https://google.github.io/accompanist/flowlayout/
 # Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
-accompanistFlowLayout = "0.32.0"
+accompanistFlowLayout = "0.36.0"
 
 spotless = "7.2.1"
 detekt = "1.23.8"
 androidGradlePlugin = "8.10.0"
 
 # Test
-junitJupiter = "5.12.2"
+junitJupiter = "5.13.4"
 androidJUnit5 = "1.13.1.0"
 kluent = "1.73"
 testRunner = "1.6.2"
@@ -109,7 +109,7 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 coreTesting = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
 junitJupiterApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
 junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiter" }
-junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher", version = "1.12.2" }
+junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher", version = "1.13.4" }
 
 [bundles]
 retrofit = [
