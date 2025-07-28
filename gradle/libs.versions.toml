@@ -11,7 +11,7 @@ minSdk = "28"
 targetSdk = "35"
 
 navigation = "2.9.2"
-testLogger = "3.2.0"
+testLogger = "4.0.0"
 coroutines = "1.10.2"
 retrofit = "3.0.0"
 okhttp = "4.12.0"
