@@ -29,7 +29,7 @@ recyclerView = "1.4.0"
 compose = "1.8.3"
 materialCompose = "1.3.2"
 material = "1.12.0"
-lottie = "6.6.2"
+lottie = "6.6.7"
 coreKtx = "1.16.0"
 fragmentKtx = "1.8.8"
 # Info https://google.github.io/accompanist/flowlayout/
