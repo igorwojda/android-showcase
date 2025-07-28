@@ -41,7 +41,7 @@ detekt = "1.23.8"
 androidGradlePlugin = "8.11.1"
 
 # Test
-junitJupiter = "5.12.2"
+junitJupiter = "5.13.4"
 androidJUnit5 = "1.13.1.0"
 kluent = "1.73"
 testRunner = "1.6.2"
@@ -109,7 +109,7 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 coreTesting = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
 junitJupiterApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
 junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiter" }
-junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher", version = "1.12.2" }
+junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher", version = "1.13.4" }
 
 [bundles]
 retrofit = [
