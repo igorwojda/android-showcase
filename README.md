@@ -3,8 +3,6 @@
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-2.x-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AGP-8.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-8.x-blue?style=flat)](https://gradle.org)
-
-[![Codebeat Badge](https://codebeat.co/badges/e9f1a825-b5bd-4c7a-aadc-7c8d0cf59310)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-main)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 The Android Showcase project exemplifies modern [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development methodologies and provides comprehensive architectural guidance. By integrating popular development tools, libraries, linters, and Gradle plugins, along with robust testing frameworks and Continuous Integration (CI) setup, this project offers a holistic sample of a fully operational Android application.
