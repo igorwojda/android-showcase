@@ -14,43 +14,47 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import timber.log.Timber
 
-val appModule = module {
+val appModule =
+    module {
 
-    single { AuthenticationInterceptor(BuildConfig.GRADLE_API_TOKEN) }
+        single { AuthenticationInterceptor(BuildConfig.GRADLE_API_TOKEN) }
 
-    singleOf(::UserAgentInterceptor)
+        singleOf(::UserAgentInterceptor)
 
-    single {
-        HttpLoggingInterceptor { message ->
-            Timber.d("Http: $message")
-        }.apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
-    }
-
-    single {
-        OkHttpClient.Builder()
-            .addInterceptor(get<HttpLoggingInterceptor>())
-            .addInterceptor(get<AuthenticationInterceptor>())
-            .addInterceptor(get<UserAgentInterceptor>())
-            .build()
-    }
-
-    single {
-        val contentType = "application/json".toMediaType()
-
-        val json = kotlinx.serialization.json.Json {
-            // By default Kotlin serialization will serialize all of the keys present in JSON object and throw an
-            // exception if given key is not present in the Kotlin class. This flag allows to ignore JSON fields
-            ignoreUnknownKeys = true
+        single {
+            HttpLoggingInterceptor { message ->
+                Timber.d("Http: $message")
+            }.apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
         }
 
-        @OptIn(ExperimentalSerializationApi::class)
-        Retrofit.Builder()
-            .baseUrl(BuildConfig.GRADLE_API_BASE_URL)
-            .client(get())
-            .addConverterFactory(json.asConverterFactory(contentType))
-            .addCallAdapterFactory(ApiResultAdapterFactory())
-            .build()
+        single {
+            OkHttpClient
+                .Builder()
+                .addInterceptor(get<HttpLoggingInterceptor>())
+                .addInterceptor(get<AuthenticationInterceptor>())
+                .addInterceptor(get<UserAgentInterceptor>())
+                .build()
+        }
+
+        single {
+            val contentType = "application/json".toMediaType()
+
+            val json =
+                kotlinx.serialization.json.Json {
+                    // By default Kotlin serialization will serialize all of the keys present in JSON object and throw an
+                    // exception if given key is not present in the Kotlin class. This flag allows to ignore JSON fields
+                    ignoreUnknownKeys = true
+                }
+
+            @OptIn(ExperimentalSerializationApi::class)
+            Retrofit
+                .Builder()
+                .baseUrl(BuildConfig.GRADLE_API_BASE_URL)
+                .client(get())
+                .addConverterFactory(json.asConverterFactory(contentType))
+                .addCallAdapterFactory(ApiResultAdapterFactory())
+                .build()
+        }
     }
-}

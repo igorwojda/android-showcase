@@ -15,8 +15,9 @@ import com.igorwojda.showcase.base.presentation.nav.NavManager
 import com.igorwojda.showcase.databinding.ActivityNavHostBinding
 import org.koin.android.ext.android.inject
 
-class NavHostActivity : BaseActivity(R.layout.activity_nav_host), NavController.OnDestinationChangedListener {
-
+class NavHostActivity :
+    BaseActivity(R.layout.activity_nav_host),
+    NavController.OnDestinationChangedListener {
     private val binding: ActivityNavHostBinding by viewBinding()
     private val navManager: NavManager by inject()
 
@@ -56,7 +57,11 @@ class NavHostActivity : BaseActivity(R.layout.activity_nav_host), NavController.
         }
     }
 
-    override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?,
+    ) {
         when (destination.label) {
             DESTINATION_ALBUM_LIST_LABEL -> {
                 AlbumListFragment.configureAppBar(this)

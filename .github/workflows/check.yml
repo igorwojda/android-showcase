@@ -6,6 +6,11 @@ on:
   pull_request:
     types: [ opened, synchronize ]
 
+# Cancel previous runs on new push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-debug:
     runs-on: ubuntu-latest
@@ -14,15 +19,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: 'zulu'
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
       - name: Build App
         run: ./gradlew :app:assembleDebug --no-build-cache
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
@@ -34,15 +42,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: 'zulu'
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
       - name: lintDebug
         run: ./gradlew lint
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: android-lint-report
           path: ~/**/build/reports/lint-results*.html
@@ -54,15 +65,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: 'zulu'
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
       - name: detekt
         run: ./gradlew detektCheck
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: detekt-report
           path: ./**/build/reports/detekt/detekt.*
@@ -74,15 +88,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: 'zulu'
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
       - name: konsist
         run: ./gradlew konsist_test:test --rerun-tasks
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: konsist-report
           path: ./konsist_test/build/reports/*
@@ -94,30 +111,37 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: 'zulu'
 
-      - name: detekt
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: spotlessCheck
         run: ./gradlew spotlessCheck
 
-      - uses: actions/upload-artifact@v3
+      # Fixed: This should upload spotless reports, not detekt
+      - uses: actions/upload-artifact@v4
         with:
-          name: detekt-report
-          path: ./**/build/reports/detekt/detekt.*
+          name: spotless-report
+          path: ./**/build/reports/spotless/*
 
   #  ui-test:
   #    runs-on: macos-latest
   #    steps:
   #      - name: checkout
-  #        uses: actions/checkout@v3
+  #        uses: actions/checkout@v4
   #
   #      - name: Set up JDK
-  #        uses: actions/setup-java@v3
+  #        uses: actions/setup-java@v4
   #        with:
   #          java-version: 17
   #          distribution: 'zulu'
+  #
+  #      - name: Setup Gradle
+  #        uses: gradle/actions/setup-gradle@v4
   #
   #      - name: run ui tests
   #        uses: reactivecircus/android-emulator-runner@v2
@@ -129,10 +153,10 @@ jobs:
   #          disable-animations: true
   #          script: ./gradlew connectedCheck
   #
-  #      - uses: actions/upload-artifact@v3
+  #      - uses: actions/upload-artifact@v4
   #        with:
   #          name: ui-test-report
-  #          path: ./**/build/reports/ui-tests/
+  #          path: ./**/build/reports/androidTests/
 
   unit-test:
     runs-on: ubuntu-latest
@@ -141,15 +165,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: 'zulu'
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
       - name: unitTest
         run: ./gradlew test -x konsist_test:test
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: unit-test-report
           path: ./**/build/reports/tests/

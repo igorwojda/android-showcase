@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test
 
 // Check architecture coding rules.
 class CleanArchitectureKonsistTest {
-
     @Test
     fun `clean architecture layers have correct dependencies`() {
         Konsist

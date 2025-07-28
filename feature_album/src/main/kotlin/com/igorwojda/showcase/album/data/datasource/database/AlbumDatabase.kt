@@ -6,6 +6,5 @@ import com.igorwojda.showcase.album.data.datasource.database.model.AlbumEntityMo
 
 @Database(entities = [AlbumEntityModel::class], version = 1, exportSchema = false)
 internal abstract class AlbumDatabase : RoomDatabase() {
-
     abstract fun albums(): AlbumDao
 }

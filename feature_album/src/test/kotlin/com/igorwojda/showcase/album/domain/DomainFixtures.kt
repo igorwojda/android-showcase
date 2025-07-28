@@ -7,7 +7,6 @@ import com.igorwojda.showcase.album.domain.model.Tag
 import com.igorwojda.showcase.album.domain.model.Track
 
 object DomainFixtures {
-
     internal fun getAlbum(
         name: String = "albumName",
         artist: String = "artistName",
@@ -27,7 +26,5 @@ object DomainFixtures {
         duration: Int = 12,
     ) = Track(name, duration)
 
-    private fun getTag(
-        name: String = "tag",
-    ) = Tag(name)
+    private fun getTag(name: String = "tag") = Tag(name)
 }

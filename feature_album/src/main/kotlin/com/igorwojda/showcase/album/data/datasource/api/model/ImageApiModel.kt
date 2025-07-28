@@ -11,10 +11,10 @@ internal data class ImageApiModel(
     @SerialName("size") val size: ImageSizeApiModel,
 )
 
-internal fun ImageApiModel.toDomainModel() = Image(
-    url = this.url,
-    size = this.size.toDomainModel(),
-)
+internal fun ImageApiModel.toDomainModel() =
+    Image(
+        url = this.url,
+        size = this.size.toDomainModel(),
+    )
 
-internal fun ImageApiModel.toEntityModel() =
-    this.size.toEntityModel()?.let { ImageEntityModel(this.url, it) }
+internal fun ImageApiModel.toEntityModel() = this.size.toEntityModel()?.let { ImageEntityModel(this.url, it) }

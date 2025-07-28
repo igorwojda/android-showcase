@@ -26,9 +26,10 @@ internal fun AlbumApiModel.toEntityModel() =
     )
 
 internal fun AlbumApiModel.toDomainModel(): Album {
-    val images = this.images
-        ?.filterNot { it.size == ImageSizeApiModel.UNKNOWN || it.url.isBlank() }
-        ?.map { it.toDomainModel() }
+    val images =
+        this.images
+            ?.filterNot { it.size == ImageSizeApiModel.UNKNOWN || it.url.isBlank() }
+            ?.map { it.toDomainModel() }
 
     return Album(
         mbId = this.mbId,

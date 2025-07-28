@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test
 class AndroidKonsistTest {
     @Test
     fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .classes()
             .withParentClassOf(ViewModel::class)
             .assertTrue { it.name.endsWith("ViewModel") }

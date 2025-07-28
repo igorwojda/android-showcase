@@ -85,23 +85,25 @@ private fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
 @Composable
 private fun PhotoDetails(content: Content) {
     Column(
-        modifier = Modifier
-            .padding(Dimen.screenContentPadding)
-            .verticalScroll(rememberScrollState()),
-
+        modifier =
+            Modifier
+                .padding(Dimen.screenContentPadding)
+                .verticalScroll(rememberScrollState()),
     ) {
         ElevatedCard(
-            modifier = Modifier
-                .padding(Dimen.spaceM)
-                .wrapContentSize()
-                .size(320.dp)
-                .align(CenterHorizontally),
+            modifier =
+                Modifier
+                    .padding(Dimen.spaceM)
+                    .wrapContentSize()
+                    .size(320.dp)
+                    .align(CenterHorizontally),
         ) {
             PlaceholderImage(
                 url = content.coverImageUrl,
                 contentDescription = stringResource(id = R.string.album_cover_content_description),
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .fillMaxWidth(),
             )
         }
         Spacer(modifier = Modifier.height(Dimen.spaceL))

@@ -11,7 +11,6 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 class GetAlbumUseCaseTest {
-
     private val mockAlbumRepository: AlbumRepositoryImpl = mockk()
 
     private val cut = GetAlbumUseCase(mockAlbumRepository)

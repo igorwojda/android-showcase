@@ -5,7 +5,6 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 class AlbumTest {
-
     private lateinit var cut: Album
 
     @Test

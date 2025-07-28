@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.internal.builtins.StandardNames.FqNames.target
+
 plugins {
     id("com.diffplug.spotless")
 }
@@ -7,8 +9,6 @@ spotless {
         target("**/*.kt", "**/*.kts")
         targetExclude("**/buildSrc/build/**/*.*")
         ktlint()
-
-        indentWithSpaces()
         endWithNewline()
     }
 

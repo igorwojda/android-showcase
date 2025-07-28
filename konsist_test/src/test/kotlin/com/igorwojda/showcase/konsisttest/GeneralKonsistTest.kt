@@ -10,14 +10,16 @@ import org.junit.jupiter.api.Test
 class GeneralKonsistTest {
     @Test
     fun `package name must match file path`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .packages
             .assertTrue { it.hasMatchingPath }
     }
 
     @Test
     fun `no field should have 'm' prefix`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .classes()
             .properties()
             .assertFalse {
@@ -28,13 +30,15 @@ class GeneralKonsistTest {
 
     @Test
     fun `no class should use Android util logging`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .files
             .assertFalse { it.hasImportWithName("android.util.Log") }
     }
 
     fun `no empty files allowed`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .files
             .assertFalse { it.text.isEmpty() }
     }

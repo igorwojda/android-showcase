@@ -12,7 +12,6 @@ import org.koin.core.context.GlobalContext
 import timber.log.Timber
 
 class ShowcaseApplication : Application() {
-
     override fun onCreate() {
         super.onCreate()
 

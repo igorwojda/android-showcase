@@ -18,16 +18,21 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.igorwojda.showcase.base.common.res.Dimen
 
 @Composable
-fun LabeledAnimation(@StringRes label: Int, @RawRes assetResId: Int) {
+fun LabeledAnimation(
+    @StringRes label: Int,
+    @RawRes assetResId: Int,
+) {
     Card(
-        modifier = Modifier
-            .wrapContentSize(),
+        modifier =
+            Modifier
+                .wrapContentSize(),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .wrapContentSize()
-                .padding(Dimen.spaceXL),
+            modifier =
+                Modifier
+                    .wrapContentSize()
+                    .padding(Dimen.spaceXL),
         ) {
             TextTitleMedium(text = stringResource(label))
             LottieAssetLoader(assetResId)
@@ -36,7 +41,9 @@ fun LabeledAnimation(@StringRes label: Int, @RawRes assetResId: Int) {
 }
 
 @Composable
-fun LottieAssetLoader(@RawRes assetResId: Int) {
+fun LottieAssetLoader(
+    @RawRes assetResId: Int,
+) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(assetResId))
 
     LottieAnimation(

@@ -9,7 +9,8 @@ internal data class TrackEntityModel(
     val duration: Int? = null,
 )
 
-internal fun TrackEntityModel.toDomainModel() = Track(
-    name = this.name,
-    duration = this.duration,
-)
+internal fun TrackEntityModel.toDomainModel() =
+    Track(
+        name = this.name,
+        duration = this.duration,
+    )

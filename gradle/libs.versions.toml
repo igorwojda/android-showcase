@@ -1,58 +1,54 @@
 [versions]
-kotlin = "1.9.25"
+kotlin = "2.2.0"
 
 # KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-kotlinSymbolProcessing = "1.9.25-1.0.20"
+kotlinSymbolProcessing = "2.2.0-2.0.2"
 
-# Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
-# https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-kotlinCompilerExtensionVersion = "1.5.4"
+# Android SDK versions are marked as unused, however these are used in the `build.gradle.kts` files
+compileSdk = "36"
+minSdk = "28"
+targetSdk = "35"
 
-compileSdk = "34"
-minSdk = "26"
-
-navigation = "2.9.0"
+navigation = "2.9.2"
 testLogger = "3.2.0"
 coroutines = "1.10.2"
-retrofit = "2.12.0"
+retrofit = "3.0.0"
 okhttp = "4.12.0"
-koin = "3.5.6"
+koin = "4.0.4"
 coil = "2.7.0"
-lifecycle = "2.9.0"
-room = "2.7.1"
-serializationJson = "1.8.1"
+lifecycle = "2.9.2"
+room = "2.7.2"
+serializationJson = "1.9.0"
 kotlinxSerializationConverter = "1.0.0"
 viewBindingPropertyDelegate = "1.5.9"
 timber = "5.0.1"
 constraintLayout = "2.2.1"
-appCompat = "1.7.0"
+appCompat = "1.7.1"
 recyclerView = "1.4.0"
-compose = "1.8.1"
+compose = "1.8.3"
 materialCompose = "1.3.2"
 material = "1.12.0"
-lottie = "6.6.6"
-playCore = "1.10.3"
+lottie = "6.6.2"
 coreKtx = "1.16.0"
-fragmentKtx = "1.8.6"
+fragmentKtx = "1.8.8"
 # Info https://google.github.io/accompanist/flowlayout/
 # Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
 accompanistFlowLayout = "0.32.0"
 
-spotless = "6.25.0"
-
+spotless = "7.2.1"
 detekt = "1.23.8"
 androidGradlePlugin = "8.10.0"
 
-# Test versionsandroid-junit5-plugin-dsl
-
-junit = "5.12.2"
-androidJUnit5 = "1.12.0.0"
+# Test
+junitJupiter = "5.12.2"
+androidJUnit5 = "1.13.1.0"
 kluent = "1.73"
 testRunner = "1.6.2"
-mockk = "1.14.2"
+mockk = "1.14.5"
 espresso = "3.6.1"
 coreTesting = "2.2.0"
+konsist = "0.17.3"
 
 [plugins]
 # Search Gradle Plugins https://plugins.gradle.org/
@@ -66,6 +62,7 @@ spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 junit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
 testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [libraries]
 kotlin = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
@@ -88,7 +85,6 @@ composeMaterial = { module = "androidx.compose.material3:material3", version.ref
 material = { module = "com.google.android.material:material", version.ref = "material" }
 lottie = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
-playCore = { module = "com.google.android.play:core", version.ref = "playCore" }
 coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 fragmentKtx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
@@ -102,26 +98,43 @@ roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowLayout" }
-detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
-konsist = "com.lemonappdev:konsist:0.16.0"
+konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 
 # Test dependencies
-junit = { module = "junit:junit", version.ref = "junit" }
 testCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kluent = { module = "org.amshove.kluent:kluent-android", version.ref = "kluent" }
 testRunner = { module = "androidx.test:runner", version.ref = "testRunner" }
 espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 coreTesting = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
-junitJupiterApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
-junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+junitJupiterApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
+junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiter" }
+junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher", version = "1.12.2" }
 
 [bundles]
-retrofit = ["retrofitCore", "kotlinxSerializationConverter", "serializationJson", "okhttp", "okhttpInterceptor"]
+retrofit = [
+    "retrofitCore",
+    "kotlinxSerializationConverter",
+    "serializationJson",
+    "okhttp",
+    "okhttpInterceptor"
+]
+
 koin = ["koin", "koinNavigation"]
 compose = ["composeUI", "toolingPreview", "lottie", "coil"]
 lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
 navigation = ["navigationFragment", "navigationUiKtx"]
 room = ["roomKtx", "roomRuntime"]
-test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTesting", "junitJupiterApi",
-    "junitJupiterEngine", "konsist"]
+
+test = [
+    "testCoroutines",
+    "kluent",
+    "testRunner",
+    "espresso",
+    "mockk",
+    "coreTesting",
+    "junitJupiterApi",
+    "junitJupiterEngine",
+    "junitPlatformLauncher",
+    "konsist"
+]

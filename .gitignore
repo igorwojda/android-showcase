@@ -47,3 +47,6 @@ google-services.json
 
 #MacOS DS_Store
 **/.DS_Store
+
+# Kotlin
+*.salive

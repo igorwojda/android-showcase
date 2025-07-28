@@ -23,7 +23,6 @@ internal class AlbumListViewModel(
     private val navManager: NavManager,
     private val getAlbumListUseCase: GetAlbumListUseCase,
 ) : BaseViewModel<UiState, Action>(Loading) {
-
     companion object {
         const val DEFAULT_QUERY_NAME = "Jackson"
         private const val SAVED_QUERY_KEY = "query"
@@ -43,23 +42,25 @@ internal class AlbumListViewModel(
 
         savedStateHandle[SAVED_QUERY_KEY] = query
 
-        job = viewModelScope.launch {
-            getAlbumListUseCase(query).also { result ->
-                val action = when (result) {
-                    is Result.Success -> {
-                        if (result.value.isEmpty()) {
-                            Action.AlbumListLoadFailure
-                        } else {
-                            Action.AlbumListLoadSuccess(result.value)
+        job =
+            viewModelScope.launch {
+                getAlbumListUseCase(query).also { result ->
+                    val action =
+                        when (result) {
+                            is Result.Success -> {
+                                if (result.value.isEmpty()) {
+                                    Action.AlbumListLoadFailure
+                                } else {
+                                    Action.AlbumListLoadSuccess(result.value)
+                                }
+                            }
+                            is Result.Failure -> {
+                                Action.AlbumListLoadFailure
+                            }
                         }
-                    }
-                    is Result.Failure -> {
-                        Action.AlbumListLoadFailure
-                    }
+                    sendAction(action)
                 }
-                sendAction(action)
             }
-        }
     }
 
     fun onAlbumClick(album: Album) {
@@ -70,7 +71,9 @@ internal class AlbumListViewModel(
     }
 
     internal sealed interface Action : BaseAction<UiState> {
-        class AlbumListLoadSuccess(private val albums: List<Album>) : Action {
+        class AlbumListLoadSuccess(
+            private val albums: List<Album>,
+        ) : Action {
             override fun reduce(state: UiState) = Content(albums)
         }
 
@@ -81,8 +84,12 @@ internal class AlbumListViewModel(
 
     @Immutable
     internal sealed interface UiState : BaseState {
-        data class Content(val albums: List<Album>) : UiState
+        data class Content(
+            val albums: List<Album>,
+        ) : UiState
+
         object Loading : UiState
+
         object Error : UiState
     }
 }

@@ -14,7 +14,8 @@ import java.util.Locale
 class ViewModelKonsistTest {
     @Test
     fun `every view model has test`() {
-        Konsist.scopeFromProduction()
+        Konsist
+            .scopeFromProduction()
             .classes()
             .withParentClassOf(BaseViewModel::class)
             .assertTrue { it.hasTestClasses(testPropertyName = "cut") }
@@ -22,7 +23,8 @@ class ViewModelKonsistTest {
 
     @Test
     fun `every view model constructor parameter has name derived from parameter type`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .classes()
             .withNameEndingWith("ViewModel")
             .withoutAllModifiers(KoModifier.ABSTRACT)

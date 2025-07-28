@@ -21,50 +21,53 @@ import org.junit.jupiter.api.extension.ExtendWith
 @OptIn(ExperimentalCoroutinesApi::class)
 @ExtendWith(InstantTaskExecutorExtension::class, CoroutinesTestDispatcherExtension::class)
 class AlbumListViewModelTest {
-
     private val mockGetAlbumListUseCase: GetAlbumListUseCase = mockk()
 
     private val mockNavManager: NavManager = mockk(relaxed = true)
 
     private val savedStateHandle: SavedStateHandle = mockk(relaxed = true)
 
-    private val cut = AlbumListViewModel(
-        savedStateHandle,
-        mockNavManager,
-        mockGetAlbumListUseCase,
-    )
-
-    @Test
-    fun `onEnter emits state error`() = runTest {
-        // given
-        coEvery { mockGetAlbumListUseCase.invoke(null) } returns Result.Success(emptyList())
-
-        // when
-        cut.onEnter(null)
-
-        // then
-        advanceUntilIdle()
-
-        cut.uiStateFlow.value shouldBeEqualTo UiState.Error
-    }
-
-    @Test
-    fun `onEnter emits state success`() = runTest {
-        // given
-        val album = Album("albumName", "artistName")
-        val albums = listOf(album)
-        coEvery { mockGetAlbumListUseCase.invoke(null) } returns Result.Success(albums)
-
-        // when
-        cut.onEnter(null)
-
-        // then
-        advanceUntilIdle()
-
-        cut.uiStateFlow.value shouldBeEqualTo UiState.Content(
-            albums = albums,
+    private val cut =
+        AlbumListViewModel(
+            savedStateHandle,
+            mockNavManager,
+            mockGetAlbumListUseCase,
         )
-    }
+
+    @Test
+    fun `onEnter emits state error`() =
+        runTest {
+            // given
+            coEvery { mockGetAlbumListUseCase.invoke(null) } returns Result.Success(emptyList())
+
+            // when
+            cut.onEnter(null)
+
+            // then
+            advanceUntilIdle()
+
+            cut.uiStateFlow.value shouldBeEqualTo UiState.Error
+        }
+
+    @Test
+    fun `onEnter emits state success`() =
+        runTest {
+            // given
+            val album = Album("albumName", "artistName")
+            val albums = listOf(album)
+            coEvery { mockGetAlbumListUseCase.invoke(null) } returns Result.Success(albums)
+
+            // when
+            cut.onEnter(null)
+
+            // then
+            advanceUntilIdle()
+
+            cut.uiStateFlow.value shouldBeEqualTo
+                UiState.Content(
+                    albums = albums,
+                )
+        }
 
     @Test
     fun `onAlbumClick navigate to album detail`() {
@@ -73,17 +76,19 @@ class AlbumListViewModelTest {
         val albumName = "Thriller"
         val mbId = "mbId"
 
-        val album = Album(
-            artist = artistName,
-            name = albumName,
-            mbId = mbId,
-        )
+        val album =
+            Album(
+                artist = artistName,
+                name = albumName,
+                mbId = mbId,
+            )
 
-        val navDirections = AlbumListFragmentDirections.actionAlbumListToAlbumDetail(
-            artistName,
-            albumName,
-            mbId,
-        )
+        val navDirections =
+            AlbumListFragmentDirections.actionAlbumListToAlbumDetail(
+                artistName,
+                albumName,
+                mbId,
+            )
 
         // when
         cut.onAlbumClick(album)

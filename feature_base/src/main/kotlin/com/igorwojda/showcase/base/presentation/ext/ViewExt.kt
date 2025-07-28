@@ -35,8 +35,9 @@ fun View.removeOnDebouncedClickListener() {
     isClickable = false
 }
 
-private class ActionDebouncer(private val action: () -> Unit) {
-
+private class ActionDebouncer(
+    private val action: () -> Unit,
+) {
     private var lastActionTime = 0L
 
     fun notifyAction() {
@@ -79,14 +80,15 @@ fun EditText.initSearchBehaviour(
 ) {
     scope.launchWhenResumed {
         callbackFlow {
-            val watcher = this@initSearchBehaviour.addTextChangedListener {
-                val query = it?.toString() ?: return@addTextChangedListener
-                if (query.count() >= minimumTextCount) {
-                    this.trySend(query)
-                } else {
-                    this.trySend(null)
+            val watcher =
+                this@initSearchBehaviour.addTextChangedListener {
+                    val query = it?.toString() ?: return@addTextChangedListener
+                    if (query.count() >= minimumTextCount) {
+                        this.trySend(query)
+                    } else {
+                        this.trySend(null)
+                    }
                 }
-            }
             awaitClose {
                 this@initSearchBehaviour.removeTextChangedListener(watcher)
             }

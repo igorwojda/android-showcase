@@ -8,6 +8,7 @@ internal data class TagEntityModel(
     val name: String,
 )
 
-internal fun TagEntityModel.toDomainModel() = Tag(
-    name = this.name,
-)
+internal fun TagEntityModel.toDomainModel() =
+    Tag(
+        name = this.name,
+    )

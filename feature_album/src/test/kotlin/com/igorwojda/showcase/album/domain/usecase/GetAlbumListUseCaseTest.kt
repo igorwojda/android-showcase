@@ -11,7 +11,6 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 class GetAlbumListUseCaseTest {
-
     private val mockAlbumRepository: AlbumRepositoryImpl = mockk()
 
     private val cut = GetAlbumListUseCase(mockAlbumRepository)
@@ -30,15 +29,16 @@ class GetAlbumListUseCaseTest {
     }
 
     @Test
-    fun `WHEN onEnter is called with no value then the default query search term is null`() = runBlocking {
-        // given
-        val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())
-        coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
+    fun `WHEN onEnter is called with no value then the default query search term is null`() =
+        runBlocking {
+            // given
+            val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())
+            coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
-        cut(null)
+            cut(null)
 
-        coVerify { mockAlbumRepository.searchAlbum(null) }
-    }
+            coVerify { mockAlbumRepository.searchAlbum(null) }
+        }
 
     @Test
     fun `filter albums with default image`() {

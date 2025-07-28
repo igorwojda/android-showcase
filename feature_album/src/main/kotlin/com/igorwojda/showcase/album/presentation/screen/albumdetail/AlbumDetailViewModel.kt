@@ -21,7 +21,6 @@ import kotlinx.coroutines.launch
 internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
 ) : BaseViewModel<UiState, Action>(Loading) {
-
     fun onEnter(args: AlbumDetailFragmentArgs) {
         getAlbum(args)
     }
@@ -40,14 +39,17 @@ internal class AlbumDetailViewModel(
     }
 
     internal sealed interface Action : BaseAction<UiState> {
-        class AlbumLoadSuccess(private val album: Album) : Action {
-            override fun reduce(state: UiState) = Content(
-                artistName = album.artist,
-                albumName = album.name,
-                coverImageUrl = album.getDefaultImageUrl() ?: "",
-                tracks = album.tracks,
-                tags = album.tags,
-            )
+        class AlbumLoadSuccess(
+            private val album: Album,
+        ) : Action {
+            override fun reduce(state: UiState) =
+                Content(
+                    artistName = album.artist,
+                    albumName = album.name,
+                    coverImageUrl = album.getDefaultImageUrl() ?: "",
+                    tracks = album.tracks,
+                    tags = album.tags,
+                )
         }
 
         object AlbumLoadFailure : Action {
@@ -66,6 +68,7 @@ internal class AlbumDetailViewModel(
         ) : UiState
 
         object Loading : UiState
+
         object Error : UiState
     }
 }
