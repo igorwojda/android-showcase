@@ -1,6 +1,7 @@
 import com.android.build.api.dsl.ApplicationDefaultConfig
 import java.util.Locale
-
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 plugins {
     id("local.app")
 }
@@ -13,18 +14,17 @@ android {
 
     compileSdk = libs.findVersion("compileSdk").get().toString().toInt()
 
-    defaultConfig {
-        minSdk = libs.findVersion("minSdk").get().toString().toInt()
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
     defaultConfig {
         applicationId = "com.igorwojda.showcase"
 
+        minSdk = libs.findVersion("minSdk").get().toString().toInt()
+        targetSdk = libs.findVersion("targetSdk").get().toString().toInt()
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         versionCode = 1
         versionName = "0.0.1" // SemVer (Major.Minor.Patch)
-        minSdk = 28
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled = true
@@ -44,24 +44,21 @@ android {
         }
     }
 
-    @Suppress("UnstableApiUsage")
     buildFeatures {
         viewBinding = true
         buildConfig = true
         compose = true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.findVersion("kotlinCompilerExtensionVersion").get().toString()
-    }
-
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
     }
 
     @Suppress("UnstableApiUsage")
@@ -71,7 +68,7 @@ android {
 }
 
 dependencies {
-    // Syntax utilizes Gradle TYPESAFE_PROJECT_ACCESSORS feature
+    // "projects." Syntax utilizes Gradle TYPESAFE_PROJECT_ACCESSORS feature
     implementation(projects.featureAlbum)
     implementation(projects.featureProfile)
     implementation(projects.featureFavourite)

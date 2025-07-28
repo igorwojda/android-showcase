@@ -1,40 +1,38 @@
 [versions]
-kotlin = "1.9.24"
+kotlin = "2.2.0"
 
 # KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-kotlinSymbolProcessing = "1.9.24-1.0.20"
+kotlinSymbolProcessing = "2.2.0-2.0.2"
 
-# Compose compiler depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
-# https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-kotlinCompilerExtensionVersion = "1.5.14"
+# Android SDK versions are marked as unused, however these are used in the `build.gradle.kts` files
+compileSdk = "36"
+minSdk = "28"
+targetSdk = "36"
 
-compileSdk = "35"
-minSdk = "26"
-
-navigation = "2.8.7"
+navigation = "2.9.2"
 testLogger = "3.2.0"
-coroutines = "1.10.1"
-retrofit = "2.11.0"
+coroutines = "1.10.2"
+retrofit = "3.0.0"
 okhttp = "4.12.0"
-koin = "3.5.6"
+koin = "4.0.4"
 coil = "2.7.0"
-lifecycle = "2.8.7"
-room = "2.6.1"
-serializationJson = "1.8.0"
+lifecycle = "2.9.2"
+room = "2.7.2"
+serializationJson = "1.9.0"
 kotlinxSerializationConverter = "1.0.0"
 viewBindingPropertyDelegate = "1.5.9"
 timber = "5.0.1"
-constraintLayout = "2.2.0"
-appCompat = "1.7.0"
+constraintLayout = "2.2.1"
+appCompat = "1.7.1"
 recyclerView = "1.4.0"
-compose = "1.7.8"
-materialCompose = "1.3.1"
+compose = "1.8.3"
+materialCompose = "1.3.2"
 material = "1.12.0"
 lottie = "6.6.2"
 playCore = "1.10.3"
-coreKtx = "1.15.0"
-fragmentKtx = "1.8.6"
+coreKtx = "1.16.0"
+fragmentKtx = "1.8.8"
 # Info https://google.github.io/accompanist/flowlayout/
 # Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
 accompanistFlowLayout = "0.32.0"
@@ -46,11 +44,11 @@ androidGradlePlugin = "8.8.1"
 
 # Test versionsandroid-junit5-plugin-dsl
 
-junit = "5.12.0"
+junit = "5.12.2"
 androidJUnit5 = "1.11.3.0"
 kluent = "1.73"
 testRunner = "1.6.2"
-mockk = "1.13.16"
+mockk = "1.14.5"
 espresso = "3.6.1"
 coreTesting = "2.2.0"
 
@@ -66,6 +64,7 @@ spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 junit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
 testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [libraries]
 kotlin = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
