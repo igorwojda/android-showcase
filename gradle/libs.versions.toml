@@ -39,7 +39,7 @@ accompanistFlowLayout = "0.32.0"
 
 spotless = "7.2.1"
 detekt = "1.23.8"
-androidGradlePlugin = "8.8.2"
+androidGradlePlugin = "8.11.1"
 
 # Test
 junitJupiter = "5.12.2"
@@ -49,6 +49,7 @@ testRunner = "1.6.2"
 mockk = "1.14.5"
 espresso = "3.6.1"
 coreTesting = "2.2.0"
+konsist = "0.17.3"
 
 [plugins]
 # Search Gradle Plugins https://plugins.gradle.org/
@@ -99,7 +100,7 @@ roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowLayout" }
-konsist = "com.lemonappdev:konsist:0.16.0"
+konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 
 # Test dependencies
 testCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
