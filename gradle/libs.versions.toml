@@ -8,7 +8,7 @@ kotlinSymbolProcessing = "2.2.0-2.0.2"
 # Android SDK versions are marked as unused, however these are used in the `build.gradle.kts` files
 compileSdk = "36"
 minSdk = "28"
-targetSdk = "36"
+targetSdk = "35"
 
 navigation = "2.9.2"
 testLogger = "3.2.0"
@@ -39,11 +39,11 @@ accompanistFlowLayout = "0.32.0"
 
 spotless = "7.2.1"
 detekt = "1.23.8"
-androidGradlePlugin = "8.8.1"
+androidGradlePlugin = "8.8.2"
 
 # Test
-junit = "5.12.2"
-androidJUnit5 = "1.11.3.0"
+junitJupiter = "5.12.2"
+androidJUnit5 = "1.13.1.0"
 kluent = "1.73"
 testRunner = "1.6.2"
 mockk = "1.14.5"
@@ -103,22 +103,41 @@ detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", v
 konsist = "com.lemonappdev:konsist:0.16.0"
 
 # Test dependencies
-junit = { module = "junit:junit", version.ref = "junit" }
+junit = { module = "junit:junit", version.ref = "junitJupiter" }
 testCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kluent = { module = "org.amshove.kluent:kluent-android", version.ref = "kluent" }
 testRunner = { module = "androidx.test:runner", version.ref = "testRunner" }
 espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 coreTesting = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
-junitJupiterApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
-junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+junitJupiterApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
+junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiter" }
+junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher", version = "1.12.2" }
 
 [bundles]
-retrofit = ["retrofitCore", "kotlinxSerializationConverter", "serializationJson", "okhttp", "okhttpInterceptor"]
+retrofit = [
+    "retrofitCore",
+    "kotlinxSerializationConverter",
+    "serializationJson",
+    "okhttp",
+    "okhttpInterceptor"
+]
+
 koin = ["koin", "koinNavigation"]
 compose = ["composeUI", "toolingPreview", "lottie", "coil"]
 lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
 navigation = ["navigationFragment", "navigationUiKtx"]
 room = ["roomKtx", "roomRuntime"]
-test = ["testCoroutines", "kluent", "testRunner", "espresso", "mockk", "coreTesting", "junitJupiterApi",
-    "junitJupiterEngine", "konsist"]
+
+test = [
+    "testCoroutines",
+    "kluent",
+    "testRunner",
+    "espresso",
+    "mockk",
+    "coreTesting",
+    "junitJupiterApi",
+    "junitJupiterEngine",
+    "junitPlatformLauncher",
+    "konsist"
+]

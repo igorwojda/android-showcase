@@ -11,6 +11,4 @@ dependencies {
 
     testImplementation(projects.libraryTestUtils)
     testImplementation(libs.bundles.test)
-
-    testRuntimeOnly(libs.junitJupiterEngine)
 }
