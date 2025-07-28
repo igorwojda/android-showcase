@@ -4,6 +4,7 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 max_line_length = 140
+ktlint_function_naming_ignore_when_annotated_with=Composable
 
 # Starting from ktlint 0.34.2 There is a problem with import "import-ordering" rule - ktlint contradicts
 # default AS import arrangement rules, so we have to disable ktlint it.

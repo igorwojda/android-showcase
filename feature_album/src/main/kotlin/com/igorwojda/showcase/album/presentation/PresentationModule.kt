@@ -6,13 +6,14 @@ import com.igorwojda.showcase.album.presentation.screen.albumlist.AlbumListViewM
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
-internal val presentationModule = module {
+internal val presentationModule =
+    module {
 
-    // AlbumList
-    viewModelOf(::AlbumListViewModel)
+        // AlbumList
+        viewModelOf(::AlbumListViewModel)
 
-    single { ImageLoader(get()) }
+        single { ImageLoader(get()) }
 
-    // AlbumDetails
-    viewModelOf(::AlbumDetailViewModel)
-}
+        // AlbumDetails
+        viewModelOf(::AlbumDetailViewModel)
+    }

@@ -24,7 +24,10 @@ import timber.log.Timber
  *
  * This method navigates only if this is safely possible; when this Fragment is still the current destination.
  */
-fun Fragment.navigateSafe(directions: NavDirections, navOptions: NavOptions? = null) {
+fun Fragment.navigateSafe(
+    directions: NavDirections,
+    navOptions: NavOptions? = null,
+) {
     if (canNavigate()) findNavController().navigate(directions, navOptions)
 }
 

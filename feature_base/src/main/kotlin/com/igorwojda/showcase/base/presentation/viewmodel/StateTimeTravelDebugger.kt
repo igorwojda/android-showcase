@@ -6,8 +6,9 @@ import kotlin.reflect.full.memberProperties
 /**
  * Logs actions and view state transitions to facilitate debugging.
  */
-class StateTimeTravelDebugger(private val viewClassName: String) {
-
+class StateTimeTravelDebugger(
+    private val viewClassName: String,
+) {
     private val stateTimeline = mutableListOf<StateTransition>()
     private var lastViewAction: BaseAction<*>? = null
 
@@ -15,7 +16,10 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
         lastViewAction = viewAction
     }
 
-    fun addStateTransition(oldState: BaseState, newState: BaseState) {
+    fun addStateTransition(
+        oldState: BaseState,
+        newState: BaseState,
+    ) {
         val lastViewAction = checkNotNull(lastViewAction) { "lastViewAction is null. Please log action before logging state transition" }
         stateTimeline.add(StateTransition(oldState, lastViewAction, newState))
         this.lastViewAction = null
@@ -51,7 +55,11 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
         Timber.d(getMessage(states))
     }
 
-    private fun getLogLine(oldState: BaseState, newState: BaseState, propertyName: String): String {
+    private fun getLogLine(
+        oldState: BaseState,
+        newState: BaseState,
+        propertyName: String,
+    ): String {
         val oldValue = getPropertyValue(oldState, propertyName)
         val newValue = getPropertyValue(newState, propertyName)
         val indent = "\t"
@@ -65,10 +73,16 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
 
     // Get list of properties from  ViewState instances (all have the same type)
     private val propertyNames by lazy {
-        stateTimeline.first().oldState.javaClass.kotlin.memberProperties.map { it.name }
+        stateTimeline
+            .first()
+            .oldState.javaClass.kotlin.memberProperties
+            .map { it.name }
     }
 
-    private fun getPropertyValue(baseState: BaseState, propertyName: String): String {
+    private fun getPropertyValue(
+        baseState: BaseState,
+        propertyName: String,
+    ): String {
         baseState::class.memberProperties.forEach {
             if (propertyName == it.name) {
                 var value = it.getter.call(baseState).toString()

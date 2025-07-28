@@ -8,12 +8,15 @@ import com.igorwojda.showcase.album.data.datasource.database.model.AlbumEntityMo
 
 @Dao
 internal interface AlbumDao {
-
     @Query("SELECT * FROM albums")
     suspend fun getAll(): List<AlbumEntityModel>
 
     @Query("SELECT * FROM albums where artist = :artistName and name = :albumName and mbId = :mbId")
-    suspend fun getAlbum(artistName: String, albumName: String, mbId: String?): AlbumEntityModel
+    suspend fun getAlbum(
+        artistName: String,
+        albumName: String,
+        mbId: String?,
+    ): AlbumEntityModel
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAlbums(albums: List<AlbumEntityModel>)

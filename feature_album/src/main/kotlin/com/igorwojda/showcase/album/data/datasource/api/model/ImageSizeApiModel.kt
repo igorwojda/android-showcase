@@ -7,7 +7,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal enum class ImageSizeApiModel {
-
     @SerialName("medium")
     MEDIUM,
 
@@ -29,5 +28,4 @@ internal enum class ImageSizeApiModel {
 
 internal fun ImageSizeApiModel.toDomainModel() = ImageSize.valueOf(this.name)
 
-internal fun ImageSizeApiModel.toEntityModel() =
-    ImageSizeEntityModel.values().firstOrNull { it.ordinal == this.ordinal }
+internal fun ImageSizeApiModel.toEntityModel() = ImageSizeEntityModel.values().firstOrNull { it.ordinal == this.ordinal }

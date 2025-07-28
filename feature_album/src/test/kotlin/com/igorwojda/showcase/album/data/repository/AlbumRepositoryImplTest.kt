@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
 
 class AlbumRepositoryImplTest {
-
     private val mockService: AlbumRetrofitService = mockk()
 
     private val mockAlbumDao: AlbumDao = mockk(relaxed = true)
@@ -31,9 +30,10 @@ class AlbumRepositoryImplTest {
         val phrase = "phrase"
         val albums = DataFixtures.getAlbumsApiModel()
 
-        coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
-            DataFixtures.ApiResponse.getSearchAlbum(),
-        )
+        coEvery { mockService.searchAlbumAsync(phrase) } returns
+            ApiResult.Success(
+                DataFixtures.ApiResponse.getSearchAlbum(),
+            )
 
         // when
         val actual = runBlocking { cut.searchAlbum(phrase) }
@@ -47,9 +47,10 @@ class AlbumRepositoryImplTest {
     fun `searchAlbum handles api success and saves album in database`() {
         // given
         val phrase = "phrase"
-        coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Success(
-            DataFixtures.ApiResponse.getSearchAlbum(),
-        )
+        coEvery { mockService.searchAlbumAsync(phrase) } returns
+            ApiResult.Success(
+                DataFixtures.ApiResponse.getSearchAlbum(),
+            )
 
         // when
         runBlocking { cut.searchAlbum(phrase) }
@@ -99,9 +100,10 @@ class AlbumRepositoryImplTest {
 
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, mbId)
-        } returns ApiResult.Success(
-            GetAlbumInfoResponse(album),
-        )
+        } returns
+            ApiResult.Success(
+                GetAlbumInfoResponse(album),
+            )
 
         // when
         val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }

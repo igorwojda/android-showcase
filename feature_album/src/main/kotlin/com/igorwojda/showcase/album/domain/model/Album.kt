@@ -12,7 +12,6 @@ internal data class Album(
     val tracks: List<Track>? = null,
     val tags: List<Tag>? = null,
 ) {
-
     val id: String = "$artist - $name"
 
     fun getDefaultImageUrl() = images.firstOrNull { it.size == ImageSize.EXTRA_LARGE }?.url

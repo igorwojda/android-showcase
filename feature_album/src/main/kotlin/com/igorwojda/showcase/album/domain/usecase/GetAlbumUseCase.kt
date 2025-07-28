@@ -7,7 +7,6 @@ import com.igorwojda.showcase.base.domain.result.Result
 internal class GetAlbumUseCase(
     private val albumRepository: AlbumRepository,
 ) {
-
     suspend operator fun invoke(
         artistName: String,
         albumName: String,

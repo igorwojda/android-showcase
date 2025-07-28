@@ -11,14 +11,16 @@ import com.igorwojda.showcase.base.presentation.activity.BaseFragment
 import com.igorwojda.showcase.base.presentation.compose.composable.UnderConstructionAnim
 
 class ProfileFragment : BaseFragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return ComposeView(requireContext()).apply {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? =
+        ComposeView(requireContext()).apply {
             setContent {
                 ProfileScreen()
             }
         }
-    }
 }
 
 @Preview

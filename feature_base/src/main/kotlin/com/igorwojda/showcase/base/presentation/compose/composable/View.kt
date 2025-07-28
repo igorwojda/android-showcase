@@ -23,9 +23,10 @@ fun UnderConstructionAnim() {
 fun ProgressIndicator() {
     Box {
         CircularProgressIndicator(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .size(Dimen.spaceXXL),
+            modifier =
+                Modifier
+                    .align(Alignment.Center)
+                    .size(Dimen.spaceXXL),
         )
     }
 }

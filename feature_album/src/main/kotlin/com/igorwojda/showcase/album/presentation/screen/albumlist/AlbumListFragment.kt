@@ -42,43 +42,49 @@ import com.igorwojda.showcase.base.presentation.ext.showKeyboard
 import org.koin.androidx.navigation.koinNavGraphViewModel
 
 class AlbumListFragment : BaseFragment() {
-
     private val model: AlbumListViewModel by koinNavGraphViewModel(R.id.albumNavGraph)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return ComposeView(requireContext()).apply {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View =
+        ComposeView(requireContext()).apply {
             setContent {
                 AlbumListScreen(model)
             }
         }
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         model.onEnter()
 
         mainActivity.searchTextInputEditText?.let { editText ->
-            editText.initSearchBehaviour(
-                viewLifecycleOwner.lifecycleScope,
-                MINIMUM_PRODUCT_QUERY_SIZE,
-                DELAY_BEFORE_SUBMITTING_QUERY,
-                object : SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        editText.hideKeyboard()
-                        configureDefaultAppBar(mainActivity)
-                        model.onEnter(query)
-                        return true
-                    }
-
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        if (newText.isNullOrBlank()) {
+            editText
+                .initSearchBehaviour(
+                    viewLifecycleOwner.lifecycleScope,
+                    MINIMUM_PRODUCT_QUERY_SIZE,
+                    DELAY_BEFORE_SUBMITTING_QUERY,
+                    object : SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean {
                             editText.hideKeyboard()
                             configureDefaultAppBar(mainActivity)
+                            model.onEnter(query)
+                            return true
                         }
-                        return true
-                    }
-                },
-            ).also { editText.text?.clear() }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            if (newText.isNullOrBlank()) {
+                                editText.hideKeyboard()
+                                configureDefaultAppBar(mainActivity)
+                            }
+                            return true
+                        }
+                    },
+                ).also { editText.text?.clear() }
         }
     }
 
@@ -125,6 +131,7 @@ class AlbumListFragment : BaseFragment() {
                 }
             }
         }
+
         private fun configureSearchAppBar(baseActivity: BaseActivity) {
             baseActivity.apply {
                 searchLayout?.updateLayoutParams {
@@ -172,16 +179,20 @@ private fun AlbumListScreen(viewModel: AlbumListViewModel) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PhotoGrid(albums: List<Album>, viewModel: AlbumListViewModel) {
+private fun PhotoGrid(
+    albums: List<Album>,
+    viewModel: AlbumListViewModel,
+) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(Dimen.imageSize),
         contentPadding = PaddingValues(Dimen.screenContentPadding),
     ) {
         items(items = albums, key = { it.id }) { album ->
             ElevatedCard(
-                modifier = Modifier
-                    .padding(Dimen.spaceS)
-                    .wrapContentSize(),
+                modifier =
+                    Modifier
+                        .padding(Dimen.spaceS)
+                        .wrapContentSize(),
                 onClick = { viewModel.onAlbumClick(album) },
             ) {
                 PlaceholderImage(

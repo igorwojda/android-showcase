@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
-abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(initialState: State) :
-    ViewModel() {
-
+abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(
+    initialState: State,
+) : ViewModel() {
     private val _uiStateFlow = MutableStateFlow(initialState)
     val uiStateFlow = _uiStateFlow.asStateFlow()
 

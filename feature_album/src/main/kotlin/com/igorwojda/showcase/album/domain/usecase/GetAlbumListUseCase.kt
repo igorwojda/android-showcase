@@ -8,15 +8,15 @@ import com.igorwojda.showcase.base.domain.result.mapSuccess
 internal class GetAlbumListUseCase(
     private val albumRepository: AlbumRepository,
 ) {
-
     suspend operator fun invoke(query: String?): Result<List<Album>> {
-        val result = albumRepository
-            .searchAlbum(query)
-            .mapSuccess {
-                val albumsWithImages = value.filter { it.getDefaultImageUrl() != null }
+        val result =
+            albumRepository
+                .searchAlbum(query)
+                .mapSuccess {
+                    val albumsWithImages = value.filter { it.getDefaultImageUrl() != null }
 
-                copy(value = albumsWithImages)
-            }
+                    copy(value = albumsWithImages)
+                }
 
         return result
     }

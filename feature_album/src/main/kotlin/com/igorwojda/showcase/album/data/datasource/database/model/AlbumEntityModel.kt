@@ -36,30 +36,24 @@ internal fun AlbumEntityModel.toDomainModel() =
 
 internal class AlbumImageEntityTypeConverter {
     @TypeConverter
-    fun stringToList(data: String?) =
-        data?.let { Json.decodeFromString<List<ImageEntityModel>>(it) } ?: listOf()
+    fun stringToList(data: String?) = data?.let { Json.decodeFromString<List<ImageEntityModel>>(it) } ?: listOf()
 
     @TypeConverter
-    fun listToString(someObjects: List<ImageEntityModel>): String =
-        Json.encodeToString(someObjects)
+    fun listToString(someObjects: List<ImageEntityModel>): String = Json.encodeToString(someObjects)
 }
 
 internal class AlbumTrackEntityTypeConverter {
     @TypeConverter
-    fun stringToList(data: String?) =
-        data?.let { Json.decodeFromString<List<TrackEntityModel>>(it) } ?: listOf()
+    fun stringToList(data: String?) = data?.let { Json.decodeFromString<List<TrackEntityModel>>(it) } ?: listOf()
 
     @TypeConverter
-    fun listToString(someObjects: List<TrackEntityModel>): String =
-        Json.encodeToString(someObjects)
+    fun listToString(someObjects: List<TrackEntityModel>): String = Json.encodeToString(someObjects)
 }
 
 internal class AlbumTagEntityTypeConverter {
     @TypeConverter
-    fun stringToList(data: String?) =
-        data?.let { Json.decodeFromString<List<TagEntityModel>>(it) } ?: listOf()
+    fun stringToList(data: String?) = data?.let { Json.decodeFromString<List<TagEntityModel>>(it) } ?: listOf()
 
     @TypeConverter
-    fun listToString(someObjects: List<TagEntityModel>): String =
-        Json.encodeToString(someObjects)
+    fun listToString(someObjects: List<TagEntityModel>): String = Json.encodeToString(someObjects)
 }

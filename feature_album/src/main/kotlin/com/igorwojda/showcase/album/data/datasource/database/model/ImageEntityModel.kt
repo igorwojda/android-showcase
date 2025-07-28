@@ -9,5 +9,4 @@ internal data class ImageEntityModel(
     val size: ImageSizeEntityModel,
 )
 
-internal fun ImageEntityModel.toDomainModel() =
-    this.size.toDomainModel()?.let { Image(this.url, it) }
+internal fun ImageEntityModel.toDomainModel() = this.size.toDomainModel()?.let { Image(this.url, it) }

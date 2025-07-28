@@ -1,7 +1,6 @@
 import com.android.build.api.dsl.ApplicationDefaultConfig
-import java.util.Locale
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+import java.util.Locale
 plugins {
     id("local.app")
 }
@@ -12,14 +11,28 @@ android {
 
     namespace = "com.igorwojda.showcase"
 
-    compileSdk = libs.findVersion("compileSdk").get().toString().toInt()
-
+    compileSdk =
+        libs
+            .findVersion("compileSdk")
+            .get()
+            .toString()
+            .toInt()
 
     defaultConfig {
         applicationId = "com.igorwojda.showcase"
 
-        minSdk = libs.findVersion("minSdk").get().toString().toInt()
-        targetSdk = libs.findVersion("targetSdk").get().toString().toInt()
+        minSdk =
+            libs
+                .findVersion("minSdk")
+                .get()
+                .toString()
+                .toInt()
+        targetSdk =
+            libs
+                .findVersion("targetSdk")
+                .get()
+                .toString()
+                .toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         versionCode = 1

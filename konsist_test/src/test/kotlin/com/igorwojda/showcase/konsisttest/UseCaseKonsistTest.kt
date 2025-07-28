@@ -10,7 +10,8 @@ import java.util.Locale
 class UseCaseKonsistTest {
     @Test
     fun `every use case class has test`() {
-        Konsist.scopeFromProduction()
+        Konsist
+            .scopeFromProduction()
             .classes()
             .withNameEndingWith("UseCase")
             .assertTrue { it.hasTestClasses(testPropertyName = "cut") }
@@ -18,7 +19,8 @@ class UseCaseKonsistTest {
 
     @Test
     fun `every use case constructor has alphabetically ordered parameters`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
             .flatMap { it.constructors }
@@ -31,7 +33,8 @@ class UseCaseKonsistTest {
 
     @Test
     fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packages`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
             .assertTrue { it.resideInPackage("..domain..usecase..") }
@@ -39,13 +42,15 @@ class UseCaseKonsistTest {
 
     @Test
     fun `classes with 'UseCase' suffix should have single public operator method named 'invoke'`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
             .assertTrue {
-                val hasSingleInvokeOperatorMethod = it.hasFunction { function ->
-                    function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
-                }
+                val hasSingleInvokeOperatorMethod =
+                    it.hasFunction { function ->
+                        function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
+                    }
 
                 hasSingleInvokeOperatorMethod && it.numPublicOrDefaultDeclarations() == 1
             }
@@ -53,7 +58,8 @@ class UseCaseKonsistTest {
 
     @Test
     fun `every use case constructor parameter has name derived from parameter type`() {
-        Konsist.scopeFromProject()
+        Konsist
+            .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
             .flatMap { it.constructors }
