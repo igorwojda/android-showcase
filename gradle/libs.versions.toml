@@ -10,7 +10,7 @@ compileSdk = "36"
 minSdk = "28"
 targetSdk = "35"
 
-navigation = "2.9.2"
+navigation = "2.9.3"
 testLogger = "4.0.0"
 coroutines = "1.10.2"
 retrofit = "3.0.0"
