@@ -31,7 +31,7 @@ materialCompose = "1.3.2"
 material = "1.12.0"
 lottie = "6.6.7"
 coreKtx = "1.16.0"
-fragmentKtx = "1.8.8"
+fragmentKtx = "1.8.9"
 # Info https://google.github.io/accompanist/flowlayout/
 # Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
 accompanistFlowLayout = "0.36.0"
