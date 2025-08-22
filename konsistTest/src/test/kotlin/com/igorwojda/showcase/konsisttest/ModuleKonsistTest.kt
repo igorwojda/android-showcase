@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.konsisttest
 
 import com.lemonappdev.konsist.api.Konsist
-import com.lemonappdev.konsist.api.ext.list.withPackage
 import com.lemonappdev.konsist.api.verify.assertTrue
 import org.junit.jupiter.api.Test
 
