@@ -11,7 +11,7 @@ dependencies {
 
     ksp(libs.roomCompiler)
 
-    testImplementation(projects.libraryTestUtils)
+    testImplementation(projects.lib.testUtils)
     testImplementation(libs.bundles.test)
 
     testRuntimeOnly(libs.junitJupiterEngine)
