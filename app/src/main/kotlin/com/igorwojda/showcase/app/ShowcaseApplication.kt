@@ -3,9 +3,9 @@ package com.igorwojda.showcase.app
 import android.app.Application
 import com.google.android.material.color.DynamicColors
 import com.igorwojda.showcase.BuildConfig
-import com.igorwojda.showcase.base.baseModule
-import com.igorwojda.showcase.favourite.featureFavouriteModules
-import com.igorwojda.showcase.profile.featureProfilesModules
+import com.igorwojda.showcase.feature.base.baseModule
+import com.igorwojda.showcase.feature.favourite.featureFavouriteModules
+import com.igorwojda.showcase.feature.profile.featureProfilesModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext
@@ -34,7 +34,7 @@ class ShowcaseApplication : Application() {
             modules(appModule)
             modules(baseModule)
             modules(featureFavouriteModules)
-            modules(com.igorwojda.showcase.album.featureAlbumModules)
+            modules(com.igorwojda.showcase.feature.album.featureAlbumModules)
             modules(featureProfilesModules)
         }
     }
