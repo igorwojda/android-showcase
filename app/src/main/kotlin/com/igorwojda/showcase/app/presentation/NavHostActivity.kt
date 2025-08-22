@@ -8,11 +8,11 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.igorwojda.showcase.R
+import com.igorwojda.showcase.databinding.ActivityNavHostBinding
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListFragment
 import com.igorwojda.showcase.feature.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.feature.base.presentation.ext.navigateSafe
 import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
-import com.igorwojda.showcase.databinding.ActivityNavHostBinding
 import org.koin.android.ext.android.inject
 
 class NavHostActivity :
