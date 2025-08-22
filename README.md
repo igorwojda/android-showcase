@@ -307,7 +307,7 @@ the [.github/workflows](.github/workflows) folder.
 
 Series of workflows run (in parallel) for every opened PR, and after merging PR to the `main` branch:
 
-- `./gradlew konsist_test:test --rerun-tasks` - checks that source code satisfies Konsist rules
+- `./gradlew konsistTest:test --rerun-tasks` - checks that source code satisfies Konsist rules
 - `./gradlew lintDebug` - checks that source code satisfies Android lint rules 
   - (create baseline using `./gradlew lintDebugBaseline`)
 - `./gradlew detektCheck` - checks that sourcecode satisfies detekt rules

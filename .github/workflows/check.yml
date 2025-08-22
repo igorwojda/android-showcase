@@ -97,12 +97,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: konsist
-        run: ./gradlew konsist_test:test --rerun-tasks
+        run: ./gradlew konsistTest:test --rerun-tasks
 
       - uses: actions/upload-artifact@v4
         with:
           name: konsist-report
-          path: ./konsist_test/build/reports/*
+          path: ./konsistTest/build/reports/*
 
   spotless:
     runs-on: ubuntu-latest
@@ -174,7 +174,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: unitTest
-        run: ./gradlew test -x konsist_test:test
+        run: ./gradlew test -x konsistTest:test
 
       - uses: actions/upload-artifact@v4
         with:

@@ -2,12 +2,12 @@ rootProject.name = "android-showcase"
 
 include(
     ":app",
-    ":feature_album",
-    ":feature_profile",
-    ":feature_favourite",
-    ":feature_base",
-    ":library_test_utils",
-    ":konsist_test",
+    ":feature:album",
+    ":feature:profile",
+    ":feature:favourite",
+    ":feature:base",
+    ":lib:testUtils",
+    ":konsistTest",
 )
 
 pluginManagement {
