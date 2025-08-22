@@ -3,8 +3,8 @@ package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.feature.base.domain.result.Result
-import com.igorwojda.showcase.testutils.CoroutinesTestDispatcherExtension
-import com.igorwojda.showcase.testutils.InstantTaskExecutorExtension
+import com.igorwojda.showcase.lib.testutils.CoroutinesTestDispatcherExtension
+import com.igorwojda.showcase.lib.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

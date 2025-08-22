@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.konsisttest
 
 import com.lemonappdev.konsist.api.Konsist
+import com.lemonappdev.konsist.api.ext.list.withPackage
 import com.lemonappdev.konsist.api.verify.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -16,9 +17,7 @@ class ModuleKonsistTest {
                 val modulePackageName =
                     it.moduleName
                         .lowercase()
-                        .replace("feature_", "")
-                        .replace("library_", "")
-                        .replace("_", "")
+                        .replace("/", ".")
 
                 val fullyQualifiedPackageName = "com.igorwojda.showcase.$modulePackageName"
 
