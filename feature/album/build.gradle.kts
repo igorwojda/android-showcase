@@ -1,4 +1,5 @@
 plugins {
+    id("com.android.library")
     id("local.library")
 }
 

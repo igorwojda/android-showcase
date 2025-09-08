@@ -1,9 +1,5 @@
 package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,87 +19,66 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.fragment.navArgs
 import com.google.accompanist.flowlayout.FlowRow
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Tag
 import com.igorwojda.showcase.feature.album.domain.model.Track
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Error
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
 import com.igorwojda.showcase.feature.album.presentation.util.TimeUtil
 import com.igorwojda.showcase.feature.base.common.res.Dimen
-import com.igorwojda.showcase.feature.base.presentation.activity.BaseFragment
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.DataNotFoundAnim
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ProgressIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleLarge
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleMedium
-import kotlinx.coroutines.flow.StateFlow
-import org.koin.androidx.navigation.koinNavGraphViewModel
+import org.koin.androidx.compose.koinViewModel
 
-internal class AlbumDetailFragment : BaseFragment() {
-    private val args: AlbumDetailFragmentArgs by navArgs()
-    private val model: AlbumDetailViewModel by koinNavGraphViewModel(R.id.albumNavGraph)
+@Composable
+fun AlbumDetailScreen(
+    args: AlbumDetailFragmentArgs, // Pass the args as parameter
+    viewModel: AlbumDetailViewModel = koinViewModel()
+) {
+    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        model.onEnter(args)
+    // Initialize the viewModel with args when the composable enters composition
+    LaunchedEffect(args) {
+        viewModel.onEnter(args)
+    }
 
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AlbumDetailScreen(uiStateFlow = model.uiStateFlow)
-            }
-        }
+    when (uiState) {
+        Error -> DataNotFoundAnim()
+        Loading -> ProgressIndicator()
+        is Content -> AlbumDetails(uiState)
     }
 }
 
 @Composable
-private fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
-    val uiState: UiState by uiStateFlow.collectAsStateWithLifecycle()
-
-    uiState.let {
-        when (it) {
-            Error -> DataNotFoundAnim()
-            Loading -> ProgressIndicator()
-            is Content -> PhotoDetails(it)
-        }
-    }
-}
-
-@Composable
-private fun PhotoDetails(content: Content) {
+private fun AlbumDetails(content: Content) {
     Column(
-        modifier =
-            Modifier
-                .padding(Dimen.screenContentPadding)
-                .verticalScroll(rememberScrollState()),
+        modifier = Modifier
+            .padding(Dimen.screenContentPadding)
+            .verticalScroll(rememberScrollState()),
     ) {
         ElevatedCard(
-            modifier =
-                Modifier
-                    .padding(Dimen.spaceM)
-                    .wrapContentSize()
-                    .size(320.dp)
-                    .align(CenterHorizontally),
+            modifier = Modifier
+                .padding(Dimen.spaceM)
+                .wrapContentSize()
+                .size(320.dp)
+                .align(CenterHorizontally),
         ) {
             PlaceholderImage(
                 url = content.coverImageUrl,
                 contentDescription = stringResource(id = R.string.album_cover_content_description),
-                modifier =
-                    Modifier
-                        .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
             )
         }
         Spacer(modifier = Modifier.height(Dimen.spaceL))
@@ -128,9 +103,9 @@ private fun PhotoDetails(content: Content) {
 @OptIn(ExperimentalMaterial3Api::class)
 private fun Tags(tags: List<Tag>?) {
     FlowRow(mainAxisSpacing = Dimen.spaceM) {
-        tags?.forEach {
+        tags?.forEach { tag ->
             ElevatedSuggestionChip(
-                label = { Text(it.name) },
+                label = { Text(tag.name) },
                 onClick = { },
             )
         }
@@ -139,21 +114,22 @@ private fun Tags(tags: List<Tag>?) {
 
 @Composable
 internal fun Tracks(tracks: List<Track>?) {
-    tracks?.forEach {
-        Track(it)
+    tracks?.forEach { track ->
+        TrackItem(track)
     }
 }
 
 @Composable
-internal fun Track(track: Track) {
+internal fun TrackItem(track: Track) {
     Row {
-        Icon(Icons.Outlined.Star, null)
+        Icon(Icons.Outlined.Star, contentDescription = null)
         Spacer(modifier = Modifier.width(Dimen.spaceS))
 
-        var text = track.name
-
-        track.duration?.let {
-            text += " ${TimeUtil.formatTime(track.duration)}"
+        val text = buildString {
+            append(track.name)
+            track.duration?.let { duration ->
+                append(" ${TimeUtil.formatTime(duration)}")
+            }
         }
 
         Text(text = text)

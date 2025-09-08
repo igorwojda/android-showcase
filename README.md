@@ -95,7 +95,6 @@ the libraries are in the stable version unless there is a good reason to use non
 - UI
   - Reactive UI
   - [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit (used for Fragments)
-  - [View Binding](https://developer.android.com/topic/libraries/view-binding) - retrieve XML view ids
     (used for [NavHostActivity](app/src/main/java/com/igorwojda/showcase/app/presentation/NavHostActivity.kt) only)
   - [Material Design 3](https://m3.material.io/) - application design system providing UI components
   - Theme selection

@@ -31,7 +31,6 @@ materialCompose = "1.3.2"
 material = "1.13.0"
 lottie = "6.6.7"
 coreKtx = "1.17.0"
-fragmentKtx = "1.8.9"
 # Info https://google.github.io/accompanist/flowlayout/
 # Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
 accompanistFlowLayout = "0.36.0"
@@ -73,9 +72,10 @@ serializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json
 # See: https://square.github.io/okhttp/upgrading_to_okhttp_4/
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 okhttpInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+#koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
 koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose" , version.ref = "koin" }
 koinNavigation = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
-viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate", version.ref = "viewBindingPropertyDelegate" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayout" }
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
@@ -85,7 +85,6 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 lottie = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
-fragmentKtx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 livedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
 composeUI = { module = "androidx.compose.ui:ui", version.ref = "compose" }
@@ -119,7 +118,7 @@ retrofit = [
     "okhttpInterceptor"
 ]
 
-koin = ["koin", "koinNavigation"]
+koin = ["koin", "koin-compose", "koinNavigation"]
 compose = ["composeUI", "toolingPreview", "lottie", "coil"]
 lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
 navigation = ["androidx-navigation3-runtime", "androidx-navigation3-ui"]

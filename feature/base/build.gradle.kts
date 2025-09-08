@@ -11,8 +11,6 @@ dependencies {
     // https://github.com/igorwojda/android-showcase#dependency-management
     api(libs.kotlin)
     api(libs.coreKtx)
-    api(libs.fragmentKtx)
-    api(libs.viewBindingPropertyDelegate)
     api(libs.timber)
     api(libs.constraintLayout)
     api(libs.appCompat)
