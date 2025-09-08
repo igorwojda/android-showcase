@@ -9,7 +9,7 @@
     allowBackup and fullBackupContent - API < 31
     -->
     <application
-            android:name=".app.ShowcaseApplication"
+            android:name=".ShowcaseApplication"
             android:allowBackup="false"
             android:fullBackupContent="false"
             android:dataExtractionRules="@xml/data_extraction_rules"
