@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.igorwojda.showcase.lib.testutils"
+    namespace = "com.igorwojda.showcase.library.testutils"
 }
 
 dependencies {
