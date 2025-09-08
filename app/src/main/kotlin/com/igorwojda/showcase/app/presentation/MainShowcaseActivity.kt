@@ -65,9 +65,20 @@ class MainShowcaseActivity : ComponentActivity(),
                                 )
                             }
 
-                            NavigationBarItem(stringResource(R.string.albums), NavigationEntry.AlbumList)
-                            NavigationBarItem(stringResource(R.string.favorites), NavigationEntry.Favourite)
-                            NavigationBarItem(stringResource(R.string.profile), NavigationEntry.Profile)
+                            NavigationBarItem(
+                                stringResource(R.string.albums),
+                                NavigationEntry.AlbumList
+                            )
+
+                            NavigationBarItem(
+                                stringResource(R.string.favorites),
+                                NavigationEntry.Favourite
+                            )
+
+                            NavigationBarItem(
+                                stringResource(R.string.profile),
+                                NavigationEntry.Profile
+                            )
                         }
                     }
                 ) { innerPadding ->
