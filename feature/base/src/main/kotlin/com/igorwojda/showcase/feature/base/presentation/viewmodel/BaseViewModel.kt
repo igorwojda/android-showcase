@@ -3,10 +3,11 @@ package com.igorwojda.showcase.feature.base.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.igorwojda.showcase.feature.base.BuildConfig
+import kotlin.properties.Delegates
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
 
 abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(
     initialState: State,
@@ -27,7 +28,7 @@ abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(
     private var state by Delegates.observable(initialState) { _, old, new ->
         if (old != new) {
             viewModelScope.launch {
-                _uiStateFlow.value = new
+                _uiStateFlow.update { new }
             }
 
             stateTimeTravelDebugger?.apply {

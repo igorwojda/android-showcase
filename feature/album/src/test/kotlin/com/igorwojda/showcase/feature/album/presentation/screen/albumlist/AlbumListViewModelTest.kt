@@ -3,7 +3,7 @@ package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 import androidx.lifecycle.SavedStateHandle
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState
 import com.igorwojda.showcase.feature.base.domain.result.Result
 import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
@@ -45,7 +45,7 @@ class AlbumListViewModelTest {
             // then
             advanceUntilIdle()
 
-            cut.uiStateFlow.value shouldBeEqualTo UiState.Error
+            cut.uiStateFlow.value shouldBeEqualTo AlbumListUiState.Error
         }
 
     @Test
@@ -63,7 +63,7 @@ class AlbumListViewModelTest {
             advanceUntilIdle()
 
             cut.uiStateFlow.value shouldBeEqualTo
-                UiState.Content(
+                AlbumListUiState.Content(
                     albums = albums,
                 )
         }
