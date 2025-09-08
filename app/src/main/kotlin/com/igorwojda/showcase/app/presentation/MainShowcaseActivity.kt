@@ -1,21 +1,29 @@
 package com.igorwojda.showcase.app.presentation
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
@@ -23,7 +31,6 @@ import androidx.navigation.NavDestination
 import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
-import androidx.savedstate.SavedState
 import com.igorwojda.showcase.app.R
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailScreen
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
@@ -41,7 +48,7 @@ class MainShowcaseActivity : ComponentActivity(),
         super.onCreate(savedInstanceState)
 
         setContent {
-            MaterialTheme {
+            MaterialTheme(colorScheme = getColorScheme()) {
                 // Dev-owned back stack; default to AlbumList tab
                 val backStack = remember { mutableStateListOf<NavigationEntry>(NavigationEntry.AlbumList) }
 
@@ -137,19 +144,24 @@ class MainShowcaseActivity : ComponentActivity(),
         return currentRoot
     }
 
+    @Composable
+    private fun getColorScheme(): ColorScheme {
+        val darkTheme: Boolean = isSystemInDarkTheme()
+        val dynamicColor: Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+
+        val context = LocalContext.current
+        return when {
+            dynamicColor -> if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            darkTheme    -> darkColorScheme()
+            else         -> lightColorScheme()
+        }
+    }
+
     override fun onDestinationChanged(
         controller: NavController,
         destination: NavDestination,
-        arguments: SavedState?,
+        arguments: Bundle?,
     ) {
-        // TODO("not implemented")
-    }
-
-//    override fun onDestinationChanged(
-//        controller: NavController,
-//        destination: NavDestination,
-//        arguments: Bundle?,
-//    ) {
 //        when (destination.label) {
 //            DESTINATION_ALBUM_LIST_LABEL -> {
 //                AlbumListFragment.configureAppBar(this)
@@ -158,5 +170,5 @@ class MainShowcaseActivity : ComponentActivity(),
 //                binding.mainAppbarLayout.visibility = View.GONE
 //            }
 //        }
-//    }
+    }
 }
