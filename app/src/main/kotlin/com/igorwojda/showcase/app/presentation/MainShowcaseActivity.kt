@@ -15,7 +15,7 @@ import com.igorwojda.showcase.feature.base.presentation.ext.navigateSafe
 import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
 import org.koin.android.ext.android.inject
 
-class NavHostActivity :
+class MainShowcaseActivity :
     BaseActivity(R.layout.activity_nav_host),
     NavController.OnDestinationChangedListener {
     private val binding: ActivityNavHostBinding by viewBinding()

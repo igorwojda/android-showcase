@@ -21,7 +21,7 @@
             android:usesCleartextTraffic="true">
 
         <activity
-                android:name="com.igorwojda.showcase.app.presentation.NavHostActivity"
+                android:name="com.igorwojda.showcase.app.presentation.MainShowcaseActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
