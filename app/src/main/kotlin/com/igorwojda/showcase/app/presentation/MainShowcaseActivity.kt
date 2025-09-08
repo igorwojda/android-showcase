@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -17,6 +18,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -56,27 +58,30 @@ class MainShowcaseActivity : ComponentActivity(),
                             val currentRoot = getCurrentRoot(backStack)
 
                             @Composable
-                            fun NavigationBarItem(label: String, target: NavigationEntry) {
+                            fun NavigationBarItem(label: String, iconRes: Int, target: NavigationEntry) {
                                 NavigationBarItem(
                                     selected = currentRoot == target,
                                     onClick = { goToRoot(target) },
-                                    icon = { /* keep minimal; no icon */ },
+                                    icon = { Icon(painter = painterResource(id = iconRes), contentDescription = label) },
                                     label = { Text(label) }
                                 )
                             }
 
                             NavigationBarItem(
                                 stringResource(R.string.albums),
+                                R.drawable.ic_round_album_list,
                                 NavigationEntry.AlbumList
                             )
 
                             NavigationBarItem(
                                 stringResource(R.string.favorites),
+                                R.drawable.ic_round_favorite,
                                 NavigationEntry.Favourite
                             )
 
                             NavigationBarItem(
                                 stringResource(R.string.profile),
+                                R.drawable.ic_round_profile,
                                 NavigationEntry.Profile
                             )
                         }
