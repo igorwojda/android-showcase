@@ -16,7 +16,7 @@ import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseViewModel
 internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
 ) : BaseViewModel<UiState, Action>(Loading) {
-//    fun onEnter(args: AlbumDetailFragmentArgs) {
+//    fun onInit(args: AlbumDetailFragmentArgs) {
 //        getAlbum(args)
 //    }
 //

@@ -48,7 +48,7 @@ fun AlbumDetailScreen() {
 
     // Initialize the viewModel with args when the composable enters composition
 //    LaunchedEffect(args) {
-//        viewModel.onEnter(args)
+//        viewModel.onInit(args)
 //    }
 
     when (uiState) {

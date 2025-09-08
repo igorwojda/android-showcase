@@ -56,7 +56,7 @@ fun AlbumListScreen(
     var searchQuery by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
-        viewModel.onEnter()
+        viewModel.onInit()
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -68,9 +68,9 @@ fun AlbumListScreen(
             },
             onSearch = { query ->
                 if (query.isNotEmpty()) {
-                    viewModel.onEnter(query)
+                    viewModel.onInit(query)
                 } else {
-                    viewModel.onEnter()
+                    viewModel.onInit()
                 }
             }
         )

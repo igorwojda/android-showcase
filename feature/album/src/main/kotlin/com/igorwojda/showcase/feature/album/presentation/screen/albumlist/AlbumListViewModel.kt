@@ -28,7 +28,7 @@ internal class AlbumListViewModel(
         private const val SAVED_QUERY_KEY = "query"
     }
 
-    fun onEnter(query: String? = (savedStateHandle[SAVED_QUERY_KEY] as? String) ?: DEFAULT_QUERY_NAME) {
+    fun onInit(query: String? = (savedStateHandle[SAVED_QUERY_KEY] as? String) ?: DEFAULT_QUERY_NAME) {
         getAlbumList(query)
     }
 

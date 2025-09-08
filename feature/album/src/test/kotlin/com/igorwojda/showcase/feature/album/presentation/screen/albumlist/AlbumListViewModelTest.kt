@@ -34,13 +34,13 @@ class AlbumListViewModelTest {
         )
 
     @Test
-    fun `onEnter emits state error`() =
+    fun `onInit emits state error`() =
         runTest {
             // given
             coEvery { mockGetAlbumListUseCase.invoke(null) } returns Result.Success(emptyList())
 
             // when
-            cut.onEnter(null)
+            cut.onInit(null)
 
             // then
             advanceUntilIdle()
@@ -49,7 +49,7 @@ class AlbumListViewModelTest {
         }
 
     @Test
-    fun `onEnter emits state success`() =
+    fun `onInit emits state success`() =
         runTest {
             // given
             val album = Album("albumName", "artistName")
@@ -57,7 +57,7 @@ class AlbumListViewModelTest {
             coEvery { mockGetAlbumListUseCase.invoke(null) } returns Result.Success(albums)
 
             // when
-            cut.onEnter(null)
+            cut.onInit(null)
 
             // then
             advanceUntilIdle()

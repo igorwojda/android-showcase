@@ -26,7 +26,7 @@ class AlbumDetailViewModelTest {
 
     @Test
     @Disabled("mockk can't correctly mock this function https://github.com/mockk/mockk/issues/957")
-    fun `onEnter album is not found`() =
+    fun `onInit album is not found`() =
         runTest {
             // given
             val albumName = "Thriller"
@@ -43,7 +43,7 @@ class AlbumDetailViewModelTest {
             } returns Result.Failure()
 
             // when
-//            cut.onEnter(mockAlbumDetailFragmentArgs)
+//            cut.onInit(mockAlbumDetailFragmentArgs)
 
             // then
             cut.uiStateFlow.value shouldBeEqualTo UiState.Error
