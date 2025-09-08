@@ -28,7 +28,7 @@ internal class AlbumListViewModel(
         private const val SAVED_QUERY_KEY = "query"
     }
 
-    fun onEnter(query: String? = (savedStateHandle.get(SAVED_QUERY_KEY) as? String) ?: DEFAULT_QUERY_NAME) {
+    fun onEnter(query: String? = (savedStateHandle[SAVED_QUERY_KEY] as? String) ?: DEFAULT_QUERY_NAME) {
         getAlbumList(query)
     }
 
@@ -64,10 +64,10 @@ internal class AlbumListViewModel(
     }
 
     fun onAlbumClick(album: Album) {
-        val navDirections =
-            AlbumListFragmentDirections.actionAlbumListToAlbumDetail(album.artist, album.name, album.mbId)
+//        val navDirections =
+//            AlbumListFragmentDirections.actionAlbumListToAlbumDetail(album.artist, album.name, album.mbId)
 
-        navManager.navigate(navDirections)
+//        navManager.navigate(navDirections)
     }
 
     internal sealed interface Action : BaseAction<UiState> {

@@ -48,10 +48,11 @@ private const val DELAY_BEFORE_SUBMITTING_QUERY = 500L
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AlbumListScreen(
-    viewModel: AlbumListViewModel = koinViewModel(),
     onNavigateToAlbumDetail: (String) -> Unit = {}
 ) {
-    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+    val viewModel: AlbumListViewModel = koinViewModel()
+
+    val uiState = viewModel.uiStateFlow.collectAsStateWithLifecycle()
     var searchQuery by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {

@@ -19,7 +19,11 @@ dependencies {
     api(libs.material)
     api(libs.composeMaterial)
     api(libs.accompanistFlowLayout)
+
+    // Koin
+    api(platform(libs.koin.bom))
     api(libs.bundles.koin)
+
     api(libs.bundles.retrofit)
     api(libs.bundles.navigation)
     api(libs.bundles.lifecycle)

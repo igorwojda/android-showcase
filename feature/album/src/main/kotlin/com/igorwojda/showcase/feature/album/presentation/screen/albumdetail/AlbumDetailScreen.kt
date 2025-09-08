@@ -19,8 +19,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -43,16 +41,15 @@ import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextT
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun AlbumDetailScreen(
-    args: AlbumDetailFragmentArgs, // Pass the args as parameter
-    viewModel: AlbumDetailViewModel = koinViewModel()
-) {
-    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+fun AlbumDetailScreen() {
+    val viewModel: AlbumDetailViewModel = koinViewModel()
+
+    val uiState = viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     // Initialize the viewModel with args when the composable enters composition
-    LaunchedEffect(args) {
-        viewModel.onEnter(args)
-    }
+//    LaunchedEffect(args) {
+//        viewModel.onEnter(args)
+//    }
 
     when (uiState) {
         Error -> DataNotFoundAnim()
