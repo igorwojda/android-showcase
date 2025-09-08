@@ -109,12 +109,15 @@ class MainShowcaseActivity : ComponentActivity(),
                                     }
                                 }
                             }
+
                             entry<NavigationEntry.Favourite> {
                                 Column(Modifier.padding(16.dp)) { Text("FavouriteScreen") }
                             }
+
                             entry<NavigationEntry.Profile> {
                                 Column(Modifier.padding(16.dp)) { Text("ProfileScreen") }
                             }
+
                             // --- Detail (reachable from AlbumList) ---
                             entry<NavigationEntry.AlbumDetail> { key ->
                                 Column(Modifier.padding(16.dp)) {
