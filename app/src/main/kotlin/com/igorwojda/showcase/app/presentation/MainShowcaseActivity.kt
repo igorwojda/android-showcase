@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -20,7 +18,6 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation3.runtime.entry
@@ -28,7 +25,11 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.SavedState
 import com.igorwojda.showcase.app.R
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailScreen
+import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
+import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
+import com.igorwojda.showcase.feature.profile.presentation.screen.profile.ProfileScreen
 import org.koin.android.ext.android.inject
 
 class MainShowcaseActivity : ComponentActivity(),
@@ -94,41 +95,20 @@ class MainShowcaseActivity : ComponentActivity(),
                         entryProvider = entryProvider {
                             // --- Tabs ---
                             entry<NavigationEntry.AlbumList> {
-                                Column(Modifier.padding(16.dp)) {
-                                    Text("AlbumListScreen")
-                                    listOf(
-                                        "In Rainbows" to "mb-001",
-                                        "Kind of Blue" to "mb-002"
-                                    ).forEach { (name, id) ->
-                                        Text(
-                                            "Open \"$name\" ($id)",
-                                            modifier = Modifier
-                                                .padding(top = 8.dp)
-                                                .clickable { backStack.add(NavigationEntry.AlbumDetail(name, id)) }
-                                        )
-                                    }
-                                }
+                                AlbumListScreen()
                             }
 
                             entry<NavigationEntry.Favourite> {
-                                Column(Modifier.padding(16.dp)) { Text("FavouriteScreen") }
+                                FavouriteScreen()
                             }
 
                             entry<NavigationEntry.Profile> {
-                                Column(Modifier.padding(16.dp)) { Text("ProfileScreen") }
+                                ProfileScreen()
                             }
 
                             // --- Detail (reachable from AlbumList) ---
                             entry<NavigationEntry.AlbumDetail> { key ->
-                                Column(Modifier.padding(16.dp)) {
-                                    Text("AlbumDetailScreen")
-                                    Text("Album: ${key.albumName}")
-                                    Text("MBID: ${key.mbId}")
-                                    Text(
-                                        "Back", modifier = Modifier
-                                            .padding(top = 12.dp)
-                                            .clickable { backStack.removeLastOrNull() })
-                                }
+                                AlbumDetailScreen()
                             }
                         }
                     )
