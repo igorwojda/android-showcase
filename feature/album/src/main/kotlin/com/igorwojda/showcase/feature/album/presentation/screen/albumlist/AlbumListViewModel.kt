@@ -88,8 +88,8 @@ internal class AlbumListViewModel(
             val albums: List<Album>,
         ) : AlbumListUiState
 
-        object Loading : AlbumListUiState
+        data object Loading : AlbumListUiState
 
-        object Error : AlbumListUiState
+        data object Error : AlbumListUiState
     }
 }

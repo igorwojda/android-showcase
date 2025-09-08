@@ -62,8 +62,8 @@ internal class AlbumDetailViewModel(
             val tags: List<Tag>? = emptyList(),
         ) : UiState
 
-        object Loading : UiState
+        data object Loading : UiState
 
-        object Error : UiState
+        data object Error : UiState
     }
 }
