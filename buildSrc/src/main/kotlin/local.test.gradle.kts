@@ -19,4 +19,3 @@ tasks.withType<Test> {
 testlogger {
     theme = ThemeType.MOCHA
 }
-// Test
