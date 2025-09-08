@@ -6,7 +6,7 @@ include(
     ":feature:profile",
     ":feature:favourite",
     ":feature:base",
-    ":lib:testUtils",
+    ":library:testUtils",
     ":konsistTest",
 )
 

@@ -28,7 +28,7 @@ dependencies {
     api(libs.bundles.room)
     api(libs.bundles.compose)
 
-    testImplementation(projects.lib.testUtils)
+    testImplementation(projects.library.testUtils)
     testImplementation(libs.bundles.test)
 
     testRuntimeOnly(libs.junitJupiterEngine)

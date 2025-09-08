@@ -9,6 +9,6 @@ android {
 dependencies {
     implementation(projects.feature.base)
 
-    testImplementation(projects.lib.testUtils)
+    testImplementation(projects.library.testUtils)
     testImplementation(libs.bundles.test)
 }
