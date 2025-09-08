@@ -94,7 +94,7 @@ the libraries are in the stable version unless there is a good reason to use non
   - [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
 - UI
   - Reactive UI
-  - [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit (used for Fragments)
+  - [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
     (used for [NavHostActivity](app/src/main/java/com/igorwojda/showcase/app/presentation/NavHostActivity.kt) only)
   - [Material Design 3](https://m3.material.io/) - application design system providing UI components
   - Theme selection
@@ -203,7 +203,7 @@ annotation that is used by Jetpack compose to enable composition optimizations.
 
 Components:
 
-- **View (Fragment)** - observes common view state (through `Kotlin Flow`). Compose transform state (emitted by Kotlin
+- **Screen (Composable)** - observes common view state (through `Kotlin Flow`). Compose transform state (emitted by Kotlin
   Flow) into application UI Consumes the state and transforms it into application UI (via `Jetpack Compose`). Pass user
   interactions to `ViewModel`. Views are hard to test, so they should be as simple as possible.
 - **ViewModel** - emits (through `Kotlin Flow`) view state changes to the view and deals with user interactions (these
@@ -292,7 +292,7 @@ implementation(projects.featureAlbum)
 ## Logcat debugging
 
 To facilitate debuting project contains logs. You can filter logs to understand app flow. Keywords:
-- `onCreate` see what `Activities` and `Fragments` have been created
+- `onCreate` see what `Activities` and `ViewModels` have been created
 - `Action` - filter all actions performed on the screens to update the UI
 - `Http` - debug network requests and responses
 
@@ -407,10 +407,6 @@ Other high-quality projects will help you to find solutions that work for your p
   - versions (`kotlinCompilerExtensionVersion`) are retrieved using string version names
 - No usages are found for the `suspended` Kotlin `invoke`
   operator ([KTIJ-1053](https://youtrack.jetbrains.com/issue/KTIJ-1053/Find-usages-no-convention-usages-for-suspend-invoke-operator))
-- The `Material You Dynamic Colors` are not correctly applied to Fragment contents (only to Activity)
-- When using `FragmentContainerView`, `NavController` fragment can't be retrieved by
-  using `findNavController()` ([ISSUE-142847973](https://issuetracker.google.com/issues/142847973),
-  [STACKOVERFLOW-59275182](https://stackoverflow.com/questions/59275009/fragmentcontainerview-using-findnavcontroller/59275182))
 - Mockk is unable to mock some methods with implicit `continuation`
   parameter in the `AlbumListViewModelTest` class ([Issue-957](https://github.com/mockk/mockk/issues/957)), , so test
   in the `AlbumDetailViewModelTest` was disabled
