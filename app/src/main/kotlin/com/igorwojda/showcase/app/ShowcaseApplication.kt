@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.app
 
 import android.app.Application
-import com.google.android.material.color.DynamicColors
 import com.igorwojda.showcase.BuildConfig
 import com.igorwojda.showcase.feature.base.baseModule
 import com.igorwojda.showcase.feature.favourite.featureFavouriteModules
@@ -17,13 +16,6 @@ class ShowcaseApplication : Application() {
 
         initKoin()
         initTimber()
-        initDynamicColorScheme()
-    }
-
-    private fun initDynamicColorScheme() {
-        // Apply dynamic colors to all Activities, Fragments, Views
-        // (Material 3 library helper class)
-        DynamicColors.applyToActivitiesIfAvailable(this)
     }
 
     private fun initKoin() {

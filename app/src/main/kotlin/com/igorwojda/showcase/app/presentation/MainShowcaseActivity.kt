@@ -51,10 +51,21 @@ class MainShowcaseActivity : ComponentActivity(),
                     bottomBar = {
                         NavigationBar {
                             val currentRoot = backStack
+                                // 1. Look at the topmost entry in the back stack (could be null if empty).
                                 .lastOrNull()
+                                // 2. Transform it:
                                 .let {
-                                    if (it is NavigationEntry.AlbumDetail) null else it
-                                } ?: backStack.first()
+                                    when (it) {
+                                        // 2a. If we’re on a AlbumDetail screen → don’t treat it as a root tab.
+                                        is NavigationEntry.AlbumDetail -> {
+                                            NavigationEntry.AlbumList
+                                        }
+                                        // 2b. Otherwise → keep the entry (AlbumList, Favourite, Profile).
+                                        else -> {
+                                            it
+                                        }
+                                    }
+                                }
 
                             @Composable
                             fun NavigationBarItem(label: String, target: NavigationEntry) {
