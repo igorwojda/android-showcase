@@ -75,7 +75,6 @@ koin = { module = "io.insert-koin:koin-android" }
 koin-compose = { module = "io.insert-koin:koin-androidx-compose"  }
 koinNavigation = { module = "io.insert-koin:koin-androidx-navigation" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
-constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayout" }
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 composeMaterial = { module = "androidx.compose.material3:material3", version.ref = "materialCompose" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
