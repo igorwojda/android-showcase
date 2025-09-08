@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -23,6 +24,7 @@ import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.SavedState
+import com.igorwojda.showcase.app.R
 import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
 import org.koin.android.ext.android.inject
 
@@ -77,9 +79,9 @@ class MainShowcaseActivity : ComponentActivity(),
                                 )
                             }
 
-                            NavigationBarItem("Albums", NavigationEntry.AlbumList)
-                            NavigationBarItem("Favourite", NavigationEntry.Favourite)
-                            NavigationBarItem("Profile", NavigationEntry.Profile)
+                            NavigationBarItem(stringResource(R.string.albums), NavigationEntry.AlbumList)
+                            NavigationBarItem(stringResource(R.string.favorites), NavigationEntry.Favourite)
+                            NavigationBarItem(stringResource(R.string.profile), NavigationEntry.Profile)
                         }
                     }
                 ) { innerPadding ->

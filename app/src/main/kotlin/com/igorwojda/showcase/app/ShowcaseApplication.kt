@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.app
 
 import android.app.Application
-import com.igorwojda.showcase.BuildConfig
+import com.igorwojda.showcase.feature.album.featureAlbumModules
 import com.igorwojda.showcase.feature.base.baseModule
 import com.igorwojda.showcase.feature.favourite.featureFavouriteModules
 import com.igorwojda.showcase.feature.profile.featureProfilesModules
@@ -26,7 +26,7 @@ class ShowcaseApplication : Application() {
             modules(appModule)
             modules(baseModule)
             modules(featureFavouriteModules)
-            modules(com.igorwojda.showcase.feature.album.featureAlbumModules)
+            modules(featureAlbumModules)
             modules(featureProfilesModules)
         }
     }

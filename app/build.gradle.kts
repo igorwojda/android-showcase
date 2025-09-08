@@ -1,6 +1,8 @@
+
 import com.android.build.api.dsl.ApplicationDefaultConfig
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Locale
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("local.app")
 }
@@ -9,7 +11,7 @@ android {
     val catalogs = extensions.getByType<VersionCatalogsExtension>()
     val libs = catalogs.named("libs")
 
-    namespace = "com.igorwojda.showcase"
+    namespace = "com.igorwojda.showcase.app"
 
     compileSdk =
         libs
