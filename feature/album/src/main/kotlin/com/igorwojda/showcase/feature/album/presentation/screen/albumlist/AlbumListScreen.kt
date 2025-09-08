@@ -15,7 +15,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -45,7 +44,6 @@ import org.koin.androidx.compose.koinViewModel
 private const val MINIMUM_PRODUCT_QUERY_SIZE = 1
 private const val DELAY_BEFORE_SUBMITTING_QUERY = 500L
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AlbumListScreen(
     onNavigateToAlbumDetail: (String) -> Unit = {}
@@ -92,7 +90,6 @@ fun AlbumListScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun SearchBar(
     query: String,
@@ -152,7 +149,6 @@ private fun SearchBar(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AlbumGrid(
     albums: List<Album>,

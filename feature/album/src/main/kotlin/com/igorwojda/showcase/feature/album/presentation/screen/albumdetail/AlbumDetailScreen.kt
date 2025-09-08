@@ -15,7 +15,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ElevatedSuggestionChip
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -97,7 +96,6 @@ private fun AlbumDetails(content: Content) {
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 private fun Tags(tags: List<Tag>?) {
     FlowRow(mainAxisSpacing = Dimen.spaceM) {
         tags?.forEach { tag ->
