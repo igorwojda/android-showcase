@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -38,7 +39,7 @@ fun AlbumListScreen(
 ) {
     val viewModel: AlbumListViewModel = koinViewModel()
 
-    val uiState = viewModel.uiStateFlow.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
     var searchQuery by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
@@ -62,12 +63,15 @@ fun AlbumListScreen(
         )
 
         // Content
-        Box(modifier = Modifier.fillMaxSize()) {
-            when (uiState) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center,
+        ) {
+            when (val currentUiState = uiState) {  // Extract to local variable for smart casting
                 Error -> DataNotFoundAnim()
                 Loading -> ProgressIndicator()
                 is Content -> AlbumGrid(
-                    albums = uiState.albums,
+                    albums = currentUiState.albums,  // Use currentState instead of uiState
                     onAlbumClick = { album ->
                         viewModel.onAlbumClick(album)
                         onNavigateToAlbumDetail(album.id)
