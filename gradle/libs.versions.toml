@@ -10,7 +10,7 @@ compileSdk = "36"
 minSdk = "28"
 targetSdk = "35"
 
-navigation = "2.9.3"
+navigation3 = "1.0.0-alpha08"
 testLogger = "4.0.0"
 coroutines = "1.10.2"
 retrofit = "3.0.0"
@@ -59,7 +59,6 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 kotlin-symbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
-safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 junit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
 testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
@@ -92,8 +91,8 @@ livedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.re
 composeUI = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 livedataRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
-navigationFragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
-navigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "navigation3" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -123,7 +122,7 @@ retrofit = [
 koin = ["koin", "koinNavigation"]
 compose = ["composeUI", "toolingPreview", "lottie", "coil"]
 lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
-navigation = ["navigationFragment", "navigationUiKtx"]
+navigation = ["androidx-navigation3-runtime", "androidx-navigation3-ui"]
 room = ["roomKtx", "roomRuntime"]
 
 test = [

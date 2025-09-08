@@ -73,7 +73,7 @@ the libraries are in the stable version unless there is a good reason to use non
   - [Retrofit](https://square.github.io/retrofit/) - networking
   - [Jetpack](https://developer.android.com/jetpack)
     - [Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
-    - [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
+    - [Navigation](https://android-developers.googleblog.com/2025/05/announcing-jetpack-navigation-3-for-compose.html) - in-app navigation
     - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when
       lifecycle state changes
     - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related
@@ -125,7 +125,6 @@ the libraries are in the stable version unless there is a good reason to use non
   - [Gradle Plugins](https://plugins.gradle.org/)
     - [Android Gradle](https://developer.android.com/studio/releases/gradle-plugin) - standard Android Plugins
     - [Test Logger](https://github.com/radarsh/gradle-test-logger-plugin) - format test logs
-    - [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) - pass data between
       navigation destinations
     - [Android-junit5](https://github.com/mannodermaus/android-junit5) - use [JUnit 5](https://junit.org/junit5/) with Android
   - [Versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) - define 
