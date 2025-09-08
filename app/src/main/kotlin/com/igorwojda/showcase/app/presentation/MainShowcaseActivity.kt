@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -52,22 +53,7 @@ class MainShowcaseActivity : ComponentActivity(),
                 Scaffold(
                     bottomBar = {
                         NavigationBar {
-                            val currentRoot = backStack
-                                // 1. Look at the topmost entry in the back stack (could be null if empty).
-                                .lastOrNull()
-                                // 2. Transform it:
-                                .let {
-                                    when (it) {
-                                        // 2a. If we’re on a AlbumDetail screen → don’t treat it as a root tab.
-                                        is NavigationEntry.AlbumDetail -> {
-                                            NavigationEntry.AlbumList
-                                        }
-                                        // 2b. Otherwise → keep the entry (AlbumList, Favourite, Profile).
-                                        else -> {
-                                            it
-                                        }
-                                    }
-                                }
+                            val currentRoot = getCurrentRoot(backStack)
 
                             @Composable
                             fun NavigationBarItem(label: String, target: NavigationEntry) {
@@ -130,6 +116,26 @@ class MainShowcaseActivity : ComponentActivity(),
                 }
             }
         }
+    }
+
+    private fun getCurrentRoot(backStack: SnapshotStateList<NavigationEntry>): NavigationEntry? {
+        val currentRoot = backStack
+            // 1. Look at the topmost entry in the back stack (could be null if empty).
+            .lastOrNull()
+            // 2. Transform it:
+            .let {
+                when (it) {
+                    // 2a. If we’re on a AlbumDetail screen → don’t treat it as a root tab.
+                    is NavigationEntry.AlbumDetail -> {
+                        NavigationEntry.AlbumList
+                    }
+                    // 2b. Otherwise → keep the entry (AlbumList, Favourite, Profile).
+                    else -> {
+                        it
+                    }
+                }
+            }
+        return currentRoot
     }
 
     override fun onDestinationChanged(
