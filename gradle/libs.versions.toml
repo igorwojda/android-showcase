@@ -38,7 +38,7 @@ accompanistFlowLayout = "0.36.0"
 
 spotless = "7.2.1"
 detekt = "1.23.8"
-androidGradlePlugin = "8.10.0"
+androidGradlePlugin = "8.13.0"
 
 # Test
 junitJupiter = "5.13.4"
