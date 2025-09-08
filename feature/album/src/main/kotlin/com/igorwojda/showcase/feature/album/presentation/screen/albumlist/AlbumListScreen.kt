@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,7 +21,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.presentation.composable.SearchBar
@@ -28,10 +28,11 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumL
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState.Error
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState.Loading
 import com.igorwojda.showcase.feature.base.common.res.Dimen
-import com.igorwojda.showcase.feature.base.presentation.compose.composable.DataNotFoundAnim
+import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ProgressIndicator
 import org.koin.androidx.compose.koinViewModel
+import timber.log.Timber
 
 @Composable
 fun AlbumListScreen(
@@ -39,7 +40,22 @@ fun AlbumListScreen(
 ) {
     val viewModel: AlbumListViewModel = koinViewModel()
 
-    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiStateFlow.collectAsState()
+    Timber.d("AAA, AlbumListScreen, uiState: $uiState")
+    
+    // Additional debug to see state flow emissions
+    LaunchedEffect(uiState) {
+        Timber.d("AAA, AlbumListScreen LaunchedEffect, uiState changed to: $uiState")
+    }
+    
+    // Debug the raw state flow value
+    LaunchedEffect(Unit) {
+        viewModel.uiStateFlow.collect { state ->
+            Timber.d("AAA, AlbumListScreen raw StateFlow collect: $state")
+        }
+    }
+
+
     var searchQuery by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
@@ -68,7 +84,7 @@ fun AlbumListScreen(
             contentAlignment = Alignment.Center,
         ) {
             when (val currentUiState = uiState) {  // Extract to local variable for smart casting
-                Error -> DataNotFoundAnim()
+                Error -> ErrorAnim()
                 Loading -> ProgressIndicator()
                 is Content -> AlbumGrid(
                     albums = currentUiState.albums,  // Use currentState instead of uiState

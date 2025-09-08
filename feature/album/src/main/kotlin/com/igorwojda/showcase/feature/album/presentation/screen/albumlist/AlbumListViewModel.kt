@@ -17,24 +17,32 @@ import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseState
 import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 internal class AlbumListViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val navManager: NavManager,
     private val getAlbumListUseCase: GetAlbumListUseCase,
 ) : BaseViewModel<AlbumListUiState, Action>(Loading) {
+    
+    init {
+        Timber.d("AAA, AlbumListViewModel created: $this")
+    }
     companion object {
         const val DEFAULT_QUERY_NAME = "Jackson"
         private const val SAVED_QUERY_KEY = "query"
     }
 
     fun onInit(query: String? = (savedStateHandle[SAVED_QUERY_KEY] as? String) ?: DEFAULT_QUERY_NAME) {
+        Timber.d("AAA, onInit, query: $query")
         getAlbumList(query)
     }
 
     private var job: Job? = null
 
     private fun getAlbumList(query: String?) {
+        Timber.d("AAA, getAlbumList, query: $query")
+
         if (job != null) {
             job?.cancel()
             job = null
@@ -48,16 +56,13 @@ internal class AlbumListViewModel(
                     val action =
                         when (result) {
                             is Result.Success -> {
-                                if (result.value.isEmpty()) {
-                                    Action.AlbumListLoadFailure
-                                } else {
-                                    Action.AlbumListLoadSuccess(result.value)
-                                }
+                                Action.AlbumListLoadSuccess(result.value)
                             }
                             is Result.Failure -> {
                                 Action.AlbumListLoadFailure
                             }
                         }
+
                     sendAction(action)
                 }
             }
@@ -74,7 +79,11 @@ internal class AlbumListViewModel(
         class AlbumListLoadSuccess(
             private val albums: List<Album>,
         ) : Action {
-            override fun reduce(state: AlbumListUiState) = Content(albums)
+            override fun reduce(state: AlbumListUiState): AlbumListUiState {
+                val newState = Content(albums)
+                Timber.d("AAA, AlbumListLoadSuccess.reduce, oldState: $state, newState: $newState, albums.size: ${albums.size}")
+                return newState
+            }
         }
 
         object AlbumListLoadFailure : Action {

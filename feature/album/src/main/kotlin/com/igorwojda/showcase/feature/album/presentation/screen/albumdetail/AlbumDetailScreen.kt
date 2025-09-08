@@ -32,7 +32,7 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.Albu
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
 import com.igorwojda.showcase.feature.album.presentation.util.TimeUtil
 import com.igorwojda.showcase.feature.base.common.res.Dimen
-import com.igorwojda.showcase.feature.base.presentation.compose.composable.DataNotFoundAnim
+import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ProgressIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleLarge
@@ -51,7 +51,7 @@ fun AlbumDetailScreen() {
 //    }
 
     when (uiState) {
-        Error -> DataNotFoundAnim()
+        Error -> ErrorAnim()
         Loading -> ProgressIndicator()
         is Content -> AlbumDetails(uiState)
     }
