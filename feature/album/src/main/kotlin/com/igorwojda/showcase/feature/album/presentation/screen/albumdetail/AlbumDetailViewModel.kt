@@ -30,6 +30,4 @@ internal class AlbumDetailViewModel(
             }
         }
     }
-
-
 }
