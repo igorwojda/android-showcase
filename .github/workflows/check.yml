@@ -1,4 +1,4 @@
-name: build debug
+name: Check
 
 on:
   push:

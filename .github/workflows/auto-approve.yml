@@ -1,4 +1,4 @@
-name: Auto approve
+name: Auto Approve
 
 on: pull_request_target
 
