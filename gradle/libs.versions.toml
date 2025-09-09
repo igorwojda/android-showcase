@@ -5,6 +5,8 @@ kotlin = "2.2.10"
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
 kotlin-symbol-processing = "2.2.10-2.0.2"
 
+# Java and JVM Versions are stored in buildSrc/src/main/kotlin/config/JavaConfig.kt
+
 # Android SDK versions are marked as unused, however these are used in the `build.gradle.kts` files
 compile-sdk = "36"
 min-sdk = "28"
@@ -22,7 +24,6 @@ room = "2.7.2"
 serialization-json = "1.9.0"
 kotlinx-serialization-converter = "1.0.0"
 timber = "5.0.1"
-constraint-layout = "2.2.1"
 app-compat = "1.7.1"
 compose = "1.9.0"
 compose-bom = "2025.06.01"
