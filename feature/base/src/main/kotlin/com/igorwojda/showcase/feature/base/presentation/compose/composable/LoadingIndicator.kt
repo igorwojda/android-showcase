@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 
 @Composable
-fun ProgressIndicator() {
+fun LoadingIndicator() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

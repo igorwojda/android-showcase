@@ -35,8 +35,8 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.Albu
 import com.igorwojda.showcase.feature.album.presentation.util.TimeUtil
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
+import com.igorwojda.showcase.feature.base.presentation.compose.composable.LoadingIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
-import com.igorwojda.showcase.feature.base.presentation.compose.composable.ProgressIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleLarge
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleMedium
 import org.koin.androidx.compose.koinViewModel
@@ -53,7 +53,7 @@ fun AlbumDetailScreen(albumName: String, artistName: String, albumMbId: String?)
 
     when (val currentUiState = uiState) {
         Error -> ErrorAnim()
-        Loading -> ProgressIndicator()
+        Loading -> LoadingIndicator()
         is Content -> AlbumDetails(currentUiState)
     }
 }

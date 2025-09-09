@@ -29,8 +29,8 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumL
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState.Loading
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
+import com.igorwojda.showcase.feature.base.presentation.compose.composable.LoadingIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
-import com.igorwojda.showcase.feature.base.presentation.compose.composable.ProgressIndicator
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -70,7 +70,7 @@ fun AlbumListScreen(
         ) {
             when (val currentUiState = uiState) {  // Extract to local variable for smart casting
                 Error -> ErrorAnim()
-                Loading -> ProgressIndicator()
+                Loading -> LoadingIndicator()
                 is Content -> AlbumGrid(
                     albums = currentUiState.albums,  // Use currentState instead of uiState
                     onAlbumClick = { album ->
