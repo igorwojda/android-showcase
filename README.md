@@ -73,7 +73,7 @@ the libraries are in the stable version unless there is a good reason to use non
   - [Retrofit](https://square.github.io/retrofit/) - networking
   - [Jetpack](https://developer.android.com/jetpack)
     - [Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
-    - [Navigation](https://android-developers.googleblog.com/2025/05/announcing-jetpack-navigation-3-for-compose.html) - in-app navigation
+    - [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
     - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when
       lifecycle state changes
     - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related

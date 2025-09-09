@@ -1,6 +1,5 @@
 package com.igorwojda.showcase.app.presentation
 
-import android.content.Context
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.material3.Icon
@@ -10,13 +9,12 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.igorwojda.showcase.app.R
 
 /**
@@ -28,21 +26,26 @@ import com.igorwojda.showcase.app.R
 fun BottomNavigationBar(
     navController: NavController,
 ) {
-    val selectedNavigationIndex = rememberSaveable {
-        mutableIntStateOf(0)
-    }
-
-    val navigationItems = getBottomNavigationItems(LocalContext.current)
+    val navigationItems = getBottomNavigationItems()
+    
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+    
+    val selectedNavigationIndex = navigationItems.indexOfFirst { 
+        it.route::class.qualifiedName == currentRoute
+    }.takeIf { it >= 0 } ?: 0
 
     NavigationBar(
         containerColor = Color.White
     ) {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
-                selected = selectedNavigationIndex.intValue == index,
+                selected = selectedNavigationIndex == index,
                 onClick = {
-                    selectedNavigationIndex.intValue = index
-                    navController.navigate(item.route)
+                    navController.navigate(item.route) {
+                        launchSingleTop = true // Prevents duplicate destinations
+                        restoreState = true // Restores previous state if returning
+                    }
                 },
                 icon = {
                     Icon(
@@ -54,7 +57,7 @@ fun BottomNavigationBar(
                 label = {
                     Text(
                         stringResource(item.titleRes),
-                        color = if (index == selectedNavigationIndex.intValue) Color.Black else Color.Gray
+                        color = if (index == selectedNavigationIndex) Color.Black else Color.Gray
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
@@ -67,7 +70,7 @@ fun BottomNavigationBar(
     }
 }
 
-private fun getBottomNavigationItems(context: Context) = listOf(
+private fun getBottomNavigationItems() = listOf(
     NavigationBarItem(
         R.string.albums,
         R.drawable.ic_round_album_list,
