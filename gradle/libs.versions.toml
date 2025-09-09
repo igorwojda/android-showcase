@@ -25,6 +25,7 @@ timber = "5.0.1"
 constraint-layout = "2.2.1"
 app-compat = "1.7.1"
 compose = "1.9.0"
+compose-bom = "2025.06.01"
 material-compose = "1.3.2"
 material = "1.13.0"
 lottie = "6.6.7"
@@ -98,6 +99,7 @@ junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.re
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version = "1.13.4" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 
 [bundles]
 retrofit = [

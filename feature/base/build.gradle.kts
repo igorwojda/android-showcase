@@ -25,6 +25,8 @@ dependencies {
     api(libs.bundles.navigation)
     api(libs.bundles.lifecycle)
     api(libs.bundles.room)
+
+    implementation(platform(libs.compose.bom))
     api(libs.bundles.compose)
 
     testImplementation(projects.library.testUtils)
