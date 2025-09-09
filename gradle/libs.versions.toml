@@ -10,7 +10,7 @@ compileSdk = "36"
 minSdk = "28"
 targetSdk = "35"
 
-navigation3 = "1.0.0-alpha08"
+navigation = "2.9.3"
 testLogger = "4.0.0"
 coroutines = "1.10.2"
 retrofit = "3.0.0"
@@ -46,6 +46,7 @@ mockk = "1.14.5"
 espresso = "3.7.0"
 coreTesting = "2.2.0"
 konsist = "0.17.3"
+navigationCompose = "2.9.3"
 
 [plugins]
 # Search Gradle Plugins https://plugins.gradle.org/
@@ -86,8 +87,6 @@ livedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.re
 composeUI = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 livedataRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
-androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "navigation3" }
-androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -104,6 +103,7 @@ coreTesting = { module = "androidx.arch.core:core-testing", version.ref = "coreT
 junitJupiterApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
 junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiter" }
 junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher", version = "1.13.4" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [bundles]
 retrofit = [
@@ -117,7 +117,7 @@ retrofit = [
 koin = ["koin", "koin-compose", "koinNavigation"]
 compose = ["composeUI", "toolingPreview", "lottie", "coil"]
 lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime"]
-navigation = ["androidx-navigation3-runtime", "androidx-navigation3-ui"]
+navigation = ["navigation-compose"]
 room = ["roomKtx", "roomRuntime"]
 
 test = [

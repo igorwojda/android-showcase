@@ -3,40 +3,23 @@ package com.igorwojda.showcase.app.presentation
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation3.runtime.entry
-import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.ui.NavDisplay
-import com.igorwojda.showcase.app.R
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
-import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
-import com.igorwojda.showcase.feature.profile.presentation.screen.profile.ProfileScreen
 import org.koin.android.ext.android.inject
 
 class MainShowcaseActivity : ComponentActivity(),
@@ -49,99 +32,18 @@ class MainShowcaseActivity : ComponentActivity(),
 
         setContent {
             MaterialTheme(colorScheme = getColorScheme()) {
-                // Dev-owned back stack; default to AlbumList tab
-                val backStack = remember { mutableStateListOf<NavigationEntry>(NavigationEntry.AlbumList) }
-
-                fun goToRoot(root: NavigationEntry) {
-                    backStack.clear()
-                    backStack.add(root)
-                }
-
-                // Back pops detail or exits tab root
-                BackHandler(enabled = backStack.size > 1) { backStack.removeLastOrNull() }
-
-                Scaffold(
-                    bottomBar = {
-                        NavigationBar {
-                            val currentRoot = getCurrentRoot(backStack)
-
-                            @Composable
-                            fun NavigationBarItem(label: String, iconRes: Int, target: NavigationEntry) {
-                                NavigationBarItem(
-                                    selected = currentRoot == target,
-                                    onClick = { goToRoot(target) },
-                                    icon = { Icon(painter = painterResource(id = iconRes), contentDescription = label) },
-                                    label = { Text(label) }
-                                )
-                            }
-
-                            NavigationBarItem(
-                                stringResource(R.string.albums),
-                                R.drawable.ic_round_album_list,
-                                NavigationEntry.AlbumList
-                            )
-
-                            NavigationBarItem(
-                                stringResource(R.string.favorites),
-                                R.drawable.ic_round_favorite,
-                                NavigationEntry.Favourite
-                            )
-
-                            NavigationBarItem(
-                                stringResource(R.string.profile),
-                                R.drawable.ic_round_profile,
-                                NavigationEntry.Profile
-                            )
-                        }
+                val navController = rememberNavController()
+                NavHost(
+                    navController = navController,
+                    startDestination = NavigationEntry.AlbumList
+                ) {
+                    composable< NavigationEntry.AlbumList> {
+                        AlbumListScreen()
                     }
-                ) { innerPadding ->
-                    NavDisplay(
-                        modifier = Modifier.padding(innerPadding),
-                        backStack = backStack,
-                        onBack = { backStack.removeLastOrNull() },
-                        entryProvider = entryProvider {
-                            // --- Tabs ---
-                            entry<NavigationEntry.AlbumList> {
-                                AlbumListScreen()
-                            }
 
-                            entry<NavigationEntry.Favourite> {
-                                FavouriteScreen()
-                            }
-
-                            entry<NavigationEntry.Profile> {
-                                ProfileScreen()
-                            }
-
-                            // --- Detail (reachable from AlbumList) ---
-                            entry<NavigationEntry.AlbumDetail> { key ->
-                                AlbumDetailScreen()
-                            }
-                        }
-                    )
                 }
             }
         }
-    }
-
-    private fun getCurrentRoot(backStack: SnapshotStateList<NavigationEntry>): NavigationEntry? {
-        val currentRoot = backStack
-            // 1. Look at the topmost entry in the back stack (could be null if empty).
-            .lastOrNull()
-            // 2. Transform it:
-            .let {
-                when (it) {
-                    // 2a. If we’re on a AlbumDetail screen → don’t treat it as a root tab.
-                    is NavigationEntry.AlbumDetail -> {
-                        NavigationEntry.AlbumList
-                    }
-                    // 2b. Otherwise → keep the entry (AlbumList, Favourite, Profile).
-                    else -> {
-                        it
-                    }
-                }
-            }
-        return currentRoot
     }
 
     @Composable
@@ -152,8 +54,8 @@ class MainShowcaseActivity : ComponentActivity(),
         val context = LocalContext.current
         return when {
             dynamicColor -> if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-            darkTheme    -> darkColorScheme()
-            else         -> lightColorScheme()
+            darkTheme -> darkColorScheme()
+            else -> lightColorScheme()
         }
     }
 

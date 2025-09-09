@@ -91,6 +91,7 @@ dependencies {
     implementation(projects.feature.album)
     implementation(projects.feature.profile)
     implementation(projects.feature.favourite)
+    implementation(libs.navigation.compose)
 }
 
 /*
