@@ -20,8 +20,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
  * ```
  */
 object JavaConfig {
-    private const val VERSION_STRING = "17"
-
     val javaVersion: JavaVersion = JavaVersion.VERSION_17
     val jvmTarget: JvmTarget = JvmTarget.JVM_17
 }
