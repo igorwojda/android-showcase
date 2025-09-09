@@ -28,9 +28,10 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.Albu
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
 import com.igorwojda.showcase.feature.profile.presentation.screen.profile.ProfileScreen
+import kotlin.reflect.jvm.jvmName
+import timber.log.Timber
 
-class MainShowcaseActivity : ComponentActivity(),
-    NavController.OnDestinationChangedListener {
+class MainShowcaseActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,7 @@ class MainShowcaseActivity : ComponentActivity(),
     @Composable
     fun MainShowcaseScreen() {
         val navController = rememberNavController()
+       addOnDestinationChangedListener(navController)
 
         Scaffold(
             modifier = Modifier
@@ -107,20 +109,43 @@ class MainShowcaseActivity : ComponentActivity(),
         }
     }
 
-    override fun onDestinationChanged(
-        controller: NavController,
-        destination: NavDestination,
-        arguments: Bundle?,
-    ) {
-//        when (destination.label) {
-//            DESTINATION_ALBUM_LIST_LABEL -> {
-//                AlbumListFragment.configureAppBar(this)
-//            }
-//            else -> {
-//                binding.mainAppbarLayout.visibility = View.GONE
-//            }
-//        }
+    fun addOnDestinationChangedListener(navController: NavController) {
+        navController.addOnDestinationChangedListener(object:  NavController.OnDestinationChangedListener {
+            override fun onDestinationChanged(
+                controller: NavController,
+                destination: NavDestination,
+                arguments: Bundle?,
+            ) {
+                logDestinationChange(destination, arguments)
+            }
+
+            private fun logDestinationChange(destination: NavDestination, arguments: Bundle?) {
+                val className = NavigationRoute::class.jvmName
+                val destinationRoute = destination.route?.substringAfter("$className.") ?: "Unknown"
+                val destinationId = destination.id
+                val destinationLabel = destination.label ?: "No Label"
+
+                val logMessage = buildString {
+                    appendLine("Navigation destination changed:")
+                    appendLine("\tRoute: $destinationRoute")
+                    appendLine("\tID: $destinationId")
+                    appendLine("\tLabel: $destinationLabel")
+
+                // Log arguments if they exist
+                arguments?.let { bundle ->
+                    if (!bundle.isEmpty) {
+                            appendLine("  Arguments:")
+                        for (key in bundle.keySet()) {
+                            val value = bundle.get(key)
+                                appendLine("\t\t$key: $value")
+                        }
+                    }
+                }
+            }
+
+                Timber.tag("Navigation").d(logMessage)
+            }
+        })
     }
+
 }
-
-

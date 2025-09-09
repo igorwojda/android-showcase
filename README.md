@@ -292,9 +292,11 @@ implementation(projects.featureAlbum)
 ## Logcat debugging
 
 To facilitate debuting project contains logs. You can filter logs to understand app flow. Keywords:
-- `onCreate` see what `Activities` and `ViewModels` have been created
-- `Action` - filter all actions performed on the screens to update the UI
+- `onCreate` `Activities` and `ViewModels` have been created
+- `Action` - actions performed on the screens to update the UI
 - `Http` - debug network requests and responses
+- `Navigation` - log navigation (`package:mine tag=:Navigation`)
+![Log Navigation](https://github.com/igorwojda/android-showcase/blob/main/misc/image/log_navigation.png?raw=true)
 
 ## CI Pipeline
 
