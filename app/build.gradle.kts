@@ -70,13 +70,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaConfig.javaVersion
-        targetCompatibility = JavaConfig.javaVersion
+        sourceCompatibility = JavaConfig.JAVA_VERSION
+        targetCompatibility = JavaConfig.JAVA_VERSION
     }
 
     kotlin {
         compilerOptions {
-            jvmTarget = JavaConfig.jvmTarget
+            jvmTarget = JavaConfig.JVM_TARGET
         }
     }
 
