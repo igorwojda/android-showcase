@@ -8,6 +8,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.igorwojda.showcase.feature.base.R
@@ -43,4 +44,13 @@ fun PlaceholderImage(
             placeholder = painterResource(randomPlaceHolder),
         )
     }
+}
+
+@Preview
+@Composable
+private fun PlaceholderImagePreview() {
+    PlaceholderImage(
+        url = "https://github.com/igorwojda/android-showcase/raw/main/misc/image/module_dependencies.png?raw=true",
+        contentDescription = "Sample image"
+    )
 }

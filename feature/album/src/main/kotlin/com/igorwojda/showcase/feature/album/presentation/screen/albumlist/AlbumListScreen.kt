@@ -20,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
@@ -106,4 +107,28 @@ private fun AlbumGrid(
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun AlbumGridPreview() {
+    val sampleAlbums = listOf(
+        Album(
+            name = "Sample Album 1",
+            artist = "Sample Artist",
+            mbId = null,
+            images = emptyList()
+        ),
+        Album(
+            name = "Sample Album 2",
+            artist = "Sample Artist 2",
+            mbId = null,
+            images = emptyList()
+        )
+    )
+    
+    AlbumGrid(
+        albums = sampleAlbums,
+        onAlbumClick = { }
+    )
 }

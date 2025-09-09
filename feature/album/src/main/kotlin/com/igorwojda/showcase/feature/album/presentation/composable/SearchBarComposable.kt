@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 import kotlinx.coroutines.delay
@@ -81,5 +82,25 @@ fun SearchBar(
         modifier = modifier
             .fillMaxWidth()
             .padding(Dimen.spaceM)
+    )
+}
+
+@Preview
+@Composable
+private fun SearchBarPreview() {
+    SearchBar(
+        query = "Sample query",
+        onQueryChange = { },
+        onSearch = { }
+    )
+}
+
+@Preview
+@Composable
+private fun SearchBarEmptyPreview() {
+    SearchBar(
+        query = "",
+        onQueryChange = { },
+        onSearch = { }
     )
 }

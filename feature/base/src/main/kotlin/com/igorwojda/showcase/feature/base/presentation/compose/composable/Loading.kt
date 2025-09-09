@@ -7,6 +7,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 
 @Composable
@@ -22,4 +23,10 @@ fun LoadingIndicator() {
                     .size(Dimen.spaceXXL),
         )
     }
+}
+
+@Preview
+@Composable
+private fun LoadingIndicatorPreview() {
+    LoadingIndicator()
 }
