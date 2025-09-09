@@ -29,10 +29,6 @@ materialCompose = "1.3.2"
 material = "1.13.0"
 lottie = "6.6.7"
 coreKtx = "1.17.0"
-# Info https://google.github.io/accompanist/flowlayout/
-# Repo https://oss.sonatype.org/content/repositories/snapshots/com/google/accompanist/accompanist-flowlayout/
-accompanistFlowLayout = "0.36.0"
-
 spotless = "7.2.1"
 detekt = "1.23.8"
 androidGradlePlugin = "8.13.0"
@@ -46,7 +42,6 @@ mockk = "1.14.5"
 espresso = "3.7.0"
 coreTesting = "2.2.0"
 konsist = "0.17.3"
-navigationCompose = "2.9.3"
 
 [plugins]
 # Search Gradle Plugins https://plugins.gradle.org/
@@ -90,7 +85,6 @@ livedataRuntime = { module = "androidx.lifecycle:lifecycle-runtime-compose", ver
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-accompanistFlowLayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowLayout" }
 konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 
 # Test dependencies
@@ -103,7 +97,7 @@ coreTesting = { module = "androidx.arch.core:core-testing", version.ref = "coreT
 junitJupiterApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
 junitJupiterEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiter" }
 junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher", version = "1.13.4" }
-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 
 [bundles]
 retrofit = [

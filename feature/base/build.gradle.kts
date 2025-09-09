@@ -16,7 +16,6 @@ dependencies {
     api(libs.coroutines)
     api(libs.material)
     api(libs.composeMaterial)
-    api(libs.accompanistFlowLayout)
 
     // Koin
     api(platform(libs.koin.bom))
