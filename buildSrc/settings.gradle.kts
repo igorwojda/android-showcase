@@ -5,6 +5,7 @@ https://github.com/gradle/gradle/issues/30299
 rootProject.name = "android-showcase"
 
 pluginManagement {
+
     repositories {
         mavenCentral()
         gradlePluginPortal()

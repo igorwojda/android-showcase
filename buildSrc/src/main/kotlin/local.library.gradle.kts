@@ -49,7 +49,6 @@ android {
         }
     }
 
-    @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
     }
