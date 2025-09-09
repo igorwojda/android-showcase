@@ -9,7 +9,8 @@ sealed interface NavigationRoute {
     @Serializable
     data class AlbumDetail(
         val albumName: String,
-        val mbId: String
+        val artistName: String,
+        val albumMbId: String?,
     ): NavigationRoute
 
     @Serializable

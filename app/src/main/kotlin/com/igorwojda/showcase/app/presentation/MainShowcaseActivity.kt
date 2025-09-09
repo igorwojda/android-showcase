@@ -22,17 +22,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
+import androidx.navigation.toRoute
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailScreen
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
-import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
 import com.igorwojda.showcase.feature.profile.presentation.screen.profile.ProfileScreen
-import org.koin.android.ext.android.inject
 
 class MainShowcaseActivity : ComponentActivity(),
     NavController.OnDestinationChangedListener {
-
-    private val navManager: NavManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,10 +53,24 @@ class MainShowcaseActivity : ComponentActivity(),
             val graph =
                 navController.createGraph(startDestination = NavigationRoute.AlbumList) {
                     composable<NavigationRoute.AlbumList> {
-                        AlbumListScreen()
+                        AlbumListScreen(
+                            // artistName: String, albumName: String, mbId: String?
+                            onNavigateToAlbumDetail = { artistName, albumName, albumMbId ->
+                                navController.navigate(
+                                    NavigationRoute.AlbumDetail(artistName, albumName, albumMbId)
+                                )
+                            }
+                        )
                     }
-                    composable<NavigationRoute.AlbumDetail> {
-                        AlbumDetailScreen()
+                    composable<NavigationRoute.AlbumDetail> { backStackEntry ->
+                        // Retrieve typed args
+                        val args = backStackEntry.toRoute<NavigationRoute.AlbumDetail>()
+
+                        AlbumDetailScreen(
+                            args.albumName,
+                            args.artistName,
+                            args.albumMbId
+                        )
                     }
                     composable<NavigationRoute.Favourite> {
                         FavouriteScreen()
@@ -89,8 +100,6 @@ class MainShowcaseActivity : ComponentActivity(),
             else -> lightColorScheme()
         }
     }
-
-
 
     override fun onDestinationChanged(
         controller: NavController,

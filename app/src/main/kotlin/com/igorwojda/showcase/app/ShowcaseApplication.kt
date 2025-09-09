@@ -2,7 +2,6 @@ package com.igorwojda.showcase.app
 
 import android.app.Application
 import com.igorwojda.showcase.feature.album.featureAlbumModules
-import com.igorwojda.showcase.feature.base.baseModule
 import com.igorwojda.showcase.feature.favourite.featureFavouriteModules
 import com.igorwojda.showcase.feature.profile.featureProfilesModules
 import org.koin.android.ext.koin.androidContext
@@ -24,7 +23,6 @@ class ShowcaseApplication : Application() {
             androidContext(this@ShowcaseApplication)
 
             modules(appModule)
-            modules(baseModule)
             modules(featureFavouriteModules)
             modules(featureAlbumModules)
             modules(featureProfilesModules)

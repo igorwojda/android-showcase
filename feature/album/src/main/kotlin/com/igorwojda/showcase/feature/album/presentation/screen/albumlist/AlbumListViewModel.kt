@@ -11,7 +11,6 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumL
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState.Error
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState.Loading
 import com.igorwojda.showcase.feature.base.domain.result.Result
-import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
 import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseAction
 import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseState
 import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseViewModel
@@ -21,7 +20,6 @@ import timber.log.Timber
 
 internal class AlbumListViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val navManager: NavManager,
     private val getAlbumListUseCase: GetAlbumListUseCase,
 ) : BaseViewModel<AlbumListUiState, Action>(Loading) {
     
@@ -66,13 +64,6 @@ internal class AlbumListViewModel(
                     sendAction(action)
                 }
             }
-    }
-
-    fun onAlbumClick(album: Album) {
-//        val navDirections =
-//            AlbumListFragmentDirections.actionAlbumListToAlbumDetail(album.artist, album.name, album.mbId)
-
-//        navManager.navigate(navDirections)
     }
 
     internal sealed interface Action : BaseAction<AlbumListUiState> {

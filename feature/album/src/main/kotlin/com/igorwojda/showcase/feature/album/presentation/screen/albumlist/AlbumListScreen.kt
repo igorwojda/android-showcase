@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.presentation.composable.SearchBar
@@ -32,29 +32,14 @@ import com.igorwojda.showcase.feature.base.presentation.compose.composable.Error
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ProgressIndicator
 import org.koin.androidx.compose.koinViewModel
-import timber.log.Timber
 
 @Composable
 fun AlbumListScreen(
-    onNavigateToAlbumDetail: (String) -> Unit = {}
+    onNavigateToAlbumDetail: ((artistName: String, albumName: String, albumMbId: String?) -> Unit)? = null
 ) {
     val viewModel: AlbumListViewModel = koinViewModel()
 
-    val uiState by viewModel.uiStateFlow.collectAsState()
-    Timber.d("AAA, AlbumListScreen, uiState: $uiState")
-    
-    // Additional debug to see state flow emissions
-    LaunchedEffect(uiState) {
-        Timber.d("AAA, AlbumListScreen LaunchedEffect, uiState changed to: $uiState")
-    }
-    
-    // Debug the raw state flow value
-    LaunchedEffect(Unit) {
-        viewModel.uiStateFlow.collect { state ->
-            Timber.d("AAA, AlbumListScreen raw StateFlow collect: $state")
-        }
-    }
-
+    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     var searchQuery by remember { mutableStateOf("") }
 
@@ -89,8 +74,7 @@ fun AlbumListScreen(
                 is Content -> AlbumGrid(
                     albums = currentUiState.albums,  // Use currentState instead of uiState
                     onAlbumClick = { album ->
-                        viewModel.onAlbumClick(album)
-                        onNavigateToAlbumDetail(album.id)
+                        onNavigateToAlbumDetail?.invoke(album.artist, album.name, album.mbId)
                     }
                 )
             }

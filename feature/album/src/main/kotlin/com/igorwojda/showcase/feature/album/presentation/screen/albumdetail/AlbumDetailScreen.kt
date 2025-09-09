@@ -18,6 +18,8 @@ import androidx.compose.material3.ElevatedSuggestionChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -40,20 +42,19 @@ import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextT
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun AlbumDetailScreen() {
+fun AlbumDetailScreen(albumName: String, artistName: String, albumMbId: String?) {
     val viewModel: AlbumDetailViewModel = koinViewModel()
-
-    val uiState = viewModel.uiStateFlow.collectAsStateWithLifecycle()
-
     // Initialize the viewModel with args when the composable enters composition
-//    LaunchedEffect(args) {
-//        viewModel.onInit(args)
-//    }
+    LaunchedEffect(Unit) {
+        viewModel.onInit(albumName, artistName, albumMbId)
+    }
 
-    when (uiState) {
+    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+
+    when (val currentUiState = uiState) {
         Error -> ErrorAnim()
         Loading -> ProgressIndicator()
-        is Content -> AlbumDetails(uiState)
+        is Content -> AlbumDetails(currentUiState)
     }
 }
 
