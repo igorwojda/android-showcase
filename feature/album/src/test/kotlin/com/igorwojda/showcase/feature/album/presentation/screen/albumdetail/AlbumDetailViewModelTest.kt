@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.AlbumDetailUiState
 import com.igorwojda.showcase.feature.base.domain.result.Result
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
@@ -46,6 +46,6 @@ class AlbumDetailViewModelTest {
 //            cut.onInit(mockAlbumDetailFragmentArgs)
 
             // then
-            cut.uiStateFlow.value shouldBeEqualTo UiState.Error
+            cut.uiStateFlow.value shouldBeEqualTo AlbumDetailUiState.Error
         }
 }

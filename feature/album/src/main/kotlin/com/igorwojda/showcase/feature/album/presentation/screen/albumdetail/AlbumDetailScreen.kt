@@ -36,9 +36,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Tag
 import com.igorwojda.showcase.feature.album.domain.model.Track
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Error
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
 import com.igorwojda.showcase.feature.album.presentation.util.TimeUtil
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
@@ -80,9 +77,9 @@ fun AlbumDetailScreen(
         }
     ) { innerPadding ->
         when (val currentUiState = uiState) {
-            Error -> ErrorAnim()
-            Loading -> LoadingIndicator()
-            is Content -> AlbumDetails(
+            AlbumDetailUiState.Error -> ErrorAnim()
+            AlbumDetailUiState.Loading -> LoadingIndicator()
+            is AlbumDetailUiState.Content -> AlbumDetailContent(
                 content = currentUiState,
                 modifier = Modifier.padding(innerPadding)
             )
@@ -91,7 +88,7 @@ fun AlbumDetailScreen(
 }
 
 @Composable
-private fun AlbumDetails(content: Content, modifier: Modifier = Modifier) {
+private fun AlbumDetailContent(content: AlbumDetailUiState.Content, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .padding(Dimen.screenContentPadding)
