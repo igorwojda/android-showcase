@@ -7,6 +7,7 @@ import com.igorwojda.showcase.feature.album.domain.model.Tag
 import com.igorwojda.showcase.feature.album.domain.model.Track
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.Action
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.Action.AlbumLoadStart
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Error
@@ -26,6 +27,8 @@ internal class AlbumDetailViewModel(
     }
 
     private fun getAlbum(albumName: String, artistName: String, albumMbId: String?) {
+        sendAction(AlbumLoadStart)
+
         viewModelScope.launch {
             getAlbumUseCase(artistName, albumName, albumMbId).also {
                 when (it) {
