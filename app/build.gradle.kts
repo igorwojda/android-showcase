@@ -15,7 +15,7 @@ android {
 
     compileSdk =
         libs
-            .findVersion("compileSdk")
+            .findVersion("compile-sdk")
             .get()
             .toString()
             .toInt()
@@ -25,14 +25,14 @@ android {
 
         minSdk =
             libs
-                .findVersion("minSdk")
+                .findVersion("min-sdk")
                 .get()
                 .toString()
                 .toInt()
 
         targetSdk =
             libs
-                .findVersion("targetSdk")
+                .findVersion("target-sdk")
                 .get()
                 .toString()
                 .toInt()

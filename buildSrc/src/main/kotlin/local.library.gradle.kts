@@ -15,7 +15,7 @@ android {
     namespace = "com.igorwojda.showcase"
     compileSdk =
         libs
-            .findVersion("compileSdk")
+            .findVersion("compile-sdk")
             .get()
             .toString()
             .toInt()
@@ -23,7 +23,7 @@ android {
     defaultConfig {
         minSdk =
             libs
-                .findVersion("minSdk")
+                .findVersion("min-sdk")
                 .get()
                 .toString()
                 .toInt()
