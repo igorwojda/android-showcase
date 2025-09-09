@@ -10,7 +10,6 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,9 +36,7 @@ fun BottomNavigationBar(navController: NavController) {
                 it.route::class.qualifiedName == currentRoute
             }.takeIf { it >= 0 } ?: 0
 
-    NavigationBar(
-        containerColor = Color.White,
-    ) {
+    NavigationBar {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = selectedNavigationIndex == index,
@@ -58,7 +55,10 @@ fun BottomNavigationBar(navController: NavController) {
                 label = {
                     Text(
                         stringResource(item.titleRes),
-                        color = if (index == selectedNavigationIndex) Color.Black else Color.Gray,
+                        color = when (index) {
+                            selectedNavigationIndex -> MaterialTheme.colorScheme.onSurface
+                            else -> MaterialTheme.colorScheme.surface
+                        },
                     )
                 },
                 colors =
