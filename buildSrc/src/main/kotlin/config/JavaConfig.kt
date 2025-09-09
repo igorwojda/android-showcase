@@ -1,0 +1,25 @@
+package config
+
+import org.gradle.api.JavaVersion
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+/**
+ * Centralized place for Java/Kotlin version configuration
+ *
+ * ```kotlin
+ * compileOptions {
+ *     sourceCompatibility = JavaConfig.javaVersion
+ *     targetCompatibility = JavaConfig.javaVersion
+ * }
+ *
+ * kotlin {
+ *     compilerOptions {
+ *         jvmTarget = JavaConfig.jvmTarget
+ *     }
+ * }
+ * ```
+ */
+object JavaConfig {
+    val javaVersion: JavaVersion = JavaVersion.VERSION_17
+    val jvmTarget: JvmTarget = JvmTarget.JVM_17
+}

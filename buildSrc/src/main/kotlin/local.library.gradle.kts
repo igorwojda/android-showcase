@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import config.JavaConfig
 
 plugins {
     id("com.android.library")
@@ -39,13 +39,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaConfig.javaVersion
+        targetCompatibility = JavaConfig.javaVersion
     }
 
     kotlin {
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_17
+            jvmTarget = JavaConfig.jvmTarget
         }
     }
 
