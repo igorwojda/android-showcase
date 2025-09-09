@@ -10,12 +10,12 @@ dependencies {
     // See Dependency management section in the README.md
     // https://github.com/igorwojda/android-showcase#dependency-management
     api(libs.kotlin)
-    api(libs.coreKtx)
+    api(libs.core.ktx)
     api(libs.timber)
-    api(libs.appCompat)
+    api(libs.app.compat)
     api(libs.coroutines)
     api(libs.material)
-    api(libs.composeMaterial)
+    api(libs.compose.material)
 
     // Koin
     api(platform(libs.koin.bom))
@@ -30,5 +30,5 @@ dependencies {
     testImplementation(projects.library.testUtils)
     testImplementation(libs.bundles.test)
 
-    testRuntimeOnly(libs.junitJupiterEngine)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }

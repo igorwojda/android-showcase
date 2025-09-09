@@ -13,5 +13,5 @@ dependencies {
     implementation(libs.bundles.test)
     implementation(libs.bundles.compose)
 
-    runtimeOnly(libs.junitJupiterEngine)
+    runtimeOnly(libs.junit.jupiter.engine)
 }

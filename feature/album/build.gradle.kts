@@ -10,10 +10,10 @@ android {
 dependencies {
     implementation(projects.feature.base)
 
-    ksp(libs.roomCompiler)
+    ksp(libs.room.compiler)
 
     testImplementation(projects.library.testUtils)
     testImplementation(libs.bundles.test)
 
-    testRuntimeOnly(libs.junitJupiterEngine)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
