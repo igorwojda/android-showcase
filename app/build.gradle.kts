@@ -93,6 +93,10 @@ dependencies {
 
     implementation(platform(libs.compose.bom))
     implementation(libs.navigation.compose)
+    
+    // Debug dependencies for Compose Previews
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 }
 
 /*

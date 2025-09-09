@@ -63,3 +63,6 @@ android {
             )
     }
 }
+
+// Note: Compose dependencies are added individually in each module's build.gradle.kts
+// because version catalogs are not available in precompiled script plugins

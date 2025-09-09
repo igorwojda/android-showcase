@@ -26,7 +26,7 @@ kotlinx-serialization-converter = "1.0.0"
 timber = "5.0.1"
 app-compat = "1.7.1"
 compose = "1.9.0"
-compose-bom = "2025.06.01"
+compose-bom = "2024.12.01"
 material-compose = "1.3.2"
 material = "1.13.0"
 lottie = "6.6.7"
@@ -101,6 +101,8 @@ junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", vers
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version = "1.13.4" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 
 [bundles]
 retrofit = [

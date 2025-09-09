@@ -29,6 +29,10 @@ dependencies {
     implementation(platform(libs.compose.bom))
     api(libs.bundles.compose)
 
+    // Compose dependencies
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
+
     testImplementation(projects.library.testUtils)
     testImplementation(libs.bundles.test)
 
