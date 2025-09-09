@@ -18,11 +18,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.igorwojda.showcase.app.R
 
-/**
- * Author: Santosh Yadav
- * Created on: 16-11-2024 09:32
- */
-
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     val navigationItems = getBottomNavigationItems()
