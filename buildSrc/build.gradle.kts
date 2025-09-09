@@ -16,6 +16,7 @@ dependencies {
 }
 
 kotlin {
+    // Version value should match JavaConfig.jvmToolchainVersion
     jvmToolchain(17)
 }
 

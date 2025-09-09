@@ -8,18 +8,23 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
  *
  * ```kotlin
  * compileOptions {
- *     sourceCompatibility = JavaConfig.javaVersion
- *     targetCompatibility = JavaConfig.javaVersion
+ *     sourceCompatibility = JavaConfig.JAVA_VERSION
+ *     targetCompatibility = JavaConfig.JAVA_VERSION
  * }
  *
  * kotlin {
  *     compilerOptions {
  *         jvmTarget = JavaConfig.jvmTarget
  *     }
+ *     jvmToolchain(JavaConfig.jvmToolchainVersion)
  * }
  * ```
  */
 object JavaConfig {
-    val javaVersion: JavaVersion = JavaVersion.VERSION_17
-    val jvmTarget: JvmTarget = JvmTarget.JVM_17
+    // // Version value should match version in buildSrc/build.gradle.kts
+    private const val VERSION = 17
+
+    val JAVA_VERSION: JavaVersion = JavaVersion.VERSION_17
+    val JVM_TARGET: JvmTarget = JvmTarget.JVM_17
+    const val JVM_TOOLCHAIN_VERSION: Int = VERSION
 }
