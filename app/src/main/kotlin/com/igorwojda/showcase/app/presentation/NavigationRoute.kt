@@ -2,19 +2,19 @@ package com.igorwojda.showcase.app.presentation
 
 import kotlinx.serialization.Serializable
 
-sealed interface NavigationEntry {
+sealed interface NavigationRoute {
     @Serializable
-    data object AlbumList: NavigationEntry
+    data object AlbumList: NavigationRoute
 
     @Serializable
     data class AlbumDetail(
         val albumName: String,
         val mbId: String
-    ): NavigationEntry
+    ): NavigationRoute
 
     @Serializable
-    data object Favourite: NavigationEntry
+    data object Favourite: NavigationRoute
 
     @Serializable
-    data object Profile: NavigationEntry
+    data object Profile: NavigationRoute
 }
