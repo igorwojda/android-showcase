@@ -14,17 +14,23 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.album.R
@@ -42,8 +48,14 @@ import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextT
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleMedium
 import org.koin.androidx.compose.koinViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AlbumDetailScreen(albumName: String, artistName: String, albumMbId: String?) {
+fun AlbumDetailScreen(
+    albumName: String,
+    artistName: String,
+    albumMbId: String?,
+    onBackClick: () -> Unit = {}
+) {
     val viewModel: AlbumDetailViewModel = koinViewModel()
     // Initialize the viewModel with args when the composable enters composition
     LaunchedEffect(Unit) {
@@ -52,17 +64,36 @@ fun AlbumDetailScreen(albumName: String, artistName: String, albumMbId: String?)
 
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
-    when (val currentUiState = uiState) {
-        Error -> ErrorAnim()
-        Loading -> LoadingIndicator()
-        is Content -> AlbumDetails(currentUiState)
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = albumName) },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                }
+            )
+        }
+    ) { innerPadding ->
+        when (val currentUiState = uiState) {
+            Error -> ErrorAnim()
+            Loading -> LoadingIndicator()
+            is Content -> AlbumDetails(
+                content = currentUiState,
+                modifier = Modifier.padding(innerPadding)
+            )
+        }
     }
 }
 
 @Composable
-private fun AlbumDetails(content: Content) {
+private fun AlbumDetails(content: Content, modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(Dimen.screenContentPadding)
             .verticalScroll(rememberScrollState()),
     ) {
@@ -134,4 +165,15 @@ internal fun TrackItem(track: Track) {
 
         Text(text = text)
     }
+}
+
+@Preview
+@Composable
+private fun TrackItemPreview() {
+    TrackItem(
+        track = Track(
+            name = "Sample Track",
+            duration = 180 // 3 minutes in seconds
+        )
+    )
 }

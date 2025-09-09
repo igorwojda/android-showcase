@@ -70,9 +70,12 @@ class MainShowcaseActivity : ComponentActivity(),
                         val args = backStackEntry.toRoute<NavigationRoute.AlbumDetail>()
 
                         AlbumDetailScreen(
-                            args.albumName,
-                            args.artistName,
-                            args.albumMbId
+                            albumName = args.albumName,
+                            artistName = args.artistName,
+                            albumMbId = args.albumMbId,
+                            onBackClick = {
+                                navController.popBackStack()
+                            }
                         )
                     }
                     composable<NavigationRoute.Favourite> {
