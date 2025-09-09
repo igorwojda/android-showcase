@@ -79,12 +79,15 @@ internal class AlbumListViewModel(
 
     @Immutable
     internal sealed interface AlbumListUiState : BaseState {
+        @Immutable
         data class Content(
             val albums: List<Album>,
         ) : AlbumListUiState
 
+        @Immutable
         data object Loading : AlbumListUiState
 
+        @Immutable
         data object Error : AlbumListUiState
     }
 }

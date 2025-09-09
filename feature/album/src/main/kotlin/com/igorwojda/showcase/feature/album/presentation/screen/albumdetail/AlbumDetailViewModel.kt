@@ -68,6 +68,7 @@ internal class AlbumDetailViewModel(
 
     @Immutable
     internal sealed interface UiState : BaseState {
+        @Immutable
         data class Content(
             val albumName: String = "",
             val artistName: String = "",
@@ -76,8 +77,10 @@ internal class AlbumDetailViewModel(
             val tags: List<Tag>? = emptyList(),
         ) : UiState
 
+        @Immutable
         data object Loading : UiState
 
+        @Immutable
         data object Error : UiState
     }
 }
