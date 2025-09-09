@@ -1,16 +1,17 @@
 package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
+import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailUiState
 import com.igorwojda.showcase.feature.base.domain.result.Result
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
@@ -25,27 +26,50 @@ class AlbumDetailViewModelTest {
         )
 
     @Test
-    @Disabled("mockk can't correctly mock this function https://github.com/mockk/mockk/issues/957")
-    fun `onEnter album is not found`() =
+    fun `onInit album is not found`() =
         runTest {
             // given
             val albumName = "Thriller"
             val artistName = "Michael Jackson"
             val mbId = "123"
 
-            val mockAlbumDetailFragmentArgs = AlbumDetailFragmentArgs(albumName, artistName, mbId)
-
-            // mockk Bug:
-            // Exception in thread "Test worker @coroutine#4" io.mockk.MockKException: no answer found for:
-            // GetAlbumUseCase(#1).execute(Thriller, Michael Jackson, 123, continuation {})
             coEvery {
-                mockGetAlbumUseCase(artistName, albumName, mbId)
+                mockGetAlbumUseCase.invoke(artistName, albumName, mbId)
             } returns Result.Failure()
 
             // when
-            cut.onEnter(mockAlbumDetailFragmentArgs)
+            cut.onInit(albumName, artistName, mbId)
 
             // then
-            cut.uiStateFlow.value shouldBeEqualTo UiState.Error
+            advanceUntilIdle()
+            cut.uiStateFlow.value shouldBeEqualTo AlbumDetailUiState.Error
+        }
+
+    @Test
+    fun `onInit album is found`() =
+        runTest {
+            // given
+            val albumName = "Thriller"
+            val artistName = "Michael Jackson"
+            val mbId = "123"
+            val album = Album(albumName, artistName, mbId)
+
+            coEvery {
+                mockGetAlbumUseCase.invoke(artistName, albumName, mbId)
+            } returns Result.Success(album)
+
+            // when
+            cut.onInit(albumName, artistName, mbId)
+
+            // then
+            advanceUntilIdle()
+            cut.uiStateFlow.value shouldBeEqualTo
+                AlbumDetailUiState.Content(
+                    albumName = albumName,
+                    artistName = artistName,
+                    coverImageUrl = "",
+                    tracks = null,
+                    tags = null,
+                )
         }
 }

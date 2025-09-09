@@ -28,22 +28,23 @@ class StateTimeTravelDebugger(
     private fun getMessage() = getMessage(stateTimeline)
 
     private fun getMessage(stateTimeline: List<StateTransition>): String {
-        if (stateTimeline.isEmpty()) {
-            return "$viewClassName has no state transitions \n"
-        }
+        if (stateTimeline.isEmpty()) return "$viewClassName has no state transitions\n"
 
-        var message = ""
+        return stateTimeline.joinToString(separator = "\n", postfix = "\n") { st ->
+            buildString {
+                append("Action: $viewClassName.${st.action.javaClass.simpleName}")
 
-        stateTimeline.forEach { stateTransition ->
-            message += "Action: $viewClassName.${stateTransition.action.javaClass.simpleName}:\n"
+                if (propertyNames.isNotEmpty()) {
+                    append('\n')
 
-            propertyNames.forEach { propertyName ->
-                val logLine = getLogLine(stateTransition.oldState, stateTransition.newState, propertyName)
-                message += logLine
+                    append(
+                        propertyNames.joinToString(separator = "") { prop ->
+                            getLogLine(st.oldState, st.newState, prop)
+                        },
+                    )
+                }
             }
         }
-
-        return message
     }
 
     fun logAll() {
@@ -94,6 +95,7 @@ class StateTimeTravelDebugger(
                 return value
             }
         }
+
         return ""
     }
 

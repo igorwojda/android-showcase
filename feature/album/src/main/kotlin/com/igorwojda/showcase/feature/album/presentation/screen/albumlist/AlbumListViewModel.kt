@@ -1,34 +1,23 @@
 package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 
-import androidx.compose.runtime.Immutable
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.Action
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Content
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Error
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.UiState.Loading
 import com.igorwojda.showcase.feature.base.domain.result.Result
-import com.igorwojda.showcase.feature.base.presentation.nav.NavManager
-import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseAction
-import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseState
 import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 internal class AlbumListViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val navManager: NavManager,
     private val getAlbumListUseCase: GetAlbumListUseCase,
-) : BaseViewModel<UiState, Action>(Loading) {
+) : BaseViewModel<AlbumListUiState, AlbumListAction>(AlbumListUiState.Loading) {
     companion object {
         const val DEFAULT_QUERY_NAME = "Jackson"
         private const val SAVED_QUERY_KEY = "query"
     }
 
-    fun onEnter(query: String? = (savedStateHandle.get(SAVED_QUERY_KEY) as? String) ?: DEFAULT_QUERY_NAME) {
+    fun onInit(query: String? = (savedStateHandle[SAVED_QUERY_KEY] as? String) ?: DEFAULT_QUERY_NAME) {
         getAlbumList(query)
     }
 
@@ -42,54 +31,23 @@ internal class AlbumListViewModel(
 
         savedStateHandle[SAVED_QUERY_KEY] = query
 
+        sendAction(AlbumListAction.AlbumListLoadStart)
+
         job =
             viewModelScope.launch {
                 getAlbumListUseCase(query).also { result ->
-                    val action =
+                    val albumListAction =
                         when (result) {
                             is Result.Success -> {
-                                if (result.value.isEmpty()) {
-                                    Action.AlbumListLoadFailure
-                                } else {
-                                    Action.AlbumListLoadSuccess(result.value)
-                                }
+                                AlbumListAction.AlbumListLoadSuccess(result.value)
                             }
                             is Result.Failure -> {
-                                Action.AlbumListLoadFailure
+                                AlbumListAction.AlbumListLoadFailure
                             }
                         }
-                    sendAction(action)
+
+                    sendAction(albumListAction)
                 }
             }
-    }
-
-    fun onAlbumClick(album: Album) {
-        val navDirections =
-            AlbumListFragmentDirections.actionAlbumListToAlbumDetail(album.artist, album.name, album.mbId)
-
-        navManager.navigate(navDirections)
-    }
-
-    internal sealed interface Action : BaseAction<UiState> {
-        class AlbumListLoadSuccess(
-            private val albums: List<Album>,
-        ) : Action {
-            override fun reduce(state: UiState) = Content(albums)
-        }
-
-        object AlbumListLoadFailure : Action {
-            override fun reduce(state: UiState) = Error
-        }
-    }
-
-    @Immutable
-    internal sealed interface UiState : BaseState {
-        data class Content(
-            val albums: List<Album>,
-        ) : UiState
-
-        object Loading : UiState
-
-        object Error : UiState
     }
 }

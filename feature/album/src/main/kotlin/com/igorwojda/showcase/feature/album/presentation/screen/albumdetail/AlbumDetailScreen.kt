@@ -1,10 +1,8 @@
 package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,77 +14,88 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ElevatedSuggestionChip
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.fragment.navArgs
-import com.google.accompanist.flowlayout.FlowRow
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Tag
 import com.igorwojda.showcase.feature.album.domain.model.Track
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Error
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
 import com.igorwojda.showcase.feature.album.presentation.util.TimeUtil
 import com.igorwojda.showcase.feature.base.common.res.Dimen
-import com.igorwojda.showcase.feature.base.presentation.activity.BaseFragment
-import com.igorwojda.showcase.feature.base.presentation.compose.composable.DataNotFoundAnim
+import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
+import com.igorwojda.showcase.feature.base.presentation.compose.composable.LoadingIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
-import com.igorwojda.showcase.feature.base.presentation.compose.composable.ProgressIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleLarge
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleMedium
-import kotlinx.coroutines.flow.StateFlow
-import org.koin.androidx.navigation.koinNavGraphViewModel
+import org.koin.androidx.compose.koinViewModel
 
-internal class AlbumDetailFragment : BaseFragment() {
-    private val args: AlbumDetailFragmentArgs by navArgs()
-    private val model: AlbumDetailViewModel by koinNavGraphViewModel(R.id.albumNavGraph)
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AlbumDetailScreen(
+    albumName: String,
+    artistName: String,
+    albumMbId: String?,
+    onBackClick: () -> Unit = {},
+) {
+    val viewModel: AlbumDetailViewModel = koinViewModel()
+    // Initialize the viewModel with args when the composable enters composition
+    LaunchedEffect(Unit) {
+        viewModel.onInit(albumName, artistName, albumMbId)
+    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        model.onEnter(args)
+    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AlbumDetailScreen(uiStateFlow = model.uiStateFlow)
-            }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = albumName) },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back",
+                        )
+                    }
+                },
+            )
+        },
+    ) { innerPadding ->
+        when (val currentUiState = uiState) {
+            AlbumDetailUiState.Error -> ErrorAnim()
+            AlbumDetailUiState.Loading -> LoadingIndicator()
+            is AlbumDetailUiState.Content ->
+                AlbumDetailContent(
+                    content = currentUiState,
+                    modifier = Modifier.padding(innerPadding),
+                )
         }
     }
 }
 
 @Composable
-private fun AlbumDetailScreen(uiStateFlow: StateFlow<UiState>) {
-    val uiState: UiState by uiStateFlow.collectAsStateWithLifecycle()
-
-    uiState.let {
-        when (it) {
-            Error -> DataNotFoundAnim()
-            Loading -> ProgressIndicator()
-            is Content -> PhotoDetails(it)
-        }
-    }
-}
-
-@Composable
-private fun PhotoDetails(content: Content) {
+private fun AlbumDetailContent(
+    content: AlbumDetailUiState.Content,
+    modifier: Modifier = Modifier,
+) {
     Column(
         modifier =
-            Modifier
+            modifier
                 .padding(Dimen.screenContentPadding)
                 .verticalScroll(rememberScrollState()),
     ) {
@@ -101,9 +110,7 @@ private fun PhotoDetails(content: Content) {
             PlaceholderImage(
                 url = content.coverImageUrl,
                 contentDescription = stringResource(id = R.string.album_cover_content_description),
-                modifier =
-                    Modifier
-                        .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
             )
         }
         Spacer(modifier = Modifier.height(Dimen.spaceL))
@@ -125,13 +132,15 @@ private fun PhotoDetails(content: Content) {
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 private fun Tags(tags: List<Tag>?) {
-    FlowRow(mainAxisSpacing = Dimen.spaceM) {
-        tags?.forEach {
-            ElevatedSuggestionChip(
-                label = { Text(it.name) },
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(Dimen.spaceS),
+        verticalArrangement = Arrangement.spacedBy(Dimen.spaceS),
+    ) {
+        tags?.forEach { tag ->
+            SuggestionChip(
                 onClick = { },
+                label = { Text(tag.name) },
             )
         }
     }
@@ -139,23 +148,37 @@ private fun Tags(tags: List<Tag>?) {
 
 @Composable
 internal fun Tracks(tracks: List<Track>?) {
-    tracks?.forEach {
-        Track(it)
+    tracks?.forEach { track ->
+        TrackItem(track)
     }
 }
 
 @Composable
-internal fun Track(track: Track) {
+internal fun TrackItem(track: Track) {
     Row {
-        Icon(Icons.Outlined.Star, null)
+        Icon(Icons.Outlined.Star, contentDescription = null)
         Spacer(modifier = Modifier.width(Dimen.spaceS))
 
-        var text = track.name
-
-        track.duration?.let {
-            text += " ${TimeUtil.formatTime(track.duration)}"
-        }
+        val text =
+            buildString {
+                append(track.name)
+                track.duration?.let { duration ->
+                    append(" ${TimeUtil.formatTime(duration)}")
+                }
+            }
 
         Text(text = text)
     }
+}
+
+@Preview
+@Composable
+private fun TrackItemPreview() {
+    TrackItem(
+        track =
+            Track(
+                name = "Sample Track",
+                duration = 180, // 3 minutes in seconds
+            ),
+    )
 }

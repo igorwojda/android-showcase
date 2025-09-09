@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.app.data.api
 
-import com.igorwojda.showcase.BuildConfig
+import com.igorwojda.showcase.app.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 

@@ -29,7 +29,7 @@ class GetAlbumListUseCaseTest {
     }
 
     @Test
-    fun `WHEN onEnter is called with no value then the default query search term is null`() =
+    fun `WHEN onInit is called with no value then the default query search term is null`() =
         runBlocking {
             // given
             val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())

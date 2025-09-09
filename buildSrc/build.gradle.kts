@@ -12,7 +12,6 @@ dependencies {
     implementation(plugin(libs.plugins.testLogger))
     implementation(plugin(libs.plugins.detekt))
     implementation(plugin(libs.plugins.junit5Android))
-    implementation(plugin(libs.plugins.safeArgs))
     implementation(plugin(libs.plugins.compose))
 }
 

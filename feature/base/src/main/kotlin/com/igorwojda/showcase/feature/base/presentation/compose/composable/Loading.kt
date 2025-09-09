@@ -1,32 +1,31 @@
 package com.igorwojda.showcase.feature.base.presentation.compose.composable
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.igorwojda.showcase.feature.base.R
+import androidx.compose.ui.tooling.preview.Preview
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 
 @Composable
-fun DataNotFoundAnim() {
-    LabeledAnimation(R.string.data_not_found, R.raw.lottie_error_screen)
-}
-
-@Composable
-fun UnderConstructionAnim() {
-    LabeledAnimation(R.string.under_construction, R.raw.lottie_building_screen)
-}
-
-@Composable
-fun ProgressIndicator() {
-    Box {
+fun LoadingIndicator() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center,
+    ) {
         CircularProgressIndicator(
             modifier =
                 Modifier
-                    .align(Alignment.Center)
                     .size(Dimen.spaceXXL),
         )
     }
+}
+
+@Preview
+@Composable
+private fun LoadingIndicatorPreview() {
+    LoadingIndicator()
 }

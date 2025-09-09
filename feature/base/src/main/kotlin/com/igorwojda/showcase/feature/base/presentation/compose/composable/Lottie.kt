@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
@@ -49,5 +50,22 @@ fun LottieAssetLoader(
     LottieAnimation(
         composition,
         modifier = Modifier.requiredSize(Dimen.imageSize),
+    )
+}
+
+@Preview
+@Composable
+private fun LabeledAnimationPreview() {
+    LabeledAnimation(
+        label = android.R.string.ok,
+        assetResId = com.igorwojda.showcase.feature.base.R.raw.lottie_building_screen,
+    )
+}
+
+@Preview
+@Composable
+private fun LottieAssetLoaderPreview() {
+    LottieAssetLoader(
+        assetResId = com.igorwojda.showcase.feature.base.R.raw.lottie_building_screen,
     )
 }

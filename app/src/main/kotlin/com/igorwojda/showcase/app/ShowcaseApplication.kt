@@ -1,9 +1,7 @@
 package com.igorwojda.showcase.app
 
 import android.app.Application
-import com.google.android.material.color.DynamicColors
-import com.igorwojda.showcase.BuildConfig
-import com.igorwojda.showcase.feature.base.baseModule
+import com.igorwojda.showcase.feature.album.featureAlbumModules
 import com.igorwojda.showcase.feature.favourite.featureFavouriteModules
 import com.igorwojda.showcase.feature.profile.featureProfilesModules
 import org.koin.android.ext.koin.androidContext
@@ -17,13 +15,6 @@ class ShowcaseApplication : Application() {
 
         initKoin()
         initTimber()
-        initDynamicColorScheme()
-    }
-
-    private fun initDynamicColorScheme() {
-        // Apply dynamic colors to all Activities, Fragments, Views
-        // (Material 3 library helper class)
-        DynamicColors.applyToActivitiesIfAvailable(this)
     }
 
     private fun initKoin() {
@@ -32,9 +23,8 @@ class ShowcaseApplication : Application() {
             androidContext(this@ShowcaseApplication)
 
             modules(appModule)
-            modules(baseModule)
             modules(featureFavouriteModules)
-            modules(com.igorwojda.showcase.feature.album.featureAlbumModules)
+            modules(featureAlbumModules)
             modules(featureProfilesModules)
         }
     }

@@ -1,11 +1,9 @@
 package com.igorwojda.showcase.feature.base.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.igorwojda.showcase.feature.base.BuildConfig
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(
@@ -26,9 +24,7 @@ abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(
     // will not be emitted multiple times to UI)
     private var state by Delegates.observable(initialState) { _, old, new ->
         if (old != new) {
-            viewModelScope.launch {
-                _uiStateFlow.value = new
-            }
+            _uiStateFlow.value = new
 
             stateTimeTravelDebugger?.apply {
                 addStateTransition(old, new)
