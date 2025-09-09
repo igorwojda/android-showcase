@@ -28,14 +28,12 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.Albu
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
 import com.igorwojda.showcase.feature.profile.presentation.screen.profile.ProfileScreen
-import kotlin.reflect.jvm.jvmName
 import timber.log.Timber
+import kotlin.reflect.jvm.jvmName
 
 class MainShowcaseActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         setContent {
             MaterialTheme(colorScheme = getColorScheme()) {
@@ -47,12 +45,13 @@ class MainShowcaseActivity : ComponentActivity() {
     @Composable
     fun MainShowcaseScreen() {
         val navController = rememberNavController()
-       addOnDestinationChangedListener(navController)
+        addOnDestinationChangedListener(navController)
 
         Scaffold(
-            modifier = Modifier
-                .fillMaxSize(),
-            bottomBar = { BottomNavigationBar(navController) }
+            modifier =
+                Modifier
+                    .fillMaxSize(),
+            bottomBar = { BottomNavigationBar(navController) },
         ) { innerPadding ->
 
             val graph =
@@ -62,9 +61,9 @@ class MainShowcaseActivity : ComponentActivity() {
                             // artistName: String, albumName: String, mbId: String?
                             onNavigateToAlbumDetail = { artistName, albumName, albumMbId ->
                                 navController.navigate(
-                                    NavigationRoute.AlbumDetail(artistName, albumName, albumMbId)
+                                    NavigationRoute.AlbumDetail(artistName, albumName, albumMbId),
                                 )
-                            }
+                            },
                         )
                     }
                     composable<NavigationRoute.AlbumDetail> { backStackEntry ->
@@ -77,7 +76,7 @@ class MainShowcaseActivity : ComponentActivity() {
                             albumMbId = args.albumMbId,
                             onBackClick = {
                                 navController.popBackStack()
-                            }
+                            },
                         )
                     }
                     composable<NavigationRoute.Favourite> {
@@ -90,9 +89,8 @@ class MainShowcaseActivity : ComponentActivity() {
             NavHost(
                 navController = navController,
                 graph = graph,
-                modifier = Modifier.padding(innerPadding)
+                modifier = Modifier.padding(innerPadding),
             )
-
         }
     }
 
@@ -110,42 +108,47 @@ class MainShowcaseActivity : ComponentActivity() {
     }
 
     fun addOnDestinationChangedListener(navController: NavController) {
-        navController.addOnDestinationChangedListener(object:  NavController.OnDestinationChangedListener {
-            override fun onDestinationChanged(
-                controller: NavController,
-                destination: NavDestination,
-                arguments: Bundle?,
-            ) {
-                logDestinationChange(destination, arguments)
-            }
-
-            private fun logDestinationChange(destination: NavDestination, arguments: Bundle?) {
-                val className = NavigationRoute::class.jvmName
-                val destinationRoute = destination.route?.substringAfter("$className.") ?: "Unknown"
-                val destinationId = destination.id
-                val destinationLabel = destination.label ?: "No Label"
-
-                val logMessage = buildString {
-                    appendLine("Navigation destination changed:")
-                    appendLine("\tRoute: $destinationRoute")
-                    appendLine("\tID: $destinationId")
-                    appendLine("\tLabel: $destinationLabel")
-
-                // Log arguments if they exist
-                arguments?.let { bundle ->
-                    if (!bundle.isEmpty) {
-                            appendLine("  Arguments:")
-                        for (key in bundle.keySet()) {
-                            val value = bundle.get(key)
-                                appendLine("\t\t$key: $value")
-                        }
-                    }
+        navController.addOnDestinationChangedListener(
+            object : NavController.OnDestinationChangedListener {
+                override fun onDestinationChanged(
+                    controller: NavController,
+                    destination: NavDestination,
+                    arguments: Bundle?,
+                ) {
+                    logDestinationChange(destination, arguments)
                 }
-            }
 
-                Timber.tag("Navigation").d(logMessage)
-            }
-        })
+                private fun logDestinationChange(
+                    destination: NavDestination,
+                    arguments: Bundle?,
+                ) {
+                    val className = NavigationRoute::class.jvmName
+                    val destinationRoute = destination.route?.substringAfter("$className.") ?: "Unknown"
+                    val destinationId = destination.id
+                    val destinationLabel = destination.label ?: "No Label"
+
+                    val logMessage =
+                        buildString {
+                            appendLine("Navigation destination changed:")
+                            appendLine("\tRoute: $destinationRoute")
+                            appendLine("\tID: $destinationId")
+                            appendLine("\tLabel: $destinationLabel")
+
+                            // Log arguments if they exist
+                            arguments?.let { bundle ->
+                                if (!bundle.isEmpty) {
+                                    appendLine("  Arguments:")
+                                    for (key in bundle.keySet()) {
+                                        val value = bundle.get(key)
+                                        appendLine("\t\t$key: $value")
+                                    }
+                                }
+                            }
+                        }
+
+                    Timber.tag("Navigation").d(logMessage)
+                }
+            },
+        )
     }
-
 }

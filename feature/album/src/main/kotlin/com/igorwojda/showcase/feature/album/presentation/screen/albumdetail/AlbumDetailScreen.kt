@@ -51,7 +51,7 @@ fun AlbumDetailScreen(
     albumName: String,
     artistName: String,
     albumMbId: String?,
-    onBackClick: () -> Unit = {}
+    onBackClick: () -> Unit = {},
 ) {
     val viewModel: AlbumDetailViewModel = koinViewModel()
     // Initialize the viewModel with args when the composable enters composition
@@ -69,37 +69,43 @@ fun AlbumDetailScreen(
                     IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = "Back",
                         )
                     }
-                }
+                },
             )
-        }
+        },
     ) { innerPadding ->
         when (val currentUiState = uiState) {
             AlbumDetailUiState.Error -> ErrorAnim()
             AlbumDetailUiState.Loading -> LoadingIndicator()
-            is AlbumDetailUiState.Content -> AlbumDetailContent(
-                content = currentUiState,
-                modifier = Modifier.padding(innerPadding)
-            )
+            is AlbumDetailUiState.Content ->
+                AlbumDetailContent(
+                    content = currentUiState,
+                    modifier = Modifier.padding(innerPadding),
+                )
         }
     }
 }
 
 @Composable
-private fun AlbumDetailContent(content: AlbumDetailUiState.Content, modifier: Modifier = Modifier) {
+private fun AlbumDetailContent(
+    content: AlbumDetailUiState.Content,
+    modifier: Modifier = Modifier,
+) {
     Column(
-        modifier = modifier
-            .padding(Dimen.screenContentPadding)
-            .verticalScroll(rememberScrollState()),
+        modifier =
+            modifier
+                .padding(Dimen.screenContentPadding)
+                .verticalScroll(rememberScrollState()),
     ) {
         ElevatedCard(
-            modifier = Modifier
-                .padding(Dimen.spaceM)
-                .wrapContentSize()
-                .size(320.dp)
-                .align(CenterHorizontally),
+            modifier =
+                Modifier
+                    .padding(Dimen.spaceM)
+                    .wrapContentSize()
+                    .size(320.dp)
+                    .align(CenterHorizontally),
         ) {
             PlaceholderImage(
                 url = content.coverImageUrl,
@@ -129,11 +135,11 @@ private fun AlbumDetailContent(content: AlbumDetailUiState.Content, modifier: Mo
 private fun Tags(tags: List<Tag>?) {
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(Dimen.spaceS),
-        verticalArrangement = Arrangement.spacedBy(Dimen.spaceS)
+        verticalArrangement = Arrangement.spacedBy(Dimen.spaceS),
     ) {
         tags?.forEach { tag ->
             SuggestionChip(
-                onClick = {  },
+                onClick = { },
                 label = { Text(tag.name) },
             )
         }
@@ -153,12 +159,13 @@ internal fun TrackItem(track: Track) {
         Icon(Icons.Outlined.Star, contentDescription = null)
         Spacer(modifier = Modifier.width(Dimen.spaceS))
 
-        val text = buildString {
-            append(track.name)
-            track.duration?.let { duration ->
-                append(" ${TimeUtil.formatTime(duration)}")
+        val text =
+            buildString {
+                append(track.name)
+                track.duration?.let { duration ->
+                    append(" ${TimeUtil.formatTime(duration)}")
+                }
             }
-        }
 
         Text(text = text)
     }
@@ -168,9 +175,10 @@ internal fun TrackItem(track: Track) {
 @Composable
 private fun TrackItemPreview() {
     TrackItem(
-        track = Track(
-            name = "Sample Track",
-            duration = 180 // 3 minutes in seconds
-        )
+        track =
+            Track(
+                name = "Sample Track",
+                duration = 180, // 3 minutes in seconds
+            ),
     )
 }

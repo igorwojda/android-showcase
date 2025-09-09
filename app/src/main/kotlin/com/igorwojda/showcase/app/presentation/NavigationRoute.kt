@@ -4,18 +4,18 @@ import kotlinx.serialization.Serializable
 
 sealed interface NavigationRoute {
     @Serializable
-    data object AlbumList: NavigationRoute
+    data object AlbumList : NavigationRoute
 
     @Serializable
     data class AlbumDetail(
         val albumName: String,
         val artistName: String,
         val albumMbId: String?,
-    ): NavigationRoute
+    ) : NavigationRoute
 
     @Serializable
-    data object Favourite: NavigationRoute
+    data object Favourite : NavigationRoute
 
     @Serializable
-    data object Profile: NavigationRoute
+    data object Profile : NavigationRoute
 }

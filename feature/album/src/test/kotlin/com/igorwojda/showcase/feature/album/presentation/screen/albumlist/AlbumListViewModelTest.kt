@@ -63,5 +63,4 @@ class AlbumListViewModelTest {
                     albums = albums,
                 )
         }
-
 }

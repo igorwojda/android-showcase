@@ -317,7 +317,8 @@ Series of workflows run (in parallel) for every opened PR, and after merging PR 
 - `./gradlew :app:bundleDebug` - create an application bundle
 
 The following tasks cab be executed locally to make codebase compliant with the rules:
-- `./gradlew detektApply` - applies detekt code formatting rules to sourcecode in-place
+- `
+- ` - applies detekt code formatting rules to sourcecode in-place
 - `./gradlew spotlessApply` - applies code formatting steps to the source code in place.
 
 ## Design Decisions

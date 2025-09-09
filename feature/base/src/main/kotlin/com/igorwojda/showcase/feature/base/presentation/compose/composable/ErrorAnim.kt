@@ -12,7 +12,7 @@ import com.igorwojda.showcase.feature.base.R
 fun ErrorAnim() {
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         LabeledAnimation(R.string.data_not_found, R.raw.lottie_error_screen)
     }

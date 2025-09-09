@@ -25,20 +25,20 @@ import com.igorwojda.showcase.app.R
  */
 
 @Composable
-fun BottomNavigationBar(
-    navController: NavController,
-) {
+fun BottomNavigationBar(navController: NavController) {
     val navigationItems = getBottomNavigationItems()
-    
+
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    
-    val selectedNavigationIndex = navigationItems.indexOfFirst { 
-        it.route::class.qualifiedName == currentRoute
-    }.takeIf { it >= 0 } ?: 0
+
+    val selectedNavigationIndex =
+        navigationItems
+            .indexOfFirst {
+                it.route::class.qualifiedName == currentRoute
+            }.takeIf { it >= 0 } ?: 0
 
     NavigationBar(
-        containerColor = Color.White
+        containerColor = Color.White,
     ) {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
@@ -55,42 +55,40 @@ fun BottomNavigationBar(
                         contentDescription = stringResource(item.titleRes),
                     )
                 },
-
                 label = {
                     Text(
                         stringResource(item.titleRes),
-                        color = if (index == selectedNavigationIndex) Color.Black else Color.Gray
+                        color = if (index == selectedNavigationIndex) Color.Black else Color.Gray,
                     )
                 },
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.surface,
-                    indicatorColor = MaterialTheme.colorScheme.primary
-                )
-
+                colors =
+                    NavigationBarItemDefaults.colors(
+                        selectedIconColor = MaterialTheme.colorScheme.surface,
+                        indicatorColor = MaterialTheme.colorScheme.primary,
+                    ),
             )
         }
     }
 }
 
-private fun getBottomNavigationItems() = listOf(
-    NavigationBarItem(
-        R.string.albums,
-        R.drawable.ic_round_album_list,
-        NavigationRoute.AlbumList,
-    ),
-
-    NavigationBarItem(
-        R.string.favorites,
-        R.drawable.ic_round_favorite,
-        NavigationRoute.Favourite,
-    ),
-
-    NavigationBarItem(
-        R.string.profile,
-        R.drawable.ic_round_profile,
-        NavigationRoute.Profile,
+private fun getBottomNavigationItems() =
+    listOf(
+        NavigationBarItem(
+            R.string.albums,
+            R.drawable.ic_round_album_list,
+            NavigationRoute.AlbumList,
+        ),
+        NavigationBarItem(
+            R.string.favorites,
+            R.drawable.ic_round_favorite,
+            NavigationRoute.Favourite,
+        ),
+        NavigationBarItem(
+            R.string.profile,
+            R.drawable.ic_round_profile,
+            NavigationRoute.Profile,
+        ),
     )
-)
 
 data class NavigationBarItem(
     @StringRes val titleRes: Int,
@@ -102,6 +100,6 @@ data class NavigationBarItem(
 @Composable
 private fun BottomNavigationBarPreview() {
     BottomNavigationBar(
-        navController = rememberNavController()
+        navController = rememberNavController(),
     )
 }

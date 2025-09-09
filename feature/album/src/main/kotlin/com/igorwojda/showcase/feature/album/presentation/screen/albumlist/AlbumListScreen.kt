@@ -32,9 +32,7 @@ import com.igorwojda.showcase.feature.base.presentation.compose.composable.Place
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun AlbumListScreen(
-    onNavigateToAlbumDetail: ((artistName: String, albumName: String, albumMbId: String?) -> Unit)? = null
-) {
+fun AlbumListScreen(onNavigateToAlbumDetail: ((artistName: String, albumName: String, albumMbId: String?) -> Unit)? = null) {
     val viewModel: AlbumListViewModel = koinViewModel()
 
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
@@ -58,7 +56,7 @@ fun AlbumListScreen(
                 } else {
                     viewModel.onInit()
                 }
-            }
+            },
         )
 
         // Content
@@ -66,15 +64,16 @@ fun AlbumListScreen(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center,
         ) {
-            when (val currentUiState = uiState) {  // Extract to local variable for smart casting
+            when (val currentUiState = uiState) { // Extract to local variable for smart casting
                 AlbumListUiState.Error -> ErrorAnim()
                 AlbumListUiState.Loading -> LoadingIndicator()
-                is AlbumListUiState.Content -> AlbumGrid(
-                    albums = currentUiState.albums,  // Use currentState instead of uiState
-                    onAlbumClick = { album ->
-                        onNavigateToAlbumDetail?.invoke(album.artist, album.name, album.mbId)
-                    }
-                )
+                is AlbumListUiState.Content ->
+                    AlbumGrid(
+                        albums = currentUiState.albums, // Use currentState instead of uiState
+                        onAlbumClick = { album ->
+                            onNavigateToAlbumDetail?.invoke(album.artist, album.name, album.mbId)
+                        },
+                    )
             }
         }
     }
@@ -83,7 +82,7 @@ fun AlbumListScreen(
 @Composable
 private fun AlbumGrid(
     albums: List<Album>,
-    onAlbumClick: (Album) -> Unit
+    onAlbumClick: (Album) -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(Dimen.imageSize),
@@ -91,9 +90,10 @@ private fun AlbumGrid(
     ) {
         items(items = albums, key = { it.id }) { album ->
             ElevatedCard(
-                modifier = Modifier
-                    .padding(Dimen.spaceS)
-                    .wrapContentSize(),
+                modifier =
+                    Modifier
+                        .padding(Dimen.spaceS)
+                        .wrapContentSize(),
                 onClick = { onAlbumClick(album) },
             ) {
                 PlaceholderImage(
@@ -109,23 +109,24 @@ private fun AlbumGrid(
 @Preview
 @Composable
 private fun AlbumGridPreview() {
-    val sampleAlbums = listOf(
-        Album(
-            name = "Sample Album 1",
-            artist = "Sample Artist",
-            mbId = null,
-            images = emptyList()
-        ),
-        Album(
-            name = "Sample Album 2",
-            artist = "Sample Artist 2",
-            mbId = null,
-            images = emptyList()
+    val sampleAlbums =
+        listOf(
+            Album(
+                name = "Sample Album 1",
+                artist = "Sample Artist",
+                mbId = null,
+                images = emptyList(),
+            ),
+            Album(
+                name = "Sample Album 2",
+                artist = "Sample Artist 2",
+                mbId = null,
+                images = emptyList(),
+            ),
         )
-    )
-    
+
     AlbumGrid(
         albums = sampleAlbums,
-        onAlbumClick = { }
+        onAlbumClick = { },
     )
 }

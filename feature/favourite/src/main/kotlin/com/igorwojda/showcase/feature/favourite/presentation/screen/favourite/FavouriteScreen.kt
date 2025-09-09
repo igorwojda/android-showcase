@@ -12,7 +12,7 @@ import com.igorwojda.showcase.feature.base.presentation.compose.composable.Under
 fun FavouriteScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         UnderConstructionAnim()
     }

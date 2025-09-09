@@ -63,13 +63,13 @@ class AlbumDetailViewModelTest {
 
             // then
             advanceUntilIdle()
-            cut.uiStateFlow.value shouldBeEqualTo 
+            cut.uiStateFlow.value shouldBeEqualTo
                 AlbumDetailUiState.Content(
                     albumName = albumName,
                     artistName = artistName,
                     coverImageUrl = "",
                     tracks = null,
-                    tags = null
+                    tags = null,
                 )
         }
 }

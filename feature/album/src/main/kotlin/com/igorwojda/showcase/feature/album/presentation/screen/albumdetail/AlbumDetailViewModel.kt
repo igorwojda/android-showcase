@@ -10,11 +10,19 @@ import kotlinx.coroutines.launch
 internal class AlbumDetailViewModel(
     private val getAlbumUseCase: GetAlbumUseCase,
 ) : BaseViewModel<AlbumDetailUiState, AlbumDetailAction>(AlbumDetailUiState.Loading) {
-    fun onInit(albumName: String, artistName: String, albumMbId: String?) {
+    fun onInit(
+        albumName: String,
+        artistName: String,
+        albumMbId: String?,
+    ) {
         getAlbum(albumName, artistName, albumMbId)
     }
 
-    private fun getAlbum(albumName: String, artistName: String, albumMbId: String?) {
+    private fun getAlbum(
+        albumName: String,
+        artistName: String,
+        albumMbId: String?,
+    ) {
         sendAction(AlbumDetailAction.AlbumLoadStart)
 
         viewModelScope.launch {

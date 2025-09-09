@@ -14,9 +14,8 @@ import com.igorwojda.showcase.feature.base.common.res.Dimen
 fun LoadingIndicator() {
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
-
         CircularProgressIndicator(
             modifier =
                 Modifier

@@ -28,7 +28,7 @@ fun SearchBar(
     query: String,
     onQueryChange: (String) -> Unit,
     onSearch: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val minimumProductQuerySize = 1
     val delayBeforeSubmittingQuery = 500L
@@ -59,29 +59,33 @@ fun SearchBar(
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                contentDescription = "Search"
+                contentDescription = "Search",
             )
         },
-        trailingIcon = if (textFieldValue.text.isNotEmpty()) {
-            {
-                IconButton(
-                    onClick = {
-                        textFieldValue = TextFieldValue("")
-                        onSearch("")
-                        onQueryChange("")
+        trailingIcon =
+            if (textFieldValue.text.isNotEmpty()) {
+                {
+                    IconButton(
+                        onClick = {
+                            textFieldValue = TextFieldValue("")
+                            onSearch("")
+                            onQueryChange("")
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Clear,
+                            contentDescription = "Clear search",
+                        )
                     }
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Clear,
-                        contentDescription = "Clear search"
-                    )
                 }
-            }
-        } else null,
+            } else {
+                null
+            },
         singleLine = true,
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(Dimen.spaceM)
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .padding(Dimen.spaceM),
     )
 }
 
@@ -91,7 +95,7 @@ private fun SearchBarPreview() {
     SearchBar(
         query = "Sample query",
         onQueryChange = { },
-        onSearch = { }
+        onSearch = { },
     )
 }
 
@@ -101,6 +105,6 @@ private fun SearchBarEmptyPreview() {
     SearchBar(
         query = "",
         onQueryChange = { },
-        onSearch = { }
+        onSearch = { },
     )
 }

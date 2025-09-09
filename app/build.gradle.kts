@@ -1,7 +1,7 @@
 
 import com.android.build.api.dsl.ApplicationDefaultConfig
-import java.util.Locale
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Locale
 
 plugins {
     id("local.app")

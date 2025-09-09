@@ -51,6 +51,6 @@ fun PlaceholderImage(
 private fun PlaceholderImagePreview() {
     PlaceholderImage(
         url = "https://github.com/igorwojda/android-showcase/raw/main/misc/image/module_dependencies.png?raw=true",
-        contentDescription = "Sample image"
+        contentDescription = "Sample image",
     )
 }

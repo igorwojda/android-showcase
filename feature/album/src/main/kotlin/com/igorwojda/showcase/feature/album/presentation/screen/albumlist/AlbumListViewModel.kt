@@ -12,7 +12,6 @@ internal class AlbumListViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val getAlbumListUseCase: GetAlbumListUseCase,
 ) : BaseViewModel<AlbumListUiState, AlbumListAction>(AlbumListUiState.Loading) {
-    
     companion object {
         const val DEFAULT_QUERY_NAME = "Jackson"
         private const val SAVED_QUERY_KEY = "query"

@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.base.presentation.viewmodel
 
-import kotlin.reflect.full.memberProperties
 import timber.log.Timber
+import kotlin.reflect.full.memberProperties
 
 /**
  * Logs actions and view state transitions to facilitate debugging.
@@ -40,7 +40,7 @@ class StateTimeTravelDebugger(
                     append(
                         propertyNames.joinToString(separator = "") { prop ->
                             getLogLine(st.oldState, st.newState, prop)
-                        }
+                        },
                     )
                 }
             }

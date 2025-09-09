@@ -2,9 +2,9 @@ package com.igorwojda.showcase.feature.base.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.igorwojda.showcase.feature.base.BuildConfig
-import kotlin.properties.Delegates
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlin.properties.Delegates
 
 abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(
     initialState: State,
