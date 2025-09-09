@@ -43,7 +43,7 @@ fun BottomNavigationBar(
                 selected = selectedNavigationIndex == index,
                 onClick = {
                     navController.navigate(item.route) {
-                        launchSingleTop = true // Prevents duplicate destinations
+                        popUpTo(0)
                         restoreState = true // Restores previous state if returning
                     }
                 },
