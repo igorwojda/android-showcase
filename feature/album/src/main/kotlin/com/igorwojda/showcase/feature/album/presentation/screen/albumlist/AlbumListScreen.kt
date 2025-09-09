@@ -25,9 +25,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.presentation.composable.SearchBar
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState.Content
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState.Error
-import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListViewModel.AlbumListUiState.Loading
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.LoadingIndicator
@@ -70,9 +67,9 @@ fun AlbumListScreen(
             contentAlignment = Alignment.Center,
         ) {
             when (val currentUiState = uiState) {  // Extract to local variable for smart casting
-                Error -> ErrorAnim()
-                Loading -> LoadingIndicator()
-                is Content -> AlbumGrid(
+                AlbumListUiState.Error -> ErrorAnim()
+                AlbumListUiState.Loading -> LoadingIndicator()
+                is AlbumListUiState.Content -> AlbumGrid(
                     albums = currentUiState.albums,  // Use currentState instead of uiState
                     onAlbumClick = { album ->
                         onNavigateToAlbumDetail?.invoke(album.artist, album.name, album.mbId)
