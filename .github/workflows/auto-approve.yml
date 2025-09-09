@@ -1,0 +1,15 @@
+name: Auto Approve
+
+on: pull_request_target
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    if: |
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.actor == github.event.pull_request.user.login &&
+      contains(fromJson('["renovate[bot]", "igorwojda"]'), github.actor)
+    steps:
+      - uses: hmarr/auto-approve-action@v4
