@@ -41,6 +41,8 @@ internal class AlbumListViewModel(
 
         savedStateHandle[SAVED_QUERY_KEY] = query
 
+        sendAction(Action.AlbumListLoadStart)
+
         job =
             viewModelScope.launch {
                 getAlbumListUseCase(query).also { result ->
@@ -60,6 +62,10 @@ internal class AlbumListViewModel(
     }
 
     internal sealed interface Action : BaseAction<AlbumListUiState> {
+        object AlbumListLoadStart : Action {
+            override fun reduce(state: AlbumListUiState) = Loading
+        }
+
         class AlbumListLoadSuccess(
             private val albums: List<Album>,
         ) : Action {
