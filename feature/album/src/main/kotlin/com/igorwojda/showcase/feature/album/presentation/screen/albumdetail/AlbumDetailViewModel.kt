@@ -9,6 +9,7 @@ import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.Action
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Content
+import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Error
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailViewModel.UiState.Loading
 import com.igorwojda.showcase.feature.base.domain.result.Result.Failure
 import com.igorwojda.showcase.feature.base.domain.result.Result.Success
@@ -40,6 +41,10 @@ internal class AlbumDetailViewModel(
     }
 
     internal sealed interface Action : BaseAction<UiState> {
+        object AlbumLoadStart : Action {
+            override fun reduce(state: UiState) = Loading
+        }
+
         class AlbumLoadSuccess(
             private val album: Album,
         ) : Action {
@@ -54,7 +59,7 @@ internal class AlbumDetailViewModel(
         }
 
         object AlbumLoadFailure : Action {
-            override fun reduce(state: UiState) = UiState.Error
+            override fun reduce(state: UiState) = Error
         }
     }
 
