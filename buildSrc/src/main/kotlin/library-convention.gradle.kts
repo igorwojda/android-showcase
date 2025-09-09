@@ -2,8 +2,8 @@ import config.JavaConfig
 
 plugins {
     id("com.android.library")
-    id("local.kotlin")
-    id("local.test")
+    id("kotlin-convention")
+    id("test-convention")
     id("com.google.devtools.ksp")
     id("org.jetbrains.kotlin.plugin.compose")
 }

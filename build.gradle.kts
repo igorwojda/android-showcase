@@ -1,4 +1,4 @@
 plugins {
-    id("local.detekt")
-    id("local.spotless")
+    id("detekt-convention")
+    id("spotless-convention")
 }
