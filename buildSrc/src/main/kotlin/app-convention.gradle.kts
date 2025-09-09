@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
-    id("local.kotlin")
-    id("local.spotless")
+    id("kotlin-convention")
+    id("spotless-convention")
     id("com.google.devtools.ksp")
     id("org.jetbrains.kotlin.plugin.compose")
 }

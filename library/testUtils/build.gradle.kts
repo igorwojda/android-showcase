@@ -1,5 +1,5 @@
 plugins {
-    id("local.library")
+    id("library-convention")
 }
 
 android {

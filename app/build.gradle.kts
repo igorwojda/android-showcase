@@ -4,7 +4,7 @@ import config.JavaConfig
 import java.util.Locale
 
 plugins {
-    id("local.app")
+    id("app-convention")
 }
 
 android {
