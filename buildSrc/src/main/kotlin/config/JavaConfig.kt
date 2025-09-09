@@ -24,5 +24,4 @@ object JavaConfig {
 
     val javaVersion: JavaVersion = JavaVersion.VERSION_17
     val jvmTarget: JvmTarget = JvmTarget.JVM_17
-    val versionString: String = VERSION_STRING
 }

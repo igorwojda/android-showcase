@@ -1,7 +1,7 @@
 
 import com.android.build.api.dsl.ApplicationDefaultConfig
-import java.util.Locale
 import config.JavaConfig
+import java.util.Locale
 
 plugins {
     id("local.app")
