@@ -17,8 +17,8 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.Albu
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
 import com.igorwojda.showcase.feature.profile.presentation.screen.profile.ProfileScreen
-import kotlin.reflect.jvm.jvmName
 import timber.log.Timber
+import kotlin.reflect.jvm.jvmName
 
 @Composable
 fun MainShowcaseScreen() {

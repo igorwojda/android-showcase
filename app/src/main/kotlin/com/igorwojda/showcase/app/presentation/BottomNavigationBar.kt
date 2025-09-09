@@ -55,10 +55,11 @@ fun BottomNavigationBar(navController: NavController) {
                 label = {
                     Text(
                         stringResource(item.titleRes),
-                        color = when (index) {
-                            selectedNavigationIndex -> MaterialTheme.colorScheme.onSurface
-                            else -> MaterialTheme.colorScheme.surface
-                        },
+                        color =
+                            when (index) {
+                                selectedNavigationIndex -> MaterialTheme.colorScheme.onSurface
+                                else -> MaterialTheme.colorScheme.surface
+                            },
                     )
                 },
                 colors =
