@@ -75,14 +75,13 @@ fun AlbumDetailScreen(
                 },
             )
         },
-    ) { innerPadding ->
+    ) { _ ->
         when (val currentUiState = uiState) {
             AlbumDetailUiState.Error -> ErrorAnim()
             AlbumDetailUiState.Loading -> LoadingIndicator()
             is AlbumDetailUiState.Content ->
                 AlbumDetailContent(
                     content = currentUiState,
-                    modifier = Modifier.padding(innerPadding),
                 )
         }
     }
@@ -96,7 +95,7 @@ private fun AlbumDetailContent(
     Column(
         modifier =
             modifier
-                .padding(Dimen.screenContentPadding)
+                .padding(horizontal = Dimen.screenContentPadding)
                 .verticalScroll(rememberScrollState()),
     ) {
         ElevatedCard(
