@@ -62,6 +62,7 @@ fun AlbumDetailScreen(
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     Scaffold(
+//        modifier = Modifier.padding(top = Dimen.screenContentPadding),
         topBar = {
             TopAppBar(
                 title = { Text(text = albumName) },
@@ -75,13 +76,18 @@ fun AlbumDetailScreen(
                 },
             )
         },
-    ) { _ ->
+    ) { innerPadding ->
         when (val currentUiState = uiState) {
-            AlbumDetailUiState.Error -> ErrorAnim()
-            AlbumDetailUiState.Loading -> LoadingIndicator()
+            AlbumDetailUiState.Error -> {
+                ErrorAnim()
+            }
+            AlbumDetailUiState.Loading -> {
+                LoadingIndicator()
+            }
             is AlbumDetailUiState.Content ->
                 AlbumDetailContent(
                     content = currentUiState,
+                    modifier = Modifier.padding(innerPadding),
                 )
         }
     }
