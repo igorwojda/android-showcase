@@ -49,9 +49,9 @@ A music discovery app built with Jetpack Compose that displays album information
 - **Profile** - User preferences and settings (WIP)
 
 <p>
-  <img src="misc/image/screen_album_list.webp" width="250" />
-  <img src="misc/image/screen_album_detail.webp" width="250" />
-  <img src="misc/image/screen_favorites.webp" width="250" />
+  <img src="misc/image/screen_album_list.png" width="250" />
+  <img src="misc/image/screen_album_detail.png" width="250" />
+  <img src="misc/image/screen_favorites.png" width="250" />
 </p>
 
 ## Tech-Stack
@@ -338,7 +338,7 @@ The app includes comprehensive logging for development debugging:
 
 Filter logs by tag: `package:mine tag:Navigation`
 
-![Navigation Logs](./misc/image/log_navigation.png?raw=true)
+![Navigation Logs](./misc/image/log_navigation.png)
 
 ## Project Scope & Limitations
 
