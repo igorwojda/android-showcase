@@ -77,7 +77,7 @@ private fun getBottomNavigationItems() =
         NavigationBarItem(
             R.string.settings,
             R.drawable.ic_settings,
-            NavigationRoute.Profile,
+            NavigationRoute.Settings,
         ),
     )
 

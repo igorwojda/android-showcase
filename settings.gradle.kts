@@ -3,7 +3,7 @@ rootProject.name = "android-showcase"
 include(
     ":app",
     ":feature:album",
-    ":feature:profile",
+    ":feature:settings",
     ":feature:favourite",
     ":feature:base",
     ":library:testUtils",

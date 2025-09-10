@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.profile.presentation
+package com.igorwojda.showcase.feature.settings.presentation
 
 import org.koin.dsl.module
 

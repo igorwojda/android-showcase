@@ -16,7 +16,7 @@ import androidx.navigation.toRoute
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailScreen
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
-import com.igorwojda.showcase.feature.profile.presentation.screen.profile.ProfileScreen
+import com.igorwojda.showcase.feature.settings.presentation.screen.settings.SettingsScreen
 import timber.log.Timber
 import kotlin.reflect.jvm.jvmName
 
@@ -60,8 +60,8 @@ fun MainShowcaseScreen() {
                 composable<NavigationRoute.Favourite> {
                     FavouriteScreen()
                 }
-                composable<NavigationRoute.Profile> {
-                    ProfileScreen()
+                composable<NavigationRoute.Settings> {
+                    SettingsScreen()
                 }
             }
         NavHost(

@@ -88,7 +88,7 @@ android {
 dependencies {
     // "projects." Syntax utilizes Gradle TYPESAFE_PROJECT_ACCESSORS feature
     implementation(projects.feature.album)
-    implementation(projects.feature.profile)
+    implementation(projects.feature.settings)
     implementation(projects.feature.favourite)
 
     implementation(platform(libs.compose.bom))
