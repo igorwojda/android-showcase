@@ -18,6 +18,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
       - [Presentation Layer](#presentation-layer)
       - [Domain Layer](#domain-layer)
       - [Data Layer](#data-layer)
+      - [Common Module Components](#common-module-components)
     - [Data Flow](#data-flow)
   - [Gradle Config](#gradle-config)
     - [Dependency Management](#dependency-management)
@@ -122,7 +123,7 @@ The project implements **Clean Architecture** with a modular approach, treating 
 
 ### Module Types and Dependencies
 
-![Module Dependencies](./misc/image/module_type_dependencies.png)
+![Module Dependencies](./misc/image/module_dependencies.png)
 
 **Module Types:**
 - **`app`** - Main application module containing navigation setup, DI configuration, and app-level components
@@ -134,13 +135,13 @@ The project implements **Clean Architecture** with a modular approach, treating 
 
 `Clean Architecture` is implemented at the module level - each module contains its own set of Clean Architecture layers:
 
-![module_dependencies_layers](./misc/image/module_dependencies_layers.png)
+![module_dependencies_layers](./misc/image/module_layers.png)
 
 > Notice that the `app` module and `library_x` modules structure differs a bit from the feature module structure.
 
-Each feature module contains non-layer components and 3 layers with a distinct set of responsibilities.
+Each feature module contains 3 layers with a distinct set of responsibilities and common module components.
 
-![feature_structure](https://github.com/igorwojda/android-showcase/blob/main/misc/image/feature_structure.png?raw=true)
+![feature_structure](./misc/image/module_layers_details.png)
 
 #### Presentation Layer
 
@@ -217,6 +218,17 @@ multiple classes:
 
 Both `Retrofit API Data Models` and `Room Entities` contain annotations, so the given framework understands how to parse the
 data into objects.
+
+#### Common Module Components
+
+Each module in the Android project contains several standard items that provide essential functionality and configuration:
+
+Components:
+- **Gradle Build Script** - `build.gradle.kts` defining dependencies, build configurations, and plugins.
+- **Koin DI Module** - Dependency injection configuration
+- **Tests** - Unit tests (`test/`) and integration tests (`androidTest/`)
+- **Android Resources** - resources (`res/`) including strings, drawables, and assets.
+- **Android Manifest** - The `AndroidManifest.xml` file declaring module metadata.
 
 ### Data Flow
 
