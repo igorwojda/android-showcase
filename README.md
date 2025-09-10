@@ -13,7 +13,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
   - [Application Scope](#application-scope)
   - [Tech-Stack](#tech-stack)
   - [Architecture](#architecture)
-    - [Module Types And Module Dependencies](#module-types-and-module-dependencies)
+    - [Module Types and Dependencies](#module-types-and-dependencies)
     - [Feature Module Structure](#feature-module-structure)
       - [Presentation Layer](#presentation-layer)
       - [Domain Layer](#domain-layer)
@@ -25,23 +25,14 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
     - [Type Safe Project Accessors](#type-safe-project-accessors)
     - [Java Version](#java-version)
   - [Code Verification](#code-verification)
-    - [Commandline](#commandline)
     - [CI Pipeline](#ci-pipeline)
-    - [Git Pre Push Hook](#git-pre-push-hook)
-  - [Design Decisions](#design-decisions)
-  - [Logcat debugging](#logcat-debugging)
-  - [What This Project Does Not Cover?](#what-this-project-does-not-cover)
+    - [Pre-push Hooks](#pre-push-hooks)
+  - [Development \& Debugging](#development--debugging)
+  - [Project Scope \& Limitations](#project-scope--limitations)
   - [Getting Started](#getting-started)
-    - [Android Studio](#android-studio)
-    - [Command-line And Android Studio](#command-line-and-android-studio)
-    - [Plugins](#plugins)
-  - [Upcoming Improvements](#upcoming-improvements)
-  - [Inspiration](#inspiration)
-    - [Cheatsheet](#cheatsheet)
-    - [Android Projects](#android-projects)
-    - [Other](#other)
-  - [Known Issues](#known-issues)
-  - [Contribute](#contribute)
+  - [Roadmap](#roadmap)
+  - [Resources](#resources)
+  - [Contributing](#contributing)
   - [Author](#author)
   - [License](#license)
   - [Animations License](#animations-license)
@@ -131,7 +122,7 @@ The project implements **Clean Architecture** with a modular approach, treating 
 
 ### Module Types and Dependencies
 
-![Module Dependencies](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies.png?raw=true)
+![Module Dependencies](./misc/image/module_dependencies.png)
 
 **Module Types:**
 - **`app`** - Main application module containing navigation setup, DI configuration, and app-level components
@@ -143,7 +134,7 @@ The project implements **Clean Architecture** with a modular approach, treating 
 
 `Clean Architecture` is implemented at the module level - each module contains its own set of Clean Architecture layers:
 
-![module_dependencies_layers](https://github.com/igorwojda/android-showcase/blob/main/misc/image/module_dependencies_layers.png?raw=true)
+![module_dependencies_layers](./misc/image/module_dependencies_layers.png)
 
 > Notice that the `app` module and `library_x` modules structure differs a bit from the feature module structure.
 
