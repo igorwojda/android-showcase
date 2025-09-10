@@ -122,7 +122,7 @@ The project implements **Clean Architecture** with a modular approach, treating 
 
 ### Module Types and Dependencies
 
-![Module Dependencies](./misc/image/module_dependencies.png)
+![Module Dependencies](./misc/image/module_type_dependencies.png)
 
 **Module Types:**
 - **`app`** - Main application module containing navigation setup, DI configuration, and app-level components
