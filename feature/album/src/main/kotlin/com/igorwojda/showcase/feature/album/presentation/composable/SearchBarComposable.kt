@@ -33,7 +33,7 @@ fun SearchBar(
     modifier: Modifier = Modifier,
 ) {
     val minimumProductQuerySize = 1
-    val delayBeforeSubmittingQuery = 500L
+    val delayBeforeSubmittingQuery = 300L
 
     var textFieldValue by remember(query) { mutableStateOf(TextFieldValue(query)) }
 
