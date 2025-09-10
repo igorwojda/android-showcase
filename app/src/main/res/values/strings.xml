@@ -9,5 +9,5 @@
     <!--Bottom menu-->
     <string name="albums">Albums</string>
     <string name="favorites">Favorites</string>
-    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
 </resources>

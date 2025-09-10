@@ -1,4 +1,4 @@
-package com.igorwojda.showcase.feature.profile.presentation.screen.profile
+package com.igorwojda.showcase.feature.settings.presentation.screen.settings
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.UnderConstructionAnim
 
 @Composable
-fun ProfileScreen() {
+fun SettingsScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
@@ -20,6 +20,6 @@ fun ProfileScreen() {
 
 @Preview
 @Composable
-private fun ProfileScreenPreview() {
-    ProfileScreen()
+private fun SettingsScreenPreview() {
+    SettingsScreen()
 }
