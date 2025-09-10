@@ -1,7 +1,7 @@
 # 💎 Android Showcase 2.0
 
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-2.2-blue.svg)](https://kotlinlang.org)
-[![AGP](https://img.shields.io/badge/AGP-8.13-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-2.x-blue.svg)](https://kotlinlang.org)
+[![AGP](https://img.shields.io/badge/AGP-8.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-8.x-blue?style=flat)](https://gradle.org)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
