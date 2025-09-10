@@ -62,7 +62,6 @@ fun AlbumDetailScreen(
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     Scaffold(
-//        modifier = Modifier.padding(top = Dimen.screenContentPadding),
         topBar = {
             TopAppBar(
                 title = { Text(text = albumName) },
