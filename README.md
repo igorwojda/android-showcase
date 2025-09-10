@@ -21,11 +21,17 @@ The design principles and architectural choices applied in this project are idea
       - [Domain Layer](#domain-layer)
       - [Data Layer](#data-layer)
     - [Data Flow](#data-flow)
-  - [Dependency Management](#dependency-management)
-  - [Logcat debugging](#logcat-debugging)
-  - [CI Pipeline](#ci-pipeline)
-    - [Pull Request Verification](#pull-request-verification)
+  - [Gradle Config](#gradle-config)
+    - [Dependency Management](#dependency-management)
+    - [Convention Plugins](#convention-plugins)
+    - [Type Safe Project Accessors](#type-safe-project-accessors)
+    - [Java Version](#java-version)
+  - [Code Verification](#code-verification)
+    - [Commandline](#commandline)
+    - [CI Pipeline](#ci-pipeline)
+    - [Git Pre Push Hook](#git-pre-push-hook)
   - [Design Decisions](#design-decisions)
+  - [Logcat debugging](#logcat-debugging)
   - [What This Project Does Not Cover?](#what-this-project-does-not-cover)
   - [Getting Started](#getting-started)
     - [Android Studio](#android-studio)
@@ -35,6 +41,7 @@ The design principles and architectural choices applied in this project are idea
   - [Inspiration](#inspiration)
     - [Cheatsheet](#cheatsheet)
     - [Android Projects](#android-projects)
+    - [Other](#other)
   - [Known Issues](#known-issues)
   - [Contribute](#contribute)
   - [Author](#author)
@@ -94,8 +101,7 @@ the libraries are in the stable version unless there is a good reason to use non
   - [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
 - UI
   - Reactive UI
-  - [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern, native UI kit
-    (used for [NavHostActivity](app/src/main/java/com/igorwojda/showcase/app/presentation/NavHostActivity.kt) only)
+  - [Jetpack Compose](https://developer.android.com/jetpack/compose) - modern Android UI kit
   - [Material Design 3](https://m3.material.io/) - application design system providing UI components
   - Theme selection
     - [Dark Theme](https://material.io/develop/android/theming/dark) - dark theme for the app (Android 10+)
@@ -262,11 +268,11 @@ The below diagram presents application data flow when a user interacts with the 
 
 ![app_data_flow](https://github.com/igorwojda/android-showcase/blob/main/misc/image/app_data_flow.png?raw=true)
 
-## Dependency Management
+## Gradle Config
 
-Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used as a
-centralized dependency management third-party dependency coordinates (group, artifact, version) are shared across all
-modules (Gradle projects and subprojects).
+### Dependency Management
+
+Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used as a centralized dependency management third-party dependency coordinates (group, artifact, version) are shared across all modules (Gradle projects and subprojects).
 
 All of the dependencies are stored in the [settings.gradle.kts](./settings.gradle.kts) file (default location).
 Gradle versions catalog consists of a few major sections:
@@ -276,10 +282,15 @@ Gradle versions catalog consists of a few major sections:
 - `[bundles]` - declare dependency bundles (groups)
 - `[plugins]` - declare Gradle plugin dependencies
 
-Each feature module depends on the `feature_base` module, so dependencies are shared without the need to add them
-explicitly in each feature module.
+Each feature module depends on the `feature_base` module, so dependencies are shared without the need to add them explicitly in each feature module.
 
-The project enables the `TYPESAFE_PROJECT_ACCESSORS` experimental Gradle feature to generate type-safe accessors to refer other projects.
+### Convention Plugins
+
+Set of [convention plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) allows to standardze and share module configuration e.g. provide common configuration for all library modules (see [configuration](./buildSrc/src/main/kotlin)). 
+
+### Type Safe Project Accessors
+
+The project enables the `TYPESAFE_PROJECT_ACCESSORS` experimental Gradle feature allowing to reference projects (Gradle Modules) in a save way.
 
 ```kotlin
 // Before
@@ -288,6 +299,48 @@ implementation(project(":feature_album"))
 // After
 implementation(projects.featureAlbum)
 ```
+
+### Java Version
+
+Java version is stored in a [JavaConfig.kt](./buildSrc/src/main/kotlin/config/JavaConfig.kt) file allowing Java and JVM versions to be eaisly changed in the project.
+
+## Code Verification
+
+Code verification is avialable in form of gradle commands:
+- `./gradlew konsistTest:test --rerun-tasks` - checks that source code satisfies Konsist rules
+- `./gradlew lintDebug` - checks that source code satisfies Android lint rules 
+  - (create baseline using `./gradlew lintDebugBaseline`)
+- `./gradlew detektCheck` - checks that sourcecode satisfies detekt rules
+- `./gradlew spotlessCheck` - checks that source code satisfies formatting steps.
+- `./gradlew testDebugUnitTest` - run unit tests
+- `./gradlew connectedCheck` - run UI tests
+- `./gradlew :app:bundleDebug` - create an application bundle
+
+The following checks can be executed locally to make codebase compliant with the rules:
+- `./gradlew detektApply` - applies detekt code formatting rules to sourcecode in-place
+- `./gradlew spotlessApply` - applies code formatting steps to the source code in place.
+
+### Commandline
+
+Every check can be individually executed via command line.
+
+### CI Pipeline
+
+CI is utilizing [GitHub Actions](https://github.com/features/actions) to run above commands. 
+In this project Series of Github workflows is executed (in parallel) for every opened PR, and after merging PR to the `main` branch (to make sure that outdated feature branch code does not break `main` branch code).
+
+The complete GitHub Actions config is located in the [.github/workflows](.github/workflows) folder.
+
+### Git Pre Push Hook
+
+Checks can albo be executed using [Git Hooks](https://git-scm.com/book/ms/v2/Customizing-Git-Git-Hooks) e.g. [Git Pre Push Hook](https://git-scm.com/docs/githooks#_pre_push) running these checks before code is pushed to main repository.
+
+## Design Decisions
+
+Read related articles to have a better understanding of underlying design decisions and various trade-offs.
+
+- [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
+- ...
 
 ## Logcat debugging
 
@@ -298,39 +351,9 @@ To facilitate debuting project contains logs. You can filter logs to understand 
 - `Navigation` - log navigation (`package:mine tag=:Navigation`)
 ![Log Navigation](https://github.com/igorwojda/android-showcase/blob/main/misc/image/log_navigation.png?raw=true)
 
-## CI Pipeline
-
-CI is utilizing [GitHub Actions](https://github.com/features/actions). The complete GitHub Actions config is located in
-the [.github/workflows](.github/workflows) folder.
-
-### Pull Request Verification
-
-Series of workflows run (in parallel) for every opened PR, and after merging PR to the `main` branch:
-
-- `./gradlew konsistTest:test --rerun-tasks` - checks that source code satisfies Konsist rules
-- `./gradlew lintDebug` - checks that source code satisfies Android lint rules 
-  - (create baseline using `./gradlew lintDebugBaseline`)
-- `./gradlew detektCheck` - checks that sourcecode satisfies detekt rules
-- `./gradlew spotlessCheck` - checks that source code satisfies formatting steps.
-- `./gradlew testDebugUnitTest` - run unit tests
-- `./gradlew connectedCheck` - run UI tests
-- `./gradlew :app:bundleDebug` - create an application bundle
-
-The following tasks cab be executed locally to make codebase compliant with the rules:
-- `./gradlew detektApply` - applies detekt code formatting rules to sourcecode in-place
-- `./gradlew spotlessApply` - applies code formatting steps to the source code in place.
-
-## Design Decisions
-
-Read related articles to have a better understanding of underlying design decisions and various trade-offs.
-
-- [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
-- ...
-
 ## What This Project Does Not Cover?
 
-The interface of the app utilizes some of the modern material design components, however, is deliberately kept simple to
-focus on application architecture and project config.
+The interface of the app utilizes some of the modern material design components, however, is deliberately kept simple in some areas to focus on application architecture, tools and project config.
 
 ## Getting Started
 
@@ -406,20 +429,8 @@ Other high-quality projects will help you to find solutions that work for your p
 - In Gradle 8.1 the version catalog type safe API is not available for `buildSrc` directory, so dependencies and
   versions have to be retrieved using type unsafe API:
   - plugins are retrieved using string plugin ids
-  - versions (`kotlinCompilerExtensionVersion`) are retrieved using string version names
-- No usages are found for the `suspended` Kotlin `invoke`
-  operator ([KTIJ-1053](https://youtrack.jetbrains.com/issue/KTIJ-1053/Find-usages-no-convention-usages-for-suspend-invoke-operator))
-- Mockk is unable to mock some methods with implicit `continuation`
-  parameter in the `AlbumListViewModelTest` class ([Issue-957](https://github.com/mockk/mockk/issues/957)), , so test
-  in the `AlbumDetailViewModelTest` was disabled
-- Automatic Kotlin upgrade is disabled in Renovate, because these dependencies have to be updated together with Kotlin:
-  until:
-  - [Jetpack compose compiler](https://developer.android.com/jetpack/androidx/releases/compose-kotlin)
-  - [KSP](https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/)
-- [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by
-  `ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM` yet.
-- ktlint `FileName` rule has to be disabled, because it is not compatible with fie contain a single extension
-  [ISSUE-1657](https://github.com/pinterest/ktlint/issues/1657)
+- Automatic Kotlin upgrade is disabled in Renovate, because these dependencies have to be updated together with [Kotlin-Symbol-Processing (KSP)](https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/)
+- [Dynamic feature module](https://developer.android.com/studio/projects/dynamic-delivery) is not supported by `ANDROID_TEST_USES_UNIFIED_TEST_PLATFORM` yet.
 - Delegate import is not provided when a variable has the same name as
   Delegate ([KTIJ-17403](https://youtrack.jetbrains.com/issue/KTIJ-17403))
 - `androidx.compose.runtime.getValue` and `androidx.compose.runtime.setValue` imports are can't be resolved
