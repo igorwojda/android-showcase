@@ -234,7 +234,11 @@ Components:
 
 The below diagram presents application data flow when a user interacts with the `album list screen`:
 
-![app_data_flow](https://github.com/igorwojda/android-showcase/blob/main/misc/image/app_data_flow.png?raw=true)
+```mermaid
+
+```
+
+![app_data_flow](./misc/image/app_data_flow.png)
 
 ## Gradle Config
 
@@ -334,7 +338,7 @@ The app includes comprehensive logging for development debugging:
 
 Filter logs by tag: `package:mine tag:Navigation`
 
-![Navigation Logs](https://github.com/igorwojda/android-showcase/blob/main/misc/image/log_navigation.png?raw=true)
+![Navigation Logs](./misc/image/log_navigation.png?raw=true)
 
 ## Project Scope & Limitations
 
