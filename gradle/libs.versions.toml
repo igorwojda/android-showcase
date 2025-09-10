@@ -3,7 +3,7 @@ kotlin = "2.2.20"
 
 # KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
-kotlin-symbol-processing = "2.2.10-2.0.2"
+kotlin-symbol-processing = "2.2.20-2.0.2"
 
 # Java and JVM Versions are stored in buildSrc/src/main/kotlin/config/JavaConfig.kt
 
