@@ -7,7 +7,9 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -50,6 +52,10 @@ fun SearchBar(
 
     OutlinedTextField(
         value = textFieldValue,
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .padding(Dimen.spaceM),
         onValueChange = { newValue ->
             textFieldValue = newValue
         },
@@ -82,10 +88,10 @@ fun SearchBar(
                 null
             },
         singleLine = true,
-        modifier =
-            modifier
-                .fillMaxWidth()
-                .padding(Dimen.spaceM),
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+            focusedBorderColor = MaterialTheme.colorScheme.primary,
+        ),
     )
 }
 
