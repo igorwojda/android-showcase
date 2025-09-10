@@ -50,11 +50,6 @@ fun BottomNavigationBar(navController: NavController) {
                 label = {
                     Text(
                         stringResource(item.titleRes),
-                        color =
-                            when (index) {
-                                selectedNavigationIndex -> MaterialTheme.colorScheme.onSurface
-                                else -> MaterialTheme.colorScheme.surface
-                            },
                     )
                 },
                 colors =
@@ -71,17 +66,17 @@ private fun getBottomNavigationItems() =
     listOf(
         NavigationBarItem(
             R.string.albums,
-            R.drawable.ic_round_album_list,
+            R.drawable.ic_music_library,
             NavigationRoute.AlbumList,
         ),
         NavigationBarItem(
             R.string.favorites,
-            R.drawable.ic_round_favorite,
+            R.drawable.ic_favorite,
             NavigationRoute.Favourite,
         ),
         NavigationBarItem(
-            R.string.profile,
-            R.drawable.ic_round_profile,
+            R.string.settings,
+            R.drawable.ic_settings,
             NavigationRoute.Profile,
         ),
     )
