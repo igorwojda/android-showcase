@@ -25,7 +25,6 @@ kotlin {
         .toString()
         .toInt()
 
-    // Version value should match JavaConfig.jvmToolchainVersion
     jvmToolchain(javaVersion)
 }
 
