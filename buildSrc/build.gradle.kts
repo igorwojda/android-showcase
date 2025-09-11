@@ -19,11 +19,12 @@ kotlin {
     val catalogs = extensions.getByType<VersionCatalogsExtension>()
     val libs = catalogs.named("libs")
 
-    val javaVersion = libs
-        .findVersion("java")
-        .get()
-        .toString()
-        .toInt()
+    val javaVersion =
+        libs
+            .findVersion("java")
+            .get()
+            .toString()
+            .toInt()
 
     jvmToolchain(javaVersion)
 }
@@ -32,7 +33,11 @@ fun plugin(plugin: Provider<PluginDependency>) = plugin.map { "${it.pluginId}:${
 
 // region Generate JavaBuildConfig.kt
 tasks.register("generateJavaBuildConfig") {
-    val outputFile = layout.buildDirectory.file("generated/sources/javaBuildConfig/kotlin/config/JavaBuildConfig.kt").get().asFile
+    val outputFile =
+        layout.buildDirectory
+            .file("generated/sources/javaBuildConfig/kotlin/config/JavaBuildConfig.kt")
+            .get()
+            .asFile
     outputs.file(outputFile)
 
     doLast {
@@ -45,11 +50,11 @@ tasks.register("generateJavaBuildConfig") {
             import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
             object JavaBuildConfig {
-                val JAVA_VERSION: JavaVersion = JavaVersion.VERSION_${tomlJavaVersion}
-                val JVM_TARGET: JvmTarget = JvmTarget.JVM_${tomlJavaVersion}
+                val JAVA_VERSION: JavaVersion = JavaVersion.VERSION_$tomlJavaVersion
+                val JVM_TARGET: JvmTarget = JvmTarget.JVM_$tomlJavaVersion
                 const val JVM_TOOLCHAIN_VERSION: Int = $tomlJavaVersion
             }
-            """.trimIndent()
+            """.trimIndent(),
         )
         println("✅ Generated JavaBuildConfig.kt with JAVA_VERSION=$tomlJavaVersion")
     }
@@ -68,12 +73,14 @@ tasks.named("compileKotlin") {
  * (VersionCatalogsExtension is not available at this stage).
  */
 val tomlJavaVersion by lazy {
-    val mainProjectRootDir = gradle.parent?.rootProject?.rootDir
-        ?: throw GradleException("❌ Could not resolve main project rootDir")
+    val mainProjectRootDir =
+        gradle.parent?.rootProject?.rootDir
+            ?: throw GradleException("❌ Could not resolve main project rootDir")
 
     val tomlFile = mainProjectRootDir.resolve("gradle/libs.versions.toml")
 
-    tomlFile.readLines()
+    tomlFile
+        .readLines()
         .firstOrNull { it.trim().startsWith("java") }
         ?.substringAfter("=")
         ?.replace("\"", "")
