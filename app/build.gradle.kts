@@ -1,6 +1,6 @@
 
 import com.android.build.api.dsl.ApplicationDefaultConfig
-import config.JavaConfig
+import config.JavaBuildConfig
 import java.util.Locale
 
 plugins {
@@ -70,13 +70,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaConfig.JAVA_VERSION
-        targetCompatibility = JavaConfig.JAVA_VERSION
+        sourceCompatibility = JavaBuildConfig.JAVA_VERSION
+        targetCompatibility = JavaBuildConfig.JAVA_VERSION
     }
 
     kotlin {
         compilerOptions {
-            jvmTarget = JavaConfig.JVM_TARGET
+            jvmTarget = JavaBuildConfig.JVM_TARGET
         }
     }
 

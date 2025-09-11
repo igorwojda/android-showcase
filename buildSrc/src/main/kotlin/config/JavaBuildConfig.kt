@@ -8,19 +8,19 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
  *
  * ```kotlin
  * compileOptions {
- *     sourceCompatibility = JavaConfig.JAVA_VERSION
- *     targetCompatibility = JavaConfig.JAVA_VERSION
+ *     sourceCompatibility = JavaBuildConfig.JAVA_VERSION
+ *     targetCompatibility = JavaBuildConfig.JAVA_VERSION
  * }
  *
  * kotlin {
  *     compilerOptions {
- *         jvmTarget = JavaConfig.jvmTarget
+ *         jvmTarget = JavaBuildConfig.jvmTarget
  *     }
- *     jvmToolchain(JavaConfig.jvmToolchainVersion)
+ *     jvmToolchain(JavaBuildConfig.jvmToolchainVersion)
  * }
  * ```
  */
-object JavaConfig {
+object JavaBuildConfig {
     // // Version value should match version in buildSrc/build.gradle.kts
     private const val VERSION = 17
 

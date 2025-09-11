@@ -1,4 +1,4 @@
-import config.JavaConfig
+import config.JavaBuildConfig
 
 plugins {
     id("com.android.library")
@@ -39,13 +39,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaConfig.JAVA_VERSION
-        targetCompatibility = JavaConfig.JAVA_VERSION
+        sourceCompatibility = JavaBuildConfig.JAVA_VERSION
+        targetCompatibility = JavaBuildConfig.JAVA_VERSION
     }
 
     kotlin {
         compilerOptions {
-            jvmTarget = JavaConfig.JVM_TARGET
+            jvmTarget = JavaBuildConfig.JVM_TARGET
         }
     }
 

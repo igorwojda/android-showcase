@@ -1,4 +1,4 @@
-import config.JavaConfig
+import config.JavaBuildConfig
 
 plugins {
     id("org.jetbrains.kotlin.android")
@@ -6,5 +6,5 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(JavaConfig.JVM_TOOLCHAIN_VERSION)
+    jvmToolchain(JavaBuildConfig.JVM_TOOLCHAIN_VERSION)
 }
