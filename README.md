@@ -24,7 +24,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
     - [Dependency Management](#dependency-management)
     - [Convention Plugins](#convention-plugins)
     - [Type Safe Project Accessors](#type-safe-project-accessors)
-    - [Java Version](#java-version)
+    - [Unified Java/JVM Version Configuration](#unified-javajvm-version-configuration)
   - [Code Verification](#code-verification)
     - [CI Pipeline](#ci-pipeline)
     - [Pre-push Hooks](#pre-push-hooks)
@@ -280,8 +280,8 @@ Each feature module depends on the `feature_base` module, so dependencies are sh
 - **`library-convention`** - Library module setup with Android configuration  
 - **`kotlin-convention`** - Kotlin compilation settings and toolchain
 - **`test-convention`** - Testing framework setup (JUnit 5, test logging)
-- **`detekt-convention`** - Code analysis setup
-- **`spotless-convention`** - Code formatting setup
+- **`detekt-convention`** - Detekt setup
+- **`spotless-convention`** - Spotless setup
 
 All convention plugins are located in [`buildSrc/src/main/kotlin`](./buildSrc/src/main/kotlin).
 
@@ -297,16 +297,26 @@ implementation(project(":feature:album"))
 implementation(projects.feature.album)
 ```
 
-### Java Version
+### Unified Java/JVM Version Configuration
 
-Java/JVM versions are centralized in [`JavaConfig.kt`](./buildSrc/src/main/kotlin/config/JavaConfig.kt):
+The Java/JVM version is centralized across the project.
+It is defined once in [`libs.versions.toml`](gradle/libs.versions.toml) file under the java entry.
+The `generateJavaBuildConfig` task reads this value and generates a `JavaBuildConfig.kt` file with constants.
+These constants are then used in Gradle convention plugins to configure both Java and Kotlin consistently:
 
 ```kotlin
-object JavaConfig {
-    val JAVA_VERSION: JavaVersion = JavaVersion.VERSION_17
-    val JVM_TARGET: JvmTarget = JvmTarget.JVM_17
-    const val JVM_TOOLCHAIN_VERSION: Int = 17
-}
+ compileOptions {
+     sourceCompatibility = JavaBuildConfig.JAVA_VERSION
+     targetCompatibility = JavaBuildConfig.JAVA_VERSION
+ }
+ 
+ kotlin {
+     compilerOptions {
+         jvmTarget = JavaBuildConfig.jvmTarget
+     }
+
+     jvmToolchain(JavaBuildConfig.jvmToolchainVersion)
+ }
 ```
 
 ## Code Verification
