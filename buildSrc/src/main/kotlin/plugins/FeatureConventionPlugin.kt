@@ -69,6 +69,7 @@ class FeatureConventionPlugin : Plugin<Project> {
 
                 // Compose dependencies
                 add("implementation", platform(libs.compose.bom))
+                add("implementation", libs.bundles.compose)
                 add("debugImplementation", libs.compose.ui.tooling)
                 add("debugImplementation", libs.compose.ui.test.manifest)
 
@@ -83,9 +84,6 @@ class FeatureConventionPlugin : Plugin<Project> {
                 // Room
                 add("implementation", libs.bundles.room)
                 add("ksp", libs.room.compiler)
-
-                add("implementation", platform(libs.compose.bom))
-                add("implementation", libs.bundles.compose)
 
                 // Test dependencies
                 add("testImplementation", project(":library:testUtils"))
