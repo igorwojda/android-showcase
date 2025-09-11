@@ -8,6 +8,4 @@ android {
 
 dependencies {
     implementation(projects.feature.base)
-
-    testImplementation(projects.library.testUtils)
 }

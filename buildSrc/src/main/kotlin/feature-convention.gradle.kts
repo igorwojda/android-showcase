@@ -91,7 +91,9 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
 
-    // Test
+    // Test dependencies
+    testImplementation(project(":library:testUtils"))
+
     testImplementation(libs.bundles.test)
     testRuntimeOnly(libs.junit.jupiter.engine)
 }

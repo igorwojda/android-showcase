@@ -8,6 +8,4 @@ android {
 
 dependencies {
     implementation(projects.feature.base)
-
-    testRuntimeOnly(libs.junit.jupiter.engine)
 }
