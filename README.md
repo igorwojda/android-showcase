@@ -125,7 +125,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** (`com.google.devtools.ksp`) - Kotlin Symbol Processing
 - **[Detekt](https://detekt.dev/)** (`io.gitlab.arturbosch.detekt`) - Static code analysis
 - **[Spotless](https://github.com/diffplug/spotless)** (`com.diffplug.spotless`) - Code formatting
-- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test output
+- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test log output
 
 ## Architecture
 
