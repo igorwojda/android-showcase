@@ -13,6 +13,13 @@ dependencies {
     implementation(plugin(libs.plugins.detekt))
     implementation(plugin(libs.plugins.junit5.android))
     implementation(plugin(libs.plugins.compose))
+
+    /*
+    Makes generated type-safe version catalogs accessors accessible from precompiled script plugins
+    e.g. add("implementation", libs.koin)
+    https://github.com/gradle/gradle/issues/15383
+    */
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 }
 
 kotlin {
