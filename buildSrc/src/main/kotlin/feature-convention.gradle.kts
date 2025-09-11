@@ -66,7 +66,6 @@ dependencies {
     implementation(libs.kotlin)
     implementation(libs.core.ktx)
     implementation(libs.timber)
-    implementation(libs.app.compat)
     implementation(libs.coroutines)
     implementation(libs.material)
     implementation(libs.compose.material)

@@ -25,7 +25,6 @@ room = "2.8.0"
 serialization-json = "1.9.0"
 kotlinx-serialization-converter = "1.0.0"
 timber = "5.0.1"
-app-compat = "1.7.1"
 compose = "1.9.1"
 compose-bom = "2025.09.00"
 material-compose = "1.3.2"
@@ -74,7 +73,6 @@ koin = { module = "io.insert-koin:koin-android" }
 koin-compose = { module = "io.insert-koin:koin-androidx-compose"  }
 koin-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
-app-compat = { module = "androidx.appcompat:appcompat", version.ref = "app-compat" }
 compose-material = { module = "androidx.compose.material3:material3", version.ref = "material-compose" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 lottie = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
