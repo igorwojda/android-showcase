@@ -25,6 +25,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
     - [Convention Plugins](#convention-plugins)
     - [Type Safe Project Accessors](#type-safe-project-accessors)
     - [Unified Java/JVM Version Configuration](#unified-javajvm-version-configuration)
+    - [Generated type-safe version catalogs accessors accessible from `buildSrc`](#generated-type-safe-version-catalogs-accessors-accessible-from-buildsrc)
   - [Code Verification](#code-verification)
     - [CI Pipeline](#ci-pipeline)
     - [Pre-push Hooks](#pre-push-hooks)
@@ -124,7 +125,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** (`com.google.devtools.ksp`) - Kotlin Symbol Processing
 - **[Detekt](https://detekt.dev/)** (`io.gitlab.arturbosch.detekt`) - Static code analysis
 - **[Spotless](https://github.com/diffplug/spotless)** (`com.diffplug.spotless`) - Code formatting
-- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test output
+- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test log output
 
 ## Architecture
 
@@ -262,7 +263,6 @@ The below diagram presents application data flow when a user interacts with the 
 
 Gradle [versions catalog](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) is used as a centralized dependency management third-party dependency coordinates (group, artifact, version) are shared across all modules (Gradle projects and subprojects).
 
-All of the dependencies are stored in the [settings.gradle.kts](./settings.gradle.kts) file (default location).
 Gradle versions catalog consists of a few major sections:
 
 - `[versions]` - declare versions that can be referenced by all dependencies
@@ -270,7 +270,7 @@ Gradle versions catalog consists of a few major sections:
 - `[bundles]` - declare dependency bundles (groups)
 - `[plugins]` - declare Gradle plugin dependencies
 
-Each feature module depends on the `feature_base` module, so dependencies are shared without the need to add them explicitly in each feature module.
+Each module uses convention a plugin, so common dependencies are shared without the need to add them explicitly in each module.
 
 ### Convention Plugins
 
@@ -319,6 +319,14 @@ These constants are then used in Gradle convention plugins to configure both Jav
  }
 ```
 
+### Generated type-safe version catalogs accessors accessible from `buildSrc`
+
+Thanks to `implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))` dependency type-safe version catalogs accessors are accessible from precompiled script plugins - `buildSrc` folder ([info](https://github.com/gradle/gradle/issues/15383)) e.g.
+
+```kotlin
+add("implementation", libs.koin)
+```
+
 ## Code Verification
 
 **Quality Checks:**
@@ -327,9 +335,9 @@ These constants are then used in Gradle convention plugins to configure both Jav
 ./gradlew lintDebug                       # Android lint analysis  
 ./gradlew detektCheck                     # Code complexity & style analysis
 ./gradlew spotlessCheck                   # Code formatting verification
-./gradlew testDebugUnitTest              # Unit test execution
-./gradlew connectedCheck                 # UI test execution (WIP)
-./gradlew :app:bundleDebug               # Production build verification
+./gradlew testDebugUnitTest               # Unit test execution
+./gradlew connectedCheck                  # UI test execution (WIP)
+./gradlew :app:bundleDebug                # Production build verification
 ```
 
 **Auto-fix Commands:**
@@ -374,6 +382,7 @@ This showcase prioritizes **architecture, tooling, and development practices** o
 
 **Prerequisites:**
 - Android Studio Giraffe | 2022.3.1+ 
+- JDK 17+
 - JDK 17+
 - Android SDK 34+
 

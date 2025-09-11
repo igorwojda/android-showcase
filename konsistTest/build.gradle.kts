@@ -1,5 +1,5 @@
 plugins {
-    id("library-convention")
+    id("test-library-convention-plugin")
 }
 
 android {
@@ -11,4 +11,5 @@ dependencies {
 
     testImplementation(projects.library.testUtils)
     testImplementation(libs.bundles.test)
+    testImplementation(libs.viewmodel.ktx)
 }
