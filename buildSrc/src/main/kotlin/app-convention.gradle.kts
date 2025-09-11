@@ -13,26 +13,29 @@ plugins {
 }
 
 android {
-    compileSdk = versions
-        .compile
-        .sdk
-        .get()
-        .toInt()
+    compileSdk =
+        versions
+            .compile
+            .sdk
+            .get()
+            .toInt()
 
     defaultConfig {
         applicationId = "com.igorwojda.showcase"
 
-        minSdk = versions
-            .min
-            .sdk
-            .get()
-            .toInt()
+        minSdk =
+            versions
+                .min
+                .sdk
+                .get()
+                .toInt()
 
-        targetSdk = versions
-            .target
-            .sdk
-            .get()
-            .toInt()
+        targetSdk =
+            versions
+                .target
+                .sdk
+                .get()
+                .toInt()
 
         versionCode = 1
         versionName = "1.0"

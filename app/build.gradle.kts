@@ -9,7 +9,6 @@ plugins {
 android {
     namespace = "com.igorwojda.showcase.app"
 
-
     defaultConfig {
         applicationId = "com.igorwojda.showcase"
 
@@ -33,7 +32,6 @@ dependencies {
     implementation(projects.feature.album)
     implementation(projects.feature.settings)
     implementation(projects.feature.favourite)
-
 }
 
 /*
