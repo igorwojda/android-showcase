@@ -1,4 +1,6 @@
+import config.JavaBuildConfig
 import ext.libs
+import ext.versions
 import gradle.kotlin.dsl.accessors._b8562b6270e8bcefd6bb0323b2a2c4b6.debugImplementation
 import gradle.kotlin.dsl.accessors._b8562b6270e8bcefd6bb0323b2a2c4b6.implementation
 
@@ -10,11 +12,74 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
-/*
-The "lib" is available, because implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location)) dependency
-makes generated type-safe version catalogs accessors accessible from precompiled script plugins
-See https://github.com/gradle/gradle/issues/15383
-*/
+android {
+    compileSdk = versions
+        .compile
+        .sdk
+        .get()
+        .toInt()
+
+    defaultConfig {
+        applicationId = "com.igorwojda.showcase"
+
+        minSdk = versions
+            .min
+            .sdk
+            .get()
+            .toInt()
+
+        targetSdk = versions
+            .target
+            .sdk
+            .get()
+            .toInt()
+
+        versionCode = 1
+        versionName = "1.0"
+        multiDexEnabled = true
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+
+        lint {
+            baseline = file("android-lint-baseline.xml")
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+        compose = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaBuildConfig.JAVA_VERSION
+        targetCompatibility = JavaBuildConfig.JAVA_VERSION
+    }
+
+    kotlin {
+        compilerOptions {
+            jvmTarget = JavaBuildConfig.JVM_TARGET
+        }
+    }
+
+    packaging {
+        resources.excludes +=
+            setOf(
+                "META-INF/AL2.0",
+                "META-INF/licenses/**",
+                "**/attach_hotspot_windows.dll",
+                "META-INF/LGPL2.1",
+            )
+    }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
+}
+
 dependencies {
     implementation(libs.kotlin)
     implementation(libs.core.ktx)
@@ -28,6 +93,8 @@ dependencies {
     implementation(platform(libs.compose.bom))
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
+    implementation(libs.navigation.compose)
+    implementation(libs.navigation.compose)
 
     // Koin
     implementation(platform(libs.koin.bom))

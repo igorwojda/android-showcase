@@ -1,4 +1,5 @@
 import config.JavaBuildConfig
+import ext.versions
 
 plugins {
     id("com.android.library")
@@ -9,23 +10,19 @@ plugins {
 }
 
 android {
-    val catalogs = extensions.getByType<VersionCatalogsExtension>()
-    val libs = catalogs.named("libs")
-
-    compileSdk =
-        libs
-            .findVersion("compile-sdk")
-            .get()
-            .toString()
-            .toInt()
+    compileSdk = versions
+        .compile
+        .sdk
+        .get()
+        .toInt()
 
     defaultConfig {
-        minSdk =
-            libs
-                .findVersion("min-sdk")
-                .get()
-                .toString()
-                .toInt()
+        minSdk = versions
+            .min
+            .sdk
+            .get()
+            .toInt()
+            .toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

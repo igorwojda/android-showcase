@@ -1,6 +1,5 @@
 
 import com.android.build.api.dsl.ApplicationDefaultConfig
-import config.JavaBuildConfig
 import java.util.Locale
 
 plugins {
@@ -8,49 +7,14 @@ plugins {
 }
 
 android {
-    val catalogs = extensions.getByType<VersionCatalogsExtension>()
-    val libs = catalogs.named("libs")
-
     namespace = "com.igorwojda.showcase.app"
 
-    compileSdk =
-        libs
-            .findVersion("compile-sdk")
-            .get()
-            .toString()
-            .toInt()
 
     defaultConfig {
         applicationId = "com.igorwojda.showcase"
 
-        minSdk =
-            libs
-                .findVersion("min-sdk")
-                .get()
-                .toString()
-                .toInt()
-
-        targetSdk =
-            libs
-                .findVersion("target-sdk")
-                .get()
-                .toString()
-                .toInt()
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
         versionCode = 1
         versionName = "0.0.1" // SemVer (Major.Minor.Patch)
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled = true
-
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-
-        lint {
-            baseline = file("android-lint-baseline.xml")
-        }
 
         buildConfigFieldFromGradleProperty("apiBaseUrl")
         buildConfigFieldFromGradleProperty("apiToken")
@@ -62,27 +26,6 @@ android {
             proguardFiles("proguard-android.txt", "proguard-rules.pro")
         }
     }
-
-    buildFeatures {
-        viewBinding = true
-        buildConfig = true
-        compose = true
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaBuildConfig.JAVA_VERSION
-        targetCompatibility = JavaBuildConfig.JAVA_VERSION
-    }
-
-    kotlin {
-        compilerOptions {
-            jvmTarget = JavaBuildConfig.JVM_TARGET
-        }
-    }
-
-    testOptions {
-        unitTests.isReturnDefaultValues = true
-    }
 }
 
 dependencies {
@@ -91,12 +34,6 @@ dependencies {
     implementation(projects.feature.settings)
     implementation(projects.feature.favourite)
 
-    implementation(platform(libs.compose.bom))
-    implementation(libs.navigation.compose)
-
-    // Debug dependencies for Compose Previews
-    debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.compose.ui.test.manifest)
 }
 
 /*

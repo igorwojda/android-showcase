@@ -1,6 +1,7 @@
 
 import config.JavaBuildConfig
 import ext.libs
+import ext.versions
 
 plugins {
     id("com.android.library")
@@ -11,23 +12,19 @@ plugins {
 }
 
 android {
-    val catalogs = extensions.getByType<VersionCatalogsExtension>()
-    val libs = catalogs.named("libs")
-
-    compileSdk =
-        libs
-            .findVersion("compile-sdk")
-            .get()
-            .toString()
-            .toInt()
+    compileSdk = versions
+        .compile
+        .sdk
+        .get()
+        .toInt()
 
     defaultConfig {
-        minSdk =
-            libs
-                .findVersion("min-sdk")
-                .get()
-                .toString()
-                .toInt()
+        minSdk = versions
+            .min
+            .sdk
+            .get()
+            .toInt()
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -65,11 +62,6 @@ android {
     }
 }
 
-/*
-The "lib" is available, because implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location)) dependency
-makes generated type-safe version catalogs accessors accessible from precompiled script plugins
-See https://github.com/gradle/gradle/issues/15383
-*/
 dependencies {
     implementation(libs.kotlin)
     implementation(libs.core.ktx)
