@@ -28,10 +28,16 @@ class FeatureConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                compileSdk = versions.compile.sdk.get().toInt()
+                compileSdk =
+                    versions.compile.sdk
+                        .get()
+                        .toInt()
 
                 defaultConfig {
-                    minSdk = versions.min.sdk.get().toInt()
+                    minSdk =
+                        versions.min.sdk
+                            .get()
+                            .toInt()
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }
@@ -52,12 +58,13 @@ class FeatureConventionPlugin : Plugin<Project> {
                 }
 
                 packaging {
-                    resources.excludes += setOf(
-                        "META-INF/AL2.0",
-                        "META-INF/licenses/**",
-                        "**/attach_hotspot_windows.dll",
-                        "META-INF/LGPL2.1"
-                    )
+                    resources.excludes +=
+                        setOf(
+                            "META-INF/AL2.0",
+                            "META-INF/licenses/**",
+                            "**/attach_hotspot_windows.dll",
+                            "META-INF/LGPL2.1",
+                        )
                 }
             }
 

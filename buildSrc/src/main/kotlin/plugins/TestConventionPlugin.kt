@@ -17,10 +17,11 @@ class TestConventionPlugin : Plugin<Project> {
                 useJUnitPlatform()
 
                 // Enable parallel test execution
-                systemProperties = mapOf(
-                    "junit.jupiter.execution.parallel.enabled" to "true",
-                    "junit.jupiter.execution.parallel.mode.default " to "concurrent"
-                )
+                systemProperties =
+                    mapOf(
+                        "junit.jupiter.execution.parallel.enabled" to "true",
+                        "junit.jupiter.execution.parallel.mode.default " to "concurrent",
+                    )
             }
 
             extensions.configure<TestLoggerExtension> {

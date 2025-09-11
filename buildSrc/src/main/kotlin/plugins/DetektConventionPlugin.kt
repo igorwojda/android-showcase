@@ -11,15 +11,17 @@ class DetektConventionPlugin : Plugin<Project> {
 
             repositories.mavenCentral()
 
-            val detektCheck = tasks.register("detektCheck", Detekt::class.java) {
-                description = "Checks that sourcecode satisfies detekt rules."
-                autoCorrect = false
-            }
+            val detektCheck =
+                tasks.register("detektCheck", Detekt::class.java) {
+                    description = "Checks that sourcecode satisfies detekt rules."
+                    autoCorrect = false
+                }
 
-            val detektApply = tasks.register("detektApply", Detekt::class.java) {
-                description = "Applies code formatting rules to sourcecode in-place."
-                autoCorrect = true
-            }
+            val detektApply =
+                tasks.register("detektApply", Detekt::class.java) {
+                    description = "Applies code formatting rules to sourcecode in-place."
+                    autoCorrect = true
+                }
 
             listOf(detektCheck, detektApply).forEach { taskProvider ->
                 taskProvider.configure {
