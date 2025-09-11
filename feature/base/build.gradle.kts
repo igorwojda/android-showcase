@@ -5,9 +5,3 @@ plugins {
 android {
     namespace = "com.igorwojda.showcase.feature.base"
 }
-
-dependencies {
-    testImplementation(projects.library.testUtils)
-
-    testRuntimeOnly(libs.junit.jupiter.engine)
-}

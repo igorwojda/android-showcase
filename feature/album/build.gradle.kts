@@ -5,7 +5,3 @@ plugins {
 android {
     namespace = "com.igorwojda.showcase.feature.album"
 }
-
-dependencies {
-    implementation(projects.feature.base)
-}

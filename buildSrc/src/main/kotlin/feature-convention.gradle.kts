@@ -64,6 +64,10 @@ android {
 }
 
 dependencies {
+    if (project.path != ":feature:base") {
+        add("implementation", project(":feature:base"))
+    }
+
     implementation(libs.kotlin)
     implementation(libs.core.ktx)
     implementation(libs.timber)

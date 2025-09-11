@@ -5,7 +5,3 @@ plugins {
 android {
     namespace = "com.igorwojda.showcase.feature.favourite"
 }
-
-dependencies {
-    api(projects.feature.base)
-}
