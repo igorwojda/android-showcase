@@ -1,5 +1,5 @@
 plugins {
-    id("feature-convention-plugin")
+    id("showcase.android.feature")
 }
 
 android {

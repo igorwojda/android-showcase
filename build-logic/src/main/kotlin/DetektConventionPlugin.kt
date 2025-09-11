@@ -1,5 +1,3 @@
-package plugins
-
 import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.Plugin
 import org.gradle.api.Project

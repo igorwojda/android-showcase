@@ -1,4 +1,3 @@
-package plugins
 
 import com.android.build.api.dsl.ApplicationExtension
 import config.JavaBuildConfig
@@ -18,28 +17,33 @@ class AppConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.application")
-                apply("kotlin-convention-plugin")
-                apply("spotless-convention-plugin")
+                apply("showcase.jvm.kotlin")
+                apply("showcase.spotless")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
 
             extensions.configure<ApplicationExtension> {
-                compileSdk =
-                    versions.compile.sdk
-                        .get()
-                        .toInt()
+                compileSdk = versions
+                    .findVersion("compile-sdk")
+                    .get()
+                    .toString()
+                    .toInt()
 
                 defaultConfig {
                     applicationId = "com.igorwojda.showcase"
-                    minSdk =
-                        versions.min.sdk
-                            .get()
-                            .toInt()
-                    targetSdk =
-                        versions.target.sdk
-                            .get()
-                            .toInt()
+
+                    minSdk = versions
+                        .findVersion("min-sdk")
+                        .get()
+                        .toString()
+                        .toInt()
+                    targetSdk = versions
+                        .findVersion("target-sdk")
+                        .get()
+                        .toString()
+                        .toInt()
+
                     versionCode = 1
                     versionName = "1.0"
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -81,27 +85,27 @@ class AppConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                implementation(libs.kotlin)
-                implementation(libs.core.ktx)
-                implementation(libs.timber)
-                implementation(libs.coroutines)
-                implementation(libs.material)
-                implementation(libs.compose.material)
+                implementation(libs.findLibrary("kotlin").get())
+                implementation(libs.findLibrary("core-ktx").get())
+                implementation(libs.findLibrary("timber").get())
+                implementation(libs.findLibrary("coroutines").get())
+                implementation(libs.findLibrary("material").get())
+                implementation(libs.findLibrary("compose-material").get())
 
                 // Compose dependencies
-                implementation(platform(libs.compose.bom))
-                implementation(libs.tooling.preview)
-                debugImplementation(libs.compose.ui.tooling)
-                debugImplementation(libs.compose.ui.test.manifest)
-                implementation(libs.navigation.compose)
+                implementation(platform(libs.findLibrary("compose-bom").get()))
+                implementation(libs.findLibrary("tooling-preview").get())
+                debugImplementation(libs.findLibrary("compose-ui-tooling").get())
+                debugImplementation(libs.findLibrary("compose-ui-test-manifest").get())
+                implementation(libs.findLibrary("navigation-compose").get())
 
                 // Koin
-                implementation(platform(libs.koin.bom))
-                implementationBundle(libs.bundles.koin)
+                implementation(platform(libs.findLibrary("koin-bom").get()))
+                implementationBundle(libs.findBundle("koin").get())
 
-                implementationBundle(libs.bundles.retrofit)
-                implementationBundle(libs.bundles.navigation)
-                implementationBundle(libs.bundles.lifecycle)
+                implementationBundle(libs.findBundle("retrofit").get())
+                implementationBundle(libs.findBundle("navigation").get())
+                implementationBundle(libs.findBundle("lifecycle").get())
             }
         }
     }

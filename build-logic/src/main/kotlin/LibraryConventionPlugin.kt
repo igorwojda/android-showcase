@@ -1,5 +1,3 @@
-package plugins
-
 import com.android.build.api.dsl.LibraryExtension
 import config.JavaBuildConfig
 import ext.versions
@@ -7,35 +5,38 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
-class TestConventionLibraryPlugin : Plugin<Project> {
+class LibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
                 apply("com.android.library")
-                apply("kotlin-convention-plugin")
-                apply("test-convention-plugin")
+                apply("showcase.jvm.kotlin")
+                apply("showcase.android.test")
                 apply("com.google.devtools.ksp")
+                apply("org.jetbrains.kotlin.plugin.compose")
             }
 
             extensions.configure<LibraryExtension> {
-                compileSdk =
-                    versions.compile.sdk
-                        .get()
-                        .toInt()
+                compileSdk = versions
+                    .findVersion("compile-sdk")
+                    .get()
+                    .toString()
+                    .toInt()
 
                 defaultConfig {
-                    minSdk =
-                        versions.min.sdk
-                            .get()
-                            .toInt()
+                    minSdk = versions
+                        .findVersion("min-sdk")
+                        .get()
+                        .toString()
+                        .toInt()
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }
 
                 buildFeatures {
-                    viewBinding = false
-                    buildConfig = false
-                    compose = false
+                    viewBinding = true
+                    buildConfig = true
+                    compose = true
                 }
 
                 compileOptions {

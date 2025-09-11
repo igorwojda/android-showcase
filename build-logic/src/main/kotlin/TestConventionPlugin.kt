@@ -1,5 +1,3 @@
-package plugins
-
 import com.adarshr.gradle.testlogger.TestLoggerExtension
 import com.adarshr.gradle.testlogger.theme.ThemeType
 import org.gradle.api.Plugin

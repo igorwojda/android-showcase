@@ -1,5 +1,5 @@
 plugins {
-    id("library-convention-plugin")
+    id("showcase.android.library")
 }
 
 android {

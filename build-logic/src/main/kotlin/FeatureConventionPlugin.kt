@@ -1,5 +1,3 @@
-package plugins
-
 import com.android.build.api.dsl.LibraryExtension
 import config.JavaBuildConfig
 import ext.debugImplementation
@@ -22,23 +20,25 @@ class FeatureConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.library")
-                apply("kotlin-convention-plugin")
-                apply("test-convention-plugin")
+                apply("showcase.jvm.kotlin")
+                apply("showcase.android.test")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
 
             extensions.configure<LibraryExtension> {
-                compileSdk =
-                    versions.compile.sdk
-                        .get()
-                        .toInt()
+                compileSdk = versions
+                    .findVersion("compile-sdk")
+                    .get()
+                    .toString()
+                    .toInt()
 
                 defaultConfig {
-                    minSdk =
-                        versions.min.sdk
-                            .get()
-                            .toInt()
+                    minSdk = versions
+                        .findVersion("min-sdk")
+                        .get()
+                        .toString()
+                        .toInt()
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }
@@ -75,36 +75,35 @@ class FeatureConventionPlugin : Plugin<Project> {
                     implementation(project(":feature:base"))
                 }
 
-                implementation(libs.kotlin)
-                implementation(libs.kotlin)
-                implementation(libs.core.ktx)
-                implementation(libs.timber)
-                implementation(libs.coroutines)
-                implementation(libs.material)
-                implementation(libs.compose.material)
+                implementation(libs.findLibrary("kotlin").get())
+                implementation(libs.findLibrary("core-ktx").get())
+                implementation(libs.findLibrary("timber").get())
+                implementation(libs.findLibrary("coroutines").get())
+                implementation(libs.findLibrary("material").get())
+                implementation(libs.findLibrary("compose-material").get())
 
                 // Compose dependencies
-                implementation(platform(libs.compose.bom))
-                implementationBundle(libs.bundles.compose)
-                debugImplementation(libs.compose.ui.tooling)
-                debugImplementation(libs.compose.ui.test.manifest)
+                implementation(platform(libs.findLibrary("compose-bom").get()))
+                implementationBundle(libs.findBundle("compose").get())
+                debugImplementation(libs.findLibrary("compose-ui-tooling").get())
+                debugImplementation(libs.findLibrary("compose-ui-test-manifest").get())
 
                 // Koin
-                implementation(platform(libs.koin.bom))
-                implementationBundle(libs.bundles.koin)
+                implementation(platform(libs.findLibrary("koin-bom").get()))
+                implementationBundle(libs.findBundle("koin").get())
 
-                implementationBundle(libs.bundles.retrofit)
-                implementationBundle(libs.bundles.navigation)
-                implementationBundle(libs.bundles.lifecycle)
+                implementationBundle(libs.findBundle("retrofit").get())
+                implementationBundle(libs.findBundle("navigation").get())
+                implementationBundle(libs.findBundle("lifecycle").get())
 
                 // Room
-                implementationBundle(libs.bundles.room)
-                ksp(libs.room.compiler)
+                implementationBundle(libs.findBundle("room").get())
+                ksp(libs.findLibrary("room-compiler").get())
 
                 // Test dependencies
                 testImplementation(project(":library:testUtils"))
-                testImplementationBundle(libs.bundles.test)
-                testRuntimeOnly(libs.junit.jupiter.engine)
+                testImplementationBundle(libs.findBundle("test").get())
+                testRuntimeOnly(libs.findLibrary("junit-jupiter-engine").get())
             }
         }
     }

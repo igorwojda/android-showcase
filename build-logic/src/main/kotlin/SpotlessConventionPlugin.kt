@@ -1,5 +1,3 @@
-package plugins
-
 import com.diffplug.gradle.spotless.SpotlessExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -13,7 +11,7 @@ class SpotlessConventionPlugin : Plugin<Project> {
             extensions.configure<SpotlessExtension> {
                 kotlin {
                     target("**/*.kt", "**/*.kts")
-                    targetExclude("**/buildSrc/build/**/*.*")
+                    targetExclude("**/build-logic/build/**/*.*", "**/buildSrc/build/**/*.*")
                     ktlint()
                     endWithNewline()
                 }
