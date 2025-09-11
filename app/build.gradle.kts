@@ -3,7 +3,7 @@ import com.android.build.api.dsl.ApplicationDefaultConfig
 import java.util.Locale
 
 plugins {
-    id("app-convention")
+    id("app-convention-plugin")
 }
 
 android {

@@ -95,3 +95,40 @@ val tomlJavaVersion by lazy {
         ?: error("❌ Could not find 'java' version in libs.versions.toml file")
 }
 // endregion
+
+gradlePlugin {
+    plugins {
+        create("app-convention-plugin") {
+            id = "app-convention-plugin"
+            implementationClass = "plugins.AppConventionPlugin"
+        }
+        create("library-convention-plugin") {
+            id = "library-convention-plugin"
+            implementationClass = "plugins.LibraryConventionPlugin"
+        }
+        create("feature-convention-plugin") {
+            id = "feature-convention-plugin"
+            implementationClass = "plugins.FeatureConventionPlugin"
+        }
+        create("kotlin-convention-plugin") {
+            id = "kotlin-convention-plugin"
+            implementationClass = "plugins.KotlinConventionPlugin"
+        }
+        create("test-convention-plugin") {
+            id = "test-convention-plugin"
+            implementationClass = "plugins.TestConventionPlugin"
+        }
+        create("spotless-convention-plugin") {
+            id = "spotless-convention-plugin"
+            implementationClass = "plugins.SpotlessConventionPlugin"
+        }
+        create("detekt-convention-plugin") {
+            id = "detekt-convention-plugin"
+            implementationClass = "plugins.DetektConventionPlugin"
+        }
+        create("test-library-convention-plugin") {
+            id = "test-library-convention-plugin"
+            implementationClass = "plugins.TestConventionLibraryPlugin"
+        }
+    }
+}
