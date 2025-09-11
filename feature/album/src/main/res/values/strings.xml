@@ -5,4 +5,5 @@
     <string name="search_album_hint">Search Album</string>
     <string name="album">Albums</string>
     <string name="search_albums">Search albums…</string>
+    <string name="feature_album">Album</string>
 </resources>

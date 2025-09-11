@@ -1,4 +1,3 @@
-
 import com.android.build.api.dsl.ApplicationDefaultConfig
 import java.util.Locale
 

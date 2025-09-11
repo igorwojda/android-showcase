@@ -2,6 +2,9 @@ package plugins
 
 import com.android.build.api.dsl.ApplicationExtension
 import config.JavaBuildConfig
+import ext.debugImplementation
+import ext.implementation
+import ext.implementationBundle
 import ext.libs
 import ext.versions
 import org.gradle.api.Plugin
@@ -67,27 +70,27 @@ class AppConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                add("implementation", libs.kotlin)
-                add("implementation", libs.core.ktx)
-                add("implementation", libs.timber)
-                add("implementation", libs.coroutines)
-                add("implementation", libs.material)
-                add("implementation", libs.compose.material)
+                implementation(libs.kotlin)
+                implementation(libs.core.ktx)
+                implementation(libs.timber)
+                implementation(libs.coroutines)
+                implementation(libs.material)
+                implementation(libs.compose.material)
 
                 // Compose dependencies
-                add("implementation", platform(libs.compose.bom))
-                add("implementation", libs.tooling.preview)
-                add("debugImplementation", libs.compose.ui.tooling)
-                add("debugImplementation", libs.compose.ui.test.manifest)
-                add("implementation", libs.navigation.compose)
+                implementation(platform(libs.compose.bom))
+                implementation(libs.tooling.preview)
+                debugImplementation(libs.compose.ui.tooling)
+                debugImplementation(libs.compose.ui.test.manifest)
+                implementation(libs.navigation.compose)
 
                 // Koin
-                add("implementation", platform(libs.koin.bom))
-                add("implementation", libs.bundles.koin)
+                implementation(platform(libs.koin.bom))
+                implementationBundle(libs.bundles.koin)
 
-                add("implementation", libs.bundles.retrofit)
-                add("implementation", libs.bundles.navigation)
-                add("implementation", libs.bundles.lifecycle)
+                implementationBundle(libs.bundles.retrofit)
+                implementationBundle(libs.bundles.navigation)
+                implementationBundle(libs.bundles.lifecycle)
             }
         }
     }

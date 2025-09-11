@@ -2,7 +2,14 @@ package plugins
 
 import com.android.build.api.dsl.LibraryExtension
 import config.JavaBuildConfig
+import ext.debugImplementation
+import ext.implementation
+import ext.implementationBundle
+import ext.ksp
 import ext.libs
+import ext.testImplementation
+import ext.testImplementationBundle
+import ext.testRuntimeOnly
 import ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -57,38 +64,39 @@ class FeatureConventionPlugin : Plugin<Project> {
             dependencies {
                 // Add feature:base dependency only for non-base feature modules
                 if (project.path != ":feature:base") {
-                    add("implementation", project(":feature:base"))
+                    implementation(project(":feature:base"))
                 }
 
-                add("implementation", libs.kotlin)
-                add("implementation", libs.core.ktx)
-                add("implementation", libs.timber)
-                add("implementation", libs.coroutines)
-                add("implementation", libs.material)
-                add("implementation", libs.compose.material)
+                implementation(libs.kotlin)
+                implementation(libs.kotlin)
+                implementation(libs.core.ktx)
+                implementation(libs.timber)
+                implementation(libs.coroutines)
+                implementation(libs.material)
+                implementation(libs.compose.material)
 
                 // Compose dependencies
-                add("implementation", platform(libs.compose.bom))
-                add("implementation", libs.bundles.compose)
-                add("debugImplementation", libs.compose.ui.tooling)
-                add("debugImplementation", libs.compose.ui.test.manifest)
+                implementation(platform(libs.compose.bom))
+                implementationBundle(libs.bundles.compose)
+                debugImplementation(libs.compose.ui.tooling)
+                debugImplementation(libs.compose.ui.test.manifest)
 
                 // Koin
-                add("implementation", platform(libs.koin.bom))
-                add("implementation", libs.bundles.koin)
+                implementation(platform(libs.koin.bom))
+                implementationBundle(libs.bundles.koin)
 
-                add("implementation", libs.bundles.retrofit)
-                add("implementation", libs.bundles.navigation)
-                add("implementation", libs.bundles.lifecycle)
+                implementationBundle(libs.bundles.retrofit)
+                implementationBundle(libs.bundles.navigation)
+                implementationBundle(libs.bundles.lifecycle)
 
                 // Room
-                add("implementation", libs.bundles.room)
-                add("ksp", libs.room.compiler)
+                implementationBundle(libs.bundles.room)
+                ksp(libs.room.compiler)
 
                 // Test dependencies
-                add("testImplementation", project(":library:testUtils"))
-                add("testImplementation", libs.bundles.test)
-                add("testRuntimeOnly", libs.junit.jupiter.engine)
+                testImplementation(project(":library:testUtils"))
+                testImplementationBundle(libs.bundles.test)
+                testRuntimeOnly(libs.junit.jupiter.engine)
             }
         }
     }
