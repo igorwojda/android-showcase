@@ -62,7 +62,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Kotlin 2.2+](https://kotlinlang.org/)** - Modern, expressive programming language
   - **[Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)** - Asynchronous programming
   - **[Flow](https://kotlinlang.org/docs/flow.html)** - Reactive data streams
-  - **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** - Kotlin Symbol Processing
+  - **[KSP (Kotlin Symbol Processing)](https://kotlinlang.org/docs/ksp-overview.html)** - Kotlin Symbol Processing
   - **[Serialization](https://kotlinlang.org/docs/serialization.html)** - JSON parsing
 
 **Android Jetpack:**
@@ -81,7 +81,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 **Architecture:**
 - **[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)** - Separation of concerns with defined layers
 - **Single Activity Architecture** - Modern navigation approach
-- **MVVM + MVI** - Reactive presentation layer pattern
+- **MVVM + MVI** - Reactive presentation layer pattern providing common UI state.
 - **Modular Design** - Feature-based modules for scalability
 
 **UI & Design:**
@@ -92,12 +92,12 @@ Built with modern Android development tools and libraries, prioritizing, project
 
 **Testing:**
 - **[JUnit 5](https://junit.org/junit5/)** - Modern testing framework
-- **[Konsist](https://docs.konsist.lemonappdev.com/)** - Architecture and coding convention tests
 - **[Mockk](https://mockk.io/)** - Kotlin-first mocking library
 - **[Kluent](https://github.com/MarkusAmshove/Kluent)** - Fluent assertion library
 - **[Espresso](https://developer.android.com/training/testing/espresso)** - UI testing (WIP)
 
 **Code Quality:**
+- **[Konsist](https://docs.konsist.lemonappdev.com/)** - Architecture and code structure convention tests
 - **[Ktlint](https://github.com/pinterest/ktlint)** - Kotlin code formatting
 - **[Detekt](https://github.com/arturbosch/detekt)** - Static analysis and complexity checks
 - **[Android Lint](http://tools.android.com/tips/lint)** - Android-specific code analysis
@@ -107,8 +107,24 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)** - Type-safe build scripts
 - **[Version Catalogs](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog)** - Centralized dependency management
 - **[Convention Plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html)** - Shared build logic
-- **[GitHub Actions](https://github.com/features/actions)** - Automated CI/CD pipeline
 - **[Renovate](https://github.com/renovatebot/renovate)** - Automated dependency updates
+
+**GitHub Actions:**
+- **[Check](.github/workflows/check.yml)** - CI pipeline with build, lint, test, and code quality checks
+- **[Auto Approve](.github/workflows/auto-approve.yml)** - Auto-approval for trusted bot and maintainer PRs
+- **[Claude Code](.github/workflows/claude.yml)** - AI-powered code assistance and review
+- **[Claude Code Review](.github/workflows/claude-code-review.yml)** - Automated PR reviews using Claude
+
+**Gradle Plugins:**
+- **[Android Application](https://developer.android.com/build/releases/gradle-plugin)** (`com.android.application`) - Android app module configuration
+- **[Android Library](https://developer.android.com/build/releases/gradle-plugin)** (`com.android.library`) - Android library module configuration
+- **[Kotlin Android](https://kotlinlang.org/docs/gradle.html)** (`org.jetbrains.kotlin.android`) - Kotlin compilation for Android
+- **[Kotlin Serialization](https://kotlinlang.org/docs/serialization.html)** (`org.jetbrains.kotlin.plugin.serialization`) - JSON serialization support
+- **[Kotlin Compose Compiler](https://developer.android.com/jetpack/androidx/releases/compose-kotlin)** (`org.jetbrains.kotlin.plugin.compose`) - Compose compiler plugin
+- **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** (`com.google.devtools.ksp`) - Kotlin Symbol Processing
+- **[Detekt](https://detekt.dev/)** (`io.gitlab.arturbosch.detekt`) - Static code analysis
+- **[Spotless](https://github.com/diffplug/spotless)** (`com.diffplug.spotless`) - Code formatting
+- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test output
 
 ## Architecture
 
@@ -264,8 +280,8 @@ Each feature module depends on the `feature_base` module, so dependencies are sh
 - **`library-convention`** - Library module setup with Android configuration  
 - **`kotlin-convention`** - Kotlin compilation settings and toolchain
 - **`test-convention`** - Testing framework setup (JUnit 5, test logging)
-- **`detekt-convention`** - Code analysis rules
-- **`spotless-convention`** - Code formatting enforcement
+- **`detekt-convention`** - Code analysis setup
+- **`spotless-convention`** - Code formatting setup
 
 All convention plugins are located in [`buildSrc/src/main/kotlin`](./buildSrc/src/main/kotlin).
 
