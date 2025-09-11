@@ -31,10 +31,6 @@ kotlin {
 
 fun plugin(plugin: Provider<PluginDependency>) = plugin.map { "${it.pluginId}:${it.pluginId}.gradle.plugin:${it.version}" }
 
-val javaVersion: String = checkNotNull(providers.gradleProperty("javaVersion").orNull) {
-    "Set javaVersion property in gradle.properties"
-}
-
 // region Generate JavaBuildConfig.kt
 tasks.register("generateJavaBuildConfig") {
     val outputFile = layout.buildDirectory.file("generated/sources/javaBuildConfig/kotlin/config/JavaBuildConfig.kt").get().asFile
@@ -44,36 +40,19 @@ tasks.register("generateJavaBuildConfig") {
         outputFile.parentFile.mkdirs()
         outputFile.writeText(
             """
-            /**
-             * Centralized place for Java/Kotlin version configuration
-             *
-             * ```kotlin
-             * compileOptions {
-             *     sourceCompatibility = JavaBuildConfig.JAVA_VERSION
-             *     targetCompatibility = JavaBuildConfig.JAVA_VERSION
-             * }
-             *
-             * kotlin {
-             *     compilerOptions {
-             *         jvmTarget = JavaBuildConfig.jvmTarget
-             *     }
-             *     jvmToolchain(JavaBuildConfig.jvmToolchainVersion)
-             * }
-             * ```
-             */    
             package config
 
             import org.gradle.api.JavaVersion
             import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
             object JavaBuildConfig {
-                val JAVA_VERSION: JavaVersion = JavaVersion.VERSION_${javaVersion}
-                val JVM_TARGET: JvmTarget = JvmTarget.JVM_${javaVersion}
-                const val JVM_TOOLCHAIN_VERSION: Int = $javaVersion
+                val JAVA_VERSION: JavaVersion = JavaVersion.VERSION_${tomlJavaVersion}
+                val JVM_TARGET: JvmTarget = JvmTarget.JVM_${tomlJavaVersion}
+                const val JVM_TOOLCHAIN_VERSION: Int = $tomlJavaVersion
             }
             """.trimIndent()
         )
-        println("✅ Generated JavaBuildConfig.kt with JAVA_VERSION=$javaVersion")
+        println("✅ Generated JavaBuildConfig.kt with JAVA_VERSION=$tomlJavaVersion")
     }
 }
 
@@ -83,5 +62,23 @@ sourceSets.main {
 
 tasks.named("compileKotlin") {
     dependsOn("generateJavaBuildConfig")
+}
+
+/**
+ * Reads the Java version from the `gradle/libs.versions.toml` file.
+ * (VersionCatalogsExtension is not available at this stage).
+ */
+val tomlJavaVersion by lazy {
+    val mainProjectRootDir = gradle.parent?.rootProject?.rootDir
+        ?: throw GradleException("❌ Could not resolve main project rootDir")
+
+    val tomlFile = mainProjectRootDir.resolve("gradle/libs.versions.toml")
+
+    tomlFile.readLines()
+        .firstOrNull { it.trim().startsWith("java") }
+        ?.substringAfter("=")
+        ?.replace("\"", "")
+        ?.trim()
+        ?: error("❌ Could not find 'java' version in libs.versions.toml file")
 }
 // endregion
