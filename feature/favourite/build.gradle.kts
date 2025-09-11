@@ -10,7 +10,4 @@ dependencies {
     api(projects.feature.base)
 
     testImplementation(projects.library.testUtils)
-    testImplementation(libs.bundles.test)
-
-    testRuntimeOnly(libs.junit.jupiter.engine)
 }

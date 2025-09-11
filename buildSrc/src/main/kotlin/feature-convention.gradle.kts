@@ -83,8 +83,15 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.navigation)
     implementation(libs.bundles.lifecycle)
+
+    // Room
     implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+
+    // Test
+    testImplementation(libs.bundles.test)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
