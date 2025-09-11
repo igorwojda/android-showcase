@@ -30,3 +30,58 @@ kotlin {
 }
 
 fun plugin(plugin: Provider<PluginDependency>) = plugin.map { "${it.pluginId}:${it.pluginId}.gradle.plugin:${it.version}" }
+
+val javaVersion: String = checkNotNull(providers.gradleProperty("javaVersion").orNull) {
+    "Set javaVersion property in gradle.properties"
+}
+
+// region Generate JavaBuildConfig.kt
+tasks.register("generateJavaBuildConfig") {
+    val outputFile = layout.buildDirectory.file("generated/sources/javaBuildConfig/kotlin/config/JavaBuildConfig.kt").get().asFile
+    outputs.file(outputFile)
+
+    doLast {
+        outputFile.parentFile.mkdirs()
+        outputFile.writeText(
+            """
+            /**
+             * Centralized place for Java/Kotlin version configuration
+             *
+             * ```kotlin
+             * compileOptions {
+             *     sourceCompatibility = JavaBuildConfig.JAVA_VERSION
+             *     targetCompatibility = JavaBuildConfig.JAVA_VERSION
+             * }
+             *
+             * kotlin {
+             *     compilerOptions {
+             *         jvmTarget = JavaBuildConfig.jvmTarget
+             *     }
+             *     jvmToolchain(JavaBuildConfig.jvmToolchainVersion)
+             * }
+             * ```
+             */    
+            package config
+
+            import org.gradle.api.JavaVersion
+            import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+            object JavaBuildConfig {
+                val JAVA_VERSION: JavaVersion = JavaVersion.VERSION_${javaVersion}
+                val JVM_TARGET: JvmTarget = JvmTarget.JVM_${javaVersion}
+                const val JVM_TOOLCHAIN_VERSION: Int = $javaVersion
+            }
+            """.trimIndent()
+        )
+        println("✅ Generated JavaBuildConfig.kt with JAVA_VERSION=$javaVersion")
+    }
+}
+
+sourceSets.main {
+    java.srcDir(layout.buildDirectory.dir("generated/sources/javaBuildConfig/kotlin"))
+}
+
+tasks.named("compileKotlin") {
+    dependsOn("generateJavaBuildConfig")
+}
+// endregion
