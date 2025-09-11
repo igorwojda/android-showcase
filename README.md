@@ -319,14 +319,6 @@ These constants are then used in Gradle convention plugins to configure both Jav
  }
 ```
 
-```kotlin
-object JavaBuildonfig {
-    val JAVA_VERSION: JavaVersion = JavaVersion.VERSION_17
-    val JVM_TARGET: JvmTarget = JvmTarget.JVM_17
-    const val JVM_TOOLCHAIN_VERSION: Int = 17
-}
-```
-
 ## Code Verification
 
 **Quality Checks:**
