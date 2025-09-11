@@ -335,9 +335,9 @@ add("implementation", libs.koin)
 ./gradlew lintDebug                       # Android lint analysis  
 ./gradlew detektCheck                     # Code complexity & style analysis
 ./gradlew spotlessCheck                   # Code formatting verification
-./gradlew testDebugUnitTest              # Unit test execution
-./gradlew connectedCheck                 # UI test execution (WIP)
-./gradlew :app:bundleDebug               # Production build verification
+./gradlew testDebugUnitTest               # Unit test execution
+./gradlew connectedCheck                  # UI test execution (WIP)
+./gradlew :app:bundleDebug                # Production build verification
 ```
 
 **Auto-fix Commands:**
