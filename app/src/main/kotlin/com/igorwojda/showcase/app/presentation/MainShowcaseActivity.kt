@@ -26,9 +26,9 @@ class MainShowcaseActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun getColorScheme() : ColorScheme {
-        val darkTheme: Boolean
-        = isSystemInDarkTheme()
+    private fun getColorScheme(): ColorScheme {
+        val darkTheme: Boolean =
+            isSystemInDarkTheme()
         val dynamicColor: Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
         val context = LocalContext.current
