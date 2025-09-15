@@ -2,47 +2,37 @@ package ext
 
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project
-import org.gradle.api.artifacts.ExternalModuleDependencyBundle
-import org.gradle.api.artifacts.MinimalExternalModuleDependency
 import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 
-fun DependencyHandlerScope.implementation(provider: Provider<MinimalExternalModuleDependency>) {
+fun DependencyHandlerScope.implementation(provider: Provider<out Any>) {
     add("implementation", provider)
 }
 
-fun DependencyHandlerScope.implementation(provider: Project) {
-    add("implementation", provider)
+fun DependencyHandlerScope.implementation(project: Project) {
+    add("implementation", project)
 }
 
 fun DependencyHandlerScope.implementation(provider: LibrariesForLibs.KotlinLibraryAccessors) {
     add("implementation", provider)
 }
 
-fun DependencyHandlerScope.implementationBundle(bundle: Provider<ExternalModuleDependencyBundle>) {
-    add("implementation", bundle)
-}
-
-fun DependencyHandlerScope.debugImplementation(provider: Provider<MinimalExternalModuleDependency>) {
+fun DependencyHandlerScope.debugImplementation(provider: Provider<out Any>) {
     add("debugImplementation", provider)
 }
 
-fun DependencyHandlerScope.ksp(provider: Provider<MinimalExternalModuleDependency>) {
+fun DependencyHandlerScope.ksp(provider: Provider<out Any>) {
     add("ksp", provider)
 }
 
-fun DependencyHandlerScope.testImplementation(provider: Provider<MinimalExternalModuleDependency>) {
+fun DependencyHandlerScope.testImplementation(project: Project) {
+    add("testImplementation", project)
+}
+
+fun DependencyHandlerScope.testImplementation(provider: Provider<out Any>) {
     add("testImplementation", provider)
 }
 
-fun DependencyHandlerScope.testImplementationBundle(bundle: Provider<ExternalModuleDependencyBundle>) {
-    add("testImplementation", bundle)
-}
-
-fun DependencyHandlerScope.testImplementation(provider: Project) {
-    add("testImplementation", provider)
-}
-
-fun DependencyHandlerScope.testRuntimeOnly(provider: Provider<MinimalExternalModuleDependency>) {
+fun DependencyHandlerScope.testRuntimeOnly(provider: Provider<out Any>) {
     add("testRuntimeOnly", provider)
 }

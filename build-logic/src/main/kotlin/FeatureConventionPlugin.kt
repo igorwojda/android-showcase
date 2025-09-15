@@ -3,11 +3,9 @@ import com.android.build.api.dsl.LibraryExtension
 import config.JavaBuildConfig
 import ext.debugImplementation
 import ext.implementation
-import ext.implementationBundle
 import ext.ksp
 import ext.libs
 import ext.testImplementation
-import ext.testImplementationBundle
 import ext.testRuntimeOnly
 import ext.versions
 import org.gradle.api.Plugin
@@ -86,25 +84,25 @@ class FeatureConventionPlugin : Plugin<Project> {
 
                 // Compose dependencies
                 implementation(platform(libs.compose.bom))
-                implementationBundle(libs.bundles.compose)
+                implementation(libs.bundles.compose)
                 debugImplementation(libs.compose.ui.tooling)
                 debugImplementation(libs.compose.ui.test.manifest)
 
                 // Koin
                 implementation(platform(libs.koin.bom))
-                implementationBundle(libs.bundles.koin)
+                implementation(libs.bundles.koin)
 
-                implementationBundle(libs.bundles.retrofit)
-                implementationBundle(libs.bundles.navigation)
-                implementationBundle(libs.bundles.lifecycle)
+                implementation(libs.bundles.retrofit)
+                implementation(libs.bundles.navigation)
+                implementation(libs.bundles.lifecycle)
 
                 // Room
-                implementationBundle(libs.bundles.room)
+                implementation(libs.bundles.room)
                 ksp(libs.room.compiler)
 
                 // Test dependencies
                 testImplementation(project(":library:testUtils"))
-                testImplementationBundle(libs.bundles.test)
+                testImplementation(libs.bundles.test)
                 testRuntimeOnly(libs.junit.jupiter.engine)
             }
         }

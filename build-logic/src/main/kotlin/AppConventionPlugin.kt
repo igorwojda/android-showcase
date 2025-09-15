@@ -3,7 +3,6 @@ import com.android.build.api.dsl.ApplicationExtension
 import config.JavaBuildConfig
 import ext.debugImplementation
 import ext.implementation
-import ext.implementationBundle
 import ext.libs
 import ext.versions
 import org.gradle.api.Plugin
@@ -104,11 +103,11 @@ class AppConventionPlugin : Plugin<Project> {
 
                 // Koin
                 implementation(platform(libs.koin.bom))
-                implementationBundle(libs.bundles.koin)
+                implementation(libs.bundles.koin)
 
-                implementationBundle(libs.bundles.retrofit)
-                implementationBundle(libs.bundles.navigation)
-                implementationBundle(libs.bundles.lifecycle)
+                implementation(libs.bundles.retrofit)
+                implementation(libs.bundles.navigation)
+                implementation(libs.bundles.lifecycle)
             }
         }
     }
