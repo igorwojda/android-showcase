@@ -6,16 +6,22 @@ plugins {
 
 group = "com.igorwojda.showcase.buildlogic"
 
-// Configure the build-logic plugins to target JDK from version catalog
-// This matches the JDK used to build the project, and is not related to what is running on device.
-val javaVersion = libs.versions.java.get().toInt()
+/*
+Configure the build-logic plugins to target JDK from version catalog
+This matches the JDK used to build the project, and is not related to what is running on device.
+*/
+val javaVersion = libs
+    .versions
+    .java
+    .get()
+
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.fromTarget(javaVersion.toString())
+        jvmTarget = JvmTarget.fromTarget(javaVersion)
     }
 
-    jvmToolchain(javaVersion)
+    jvmToolchain(javaVersion.toInt())
 }
 
 dependencies {
@@ -39,35 +45,35 @@ tasks {
 gradlePlugin {
     plugins {
         register("appConvention") {
-            id = "showcase.android.application"
+            id = "com.igorwojda.showcase.buildlogic.application"
             implementationClass = "AppConventionPlugin"
         }
         register("featureConvention") {
-            id = "showcase.android.feature"
+            id = "com.igorwojda.showcase.buildlogic.feature"
             implementationClass = "FeatureConventionPlugin"
         }
         register("libraryConvention") {
-            id = "showcase.android.library"
+            id = "com.igorwojda.showcase.buildlogic.library"
             implementationClass = "LibraryConventionPlugin"
         }
         register("kotlinConvention") {
-            id = "showcase.jvm.kotlin"
+            id = "com.igorwojda.showcase.buildlogic.kotlin"
             implementationClass = "KotlinConventionPlugin"
         }
         register("testConvention") {
-            id = "showcase.android.test"
+            id = "com.igorwojda.showcase.buildlogic.test"
             implementationClass = "TestConventionPlugin"
         }
         register("testLibraryConvention") {
-            id = "showcase.android.test.library"
+            id = "com.igorwojda.showcase.buildlogic.android.test.library"
             implementationClass = "TestConventionLibraryPlugin"
         }
         register("spotlessConvention") {
-            id = "showcase.spotless"
+            id = "com.igorwojda.showcase.buildlogic.spotless"
             implementationClass = "SpotlessConventionPlugin"
         }
         register("detektConvention") {
-            id = "showcase.detekt"
+            id = "com.igorwojda.showcase.buildlogic.detekt"
             implementationClass = "DetektConventionPlugin"
         }
     }

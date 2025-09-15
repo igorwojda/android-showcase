@@ -1,5 +1,5 @@
 plugins {
-    id("showcase.android.feature")
+    id("com.igorwojda.showcase.buildlogic.feature")
 }
 
 android {

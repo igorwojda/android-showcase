@@ -1,4 +1,4 @@
 plugins {
-    id("showcase.detekt")
-    id("showcase.spotless")
+    id("com.igorwojda.showcase.buildlogic.detekt")
+    id("com.igorwojda.showcase.buildlogic.spotless")
 }

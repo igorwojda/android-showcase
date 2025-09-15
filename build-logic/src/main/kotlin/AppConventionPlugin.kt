@@ -17,8 +17,8 @@ class AppConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.application")
-                apply("showcase.jvm.kotlin")
-                apply("showcase.spotless")
+                apply("com.igorwojda.showcase.buildlogic.kotlin")
+                apply("com.igorwojda.showcase.buildlogic.spotless")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }

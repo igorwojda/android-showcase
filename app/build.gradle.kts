@@ -2,7 +2,7 @@ import com.android.build.api.dsl.ApplicationDefaultConfig
 import java.util.Locale
 
 plugins {
-    id("showcase.android.application")
+    id("com.igorwojda.showcase.buildlogic.application")
 }
 
 android {
