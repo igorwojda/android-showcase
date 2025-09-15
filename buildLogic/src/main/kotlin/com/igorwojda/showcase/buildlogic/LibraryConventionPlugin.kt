@@ -1,8 +1,9 @@
-package plugins
+package com.igorwojda.showcase.buildlogic
 
 import com.android.build.api.dsl.LibraryExtension
-import config.JavaBuildConfig
-import ext.versions
+import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
+import com.igorwojda.showcase.buildlogic.ext.excludeLicenseAndMetaFiles
+import com.igorwojda.showcase.buildlogic.ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -12,23 +13,28 @@ class LibraryConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.library")
-                apply("kotlin-convention-plugin")
-                apply("test-convention-plugin")
+                apply("com.igorwojda.showcase.convention.kotlin")
+                apply("com.igorwojda.showcase.convention.test")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
 
             extensions.configure<LibraryExtension> {
                 compileSdk =
-                    versions.compile.sdk
+                    versions
+                        .compile
+                        .sdk
                         .get()
                         .toInt()
 
                 defaultConfig {
                     minSdk =
-                        versions.min.sdk
+                        versions
+                            .min
+                            .sdk
                             .get()
                             .toInt()
+
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }
@@ -49,13 +55,7 @@ class LibraryConventionPlugin : Plugin<Project> {
                 }
 
                 packaging {
-                    resources.excludes +=
-                        setOf(
-                            "META-INF/AL2.0",
-                            "META-INF/licenses/**",
-                            "**/attach_hotspot_windows.dll",
-                            "META-INF/LGPL2.1",
-                        )
+                    excludeLicenseAndMetaFiles()
                 }
             }
         }

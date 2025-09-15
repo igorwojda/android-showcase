@@ -1,4 +1,4 @@
-package plugins
+package com.igorwojda.showcase.buildlogic
 
 import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.Plugin

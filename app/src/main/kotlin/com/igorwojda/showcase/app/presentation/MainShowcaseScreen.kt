@@ -18,7 +18,6 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumL
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
 import com.igorwojda.showcase.feature.settings.presentation.screen.settings.SettingsScreen
 import timber.log.Timber
-import kotlin.reflect.jvm.jvmName
 
 @Composable
 fun MainShowcaseScreen() {
@@ -87,7 +86,7 @@ private fun addOnDestinationChangedListener(navController: NavController) {
                 destination: NavDestination,
                 arguments: Bundle?,
             ) {
-                val className = NavigationRoute::class.jvmName
+                val className = NavigationRoute::class.simpleName
                 val destinationRoute = destination.route?.substringAfter("$className.") ?: "Unknown"
                 val destinationId = destination.id
                 val destinationLabel = destination.label ?: "No Label"
@@ -103,6 +102,7 @@ private fun addOnDestinationChangedListener(navController: NavController) {
                         arguments?.let { bundle ->
                             if (!bundle.isEmpty) {
                                 appendLine("  Arguments:")
+
                                 for (key in bundle.keySet()) {
                                     val value = bundle.get(key)
                                     appendLine("\t\t$key: $value")

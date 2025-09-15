@@ -1,5 +1,5 @@
 plugins {
-    id("feature-convention-plugin")
+    id("com.igorwojda.showcase.convention.feature")
 }
 
 android {

@@ -1,45 +1,54 @@
-package plugins
+package com.igorwojda.showcase.buildlogic
 
 import com.android.build.api.dsl.ApplicationExtension
-import config.JavaBuildConfig
-import ext.debugImplementation
-import ext.implementation
-import ext.implementationBundle
-import ext.libs
-import ext.versions
+import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
+import com.igorwojda.showcase.buildlogic.ext.debugImplementation
+import com.igorwojda.showcase.buildlogic.ext.excludeLicenseAndMetaFiles
+import com.igorwojda.showcase.buildlogic.ext.implementation
+import com.igorwojda.showcase.buildlogic.ext.libs
+import com.igorwojda.showcase.buildlogic.ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 @Suppress("detekt.LongMethod")
-class AppConventionPlugin : Plugin<Project> {
+class ApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
                 apply("com.android.application")
-                apply("kotlin-convention-plugin")
-                apply("spotless-convention-plugin")
+                apply("com.igorwojda.showcase.convention.kotlin")
+                apply("com.igorwojda.showcase.convention.spotless")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
 
             extensions.configure<ApplicationExtension> {
                 compileSdk =
-                    versions.compile.sdk
+                    versions
+                        .compile
+                        .sdk
                         .get()
                         .toInt()
 
                 defaultConfig {
                     applicationId = "com.igorwojda.showcase"
+
                     minSdk =
-                        versions.min.sdk
+                        versions
+                            .min
+                            .sdk
                             .get()
                             .toInt()
+
                     targetSdk =
-                        versions.target.sdk
+                        versions
+                            .target
+                            .sdk
                             .get()
                             .toInt()
+
                     versionCode = 1
                     versionName = "1.0"
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -62,13 +71,7 @@ class AppConventionPlugin : Plugin<Project> {
                 }
 
                 packaging {
-                    resources.excludes +=
-                        setOf(
-                            "META-INF/AL2.0",
-                            "META-INF/licenses/**",
-                            "**/attach_hotspot_windows.dll",
-                            "META-INF/LGPL2.1",
-                        )
+                    excludeLicenseAndMetaFiles()
                 }
 
                 testOptions {
@@ -81,7 +84,7 @@ class AppConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                implementation(libs.kotlin)
+                implementation(libs.kotlin.reflect)
                 implementation(libs.core.ktx)
                 implementation(libs.timber)
                 implementation(libs.coroutines)
@@ -97,11 +100,11 @@ class AppConventionPlugin : Plugin<Project> {
 
                 // Koin
                 implementation(platform(libs.koin.bom))
-                implementationBundle(libs.bundles.koin)
+                implementation(libs.bundles.koin)
 
-                implementationBundle(libs.bundles.retrofit)
-                implementationBundle(libs.bundles.navigation)
-                implementationBundle(libs.bundles.lifecycle)
+                implementation(libs.bundles.retrofit)
+                implementation(libs.bundles.navigation)
+                implementation(libs.bundles.lifecycle)
             }
         }
     }

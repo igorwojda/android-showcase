@@ -11,6 +11,8 @@ include(
 )
 
 pluginManagement {
+    includeBuild("buildLogic")
+
     repositories {
         gradlePluginPortal()
         google()

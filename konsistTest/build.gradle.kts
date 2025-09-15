@@ -1,5 +1,5 @@
 plugins {
-    id("test-library-convention-plugin")
+    id("com.igorwojda.showcase.convention.test.library")
 }
 
 android {

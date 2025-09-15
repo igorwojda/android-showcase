@@ -1,4 +1,4 @@
-package plugins
+package com.igorwojda.showcase.buildlogic
 
 import com.adarshr.gradle.testlogger.TestLoggerExtension
 import com.adarshr.gradle.testlogger.theme.ThemeType
