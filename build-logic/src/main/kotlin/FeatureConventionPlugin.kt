@@ -27,18 +27,20 @@ class FeatureConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                compileSdk = versions
-                    .findVersion("compile-sdk")
-                    .get()
-                    .toString()
-                    .toInt()
-
-                defaultConfig {
-                    minSdk = versions
-                        .findVersion("min-sdk")
+                compileSdk =
+                    versions
+                        .findVersion("compile-sdk")
                         .get()
                         .toString()
                         .toInt()
+
+                defaultConfig {
+                    minSdk =
+                        versions
+                            .findVersion("min-sdk")
+                            .get()
+                            .toString()
+                            .toInt()
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }

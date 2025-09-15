@@ -1,7 +1,7 @@
 package config
 
-import java.io.File
 import org.gradle.api.JavaVersion
+import java.io.File
 
 object JavaBuildConfig {
     /**
@@ -21,7 +21,7 @@ object JavaBuildConfig {
     /*
     Configure the build-logic config to target JDK from version catalog
     This matches the JDK used to build the project.
-    */
+     */
     val JAVA_VERSION: JavaVersion = JavaVersion.toVersion(tomlJavaVersion)
     val JVM_TOOLCHAIN_VERSION: Int = tomlJavaVersion.toInt()
 }

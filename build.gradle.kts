@@ -1,7 +1,7 @@
 plugins {
     id("com.igorwojda.showcase.buildlogic.detekt")
     id("com.igorwojda.showcase.buildlogic.spotless")
-    
+
     // Core Android and Kotlin plugins using version catalog
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false

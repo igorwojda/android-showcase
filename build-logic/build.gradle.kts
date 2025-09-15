@@ -10,11 +10,11 @@ group = "com.igorwojda.showcase.buildlogic"
 Configure the build-logic plugins to target JDK from version catalog
 This matches the JDK used to build the project, and is not related to what is running on device.
 */
-val javaVersion = libs
-    .versions
-    .java
-    .get()
-
+val javaVersion =
+    libs
+        .versions
+        .java
+        .get()
 
 kotlin {
     compilerOptions {

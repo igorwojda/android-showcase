@@ -24,25 +24,28 @@ class AppConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<ApplicationExtension> {
-                compileSdk = versions
-                    .findVersion("compile-sdk")
-                    .get()
-                    .toString()
-                    .toInt()
+                compileSdk =
+                    versions
+                        .findVersion("compile-sdk")
+                        .get()
+                        .toString()
+                        .toInt()
 
                 defaultConfig {
                     applicationId = "com.igorwojda.showcase"
 
-                    minSdk = versions
-                        .findVersion("min-sdk")
-                        .get()
-                        .toString()
-                        .toInt()
-                    targetSdk = versions
-                        .findVersion("target-sdk")
-                        .get()
-                        .toString()
-                        .toInt()
+                    minSdk =
+                        versions
+                            .findVersion("min-sdk")
+                            .get()
+                            .toString()
+                            .toInt()
+                    targetSdk =
+                        versions
+                            .findVersion("target-sdk")
+                            .get()
+                            .toString()
+                            .toInt()
 
                     versionCode = 1
                     versionName = "1.0"
