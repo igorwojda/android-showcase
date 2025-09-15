@@ -11,7 +11,7 @@ class SpotlessConventionPlugin : Plugin<Project> {
             extensions.configure<SpotlessExtension> {
                 kotlin {
                     target("**/*.kt", "**/*.kts")
-                    targetExclude("**/build-logic/build/**/*.*", "**/buildSrc/build/**/*.*")
+                    targetExclude("**/build-logic/build/**/*.*")
                     ktlint()
                     endWithNewline()
                 }
