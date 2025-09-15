@@ -19,7 +19,7 @@ object JavaBuildConfig {
     }
 
     /*
-    Configure the build-logic config to target JDK from version catalog
+    Configure the buildLogic config to target JDK from version catalog
     This matches the JDK used to build the project.
      */
     val JAVA_VERSION: JavaVersion = JavaVersion.toVersion(tomlJavaVersion)

@@ -25,7 +25,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
     - [Convention Plugins](#convention-plugins)
     - [Type Safe Project Accessors](#type-safe-project-accessors)
     - [Unified Java/JVM Version Configuration](#unified-javajvm-version-configuration)
-    - [Generated type-safe version catalogs accessors accessible from `build-logic`](#generated-type-safe-version-catalogs-accessors-accessible-from-build-logic)
+    - [Generated type-safe version catalogs accessors in `buildLogic` module](#generated-type-safe-version-catalogs-accessors-in-buildlogic-module)
   - [Code Verification](#code-verification)
     - [CI Pipeline](#ci-pipeline)
     - [Pre-push Hooks](#pre-push-hooks)
@@ -283,7 +283,7 @@ Each module uses convention a plugin, so common dependencies are shared without 
 - **`detekt-convention`** - Detekt setup
 - **`spotless-convention`** - Spotless setup
 
-All convention plugins are located in [`build-logic/src/main/kotlin`](./build-logic/src/main/kotlin).
+All convention plugins are located in [`buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic).
 
 ### Type Safe Project Accessors
 
@@ -319,9 +319,9 @@ These constants are then used in Gradle convention plugins to configure both Jav
  }
 ```
 
-### Generated type-safe version catalogs accessors accessible from `build-logic`
+### Generated type-safe version catalogs accessors in `buildLogic` module 
 
-Type-safe version catalogs accessors are accessible from precompiled script plugins in the `build-logic` module. This is configured through the `versionCatalogs` block in `build-logic/settings.gradle.kts` which references the main version catalog file, enabling access to dependencies like:
+Type-safe version catalogs accessors are accessible from precompiled script plugins in the `buildLogic` module. This is configured through the `versionCatalogs` block in `buildLogic/settings.gradle.kts` which references the main version catalog file, enabling access to dependencies like:
 
 ```kotlin
 add("implementation", libs.koin)
