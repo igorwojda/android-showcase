@@ -51,9 +51,9 @@ tasks {
 
 gradlePlugin {
     plugins {
-        register("appConvention") {
+        register("applicationConvention") {
             id = "com.igorwojda.showcase.convention.application"
-            implementationClass = "AppConventionPlugin"
+            implementationClass = "ApplicationConventionPlugin"
         }
         register("featureConvention") {
             id = "com.igorwojda.showcase.convention.feature"
