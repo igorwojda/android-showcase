@@ -1,7 +1,7 @@
 plugins {
     // Convention plugins
-    id("com.igorwojda.showcase.buildlogic.detekt")
-    id("com.igorwojda.showcase.buildlogic.spotless")
+    id("com.igorwojda.showcase.convention.detekt")
+    id("com.igorwojda.showcase.convention.spotless")
 
     // Core Android and Kotlin plugins using version catalog
     alias(libs.plugins.android.application) apply false

@@ -52,35 +52,35 @@ tasks {
 gradlePlugin {
     plugins {
         register("appConvention") {
-            id = "com.igorwojda.showcase.buildlogic.application"
+            id = "com.igorwojda.showcase.convention.application"
             implementationClass = "AppConventionPlugin"
         }
         register("featureConvention") {
-            id = "com.igorwojda.showcase.buildlogic.feature"
+            id = "com.igorwojda.showcase.convention.feature"
             implementationClass = "FeatureConventionPlugin"
         }
         register("libraryConvention") {
-            id = "com.igorwojda.showcase.buildlogic.library"
+            id = "com.igorwojda.showcase.convention.library"
             implementationClass = "LibraryConventionPlugin"
         }
         register("kotlinConvention") {
-            id = "com.igorwojda.showcase.buildlogic.kotlin"
+            id = "com.igorwojda.showcase.convention.kotlin"
             implementationClass = "KotlinConventionPlugin"
         }
         register("testConvention") {
-            id = "com.igorwojda.showcase.buildlogic.test"
+            id = "com.igorwojda.showcase.convention.test"
             implementationClass = "TestConventionPlugin"
         }
         register("testLibraryConvention") {
-            id = "com.igorwojda.showcase.buildlogic.android.test.library"
+            id = "com.igorwojda.showcase.convention.test.library"
             implementationClass = "TestConventionLibraryPlugin"
         }
         register("spotlessConvention") {
-            id = "com.igorwojda.showcase.buildlogic.spotless"
+            id = "com.igorwojda.showcase.convention.spotless"
             implementationClass = "SpotlessConventionPlugin"
         }
         register("detektConvention") {
-            id = "com.igorwojda.showcase.buildlogic.detekt"
+            id = "com.igorwojda.showcase.convention.detekt"
             implementationClass = "DetektConventionPlugin"
         }
     }

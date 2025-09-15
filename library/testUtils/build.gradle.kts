@@ -1,5 +1,5 @@
 plugins {
-    id("com.igorwojda.showcase.buildlogic.library")
+    id("com.igorwojda.showcase.convention.library")
 }
 
 android {

@@ -11,8 +11,8 @@ class TestConventionLibraryPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.library")
-                apply("com.igorwojda.showcase.buildlogic.kotlin")
-                apply("com.igorwojda.showcase.buildlogic.test")
+                apply("com.igorwojda.showcase.convention.kotlin")
+                apply("com.igorwojda.showcase.convention.test")
                 apply("com.google.devtools.ksp")
             }
 
