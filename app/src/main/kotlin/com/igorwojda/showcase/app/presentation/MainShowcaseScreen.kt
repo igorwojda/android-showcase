@@ -102,6 +102,7 @@ private fun addOnDestinationChangedListener(navController: NavController) {
                         arguments?.let { bundle ->
                             if (!bundle.isEmpty) {
                                 appendLine("  Arguments:")
+
                                 for (key in bundle.keySet()) {
                                     val value = bundle.get(key)
                                     appendLine("\t\t$key: $value")

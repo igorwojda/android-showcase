@@ -1,4 +1,5 @@
 package com.igorwojda.showcase.buildlogic
+
 import com.android.build.api.dsl.LibraryExtension
 import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
 import com.igorwojda.showcase.buildlogic.ext.debugImplementation

@@ -1,4 +1,5 @@
 package com.igorwojda.showcase.buildlogic
+
 import com.android.build.api.dsl.ApplicationExtension
 import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
 import com.igorwojda.showcase.buildlogic.ext.debugImplementation
@@ -22,8 +23,6 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
-
-            libs.kotlin
 
             extensions.configure<ApplicationExtension> {
                 compileSdk =
