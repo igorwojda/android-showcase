@@ -33,6 +33,13 @@ dependencies {
     implementation(libs.testLogger.gradlePlugin)
     implementation(libs.compose.gradlePlugin)
     implementation(libs.junit5.gradlePlugin)
+
+    /*
+    Expose generated type-safe version catalogs accessors accessible from precompiled script plugins
+    e.g. add("implementation", libs.koin)
+    https://github.com/gradle/gradle/issues/15383
+     */
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 }
 
 tasks {

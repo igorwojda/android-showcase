@@ -1,11 +1,11 @@
-
 import com.android.build.api.dsl.ApplicationExtension
 import config.JavaBuildConfig
 import ext.debugImplementation
 import ext.implementation
 import ext.implementationBundle
 import ext.libs
-import ext.versions
+import ext.libs2
+import ext.versions2
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -23,28 +23,28 @@ class AppConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
 
+            libs2.kotlin
+
             extensions.configure<ApplicationExtension> {
-                compileSdk =
-                    versions
-                        .findVersion("compile-sdk")
-                        .get()
-                        .toString()
-                        .toInt()
+                compileSdk = versions2
+                    .compile
+                    .sdk
+                    .get()
+                    .toInt()
 
                 defaultConfig {
                     applicationId = "com.igorwojda.showcase"
 
-                    minSdk =
-                        versions
-                            .findVersion("min-sdk")
+                    minSdk = versions2
+                            .min
+                            .sdk
                             .get()
-                            .toString()
                             .toInt()
-                    targetSdk =
-                        versions
-                            .findVersion("target-sdk")
+
+                    targetSdk = versions2
+                            .target
+                            .sdk
                             .get()
-                            .toString()
                             .toInt()
 
                     versionCode = 1

@@ -1,6 +1,7 @@
+
 import com.android.build.api.dsl.LibraryExtension
 import config.JavaBuildConfig
-import ext.versions
+import ext.versions2
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -16,20 +17,19 @@ class TestConventionLibraryPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                compileSdk =
-                    versions
-                        .findVersion("compile-sdk")
-                        .get()
-                        .toString()
-                        .toInt()
+                compileSdk = versions2
+                    .compile
+                    .sdk
+                    .get()
+                    .toInt()
 
                 defaultConfig {
-                    minSdk =
-                        versions
-                            .findVersion("min-sdk")
+                    minSdk = versions2
+                            .min
+                            .sdk
                             .get()
-                            .toString()
                             .toInt()
+
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }
