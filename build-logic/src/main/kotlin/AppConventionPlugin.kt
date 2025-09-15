@@ -1,9 +1,9 @@
+
 import com.android.build.api.dsl.ApplicationExtension
 import config.JavaBuildConfig
 import ext.debugImplementation
 import ext.implementation
 import ext.implementationBundle
-import ext.libs
 import ext.libs2
 import ext.versions2
 import org.gradle.api.Plugin
@@ -88,27 +88,26 @@ class AppConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                implementation(libs.findLibrary("kotlin").get())
-                implementation(libs.findLibrary("core-ktx").get())
-                implementation(libs.findLibrary("timber").get())
-                implementation(libs.findLibrary("coroutines").get())
-                implementation(libs.findLibrary("material").get())
-                implementation(libs.findLibrary("compose-material").get())
+                implementation(libs2.core.ktx)
+                implementation(libs2.timber)
+                implementation(libs2.coroutines)
+                implementation(libs2.material)
+                implementation(libs2.compose.material)
 
                 // Compose dependencies
-                implementation(platform(libs.findLibrary("compose-bom").get()))
-                implementation(libs.findLibrary("tooling-preview").get())
-                debugImplementation(libs.findLibrary("compose-ui-tooling").get())
-                debugImplementation(libs.findLibrary("compose-ui-test-manifest").get())
-                implementation(libs.findLibrary("navigation-compose").get())
+                implementation(platform(libs2.compose.bom))
+                implementation(libs2.tooling.preview)
+                debugImplementation(libs2.compose. ui .tooling)
+                debugImplementation(libs2.compose. ui .test.manifest)
+                implementation(libs2.navigation.compose)
 
                 // Koin
-                implementation(platform(libs.findLibrary("koin-bom").get()))
-                implementationBundle(libs.findBundle("koin").get())
+                implementation(platform(libs2.koin.bom))
+                implementationBundle(libs2.bundles.koin)
 
-                implementationBundle(libs.findBundle("retrofit").get())
-                implementationBundle(libs.findBundle("navigation").get())
-                implementationBundle(libs.findBundle("lifecycle").get())
+                implementationBundle(libs2.bundles.retrofit)
+                implementationBundle(libs2.bundles.navigation)
+                implementationBundle(libs2.bundles.lifecycle)
             }
         }
     }

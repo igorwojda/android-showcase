@@ -1,11 +1,10 @@
-
 import com.android.build.api.dsl.LibraryExtension
 import config.JavaBuildConfig
 import ext.debugImplementation
 import ext.implementation
 import ext.implementationBundle
 import ext.ksp
-import ext.libs
+import ext.libs2
 import ext.testImplementation
 import ext.testImplementationBundle
 import ext.testRuntimeOnly
@@ -36,10 +35,10 @@ class FeatureConventionPlugin : Plugin<Project> {
 
                 defaultConfig {
                     minSdk = versions2
-                            .min
-                            .sdk
-                            .get()
-                            .toInt()
+                        .min
+                        .sdk
+                        .get()
+                        .toInt()
 
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
@@ -77,35 +76,34 @@ class FeatureConventionPlugin : Plugin<Project> {
                     implementation(project(":feature:base"))
                 }
 
-                implementation(libs.findLibrary("kotlin").get())
-                implementation(libs.findLibrary("core-ktx").get())
-                implementation(libs.findLibrary("timber").get())
-                implementation(libs.findLibrary("coroutines").get())
-                implementation(libs.findLibrary("material").get())
-                implementation(libs.findLibrary("compose-material").get())
+                implementation(libs2.core.ktx)
+                implementation(libs2.timber)
+                implementation(libs2.coroutines)
+                implementation(libs2.material)
+                implementation(libs2.compose.material)
 
                 // Compose dependencies
-                implementation(platform(libs.findLibrary("compose-bom").get()))
-                implementationBundle(libs.findBundle("compose").get())
-                debugImplementation(libs.findLibrary("compose-ui-tooling").get())
-                debugImplementation(libs.findLibrary("compose-ui-test-manifest").get())
+                implementation(platform(libs2.compose.bom))
+                implementationBundle(libs2.bundles.compose)
+                debugImplementation(libs2.compose.ui.tooling)
+                debugImplementation(libs2.compose.ui.test.manifest)
 
                 // Koin
-                implementation(platform(libs.findLibrary("koin-bom").get()))
-                implementationBundle(libs.findBundle("koin").get())
+                implementation(platform(libs2.koin.bom))
+                implementationBundle(libs2.bundles.koin)
 
-                implementationBundle(libs.findBundle("retrofit").get())
-                implementationBundle(libs.findBundle("navigation").get())
-                implementationBundle(libs.findBundle("lifecycle").get())
+                implementationBundle(libs2.bundles.retrofit)
+                implementationBundle(libs2.bundles.navigation)
+                implementationBundle(libs2.bundles.lifecycle)
 
                 // Room
-                implementationBundle(libs.findBundle("room").get())
-                ksp(libs.findLibrary("room-compiler").get())
+                implementationBundle(libs2.bundles.room)
+                ksp(libs2.room.compiler)
 
                 // Test dependencies
                 testImplementation(project(":library:testUtils"))
-                testImplementationBundle(libs.findBundle("test").get())
-                testRuntimeOnly(libs.findLibrary("junit-jupiter-engine").get())
+                testImplementationBundle(libs2.bundles.test)
+                testRuntimeOnly(libs2.junit.jupiter.engine)
             }
         }
     }
