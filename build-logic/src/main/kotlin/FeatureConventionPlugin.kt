@@ -77,7 +77,7 @@ class FeatureConventionPlugin : Plugin<Project> {
                     implementation(project(":feature:base"))
                 }
 
-                implementation(libs.kotlin)
+                implementation(libs.kotlin.reflect)
                 implementation(libs.core.ktx)
                 implementation(libs.timber)
                 implementation(libs.coroutines)
