@@ -1,3 +1,4 @@
+
 import com.android.build.api.dsl.LibraryExtension
 import config.JavaBuildConfig
 import ext.debugImplementation
@@ -76,6 +77,7 @@ class FeatureConventionPlugin : Plugin<Project> {
                     implementation(project(":feature:base"))
                 }
 
+                implementation(libs2.kotlin)
                 implementation(libs2.core.ktx)
                 implementation(libs2.timber)
                 implementation(libs2.coroutines)

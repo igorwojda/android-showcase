@@ -1,5 +1,6 @@
 package ext
 
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ExternalModuleDependencyBundle
 import org.gradle.api.artifacts.MinimalExternalModuleDependency
@@ -11,6 +12,10 @@ fun DependencyHandlerScope.implementation(provider: Provider<MinimalExternalModu
 }
 
 fun DependencyHandlerScope.implementation(provider: Project) {
+    add("implementation", provider)
+}
+
+fun DependencyHandlerScope.implementation(provider: LibrariesForLibs.KotlinLibraryAccessors) {
     add("implementation", provider)
 }
 

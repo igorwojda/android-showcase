@@ -88,6 +88,7 @@ class AppConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
+                implementation(libs2.kotlin)
                 implementation(libs2.core.ktx)
                 implementation(libs2.timber)
                 implementation(libs2.coroutines)
