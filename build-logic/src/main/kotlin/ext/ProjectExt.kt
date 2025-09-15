@@ -8,11 +8,11 @@ import org.gradle.kotlin.dsl.the
 /**
  * Returns "libs" from version catalog.
  */
-val Project.libs2: LibrariesForLibs
+val Project.libs: LibrariesForLibs
     get() = the<LibrariesForLibs>()
 
 /**
  * Returns "versions" from version catalog.
  */
-val Project.versions2: LibrariesForLibs.VersionAccessors
+val Project.versions: LibrariesForLibs.VersionAccessors
     get() = the<LibrariesForLibs>().versions

@@ -4,8 +4,8 @@ import config.JavaBuildConfig
 import ext.debugImplementation
 import ext.implementation
 import ext.implementationBundle
-import ext.libs2
-import ext.versions2
+import ext.libs
+import ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -23,10 +23,10 @@ class AppConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
 
-            libs2.kotlin
+            libs.kotlin
 
             extensions.configure<ApplicationExtension> {
-                compileSdk = versions2
+                compileSdk = versions
                     .compile
                     .sdk
                     .get()
@@ -35,13 +35,13 @@ class AppConventionPlugin : Plugin<Project> {
                 defaultConfig {
                     applicationId = "com.igorwojda.showcase"
 
-                    minSdk = versions2
+                    minSdk = versions
                             .min
                             .sdk
                             .get()
                             .toInt()
 
-                    targetSdk = versions2
+                    targetSdk = versions
                             .target
                             .sdk
                             .get()
@@ -88,27 +88,27 @@ class AppConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                implementation(libs2.kotlin)
-                implementation(libs2.core.ktx)
-                implementation(libs2.timber)
-                implementation(libs2.coroutines)
-                implementation(libs2.material)
-                implementation(libs2.compose.material)
+                implementation(libs.kotlin)
+                implementation(libs.core.ktx)
+                implementation(libs.timber)
+                implementation(libs.coroutines)
+                implementation(libs.material)
+                implementation(libs.compose.material)
 
                 // Compose dependencies
-                implementation(platform(libs2.compose.bom))
-                implementation(libs2.tooling.preview)
-                debugImplementation(libs2.compose. ui .tooling)
-                debugImplementation(libs2.compose. ui .test.manifest)
-                implementation(libs2.navigation.compose)
+                implementation(platform(libs.compose.bom))
+                implementation(libs.tooling.preview)
+                debugImplementation(libs.compose. ui .tooling)
+                debugImplementation(libs.compose. ui .test.manifest)
+                implementation(libs.navigation.compose)
 
                 // Koin
-                implementation(platform(libs2.koin.bom))
-                implementationBundle(libs2.bundles.koin)
+                implementation(platform(libs.koin.bom))
+                implementationBundle(libs.bundles.koin)
 
-                implementationBundle(libs2.bundles.retrofit)
-                implementationBundle(libs2.bundles.navigation)
-                implementationBundle(libs2.bundles.lifecycle)
+                implementationBundle(libs.bundles.retrofit)
+                implementationBundle(libs.bundles.navigation)
+                implementationBundle(libs.bundles.lifecycle)
             }
         }
     }

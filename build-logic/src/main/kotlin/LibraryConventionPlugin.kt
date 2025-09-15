@@ -1,7 +1,7 @@
 
 import com.android.build.api.dsl.LibraryExtension
 import config.JavaBuildConfig
-import ext.versions2
+import ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -18,14 +18,14 @@ class LibraryConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                compileSdk = versions2
+                compileSdk = versions
                     .compile
                     .sdk
                     .get()
                     .toInt()
 
                 defaultConfig {
-                    minSdk = versions2
+                    minSdk = versions
                             .min
                             .sdk
                             .get()
