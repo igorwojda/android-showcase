@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.buildlogic
 import com.android.build.api.dsl.LibraryExtension
 import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
+import com.igorwojda.showcase.buildlogic.ext.excludeLicenseAndMetaFiles
 import com.igorwojda.showcase.buildlogic.ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -53,13 +54,7 @@ class LibraryConventionPlugin : Plugin<Project> {
                 }
 
                 packaging {
-                    resources.excludes +=
-                        setOf(
-                            "META-INF/AL2.0",
-                            "META-INF/licenses/**",
-                            "**/attach_hotspot_windows.dll",
-                            "META-INF/LGPL2.1",
-                        )
+                    excludeLicenseAndMetaFiles()
                 }
             }
         }
