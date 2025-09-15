@@ -25,22 +25,25 @@ class ApplicationConventionPlugin : Plugin<Project> {
             libs.kotlin
 
             extensions.configure<ApplicationExtension> {
-                compileSdk = versions
-                    .compile
-                    .sdk
-                    .get()
-                    .toInt()
+                compileSdk =
+                    versions
+                        .compile
+                        .sdk
+                        .get()
+                        .toInt()
 
                 defaultConfig {
                     applicationId = "com.igorwojda.showcase"
 
-                    minSdk = versions
+                    minSdk =
+                        versions
                             .min
                             .sdk
                             .get()
                             .toInt()
 
-                    targetSdk = versions
+                    targetSdk =
+                        versions
                             .target
                             .sdk
                             .get()
@@ -97,8 +100,8 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 // Compose dependencies
                 implementation(platform(libs.compose.bom))
                 implementation(libs.tooling.preview)
-                debugImplementation(libs.compose. ui .tooling)
-                debugImplementation(libs.compose. ui .test.manifest)
+                debugImplementation(libs.compose.ui.tooling)
+                debugImplementation(libs.compose.ui.test.manifest)
                 implementation(libs.navigation.compose)
 
                 // Koin

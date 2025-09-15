@@ -17,14 +17,16 @@ class TestConventionLibraryPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                compileSdk = versions
-                    .compile
-                    .sdk
-                    .get()
-                    .toInt()
+                compileSdk =
+                    versions
+                        .compile
+                        .sdk
+                        .get()
+                        .toInt()
 
                 defaultConfig {
-                    minSdk = versions
+                    minSdk =
+                        versions
                             .min
                             .sdk
                             .get()
