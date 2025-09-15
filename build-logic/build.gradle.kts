@@ -53,35 +53,35 @@ gradlePlugin {
     plugins {
         register("applicationConvention") {
             id = "com.igorwojda.showcase.convention.application"
-            implementationClass = "ApplicationConventionPlugin"
+            implementationClass = "com.igorwojda.showcase.buildlogic.ApplicationConventionPlugin"
         }
         register("featureConvention") {
             id = "com.igorwojda.showcase.convention.feature"
-            implementationClass = "FeatureConventionPlugin"
+            implementationClass = "com.igorwojda.showcase.buildlogic.FeatureConventionPlugin"
         }
         register("libraryConvention") {
             id = "com.igorwojda.showcase.convention.library"
-            implementationClass = "LibraryConventionPlugin"
+            implementationClass = "com.igorwojda.showcase.buildlogic.LibraryConventionPlugin"
         }
         register("kotlinConvention") {
             id = "com.igorwojda.showcase.convention.kotlin"
-            implementationClass = "KotlinConventionPlugin"
+            implementationClass = "com.igorwojda.showcase.buildlogic.KotlinConventionPlugin"
         }
         register("testConvention") {
             id = "com.igorwojda.showcase.convention.test"
-            implementationClass = "TestConventionPlugin"
+            implementationClass = "com.igorwojda.showcase.buildlogic.TestConventionPlugin"
         }
         register("testLibraryConvention") {
             id = "com.igorwojda.showcase.convention.test.library"
-            implementationClass = "TestConventionLibraryPlugin"
+            implementationClass = "com.igorwojda.showcase.buildlogic.TestConventionLibraryPlugin"
         }
         register("spotlessConvention") {
             id = "com.igorwojda.showcase.convention.spotless"
-            implementationClass = "SpotlessConventionPlugin"
+            implementationClass = "com.igorwojda.showcase.buildlogic.SpotlessConventionPlugin"
         }
         register("detektConvention") {
             id = "com.igorwojda.showcase.convention.detekt"
-            implementationClass = "DetektConventionPlugin"
+            implementationClass = "com.igorwojda.showcase.buildlogic.DetektConventionPlugin"
         }
     }
 }

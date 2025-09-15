@@ -1,31 +1,30 @@
-
-import com.android.build.api.dsl.LibraryExtension
-import config.JavaBuildConfig
-import ext.debugImplementation
-import ext.implementation
-import ext.ksp
-import ext.libs
-import ext.testImplementation
-import ext.testRuntimeOnly
-import ext.versions
+package com.igorwojda.showcase.buildlogic
+import com.android.build.api.dsl.ApplicationExtension
+import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
+import com.igorwojda.showcase.buildlogic.ext.debugImplementation
+import com.igorwojda.showcase.buildlogic.ext.implementation
+import com.igorwojda.showcase.buildlogic.ext.libs
+import com.igorwojda.showcase.buildlogic.ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 @Suppress("detekt.LongMethod")
-class FeatureConventionPlugin : Plugin<Project> {
+class ApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply("com.android.library")
+                apply("com.android.application")
                 apply("com.igorwojda.showcase.convention.kotlin")
-                apply("com.igorwojda.showcase.convention.test")
+                apply("com.igorwojda.showcase.convention.spotless")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
 
-            extensions.configure<LibraryExtension> {
+            libs.kotlin
+
+            extensions.configure<ApplicationExtension> {
                 compileSdk =
                     versions
                         .compile
@@ -34,6 +33,8 @@ class FeatureConventionPlugin : Plugin<Project> {
                         .toInt()
 
                 defaultConfig {
+                    applicationId = "com.igorwojda.showcase"
+
                     minSdk =
                         versions
                             .min
@@ -41,8 +42,21 @@ class FeatureConventionPlugin : Plugin<Project> {
                             .get()
                             .toInt()
 
+                    targetSdk =
+                        versions
+                            .target
+                            .sdk
+                            .get()
+                            .toInt()
+
+                    versionCode = 1
+                    versionName = "1.0"
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-                    consumerProguardFiles("consumer-rules.pro")
+                    multiDexEnabled = true
+
+                    vectorDrawables {
+                        useSupportLibrary = true
+                    }
                 }
 
                 buildFeatures {
@@ -56,10 +70,6 @@ class FeatureConventionPlugin : Plugin<Project> {
                     targetCompatibility = JavaBuildConfig.JAVA_VERSION
                 }
 
-                testOptions {
-                    unitTests.isReturnDefaultValues = true
-                }
-
                 packaging {
                     resources.excludes +=
                         setOf(
@@ -69,14 +79,17 @@ class FeatureConventionPlugin : Plugin<Project> {
                             "META-INF/LGPL2.1",
                         )
                 }
+
+                testOptions {
+                    unitTests.isReturnDefaultValues = true
+                }
+
+                lint {
+                    baseline = file("android-lint-baseline.xml")
+                }
             }
 
             dependencies {
-                // Add feature:base dependency only for non-base feature modules
-                if (project.path != ":feature:base") {
-                    implementation(project(":feature:base"))
-                }
-
                 implementation(libs.kotlin.reflect)
                 implementation(libs.core.ktx)
                 implementation(libs.timber)
@@ -86,9 +99,10 @@ class FeatureConventionPlugin : Plugin<Project> {
 
                 // Compose dependencies
                 implementation(platform(libs.compose.bom))
-                implementation(libs.bundles.compose)
+                implementation(libs.tooling.preview)
                 debugImplementation(libs.compose.ui.tooling)
                 debugImplementation(libs.compose.ui.test.manifest)
+                implementation(libs.navigation.compose)
 
                 // Koin
                 implementation(platform(libs.koin.bom))
@@ -97,15 +111,6 @@ class FeatureConventionPlugin : Plugin<Project> {
                 implementation(libs.bundles.retrofit)
                 implementation(libs.bundles.navigation)
                 implementation(libs.bundles.lifecycle)
-
-                // Room
-                implementation(libs.bundles.room)
-                ksp(libs.room.compiler)
-
-                // Test dependencies
-                testImplementation(project(":library:testUtils"))
-                testImplementation(libs.bundles.test)
-                testRuntimeOnly(libs.junit.jupiter.engine)
             }
         }
     }

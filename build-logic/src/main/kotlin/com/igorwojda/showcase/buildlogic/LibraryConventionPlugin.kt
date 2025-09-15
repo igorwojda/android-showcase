@@ -1,12 +1,12 @@
-
+package com.igorwojda.showcase.buildlogic
 import com.android.build.api.dsl.LibraryExtension
-import config.JavaBuildConfig
-import ext.versions
+import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
+import com.igorwojda.showcase.buildlogic.ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
-class TestConventionLibraryPlugin : Plugin<Project> {
+class LibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
@@ -14,6 +14,7 @@ class TestConventionLibraryPlugin : Plugin<Project> {
                 apply("com.igorwojda.showcase.convention.kotlin")
                 apply("com.igorwojda.showcase.convention.test")
                 apply("com.google.devtools.ksp")
+                apply("org.jetbrains.kotlin.plugin.compose")
             }
 
             extensions.configure<LibraryExtension> {
@@ -37,9 +38,9 @@ class TestConventionLibraryPlugin : Plugin<Project> {
                 }
 
                 buildFeatures {
-                    viewBinding = false
-                    buildConfig = false
-                    compose = false
+                    viewBinding = true
+                    buildConfig = true
+                    compose = true
                 }
 
                 compileOptions {

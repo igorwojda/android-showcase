@@ -1,4 +1,4 @@
-package ext
+package com.igorwojda.showcase.buildlogic.ext
 
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project
