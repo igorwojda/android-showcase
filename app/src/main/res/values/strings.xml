@@ -1,10 +1,6 @@
 <resources>
     <string name="app_name">Showcase</string>
 
-    <!--Dynamic module titles-->
-    <string name="feature_album">feature album</string>
-    <string name="feature_favourite">feature favourite</string>
-    <string name="feature_profile">feature profile</string>
 
     <!--Bottom menu-->
     <string name="albums">Albums</string>

@@ -78,9 +78,6 @@ class ApplicationConventionPlugin : Plugin<Project> {
                     unitTests.isReturnDefaultValues = true
                 }
 
-                lint {
-                    baseline = file("android-lint-baseline.xml")
-                }
             }
 
             dependencies {
