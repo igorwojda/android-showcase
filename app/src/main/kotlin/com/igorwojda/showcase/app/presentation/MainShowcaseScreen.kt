@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
 import androidx.navigation.toRoute
+import com.igorwojda.showcase.app.BuildConfig
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailScreen
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
@@ -22,7 +23,10 @@ import timber.log.Timber
 @Composable
 fun MainShowcaseScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-    addOnDestinationChangedListener(navController)
+
+    if(BuildConfig.DEBUG) {
+        addOnDestinationChangedListener(navController)
+    }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
