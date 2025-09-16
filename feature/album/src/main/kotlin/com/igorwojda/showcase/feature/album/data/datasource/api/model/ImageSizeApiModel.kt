@@ -28,7 +28,12 @@ internal enum class ImageSizeApiModel {
 
 internal fun ImageSizeApiModel.toDomainModel() = ImageSize.valueOf(this.name)
 
-internal fun ImageSizeApiModel.toRoomModel() =
-    ImageSizeRoomModel
-        .entries
-        .firstOrNull { it.ordinal == this.ordinal }
+internal fun ImageSizeApiModel.toRoomModel(): ImageSizeRoomModel? =
+    when (this) {
+        ImageSizeApiModel.MEDIUM -> ImageSizeRoomModel.MEDIUM
+        ImageSizeApiModel.SMALL -> ImageSizeRoomModel.SMALL
+        ImageSizeApiModel.LARGE -> ImageSizeRoomModel.LARGE
+        ImageSizeApiModel.EXTRA_LARGE -> ImageSizeRoomModel.EXTRA_LARGE
+        ImageSizeApiModel.MEGA -> ImageSizeRoomModel.MEGA
+        ImageSizeApiModel.UNKNOWN -> null
+    }
