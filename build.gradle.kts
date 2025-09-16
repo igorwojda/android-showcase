@@ -20,11 +20,13 @@ plugins {
 subprojects {
     if (name == "konsistTest") {
         tasks.matching { it.name.startsWith("test") }.configureEach {
-            onlyIf { gradle.startParameter.taskRequests.any { request ->
-                request.args.any { arg ->
-                    arg.contains("konsistTest") || arg.contains(":test") && arg.startsWith(":konsistTest")
+            onlyIf {
+                gradle.startParameter.taskRequests.any { request ->
+                    request.args.any { arg ->
+                        arg.contains("konsistTest") || arg.contains(":test") && arg.startsWith(":konsistTest")
+                    }
                 }
-            }}
+            }
         }
     }
 }
