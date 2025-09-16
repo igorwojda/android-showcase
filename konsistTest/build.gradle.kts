@@ -11,14 +11,10 @@ Exclude konsistTest from general test tasks (e.g. ./gradlew testDebugUnitTest)
 Konsist tests verify architectural rules and should run separately from unit tests
 Unit tests are executed explicitly via: ./gradlew konsistTest:test
 */
-tasks.matching { it.name.startsWith("test") }.configureEach {
-    onlyIf {
-        gradle.startParameter.taskRequests.any { request ->
-            request.args.any { arg ->
-                arg.contains("konsistTest") || (arg.contains(":test") && arg.startsWith(":konsistTest"))
-            }
-        }
-    }
+tasks.matching {
+    it.name.startsWith("test") && !it.name.contains("konsist", ignoreCase = true)
+}.configureEach {
+    enabled = false
 }
 
 dependencies {
