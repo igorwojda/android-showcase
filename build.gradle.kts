@@ -15,4 +15,3 @@ plugins {
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.junit5.android) apply false
 }
-
