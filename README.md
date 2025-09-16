@@ -417,9 +417,17 @@ Active development continues with focus on modern Android practices. View planne
 
 **Recommended Projects:**
 - [Now in Android](https://github.com/android/nowinandroid) - Google's official modern Android showcase
-- [Compose Samples](https://github.com/android/compose-samples) - Official Jetpack Compose examples  
 - [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture) - Architecture pattern examples
+- [Compose Samples](https://github.com/android/compose-samples) - Official Jetpack Compose examples
 - [Kotlin Android Template](https://github.com/cortinico/kotlin-android-template) - Pre-configured project template
+- [Androidify](https://github.com/android/androidify) - Android's official character customization app
+- [WeatherXM Android](https://github.com/WeatherXM/wxm-android) - Weather data collection and rewards platform
+- [Songify](https://github.com/JamesBuhanan/Songify) - Spotify-inspired music streaming app
+- [Alkaa](https://github.com/igorescodro/alkaa) - Task management app with modern architecture
+- [KotlinConf App](https://github.com/JetBrains/kotlinconf-app) - JetBrains' official conference app
+- [Tivi](https://github.com/chrisbanes/tivi) - TV show tracking app by Chris Banes
+- [CatchUp](https://github.com/ZacSweers/CatchUp) - News aggregation app with modular architecture
+- [Heron](https://github.com/tunjid/heron) - Social media client showcasing modern Android development
 
 ## Contributing
 
