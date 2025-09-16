@@ -43,7 +43,10 @@ object NavigationDestinationLogger {
      *
      * @return String representation of the value, or null if no matching type found
      */
-    private fun getValueFromBundle(bundle: Bundle, key: String): String? {
+    private fun getValueFromBundle(
+        bundle: Bundle,
+        key: String,
+    ): String? {
         // Basic types supported by Navigation
         bundle.getString(key)?.let { return "\"$it\"" }
         bundle.getInt(key, Int.MIN_VALUE).takeIf { it != Int.MIN_VALUE }?.let { return it.toString() }
