@@ -38,4 +38,3 @@ class EasyLauncherConventionPlugin : Plugin<Project> {
         private const val OVERLAY_HEIGHT = 0.25F
     }
 }
-
