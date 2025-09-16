@@ -77,7 +77,6 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 testOptions {
                     unitTests.isReturnDefaultValues = true
                 }
-
             }
 
             dependencies {
