@@ -20,8 +20,8 @@ class KotlinConventionPlugin : Plugin<Project> {
             tasks.withType<KotlinCompile>().configureEach {
                 compilerOptions {
                     freeCompilerArgs.addAll(
-                                    // Fix for https://youtrack.jetbrains.com/issue/KT-73255: set default annotation target
-                        "-Xannotation-default-target=param-property"
+                        // Fix for https://youtrack.jetbrains.com/issue/KT-73255: set default annotation target
+                        "-Xannotation-default-target=param-property",
                     )
                 }
             }
