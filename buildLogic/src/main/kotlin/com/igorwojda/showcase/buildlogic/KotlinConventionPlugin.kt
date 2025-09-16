@@ -20,7 +20,11 @@ class KotlinConventionPlugin : Plugin<Project> {
             tasks.withType<KotlinCompile>().configureEach {
                 compilerOptions {
                     freeCompilerArgs.addAll(
-                        // Fix for https://youtrack.jetbrains.com/issue/KT-73255: set default annotation target
+                        /*
+                        This ensures annotations on data class constructor parameters are applied to both
+                        the parameter and the backing field, preventing future breaking changes.
+                        See https://youtrack.jetbrains.com/issue/KT-73255: for more details.
+                         */
                         "-Xannotation-default-target=param-property",
                     )
                 }
