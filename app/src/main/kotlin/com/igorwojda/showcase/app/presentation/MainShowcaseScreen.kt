@@ -13,16 +13,20 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
 import androidx.navigation.toRoute
+import com.igorwojda.showcase.app.BuildConfig
+import com.igorwojda.showcase.app.presentation.util.NavigationDestinationLogger
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailScreen
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
 import com.igorwojda.showcase.feature.settings.presentation.screen.settings.SettingsScreen
-import timber.log.Timber
 
 @Composable
 fun MainShowcaseScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-    addOnDestinationChangedListener(navController)
+
+    if (BuildConfig.DEBUG) {
+        addOnDestinationChangedListener(navController)
+    }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -77,39 +81,7 @@ private fun addOnDestinationChangedListener(navController: NavController) {
                 destination: NavDestination,
                 arguments: Bundle?,
             ) {
-                logDestinationChange(destination, arguments)
-            }
-
-            private fun logDestinationChange(
-                destination: NavDestination,
-                arguments: Bundle?,
-            ) {
-                val className = NavigationRoute::class.simpleName
-                val destinationRoute = destination.route?.substringAfter("$className.") ?: "Unknown"
-                val destinationId = destination.id
-                val destinationLabel = destination.label ?: "No Label"
-
-                val logMessage =
-                    buildString {
-                        appendLine("Navigation destination changed:")
-                        appendLine("\tRoute: $destinationRoute")
-                        appendLine("\tID: $destinationId")
-                        appendLine("\tLabel: $destinationLabel")
-
-                        // Log arguments if they exist
-                        arguments?.let { bundle ->
-                            if (!bundle.isEmpty) {
-                                appendLine("  Arguments:")
-
-                                for (key in bundle.keySet()) {
-                                    val value = bundle.get(key)
-                                    appendLine("\t\t$key: $value")
-                                }
-                            }
-                        }
-                    }
-
-                Timber.tag("Navigation").d(logMessage)
+                NavigationDestinationLogger.logDestinationChange(destination, arguments)
             }
         },
     )
