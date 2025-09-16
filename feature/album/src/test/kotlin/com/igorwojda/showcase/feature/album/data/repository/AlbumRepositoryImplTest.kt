@@ -1,16 +1,17 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
 import com.igorwojda.showcase.feature.album.data.DataFixtures
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.GetAlbumInfoResponse
 import com.igorwojda.showcase.feature.album.data.datasource.api.response.SearchAlbumResponse
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
+import com.igorwojda.showcase.feature.album.data.mapper.AlbumMapper
+import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.base.data.retrofit.ApiResult
 import com.igorwojda.showcase.feature.base.domain.result.Result
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
@@ -22,25 +23,29 @@ class AlbumRepositoryImplTest {
 
     private val mockAlbumDao: AlbumDao = mockk(relaxed = true)
 
-    private val cut = AlbumRepositoryImpl(mockService, mockAlbumDao)
+    private val mockAlbumMapper: AlbumMapper = mockk()
+
+    private val cut = AlbumRepositoryImpl(mockService, mockAlbumDao, mockAlbumMapper)
 
     @Test
     fun `searchAlbum handles api success and returns albums`() {
         // given
         val phrase = "phrase"
-        val albums = DataFixtures.getAlbumsApiModel()
+        val mockAlbum = mockk<Album>()
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns
             ApiResult.Success(
                 DataFixtures.ApiResponse.getSearchAlbum(),
             )
 
+        every { mockAlbumMapper.apiToRoom(any()) } returns mockk()
+        every { mockAlbumMapper.apiToDomain(any()) } returns mockAlbum
+
         // when
         val actual = runBlocking { cut.searchAlbum(phrase) }
 
         // then
-        val albumsDomain = albums.map { it.toDomainModel() }
-        actual shouldBeEqualTo Result.Success(albumsDomain)
+        actual shouldBeEqualTo Result.Success(listOf(mockAlbum))
     }
 
     @Test
@@ -51,6 +56,9 @@ class AlbumRepositoryImplTest {
             ApiResult.Success(
                 DataFixtures.ApiResponse.getSearchAlbum(),
             )
+
+        every { mockAlbumMapper.apiToRoom(any()) } returns mockk()
+        every { mockAlbumMapper.apiToDomain(any()) } returns mockk()
 
         // when
         runBlocking { cut.searchAlbum(phrase) }
@@ -64,16 +72,19 @@ class AlbumRepositoryImplTest {
         // given
         val phrase = "phrase"
         val albumRoomModels = DataFixtures.getAlbumsRoomModels()
-        val albums = albumRoomModels.map { it.toDomainModel() }
+        val mockAlbum1 = mockk<Album>()
+        val mockAlbum2 = mockk<Album>()
 
         coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Exception(UnknownHostException())
         coEvery { mockAlbumDao.getAll() } returns albumRoomModels
+        every { mockAlbumMapper.roomToDomain(albumRoomModels[0]) } returns mockAlbum1
+        every { mockAlbumMapper.roomToDomain(albumRoomModels[1]) } returns mockAlbum2
 
         // when
         val actual = runBlocking { cut.searchAlbum(phrase) }
 
         // then
-        actual shouldBeEqualTo Result.Success(albums)
+        actual shouldBeEqualTo Result.Success(listOf(mockAlbum1, mockAlbum2))
     }
 
     @Test
@@ -97,6 +108,7 @@ class AlbumRepositoryImplTest {
         val albumName = "Thriller"
         val mbId = "123"
         val album = DataFixtures.getAlbumApiModel(mbId, albumName, artistName)
+        val mockAlbum = mockk<Album>()
 
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, mbId)
@@ -105,11 +117,13 @@ class AlbumRepositoryImplTest {
                 GetAlbumInfoResponse(album),
             )
 
+        every { mockAlbumMapper.apiToDomain(album) } returns mockAlbum
+
         // when
         val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
-        actual shouldBeEqualTo Result.Success(album.toDomainModel())
+        actual shouldBeEqualTo Result.Success(mockAlbum)
     }
 
     @Test
@@ -122,6 +136,9 @@ class AlbumRepositoryImplTest {
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, mbId)
         } returns ApiResult.Exception(UnknownHostException())
+
+        coEvery { mockAlbumDao.getAlbum(artistName, albumName, mbId) } returns mockk()
+        every { mockAlbumMapper.roomToDomain(any()) } returns mockk()
 
         // when
         runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
