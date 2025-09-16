@@ -9,9 +9,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.igorwojda.showcase.feature.base.R
 
 @Composable
-fun ErrorAnim() {
+fun ErrorAnim(modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
         LabeledAnimation(R.string.data_not_found, R.raw.lottie_error_screen)

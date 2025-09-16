@@ -20,14 +20,12 @@ import com.igorwojda.showcase.feature.settings.presentation.screen.settings.Sett
 import timber.log.Timber
 
 @Composable
-fun MainShowcaseScreen() {
+fun MainShowcaseScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     addOnDestinationChangedListener(navController)
 
     Scaffold(
-        modifier =
-            Modifier
-                .fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         bottomBar = { BottomNavigationBar(navController) },
     ) { innerPadding ->
 

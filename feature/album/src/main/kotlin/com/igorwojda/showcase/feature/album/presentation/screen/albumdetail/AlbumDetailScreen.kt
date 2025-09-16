@@ -51,6 +51,7 @@ fun AlbumDetailScreen(
     albumName: String,
     artistName: String,
     albumMbId: String?,
+    modifier: Modifier = Modifier,
     onBackClick: () -> Unit = {},
 ) {
     val viewModel: AlbumDetailViewModel = koinViewModel()
@@ -62,6 +63,7 @@ fun AlbumDetailScreen(
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     Scaffold(
+        modifier = modifier,
         topBar = {
             TopAppBar(
                 title = { Text(text = albumName) },

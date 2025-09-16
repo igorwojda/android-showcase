@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.buildlogic
 
 import com.diffplug.gradle.spotless.SpotlessExtension
+import com.igorwojda.showcase.buildlogic.ext.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -14,7 +15,19 @@ class SpotlessConventionPlugin : Plugin<Project> {
                 kotlin {
                     target("**/*.kt", "**/*.kts")
                     targetExclude("**/buildLogic/build/**/*.*")
+
+                    val customRuleSets =
+                        listOf(
+                            libs.ktlint.ruleset.standard,
+                            libs.nlopez.compose.rules,
+                            libs.twitter.compose.rules,
+                        ).map {
+                            it.get().toString()
+                        }
+
                     ktlint()
+                        .customRuleSets(customRuleSets)
+
                     endWithNewline()
                 }
 
