@@ -20,6 +20,7 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("com.igorwojda.showcase.convention.kotlin")
                 apply("com.igorwojda.showcase.convention.spotless")
+                apply("com.igorwojda.showcase.convention.easylauncher")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }

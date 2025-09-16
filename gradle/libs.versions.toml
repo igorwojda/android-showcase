@@ -34,6 +34,7 @@ core-ktx = "1.17.0"
 spotless = "7.2.1"
 detekt = "1.23.8"
 android-gradle-plugin = "8.13.0"
+easylauncher = "6.4.1"
 
 ktlint-ruleset-standard = "1.7.1"
 nlopez-compose-rules = "0.4.27"
@@ -72,6 +73,7 @@ detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plug
 testLogger-gradlePlugin = { module = "com.adarshr:gradle-test-logger-plugin", version.ref = "test-logger" }
 compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 junit5-gradlePlugin = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "android-junit5" }
+easyLauncher-gradlePlugin = { module = "com.starter.easylauncher:com.starter.easylauncher.gradle.plugin", version.ref = "easylauncher" }
 
 # Dependencies
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
