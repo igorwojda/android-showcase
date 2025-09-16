@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.app.presentation.util
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.navigation.NavDestination
 import com.igorwojda.showcase.app.presentation.NavigationRoute
 import timber.log.Timber
@@ -22,13 +23,12 @@ object NavigationDestinationLogger {
                 appendLine("\tID: $destinationId")
                 appendLine("\tLabel: $destinationLabel")
 
-                // Log arguments if they exist
                 arguments?.let { bundle ->
                     if (!bundle.isEmpty) {
                         appendLine("   Arguments:")
-
-                        parseBundleStringToLines(arguments).forEach { line ->
-                            appendLine(line)
+                        bundle.keySet().forEach { key ->
+                            val value = getValueFromBundle(bundle, key) ?: "null"
+                            appendLine("\t\t$key: $value")
                         }
                     }
                 }
@@ -38,50 +38,33 @@ object NavigationDestinationLogger {
     }
 
     /**
-     * Parses a Bundle's string representation and converts it to a formatted list of key-value pairs.
+     * Retrieves a value from Bundle using Android Navigation supported types.
+     * Navigation supports: String, Int, Long, Float, Boolean, Parcelable, Serializable, and their arrays.
      *
-     * Takes the output of Bundle.toString() which has the format:
-     * "Bundle[{key1=value1, key2=value2, key3=value3}]"
-     *
-     * And converts it to a list of formatted strings in the format:
-     * "\t\t$key: $value"
-     *
-     * @param bundleString The string representation of a Bundle (from Bundle.toString())
-     * @return List of formatted strings, each representing a key-value pair with tab indentation.
-     *         Returns empty list if the bundle string is null, empty, or malformed.
-     *
-     * @sample
-     * ```
-     * val bundleStr = "Bundle[{isActive=true, age=30, name=John}]"
-     * val result = parseBundleStringToLines(bundleStr)
-     * // Result:
-     * // ["\t\tisActive: true", "\t\tage: 30", "\t\tname: John"]
-     * ```
+     * @return String representation of the value, or null if no matching type found
      */
-    private fun parseBundleStringToLines(bundle: Bundle): List<String> {
-        val bundleString = bundle.toString()
+    private fun getValueFromBundle(bundle: Bundle, key: String): String? {
+        // Basic types supported by Navigation
+        bundle.getString(key)?.let { return "\"$it\"" }
+        bundle.getInt(key, Int.MIN_VALUE).takeIf { it != Int.MIN_VALUE }?.let { return it.toString() }
+        bundle.getLong(key, Long.MIN_VALUE).takeIf { it != Long.MIN_VALUE }?.let { return it.toString() }
+        bundle.getFloat(key, Float.NaN).takeIf { !it.isNaN() }?.let { return it.toString() }
+        bundle.getBoolean(key, false).let {
+            if (bundle.containsKey(key)) return it.toString()
+        }
 
-        // Remove prefix and suffix
-        val content =
-            bundleString
-                .removePrefix("Bundle[{")
-                .removeSuffix("}]")
-                .trim()
+        // Array types supported by Navigation
+        bundle.getStringArray(key)?.let { return it.contentToString() }
+        bundle.getIntArray(key)?.let { return it.contentToString() }
+        bundle.getLongArray(key)?.let { return it.contentToString() }
+        bundle.getFloatArray(key)?.let { return it.contentToString() }
+        bundle.getBooleanArray(key)?.let { return it.contentToString() }
 
-        if (content.isEmpty()) return emptyList()
+        // Complex types supported by Navigation
+        bundle.getParcelable<Parcelable>(key)?.let { return it.toString() }
+        bundle.getParcelableArray(key)?.let { return it.contentToString() }
+        bundle.getSerializable(key)?.let { return it.toString() }
 
-        // Split by comma and format each pair
-        return content
-            .split(", ")
-            .mapNotNull { pair ->
-                val parts = pair.split("=", limit = 2)
-                if (parts.size == 2) {
-                    val key = parts[0].trim()
-                    val value = parts[1].trim()
-                    "\t\t$key: $value"
-                } else {
-                    null
-                }
-            }
+        return null
     }
 }
