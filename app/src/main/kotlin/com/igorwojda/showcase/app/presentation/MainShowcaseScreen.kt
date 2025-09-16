@@ -19,7 +19,6 @@ import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.Albu
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
 import com.igorwojda.showcase.feature.settings.presentation.screen.settings.SettingsScreen
-import timber.log.Timber
 
 @Composable
 fun MainShowcaseScreen(modifier: Modifier = Modifier) {
@@ -87,4 +86,3 @@ private fun addOnDestinationChangedListener(navController: NavController) {
         },
     )
 }
-

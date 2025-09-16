@@ -62,15 +62,17 @@ object NavigationDestinationLogger {
         val bundleString = bundle.toString()
 
         // Remove prefix and suffix
-        val content = bundleString
-            .removePrefix("Bundle[{")
-            .removeSuffix("}]")
-            .trim()
+        val content =
+            bundleString
+                .removePrefix("Bundle[{")
+                .removeSuffix("}]")
+                .trim()
 
         if (content.isEmpty()) return emptyList()
 
         // Split by comma and format each pair
-        return content.split(", ")
+        return content
+            .split(", ")
             .mapNotNull { pair ->
                 val parts = pair.split("=", limit = 2)
                 if (parts.size == 2) {
@@ -82,5 +84,4 @@ object NavigationDestinationLogger {
                 }
             }
     }
-
 }
