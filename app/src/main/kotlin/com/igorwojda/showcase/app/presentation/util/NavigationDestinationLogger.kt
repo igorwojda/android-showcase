@@ -1,7 +1,6 @@
 package com.igorwojda.showcase.app.presentation.util
 
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.navigation.NavDestination
 import com.igorwojda.showcase.app.presentation.NavigationRoute
 import timber.log.Timber
@@ -46,28 +45,15 @@ object NavigationDestinationLogger {
     private fun getValueFromBundle(
         bundle: Bundle,
         key: String,
-    ): String? {
-        // Basic types supported by Navigation
-        bundle.getString(key)?.let { return "\"$it\"" }
-        bundle.getInt(key, Int.MIN_VALUE).takeIf { it != Int.MIN_VALUE }?.let { return it.toString() }
-        bundle.getLong(key, Long.MIN_VALUE).takeIf { it != Long.MIN_VALUE }?.let { return it.toString() }
-        bundle.getFloat(key, Float.NaN).takeIf { !it.isNaN() }?.let { return it.toString() }
-        bundle.getBoolean(key, false).let {
-            if (bundle.containsKey(key)) return it.toString()
-        }
-
-        // Array types supported by Navigation
-        bundle.getStringArray(key)?.let { return it.contentToString() }
-        bundle.getIntArray(key)?.let { return it.contentToString() }
-        bundle.getLongArray(key)?.let { return it.contentToString() }
-        bundle.getFloatArray(key)?.let { return it.contentToString() }
-        bundle.getBooleanArray(key)?.let { return it.contentToString() }
-
-        // Complex types supported by Navigation
-        bundle.getParcelable<Parcelable>(key)?.let { return it.toString() }
-        bundle.getParcelableArray(key)?.let { return it.contentToString() }
-        bundle.getSerializable(key)?.let { return it.toString() }
-
-        return null
-    }
+    ): String? =
+        bundle.getString(key)?.let { "\"$it\"" }
+            ?: runCatching { bundle.getInt(key) }.getOrNull()?.toString()
+            ?: runCatching { bundle.getLong(key) }.getOrNull()?.toString()
+            ?: runCatching { bundle.getFloat(key) }.getOrNull()?.toString()
+            ?: runCatching { bundle.getBoolean(key) }.getOrNull()?.toString()
+            ?: bundle.getStringArray(key)?.contentToString()
+            ?: bundle.getIntArray(key)?.contentToString()
+            ?: bundle.getLongArray(key)?.contentToString()
+            ?: bundle.getFloatArray(key)?.contentToString()
+            ?: bundle.getBooleanArray(key)?.contentToString()
 }
