@@ -1,10 +1,8 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.toRoomModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
+import com.igorwojda.showcase.feature.album.data.mapper.AlbumMapper
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.repository.AlbumRepository
 import com.igorwojda.showcase.feature.base.data.retrofit.ApiResult
@@ -14,6 +12,7 @@ import timber.log.Timber
 internal class AlbumRepositoryImpl(
     private val albumRetrofitService: AlbumRetrofitService,
     private val albumDao: AlbumDao,
+    private val albumMapper: AlbumMapper,
 ) : AlbumRepository {
     override suspend fun searchAlbum(phrase: String?): Result<List<Album>> =
         when (val apiResult = albumRetrofitService.searchAlbumAsync(phrase)) {
@@ -25,9 +24,9 @@ internal class AlbumRepositoryImpl(
                         .albumMatches
                         .album
                         .also { albumsApiModels ->
-                            val albumsRoomModels = albumsApiModels.map { it.toRoomModel() }
+                            val albumsRoomModels = albumsApiModels.map { albumMapper.apiToRoom(it) }
                             albumDao.insertAlbums(albumsRoomModels)
-                        }.map { it.toDomainModel() }
+                        }.map { albumMapper.apiToDomain(it) }
 
                 Result.Success(albums)
             }
@@ -40,7 +39,7 @@ internal class AlbumRepositoryImpl(
                 val albums =
                     albumDao
                         .getAll()
-                        .map { it.toDomainModel() }
+                        .map { albumMapper.roomToDomain(it) }
 
                 Result.Success(albums)
             }
@@ -57,7 +56,7 @@ internal class AlbumRepositoryImpl(
                     apiResult
                         .data
                         .album
-                        .toDomainModel()
+                        .let { albumMapper.apiToDomain(it) }
 
                 Result.Success(album)
             }
@@ -70,7 +69,7 @@ internal class AlbumRepositoryImpl(
                 val album =
                     albumDao
                         .getAlbum(artistName, albumName, mbId)
-                        .toDomainModel()
+                        .let { albumMapper.roomToDomain(it) }
 
                 Result.Success(album)
             }
