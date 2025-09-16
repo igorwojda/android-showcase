@@ -13,10 +13,10 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
-import java.net.UnknownHostException
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
+import java.net.UnknownHostException
 
 class AlbumRepositoryImplTest {
     private val mockService: AlbumRetrofitService = mockk()
