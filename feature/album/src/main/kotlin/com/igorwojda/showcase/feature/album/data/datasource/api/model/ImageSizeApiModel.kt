@@ -28,4 +28,6 @@ internal enum class ImageSizeApiModel {
 
 internal fun ImageSizeApiModel.toDomainModel() = ImageSize.valueOf(this.name)
 
-internal fun ImageSizeApiModel.toRoomModel() = ImageSizeRoomModel.values().firstOrNull { it.ordinal == this.ordinal }
+internal fun ImageSizeApiModel.toRoomModel() = ImageSizeRoomModel
+    .entries
+    .firstOrNull { it.ordinal == this.ordinal }

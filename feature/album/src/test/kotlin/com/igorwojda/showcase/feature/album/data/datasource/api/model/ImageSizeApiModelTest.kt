@@ -6,7 +6,9 @@ class ImageSizeApiModelTest {
     @Test
     fun `maps to AlbumDomainImageSize`() {
         // given
-        val dataEnums = ImageSizeApiModel.values().filterNot { it == ImageSizeApiModel.UNKNOWN }
+        val dataEnums = ImageSizeApiModel
+            .entries
+            .filterNot { it == ImageSizeApiModel.UNKNOWN }
 
         // when
         dataEnums.forEach { it.toDomainModel() }
