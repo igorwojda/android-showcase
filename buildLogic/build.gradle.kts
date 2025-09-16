@@ -33,6 +33,7 @@ dependencies {
     implementation(libs.testLogger.gradlePlugin)
     implementation(libs.compose.gradlePlugin)
     implementation(libs.junit5.gradlePlugin)
+    implementation(libs.easyLauncher.gradlePlugin)
 
     /*
     Expose generated type-safe version catalogs accessors accessible from precompiled script plugins
@@ -55,33 +56,45 @@ gradlePlugin {
             id = "com.igorwojda.showcase.convention.application"
             implementationClass = "com.igorwojda.showcase.buildlogic.ApplicationConventionPlugin"
         }
+
         register("featureConvention") {
             id = "com.igorwojda.showcase.convention.feature"
             implementationClass = "com.igorwojda.showcase.buildlogic.FeatureConventionPlugin"
         }
+
         register("libraryConvention") {
             id = "com.igorwojda.showcase.convention.library"
             implementationClass = "com.igorwojda.showcase.buildlogic.LibraryConventionPlugin"
         }
+
         register("kotlinConvention") {
             id = "com.igorwojda.showcase.convention.kotlin"
             implementationClass = "com.igorwojda.showcase.buildlogic.KotlinConventionPlugin"
         }
+
         register("testConvention") {
             id = "com.igorwojda.showcase.convention.test"
             implementationClass = "com.igorwojda.showcase.buildlogic.TestConventionPlugin"
         }
+
         register("testLibraryConvention") {
             id = "com.igorwojda.showcase.convention.test.library"
             implementationClass = "com.igorwojda.showcase.buildlogic.TestConventionLibraryPlugin"
         }
+
         register("spotlessConvention") {
             id = "com.igorwojda.showcase.convention.spotless"
             implementationClass = "com.igorwojda.showcase.buildlogic.SpotlessConventionPlugin"
         }
+
         register("detektConvention") {
             id = "com.igorwojda.showcase.convention.detekt"
             implementationClass = "com.igorwojda.showcase.buildlogic.DetektConventionPlugin"
+        }
+
+        register("easyLauncherConvention") {
+            id = "com.igorwojda.showcase.convention.easylauncher"
+            implementationClass = "com.igorwojda.showcase.buildlogic.EasyLauncherConventionPlugin"
         }
     }
 }

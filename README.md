@@ -129,6 +129,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Detekt](https://detekt.dev/)** (`io.gitlab.arturbosch.detekt`) - Static code analysis
 - **[Spotless](https://github.com/diffplug/spotless)** (`com.diffplug.spotless`) - Code formatting
 - **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test log output
+- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-pluginn)** (`com.starter.easylauncher`) - modify the launcher icon of each of your app-variants
 
 ## Architecture
 
@@ -277,14 +278,23 @@ Each module uses convention a plugin, so common dependencies are shared without 
 
 ### Convention Plugins
 
-[Convention plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) standardize build configuration across modules:
+[Convention plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) standardize build configuration across modules by encapsulating common build logic into reusable plugins:
 
-- **`app-convention`** - Application module configuration
-- **`library-convention`** - Library module setup with Android configuration  
-- **`kotlin-convention`** - Kotlin compilation settings and toolchain
-- **`test-convention`** - Testing framework setup (JUnit 5, test logging)
-- **`detekt-convention`** - Detekt setup
-- **`spotless-convention`** - Spotless setup
+- **`application-convention`** - Main application module configuration with Android app setup
+- **`feature-convention`** - Feature module configuration combining library and Kotlin conventions
+- **`library-convention`** - Android library module setup with common Android configuration
+- **`kotlin-convention`** - Kotlin compilation settings, toolchain, and compiler options
+- **`test-convention`** - Testing framework setup (JUnit 5, test logging, and test configurations)
+- **`test-library-convention`** - Testing setup specifically for library modules
+- **`detekt-convention`** - Static code analysis configuration with Detekt
+- **`spotless-convention`** - Code formatting and style enforcement with Spotless
+- **`easylauncher-convention`** - App icon customization for different build variants
+
+**Benefits:**
+- **Consistency** - Unified configuration across all modules
+- **Maintainability** - Single source of truth for build logic
+- **Reusability** - Shared conventions reduce duplication
+- **Type Safety** - Kotlin DSL with IDE support and auto-completion
 
 All convention plugins are located in [`buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic).
 
