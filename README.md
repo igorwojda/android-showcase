@@ -99,7 +99,10 @@ Built with modern Android development tools and libraries, prioritizing, project
 
 **Code Quality:**
 - **[Konsist](https://docs.konsist.lemonappdev.com/)** - Architecture and code structure convention tests
-- **[Ktlint](https://github.com/pinterest/ktlint)** - Kotlin code formatting
+- **[Ktlint](https://github.com/pinterest/ktlint)** - Kotlin code formatting and issue detection
+  - **[Ktlint Standard Rules](https://pinterest.github.io/ktlint/0.49.1/rules/standard/)** - set of custom rules for Jetpack Compose
+  - **[Nlopez Jetpack Compose Rules](https://mrmans0n.github.io/compose-rules/)** - set of custom rules for Jetpack Compose
+  - **[Twitter's Jetpack Compose Rules](https://twitter.github.io/compose-rules/)** - set of custom rules for Jetpack Compose
 - **[Detekt](https://github.com/arturbosch/detekt)** - Static analysis and complexity checks
 - **[Android Lint](http://tools.android.com/tips/lint)** - Android-specific code analysis
 - **[Spotless](https://github.com/diffplug/spotless)** - Code formatting enforcement

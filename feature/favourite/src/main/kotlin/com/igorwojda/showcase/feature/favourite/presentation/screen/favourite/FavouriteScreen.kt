@@ -9,9 +9,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.UnderConstructionAnim
 
 @Composable
-fun FavouriteScreen() {
+fun FavouriteScreen(modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
         UnderConstructionAnim()

@@ -38,7 +38,7 @@ fun SearchBar(
     var textFieldValue by remember(query) { mutableStateOf(TextFieldValue(query)) }
 
     // Debounce search - only trigger search after user stops typing
-    LaunchedEffect(textFieldValue.text) {
+    LaunchedEffect(textFieldValue.text, onSearch, onQueryChange) {
         if (textFieldValue.text.length >= minimumProductQuerySize) {
             delay(delayBeforeSubmittingQuery)
             onSearch(textFieldValue.text)

@@ -11,9 +11,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 
 @Composable
-fun LoadingIndicator() {
+fun LoadingIndicator(modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
         CircularProgressIndicator(

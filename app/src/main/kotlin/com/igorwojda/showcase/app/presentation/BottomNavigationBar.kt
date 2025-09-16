@@ -10,6 +10,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,7 +20,10 @@ import androidx.navigation.compose.rememberNavController
 import com.igorwojda.showcase.app.R
 
 @Composable
-fun BottomNavigationBar(navController: NavController) {
+fun BottomNavigationBar(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+) {
     val navigationItems = getBottomNavigationItems()
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -31,7 +35,9 @@ fun BottomNavigationBar(navController: NavController) {
                 it.route::class.qualifiedName == currentRoute
             }.takeIf { it >= 0 } ?: 0
 
-    NavigationBar {
+    NavigationBar(
+        modifier = modifier,
+    ) {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = selectedNavigationIndex == index,

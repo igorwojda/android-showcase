@@ -32,7 +32,10 @@ import com.igorwojda.showcase.feature.base.presentation.compose.composable.Place
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun AlbumListScreen(onNavigateToAlbumDetail: ((artistName: String, albumName: String, albumMbId: String?) -> Unit)? = null) {
+fun AlbumListScreen(
+    modifier: Modifier = Modifier,
+    onNavigateToAlbumDetail: ((artistName: String, albumName: String, albumMbId: String?) -> Unit)? = null,
+) {
     val viewModel: AlbumListViewModel = koinViewModel()
 
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
@@ -43,7 +46,7 @@ fun AlbumListScreen(onNavigateToAlbumDetail: ((artistName: String, albumName: St
         viewModel.onInit()
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = modifier.fillMaxSize()) {
         // Search bar
         SearchBar(
             query = searchQuery,

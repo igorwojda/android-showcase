@@ -22,11 +22,10 @@ import com.igorwojda.showcase.feature.base.common.res.Dimen
 fun LabeledAnimation(
     @StringRes label: Int,
     @RawRes assetResId: Int,
+    modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier =
-            Modifier
-                .wrapContentSize(),
+        modifier = modifier.wrapContentSize(),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -44,12 +43,13 @@ fun LabeledAnimation(
 @Composable
 fun LottieAssetLoader(
     @RawRes assetResId: Int,
+    modifier: Modifier = Modifier,
 ) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(assetResId))
 
     LottieAnimation(
         composition,
-        modifier = Modifier.requiredSize(Dimen.imageSize),
+        modifier = modifier.requiredSize(Dimen.imageSize),
     )
 }
 

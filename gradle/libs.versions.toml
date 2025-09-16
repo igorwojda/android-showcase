@@ -35,6 +35,10 @@ spotless = "7.2.1"
 detekt = "1.23.8"
 android-gradle-plugin = "8.13.0"
 
+ktlint-ruleset-standard = "1.7.1"
+nlopez-compose-rules = "0.4.12"
+twitter-compose-rules = "0.0.26"
+
 # Test
 junit-jupiter = "5.13.4"
 android-junit5 = "1.13.4.0"
@@ -99,6 +103,12 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 
+# Ktlint Rules
+ktlint-ruleset-standard = { module = "com.pinterest.ktlint:ktlint-ruleset-standard", version.ref = "ktlint-ruleset-standard" }
+nlopez-compose-rules = { module = "io.nlopez.compose.rules:ktlint", version.ref = "nlopez-compose-rules" }
+twitter-compose-rules = { module = "com.twitter.compose.rules:ktlint", version.ref = "twitter-compose-rules" }
+
+
 # Test dependencies
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kluent = { module = "org.amshove.kluent:kluent-android", version.ref = "kluent" }
@@ -113,8 +123,6 @@ navigation-compose = { group = "androidx.navigation", name = "navigation-compose
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
-
-
 
 [bundles]
 retrofit = [
