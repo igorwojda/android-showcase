@@ -4,9 +4,9 @@ import com.igorwojda.showcase.feature.album.domain.model.Image
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class ImageEntityModel(
+internal data class ImageRoomModel(
     val url: String,
-    val size: ImageSizeEntityModel,
+    val size: ImageSizeRoomModel,
 )
 
-internal fun ImageEntityModel.toDomainModel() = this.size.toDomainModel()?.let { Image(this.url, it) }
+internal fun ImageRoomModel.toDomainModel() = this.size.toDomainModel()?.let { Image(this.url, it) }

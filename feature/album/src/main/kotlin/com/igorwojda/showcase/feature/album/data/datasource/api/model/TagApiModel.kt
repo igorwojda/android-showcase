@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.TagEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.TagRoomModel
 import com.igorwojda.showcase.feature.album.domain.model.Tag
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -15,7 +15,7 @@ internal fun TagApiModel.toDomainModel() =
         name = this.name,
     )
 
-internal fun TagApiModel.toEntityModel() =
-    TagEntityModel(
+internal fun TagApiModel.toRoomModel() =
+    TagRoomModel(
         name = this.name,
     )

@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.ImageEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.ImageRoomModel
 import com.igorwojda.showcase.feature.album.domain.model.Image
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -17,4 +17,4 @@ internal fun ImageApiModel.toDomainModel() =
         size = this.size.toDomainModel(),
     )
 
-internal fun ImageApiModel.toEntityModel() = this.size.toEntityModel()?.let { ImageEntityModel(this.url, it) }
+internal fun ImageApiModel.toRoomModel() = this.size.toRoomModel()?.let { ImageRoomModel(this.url, it) }
