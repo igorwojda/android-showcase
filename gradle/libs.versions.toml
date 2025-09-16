@@ -36,7 +36,7 @@ detekt = "1.23.8"
 android-gradle-plugin = "8.13.0"
 
 ktlint-ruleset-standard = "1.7.1"
-nlopez-compose-rules = "0.4.12"
+nlopez-compose-rules = "0.4.27"
 twitter-compose-rules = "0.0.26"
 
 # Test
