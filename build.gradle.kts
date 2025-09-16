@@ -15,3 +15,16 @@ plugins {
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.junit5.android) apply false
 }
+
+// Exclude konsistTest from general test tasks e.g. ./gradlew testDebugUnitTest
+subprojects {
+    if (name == "konsistTest") {
+        tasks.matching { it.name.startsWith("test") }.configureEach {
+            onlyIf { gradle.startParameter.taskRequests.any { request ->
+                request.args.any { arg ->
+                    arg.contains("konsistTest") || arg.contains(":test") && arg.startsWith(":konsistTest")
+                }
+            }}
+        }
+    }
+}
