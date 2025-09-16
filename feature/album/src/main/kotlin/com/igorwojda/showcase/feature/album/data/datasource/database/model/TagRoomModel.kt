@@ -4,11 +4,11 @@ import com.igorwojda.showcase.feature.album.domain.model.Tag
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class TagEntityModel(
+internal data class TagRoomModel(
     val name: String,
 )
 
-internal fun TagEntityModel.toDomainModel() =
+internal fun TagRoomModel.toDomainModel() =
     Tag(
         name = this.name,
     )

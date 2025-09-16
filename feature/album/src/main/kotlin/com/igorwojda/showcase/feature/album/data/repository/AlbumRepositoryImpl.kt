@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.album.data.repository
 
 import com.igorwojda.showcase.feature.album.data.datasource.api.model.toDomainModel
-import com.igorwojda.showcase.feature.album.data.datasource.api.model.toEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.api.model.toRoomModel
 import com.igorwojda.showcase.feature.album.data.datasource.api.service.AlbumRetrofitService
 import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.datasource.database.model.toDomainModel
@@ -25,8 +25,8 @@ internal class AlbumRepositoryImpl(
                         .albumMatches
                         .album
                         .also { albumsApiModels ->
-                            val albumsEntityModels = albumsApiModels.map { it.toEntityModel() }
-                            albumDao.insertAlbums(albumsEntityModels)
+                            val albumsRoomModels = albumsApiModels.map { it.toRoomModel() }
+                            albumDao.insertAlbums(albumsRoomModels)
                         }.map { it.toDomainModel() }
 
                 Result.Success(albums)

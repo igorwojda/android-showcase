@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.ImageSizeEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.ImageSizeRoomModel
 import com.igorwojda.showcase.feature.album.domain.enum.ImageSize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -28,4 +28,4 @@ internal enum class ImageSizeApiModel {
 
 internal fun ImageSizeApiModel.toDomainModel() = ImageSize.valueOf(this.name)
 
-internal fun ImageSizeApiModel.toEntityModel() = ImageSizeEntityModel.values().firstOrNull { it.ordinal == this.ordinal }
+internal fun ImageSizeApiModel.toRoomModel() = ImageSizeRoomModel.values().firstOrNull { it.ordinal == this.ordinal }

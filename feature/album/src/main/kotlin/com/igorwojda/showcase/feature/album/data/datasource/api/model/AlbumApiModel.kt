@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.data.datasource.api.model
 
-import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumEntityModel
+import com.igorwojda.showcase.feature.album.data.datasource.database.model.AlbumRoomModel
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -15,14 +15,14 @@ internal data class AlbumApiModel(
     @SerialName("tags") val tags: TagListApiModel? = null,
 )
 
-internal fun AlbumApiModel.toEntityModel() =
-    AlbumEntityModel(
+internal fun AlbumApiModel.toRoomModel() =
+    AlbumRoomModel(
         mbId = this.mbId ?: "",
         name = this.name,
         artist = this.artist,
-        images = this.images?.mapNotNull { it.toEntityModel() } ?: listOf(),
-        tracks = this.tracks?.track?.map { it.toEntityModel() },
-        tags = this.tags?.tag?.map { it.toEntityModel() },
+        images = this.images?.mapNotNull { it.toRoomModel() } ?: listOf(),
+        tracks = this.tracks?.track?.map { it.toRoomModel() },
+        tags = this.tags?.tag?.map { it.toRoomModel() },
     )
 
 internal fun AlbumApiModel.toDomainModel(): Album {
