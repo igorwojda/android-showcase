@@ -70,10 +70,10 @@ kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", ve
 ksp-gradlePlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "kotlin-symbol-processing" }
 spotless-gradlePlugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
 detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
-testLogger-gradlePlugin = { module = "com.adarshr:gradle-test-logger-plugin", version.ref = "test-logger" }
+test-logger-gradlePlugin = { module = "com.adarshr:gradle-test-logger-plugin", version.ref = "test-logger" }
 compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 junit5-gradlePlugin = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "android-junit5" }
-easyLauncher-gradlePlugin = { module = "com.starter.easylauncher:com.starter.easylauncher.gradle.plugin", version.ref = "easylauncher" }
+easy-launcher-gradlePlugin = { module = "com.starter.easylauncher:com.starter.easylauncher.gradle.plugin", version.ref = "easylauncher" }
 
 # Dependencies
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
