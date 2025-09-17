@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:dist="http://schemas.android.com/apk/distribution">
-
-    <dist:module
-            dist:instant="false"
-            dist:onDemand="false"
-            dist:title="@string/feature_settings">
-        <dist:fusing dist:include="false" />
-    </dist:module>
-
-</manifest>
+<manifest />
