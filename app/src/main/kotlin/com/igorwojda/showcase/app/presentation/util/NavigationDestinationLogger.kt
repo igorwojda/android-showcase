@@ -3,6 +3,7 @@ package com.igorwojda.showcase.app.presentation.util
 import android.os.Bundle
 import androidx.navigation.NavDestination
 import com.igorwojda.showcase.app.presentation.NavigationRoute
+import com.igorwojda.showcase.feature.base.util.TimberLogTags
 import timber.log.Timber
 
 object NavigationDestinationLogger {
@@ -33,7 +34,7 @@ object NavigationDestinationLogger {
                 }
             }
 
-        Timber.tag("Navigation").d(logMessage)
+        Timber.tag(TimberLogTags.NAVIGATION).d(logMessage)
     }
 
     /**

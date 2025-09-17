@@ -21,6 +21,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
       - [Common Module Components](#common-module-components)
     - [Data Flow](#data-flow)
   - [Project Features](#project-features)
+    - [Development \& Debugging](#development--debugging)
     - [Custom Icons For Each Variant](#custom-icons-for-each-variant)
     - [Themed Icons](#themed-icons)
   - [Gradle Config](#gradle-config)
@@ -33,7 +34,6 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
   - [Code Verification](#code-verification)
     - [CI Pipeline](#ci-pipeline)
     - [Pre-push Hooks](#pre-push-hooks)
-  - [Development \& Debugging](#development--debugging)
   - [Project Scope \& Limitations](#project-scope--limitations)
   - [Getting Started](#getting-started)
   - [Roadmap](#roadmap)
@@ -263,6 +263,21 @@ The below diagram presents application data flow when a user interacts with the 
 
 ## Project Features
 
+### Development & Debugging
+
+Tags ([LogTags](feature/base/src/main/kotlin/com/igorwojda/showcase/feature/base/util/LogTags.kt)) help filter and identify different types of logs during development and debugging.
+
+The app provides detailed logging for development and debugging, with each log easily filterable by its tag:
+
+- `Navigation` - Navigation events and route changes
+![Navigation Logs](misc/image/logs_navigation.png)
+
+- `Action` - User actions and UI state modifications
+![Action Logs](misc/image/logs_action.png)
+
+- `Network` - Network requests, responses, and HTTP-related logs
+![Network Logs](misc/image/logs_network.png)
+
 ### Custom Icons For Each Variant
 
 Thanks to [Easylauncher Gradle plugin](https://github.com/usefulness/easylauncher-gradle-plugin) the `debug` build has custom icon label:
@@ -384,20 +399,6 @@ Configuration: [`.github/workflows`](.github/workflows)
 ### Pre-push Hooks
 
 Optional [Git hooks](https://git-scm.com/docs/githooks#_pre_push) can execute quality checks before pushing code, providing fast feedback during development.
-
-## Development & Debugging
-
-**Logging System:**
-The app includes comprehensive logging for development debugging:
-
-- `onCreate` - Activity and ViewModel lifecycle events
-- `Action` - UI state changes and user interactions  
-- `Http` - Network request/response details (debug builds only)
-- `Navigation` - Screen transitions and routing
-
-Filter logs by tag: `package:mine tag:Navigation`
-
-![Navigation Logs](./misc/image/log_navigation.png)
 
 ## Project Scope & Limitations
 
