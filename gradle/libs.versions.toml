@@ -114,7 +114,6 @@ ktlint-ruleset-standard = { module = "com.pinterest.ktlint:ktlint-ruleset-standa
 nlopez-compose-rules = { module = "io.nlopez.compose.rules:ktlint", version.ref = "nlopez-compose-rules" }
 twitter-compose-rules = { module = "com.twitter.compose.rules:ktlint", version.ref = "twitter-compose-rules" }
 
-
 # Test dependencies
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kluent = { module = "org.amshove.kluent:kluent-android", version.ref = "kluent" }
