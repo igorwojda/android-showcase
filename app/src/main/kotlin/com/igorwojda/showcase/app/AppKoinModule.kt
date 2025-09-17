@@ -42,7 +42,19 @@ val appModule =
             HttpLoggingInterceptor { message ->
                 Timber.tag("Network").d(message)
             }.apply {
-                level = HttpLoggingInterceptor.Level.BODY
+                /*
+                Use BODY logging only in debug builds.
+                Even if Timber.DebugTree() is planted only in debug, the interceptor still
+                reads/constructs request/response bodies when level = BODY.
+                This adds unnecessary overhead and may leak sensitive data if any logger
+                is active in production. Setting NONE in release avoids both risks.
+                */
+                level =
+                    if (BuildConfig.DEBUG) {
+                        HttpLoggingInterceptor.Level.BODY
+                    } else {
+                        HttpLoggingInterceptor.Level.NONE
+                    }
             }
         }
 
