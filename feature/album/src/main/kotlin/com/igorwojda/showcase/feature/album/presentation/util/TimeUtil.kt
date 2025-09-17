@@ -2,7 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation.util
 
 object TimeUtil {
     /**
-     * provides a String representation of the given time
+     * provides a String representation of the given time.
      * @return `seconds` in mm:ss format
      */
     internal fun formatTime(seconds: Int): String {

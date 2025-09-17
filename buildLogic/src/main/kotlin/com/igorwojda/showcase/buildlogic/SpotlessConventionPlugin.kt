@@ -14,8 +14,8 @@ class SpotlessConventionPlugin : Plugin<Project> {
             extensions.configure<SpotlessExtension> {
                 kotlin {
                     target("**/*.kt", "**/*.kts")
-                    targetExclude("**/buildLogic/build/**/*.*")
 
+                    // Some rules are disabled in .editorconfig to avoid conflicts with detekt
                     val customRuleSets =
                         listOf(
                             libs.ktlint.ruleset.standard,

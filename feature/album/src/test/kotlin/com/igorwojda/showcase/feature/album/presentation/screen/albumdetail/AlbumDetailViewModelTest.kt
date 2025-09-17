@@ -2,7 +2,6 @@ package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
-import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailUiState
 import com.igorwojda.showcase.feature.base.domain.result.Result
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
