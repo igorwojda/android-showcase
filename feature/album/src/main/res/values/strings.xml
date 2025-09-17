@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="feature_album">Album</string>
+    <string name="album_list_search_hint">Search Album</string>
+    <string name="album_list_title">Albums</string>
+    <string name="album_list_search_placeholder">Search albums…</string>
 
-    <string name="album_cover_content_description">Album Cover</string>
-    <string name="tracks">Tracks</string>
-    <string name="search_album_hint">Search Album</string>
-    <string name="album">Albums</string>
-    <string name="search_albums">Search albums…</string>
+    <string name="album_detail_cover_content_description">Album Cover</string>
+    <string name="album_detail_tracks">Tracks</string>
     <string name="album_detail_back">Back</string>
 </resources>

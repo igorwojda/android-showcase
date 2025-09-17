@@ -49,12 +49,12 @@ private fun AboutLibrariesContent(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.about_libraries_title)) },
+                title = { Text(stringResource(R.string.about_libraries_screen_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.about_libraries_back),
+                            contentDescription = stringResource(R.string.about_libraries_screen_back),
                         )
                     }
                 },

@@ -71,17 +71,17 @@ fun BottomNavigationBar(
 private fun getBottomNavigationItems() =
     listOf(
         NavigationBarItem(
-            R.string.albums,
+            R.string.bottom_navigation_albums,
             R.drawable.ic_music_library,
             NavigationRoute.AlbumList,
         ),
         NavigationBarItem(
-            R.string.favorites,
+            R.string.bottom_navigation_favorites,
             R.drawable.ic_favorite,
             NavigationRoute.Favourite,
         ),
         NavigationBarItem(
-            R.string.settings,
+            R.string.bottom_navigation_settings,
             R.drawable.ic_settings,
             NavigationRoute.Settings,
         ),

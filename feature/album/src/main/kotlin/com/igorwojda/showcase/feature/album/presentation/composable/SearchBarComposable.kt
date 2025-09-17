@@ -60,7 +60,7 @@ fun SearchBar(
             textFieldValue = newValue
         },
         placeholder = {
-            Text(stringResource(R.string.search_albums))
+            Text(stringResource(R.string.album_list_search_placeholder))
         },
         leadingIcon = {
             Icon(
