@@ -8,12 +8,18 @@ package com.igorwojda.showcase.feature.base.util
  * - Filter in Logcat by tag to see specific log categories
  */
 object TimberLogTags {
-    /** Network requests, responses, and HTTP-related logs */
+    /**
+     * Network requests, responses, and HTTP-related logs.
+     **/
     const val NETWORK = "Network"
 
-    /** User actions and UI state modifications */
+    /**
+     * User actions and UI state modifications.
+     **/
     const val ACTION = "Action"
 
-    /** Navigation events and route changes */
+    /**
+     * Navigation events and route changes.
+     **/
     const val NAVIGATION = "Navigation"
 }
