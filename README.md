@@ -271,7 +271,7 @@ Thanks to [Easylauncher Gradle plugin](https://github.com/usefulness/easylaunche
 
 ### Themed Icons
 
-App supports [Themed Icons](https://medium.com/@enikebraimoh/android-themed-icons-a-comprehensive-guide-3abb33ab51a7).
+App supports [Themed Icons](https://medium.com/@enikebraimoh/android-themed-icons-a-comprehensive-guide-3abb33ab51a7). w
 
 Left (classic icon), Right (themed icon):
 
