@@ -101,7 +101,6 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 implementation(libs.bundles.koin)
 
                 implementation(libs.bundles.retrofit)
-                implementation(libs.bundles.navigation)
                 implementation(libs.viewmodel.ktx)
                 implementation(libs.core.splashscreen)
             }

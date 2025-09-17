@@ -38,6 +38,7 @@ android-gradle-plugin = "8.13.0"
 easylauncher = "6.4.1"
 aboutlibraries = "12.2.4"
 
+# ktlint-rules
 ktlint-ruleset-standard = "1.7.1"
 nlopez-compose-rules = "0.4.27"
 twitter-compose-rules = "0.0.26"
@@ -96,8 +97,8 @@ koin-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 compose-material = { module = "androidx.compose.material3:material3", version.ref = "material-compose" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
-lottie = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
-coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "core-splashscreen" }
 viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
@@ -139,8 +140,14 @@ retrofit = [
 ]
 
 koin = ["koin", "koin-compose", "koin-navigation"]
-compose = ["compose-ui", "tooling-preview", "lottie", "coil"]
-navigation = ["navigation-compose"]
+
+compose = [
+    "navigation-compose",
+    "compose-ui",
+    "tooling-preview",
+    "lottie-compose",
+    "coil-compose"
+]
 
 room = [
     "room-ktx",
