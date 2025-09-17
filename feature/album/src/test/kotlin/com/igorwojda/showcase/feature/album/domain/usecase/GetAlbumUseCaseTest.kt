@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 class GetAlbumUseCaseTest {
     private val mockAlbumRepository: AlbumRepositoryImpl = mockk()
 
-    private val cut = GetAlbumUseCase(mockAlbumRepository)
+    private val sut = GetAlbumUseCase(mockAlbumRepository)
 
     @Test
     fun `return album`() {
@@ -26,7 +26,7 @@ class GetAlbumUseCaseTest {
         coEvery { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) } answers { Result.Success(album) }
 
         // when
-        val actual = runBlocking { cut(artistName, albumName, mbId) }
+        val actual = runBlocking { sut(artistName, albumName, mbId) }
 
         // then
         actual shouldBeEqualTo Result.Success(album)
@@ -44,7 +44,7 @@ class GetAlbumUseCaseTest {
             resultFailure
 
         // when
-        val actual = runBlocking { cut(artistName, albumName, mbId) }
+        val actual = runBlocking { sut(artistName, albumName, mbId) }
 
         // then
         coVerify { mockAlbumRepository.getAlbumInfo(artistName, albumName, mbId) }

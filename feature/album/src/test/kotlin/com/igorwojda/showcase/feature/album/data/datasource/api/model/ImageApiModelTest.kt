@@ -12,10 +12,10 @@ class ImageApiModelTest {
         // given
         val url = "url"
         val size = ImageSizeApiModel.EXTRA_LARGE
-        val cut = DataFixtures.getImageModelApiModel(url, size)
+        val sut = DataFixtures.getImageModelApiModel(url, size)
 
         // when
-        val domainModel = cut.toDomainModel()
+        val domainModel = sut.toDomainModel()
 
         // then
         domainModel shouldBeEqualTo Image(url, size.toDomainModel())
@@ -26,10 +26,10 @@ class ImageApiModelTest {
         // given
         val url = "url"
         val size = ImageSizeApiModel.UNKNOWN
-        val cut = DataFixtures.getImageModelApiModel(url, size)
+        val sut = DataFixtures.getImageModelApiModel(url, size)
 
         // when
-        val func = { cut.toDomainModel() }
+        val func = { sut.toDomainModel() }
 
         // then
         func shouldThrow IllegalArgumentException::class

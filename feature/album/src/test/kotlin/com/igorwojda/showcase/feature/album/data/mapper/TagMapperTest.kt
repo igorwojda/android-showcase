@@ -7,7 +7,7 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 class TagMapperTest {
-    private val cut = TagMapper()
+    private val sut = TagMapper()
 
     @Test
     fun `apiToDomain maps tag correctly`() {
@@ -15,7 +15,7 @@ class TagMapperTest {
         val apiModel = TagApiModel("rock")
 
         // when
-        val result = cut.apiToDomain(apiModel)
+        val result = sut.apiToDomain(apiModel)
 
         // then
         result shouldBeEqualTo Tag("rock")
@@ -27,7 +27,7 @@ class TagMapperTest {
         val apiModel = TagApiModel("rock")
 
         // when
-        val result = cut.apiToRoom(apiModel)
+        val result = sut.apiToRoom(apiModel)
 
         // then
         result shouldBeEqualTo TagRoomModel("rock")
@@ -39,7 +39,7 @@ class TagMapperTest {
         val roomModel = TagRoomModel("rock")
 
         // when
-        val result = cut.roomToDomain(roomModel)
+        val result = sut.roomToDomain(roomModel)
 
         // then
         result shouldBeEqualTo Tag("rock")

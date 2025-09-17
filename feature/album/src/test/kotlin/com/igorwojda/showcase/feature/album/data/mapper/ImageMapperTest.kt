@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 
 class ImageMapperTest {
     private val imageSizeMapper: ImageSizeMapper = mockk()
-    private val cut = ImageMapper(imageSizeMapper)
+    private val sut = ImageMapper(imageSizeMapper)
 
     @Test
     fun `apiToDomain maps image correctly`() {
@@ -22,7 +22,7 @@ class ImageMapperTest {
         every { imageSizeMapper.apiToDomain(ImageSizeApiModel.LARGE) } returns ImageSize.LARGE
 
         // when
-        val result = cut.apiToDomain(apiModel)
+        val result = sut.apiToDomain(apiModel)
 
         // then
         result shouldBeEqualTo Image("https://example.com/image.jpg", ImageSize.LARGE)
@@ -35,7 +35,7 @@ class ImageMapperTest {
         every { imageSizeMapper.apiToRoom(ImageSizeApiModel.LARGE) } returns ImageSizeRoomModel.LARGE
 
         // when
-        val result = cut.apiToRoom(apiModel)
+        val result = sut.apiToRoom(apiModel)
 
         // then
         result shouldBeEqualTo ImageRoomModel("https://example.com/image.jpg", ImageSizeRoomModel.LARGE)
@@ -48,7 +48,7 @@ class ImageMapperTest {
         every { imageSizeMapper.roomToDomain(ImageSizeRoomModel.LARGE) } returns ImageSize.LARGE
 
         // when
-        val result = cut.roomToDomain(roomModel)
+        val result = sut.roomToDomain(roomModel)
 
         // then
         result shouldBeEqualTo Image("https://example.com/image.jpg", ImageSize.LARGE)

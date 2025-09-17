@@ -19,7 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 class AlbumDetailViewModelTest {
     private val mockGetAlbumUseCase: GetAlbumUseCase = mockk()
 
-    private val cut =
+    private val sut =
         AlbumDetailViewModel(
             mockGetAlbumUseCase,
         )
@@ -37,11 +37,11 @@ class AlbumDetailViewModelTest {
             } returns Result.Failure()
 
             // when
-            cut.onInit(albumName, artistName, mbId)
+            sut.onInit(albumName, artistName, mbId)
 
             // then
             advanceUntilIdle()
-            cut.uiStateFlow.value shouldBeEqualTo AlbumDetailUiState.Error
+            sut.uiStateFlow.value shouldBeEqualTo AlbumDetailUiState.Error
         }
 
     @Test
@@ -58,11 +58,11 @@ class AlbumDetailViewModelTest {
             } returns Result.Success(album)
 
             // when
-            cut.onInit(albumName, artistName, mbId)
+            sut.onInit(albumName, artistName, mbId)
 
             // then
             advanceUntilIdle()
-            cut.uiStateFlow.value shouldBeEqualTo
+            sut.uiStateFlow.value shouldBeEqualTo
                 AlbumDetailUiState.Content(
                     albumName = albumName,
                     artistName = artistName,

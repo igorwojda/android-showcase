@@ -22,7 +22,7 @@ class AlbumListViewModelTest {
 
     private val savedStateHandle: SavedStateHandle = mockk(relaxed = true)
 
-    private val cut =
+    private val sut =
         AlbumListViewModel(
             savedStateHandle,
             mockGetAlbumListUseCase,
@@ -35,12 +35,12 @@ class AlbumListViewModelTest {
             coEvery { mockGetAlbumListUseCase.invoke("Jackson") } returns Result.Failure()
 
             // when
-            cut.onInit("Jackson")
+            sut.onInit("Jackson")
 
             // then
             advanceUntilIdle()
 
-            cut.uiStateFlow.value shouldBeEqualTo AlbumListUiState.Error
+            sut.uiStateFlow.value shouldBeEqualTo AlbumListUiState.Error
         }
 
     @Test
@@ -52,12 +52,12 @@ class AlbumListViewModelTest {
             coEvery { mockGetAlbumListUseCase.invoke("Jackson") } returns Result.Success(albums)
 
             // when
-            cut.onInit("Jackson")
+            sut.onInit("Jackson")
 
             // then
             advanceUntilIdle()
 
-            cut.uiStateFlow.value shouldBeEqualTo
+            sut.uiStateFlow.value shouldBeEqualTo
                 AlbumListUiState.Content(
                     albums = albums,
                 )

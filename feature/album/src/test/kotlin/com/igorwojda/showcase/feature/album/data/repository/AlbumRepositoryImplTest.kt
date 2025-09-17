@@ -25,7 +25,7 @@ class AlbumRepositoryImplTest {
 
     private val mockAlbumMapper: AlbumMapper = mockk()
 
-    private val cut = AlbumRepositoryImpl(mockService, mockAlbumDao, mockAlbumMapper)
+    private val sut = AlbumRepositoryImpl(mockService, mockAlbumDao, mockAlbumMapper)
 
     @Test
     fun `searchAlbum handles api success and returns albums`() {
@@ -42,7 +42,7 @@ class AlbumRepositoryImplTest {
         every { mockAlbumMapper.apiToDomain(any()) } returns mockAlbum
 
         // when
-        val actual = runBlocking { cut.searchAlbum(phrase) }
+        val actual = runBlocking { sut.searchAlbum(phrase) }
 
         // then
         actual shouldBeEqualTo Result.Success(listOf(mockAlbum))
@@ -61,7 +61,7 @@ class AlbumRepositoryImplTest {
         every { mockAlbumMapper.apiToDomain(any()) } returns mockk()
 
         // when
-        runBlocking { cut.searchAlbum(phrase) }
+        runBlocking { sut.searchAlbum(phrase) }
 
         // then
         coVerify { mockAlbumDao.insertAlbums(any()) }
@@ -81,7 +81,7 @@ class AlbumRepositoryImplTest {
         every { mockAlbumMapper.roomToDomain(albumRoomModels[1]) } returns mockAlbum2
 
         // when
-        val actual = runBlocking { cut.searchAlbum(phrase) }
+        val actual = runBlocking { sut.searchAlbum(phrase) }
 
         // then
         actual shouldBeEqualTo Result.Success(listOf(mockAlbum1, mockAlbum2))
@@ -95,7 +95,7 @@ class AlbumRepositoryImplTest {
         coEvery { mockService.searchAlbumAsync(phrase) } returns mockk<ApiResult.Error<SearchAlbumResponse>>()
 
         // when
-        val actual = runBlocking { cut.searchAlbum(phrase) }
+        val actual = runBlocking { sut.searchAlbum(phrase) }
 
         // then
         actual shouldBeEqualTo Result.Failure()
@@ -120,7 +120,7 @@ class AlbumRepositoryImplTest {
         every { mockAlbumMapper.apiToDomain(album) } returns mockAlbum
 
         // when
-        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
+        val actual = runBlocking { sut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
         actual shouldBeEqualTo Result.Success(mockAlbum)
@@ -141,7 +141,7 @@ class AlbumRepositoryImplTest {
         every { mockAlbumMapper.roomToDomain(any()) } returns mockk()
 
         // when
-        runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
+        runBlocking { sut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
         coVerify { mockAlbumDao.getAlbum(artistName, albumName, mbId) }
@@ -159,7 +159,7 @@ class AlbumRepositoryImplTest {
         } returns mockk<ApiResult.Error<GetAlbumInfoResponse>>()
 
         // when
-        val actual = runBlocking { cut.getAlbumInfo(artistName, albumName, mbId) }
+        val actual = runBlocking { sut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
         actual shouldBeEqualTo Result.Failure()
