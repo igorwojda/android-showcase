@@ -22,6 +22,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
     - [Data Flow](#data-flow)
   - [Project Features](#project-features)
     - [Custom Icons For Each Variant](#custom-icons-for-each-variant)
+    - [Themed Icons](#themed-icons)
   - [Gradle Config](#gradle-config)
     - [Dependency Management](#dependency-management)
     - [Convention Plugins](#convention-plugins)
@@ -267,6 +268,14 @@ The below diagram presents application data flow when a user interacts with the 
 Thanks to [Easylauncher Gradle plugin](https://github.com/usefulness/easylauncher-gradle-plugin) the `debug` build has custom icon label:
 
 <img src="./misc/image/application_icon_label.png" alt="application_icon_label" width="114"/>
+
+### Themed Icons
+
+App supports [Themed Icons](https://medium.com/@enikebraimoh/android-themed-icons-a-comprehensive-guide-3abb33ab51a7).
+
+Left (classic icon), Right (themed icon):
+
+<img src="./misc/image/application_themed_icon.png" alt="application_icon_label" width="265"/>
 
 ## Gradle Config
 
