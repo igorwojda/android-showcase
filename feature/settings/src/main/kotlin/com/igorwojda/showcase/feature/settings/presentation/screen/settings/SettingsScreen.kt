@@ -19,102 +19,55 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
+import com.igorwojda.showcase.feature.settings.R
 import org.koin.androidx.compose.koinViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(modifier: Modifier = Modifier) {
+fun SettingsScreen(
+    onNavigateToAboutLibraries: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val viewModel: SettingsViewModel = koinViewModel()
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
-    SettingsContent(
-        uiState = uiState,
-        onAboutClick = viewModel::onAboutClick,
+    Scaffold(
         modifier = modifier,
-    )
-}
-
-@Suppress("LongMethod")
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun SettingsContent(
-    uiState: SettingsUiState,
-    onAboutClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    var showAboutLibraries by remember { mutableStateOf(false) }
-
-    if (showAboutLibraries) {
-        AboutLibrariesScreen(
-            onBack = { showAboutLibraries = false },
-        )
-    } else {
-        Scaffold(
-            modifier = modifier,
-            topBar = {
-                TopAppBar(
-                    title = { Text("Settings") },
-                    colors =
-                        TopAppBarDefaults.topAppBarColors(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer,
-                            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                        ),
-                )
-            },
-        ) { paddingValues ->
-            Column(
-                modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
-                        .verticalScroll(rememberScrollState()),
-            ) {
-                // About Section
-                SettingsSection(
-                    title = "About",
-                ) {
-                    SettingsItem(
-                        title = "Open Source Licenses",
-                        subtitle = "View licenses of third-party libraries",
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Default.Info,
-                                contentDescription = "Licenses",
-                                tint = MaterialTheme.colorScheme.primary,
-                            )
-                        },
-                        onClick = {
-                            onAboutClick()
-                            showAboutLibraries = true
-                        },
-                    )
-                }
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.settings_title)) },
+            )
+        },
+    ) { paddingValues ->
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .verticalScroll(rememberScrollState()),
+        ) {
+            when (uiState) {
+                SettingsUiState.Content -> SettingsContent(onNavigateToAboutLibraries)
             }
         }
     }
 }
 
 @Composable
-private fun SettingsSection(
-    title: String,
-    content: @Composable () -> Unit,
-) {
+private fun SettingsContent(onAboutClick: () -> Unit) {
     Column(
         modifier = Modifier.padding(vertical = 8.dp),
     ) {
         Text(
-            text = title,
+            text = stringResource(R.string.settings_about),
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.primary,
@@ -134,7 +87,18 @@ private fun SettingsSection(
                     defaultElevation = 2.dp,
                 ),
         ) {
-            content()
+            SettingsItem(
+                title = stringResource(R.string.setings_open_source_licenses),
+                subtitle = stringResource(R.string.settings_view_licenses_of_third_party_libraries),
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.Info,
+                        contentDescription = stringResource(R.string.settings_licenses),
+                        tint = MaterialTheme.colorScheme.primary,
+                    )
+                },
+                onClick = onAboutClick,
+            )
         }
     }
 }
@@ -186,7 +150,7 @@ private fun SettingsItem(
                 {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = "Navigate",
+                        contentDescription = stringResource(R.string.settings_navigate),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
@@ -196,21 +160,10 @@ private fun SettingsItem(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun AboutLibrariesScreen(
-    @Suppress("UnusedParameter") onBack: () -> Unit,
-) {
-    LibrariesContainer(
-        modifier = Modifier.fillMaxSize(),
-    )
-}
-
 @Preview
 @Composable
 private fun SettingsScreenPreview() {
     SettingsContent(
-        uiState = SettingsUiState.Content,
         onAboutClick = { },
     )
 }

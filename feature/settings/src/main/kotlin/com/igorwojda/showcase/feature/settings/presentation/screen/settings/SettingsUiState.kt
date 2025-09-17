@@ -7,7 +7,4 @@ import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseState
 internal sealed interface SettingsUiState : BaseState {
     @Immutable
     data object Content : SettingsUiState
-
-    @Immutable
-    data object Loading : SettingsUiState
 }

@@ -4,7 +4,6 @@ import com.igorwojda.showcase.feature.settings.presentation.screen.settings.Sett
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
-internal val presentationModule =
-    module {
-        viewModelOf(::SettingsViewModel)
-    }
+internal val presentationModule = module {
+    viewModelOf(::SettingsViewModel)
+}
