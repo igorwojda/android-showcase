@@ -77,6 +77,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Navigation Compose](https://developer.android.com/jetpack/compose/navigation)** - Type-safe navigation
 - **[ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)** - UI-related data management
 - **[Room](https://developer.android.com/jetpack/androidx/releases/room)** - Local database with SQLite
+- **[Core Splashscreen](https://developer.android.com/jetpack/androidx/releases/core#core_splashscreen_version_12_2)** - app Splashscreen
 
 **Networking & Images:**
 - **[Retrofit](https://square.github.io/retrofit/)** - HTTP client for API communication
