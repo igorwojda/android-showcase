@@ -33,7 +33,7 @@ class EasyLauncherConventionPlugin : Plugin<Project> {
     }
 
     companion object {
-        private const val OVERLAY_COLOR_BACKGROUND_DEBUG = "#33AD0000"
+        private const val OVERLAY_COLOR_BACKGROUND_DEBUG = "#99AD0000"
         private const val OVERLAY_COLOR_TEXT = "#FFFFFF"
         private const val OVERLAY_HEIGHT = 0.25F
     }

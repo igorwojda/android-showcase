@@ -293,7 +293,7 @@ App supports [Themed Icons](https://medium.com/@enikebraimoh/android-themed-icon
 
 Left (classic icon), Right (themed icon):
 
-<img src="./misc/image/application_themed_icon.png" alt="application_icon_label" width="265"/>
+<img src="./misc/image/application_themed_icon.png" alt="application_icon_label" width="225"/>
 
 ## Gradle Config
 
