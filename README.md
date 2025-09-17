@@ -266,7 +266,7 @@ The below diagram presents application data flow when a user interacts with the 
 
 Thanks to [Easylauncher Gradle plugin](https://github.com/usefulness/easylauncher-gradle-plugin) the `debug` build has custom icon label:
 
-![application_icon_label](./misc/image/application_icon_label.png)
+<img src="./misc/image/application_icon_label.png" alt="application_icon_label" width="114"/>
 
 ## Gradle Config
 
