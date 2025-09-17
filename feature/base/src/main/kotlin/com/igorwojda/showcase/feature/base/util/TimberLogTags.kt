@@ -7,7 +7,7 @@ package com.igorwojda.showcase.feature.base.util
  * - Use with Timber: `Timber.tag(LogTags.NETWORK).d("message")`
  * - Filter in Logcat by tag to see specific log categories
  */
-object LogTags {
+object TimberLogTags {
     /** Network requests, responses, and HTTP-related logs */
     const val NETWORK = "Network"
 
