@@ -1,6 +1,4 @@
 <resources>
-    <string name="under_construction">Under construction</string>
-    <string name="data_not_found">Data not found</string>
-    <string name="main_navigation_search_title">Search</string>
-    <string name="default_search_query">Jackson</string>
+    <string name="common_under_construction">Under construction</string>
+    <string name="common_data_not_found">Data not found</string>
 </resources>

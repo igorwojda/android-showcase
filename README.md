@@ -388,7 +388,7 @@ add("implementation", libs.koin)
 ```bash
 ./gradlew detektApply                    # Apply Detekt formatting fixes
 ./gradlew spotlessApply                  # Apply code formatting fixes
-./gradlew lintDebugBaseline              # Update lint baseline
+./gradlew lintDebug                      # Update lint baseline
 ```
 
 ### CI Pipeline

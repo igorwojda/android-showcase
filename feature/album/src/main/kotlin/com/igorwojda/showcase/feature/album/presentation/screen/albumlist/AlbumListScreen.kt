@@ -106,7 +106,7 @@ private fun AlbumGrid(
             ) {
                 PlaceholderImage(
                     url = album.getDefaultImageUrl(),
-                    contentDescription = stringResource(id = R.string.album_cover_content_description),
+                    contentDescription = stringResource(id = R.string.album_detail_cover_content_description),
                     modifier = Modifier.size(Dimen.imageSize),
                 )
             }

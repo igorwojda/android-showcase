@@ -116,7 +116,7 @@ private fun AlbumDetailContent(
         ) {
             PlaceholderImage(
                 url = content.coverImageUrl,
-                contentDescription = stringResource(id = R.string.album_cover_content_description),
+                contentDescription = stringResource(id = R.string.album_detail_cover_content_description),
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -131,7 +131,7 @@ private fun AlbumDetailContent(
         }
 
         if (content.tracks?.isNotEmpty() == true) {
-            TextTitleMedium(text = stringResource(id = R.string.tracks))
+            TextTitleMedium(text = stringResource(id = R.string.album_detail_tracks))
             Spacer(modifier = Modifier.height(Dimen.spaceS))
             Tracks(content.tracks)
         }

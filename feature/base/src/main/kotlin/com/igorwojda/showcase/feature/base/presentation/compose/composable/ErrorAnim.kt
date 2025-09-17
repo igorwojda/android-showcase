@@ -14,7 +14,7 @@ fun ErrorAnim(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        LabeledAnimation(R.string.data_not_found, R.raw.lottie_error_screen)
+        LabeledAnimation(R.string.common_data_not_found, R.raw.lottie_error_screen)
     }
 }
 

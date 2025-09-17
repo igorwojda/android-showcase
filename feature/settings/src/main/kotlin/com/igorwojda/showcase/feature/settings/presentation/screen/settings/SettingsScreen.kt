@@ -63,12 +63,12 @@ private fun SettingsContent(onNavigateToAboutLibraries: () -> Unit) {
                 ),
         ) {
             SettingsItem(
-                title = stringResource(R.string.settings_open_source_licenses),
-                subtitle = stringResource(R.string.settings_view_licenses_of_third_party_libraries),
+                title = stringResource(R.string.settings_screen_open_source_licenses),
+                subtitle = stringResource(R.string.settings_screen_view_licenses_description),
                 icon = {
                     Icon(
                         imageVector = Icons.Default.Info,
-                        contentDescription = stringResource(R.string.settings_licenses),
+                        contentDescription = stringResource(R.string.settings_screen_licenses),
                         tint = MaterialTheme.colorScheme.primary,
                     )
                 },
@@ -113,7 +113,7 @@ private fun SettingsItem(
                 {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = stringResource(R.string.settings_navigate),
+                        contentDescription = stringResource(R.string.settings_screen_navigate),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
