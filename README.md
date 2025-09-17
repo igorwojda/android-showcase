@@ -129,11 +129,12 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Kotlin Android](https://kotlinlang.org/docs/gradle.html)** (`org.jetbrains.kotlin.android`) - Kotlin compilation for Android
 - **[Kotlin Serialization](https://kotlinlang.org/docs/serialization.html)** (`org.jetbrains.kotlin.plugin.serialization`) - JSON serialization support
 - **[Kotlin Compose Compiler](https://developer.android.com/jetpack/androidx/releases/compose-kotlin)** (`org.jetbrains.kotlin.plugin.compose`) - Compose compiler plugin
-- **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** (`com.google.devtools.ksp`) - Kotlin Symbol Processing
-- **[Detekt](https://detekt.dev/)** (`io.gitlab.arturbosch.detekt`) - Static code analysis
-- **[Spotless](https://github.com/diffplug/spotless)** (`com.diffplug.spotless`) - Code formatting
-- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test log output
-- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** (`com.starter.easylauncher`) - modify the launcher icon of each of your app-variants
+- **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** - Kotlin Symbol Processing
+- **[Detekt](https://detekt.dev/)** - Static code analysis
+- **[Spotless](https://github.com/diffplug/spotless)** - Code formatting
+- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** - Enhanced test log output
+- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** - modify the launcher icon of each of your app-variants
+- **[AboutLibraries](https://github.com/mikepenz/AboutLibraries)** - collects dependency details, including licenses and visualize these in the app
 
 ## Architecture
 

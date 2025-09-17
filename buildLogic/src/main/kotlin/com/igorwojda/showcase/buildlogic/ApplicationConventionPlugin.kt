@@ -7,6 +7,7 @@ import com.igorwojda.showcase.buildlogic.ext.excludeLicenseAndMetaFiles
 import com.igorwojda.showcase.buildlogic.ext.implementation
 import com.igorwojda.showcase.buildlogic.ext.libs
 import com.igorwojda.showcase.buildlogic.ext.versions
+import com.mikepenz.aboutlibraries.plugin.AboutLibrariesExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -23,6 +24,11 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 apply("com.igorwojda.showcase.convention.easylauncher")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
+                apply("com.mikepenz.aboutlibraries.plugin")
+            }
+
+            extensions.configure<AboutLibrariesExtension> {
+                registerAndroidTasks = true
             }
 
             extensions.configure<ApplicationExtension> {

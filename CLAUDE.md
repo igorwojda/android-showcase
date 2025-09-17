@@ -26,3 +26,7 @@ General:
 - After making changes verify if quality checks are passing (spotless, detekt, konsist, unit tests)
 - Don’t hardcore dependency versions. Retrieve Gradle plugin and dependency version form toml file
 - Always add new files to existing repository
+- Add new Gradle plugins to convention plugins in `build-logic` module
+- Never hardcode user-facing text directly in UI code (Compose, XML, Fragments, Activities). 
+- Always define strings in resource files strings.xml of a given module
+- Look at existing code to keep project structure unified 

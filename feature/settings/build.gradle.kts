@@ -3,5 +3,9 @@ plugins {
 }
 
 android {
-    namespace = "com.igorwojda.showcase.feature.profle"
+    namespace = "com.igorwojda.showcase.feature.settings"
+}
+
+dependencies {
+    implementation(libs.aboutlibraries.compose)
 }

@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.compose.gradlePlugin)
     implementation(libs.junit5.gradlePlugin)
     implementation(libs.easy.launcher.gradlePlugin)
+    implementation(libs.aboutlibraries.gradlePlugin)
 
     /*
     Expose generated type-safe version catalogs accessors accessible from precompiled script plugins
