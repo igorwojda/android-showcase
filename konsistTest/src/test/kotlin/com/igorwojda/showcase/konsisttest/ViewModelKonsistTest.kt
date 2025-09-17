@@ -21,7 +21,7 @@ class ViewModelKonsistTest {
             .withParentClassOf(BaseViewModel::class)
             .withDeclarations() // Filter out empty view models
             .assertTrue {
-                it.hasTestClasses(testPropertyName = "cut")
+                it.hasTestClasses(testPropertyName = "sut")
             }
     }
 

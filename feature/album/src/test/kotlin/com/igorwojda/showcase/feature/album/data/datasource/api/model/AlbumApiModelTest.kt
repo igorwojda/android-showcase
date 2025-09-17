@@ -12,33 +12,33 @@ class AlbumApiModelTest {
     @Test
     fun `data model with full data maps to AlbumDomainModel`() {
         // given
-        val cut = DataFixtures.getAlbumApiModel()
+        val sut = DataFixtures.getAlbumApiModel()
 
         // when
-        val domainModel = cut.toDomainModel()
+        val domainModel = sut.toDomainModel()
 
         // then
         domainModel shouldBeEqualTo
             Album(
-                cut.name,
-                cut.artist,
-                cut.mbId,
-                cut.images?.map { it.toDomainModel() } ?: listOf(),
-                cut.tracks?.track?.map { it.toDomainModel() },
-                cut.tags?.tag?.map { it.toDomainModel() },
+                sut.name,
+                sut.artist,
+                sut.mbId,
+                sut.images?.map { it.toDomainModel() } ?: listOf(),
+                sut.tracks?.track?.map { it.toDomainModel() },
+                sut.tags?.tag?.map { it.toDomainModel() },
             )
     }
 
     @Test
     fun `data model with missing data maps to AlbumDomainModel`() {
         // given
-        val cut =
+        val sut =
             DataFixtures.getAlbumApiModel(
                 images = emptyList(),
             )
 
         // when
-        val domainModel = cut.toDomainModel()
+        val domainModel = sut.toDomainModel()
 
         // then
         domainModel shouldBeEqualTo
@@ -58,10 +58,10 @@ class AlbumApiModelTest {
         val albumDataImages =
             listOf(ImageSizeApiModel.EXTRA_LARGE, ImageSizeApiModel.UNKNOWN)
                 .map { DataFixtures.getImageModelApiModel(size = it) }
-        val cut = DataFixtures.getAlbumApiModel(images = albumDataImages)
+        val sut = DataFixtures.getAlbumApiModel(images = albumDataImages)
 
         // when
-        val domainModel = cut.toDomainModel()
+        val domainModel = sut.toDomainModel()
 
         // then
         domainModel.images.single { it.size == ImageSize.EXTRA_LARGE }
@@ -74,10 +74,10 @@ class AlbumApiModelTest {
             listOf("", "url")
                 .map { DataFixtures.getImageModelApiModel(url = it) }
 
-        val cut = DataFixtures.getAlbumApiModel(images = images)
+        val sut = DataFixtures.getAlbumApiModel(images = images)
 
         // when
-        val domainModel = cut.toDomainModel()
+        val domainModel = sut.toDomainModel()
 
         // then
         domainModel.images.single { it.url == "url" }

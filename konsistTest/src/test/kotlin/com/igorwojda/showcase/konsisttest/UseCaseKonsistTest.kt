@@ -3,8 +3,8 @@ package com.igorwojda.showcase.konsisttest
 import com.lemonappdev.konsist.api.Konsist
 import com.lemonappdev.konsist.api.ext.list.withNameEndingWith
 import com.lemonappdev.konsist.api.verify.assertTrue
-import org.junit.jupiter.api.Test
 import java.util.Locale
+import org.junit.jupiter.api.Test
 
 // Check test coding rules.
 class UseCaseKonsistTest {
@@ -14,7 +14,7 @@ class UseCaseKonsistTest {
             .scopeFromProduction()
             .classes()
             .withNameEndingWith("UseCase")
-            .assertTrue { it.hasTestClasses(testPropertyName = "cut") }
+            .assertTrue { it.hasTestClasses(testPropertyName = "sut") }
     }
 
     @Test

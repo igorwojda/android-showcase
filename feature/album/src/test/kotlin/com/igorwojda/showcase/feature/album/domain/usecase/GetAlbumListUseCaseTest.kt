@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 class GetAlbumListUseCaseTest {
     private val mockAlbumRepository: AlbumRepositoryImpl = mockk()
 
-    private val cut = GetAlbumListUseCase(mockAlbumRepository)
+    private val sut = GetAlbumListUseCase(mockAlbumRepository)
 
     @Test
     fun `return list of albums`() {
@@ -22,7 +22,7 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
-        val actual = runBlocking { cut(null) }
+        val actual = runBlocking { sut(null) }
 
         // then
         actual shouldBeEqualTo Result.Success(albums)
@@ -35,7 +35,7 @@ class GetAlbumListUseCaseTest {
             val albums = listOf(DomainFixtures.getAlbum(), DomainFixtures.getAlbum())
             coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
-            cut(null)
+            sut(null)
 
             coVerify { mockAlbumRepository.searchAlbum(null) }
         }
@@ -49,7 +49,7 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns Result.Success(albums)
 
         // when
-        val actual = runBlocking { cut(null) }
+        val actual = runBlocking { sut(null) }
 
         // then
         actual shouldBeEqualTo Result.Success(listOf(albumWithImage))
@@ -62,7 +62,7 @@ class GetAlbumListUseCaseTest {
         coEvery { mockAlbumRepository.searchAlbum(any()) } returns resultFailure
 
         // when
-        val actual = runBlocking { cut(null) }
+        val actual = runBlocking { sut(null) }
 
         // then
         actual shouldBeEqualTo resultFailure

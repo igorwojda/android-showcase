@@ -27,7 +27,7 @@ class AlbumMapperTest {
     private val trackMapper: TrackMapper = mockk()
     private val tagMapper: TagMapper = mockk()
 
-    private val cut =
+    private val sut =
         AlbumMapper(
             imageMapper,
             trackMapper,
@@ -61,7 +61,7 @@ class AlbumMapperTest {
         every { tagMapper.apiToRoom(any()) } returns TagRoomModel("rock")
 
         // when
-        val result = cut.apiToRoom(apiModel)
+        val result = sut.apiToRoom(apiModel)
 
         // then
         result shouldBeEqualTo
@@ -102,7 +102,7 @@ class AlbumMapperTest {
         every { tagMapper.apiToDomain(any()) } returns Tag("rock")
 
         // when
-        val result = cut.apiToDomain(apiModel)
+        val result = sut.apiToDomain(apiModel)
 
         // then
         result shouldBeEqualTo
@@ -135,7 +135,7 @@ class AlbumMapperTest {
         every { tagMapper.roomToDomain(any()) } returns Tag("rock")
 
         // when
-        val result = cut.roomToDomain(roomModel)
+        val result = sut.roomToDomain(roomModel)
 
         // then
         result shouldBeEqualTo
