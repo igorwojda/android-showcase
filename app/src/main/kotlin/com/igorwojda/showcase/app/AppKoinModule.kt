@@ -59,13 +59,15 @@ val appModule =
         }
 
         single {
-            OkHttpClient.Builder().apply {
-                if (BuildConfig.DEBUG) {
-                    addInterceptor(get<HttpLoggingInterceptor>())
-                }
-                addInterceptor(get<AuthenticationInterceptor>())
-                addInterceptor(get<UserAgentInterceptor>())
-            }.build()
+            OkHttpClient
+                .Builder()
+                .apply {
+                    if (BuildConfig.DEBUG) {
+                        addInterceptor(get<HttpLoggingInterceptor>())
+                    }
+                    addInterceptor(get<AuthenticationInterceptor>())
+                    addInterceptor(get<UserAgentInterceptor>())
+                }.build()
         }
 
         single {
