@@ -103,6 +103,7 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 implementation(libs.bundles.retrofit)
                 implementation(libs.bundles.navigation)
                 implementation(libs.bundles.lifecycle)
+                implementation(libs.core.splashscreen)
             }
         }
     }

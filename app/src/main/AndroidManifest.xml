@@ -22,7 +22,8 @@
 
         <activity
                 android:name="com.igorwojda.showcase.app.presentation.MainShowcaseActivity"
-                android:exported="true">
+                android:exported="true"
+                android:theme="@style/Theme.Showcase.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
