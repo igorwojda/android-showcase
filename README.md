@@ -306,14 +306,6 @@ Each module uses convention a plugin, so common dependencies are shared without 
 - **[`Spotless Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/SpotlessConventionPlugin.kt)** - Code formatting and style enforcement with Spotless
 - **[`Easylauncher Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/EasyLauncherConventionPlugin.kt)** - App icon customization for different build variants
 
-**Benefits:**
-- **Consistency** - Unified configuration across all modules
-- **Maintainability** - Single source of truth for build logic
-- **Reusability** - Shared conventions reduce duplication
-- **Type Safety** - Kotlin DSL with IDE support and auto-completion
-
-All convention plugins are located in [`buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic).
-
 ### Type Safe Project Accessors
 
 Enables type-safe project references instead of error-prone string-based module paths:
