@@ -85,11 +85,12 @@ fun AlbumDetailScreen(
             AlbumDetailUiState.Loading -> {
                 LoadingIndicator()
             }
-            is AlbumDetailUiState.Content ->
+            is AlbumDetailUiState.Content -> {
                 AlbumDetailContent(
                     content = currentUiState,
                     modifier = Modifier.padding(innerPadding),
                 )
+            }
         }
     }
 }

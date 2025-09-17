@@ -12,16 +12,11 @@ internal class AlbumListViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val getAlbumListUseCase: GetAlbumListUseCase,
 ) : BaseViewModel<AlbumListUiState, AlbumListAction>(AlbumListUiState.Loading) {
-    companion object {
-        const val DEFAULT_QUERY_NAME = "Jackson"
-        private const val SAVED_QUERY_KEY = "query"
-    }
+    private var job: Job? = null
 
     fun onInit(query: String? = (savedStateHandle[SAVED_QUERY_KEY] as? String) ?: DEFAULT_QUERY_NAME) {
         getAlbumList(query)
     }
-
-    private var job: Job? = null
 
     private fun getAlbumList(query: String?) {
         if (job != null) {
@@ -49,5 +44,10 @@ internal class AlbumListViewModel(
                     sendAction(albumListAction)
                 }
             }
+    }
+
+    companion object {
+        const val DEFAULT_QUERY_NAME = "Jackson"
+        private const val SAVED_QUERY_KEY = "query"
     }
 }

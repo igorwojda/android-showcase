@@ -6,7 +6,5 @@ insert_final_newline = true
 max_line_length = 140
 ktlint_function_naming_ignore_when_annotated_with=Composable
 
-# Starting from ktlint 0.34.2 There is a problem with import "import-ordering" rule - ktlint contradicts
-# default AS import arrangement rules, so we have to disable ktlint it.
-# See https://github.com/pinterest/ktlint/issues/527
-# Since IDE complains about unknown `disabled_rules` key we have to disable it as well:
+# Detekt orders imports correctly, while ktlint does not
+ktlint_standard_import-ordering = disabled

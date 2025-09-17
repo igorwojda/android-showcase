@@ -2,5 +2,5 @@
 
 ## Detekt
 
-- [default-detekt-config.yml](https://github.com/detekt/detekt/blob/v2.0.0-alpha.0/detekt-core/src/main/resources/default-detekt-config.yml)
+- [Detekt configuration](https://detekt.dev/docs/introduction/configurations/) contains link to `default-detekt-config.yml`.
 

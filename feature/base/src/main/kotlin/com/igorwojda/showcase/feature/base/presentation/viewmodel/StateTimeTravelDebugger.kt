@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.feature.base.presentation.viewmodel
 
-import timber.log.Timber
 import kotlin.reflect.full.memberProperties
+import timber.log.Timber
 
 /**
  * Logs actions and view state transitions to facilitate debugging.
@@ -11,6 +11,14 @@ class StateTimeTravelDebugger(
 ) {
     private val stateTimeline = mutableListOf<StateTransition>()
     private var lastViewAction: BaseAction<*>? = null
+
+    // Get list of properties from  ViewState instances (all have the same type)
+    private val propertyNames by lazy {
+        stateTimeline
+            .first()
+            .oldState.javaClass.kotlin.memberProperties
+            .map { it.name }
+    }
 
     fun addAction(viewAction: BaseAction<*>) {
         lastViewAction = viewAction
@@ -70,14 +78,6 @@ class StateTimeTravelDebugger(
         } else {
             "$indent$propertyName: $newValue\n"
         }
-    }
-
-    // Get list of properties from  ViewState instances (all have the same type)
-    private val propertyNames by lazy {
-        stateTimeline
-            .first()
-            .oldState.javaClass.kotlin.memberProperties
-            .map { it.name }
     }
 
     private fun getPropertyValue(

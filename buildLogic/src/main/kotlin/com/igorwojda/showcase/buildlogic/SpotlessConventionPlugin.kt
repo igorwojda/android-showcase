@@ -15,6 +15,7 @@ class SpotlessConventionPlugin : Plugin<Project> {
                 kotlin {
                     target("**/*.kt", "**/*.kts")
 
+                    // Some rules are disabled in .editorconfig to avoid conflicts with detekt
                     val customRuleSets =
                         listOf(
                             libs.ktlint.ruleset.standard,
