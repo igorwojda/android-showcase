@@ -1,5 +1,6 @@
 package com.igorwojda.showcase.feature.base.presentation.viewmodel
 
+import com.igorwojda.showcase.feature.base.util.LogTags
 import kotlin.reflect.full.memberProperties
 import timber.log.Timber
 
@@ -61,7 +62,7 @@ class StateTimeTravelDebugger(
 
     fun logLast() {
         val states = listOf(stateTimeline.last())
-        Timber.tag("Action").d(getMessage(states))
+        Timber.tag(LogTags.ACTION).d(getMessage(states))
     }
 
     private fun getLogLine(

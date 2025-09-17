@@ -3,6 +3,7 @@ package com.igorwojda.showcase.app
 import com.igorwojda.showcase.app.data.api.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.api.UserAgentInterceptor
 import com.igorwojda.showcase.feature.base.data.retrofit.ApiResultAdapterFactory
+import com.igorwojda.showcase.feature.base.util.LogTags
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.MediaType.Companion.toMediaType
@@ -34,13 +35,13 @@ val appModule =
          * By default, HttpLoggingInterceptor uses the calling class name as the log tag which clutters Logcat and makes filtering harder.
          *
          * This custom configuration ensures:
-         * - All HTTP logs are tagged consistently as `"Network"`.
+         * - All HTTP logs are tagged consistently as `LogTags.NETWORK`.
          * - Logs are printed through Timber (instead of Android's `Log`).
          * - Logging level is set to BODY to include headers and payloads.
          */
         single {
             HttpLoggingInterceptor { message ->
-                Timber.tag("Network").d(message)
+                Timber.tag(LogTags.NETWORK).d(message)
             }.apply {
                 /*
                 Use BODY logging only in debug builds.

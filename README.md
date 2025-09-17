@@ -265,15 +265,17 @@ The below diagram presents application data flow when a user interacts with the 
 
 ### Development & Debugging
 
+Tags ([LogTags](feature/base/src/main/kotlin/com/igorwojda/showcase/feature/base/util/LogTags.kt)) help filter and identify different types of logs during development and debugging.
+
 The app provides detailed logging for development and debugging, with each log easily filterable by its tag:
 
-- `Navigation` - Navigation targets
+- `Navigation` - Navigation events and route changes
 ![Navigation Logs](misc/image/logs_navigation.png)
 
-- `Action` - Actions that modify UI state
+- `Action` - User actions and UI state modifications
 ![Action Logs](misc/image/logs_action.png)
 
-- `Network` - Network requests/responses
+- `Network` - Network requests, responses, and HTTP-related logs
 ![Network Logs](misc/image/logs_network.png)
 
 ### Custom Icons For Each Variant
