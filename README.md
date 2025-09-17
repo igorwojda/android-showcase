@@ -2,7 +2,7 @@
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-2.x-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AGP-8.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
-[![Gradle](https://img.shields.io/badge/Gradle-8.x-blue?style=flat)](https://gradle.org)
+[![Gradle](https://img.shields.io/badge/Gradle-9.x-blue?style=flat)](https://gradle.org)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 A production-ready Android application demonstrating modern development practices and architectural patterns. This project showcases how to build scalable, maintainable, and testable Android applications using industry-standard tools and libraries.
@@ -57,6 +57,8 @@ A music discovery app built with Jetpack Compose that displays album information
   <img src="misc/image/screen_album_list.png" width="250" />
   <img src="misc/image/screen_album_detail.png" width="250" />
   <img src="misc/image/screen_favorites.png" width="250" />
+  <img src="misc/image/screen_settings.png" width="250" />
+  <img src="misc/image/screen_open_source_libraries.png" width="250" />
 </p>
 
 ## Tech-Stack
@@ -129,11 +131,12 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Kotlin Android](https://kotlinlang.org/docs/gradle.html)** (`org.jetbrains.kotlin.android`) - Kotlin compilation for Android
 - **[Kotlin Serialization](https://kotlinlang.org/docs/serialization.html)** (`org.jetbrains.kotlin.plugin.serialization`) - JSON serialization support
 - **[Kotlin Compose Compiler](https://developer.android.com/jetpack/androidx/releases/compose-kotlin)** (`org.jetbrains.kotlin.plugin.compose`) - Compose compiler plugin
-- **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** (`com.google.devtools.ksp`) - Kotlin Symbol Processing
-- **[Detekt](https://detekt.dev/)** (`io.gitlab.arturbosch.detekt`) - Static code analysis
-- **[Spotless](https://github.com/diffplug/spotless)** (`com.diffplug.spotless`) - Code formatting
-- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test log output
-- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** (`com.starter.easylauncher`) - modify the launcher icon of each of your app-variants
+- **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** - Kotlin Symbol Processing
+- **[Detekt](https://detekt.dev/)** - Static code analysis
+- **[Spotless](https://github.com/diffplug/spotless)** - Code formatting
+- **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** - Enhanced test log output
+- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** - modify the launcher icon of each of your app-variants
+- **[AboutLibraries](https://github.com/mikepenz/AboutLibraries)** - collects dependency details, including licenses and visualize these in the app
 
 ## Architecture
 
@@ -320,6 +323,7 @@ Each module uses convention a plugin, so common dependencies are shared without 
 - **[`Detekt Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/DetektConventionPlugin.kt)** - Static code analysis configuration with Detekt
 - **[`Spotless Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/SpotlessConventionPlugin.kt)** - Code formatting and style enforcement with Spotless
 - **[`Easylauncher Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/EasyLauncherConventionPlugin.kt)** - App icon customization for different build variants
+- **[`AboutLibraries Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/AboutLibrariesConventionPlugin.kt)** - About libraries configuration
 
 ### Type Safe Project Accessors
 

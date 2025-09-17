@@ -18,6 +18,7 @@ import com.igorwojda.showcase.app.presentation.util.NavigationDestinationLogger
 import com.igorwojda.showcase.feature.album.presentation.screen.albumdetail.AlbumDetailScreen
 import com.igorwojda.showcase.feature.album.presentation.screen.albumlist.AlbumListScreen
 import com.igorwojda.showcase.feature.favourite.presentation.screen.favourite.FavouriteScreen
+import com.igorwojda.showcase.feature.settings.presentation.screen.aboutlibraries.AboutLibrariesScreen
 import com.igorwojda.showcase.feature.settings.presentation.screen.settings.SettingsScreen
 
 @Composable
@@ -62,7 +63,18 @@ fun MainShowcaseScreen(modifier: Modifier = Modifier) {
                     FavouriteScreen()
                 }
                 composable<NavigationRoute.Settings> {
-                    SettingsScreen()
+                    SettingsScreen(
+                        onNavigateToAboutLibraries = {
+                            navController.navigate(NavigationRoute.AboutLibraries)
+                        },
+                    )
+                }
+                composable<NavigationRoute.AboutLibraries> {
+                    AboutLibrariesScreen(
+                        onBackClick = {
+                            navController.popBackStack()
+                        },
+                    )
                 }
             }
         NavHost(

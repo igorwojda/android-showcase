@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.compose.gradlePlugin)
     implementation(libs.junit5.gradlePlugin)
     implementation(libs.easy.launcher.gradlePlugin)
+    implementation(libs.aboutlibraries.gradlePlugin)
 
     /*
     Expose generated type-safe version catalogs accessors accessible from precompiled script plugins
@@ -95,6 +96,11 @@ gradlePlugin {
         register("easyLauncherConvention") {
             id = "com.igorwojda.showcase.convention.easylauncher"
             implementationClass = "com.igorwojda.showcase.buildlogic.EasyLauncherConventionPlugin"
+        }
+
+        register("aboutLibrariesConvention") {
+            id = "com.igorwojda.showcase.convention.aboutlibraries"
+            implementationClass = "com.igorwojda.showcase.buildlogic.AboutLibrariesConventionPlugin"
         }
     }
 }

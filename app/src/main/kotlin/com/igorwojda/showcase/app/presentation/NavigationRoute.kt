@@ -18,4 +18,7 @@ sealed interface NavigationRoute {
 
     @Serializable
     data object Settings : NavigationRoute
+
+    @Serializable
+    data object AboutLibraries : NavigationRoute
 }

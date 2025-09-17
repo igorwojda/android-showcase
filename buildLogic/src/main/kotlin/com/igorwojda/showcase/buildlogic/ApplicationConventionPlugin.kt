@@ -18,11 +18,12 @@ class ApplicationConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.application")
+                apply("com.google.devtools.ksp")
+                apply("org.jetbrains.kotlin.plugin.compose")
                 apply("com.igorwojda.showcase.convention.kotlin")
                 apply("com.igorwojda.showcase.convention.spotless")
                 apply("com.igorwojda.showcase.convention.easylauncher")
-                apply("com.google.devtools.ksp")
-                apply("org.jetbrains.kotlin.plugin.compose")
+                apply("com.igorwojda.showcase.convention.aboutlibraries")
             }
 
             extensions.configure<ApplicationExtension> {
