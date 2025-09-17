@@ -27,7 +27,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
     - [Convention Plugins](#convention-plugins)
     - [Type Safe Project Accessors](#type-safe-project-accessors)
     - [Unified Version Configuration](#unified-version-configuration)
-      - [Unified Java/JVM Version Configuration](#unified-javajvm-version-configuration)
+      - [Java/JVM Version Configuration](#javajvm-version-configuration)
     - [Generated type-safe version catalogs accessors in `buildLogic` module](#generated-type-safe-version-catalogs-accessors-in-buildlogic-module)
   - [Code Verification](#code-verification)
     - [CI Pipeline](#ci-pipeline)
@@ -132,7 +132,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Detekt](https://detekt.dev/)** (`io.gitlab.arturbosch.detekt`) - Static code analysis
 - **[Spotless](https://github.com/diffplug/spotless)** (`com.diffplug.spotless`) - Code formatting
 - **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** (`com.adarshr.test-logger`) - Enhanced test log output
-- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-pluginn)** (`com.starter.easylauncher`) - modify the launcher icon of each of your app-variants
+- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** (`com.starter.easylauncher`) - modify the launcher icon of each of your app-variants
 
 ## Architecture
 
@@ -321,7 +321,7 @@ implementation(projects.feature.album)
 
 All dependency and Gradle plugin versions are defined in the TOML version catalog file ([libs.versions.toml](gradle/libs.versions.toml)).
 
-#### Unified Java/JVM Version Configuration
+#### Java/JVM Version Configuration
 
 The Java/JVM version is centralized across the project.
 It is defined once in [`libs.versions.toml`](gradle/libs.versions.toml) file under the java entry.
@@ -406,7 +406,6 @@ This showcase prioritizes **architecture, tooling, and development practices** o
 
 **Prerequisites:**
 - Android Studio Giraffe | 2022.3.1+ 
-- JDK 17+
 - JDK 17+
 - Android SDK 34+
 
