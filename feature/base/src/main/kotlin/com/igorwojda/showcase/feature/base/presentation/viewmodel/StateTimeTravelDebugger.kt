@@ -61,7 +61,7 @@ class StateTimeTravelDebugger(
 
     fun logLast() {
         val states = listOf(stateTimeline.last())
-        Timber.d(getMessage(states))
+        Timber.tag("Action").d(getMessage(states))
     }
 
     private fun getLogLine(

@@ -28,6 +28,24 @@ val appModule =
             }
         }
 
+        /*
+         * OkHttp logging interceptor with custom Timber logger.
+         *
+         * By default, HttpLoggingInterceptor uses the calling class name as the log tag which clutters Logcat and makes filtering harder.
+         *
+         * This custom configuration ensures:
+         * - All HTTP logs are tagged consistently as `"Network"`.
+         * - Logs are printed through Timber (instead of Android's `Log`).
+         * - Logging level is set to BODY to include headers and payloads.
+         */
+        single {
+            HttpLoggingInterceptor { message ->
+                Timber.tag("Network").d(message)
+            }.apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+        }
+
         single {
             OkHttpClient
                 .Builder()

@@ -388,12 +388,12 @@ Optional [Git hooks](https://git-scm.com/docs/githooks#_pre_push) can execute qu
 ## Development & Debugging
 
 **Logging System:**
+
 The app includes comprehensive logging for development debugging:
 
-- `onCreate` - Activity and ViewModel lifecycle events
-- `Action` - UI state changes and user interactions  
-- `Http` - Network request/response details (debug builds only)
 - `Navigation` - Screen transitions and routing
+- `Action` - UI state changes and user interactions
+- `Network` - Network request/response details (debug builds only)
 
 Filter logs by tag: `package:mine tag:Navigation`
 
