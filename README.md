@@ -20,11 +20,14 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
       - [Data Layer](#data-layer)
       - [Common Module Components](#common-module-components)
     - [Data Flow](#data-flow)
+  - [Project Features](#project-features)
+    - [Custom Icons For Each Variant](#custom-icons-for-each-variant)
   - [Gradle Config](#gradle-config)
     - [Dependency Management](#dependency-management)
     - [Convention Plugins](#convention-plugins)
     - [Type Safe Project Accessors](#type-safe-project-accessors)
-    - [Unified Java/JVM Version Configuration](#unified-javajvm-version-configuration)
+    - [Unified Version Configuration](#unified-version-configuration)
+      - [Unified Java/JVM Version Configuration](#unified-javajvm-version-configuration)
     - [Generated type-safe version catalogs accessors in `buildLogic` module](#generated-type-safe-version-catalogs-accessors-in-buildlogic-module)
   - [Code Verification](#code-verification)
     - [CI Pipeline](#ci-pipeline)
@@ -255,11 +258,15 @@ Components:
 
 The below diagram presents application data flow when a user interacts with the `album list screen`:
 
-```mermaid
-
-```
-
 ![app_data_flow](./misc/image/app_data_flow.png)
+
+## Project Features
+
+### Custom Icons For Each Variant
+
+Thanks to [Easylauncher Gradle plugin](https://github.com/usefulness/easylauncher-gradle-plugin) the `debug` build has custom icon label:
+
+<img src="./misc/image/application_icon_label.png" alt="application_icon_label" width="114"/>
 
 ## Gradle Config
 
@@ -310,7 +317,11 @@ implementation(project(":feature:album"))
 implementation(projects.feature.album)
 ```
 
-### Unified Java/JVM Version Configuration
+### Unified Version Configuration
+
+All dependency and Gradle plugin versions are defined in the TOML version catalog file ([libs.versions.toml](gradle/libs.versions.toml)).
+
+#### Unified Java/JVM Version Configuration
 
 The Java/JVM version is centralized across the project.
 It is defined once in [`libs.versions.toml`](gradle/libs.versions.toml) file under the java entry.
