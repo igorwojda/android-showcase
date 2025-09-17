@@ -135,7 +135,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Detekt](https://detekt.dev/)** - Static code analysis
 - **[Spotless](https://github.com/diffplug/spotless)** - Code formatting
 - **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** - Enhanced test log output
-- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** - modify the launcher icon of each of your app-variants
+- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** - Modify the launcher icon of each of your app-variants
 - **[AboutLibraries](https://github.com/mikepenz/AboutLibraries)** - collects dependency details, including licenses and visualize these in the app
 
 ## Architecture
