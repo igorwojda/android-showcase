@@ -21,7 +21,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
       - [Common Module Components](#common-module-components)
     - [Data Flow](#data-flow)
   - [Project Features](#project-features)
-    - [Development \& Debugging Logging System:\*\*](#development--debugging-logging-system)
+    - [Development \& Debugging](#development--debugging)
     - [Custom Icons For Each Variant](#custom-icons-for-each-variant)
     - [Themed Icons](#themed-icons)
   - [Gradle Config](#gradle-config)
@@ -263,7 +263,7 @@ The below diagram presents application data flow when a user interacts with the 
 
 ## Project Features
 
-### Development & Debugging Logging System:**
+### Development & Debugging
 
 The app provides detailed logging for development and debugging, with each log easily filterable by its tag:
 
