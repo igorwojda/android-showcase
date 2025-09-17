@@ -14,7 +14,6 @@ class SpotlessConventionPlugin : Plugin<Project> {
             extensions.configure<SpotlessExtension> {
                 kotlin {
                     target("**/*.kt", "**/*.kts")
-                    targetExclude("**/buildLogic/build/**/*.*")
 
                     val customRuleSets =
                         listOf(
