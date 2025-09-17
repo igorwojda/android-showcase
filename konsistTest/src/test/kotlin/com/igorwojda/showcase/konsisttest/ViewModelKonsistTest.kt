@@ -4,11 +4,12 @@ import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseViewModel
 import com.lemonappdev.konsist.api.KoModifier
 import com.lemonappdev.konsist.api.Konsist
 import com.lemonappdev.konsist.api.ext.list.modifierprovider.withoutAllModifiers
+import com.lemonappdev.konsist.api.ext.list.withDeclarations
 import com.lemonappdev.konsist.api.ext.list.withNameEndingWith
 import com.lemonappdev.konsist.api.ext.list.withParentClassOf
 import com.lemonappdev.konsist.api.verify.assertTrue
-import org.junit.jupiter.api.Test
 import java.util.Locale
+import org.junit.jupiter.api.Test
 
 // Check test coding rules.
 class ViewModelKonsistTest {
@@ -18,7 +19,10 @@ class ViewModelKonsistTest {
             .scopeFromProduction()
             .classes()
             .withParentClassOf(BaseViewModel::class)
-            .assertTrue { it.hasTestClasses(testPropertyName = "cut") }
+            .withDeclarations() // Filter out empty view models
+            .assertTrue {
+                it.hasTestClasses(testPropertyName = "cut")
+            }
     }
 
     @Test

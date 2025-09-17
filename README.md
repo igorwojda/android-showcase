@@ -2,7 +2,7 @@
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-2.x-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AGP-8.x-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
-[![Gradle](https://img.shields.io/badge/Gradle-8.x-blue?style=flat)](https://gradle.org)
+[![Gradle](https://img.shields.io/badge/Gradle-9.x-blue?style=flat)](https://gradle.org)
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 A production-ready Android application demonstrating modern development practices and architectural patterns. This project showcases how to build scalable, maintainable, and testable Android applications using industry-standard tools and libraries.
@@ -57,6 +57,8 @@ A music discovery app built with Jetpack Compose that displays album information
   <img src="misc/image/screen_album_list.png" width="250" />
   <img src="misc/image/screen_album_detail.png" width="250" />
   <img src="misc/image/screen_favorites.png" width="250" />
+  <img src="misc/image/screen_settings.png" width="250" />
+  <img src="misc/image/screen_open_source_libraries.png" width="250" />
 </p>
 
 ## Tech-Stack
@@ -321,6 +323,7 @@ Each module uses convention a plugin, so common dependencies are shared without 
 - **[`Detekt Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/DetektConventionPlugin.kt)** - Static code analysis configuration with Detekt
 - **[`Spotless Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/SpotlessConventionPlugin.kt)** - Code formatting and style enforcement with Spotless
 - **[`Easylauncher Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/EasyLauncherConventionPlugin.kt)** - App icon customization for different build variants
+- **[`AboutLibraries Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/AboutLibrariesConventionPlugin.kt)** - About libraries configuration
 
 ### Type Safe Project Accessors
 

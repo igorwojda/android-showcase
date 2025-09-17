@@ -11,15 +11,37 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.settings.R
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutLibrariesScreen(
+    onBackClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val viewModel: AboutLibrariesViewModel = koinViewModel()
+    val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+
+    when (uiState) {
+        is AboutLibrariesUiState.Content -> {
+            AboutLibrariesContent(
+                onBackClick = onBackClick,
+                modifier = modifier,
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun AboutLibrariesContent(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -51,7 +73,7 @@ fun AboutLibrariesScreen(
 @Preview
 @Composable
 private fun AboutLibrariesScreenPreview() {
-    AboutLibrariesScreen(
+    AboutLibrariesContent(
         onBackClick = { },
     )
 }

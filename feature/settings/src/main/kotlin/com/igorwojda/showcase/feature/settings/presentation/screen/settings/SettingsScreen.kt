@@ -16,14 +16,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -39,56 +36,34 @@ fun SettingsScreen(
     val viewModel: SettingsViewModel = koinViewModel()
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
-    Scaffold(
-        modifier = modifier,
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.settings_title)) },
-            )
-        },
-    ) { paddingValues ->
-        Column(
-            modifier =
-                Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-                    .verticalScroll(rememberScrollState()),
-        ) {
-            when (uiState) {
-                SettingsUiState.Content -> SettingsContent(onNavigateToAboutLibraries)
-            }
+    Column(
+        modifier =
+            modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
+    ) {
+        when (uiState) {
+            SettingsUiState.Content -> SettingsContent(onNavigateToAboutLibraries)
         }
     }
 }
 
 @Composable
-private fun SettingsContent(onAboutClick: () -> Unit) {
+private fun SettingsContent(onNavigateToAboutLibraries: () -> Unit) {
     Column(
         modifier = Modifier.padding(vertical = 8.dp),
     ) {
-        Text(
-            text = stringResource(R.string.settings_about),
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        )
         Card(
             modifier =
                 Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
+                    .fillMaxWidth(),
             colors =
                 CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surface,
                 ),
-            elevation =
-                CardDefaults.cardElevation(
-                    defaultElevation = 2.dp,
-                ),
         ) {
             SettingsItem(
-                title = stringResource(R.string.setings_open_source_licenses),
+                title = stringResource(R.string.settings_open_source_licenses),
                 subtitle = stringResource(R.string.settings_view_licenses_of_third_party_libraries),
                 icon = {
                     Icon(
@@ -97,7 +72,7 @@ private fun SettingsContent(onAboutClick: () -> Unit) {
                         tint = MaterialTheme.colorScheme.primary,
                     )
                 },
-                onClick = onAboutClick,
+                onClick = onNavigateToAboutLibraries,
             )
         }
     }
@@ -121,12 +96,6 @@ private fun SettingsItem(
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyLarge,
-                color =
-                    if (enabled) {
-                        MaterialTheme.colorScheme.onSurface
-                    } else {
-                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
-                    },
             )
         },
         supportingContent =
@@ -135,12 +104,6 @@ private fun SettingsItem(
                     Text(
                         text = it,
                         style = MaterialTheme.typography.bodyMedium,
-                        color =
-                            if (enabled) {
-                                MaterialTheme.colorScheme.onSurfaceVariant
-                            } else {
-                                MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                            },
                     )
                 }
             },
@@ -164,6 +127,6 @@ private fun SettingsItem(
 @Composable
 private fun SettingsScreenPreview() {
     SettingsContent(
-        onAboutClick = { },
+        onNavigateToAboutLibraries = { },
     )
 }

@@ -4,7 +4,7 @@
 
     <string name="settings_title">Settings</string>
     <string name="settings_about">About</string>
-    <string name="setings_open_source_licenses">Open Source Licenses</string>
+    <string name="settings_open_source_licenses">Open Source Licenses</string>
     <string name="settings_view_licenses_of_third_party_libraries">View licenses of third-party libraries</string>
     <string name="settings_licenses">Licenses</string>
 

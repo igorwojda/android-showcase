@@ -97,5 +97,10 @@ gradlePlugin {
             id = "com.igorwojda.showcase.convention.easylauncher"
             implementationClass = "com.igorwojda.showcase.buildlogic.EasyLauncherConventionPlugin"
         }
+
+        register("aboutLibrariesConvention") {
+            id = "com.igorwojda.showcase.convention.aboutlibraries"
+            implementationClass = "com.igorwojda.showcase.buildlogic.AboutLibrariesConventionPlugin"
+        }
     }
 }

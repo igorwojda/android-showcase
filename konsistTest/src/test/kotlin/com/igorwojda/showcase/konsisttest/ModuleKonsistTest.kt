@@ -12,7 +12,6 @@ class ModuleKonsistTest {
             .scopeFromProject()
             .files
             .assertTrue {
-                // com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
                 val modulePackageName =
                     it.moduleName
                         .lowercase()

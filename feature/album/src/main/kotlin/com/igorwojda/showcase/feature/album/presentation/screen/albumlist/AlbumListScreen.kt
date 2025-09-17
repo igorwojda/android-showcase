@@ -2,7 +2,6 @@ package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -70,16 +69,23 @@ fun AlbumListScreen(
             when (val currentUiState = uiState) { // Extract to local variable for smart casting
                 AlbumListUiState.Error -> ErrorAnim()
                 AlbumListUiState.Loading -> LoadingIndicator()
-                is AlbumListUiState.Content ->
-                    AlbumGrid(
-                        albums = currentUiState.albums, // Use currentState instead of uiState
-                        onAlbumClick = { album ->
-                            onNavigateToAlbumDetail?.invoke(album.artist, album.name, album.mbId)
-                        },
-                    )
+                is AlbumListUiState.Content -> AlbumListContent(currentUiState, onNavigateToAlbumDetail)
             }
         }
     }
+}
+
+@Composable
+private fun AlbumListContent(
+    uiState: AlbumListUiState.Content,
+    onNavigateToAlbumDetail: ((String, String, String?) -> Unit)?,
+) {
+    AlbumGrid(
+        albums = uiState.albums,
+        onAlbumClick = { album ->
+            onNavigateToAlbumDetail?.invoke(album.artist, album.name, album.mbId)
+        },
+    )
 }
 
 @Composable
@@ -89,7 +95,6 @@ private fun AlbumGrid(
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(Dimen.imageSize),
-        contentPadding = PaddingValues(Dimen.screenContentPadding),
     ) {
         items(items = albums, key = { it.id }) { album ->
             ElevatedCard(

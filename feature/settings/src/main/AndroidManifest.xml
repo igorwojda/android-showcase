@@ -4,7 +4,7 @@
     <dist:module
             dist:instant="false"
             dist:onDemand="false"
-            dist:title="@string/feature_profile">
+            dist:title="@string/feature_settings">
         <dist:fusing dist:include="false" />
     </dist:module>
 
