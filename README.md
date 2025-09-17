@@ -287,15 +287,15 @@ Each module uses convention a plugin, so common dependencies are shared without 
 
 [Convention plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) standardize build configuration across modules by encapsulating common build logic into reusable plugins:
 
-- **`application-convention`** - Main application module configuration with Android app setup
-- **`feature-convention`** - Feature module configuration combining library and Kotlin conventions
-- **`library-convention`** - Android library module setup with common Android configuration
-- **`kotlin-convention`** - Kotlin compilation settings, toolchain, and compiler options
-- **`test-convention`** - Testing framework setup (JUnit 5, test logging, and test configurations)
-- **`test-library-convention`** - Testing setup specifically for library modules
-- **`detekt-convention`** - Static code analysis configuration with Detekt
-- **`spotless-convention`** - Code formatting and style enforcement with Spotless
-- **`easylauncher-convention`** - App icon customization for different build variants
+- **[`Application Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/ApplicationConventionPlugin.kt)** - Main application module configuration with Android app setup
+- **[`Feature Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/FeatureConventionPlugin.kt)** - Feature module configuration combining library and Kotlin conventions
+- **[`Library Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/LibraryConventionPlugin.kt)** - Android library module setup with common Android configuration
+- **[`Lotlin Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/KotlinConventionPlugin.kt)** - Kotlin compilation settings, toolchain, and compiler options
+- **[`Test Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionPlugin.kt)** - Testing framework setup (JUnit 5, test logging, and test configurations)
+- **[`Test Library Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionLibraryPlugin.kt)** - Testing setup specifically for library modules
+- **[`Detekt Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/DetektConventionPlugin.kt)** - Static code analysis configuration with Detekt
+- **[`Spotless Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/SpotlessConventionPlugin.kt)** - Code formatting and style enforcement with Spotless
+- **[`Easylauncher Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/EasyLauncherConventionPlugin.kt)** - App icon customization for different build variants
 
 **Benefits:**
 - **Consistency** - Unified configuration across all modules
