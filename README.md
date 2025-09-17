@@ -264,7 +264,7 @@ The below diagram presents application data flow when a user interacts with the 
 
 ### Custom Icons For Each Variant
 
-Thanks to [Easylauncher Gradle plugin](https://github.com/usefulness/easylauncher-gradle-pluginn) the `debug` build has custom icon label:
+Thanks to [Easylauncher Gradle plugin](https://github.com/usefulness/easylauncher-gradle-plugin) the `debug` build has custom icon label:
 
 ![application_icon_label](./misc/image/application_icon_label.png)
 
