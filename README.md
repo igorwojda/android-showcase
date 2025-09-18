@@ -391,20 +391,20 @@ Enabled [Gradle Configuration Cache](https://docs.gradle.org/9.0.0/userguide/con
 
 **Quality Checks:**
 ```bash
-./gradlew konsistTest:test --rerun-tasks  # Architecture & convention validation
-./gradlew lintDebug                       # Android lint analysis  
-./gradlew detektCheck                     # Code complexity & style analysis
-./gradlew spotlessCheck                   # Code formatting verification
-./gradlew testDebugUnitTest               # Unit test execution
-./gradlew connectedCheck                  # UI test execution (WIP)
-./gradlew :app:bundleDebug                # Production build verification
+./gradlew konsistTest:test --rerun-tasks          # Architecture & convention validation
+./gradlew lintDebug                               # Android lint analysis  
+./gradlew detektCheck                             # Code complexity & style analysis
+./gradlew spotlessCheck                           # Code formatting verification
+./gradlew testDebugUnitTest -x konsistTest:test   # Unit test execution (without Konsist tests)
+./gradlew connectedCheck                          # UI test execution (WIP)
+./gradlew :app:bundleDebug                        # Production build verification
 ```
 
 **Auto-fix Commands:**
 ```bash
-./gradlew detektApply                    # Apply Detekt formatting fixes
-./gradlew spotlessApply                  # Apply code formatting fixes
-./gradlew lintDebug                      # Update lint baseline
+./gradlew detektApply             # Apply Detekt formatting fixes
+./gradlew spotlessApply           # Apply code formatting fixes
+./gradlew lintDebug               # Update lint baseline
 ```
 
 ### CI Pipeline
