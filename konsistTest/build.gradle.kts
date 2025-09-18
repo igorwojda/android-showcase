@@ -18,5 +18,5 @@ dependencies {
 tasks.withType<Test>().configureEach {
     val taskPath = path
 
-    enabled = taskPath.contains("konsistTest:test")// Enable if it's the konsistTest module's test task
+    enabled = taskPath.contains("konsistTest:test") // Enable if it's the konsistTest module's test task
 }
