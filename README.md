@@ -31,6 +31,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
     - [Unified Version Configuration](#unified-version-configuration)
       - [Java/JVM Version Configuration](#javajvm-version-configuration)
     - [Generated type-safe version catalogs accessors in `buildLogic` module](#generated-type-safe-version-catalogs-accessors-in-buildlogic-module)
+    - [Gradle Configuration Cache](#gradle-configuration-cache)
   - [Code Verification](#code-verification)
     - [CI Pipeline](#ci-pipeline)
     - [Pre-push Hooks](#pre-push-hooks)
@@ -366,11 +367,25 @@ These constants are then used in Gradle convention plugins to configure both Jav
 
 ### Generated type-safe version catalogs accessors in `buildLogic` module 
 
-Type-safe version catalogs accessors are accessible from precompiled script plugins in the `buildLogic` module. This is configured through the `versionCatalogs` block in `buildLogic/settings.gradle.kts` which references the main version catalog file, enabling access to dependencies like:
+The `buildLogic` module provides type-safe access to version catalogs from within precompiled script plugins.
+
+This is enabled via the `versionCatalogs` block in `buildLogic/settings.gradle.kts`, which references the main version catalog file and `implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))` dependency in `buildLogic/build.gradle.kts` file. 
+
+This setup allows you to use catalog dependencies in plugins, for example:
 
 ```kotlin
-add("implementation", libs.koin)
+add("implementation", libs.timber)
 ```
+
+Additionally, extensions defined in [DependencyHandlerScope](buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/ext/DependencyHandlerExt.kt) make the syntax more natural and equivalent to standard Gradle usage:
+
+```kotlin
+implementation(libs.timber)
+```
+
+### Gradle Configuration Cache
+
+Enabled [Gradle Configuration Cache](https://docs.gradle.org/9.0.0/userguide/configuration_cache_enabling.html).
 
 ## Code Verification
 
