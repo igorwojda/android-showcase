@@ -91,8 +91,7 @@ class FeatureConventionPlugin : Plugin<Project> {
                 implementation(libs.bundles.koin)
 
                 implementation(libs.bundles.retrofit)
-                implementation(libs.bundles.navigation)
-                implementation(libs.bundles.lifecycle)
+                implementation(libs.viewmodel.ktx)
 
                 // Room
                 implementation(libs.bundles.room)
