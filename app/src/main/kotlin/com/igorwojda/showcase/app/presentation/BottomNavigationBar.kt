@@ -78,7 +78,7 @@ private fun getBottomNavigationItems() =
         NavigationBarItem(
             R.string.bottom_navigation_favorites,
             R.drawable.ic_favorite,
-            NavigationRoute.Favourite,
+            NavigationRoute.Favourites,
         ),
         NavigationBarItem(
             R.string.bottom_navigation_settings,
