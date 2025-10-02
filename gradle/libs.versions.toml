@@ -26,9 +26,10 @@ serialization-json = "1.9.0"
 kotlinx-serialization-converter = "1.0.0"
 timber = "5.0.1"
 compose = "1.9.2"
-compose-bom = "2025.09.00"
-material-compose = "1.3.2"
+compose-bom = "2025.09.01"
+material-compose = "1.4.0"
 material = "1.13.0"
+material-icons = "1.7.2"
 lottie = "6.6.9"
 core-ktx = "1.17.0"
 core-splashscreen = "1.2.0-rc01"
@@ -96,7 +97,8 @@ koin-compose = { module = "io.insert-koin:koin-androidx-compose"  }
 koin-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 compose-material = { module = "androidx.compose.material3:material3", version.ref = "material-compose" }
-material = { module = "com.google.android.material:material", version.ref = "material" }
+material-material = { module = "com.google.android.material:material", version.ref = "material" }
+material-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "material-icons" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }

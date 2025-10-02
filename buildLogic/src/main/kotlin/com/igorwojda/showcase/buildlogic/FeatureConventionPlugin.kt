@@ -77,8 +77,9 @@ class FeatureConventionPlugin : Plugin<Project> {
                 implementation(libs.core.ktx)
                 implementation(libs.timber)
                 implementation(libs.coroutines)
-                implementation(libs.material)
+                implementation(libs.material.material)
                 implementation(libs.compose.material)
+                implementation(libs.material.icons)
 
                 // Compose dependencies
                 implementation(platform(libs.compose.bom))
