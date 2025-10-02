@@ -11,7 +11,6 @@
   },
   "packageRules": [
     {
-      "description": "Automerge minor and patch updates for stable versions",
       "matchUpdateTypes": [
         "minor",
         "patch"
@@ -22,97 +21,20 @@
       "platformAutomerge": true
     },
     {
-      "description": "Automerge security updates immediately",
-      "matchUpdateTypes": [
-        "patch"
-      ],
       "matchPackagePatterns": [
-        "*"
-      ],
-      "matchDepTypes": [
-        "dependencies"
-      ],
-      "vulnerabilityAlerts": {
-        "enabled": true
-      },
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true,
-      "prPriority": 10
-    },
-    {
-      "description": "Group Androidx Compose updates",
-      "matchPackagePatterns": [
-        "androidx.compose",
         "androidx.compose.ui:ui",
         "androidx.compose.ui:ui-tooling-preview"
       ],
-      "groupName": "androidx compose updates",
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
+      "groupName": "androidx compose ui updates"
     },
     {
-      "description": "Group Kotlin ecosystem updates",
-      "matchPackagePatterns": [
-        "org.jetbrains.kotlin",
-        "com.google.devtools.ksp"
-      ],
-      "groupName": "kotlin ecosystem updates",
-      "automerge": false,
-      "reviewers": ["igorwojda"]
-    },
-    {
-      "description": "Group Android Gradle Plugin updates (require manual review)",
       "matchPackageNames": [
+        "org.jetbrains.kotlin.*",
+        "com.google.devtools.ksp",
         "com.android.library",
         "com.android.application"
       ],
-      "groupName": "android gradle plugin updates",
-      "automerge": false,
-      "reviewers": ["igorwojda"]
-    },
-    {
-      "description": "Group testing library updates",
-      "matchPackagePatterns": [
-        "junit",
-        "mockk",
-        "kluent",
-        "androidx.test",
-        "espresso"
-      ],
-      "groupName": "testing library updates",
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
-    },
-    {
-      "description": "Group dependency injection updates",
-      "matchPackagePatterns": [
-        "io.insert-koin"
-      ],
-      "groupName": "koin dependency injection updates",
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
-    },
-    {
-      "description": "Group networking library updates",
-      "matchPackagePatterns": [
-        "com.squareup.retrofit2",
-        "com.squareup.okhttp3",
-        "com.jakewharton.retrofit"
-      ],
-      "groupName": "networking library updates",
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
+      "enabled": false
     }
-  ],
-  "prConcurrentLimit": 5,
-  "prHourlyLimit": 2,
-  "schedule": [
-    "before 4am on Monday"
-  ],
-  "timezone": "UTC"
+  ]
 }
