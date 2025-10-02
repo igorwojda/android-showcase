@@ -26,9 +26,10 @@ serialization-json = "1.9.0"
 kotlinx-serialization-converter = "1.0.0"
 timber = "5.0.1"
 compose = "1.9.2"
-compose-bom = "2025.09.00"
-material-compose = "1.3.2"
+compose-bom = "2025.09.01"
+material-compose = "1.4.0"
 material = "1.13.0"
+material-icons = "1.7.2"
 lottie = "6.6.9"
 core-ktx = "1.17.0"
 core-splashscreen = "1.2.0-rc01"
@@ -36,7 +37,7 @@ spotless = "7.2.1"
 detekt = "1.23.8"
 android-gradle-plugin = "8.13.0"
 easylauncher = "6.4.1"
-aboutlibraries = "12.2.4"
+about-libraries = "12.2.4"
 
 # ktlint-rules
 ktlint-ruleset-standard = "1.7.1"
@@ -77,10 +78,10 @@ test-logger-gradlePlugin = { module = "com.adarshr:gradle-test-logger-plugin", v
 compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 junit5-gradlePlugin = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "android-junit5" }
 easy-launcher-gradlePlugin = { module = "com.starter.easylauncher:com.starter.easylauncher.gradle.plugin", version.ref = "easylauncher" }
-aboutlibraries-gradlePlugin = { module = "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin", version.ref = "aboutlibraries" }
+about-libraries-gradlePlugin = { module = "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin", version.ref = "about-libraries" }
 
 # Dependencies
-aboutlibraries-compose = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
+aboutlibraries-compose = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "about-libraries" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
@@ -96,7 +97,8 @@ koin-compose = { module = "io.insert-koin:koin-androidx-compose"  }
 koin-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 compose-material = { module = "androidx.compose.material3:material3", version.ref = "material-compose" }
-material = { module = "com.google.android.material:material", version.ref = "material" }
+material-material = { module = "com.google.android.material:material", version.ref = "material" }
+material-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "material-icons" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
