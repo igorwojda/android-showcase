@@ -33,7 +33,7 @@ class InstantTaskExecutorExtension :
         )
     }
 
-    override fun afterEach(context: ExtensionContext?) {
+    override fun afterEach(context: ExtensionContext) {
         ArchTaskExecutor.getInstance().setDelegate(null)
     }
 }
