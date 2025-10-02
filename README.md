@@ -100,7 +100,7 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Lottie](http://airbnb.io/lottie)** - Vector animations
 
 **Testing:**
-- **[JUnit 5](https://junit.org/junit5/)** - Modern testing framework
+- **[JUnit 6](https://junit.org/)** - Modern testing framework
 - **[Mockk](https://mockk.io/)** - Kotlin-first mocking library
 - **[Kluent](https://github.com/MarkusAmshove/Kluent)** - Fluent assertion library
 - **[Espresso](https://developer.android.com/training/testing/espresso)** - UI testing (WIP)
@@ -320,7 +320,7 @@ Each module uses convention a plugin, so common dependencies are shared without 
 - **[`Feature Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/FeatureConventionPlugin.kt)** - Feature module configuration combining library and Kotlin conventions
 - **[`Library Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/LibraryConventionPlugin.kt)** - Android library module setup with common Android configuration
 - **[`Lotlin Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/KotlinConventionPlugin.kt)** - Kotlin compilation settings, toolchain, and compiler options
-- **[`Test Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionPlugin.kt)** - Testing framework setup (JUnit 5, test logging, and test configurations)
+- **[`Test Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionPlugin.kt)** - Testing framework setup (JUnit, test logging, and test configurations)
 - **[`Test Library Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionLibraryPlugin.kt)** - Testing setup specifically for library modules
 - **[`Detekt Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/DetektConventionPlugin.kt)** - Static code analysis configuration with Detekt
 - **[`Spotless Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/SpotlessConventionPlugin.kt)** - Code formatting and style enforcement with Spotless
