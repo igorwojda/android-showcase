@@ -36,7 +36,7 @@ spotless = "7.2.1"
 detekt = "1.23.8"
 android-gradle-plugin = "8.13.0"
 easylauncher = "6.4.1"
-aboutlibraries = "12.2.4"
+about-libraries = "12.2.4"
 
 # ktlint-rules
 ktlint-ruleset-standard = "1.7.1"
@@ -77,10 +77,10 @@ test-logger-gradlePlugin = { module = "com.adarshr:gradle-test-logger-plugin", v
 compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 junit5-gradlePlugin = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "android-junit5" }
 easy-launcher-gradlePlugin = { module = "com.starter.easylauncher:com.starter.easylauncher.gradle.plugin", version.ref = "easylauncher" }
-aboutlibraries-gradlePlugin = { module = "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin", version.ref = "aboutlibraries" }
+about-libraries-gradlePlugin = { module = "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin", version.ref = "about-libraries" }
 
 # Dependencies
-aboutlibraries-compose = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
+aboutlibraries-compose = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "about-libraries" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
