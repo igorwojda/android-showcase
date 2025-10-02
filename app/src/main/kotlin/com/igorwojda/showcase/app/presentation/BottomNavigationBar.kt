@@ -87,16 +87,19 @@ private fun getBottomNavigationItems() =
 Returns the index of the selected bottom menu item based on the current route.
 If no match is found, it defaults to the first item (index 0).
 */
-private fun getSelectedNavigationIndex(currentRoute: String?, navigationItems: List<NavigationBarItem>): Int {
-    return navigationItems.indexOfFirst { item ->
-        when (currentRoute) {
-            null -> false
-            NavigationRoute.AlbumDetail::class.qualifiedName -> item.route is NavigationRoute.AlbumList
-            NavigationRoute.AboutLibraries::class.qualifiedName -> item.route is NavigationRoute.Settings
-            else -> item.route::class.qualifiedName == currentRoute
-        }
-    }.takeIf { it >= 0 } ?: 0
-}
+private fun getSelectedNavigationIndex(
+    currentRoute: String?,
+    navigationItems: List<NavigationBarItem>,
+): Int =
+    navigationItems
+        .indexOfFirst { item ->
+            when (currentRoute) {
+                null -> false
+                NavigationRoute.AlbumDetail::class.qualifiedName -> item.route is NavigationRoute.AlbumList
+                NavigationRoute.AboutLibraries::class.qualifiedName -> item.route is NavigationRoute.Settings
+                else -> item.route::class.qualifiedName == currentRoute
+            }
+        }.takeIf { it >= 0 } ?: 0
 
 data class NavigationBarItem(
     @StringRes val titleRes: Int,
