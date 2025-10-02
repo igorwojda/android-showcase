@@ -59,7 +59,7 @@ fun MainShowcaseScreen(modifier: Modifier = Modifier) {
                         },
                     )
                 }
-                composable<NavigationRoute.Favourite> {
+                composable<NavigationRoute.Favourites> {
                     FavouriteScreen()
                 }
                 composable<NavigationRoute.Settings> {

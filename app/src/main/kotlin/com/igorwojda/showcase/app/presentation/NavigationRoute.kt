@@ -14,7 +14,7 @@ sealed interface NavigationRoute {
     ) : NavigationRoute
 
     @Serializable
-    data object Favourite : NavigationRoute
+    data object Favourites : NavigationRoute
 
     @Serializable
     data object Settings : NavigationRoute
