@@ -6,8 +6,8 @@ include(
     ":feature:settings",
     ":feature:favourite",
     ":feature:base",
-    ":library:testUtils",
-    ":konsistTest",
+    ":library:test-utils",
+    ":konsist-test",
 )
 
 pluginManagement {

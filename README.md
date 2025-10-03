@@ -391,11 +391,11 @@ Enabled [Gradle Configuration Cache](https://docs.gradle.org/9.0.0/userguide/con
 
 **Quality Checks:**
 ```bash
-./gradlew konsistTest:test --rerun-tasks          # Architecture & convention validation
+./gradlew konsist-test:test --rerun-tasks          # Architecture & convention validation
 ./gradlew lintDebug                               # Android lint analysis  
 ./gradlew detektCheck                             # Code complexity & style analysis
 ./gradlew spotlessCheck                           # Code formatting verification
-./gradlew testDebugUnitTest -x konsistTest:test   # Unit test execution (without Konsist tests)
+./gradlew testDebugUnitTest -x konsist-test:test   # Unit test execution (without Konsist tests)
 ./gradlew connectedCheck                          # UI test execution (WIP)
 ./gradlew :app:bundleDebug                        # Production build verification
 ```
