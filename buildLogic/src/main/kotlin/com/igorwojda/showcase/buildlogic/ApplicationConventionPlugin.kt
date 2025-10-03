@@ -23,6 +23,7 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.plugin.compose")
                 apply<KotlinConventionPlugin>()
                 apply<SpotlessConventionPlugin>()
+                apply<EasyLauncherConventionPlugin>()
                 apply<AboutLibrariesConventionPlugin>()
             }
 
