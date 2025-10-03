@@ -16,6 +16,7 @@ class ModuleKonsistTest {
                     it.moduleName
                         .lowercase()
                         .replace("/", ".")
+                        .replace("-", "")
 
                 val fullyQualifiedPackageName = "com.igorwojda.showcase.$modulePackageName"
 

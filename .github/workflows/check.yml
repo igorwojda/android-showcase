@@ -54,9 +54,13 @@ jobs:
         run: ./gradlew lint
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: android-lint-report
-          path: ~/**/build/reports/lint-results*.html
+          path: |
+            app/build/reports/lint-results*.html
+            feature/*/build/reports/lint-results*.html
+            library/*/build/reports/lint-results*.html
 
   detekt:
     runs-on: ubuntu-latest
@@ -77,9 +81,15 @@ jobs:
         run: ./gradlew detektCheck
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: detekt-report
-          path: ./**/build/reports/detekt/detekt.*
+          path: |
+            build/reports/detekt/detekt.*
+            app/build/reports/detekt/detekt.*
+            feature/*/build/reports/detekt/detekt.*
+            library/*/build/reports/detekt/detekt.*
+            konsist-test/build/reports/detekt/detekt.*
 
   konsist:
     runs-on: ubuntu-latest
@@ -97,12 +107,13 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
 
       - name: konsist
-        run: ./gradlew konsistTest:test --rerun-tasks
+        run: ./gradlew konsist-test:test --rerun-tasks
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: konsist-report
-          path: ./konsistTest/build/reports/*
+          path: ./konsist-test/build/reports/*
 
   spotless:
     runs-on: ubuntu-latest
@@ -122,11 +133,16 @@ jobs:
       - name: spotlessCheck
         run: ./gradlew spotlessCheck
 
-      # Fixed: This should upload spotless reports, not detekt
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: spotless-report
-          path: ./**/build/reports/spotless/*
+          path: |
+            build/reports/spotless/*
+            app/build/reports/spotless/*
+            feature/*/build/reports/spotless/*
+            library/*/build/reports/spotless/*
+            konsist-test/build/reports/spotless/*
 
   #  ui-test:
   #    runs-on: macos-latest
@@ -174,9 +190,13 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
 
       - name: unitTest
-        run: ./gradlew test -x konsistTest:test
+        run: ./gradlew test -x konsist-test:test
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: unit-test-report
-          path: ./**/build/reports/tests/
+          path: |
+            app/build/reports/tests/
+            feature/*/build/reports/tests/
+            library/*/build/reports/tests/

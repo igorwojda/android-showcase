@@ -6,12 +6,12 @@ include(
     ":feature:settings",
     ":feature:favourite",
     ":feature:base",
-    ":library:testUtils",
-    ":konsistTest",
+    ":library:test-utils",
+    ":konsist-test",
 )
 
 pluginManagement {
-    includeBuild("buildLogic")
+    includeBuild("build-logic")
 
     repositories {
         gradlePluginPortal()

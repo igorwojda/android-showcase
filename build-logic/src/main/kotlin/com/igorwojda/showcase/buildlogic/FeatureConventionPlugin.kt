@@ -100,7 +100,7 @@ class FeatureConventionPlugin : Plugin<Project> {
                 ksp(libs.room.compiler)
 
                 // Test dependencies
-                testImplementation(project(":library:testUtils"))
+                testImplementation(project(":library:test-utils"))
                 testImplementation(libs.bundles.test)
                 testRuntimeOnly(libs.junit.jupiter.engine)
             }
