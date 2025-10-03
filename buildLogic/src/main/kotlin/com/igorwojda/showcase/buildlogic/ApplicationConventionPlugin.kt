@@ -9,6 +9,7 @@ import com.igorwojda.showcase.buildlogic.ext.libs
 import com.igorwojda.showcase.buildlogic.ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
@@ -20,10 +21,10 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
-                apply("com.igorwojda.showcase.convention.kotlin")
-                apply("com.igorwojda.showcase.convention.spotless")
-                apply("com.igorwojda.showcase.convention.easylauncher")
-                apply("com.igorwojda.showcase.convention.aboutlibraries")
+                apply<KotlinConventionPlugin>()
+                apply<SpotlessConventionPlugin>()
+                apply<EasyLauncherConventionPlugin>()
+                apply<AboutLibrariesConventionPlugin>()
             }
 
             extensions.configure<ApplicationExtension> {

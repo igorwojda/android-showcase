@@ -5,6 +5,7 @@ import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
 import com.igorwojda.showcase.buildlogic.ext.versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
 class TestConventionLibraryPlugin : Plugin<Project> {
@@ -12,8 +13,8 @@ class TestConventionLibraryPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.library")
-                apply("com.igorwojda.showcase.convention.kotlin")
-                apply("com.igorwojda.showcase.convention.test")
+                apply<KotlinConventionPlugin>()
+                apply<TestConventionPlugin>()
                 apply("com.google.devtools.ksp")
             }
 
