@@ -10,7 +10,7 @@
   - AboutLibraries `12.2.4` Gradle plugin does nto include test dependencies https://github.com/mikepenz/AboutLibraries/issues/1238
   - AboutLibraries `13.0.0-rc01` Gradle plugin required Kotlin 2.2.0 https://github.com/mikepenz/AboutLibraries/issues/1237
 - Gradle 
-  - Gradle `9.0` - Generated type-safe version catalogs accessors for `projcts` are not avialable inside `buildLogic` module
+  - Gradle `9.0` - Generated type-safe version catalogs accessors for `projcts` are not avialable inside `build-logic` module
   - Gradle `9.0` - Generated type-safe version catalogs accessors for `libs` are not accessible from precompiled script plugin e.g. add("implementation", libs.koin). Workaround is to use `implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))`.
 - Mockk 
   - Unable to mock some methods with implicit `continuation`

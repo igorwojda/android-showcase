@@ -30,7 +30,7 @@ Built with **Clean Architecture** principles, this app serves as a comprehensive
     - [Type Safe Project Accessors](#type-safe-project-accessors)
     - [Unified Version Configuration](#unified-version-configuration)
       - [Java/JVM Version Configuration](#javajvm-version-configuration)
-    - [Generated type-safe version catalogs accessors in `buildLogic` module](#generated-type-safe-version-catalogs-accessors-in-buildlogic-module)
+    - [Generated type-safe version catalogs accessors in `build-logic` module](#generated-type-safe-version-catalogs-accessors-in-build-logic-module)
     - [Gradle Configuration Cache](#gradle-configuration-cache)
   - [Code Verification](#code-verification)
     - [CI Pipeline](#ci-pipeline)
@@ -316,16 +316,16 @@ Each module uses convention a plugin, so common dependencies are shared without 
 
 [Convention plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) standardize build configuration across modules by encapsulating common build logic into reusable plugins:
 
-- **[`Application Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/ApplicationConventionPlugin.kt)** - Main application module configuration with Android app setup
-- **[`Feature Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/FeatureConventionPlugin.kt)** - Feature module configuration combining library and Kotlin conventions
-- **[`Library Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/LibraryConventionPlugin.kt)** - Android library module setup with common Android configuration
-- **[`Lotlin Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/KotlinConventionPlugin.kt)** - Kotlin compilation settings, toolchain, and compiler options
-- **[`Test Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionPlugin.kt)** - Testing framework setup (JUnit, test logging, and test configurations)
-- **[`Test Library Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionLibraryPlugin.kt)** - Testing setup specifically for library modules
-- **[`Detekt Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/DetektConventionPlugin.kt)** - Static code analysis configuration with Detekt
-- **[`Spotless Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/SpotlessConventionPlugin.kt)** - Code formatting and style enforcement with Spotless
-- **[`Easylauncher Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/EasyLauncherConventionPlugin.kt)** - App icon customization for different build variants
-- **[`AboutLibraries Convention`](./buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/AboutLibrariesConventionPlugin.kt)** - About libraries configuration
+- **[`Application Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/ApplicationConventionPlugin.kt)** - Main application module configuration with Android app setup
+- **[`Feature Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/FeatureConventionPlugin.kt)** - Feature module configuration combining library and Kotlin conventions
+- **[`Library Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/LibraryConventionPlugin.kt)** - Android library module setup with common Android configuration
+- **[`Lotlin Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/KotlinConventionPlugin.kt)** - Kotlin compilation settings, toolchain, and compiler options
+- **[`Test Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionPlugin.kt)** - Testing framework setup (JUnit, test logging, and test configurations)
+- **[`Test Library Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/TestConventionLibraryPlugin.kt)** - Testing setup specifically for library modules
+- **[`Detekt Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/DetektConventionPlugin.kt)** - Static code analysis configuration with Detekt
+- **[`Spotless Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/SpotlessConventionPlugin.kt)** - Code formatting and style enforcement with Spotless
+- **[`Easylauncher Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/EasyLauncherConventionPlugin.kt)** - App icon customization for different build variants
+- **[`AboutLibraries Convention`](./build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/AboutLibrariesConventionPlugin.kt)** - About libraries configuration
 
 ### Type Safe Project Accessors
 
@@ -365,11 +365,11 @@ These constants are then used in Gradle convention plugins to configure both Jav
  }
 ```
 
-### Generated type-safe version catalogs accessors in `buildLogic` module 
+### Generated type-safe version catalogs accessors in `build-logic` module 
 
-The `buildLogic` module provides type-safe access to version catalogs from within precompiled script plugins.
+The `build-logic` module provides type-safe access to version catalogs from within precompiled script plugins.
 
-This is enabled via the `versionCatalogs` block in `buildLogic/settings.gradle.kts`, which references the main version catalog file and `implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))` dependency in `buildLogic/build.gradle.kts` file. 
+This is enabled via the `versionCatalogs` block in `build-logic/settings.gradle.kts`, which references the main version catalog file and `implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))` dependency in `build-logic/build.gradle.kts` file. 
 
 This setup allows you to use catalog dependencies in plugins, for example:
 
@@ -377,7 +377,7 @@ This setup allows you to use catalog dependencies in plugins, for example:
 add("implementation", libs.timber)
 ```
 
-Additionally, extensions defined in [DependencyHandlerScope](buildLogic/src/main/kotlin/com/igorwojda/showcase/buildlogic/ext/DependencyHandlerExt.kt) make the syntax more natural and equivalent to standard Gradle usage:
+Additionally, extensions defined in [DependencyHandlerScope](build-logic/src/main/kotlin/com/igorwojda/showcase/buildlogic/ext/DependencyHandlerExt.kt) make the syntax more natural and equivalent to standard Gradle usage:
 
 ```kotlin
 implementation(libs.timber)
@@ -391,11 +391,11 @@ Enabled [Gradle Configuration Cache](https://docs.gradle.org/9.0.0/userguide/con
 
 **Quality Checks:**
 ```bash
-./gradlew konsistTest:test --rerun-tasks          # Architecture & convention validation
+./gradlew konsist-test:test --rerun-tasks          # Architecture & convention validation
 ./gradlew lintDebug                               # Android lint analysis  
 ./gradlew detektCheck                             # Code complexity & style analysis
 ./gradlew spotlessCheck                           # Code formatting verification
-./gradlew testDebugUnitTest -x konsistTest:test   # Unit test execution (without Konsist tests)
+./gradlew testDebugUnitTest -x konsist-test:test   # Unit test execution (without Konsist tests)
 ./gradlew connectedCheck                          # UI test execution (WIP)
 ./gradlew :app:bundleDebug                        # Production build verification
 ```
