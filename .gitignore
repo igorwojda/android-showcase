@@ -50,3 +50,6 @@ google-services.json
 
 # Kotlin
 *.salive
+
+# Claude Code
+.claude/
