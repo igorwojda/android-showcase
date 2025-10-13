@@ -165,5 +165,4 @@ test = [
     "junit-jupiter-api",
     "junit-jupiter-engine",
     "junit-platform-launcher",
-    "konsist"
 ]
