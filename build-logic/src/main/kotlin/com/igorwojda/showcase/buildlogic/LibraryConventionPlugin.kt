@@ -4,6 +4,7 @@ import com.android.build.api.dsl.LibraryExtension
 import com.igorwojda.showcase.buildlogic.config.JavaBuildConfig
 import com.igorwojda.showcase.buildlogic.ext.excludeLicenseAndMetaFiles
 import com.igorwojda.showcase.buildlogic.ext.versions
+import com.mikepenz.aboutlibraries.plugin.AboutLibrariesPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -16,6 +17,7 @@ class LibraryConventionPlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply<KotlinConventionPlugin>()
                 apply<TestConventionPlugin>()
+                apply<AboutLibrariesPlugin>()
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
