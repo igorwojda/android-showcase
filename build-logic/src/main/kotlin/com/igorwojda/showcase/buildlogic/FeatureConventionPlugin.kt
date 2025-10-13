@@ -10,6 +10,7 @@ import com.igorwojda.showcase.buildlogic.ext.libs
 import com.igorwojda.showcase.buildlogic.ext.testImplementation
 import com.igorwojda.showcase.buildlogic.ext.testRuntimeOnly
 import com.igorwojda.showcase.buildlogic.ext.versions
+import com.mikepenz.aboutlibraries.plugin.AboutLibrariesPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -24,6 +25,7 @@ class FeatureConventionPlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply<KotlinConventionPlugin>()
                 apply<TestConventionPlugin>()
+                apply<AboutLibrariesPlugin>()
                 apply("com.google.devtools.ksp")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }

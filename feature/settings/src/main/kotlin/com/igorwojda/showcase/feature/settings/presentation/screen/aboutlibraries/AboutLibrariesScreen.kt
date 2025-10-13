@@ -61,6 +61,9 @@ private fun AboutLibrariesContent(
             )
         },
     ) { paddingValues ->
+//        val libraries by produceLibraries(R.raw.aboutlibraries)
+//        LibrariesContainer(libraries, Modifier.fillMaxSize())
+
         LibrariesContainer(
             modifier =
                 Modifier
