@@ -37,7 +37,7 @@ spotless = "8.0.0"
 detekt = "1.23.8"
 android-gradle-plugin = "8.13.0"
 easylauncher = "6.4.1"
-about-libraries = "12.2.4"
+about-libraries = "13.0.0"
 
 # ktlint-rules
 ktlint-ruleset-standard = "1.7.1"
