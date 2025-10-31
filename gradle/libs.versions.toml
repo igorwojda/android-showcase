@@ -125,7 +125,7 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 core-testing = { module = "androidx.arch.core:core-testing", version.ref = "core-testing" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
-junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version = "1.14.0" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version = "1.14.1" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
