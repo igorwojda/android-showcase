@@ -1,9 +1,14 @@
 package com.igorwojda.showcase.app
 
+import android.annotation.SuppressLint
 import com.igorwojda.showcase.app.data.api.AuthenticationInterceptor
 import com.igorwojda.showcase.app.data.api.UserAgentInterceptor
 import com.igorwojda.showcase.feature.base.data.retrofit.ApiResultAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import java.security.SecureRandom
+import java.security.cert.X509Certificate
+import javax.net.ssl.SSLContext
+import javax.net.ssl.X509TrustManager
 import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -64,6 +69,8 @@ val appModule =
                 .apply {
                     if (BuildConfig.DEBUG) {
                         addInterceptor(get<HttpLoggingInterceptor>())
+                        // Disable SSL validation for debugging with proxy tools (Proxyman, Charles, etc.)
+                        disableAllSslValidation()
                     }
                     addInterceptor(get<AuthenticationInterceptor>())
                     addInterceptor(get<UserAgentInterceptor>())
@@ -90,3 +97,24 @@ val appModule =
                 .build()
         }
     }
+
+/**
+ * Disable SSL/TLS validation on this OkHttpClient builder.
+ * Installs a permissive X509TrustManager and HostnameVerifier. Use ONLY for local
+ * debugging (e.g., proxy tools) and never in production — this completely disables SSL.
+ */
+@SuppressLint("CustomX509TrustManager", "TrustAllX509TrustManager")
+private fun OkHttpClient.Builder.disableAllSslValidation() = apply {
+    val naiveTrustManager = object : X509TrustManager {
+        override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
+        override fun checkClientTrusted(certs: Array<X509Certificate>, authType: String) = Unit
+        override fun checkServerTrusted(certs: Array<X509Certificate>, authType: String) = Unit
+    }
+
+    val insecureSocketFactory = SSLContext.getInstance("TLSv1.2")
+        .apply { init(null, arrayOf(naiveTrustManager), SecureRandom()) }
+        .socketFactory
+
+    sslSocketFactory(insecureSocketFactory, naiveTrustManager)
+    hostnameVerifier { _, _ -> true }
+}
