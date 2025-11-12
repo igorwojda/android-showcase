@@ -104,17 +104,29 @@ val appModule =
  * debugging (e.g., proxy tools) and never in production — this completely disables SSL.
  */
 @SuppressLint("CustomX509TrustManager", "TrustAllX509TrustManager")
-private fun OkHttpClient.Builder.disableAllSslValidation() = apply {
-    val naiveTrustManager = object : X509TrustManager {
-        override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
-        override fun checkClientTrusted(certs: Array<X509Certificate>, authType: String) = Unit
-        override fun checkServerTrusted(certs: Array<X509Certificate>, authType: String) = Unit
+private fun OkHttpClient.Builder.disableAllSslValidation() =
+    apply {
+        val naiveTrustManager =
+            object : X509TrustManager {
+                override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
+
+                override fun checkClientTrusted(
+                    certs: Array<X509Certificate>,
+                    authType: String,
+                ) = Unit
+
+                override fun checkServerTrusted(
+                    certs: Array<X509Certificate>,
+                    authType: String,
+                ) = Unit
+            }
+
+        val insecureSocketFactory =
+            SSLContext
+                .getInstance("TLSv1.2")
+                .apply { init(null, arrayOf(naiveTrustManager), SecureRandom()) }
+                .socketFactory
+
+        sslSocketFactory(insecureSocketFactory, naiveTrustManager)
+        hostnameVerifier { _, _ -> true }
     }
-
-    val insecureSocketFactory = SSLContext.getInstance("TLSv1.2")
-        .apply { init(null, arrayOf(naiveTrustManager), SecureRandom()) }
-        .socketFactory
-
-    sslSocketFactory(insecureSocketFactory, naiveTrustManager)
-    hostnameVerifier { _, _ -> true }
-}
