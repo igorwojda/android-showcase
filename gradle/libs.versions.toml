@@ -35,7 +35,7 @@ core-ktx = "1.17.0"
 core-splashscreen = "1.2.0"
 spotless = "8.1.0"
 detekt = "1.23.8"
-android-gradle-plugin = "8.13.1"
+android-gradle-plugin = "8.13.2"
 easylauncher = "6.4.1"
 about-libraries = "13.1.0"
 
