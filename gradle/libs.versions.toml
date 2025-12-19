@@ -40,7 +40,7 @@ easylauncher = "6.4.1"
 about-libraries = "13.2.1"
 
 # ktlint-rules
-ktlint-ruleset-standard = "1.7.1"
+ktlint-ruleset-standard = "1.8.0"
 nlopez-compose-rules = "0.4.27"
 twitter-compose-rules = "0.0.26"
 
