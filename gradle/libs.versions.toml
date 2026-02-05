@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 
 # KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
 # https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
