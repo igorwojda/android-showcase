@@ -45,7 +45,7 @@ nlopez-compose-rules = "0.4.27"
 twitter-compose-rules = "0.0.26"
 
 # Test
-junit-jupiter = "6.0.2"
+junit-jupiter = "6.0.3"
 android-junit5 = "1.14.0.0"
 kluent = "1.73"
 test-runner = "1.7.0"
