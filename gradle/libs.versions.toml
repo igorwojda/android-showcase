@@ -46,7 +46,7 @@ twitter-compose-rules = "0.0.26"
 
 # Test
 junit-jupiter = "6.0.3"
-android-junit5 = "1.14.0.0"
+android-junit5 = "2.0.1"
 kluent = "1.73"
 test-runner = "1.7.0"
 mockk = "1.14.9"
