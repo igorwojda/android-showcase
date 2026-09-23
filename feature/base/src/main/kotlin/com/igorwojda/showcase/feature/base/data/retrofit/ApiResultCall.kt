@@ -22,6 +22,7 @@ internal class ApiResultCall<T> constructor(
                             in 200..208 -> {
                                 callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Success(it)))
                             }
+
                             in 400..409 -> {
                                 callback.onResponse(
                                     this@ApiResultCall,

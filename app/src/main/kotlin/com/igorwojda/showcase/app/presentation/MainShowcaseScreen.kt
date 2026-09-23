@@ -11,7 +11,6 @@ import androidx.navigation.NavDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.createGraph
 import androidx.navigation.toRoute
 import com.igorwojda.showcase.app.BuildConfig
 import com.igorwojda.showcase.app.presentation.util.NavigationDestinationLogger
@@ -33,55 +32,52 @@ fun MainShowcaseScreen(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize(),
         bottomBar = { BottomNavigationBar(navController) },
     ) { innerPadding ->
-
-        val graph =
-            navController.createGraph(startDestination = NavigationRoute.AlbumList) {
-                composable<NavigationRoute.AlbumList> {
-                    AlbumListScreen(
-                        // artistName: String, albumName: String, mbId: String?
-                        onNavigateToAlbumDetail = { artistName, albumName, albumMbId ->
-                            navController.navigate(
-                                NavigationRoute.AlbumDetail(artistName, albumName, albumMbId),
-                            )
-                        },
-                    )
-                }
-                composable<NavigationRoute.AlbumDetail> { backStackEntry ->
-                    // Retrieve typed args
-                    val args = backStackEntry.toRoute<NavigationRoute.AlbumDetail>()
-
-                    AlbumDetailScreen(
-                        albumName = args.albumName,
-                        artistName = args.artistName,
-                        albumMbId = args.albumMbId,
-                        onBackClick = {
-                            navController.popBackStack()
-                        },
-                    )
-                }
-                composable<NavigationRoute.Favourites> {
-                    FavouriteScreen()
-                }
-                composable<NavigationRoute.Settings> {
-                    SettingsScreen(
-                        onNavigateToAboutLibraries = {
-                            navController.navigate(NavigationRoute.AboutLibraries)
-                        },
-                    )
-                }
-                composable<NavigationRoute.AboutLibraries> {
-                    AboutLibrariesScreen(
-                        onBackClick = {
-                            navController.popBackStack()
-                        },
-                    )
-                }
-            }
         NavHost(
             navController = navController,
-            graph = graph,
+            startDestination = NavigationRoute.AlbumList,
             modifier = Modifier.padding(innerPadding),
-        )
+        ) {
+            composable<NavigationRoute.AlbumList> {
+                AlbumListScreen(
+                    // artistName: String, albumName: String, mbId: String?
+                    onNavigateToAlbumDetail = { artistName, albumName, albumMbId ->
+                        navController.navigate(
+                            NavigationRoute.AlbumDetail(artistName, albumName, albumMbId),
+                        )
+                    },
+                )
+            }
+            composable<NavigationRoute.AlbumDetail> { backStackEntry ->
+                // Retrieve typed args
+                val args = backStackEntry.toRoute<NavigationRoute.AlbumDetail>()
+
+                AlbumDetailScreen(
+                    albumName = args.albumName,
+                    artistName = args.artistName,
+                    albumMbId = args.albumMbId,
+                    onBackClick = {
+                        navController.popBackStack()
+                    },
+                )
+            }
+            composable<NavigationRoute.Favourites> {
+                FavouriteScreen()
+            }
+            composable<NavigationRoute.Settings> {
+                SettingsScreen(
+                    onNavigateToAboutLibraries = {
+                        navController.navigate(NavigationRoute.AboutLibraries)
+                    },
+                )
+            }
+            composable<NavigationRoute.AboutLibraries> {
+                AboutLibrariesScreen(
+                    onBackClick = {
+                        navController.popBackStack()
+                    },
+                )
+            }
+        }
     }
 }
 
