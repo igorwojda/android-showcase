@@ -31,6 +31,7 @@ internal class AlbumDetailViewModel(
                     is Success -> {
                         sendAction(AlbumDetailAction.AlbumLoadSuccess(it.value))
                     }
+
                     is Failure -> {
                         sendAction(AlbumDetailAction.AlbumLoadFailure)
                     }

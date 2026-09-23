@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.settings.R
+import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 import org.koin.androidx.compose.koinViewModel
 
@@ -45,6 +46,8 @@ private fun AboutLibrariesContent(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val libraries by produceLibraries()
+
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -62,6 +65,7 @@ private fun AboutLibrariesContent(
         },
     ) { paddingValues ->
         LibrariesContainer(
+            libraries = libraries,
             modifier =
                 Modifier
                     .fillMaxSize()

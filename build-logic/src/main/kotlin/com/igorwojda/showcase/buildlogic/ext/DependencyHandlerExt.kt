@@ -1,7 +1,7 @@
 package com.igorwojda.showcase.buildlogic.ext
 
 import org.gradle.accessors.dm.LibrariesForLibs
-import org.gradle.api.Project
+import org.gradle.api.artifacts.ProjectDependency
 import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 
@@ -15,8 +15,8 @@ fun DependencyHandlerScope.implementation(provider: Provider<out Any>) {
     add(IMPLEMENTATION, provider)
 }
 
-fun DependencyHandlerScope.implementation(project: Project) {
-    add(IMPLEMENTATION, project)
+fun DependencyHandlerScope.implementation(dependency: ProjectDependency) {
+    add(IMPLEMENTATION, dependency)
 }
 
 fun DependencyHandlerScope.implementation(provider: LibrariesForLibs.KotlinLibraryAccessors) {
@@ -31,8 +31,8 @@ fun DependencyHandlerScope.ksp(provider: Provider<out Any>) {
     add(KSP, provider)
 }
 
-fun DependencyHandlerScope.testImplementation(project: Project) {
-    add(TEST_IMPLEMENTATION, project)
+fun DependencyHandlerScope.testImplementation(dependency: ProjectDependency) {
+    add(TEST_IMPLEMENTATION, dependency)
 }
 
 fun DependencyHandlerScope.testImplementation(provider: Provider<out Any>) {

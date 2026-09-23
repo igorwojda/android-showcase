@@ -36,6 +36,7 @@ internal class AlbumListViewModel(
                             is Result.Success -> {
                                 AlbumListAction.AlbumListLoadSuccess(result.value)
                             }
+
                             is Result.Failure -> {
                                 AlbumListAction.AlbumListLoadFailure
                             }

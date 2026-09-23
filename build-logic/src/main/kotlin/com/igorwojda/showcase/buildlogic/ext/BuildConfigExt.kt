@@ -35,7 +35,7 @@ private fun extractBuildConfigField(
     project: Project,
     gradlePropertyName: String,
 ): Pair<String, String> {
-    val propertyValue = project.properties[gradlePropertyName] as? String
+    val propertyValue = project.providers.gradleProperty(gradlePropertyName).orNull
     checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
 
     val androidResourceName = "GRADLE_${gradlePropertyName.toSnakeCase()}".uppercase(Locale.getDefault())

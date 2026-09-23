@@ -68,7 +68,9 @@ fun AlbumListScreen(
         ) {
             when (val currentUiState = uiState) { // Extract to local variable for smart casting
                 AlbumListUiState.Error -> ErrorAnim()
+
                 AlbumListUiState.Loading -> LoadingIndicator()
+
                 is AlbumListUiState.Content -> AlbumListContent(currentUiState, onNavigateToAlbumDetail)
             }
         }

@@ -30,9 +30,11 @@ internal class AlbumRepositoryImpl(
 
                 Result.Success(albums)
             }
+
             is ApiResult.Error -> {
                 Result.Failure()
             }
+
             is ApiResult.Exception -> {
                 Timber.e(apiResult.throwable)
 
@@ -60,9 +62,11 @@ internal class AlbumRepositoryImpl(
 
                 Result.Success(album)
             }
+
             is ApiResult.Error -> {
                 Result.Failure()
             }
+
             is ApiResult.Exception -> {
                 Timber.e(apiResult.throwable)
 

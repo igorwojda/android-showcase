@@ -82,9 +82,11 @@ fun AlbumDetailScreen(
             AlbumDetailUiState.Error -> {
                 ErrorAnim()
             }
+
             AlbumDetailUiState.Loading -> {
                 LoadingIndicator()
             }
+
             is AlbumDetailUiState.Content -> {
                 AlbumDetailContent(
                     content = currentUiState,
