@@ -12,54 +12,26 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.base.common.res.Dimen
 import com.igorwojda.showcase.feature.base.presentation.compose.theme.ShowcaseTheme
-import kotlinx.coroutines.delay
 
 @Composable
 fun SearchBar(
     query: String,
     onQueryChange: (String) -> Unit,
-    onSearch: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val minimumProductQuerySize = 1
-    val delayBeforeSubmittingQuery = 300L
-
-    var textFieldValue by remember(query) { mutableStateOf(TextFieldValue(query)) }
-
-    // Debounce search - only trigger search after user stops typing
-    LaunchedEffect(textFieldValue.text, onSearch, onQueryChange) {
-        if (textFieldValue.text.length >= minimumProductQuerySize) {
-            delay(delayBeforeSubmittingQuery)
-            onSearch(textFieldValue.text)
-            onQueryChange(textFieldValue.text)
-        } else if (textFieldValue.text.isEmpty()) {
-            // Immediately search when query is cleared
-            onSearch("")
-            onQueryChange("")
-        }
-    }
-
     OutlinedTextField(
-        value = textFieldValue,
+        value = query,
         modifier =
             modifier
                 .fillMaxWidth()
                 .padding(Dimen.spaceM),
-        onValueChange = { newValue ->
-            textFieldValue = newValue
-        },
+        onValueChange = onQueryChange,
         placeholder = {
             Text(stringResource(R.string.album_list_search_placeholder))
         },
@@ -70,14 +42,10 @@ fun SearchBar(
             )
         },
         trailingIcon =
-            if (textFieldValue.text.isNotEmpty()) {
+            if (query.isNotEmpty()) {
                 {
                     IconButton(
-                        onClick = {
-                            textFieldValue = TextFieldValue("")
-                            onSearch("")
-                            onQueryChange("")
-                        },
+                        onClick = { onQueryChange("") },
                     ) {
                         Icon(
                             imageVector = Icons.Default.Clear,
@@ -104,7 +72,6 @@ private fun SearchBarPreview() {
         SearchBar(
             query = "Sample query",
             onQueryChange = { },
-            onSearch = { },
         )
     }
 }
@@ -116,7 +83,6 @@ private fun SearchBarEmptyPreview() {
         SearchBar(
             query = "",
             onQueryChange = { },
-            onSearch = { },
         )
     }
 }
