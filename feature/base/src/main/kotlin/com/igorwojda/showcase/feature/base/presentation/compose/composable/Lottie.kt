@@ -12,11 +12,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.igorwojda.showcase.feature.base.common.res.Dimen
+import com.igorwojda.showcase.feature.base.presentation.compose.theme.ShowcaseTheme
 
 @Composable
 fun LabeledAnimation(
@@ -53,19 +54,23 @@ fun LottieAssetLoader(
     )
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun LabeledAnimationPreview() {
-    LabeledAnimation(
-        label = android.R.string.ok,
-        assetResId = com.igorwojda.showcase.feature.base.R.raw.lottie_building_screen,
-    )
+    ShowcaseTheme {
+        LabeledAnimation(
+            label = android.R.string.ok,
+            assetResId = com.igorwojda.showcase.feature.base.R.raw.lottie_building_screen,
+        )
+    }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun LottieAssetLoaderPreview() {
-    LottieAssetLoader(
-        assetResId = com.igorwojda.showcase.feature.base.R.raw.lottie_building_screen,
-    )
+    ShowcaseTheme {
+        LottieAssetLoader(
+            assetResId = com.igorwojda.showcase.feature.base.R.raw.lottie_building_screen,
+        )
+    }
 }

@@ -19,7 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
@@ -28,6 +28,7 @@ import com.igorwojda.showcase.feature.base.common.res.Dimen
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.LoadingIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
+import com.igorwojda.showcase.feature.base.presentation.compose.theme.ShowcaseTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -116,27 +117,29 @@ private fun AlbumGrid(
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun AlbumGridPreview() {
-    val sampleAlbums =
-        listOf(
-            Album(
-                name = "Sample Album 1",
-                artist = "Sample Artist",
-                mbId = null,
-                images = emptyList(),
-            ),
-            Album(
-                name = "Sample Album 2",
-                artist = "Sample Artist 2",
-                mbId = null,
-                images = emptyList(),
-            ),
-        )
+    ShowcaseTheme {
+        val sampleAlbums =
+            listOf(
+                Album(
+                    name = "Sample Album 1",
+                    artist = "Sample Artist",
+                    mbId = null,
+                    images = emptyList(),
+                ),
+                Album(
+                    name = "Sample Album 2",
+                    artist = "Sample Artist 2",
+                    mbId = null,
+                    images = emptyList(),
+                ),
+            )
 
-    AlbumGrid(
-        albums = sampleAlbums,
-        onAlbumClick = { },
-    )
+        AlbumGrid(
+            albums = sampleAlbums,
+            onAlbumClick = { },
+        )
+    }
 }

@@ -20,9 +20,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.base.common.res.Dimen
+import com.igorwojda.showcase.feature.base.presentation.compose.theme.ShowcaseTheme
 import kotlinx.coroutines.delay
 
 @Composable
@@ -96,22 +97,26 @@ fun SearchBar(
     )
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun SearchBarPreview() {
-    SearchBar(
-        query = "Sample query",
-        onQueryChange = { },
-        onSearch = { },
-    )
+    ShowcaseTheme {
+        SearchBar(
+            query = "Sample query",
+            onQueryChange = { },
+            onSearch = { },
+        )
+    }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun SearchBarEmptyPreview() {
-    SearchBar(
-        query = "",
-        onQueryChange = { },
-        onSearch = { },
-    )
+    ShowcaseTheme {
+        SearchBar(
+            query = "",
+            onQueryChange = { },
+            onSearch = { },
+        )
+    }
 }
