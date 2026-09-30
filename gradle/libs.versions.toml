@@ -41,7 +41,7 @@ about-libraries = "15.2.0"
 
 # ktlint-rules
 ktlint-ruleset-standard = "1.8.0"
-nlopez-compose-rules = "0.6.6"
+nlopez-compose-rules = "0.6.7"
 twitter-compose-rules = "0.0.26"
 
 # Test
