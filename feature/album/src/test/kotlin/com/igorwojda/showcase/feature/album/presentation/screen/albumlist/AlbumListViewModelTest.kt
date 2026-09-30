@@ -113,4 +113,27 @@ class AlbumListViewModelTest {
             sut.queryFlow.value shouldBeEqualTo "Metal"
             coVerify(exactly = 1) { mockGetAlbumListUseCase.invoke("Metal") }
         }
+
+    @Test
+    fun `onQueryChange with empty query loads default query`() =
+        runTest {
+            // given
+            val sut =
+                AlbumListViewModel(
+                    SavedStateHandle(mapOf("query" to "Metallica")),
+                    mockGetAlbumListUseCase,
+                )
+            coEvery { mockGetAlbumListUseCase.invoke(any()) } returns Result.Success(emptyList())
+            sut.onInit()
+            advanceUntilIdle()
+
+            // when
+            sut.onQueryChange("")
+
+            // then
+            advanceUntilIdle()
+
+            sut.queryFlow.value shouldBeEqualTo ""
+            coVerify(exactly = 1) { mockGetAlbumListUseCase.invoke("Jackson") }
+        }
 }
