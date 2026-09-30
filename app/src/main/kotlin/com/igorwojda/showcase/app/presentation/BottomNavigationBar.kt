@@ -15,6 +15,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.igorwojda.showcase.app.R
@@ -27,20 +30,25 @@ fun BottomNavigationBar(
     val navigationItems = getBottomNavigationItems()
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-
-    val selectedNavigationIndex = getSelectedNavigationIndex(currentRoute, navigationItems)
+    val currentDestination = navBackStackEntry?.destination
 
     NavigationBar(
         modifier = modifier,
     ) {
-        navigationItems.forEachIndexed { index, item ->
+        navigationItems.forEach { item ->
             NavigationBarItem(
-                selected = selectedNavigationIndex == index,
+                selected = currentDestination?.hierarchy?.any { it.hasRoute(item.route::class) } == true,
                 onClick = {
                     navController.navigate(item.route) {
-                        popUpTo(0)
-                        restoreState = true // Restores previous state if returning
+                        // Pop up to the start destination to avoid building up a large back stack,
+                        // saving the state of the tab being left
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        // Avoid multiple copies of the same destination when reselecting the same tab
+                        launchSingleTop = true
+                        // Restore state (scroll position, back stack) when reselecting a previously selected tab
+                        restoreState = true
                     }
                 },
                 icon = {
@@ -69,37 +77,19 @@ private fun getBottomNavigationItems() =
         NavigationBarItem(
             R.string.bottom_navigation_albums,
             R.drawable.ic_music_library,
-            NavigationRoute.AlbumList,
+            NavigationRoute.AlbumsGraph,
         ),
         NavigationBarItem(
             R.string.bottom_navigation_favorites,
             R.drawable.ic_favorite,
-            NavigationRoute.Favourites,
+            NavigationRoute.FavouritesGraph,
         ),
         NavigationBarItem(
             R.string.bottom_navigation_settings,
             R.drawable.ic_settings,
-            NavigationRoute.Settings,
+            NavigationRoute.SettingsGraph,
         ),
     )
-
-/*
-Returns the index of the selected bottom menu item based on the current route.
-If no match is found, it defaults to the first item (index 0).
-*/
-private fun getSelectedNavigationIndex(
-    currentRoute: String?,
-    navigationItems: List<NavigationBarItem>,
-): Int =
-    navigationItems
-        .indexOfFirst { item ->
-            when (currentRoute) {
-                null -> false
-                NavigationRoute.AlbumDetail::class.qualifiedName -> item.route is NavigationRoute.AlbumList
-                NavigationRoute.AboutLibraries::class.qualifiedName -> item.route is NavigationRoute.Settings
-                else -> item.route::class.qualifiedName == currentRoute
-            }
-        }.takeIf { it >= 0 } ?: 0
 
 data class NavigationBarItem(
     @StringRes val titleRes: Int,
