@@ -53,10 +53,13 @@ private fun NavGraphBuilder.albumsGraph(navController: NavController) {
     navigation<NavigationRoute.AlbumsGraph>(startDestination = NavigationRoute.AlbumList) {
         composable<NavigationRoute.AlbumList> {
             AlbumListScreen(
-                // artistName: String, albumName: String, mbId: String?
                 onNavigateToAlbumDetail = { artistName, albumName, albumMbId ->
                     navController.navigate(
-                        NavigationRoute.AlbumDetail(artistName, albumName, albumMbId),
+                        NavigationRoute.AlbumDetail(
+                            albumName = albumName,
+                            artistName = artistName,
+                            albumMbId = albumMbId,
+                        ),
                     )
                 },
             )
