@@ -10,6 +10,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
@@ -21,7 +22,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 class AlbumListViewModelTest {
     private val mockGetAlbumListUseCase: GetAlbumListUseCase = mockk()
 
-    private val savedStateHandle: SavedStateHandle = mockk(relaxed = true)
+    private val savedStateHandle = SavedStateHandle()
 
     private val sut =
         AlbumListViewModel(
@@ -36,7 +37,7 @@ class AlbumListViewModelTest {
             coEvery { mockGetAlbumListUseCase.invoke("Jackson") } returns Result.Failure()
 
             // when
-            sut.onInit("Jackson")
+            sut.onInit()
 
             // then
             advanceUntilIdle()
@@ -53,7 +54,7 @@ class AlbumListViewModelTest {
             coEvery { mockGetAlbumListUseCase.invoke("Jackson") } returns Result.Success(albums)
 
             // when
-            sut.onInit("Jackson")
+            sut.onInit()
 
             // then
             advanceUntilIdle()
@@ -65,7 +66,56 @@ class AlbumListViewModelTest {
         }
 
     @Test
-    fun `onSearch with empty query loads default query instead of saved one`() =
+    fun `onQueryChange updates query immediately`() =
+        runTest {
+            // when
+            sut.onQueryChange("Metal")
+
+            // then
+            sut.queryFlow.value shouldBeEqualTo "Metal"
+        }
+
+    @Test
+    fun `onQueryChange searches only for last query after debounce`() =
+        runTest {
+            // given
+            coEvery { mockGetAlbumListUseCase.invoke(any()) } returns Result.Success(emptyList())
+            sut.onInit()
+            advanceUntilIdle()
+
+            // when
+            sut.onQueryChange("M")
+            advanceTimeBy(100)
+            sut.onQueryChange("Me")
+            advanceTimeBy(100)
+            sut.onQueryChange("Metal")
+            advanceUntilIdle()
+
+            // then
+            coVerify(exactly = 0) { mockGetAlbumListUseCase.invoke("M") }
+            coVerify(exactly = 0) { mockGetAlbumListUseCase.invoke("Me") }
+            coVerify(exactly = 1) { mockGetAlbumListUseCase.invoke("Metal") }
+        }
+
+    @Test
+    fun `onInit searches for saved query`() =
+        runTest {
+            // given
+            val savedStateHandle = SavedStateHandle(mapOf("query" to "Metal"))
+            coEvery { mockGetAlbumListUseCase.invoke("Metal") } returns Result.Success(emptyList())
+            val sut = AlbumListViewModel(savedStateHandle, mockGetAlbumListUseCase)
+
+            // when
+            sut.onInit()
+            advanceUntilIdle()
+
+            // then
+            sut.queryFlow.value shouldBeEqualTo "Metal"
+            coVerify(exactly = 1) { mockGetAlbumListUseCase.invoke("Metal") }
+        }
+
+    @Test
+    fun `onQueryChange with empty query loads default query`() =
         runTest {
             // given
             val sut =
@@ -74,14 +124,16 @@ class AlbumListViewModelTest {
                     mockGetAlbumListUseCase,
                 )
             coEvery { mockGetAlbumListUseCase.invoke(any()) } returns Result.Success(emptyList())
+            sut.onInit()
+            advanceUntilIdle()
 
             // when
-            sut.onSearch("")
+            sut.onQueryChange("")
 
             // then
             advanceUntilIdle()
 
-            coVerify { mockGetAlbumListUseCase.invoke("Jackson") }
-            coVerify(exactly = 0) { mockGetAlbumListUseCase.invoke("Metallica") }
+            sut.queryFlow.value shouldBeEqualTo ""
+            coVerify(exactly = 1) { mockGetAlbumListUseCase.invoke("Jackson") }
         }
 }

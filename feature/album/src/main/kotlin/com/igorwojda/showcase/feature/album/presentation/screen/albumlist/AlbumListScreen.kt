@@ -13,9 +13,6 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -39,7 +36,7 @@ fun AlbumListScreen(
 
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
-    var searchQuery by rememberSaveable { mutableStateOf("") }
+    val query by viewModel.queryFlow.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.onInit()
@@ -48,11 +45,8 @@ fun AlbumListScreen(
     Column(modifier = modifier.fillMaxSize()) {
         // Search bar
         SearchBar(
-            query = searchQuery,
-            onQueryChange = { newQuery ->
-                searchQuery = newQuery
-            },
-            onSearch = viewModel::onSearch,
+            query = query,
+            onQueryChange = viewModel::onQueryChange,
         )
 
         // Content
