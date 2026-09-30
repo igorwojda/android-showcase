@@ -1,14 +1,13 @@
 package com.igorwojda.showcase.app.presentation
 
-import android.os.Bundle
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -28,7 +27,7 @@ fun MainShowcaseScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
     if (BuildConfig.DEBUG) {
-        addOnDestinationChangedListener(navController)
+        NavigationDestinationLoggerEffect(navController)
     }
 
     Scaffold(
@@ -105,16 +104,17 @@ private fun NavGraphBuilder.settingsGraph(navController: NavController) {
     }
 }
 
-private fun addOnDestinationChangedListener(navController: NavController) {
-    navController.addOnDestinationChangedListener(
-        object : NavController.OnDestinationChangedListener {
-            override fun onDestinationChanged(
-                controller: NavController,
-                destination: NavDestination,
-                arguments: Bundle?,
-            ) {
+@Composable
+private fun NavigationDestinationLoggerEffect(navController: NavController) {
+    DisposableEffect(navController) {
+        val listener =
+            NavController.OnDestinationChangedListener { _, destination, arguments ->
                 NavigationDestinationLogger.logDestinationChange(destination, arguments)
             }
-        },
-    )
+        navController.addOnDestinationChangedListener(listener)
+
+        onDispose {
+            navController.removeOnDestinationChangedListener(listener)
+        }
+    }
 }

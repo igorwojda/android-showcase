@@ -30,7 +30,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.igorwojda.showcase.feature.album.R
@@ -43,6 +43,7 @@ import com.igorwojda.showcase.feature.base.presentation.compose.composable.Loadi
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleLarge
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleMedium
+import com.igorwojda.showcase.feature.base.presentation.compose.theme.ShowcaseTheme
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -180,14 +181,16 @@ internal fun TrackItem(track: Track) {
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun TrackItemPreview() {
-    TrackItem(
-        track =
-            Track(
-                name = "Sample Track",
-                duration = 180, // 3 minutes in seconds
-            ),
-    )
+    ShowcaseTheme {
+        TrackItem(
+            track =
+                Track(
+                    name = "Sample Track",
+                    duration = 180, // 3 minutes in seconds
+                ),
+        )
+    }
 }
