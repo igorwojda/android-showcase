@@ -7,6 +7,7 @@ import com.igorwojda.showcase.feature.base.domain.result.Result
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -61,5 +62,26 @@ class AlbumListViewModelTest {
                 AlbumListUiState.Content(
                     albums = albums,
                 )
+        }
+
+    @Test
+    fun `onSearch with empty query loads default query instead of saved one`() =
+        runTest {
+            // given
+            val sut =
+                AlbumListViewModel(
+                    SavedStateHandle(mapOf("query" to "Metallica")),
+                    mockGetAlbumListUseCase,
+                )
+            coEvery { mockGetAlbumListUseCase.invoke(any()) } returns Result.Success(emptyList())
+
+            // when
+            sut.onSearch("")
+
+            // then
+            advanceUntilIdle()
+
+            coVerify { mockGetAlbumListUseCase.invoke("Jackson") }
+            coVerify(exactly = 0) { mockGetAlbumListUseCase.invoke("Metallica") }
         }
 }

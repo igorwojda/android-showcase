@@ -18,6 +18,10 @@ internal class AlbumListViewModel(
         getAlbumList(query)
     }
 
+    fun onSearch(query: String) {
+        getAlbumList(query.ifBlank { DEFAULT_QUERY_NAME })
+    }
+
     private fun getAlbumList(query: String?) {
         if (job != null) {
             job?.cancel()
