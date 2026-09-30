@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.app.presentation
 
 import android.os.Bundle
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -37,7 +38,10 @@ fun MainShowcaseScreen(modifier: Modifier = Modifier) {
         NavHost(
             navController = navController,
             startDestination = NavigationRoute.AlbumsGraph,
-            modifier = Modifier.padding(innerPadding),
+            modifier =
+                Modifier
+                    .padding(innerPadding)
+                    .consumeWindowInsets(innerPadding),
         ) {
             albumsGraph(navController)
             favouritesGraph()
