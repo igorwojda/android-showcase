@@ -11,8 +11,12 @@ internal data class AlbumApiModel(
     @SerialName("name") val name: String,
     @SerialName("artist") val artist: String,
     @SerialName("image") val images: List<ImageApiModel>? = null,
-    @SerialName("tracks") val tracks: TrackListApiModel? = null,
-    @SerialName("tags") val tags: TagListApiModel? = null,
+    @SerialName("tracks")
+    @Serializable(with = TrackListApiModelSerializer::class)
+    val tracks: TrackListApiModel? = null,
+    @SerialName("tags")
+    @Serializable(with = TagListApiModelSerializer::class)
+    val tags: TagListApiModel? = null,
 )
 
 internal fun AlbumApiModel.toRoomModel() =
