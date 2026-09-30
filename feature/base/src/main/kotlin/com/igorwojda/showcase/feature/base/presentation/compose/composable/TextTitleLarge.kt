@@ -4,7 +4,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import com.igorwojda.showcase.feature.base.presentation.compose.theme.ShowcaseTheme
 
 @Composable
 fun TextTitleLarge(
@@ -18,8 +19,10 @@ fun TextTitleLarge(
     )
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun TextTitleLargePreview() {
-    TextTitleLarge(text = "Sample Large Title")
+    ShowcaseTheme {
+        TextTitleLarge(text = "Sample Large Title")
+    }
 }

@@ -14,9 +14,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.base.common.res.Dimen
+import com.igorwojda.showcase.feature.base.presentation.compose.theme.ShowcaseTheme
 
 @Composable
 fun SearchBar(
@@ -64,20 +65,24 @@ fun SearchBar(
     )
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun SearchBarPreview() {
-    SearchBar(
-        query = "Sample query",
-        onQueryChange = { },
-    )
+    ShowcaseTheme {
+        SearchBar(
+            query = "Sample query",
+            onQueryChange = { },
+        )
+    }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun SearchBarEmptyPreview() {
-    SearchBar(
-        query = "",
-        onQueryChange = { },
-    )
+    ShowcaseTheme {
+        SearchBar(
+            query = "",
+            onQueryChange = { },
+        )
+    }
 }
