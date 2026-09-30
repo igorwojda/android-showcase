@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,7 +39,7 @@ fun AlbumListScreen(
 
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
-    var searchQuery by remember { mutableStateOf("") }
+    var searchQuery by rememberSaveable { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
         viewModel.onInit()
@@ -52,13 +52,7 @@ fun AlbumListScreen(
             onQueryChange = { newQuery ->
                 searchQuery = newQuery
             },
-            onSearch = { query ->
-                if (query.isNotEmpty()) {
-                    viewModel.onInit(query)
-                } else {
-                    viewModel.onInit()
-                }
-            },
+            onSearch = viewModel::onSearch,
         )
 
         // Content
