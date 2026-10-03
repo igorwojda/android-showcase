@@ -38,7 +38,7 @@ import com.igorwojda.showcase.feature.album.domain.model.Tag
 import com.igorwojda.showcase.feature.album.domain.model.Track
 import com.igorwojda.showcase.feature.album.presentation.util.TimeUtil
 import com.igorwojda.showcase.feature.base.common.res.Dimen
-import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
+import com.igorwojda.showcase.feature.base.presentation.compose.composable.AppErrorContent
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.LoadingIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.TextTitleLarge
@@ -80,8 +80,12 @@ fun AlbumDetailScreen(
         },
     ) { innerPadding ->
         when (val currentUiState = uiState) {
-            AlbumDetailUiState.Error -> {
-                ErrorAnim()
+            is AlbumDetailUiState.Error -> {
+                AppErrorContent(
+                    error = currentUiState.error,
+                    onRetry = viewModel::onRetry,
+                    modifier = Modifier.padding(innerPadding),
+                )
             }
 
             AlbumDetailUiState.Loading -> {

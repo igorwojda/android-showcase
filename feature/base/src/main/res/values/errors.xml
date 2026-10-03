@@ -1,0 +1,9 @@
+<resources>
+    <string name="error_title">Unable to load data</string>
+    <string name="error_network">Check your internet connection and try again.</string>
+    <string name="error_unauthorized">Please sign in again or check your access permissions.</string>
+    <string name="error_server">The server is temporarily unavailable. Please try again.</string>
+    <string name="error_unknown">Something went wrong. Please contact support if it persists.</string>
+    <string name="error_retry">Retry</string>
+    <string name="error_close">Close</string>
+</resources>

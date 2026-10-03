@@ -45,6 +45,12 @@ internal class AlbumListViewModel(
             }
     }
 
+    fun onRetry() {
+        job?.cancel()
+        job = null
+        onInit()
+    }
+
     fun onQueryChange(query: String) {
         savedStateHandle[SAVED_QUERY_KEY] = query
     }
@@ -52,7 +58,7 @@ internal class AlbumListViewModel(
     private suspend fun getAlbumList(query: String) =
         when (val result = getAlbumListUseCase(query)) {
             is Result.Success -> AlbumListAction.AlbumListLoadSuccess(result.value)
-            is Result.Failure -> AlbumListAction.AlbumListLoadFailure
+            is Result.Failure -> AlbumListAction.AlbumListLoadFailure(result.error)
         }
 
     companion object {
