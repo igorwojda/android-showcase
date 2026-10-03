@@ -54,6 +54,9 @@ espresso = "3.7.0"
 core-testing = "2.2.0"
 konsist = "0.17.3"
 
+supabase = "3.8.0"
+ktor = "3.5.1"
+
 [plugins]
 # Search Gradle Plugins https://plugins.gradle.org/
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
@@ -130,6 +133,14 @@ compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 
+supabase-bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "supabase" }
+supabase-postgrest = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+supabase-auth = { module = "io.github.jan-tennert.supabase:auth-kt" }
+supabase-realtime = { module = "io.github.jan-tennert.supabase:realtime-kt" }
+supabase-storage = { module = "io.github.jan-tennert.supabase:storage-kt" }
+supabase-functions = { module = "io.github.jan-tennert.supabase:functions-kt" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+
 [bundles]
 retrofit = [
     "retrofit-core",
@@ -165,3 +176,5 @@ test = [
     "junit-jupiter-engine",
     "junit-platform-launcher",
 ]
+
+supabase = ["supabase-postgrest", "supabase-auth", "supabase-realtime", "supabase-storage"]

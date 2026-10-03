@@ -1,7 +1,8 @@
-package com.igorwojda.showcase.app
+package com.igorwojda.showcase.app.data.retrofit
 
-import com.igorwojda.showcase.app.data.api.AuthenticationInterceptor
-import com.igorwojda.showcase.app.data.api.UserAgentInterceptor
+import com.igorwojda.showcase.app.BuildConfig
+import com.igorwojda.showcase.app.data.retrofit.interceptor.AuthenticationInterceptor
+import com.igorwojda.showcase.app.data.retrofit.interceptor.UserAgentInterceptor
 import com.igorwojda.showcase.feature.base.data.retrofit.ApiResultAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -13,20 +14,12 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import timber.log.Timber
 
-val appModule =
+/** Provides Retrofit, OkHttp and their interceptors. */
+val retrofitModule =
     module {
-
         single { AuthenticationInterceptor(BuildConfig.GRADLE_API_TOKEN) }
 
         singleOf(::UserAgentInterceptor)
-
-        single {
-            HttpLoggingInterceptor { message ->
-                Timber.d("Http: $message")
-            }.apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            }
-        }
 
         /*
          * OkHttp logging interceptor with custom Timber logger.

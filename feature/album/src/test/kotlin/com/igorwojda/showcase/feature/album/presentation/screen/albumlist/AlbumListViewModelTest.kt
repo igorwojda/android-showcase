@@ -3,6 +3,7 @@ package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 import androidx.lifecycle.SavedStateHandle
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumListUseCase
+import com.igorwojda.showcase.feature.base.domain.error.AppError
 import com.igorwojda.showcase.feature.base.domain.result.Result
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
@@ -42,7 +43,7 @@ class AlbumListViewModelTest {
             // then
             advanceUntilIdle()
 
-            sut.uiStateFlow.value shouldBeEqualTo AlbumListUiState.Error
+            sut.uiStateFlow.value shouldBeEqualTo AlbumListUiState.Error()
         }
 
     @Test
@@ -135,5 +136,26 @@ class AlbumListViewModelTest {
 
             sut.queryFlow.value shouldBeEqualTo ""
             coVerify(exactly = 1) { mockGetAlbumListUseCase.invoke("Jackson") }
+        }
+
+    @Test
+    fun `retry repeats the current query and recovers`() =
+        runTest {
+            coEvery { mockGetAlbumListUseCase.invoke("Metal") } returnsMany
+                listOf(
+                    Result.Failure(AppError.Network),
+                    Result.Success(emptyList()),
+                )
+            sut.onQueryChange("Metal")
+            sut.onInit()
+            advanceUntilIdle()
+            sut.uiStateFlow.value shouldBeEqualTo
+                AlbumListUiState.Error(
+                    AppError.Network,
+                )
+            sut.onRetry()
+            advanceUntilIdle()
+            sut.uiStateFlow.value shouldBeEqualTo AlbumListUiState.Content(emptyList())
+            coVerify(exactly = 2) { mockGetAlbumListUseCase.invoke("Metal") }
         }
 }

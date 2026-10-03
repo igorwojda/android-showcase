@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.screen.albumlist
 
 import com.igorwojda.showcase.feature.album.domain.model.Album
+import com.igorwojda.showcase.feature.base.domain.error.AppError
 import com.igorwojda.showcase.feature.base.presentation.viewmodel.BaseAction
 
 internal sealed interface AlbumListAction : BaseAction<AlbumListUiState> {
@@ -14,7 +15,9 @@ internal sealed interface AlbumListAction : BaseAction<AlbumListUiState> {
         override fun reduce(state: AlbumListUiState) = AlbumListUiState.Content(albums)
     }
 
-    object AlbumListLoadFailure : AlbumListAction {
-        override fun reduce(state: AlbumListUiState) = AlbumListUiState.Error
+    class AlbumListLoadFailure(
+        private val error: AppError,
+    ) : AlbumListAction {
+        override fun reduce(state: AlbumListUiState) = AlbumListUiState.Error(error)
     }
 }
