@@ -22,7 +22,7 @@ import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.presentation.composable.SearchBar
 import com.igorwojda.showcase.feature.base.common.res.Dimen
-import com.igorwojda.showcase.feature.base.presentation.compose.composable.ErrorAnim
+import com.igorwojda.showcase.feature.base.presentation.compose.composable.AppErrorContent
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.LoadingIndicator
 import com.igorwojda.showcase.feature.base.presentation.compose.composable.PlaceholderImage
 import com.igorwojda.showcase.feature.base.presentation.compose.theme.ShowcaseTheme
@@ -56,11 +56,20 @@ fun AlbumListScreen(
             contentAlignment = Alignment.Center,
         ) {
             when (val currentUiState = uiState) { // Extract to local variable for smart casting
-                AlbumListUiState.Error -> ErrorAnim()
+                is AlbumListUiState.Error -> {
+                    AppErrorContent(
+                        error = currentUiState.error,
+                        onRetry = viewModel::onRetry,
+                    )
+                }
 
-                AlbumListUiState.Loading -> LoadingIndicator()
+                AlbumListUiState.Loading -> {
+                    LoadingIndicator()
+                }
 
-                is AlbumListUiState.Content -> AlbumListContent(currentUiState, onNavigateToAlbumDetail)
+                is AlbumListUiState.Content -> {
+                    AlbumListContent(currentUiState, onNavigateToAlbumDetail)
+                }
             }
         }
     }

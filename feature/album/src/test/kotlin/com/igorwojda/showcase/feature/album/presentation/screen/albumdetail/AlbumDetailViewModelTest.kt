@@ -2,6 +2,7 @@ package com.igorwojda.showcase.feature.album.presentation.screen.albumdetail
 
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.album.domain.usecase.GetAlbumUseCase
+import com.igorwojda.showcase.feature.base.domain.error.AppError
 import com.igorwojda.showcase.feature.base.domain.result.Result
 import com.igorwojda.showcase.library.testutils.CoroutinesTestDispatcherExtension
 import com.igorwojda.showcase.library.testutils.InstantTaskExecutorExtension
@@ -41,7 +42,7 @@ class AlbumDetailViewModelTest {
 
             // then
             advanceUntilIdle()
-            sut.uiStateFlow.value shouldBeEqualTo AlbumDetailUiState.Error
+            sut.uiStateFlow.value shouldBeEqualTo AlbumDetailUiState.Error()
         }
 
     @Test
@@ -70,5 +71,21 @@ class AlbumDetailViewModelTest {
                     tracks = null,
                     tags = null,
                 )
+        }
+
+    @Test
+    fun `retry preserves album arguments`() =
+        runTest {
+            coEvery { mockGetAlbumUseCase.invoke("artist", "album", "id") } returnsMany
+                listOf(
+                    Result.Failure(AppError.Server),
+                    Result.Success(Album("album", "artist", "id")),
+                )
+            sut.onInit("album", "artist", "id")
+            advanceUntilIdle()
+            sut.onRetry()
+            advanceUntilIdle()
+            io.mockk.coVerify(exactly = 2) { mockGetAlbumUseCase.invoke("artist", "album", "id") }
+            (sut.uiStateFlow.value is AlbumDetailUiState.Content) shouldBeEqualTo true
         }
 }
