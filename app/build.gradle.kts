@@ -15,6 +15,8 @@ android {
 
         buildConfigFieldFromGradleProperty(project, "apiBaseUrl")
         buildConfigFieldFromGradleProperty(project, "apiToken")
+        buildConfigField("String", "GRADLE_SUPABASE_URL", "\"${providers.gradleProperty("supabaseUrl").orElse("").get()}\"")
+        buildConfigField("String", "GRADLE_SUPABASE_ANON_KEY", "\"${providers.gradleProperty("supabaseAnonKey").orElse("").get()}\"")
     }
 
     buildTypes {
@@ -26,6 +28,9 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.supabase.bom))
+    implementation(libs.bundles.supabase)
+    implementation(libs.ktor.client.okhttp)
     // "projects." Syntax utilizes Gradle TYPESAFE_PROJECT_ACCESSORS feature
     implementation(projects.feature.base)
     implementation(projects.feature.album)
