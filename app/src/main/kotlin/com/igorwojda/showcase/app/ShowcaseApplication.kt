@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.app
 
 import android.app.Application
+import com.igorwojda.showcase.app.di.appModule
 import com.igorwojda.showcase.feature.album.featureAlbumModules
 import com.igorwojda.showcase.feature.favourite.featureFavouriteModules
 import com.igorwojda.showcase.feature.settings.featureSettingsModules

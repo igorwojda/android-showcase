@@ -17,28 +17,25 @@ internal class ApiResultCall<T> constructor(
                     call: Call<T>,
                     response: Response<T>,
                 ) {
-                    response.body()?.let {
-                        when (response.code()) {
-                            in 200..208 -> {
-                                callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Success(it)))
-                            }
-
-                            in 400..409 -> {
-                                callback.onResponse(
-                                    this@ApiResultCall,
-                                    Response.success(ApiResult.Error(response.code(), response.message())),
-                                )
-                            }
+                    val body = response.body()
+                    val result: ApiResult<T> =
+                        if (response.isSuccessful && body != null) {
+                            ApiResult.Success(body)
+                        } else {
+                            ApiResult.Error<T>(response.code(), response.message())
                         }
-                    } ?: callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Error(123, "message")))
+                    callback.onResponse(this@ApiResultCall, Response.success(result))
                 }
 
                 override fun onFailure(
                     call: Call<T>,
                     throwable: Throwable,
                 ) {
-                    callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Exception(throwable)))
-                    call.cancel()
+                    if (call.isCanceled || throwable is kotlinx.coroutines.CancellationException) {
+                        callback.onFailure(this@ApiResultCall, throwable)
+                    } else {
+                        callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Exception(throwable)))
+                    }
                 }
             },
         )

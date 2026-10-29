@@ -8,15 +8,16 @@ import com.igorwojda.showcase.feature.album.data.datasource.database.AlbumDao
 import com.igorwojda.showcase.feature.album.data.mapper.AlbumMapper
 import com.igorwojda.showcase.feature.album.domain.model.Album
 import com.igorwojda.showcase.feature.base.data.retrofit.ApiResult
+import com.igorwojda.showcase.feature.base.domain.error.AppError
 import com.igorwojda.showcase.feature.base.domain.result.Result
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import java.net.UnknownHostException
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
-import java.net.UnknownHostException
 
 class AlbumRepositoryImplTest {
     private val mockService: AlbumRetrofitService = mockk()
@@ -92,7 +93,7 @@ class AlbumRepositoryImplTest {
         // given
         val phrase = "phrase"
 
-        coEvery { mockService.searchAlbumAsync(phrase) } returns mockk<ApiResult.Error<SearchAlbumResponse>>()
+        coEvery { mockService.searchAlbumAsync(phrase) } returns ApiResult.Error<SearchAlbumResponse>(400, "Bad request")
 
         // when
         val actual = runBlocking { sut.searchAlbum(phrase) }
@@ -156,12 +157,42 @@ class AlbumRepositoryImplTest {
 
         coEvery {
             mockService.getAlbumInfoAsync(artistName, albumName, mbId)
-        } returns mockk<ApiResult.Error<GetAlbumInfoResponse>>()
+        } returns ApiResult.Error<GetAlbumInfoResponse>(400, "Bad request")
 
         // when
         val actual = runBlocking { sut.getAlbumInfo(artistName, albumName, mbId) }
 
         // then
         actual shouldBeEqualTo Result.Failure()
+    }
+
+    @Test
+    fun `server errors do not read cache`(): Unit =
+        runBlocking {
+            coEvery { mockService.searchAlbumAsync("query") } returns ApiResult.Error(503, "Unavailable")
+            sut.searchAlbum("query") shouldBeEqualTo
+                Result.Failure(
+                    AppError.Server,
+                )
+            coVerify(exactly = 0) { mockAlbumDao.getAll() }
+        }
+
+    @Test
+    fun `network failure with empty cache remains a failure`(): Unit =
+        runBlocking {
+            coEvery { mockService.searchAlbumAsync("query") } returns ApiResult.Exception(UnknownHostException())
+            coEvery { mockAlbumDao.getAll() } returns emptyList()
+            sut.searchAlbum("query") shouldBeEqualTo
+                Result.Failure(
+                    AppError.Network,
+                )
+        }
+
+    @Test
+    fun `repository preserves cancellation`() {
+        coEvery { mockService.searchAlbumAsync("query") } throws kotlinx.coroutines.CancellationException()
+        org.junit.jupiter.api.Assertions.assertThrows(kotlinx.coroutines.CancellationException::class.java) {
+            runBlocking { sut.searchAlbum("query") }
+        }
     }
 }

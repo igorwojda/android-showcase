@@ -1,0 +1,9 @@
+<resources>
+    <string name="error_title">Không thể tải dữ liệu</string>
+    <string name="error_network">Kiểm tra kết nối mạng và thử lại.</string>
+    <string name="error_unauthorized">Vui lòng đăng nhập lại hoặc kiểm tra quyền truy cập.</string>
+    <string name="error_server">Máy chủ tạm thời không khả dụng. Vui lòng thử lại.</string>
+    <string name="error_unknown">Đã xảy ra lỗi. Liên hệ hỗ trợ nếu lỗi tiếp diễn.</string>
+    <string name="error_retry">Thử lại</string>
+    <string name="error_close">Đóng</string>
+</resources>
