@@ -126,7 +126,6 @@ Built with modern Android development tools and libraries, prioritizing project 
 - **[Check](.github/workflows/check.yml)** - CI pipeline with build, lint, test, and code quality checks
 - **[Auto Approve](.github/workflows/auto-approve.yml)** - Auto-approval for trusted bot and maintainer PRs
 - **[Claude Code](.github/workflows/claude.yml)** - AI-powered code assistance and review
-- **[Claude Code Review](.github/workflows/claude-code-review.yml)** - Automated PR reviews using Claude
 
 **Gradle Plugins:**
 - **[Android Application](https://developer.android.com/build/releases/gradle-plugin)** (`com.android.application`) - Android app module configuration
