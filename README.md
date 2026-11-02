@@ -64,13 +64,13 @@ A music discovery app built with Jetpack Compose that displays album information
 
 ## Tech-Stack
 
-Built with modern Android development tools and libraries, prioritizing, project structure stability and production-readiness.
+Built with modern Android development tools and libraries, prioritizing project structure stability and production-readiness.
 
 **Core Technologies:**
-- **[Kotlin 2.2+](https://kotlinlang.org/)** - Modern, expressive programming language
+- **[Kotlin 2.4+](https://kotlinlang.org/)** - Modern, expressive programming language
   - **[Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)** - Asynchronous programming
   - **[Flow](https://kotlinlang.org/docs/flow.html)** - Reactive data streams
-  - **[KSP (Kotlin Symbol Processing)](https://kotlinlang.org/docs/ksp-overview.html)** - Kotlin Symbol Processing
+  - **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** - Kotlin Symbol Processing (Room compiler)
   - **[Serialization](https://kotlinlang.org/docs/serialization.html)** - JSON parsing
 
 **Android Jetpack:**
@@ -78,40 +78,41 @@ Built with modern Android development tools and libraries, prioritizing, project
 - **[Navigation Compose](https://developer.android.com/jetpack/compose/navigation)** - Type-safe navigation
 - **[ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)** - UI-related data management
 - **[Room](https://developer.android.com/jetpack/androidx/releases/room)** - Local database with SQLite
-- **[Core Splashscreen](https://developer.android.com/jetpack/androidx/releases/core#core_splashscreen_version_12_2)** - app Splashscreen
+- **[Core Splashscreen](https://developer.android.com/jetpack/androidx/releases/core#core_splashscreen_version_12_2)** - App splash screen
 
 **Networking & Images:**
-- **[Retrofit](https://square.github.io/retrofit/)** - HTTP client for API communication
+- **[Retrofit](https://square.github.io/retrofit/)** - Type-safe REST API client
+- **[OkHttp](https://square.github.io/okhttp/)** - HTTP client with logging and custom interceptors
 - **[Coil](https://github.com/coil-kt/coil)** - Image loading optimized for Compose
 
-**Dependency Injection:**
+**Dependency Injection & Logging:**
 - **[Koin](https://insert-koin.io/)** - Lightweight dependency injection framework
+- **[Timber](https://github.com/JakeWharton/timber)** - Logging
 
 **Architecture:**
 - **[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)** - Separation of concerns with defined layers
 - **Single Activity Architecture** - Modern navigation approach
-- **MVVM + MVI** - Reactive presentation layer pattern providing common UI state.
+- **MVVM + MVI** - Reactive presentation layer with unidirectional UI state
 - **Modular Design** - Feature-based modules for scalability
 
 **UI & Design:**
-- **[Material Design 3](https://m3.material.io/)** - Latest design system
+- **[Material Design 3](https://m3.material.io/)** - Design system
 - **[Dynamic Theming](https://m3.material.io/styles/color/dynamic-color/overview)** - Wallpaper-based themes (Android 12+)
 - **[Dark Theme](https://material.io/develop/android/theming/dark)** - System-aware dark mode
 - **[Lottie](http://airbnb.io/lottie)** - Vector animations
 
 **Testing:**
-- **[JUnit 6](https://junit.org/)** - Modern testing framework
-- **[Mockk](https://mockk.io/)** - Kotlin-first mocking library
+- **[JUnit 6](https://junit.org/)** - Testing framework
+- **[MockK](https://mockk.io/)** - Kotlin-first mocking library
 - **[Kluent](https://github.com/MarkusAmshove/Kluent)** - Fluent assertion library
-- **[Espresso](https://developer.android.com/training/testing/espresso)** - UI testing (WIP)
 
 **Code Quality:**
 - **[Konsist](https://docs.konsist.lemonappdev.com/)** - Architecture and code structure convention tests
 - **[Ktlint](https://github.com/pinterest/ktlint)** - Kotlin code formatting and issue detection
-  - **[Ktlint Standard Rules](https://pinterest.github.io/ktlint/0.49.1/rules/standard/)** - set of custom rules for Jetpack Compose
-  - **[Nlopez Jetpack Compose Rules](https://mrmans0n.github.io/compose-rules/)** - set of custom rules for Jetpack Compose
-  - **[Twitter's Jetpack Compose Rules](https://twitter.github.io/compose-rules/)** - set of custom rules for Jetpack Compose
-- **[Detekt](https://github.com/arturbosch/detekt)** - Static analysis and complexity checks
+  - **[Ktlint Standard Rules](https://pinterest.github.io/ktlint/latest/rules/standard/)** - Official Kotlin style rules
+  - **[Nlopez Compose Rules](https://mrmans0n.github.io/compose-rules/)** - Jetpack Compose rules
+  - **[Twitter Compose Rules](https://twitter.github.io/compose-rules/)** - Jetpack Compose rules
+- **[Detekt](https://detekt.dev/)** - Static analysis and complexity checks
 - **[Android Lint](http://tools.android.com/tips/lint)** - Android-specific code analysis
 - **[Spotless](https://github.com/diffplug/spotless)** - Code formatting enforcement
 
@@ -130,15 +131,13 @@ Built with modern Android development tools and libraries, prioritizing, project
 **Gradle Plugins:**
 - **[Android Application](https://developer.android.com/build/releases/gradle-plugin)** (`com.android.application`) - Android app module configuration
 - **[Android Library](https://developer.android.com/build/releases/gradle-plugin)** (`com.android.library`) - Android library module configuration
-- **[Kotlin Android](https://kotlinlang.org/docs/gradle.html)** (`org.jetbrains.kotlin.android`) - Kotlin compilation for Android
 - **[Kotlin Serialization](https://kotlinlang.org/docs/serialization.html)** (`org.jetbrains.kotlin.plugin.serialization`) - JSON serialization support
 - **[Kotlin Compose Compiler](https://developer.android.com/jetpack/androidx/releases/compose-kotlin)** (`org.jetbrains.kotlin.plugin.compose`) - Compose compiler plugin
-- **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** - Kotlin Symbol Processing
-- **[Detekt](https://detekt.dev/)** - Static code analysis
-- **[Spotless](https://github.com/diffplug/spotless)** - Code formatting
+- **[KSP](https://kotlinlang.org/docs/ksp-overview.html)** (`com.google.devtools.ksp`) - Kotlin Symbol Processing
+- **[Android JUnit5](https://github.com/mannodermaus/android-junit5)** (`de.mannodermaus.android-junit5`) - JUnit 5/6 support for Android modules
 - **[Test Logger](https://github.com/radarsh/gradle-test-logger-plugin)** - Enhanced test log output
-- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** - Modify the launcher icon of each of your app-variants
-- **[AboutLibraries](https://github.com/mikepenz/AboutLibraries)** - collects dependency details, including licenses and visualize these in the app
+- **[Easylauncher](https://github.com/usefulness/easylauncher-gradle-plugin)** - Per-variant launcher icon badges
+- **[AboutLibraries](https://github.com/mikepenz/AboutLibraries)** - Collects dependency details, including licenses, and displays them in the app
 
 ## Architecture
 
