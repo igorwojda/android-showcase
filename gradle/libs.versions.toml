@@ -52,7 +52,7 @@ test-runner = "1.7.0"
 mockk = "1.14.11"
 espresso = "3.7.0"
 core-testing = "2.2.0"
-konsist = "0.17.3"
+konsist = "0.18.1"
 
 [plugins]
 # Search Gradle Plugins https://plugins.gradle.org/
